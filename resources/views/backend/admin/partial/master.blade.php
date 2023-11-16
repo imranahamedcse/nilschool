@@ -12,9 +12,10 @@
 @section('mainsection')
   @include('backend.admin.partial.sidebar')
 
-  @include('backend.admin.partial.header')
-
-  @yield('content')
+  <div class="home-section p-3">
+    @include('backend.admin.partial.header')
+    @yield('content')
+  </div>
 
   @include('backend.admin.partial.footer')
 @endsection

@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('backend.admin.dashboard');
 });
+Route::get('/datatable', function () {
+    return view('backend.admin.datatable');
+});
