@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // Set a warning toast, with no title
+    toastr()->warning('Are you sure you want to proceed ?');
+
+    // Set a success toast, with a title
+    toastr()->success('Data has been saved successfully!', 'Congrats');
+
+    // Set an error toast, with a title
+    toastr()->error('Oops! Something went wrong!', 'Oops!');
+
+    // Override global config options from 'config/toastr.php'
+    toastr()->success('Data has been saved successfully!', 'Congrats', ['timeOut' => 5000]);
+    
     return view('empty');
 });
 Route::get('/admin', function () {
