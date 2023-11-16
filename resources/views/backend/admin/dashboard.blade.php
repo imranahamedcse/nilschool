@@ -1,11 +1,11 @@
-@extends('master')
+@extends('backend.admin.partial.master')
 
 @section('title')
-    empty
+  Dashboard
 @endsection
 
 @section('content')
-    <h1>empty</h1>
+    <h1>empty dashboard</h1>
 @endsection
 
 @push('style')

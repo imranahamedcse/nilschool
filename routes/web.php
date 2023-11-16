@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('empty');
 });
+Route::get('/admin', function () {
+    return view('backend.admin.dashboard');
+});

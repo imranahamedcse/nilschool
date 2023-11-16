@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-      @yield('title')
+      @yield('maintitle')
     </title>
 
-    @stack('style')
+    @stack('mainstyle')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/icons/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/icons/css/brands.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/icons/css/solid.css') }}">
   </head>
   <body>
 
-    @yield('content')
+    @yield('mainsection')
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
     
-    @stack('script')
+    @stack('mainscript')
 
   </body>
 </html>
