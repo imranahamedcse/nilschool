@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->string('admission_no')->nullable();
+            $table->integer('roll_no')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('email')->nullable();
+            $table->date('dob')->nullable();
+            $table->date('admission_date')->nullable();
+            $table->foreignId('student_category_id')->nullable()->constrained('student_categories')->cascadeOnDelete();
+            $table->foreignId('religion_id')->nullable()->constrained('religions')->cascadeOnDelete();
+            $table->foreignId('blood_group_id')->nullable()->constrained('blood_groups')->cascadeOnDelete();
+            $table->foreignId('gender_id')->nullable()->constrained('genders')->cascadeOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('student_categories')->cascadeOnDelete();
+            $table->foreignId('image_id')->nullable()->constrained('uploads')->cascadeOnDelete();
+            $table->foreignId('parent_guardian_id')->nullable()->constrained('parent_guardians')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+
+            $table->longText('upload_documents')->nullable();
+            $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
+            $table->timestamps();
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('students');
+    }
+};
