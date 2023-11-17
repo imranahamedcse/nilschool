@@ -10,9 +10,15 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "yoeunes/toastr": "^2.3"
+        "yoeunes/toastr": "^2.3",
+        "anhskohbo/no-captcha": "^3.4",
+        "barryvdh/laravel-dompdf": "^2.0",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "srmklive/paypal": "~1.0",
+        "stripe/stripe-php": "^10.19"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",

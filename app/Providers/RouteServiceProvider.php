@@ -35,6 +35,46 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/student_info.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/academic.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/fees.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/staff.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/examination.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/accounts.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/report.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/attendance.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/website-setup.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/student-panel.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/parent-panel.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/frontend.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/library.php'));
+            Route::middleware('web')
+                ->group(base_path('routes/online-examination.php'));
+        });
+    }
+    /**
+     * Configure the rate limiters for the application.
+     *
+     * @return void
+     */
+    protected function configureRateLimiting()
+    {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }
 }

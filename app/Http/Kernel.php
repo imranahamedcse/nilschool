@@ -64,5 +64,14 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'auth.routes' => \App\Http\Middleware\AuthenticateRoutes::class,
+        'not.auth.routes' => \App\Http\Middleware\NotAuthenticateRoutes::class,
+        'lang' => \App\Http\Middleware\LanguageMiddleware::class,
+        'PermissionCheck' => \App\Http\Middleware\PermissionCheck::class,
+        'XssSanitizer' => \App\Http\Middleware\XssSanitization::class,
+        'AdminPanel' => \App\Http\Middleware\AdminPanel::class,
+        'StudentPanel' => \App\Http\Middleware\StudentPanel::class,
+        'ParentPanel' => \App\Http\Middleware\ParentPanel::class,
+        'DemoCheck' => \App\Http\Middleware\DemoCheckMiddleware::class,
     ];
 }
