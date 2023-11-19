@@ -294,6 +294,11 @@
   padding: 10px 15px !important;
   font-size: 18px !important;
 }
+.btn-rounded-sm {
+  border: 2px solid #88888E !important;
+  padding: 5px 10px !important;
+  font-size: 16px !important;
+}
 
 @media (max-width: 400px) {
   .sidebar.close .nav-list li .sub-menu {
