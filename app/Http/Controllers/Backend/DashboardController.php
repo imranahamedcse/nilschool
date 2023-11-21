@@ -33,7 +33,7 @@ class DashboardController extends Controller
     public function index()
     {
         $data = $this->repo->index();
-        return view('backend.dashboard', compact('data'));
+        return view('backend.admin.dashboard', compact('data'));
     }
 
     public function feesCollectionMonthly() {
