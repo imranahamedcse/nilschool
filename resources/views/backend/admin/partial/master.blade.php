@@ -1,4 +1,4 @@
-@extends('new.master')
+@extends('master')
 
 @section('maintitle')
   @yield('title')
@@ -10,14 +10,14 @@
 @endpush
 
 @section('mainsection')
-  @include('new.backend.admin.partial.sidebar')
+  @include('backend.admin.partial.sidebar')
 
   <div class="home-section p-3">
-    @include('new.backend.admin.partial.header')
+    @include('backend.admin.partial.header')
     @yield('content')
   </div>
 
-  @include('new.backend.admin.partial.footer')
+  @include('backend.admin.partial.footer')
 @endsection
 
 @push('mainscript')

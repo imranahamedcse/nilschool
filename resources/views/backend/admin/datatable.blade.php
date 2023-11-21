@@ -1,4 +1,4 @@
-@extends('new.backend.admin.partial.master')
+@extends('backend.admin.partial.master')
 
 @section('title')
   Dashboard
@@ -189,13 +189,13 @@
 
 <script>
     $(document).ready( function () {
-        async function getData() {
-            const records = await fetch('http://nilschool.test/get-classes');
-            const data = records.json();
-            console.log(data);
-        }
+        // async function getData() {
+        //     const records = await fetch('http://nilschool.test/get-classes');
+        //     const data = records.json();
+        //     console.log(data);
+        // }
 
-        getData();
+        // getData();
 
         new DataTable('#datatable', {
             responsive: true,
