@@ -30,6 +30,6 @@ class EmailVerification extends Mailable
     public function build()
     {
         $data = $this->data;
-        return $this->view('backend.mail.email-verification', compact('data'));
+        return $this->view('backend.auth.mail.email-verification', compact('data'));
     }
 }

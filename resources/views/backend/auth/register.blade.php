@@ -1,129 +1,141 @@
 @extends('master')
 
-@section('title')
+@section('maintitle')
     {{ $data['title'] }}
 @endsection
 
-@section('content')
-    <!-- form heading  -->
-    <div class="form-heading mb-40">
-        <h1 class="title mb-8">{{ ___('common.create_account') }}</h1>
-        <p class="subtitle mb-0"> {{ ___('common.please_sign_up_to_your_personal_account_if_you_want_to_use_all_our_premium_products') }}</p>
-    </div>
-    <!-- Start With form -->
+@section('mainsection')
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="w-28">
+            <div class="p-4 border rounded-5 mb-4">
+                <div class="d-flex justify-content-center">
+                    <h1>Logo</h1>
+                </div>
+                <h4 class="text-center mb-4">{{ ___('common.register_details') }}</h4>
 
-    <form action="{{ route('register') }}" method="post" class="auth-form d-flex justify-content-center align-items-start flex-column">
-        @csrf
-        <!-- username input field  -->
-        <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.name') }} <sup class="fillable">*</sup></label><br />
-            <div class="custom-input-field">
-                <input type="text" name="name" id="username" class="ot-input @error('name') is-invalid @enderror" placeholder="{{ ___('common.enter_your_name') }}" value="{{ old('name') }}" />
-                <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
-                @error('name')
-                        <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
-                    @enderror
-            </div>
-        </div>
-        <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.email') }} <sup class="fillable">*</sup></label><br />
-            <div class="custom-input-field">
-                <input type="email" name="email" class="ot-input @error('email') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_email') }}" value="{{ old('email') }}" />
-                <img src="{{ asset('backend') }}/assets/images/icons/email-cus.svg" alt="">
-                @error('email')
-                <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
-            @enderror
-            </div>
+                <form action="{{ route('register') }}" method="post">
+                    @csrf
 
-        </div>
-        <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.phone') }} </label><br />
-            <div class="custom-input-field">
-                <input type="text" name="phone" class="ot-input @error('phone') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_phone') }}" value="{{ old('phone') }}" />
-                <img src="{{ asset('backend') }}/assets/images/icons/phone.svg" alt="">
-                @error('phone')
-                <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
-            @enderror
-            </div>
+                    <div class="col-12">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text" for="name">
+                                <i class="fa-solid fa-signature"></i>
+                            </span>
+                            <input placeholder="{{ ___('common.enter_your_name') }}" type="text"
+                                class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                                aria-describedby="nameValidationMsg" value="{{ old('name') }}" required>
+                            @error('name')
+                                <div id="nameValidationMsg" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
 
-        </div>
+                    <div class="col-12">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text" for="email">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input placeholder="{{ ___('common.enter_your_email') }}" type="email"
+                                class="form-control @error('email') is-invalid @enderror" name="email" id="email"
+                                aria-describedby="emailValidationMsg" value="{{ old('email') }}" required>
+                            @error('email')
+                                <div id="emailValidationMsg" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
 
-        <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.date_of_birth') }} <sup class="fillable">*</sup></label><br />
-            <div class="custom-input-field">
-                <input type="date" name="date_of_birth" class="ot-input @error('date_of_birth') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_date_of_birth') }}" value="{{ old('phone') }}" />
-                <img src="{{ asset('backend') }}/assets/images/icons/calender.svg" alt="">
-                @error('date_of_birth')
-                <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
-            @enderror
-            </div>
+                    <div class="col-12">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text" for="phone">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <input placeholder="{{ ___('common.enter_your_phone') }}" type="text"
+                                class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone"
+                                aria-describedby="phoneValidationMsg" value="{{ old('phone') }}" required>
+                            @error('phone')
+                                <div id="phoneValidationMsg" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
 
-        </div>
+                    <div class="col-12">
+                        <div class="input-group password-input mb-4">
+                            <span class="input-group-text" for="password">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input placeholder="{{ ___('common.password') }}" type="password"
+                                class="form-control @error('password') is-invalid @enderror" name="password" id="password"
+                                aria-describedby="passwordValidationMsg" required>
+                            <span class="input-group-text" id="passwordShow">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            @error('password')
+                                <div id="passwordValidationMsg" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
 
-        <label class="form-label">{{ ___('common.gender') }} <sup class="fillable">*</sup></label>
-        <div class="remember-me d-flex align-items-center input-check-radio mb-20 gap-4">
-            <div class="form-check d-flex align-items-center mt-6">
-                <input class="form-check-input" type="radio" id="flexRadioDefault1" name="gender"
-                    value="{{ App\Enums\Gender::MALE }}" checked />
-                <label for="flexRadioDefault1">{{ ___('common.male') }}</label>
-            </div>
-            <div class="form-check d-flex align-items-center mt-6 ">
-                <input class="form-check-input" type="radio" id="flexRadioDefault2" name="gender"
-                    value="{{ App\Enums\Gender::FEMALE }}" />
-                <label for="flexRadioDefault2">{{ ___('common.female') }}</label>
-            </div>
-            <div class="form-check d-flex align-items-center mt-6 ">
+                    <div class="col-12">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text" for="confirm_password">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input placeholder="{{ ___('common.confirm_password') }}" type="password"
+                                class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password"
+                                id="confirm_password" aria-describedby="confirm_passwordValidationMsg" required>
+                            @error('confirm_password')
+                                <div id="confirm_passwordValidationMsg" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
 
-                <input class="form-check-input" type="radio" id="flexRadioDefault3" name="gender"
-                    value="{{ App\Enums\Gender::OTHERS }}" />
-                <label for="flexRadioDefault3">{{ ___('common.others') }}</label>
-            </div>
-        </div>
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" name="agree" id="agree">
+                        <label class="form-check-label"
+                            for="agree">{{ ___('common.i_agree_to_terms_condition_&_privacy_policy') }}</label>
+                    </div>
 
-        <!-- password input field  -->
-        <div class="input-field-group mb-20">
-            <label for="password">{{ ___('common.password') }} <sup class="fillable">*</sup></label><br />
-            <div class="custom-input-field password-input">
-                <input type="password" name="password" class="ot-input @error('password') is-invalid @enderror" id="password" placeholder="******************" />
-                <i class="lar la-eye"></i>
-                <img src="{{ asset('backend') }}/assets/images/icons/lock-cus.svg" alt="">
-                @error('password')
-                        <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
-                    @enderror
-            </div>
-        </div>
-        <!-- password input field  -->
-        <div class="input-field-group mb-20">
-            <label for="password">{{ ___('common.confirm_password') }} <sup class="fillable">*</sup></label><br />
-            <div class="custom-input-field password-input">
-                <input type="password" name="confirm_password" id="confirm_password" class="ot-input @error('confirm_password') is-invalid @enderror" placeholder="******************" />
-                <i class="lar la-eye"></i>
-                <img src="{{ asset('backend') }}/assets/images/icons/lock-cus.svg" alt="">
-                @error('confirm_password')
-                        <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
-                    @enderror
-            </div>
-        </div>
-        <!-- Remember Me and forget password section start -->
-        <div class="d-flex justify-content-between w-100">
-            <!-- Remember Me input field  -->
-            <div class="remember-me input-check-radio">
-                <div class="form-check d-flex align-items-center">
-                    <input class="form-check-input" type="checkbox" name="agree_with" id="agree_with">
-                    <label for="rememberMe">{{ ___('common.i_agree_to_privacy_policy_&_terms') }}</label>
+                    <div class="d-grid mb-4">
+                        <button type="submit" class="btn border rounded-5">
+                            {{ ___('common.register') }}
+                        </button>
+                    </div>
+                </form>
+
+                <div class="d-flex justify-content-center">
+                    {{ ___('common.already_have_an_account') }}&nbsp
+                    <a class="link-underline link-underline-opacity-0"
+                        href="{{ route('login') }}">{{ ___('common.login') }}</a>
                 </div>
             </div>
         </div>
-        <!-- Remember Me and forget password section end -->
-        <!-- submit button  -->
-        <button type="submit" class="submit-btn pv-16 mt-32 mb-20" value="Sign In">
-            {{ ___('common.register') }}
-        </button>
-    </form>
-    <!-- End form -->
-    <p class="authenticate-now mb-0">
-        {{ ___('common.already_have_an_account') }}
-        <a class="link-text" href="{{ route('login') }}"> {{ ___('common.login') }}</a>
-    </p>
-
+    </div>
 @endsection
+
+@push('mainstyle')
+    {{--  --}}
+@endpush
+
+@push('mainscript')
+    <script>
+        $('#passwordShow').on('click', function() {
+            if ($('#password').attr("type") == 'text') {
+                $('#passwordShow').html('<i class="fa-solid fa-eye"></i>');
+                $('#password').prop('type', 'password');
+            } else {
+                $('#passwordShow').html('<i class="fa-solid fa-eye-slash"></i>');
+                $('#password').prop('type', 'text');
+            }
+        });
+    </script>
+@endpush

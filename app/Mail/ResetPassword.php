@@ -30,6 +30,6 @@ class ResetPassword extends Mailable
     public function build()
     {
         $data = $this->data;
-        return $this->view('backend.mail.reset-password', compact('data'));
+        return $this->view('backend.auth.mail.reset-password', compact('data'));
     }
 }

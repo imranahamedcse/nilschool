@@ -22,7 +22,7 @@
                             <span class="input-group-text" for="email">
                                 <i class="fa-solid fa-envelope"></i>
                             </span>
-                            <input placeholder="{{ ___('common.phone_or_email') }}" type="text"
+                            <input placeholder="{{ ___('common.phone_or_email') }}" type="email"
                                 class="form-control @error('email') is-invalid @enderror" name="email" id="email"
                                 aria-describedby="emailValidationMsg" required>
                             @error('email')
@@ -63,6 +63,13 @@
                         </button>
                     </div>
                 </form>
+
+                
+                <div class="d-flex justify-content-center">
+                    {{ ___('common.dont_have_account') }}&nbsp
+                    <a class="link-underline link-underline-opacity-0"
+                        href="{{ route('register') }}">{{ ___('common.register') }}</a>
+                </div>
 
             </div>
 
