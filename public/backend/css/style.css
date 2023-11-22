@@ -1,3 +1,20 @@
+/* Google fonts(Poppins) */
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+body {
+  background: #F0F1F7;
+  color: #707071;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Roboto";
+}
+
 .w-28 {
     width: 28%;
 }
@@ -17,6 +34,85 @@
     border-right: 0;
 }
 
+.form-select {
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
 span#passwordShow {
     cursor: pointer;
+}
+
+td.action {
+    padding: 5px 0px 0px 0px;
+}
+
+.btn-primary {
+    color: #845ADF;
+    background: #F2EEFC;
+    border: 0;
+}
+.btn-primary:hover {
+    color: white;
+    background: #845ADF;
+    border: 0;
+}
+
+.btn-info {
+    background: #23B7E5;
+    color: white;
+}
+
+.btn-success {
+    background: #26BF94;
+}
+
+.btn-warning {
+    background: #F5B849;
+}
+
+.btn-danger {
+    background: #E6533C;
+}
+
+.text-primary {
+    color: #845ADF;
+}
+
+.text-info {
+    color: #23B7E5;
+}
+
+.text-success {
+    color: #26BF94;
+}
+
+.text-warning {
+    color: #F5B849;
+}
+
+.text-danger {
+    color: #E6533C;
+}
+
+.bg-primary {
+    background: #845ADF;
+}
+
+.bg-info {
+    background: #23B7E5;
+}
+
+.bg-success {
+    background: #26BF94;
+}
+
+.bg-warning {
+    background: #F5B849;
+}
+
+.bg-danger {
+    background: #E6533C;
 }

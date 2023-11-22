@@ -38,7 +38,7 @@ class LanguageController extends Controller
     {
         $data['languages']  = $this->language->getAll();
         $data['title']      = ___('common.languages');
-        return view('backend.languages.index',compact('data'));
+        return view('backend.admin.languages.index',compact('data'));
     }
 
     public function create()
@@ -46,7 +46,7 @@ class LanguageController extends Controller
         $data['title']       = ___('common.create_language');
         $data['permissions'] = $this->permission->all();
         $data['flagIcons']   = $this->flagIcon->getAll();
-        return view('backend.languages.create', compact('data'));
+        return view('backend.admin.languages.create', compact('data'));
     }
 
     public function store(LanguageStoreRequest $request)
@@ -64,7 +64,7 @@ class LanguageController extends Controller
         $data['title']       = ___('common.languages');
         $data['permissions'] = $this->permission->all();
         $data['flagIcons']   = $this->flagIcon->getAll();
-        return view('backend.languages.edit',compact('data'));
+        return view('backend.admin.languages.edit',compact('data'));
     }
 
     public function update(LanguageUpdateRequest $request,$id)
@@ -95,7 +95,7 @@ class LanguageController extends Controller
     public function terms($id)
     {
         $data = $this->language->terms($id);
-        return view('backend.languages.terms',compact('data'));
+        return view('backend.admin.languages.terms',compact('data'));
     }
 
     public function termsUpdate(Request $request, $code)
@@ -114,7 +114,7 @@ class LanguageController extends Controller
         $jsonString     = file_get_contents(base_path("lang/$request->code/$request->module.json"));
         $data['terms']  = json_decode($jsonString, true);
 
-        return view('backend.languages.ajax_terms', compact('data'))->render();
+        return view('backend.admin.languages.ajax_terms', compact('data'))->render();
     }
 
 

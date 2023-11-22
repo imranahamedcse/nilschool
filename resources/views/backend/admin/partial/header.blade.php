@@ -1,13 +1,13 @@
-<div class="app-bar row justify-content-between m-0 rounded-4 p-3">
+<div class="row justify-content-between m-0 p-3 rounded-3 bg-white">
     <div class="col">
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Menu">
-            <button type="button" class="btn btn-rounded rounded-5" id="btn-menu-bar">
+            <button type="button" class="btn btn-light" id="btn-menu-bar">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </span>
 
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Search">
-            <button type="button" class="btn btn-rounded rounded-5" data-bs-toggle="modal"
+            <button type="button" class="btn btn-light" data-bs-toggle="modal"
                 data-bs-target="#searchModal">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -15,26 +15,26 @@
     </div>
     <div class="col text-end">
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Full Screen">
-            <button id="fullScreen" type="button" class="btn btn-rounded rounded-5">
+            <button id="fullScreen" type="button" class="btn btn-light">
                 <i class="fa-solid fa-expand"></i>
             </button>
         </span>
 
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Dark/Light Theme">
-            <button id="theme" type="button" class="btn btn-rounded rounded-5">
+            <button id="theme" type="button" class="btn btn-light">
                 <i class="fa-solid fa-sun"></i>
             </button>
         </span>
 
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Notifications">
-            <button type="button" class="btn btn-rounded rounded-5" data-bs-toggle="modal"
+            <button type="button" class="btn btn-light" data-bs-toggle="modal"
                 data-bs-target="#notificationModal">
                 <i class="fa-solid fa-bell"></i>
             </button>
         </span>
 
         <div class="dropdown d-inline-block">
-            <button type="button" class="btn btn-rounded rounded-5" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn btn-light" data-bs-toggle="dropdown" aria-expanded="false">
                 <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Language">
                     <i class="fa-solid fa-globe"></i>
                 </span>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="dropdown d-inline-block">
-            <button type="button" class="btn btn-rounded rounded-5" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn btn-light" data-bs-toggle="dropdown" aria-expanded="false">
                 <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Profile">
                     <i class="fa-solid fa-face-smile"></i>
                 </span>

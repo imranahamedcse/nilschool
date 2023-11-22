@@ -39,7 +39,7 @@
                     @endif
                     @if (hasPermission('student_read'))
                         <li class="{{ set_menu(['student', 'student/create', 'student/edit']) }}">
-                            <a href="{{ route('student.index') }}">{{ ___('settings.stundets') }}</a>
+                            <a href="{{ route('student.index') }}">{{ ___('settings.students') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('student_category_read'))
@@ -527,12 +527,12 @@
                 <ul class="sub-menu">
                     @if (hasPermission('subscribe_read'))
                         <li class="{{ set_menu(['subscribe*']) }}">
-                            <a href="{{ route('subscribe.index') }}" class="parent-item-content"></a>
+                            <a href="{{ route('subscribe.index') }}" class="parent-item-content">{{ ___('settings.subscribe') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('contact_message_read'))
                         <li class="{{ set_menu(['contact-message*']) }}">
-                            <a href="{{ route('contact-message.index') }}" class="parent-item-content"></a>
+                            <a href="{{ route('contact-message.index') }}" class="parent-item-content">{{ ___('settings.contact_message') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('page_sections_read'))
