@@ -16,20 +16,20 @@
         </ol>
     </nav>
 
-    <div class="row justify-content-between m-0 p-2 rounded-3 rounded-bottom-0 bg-white">
-        <div class="col-6 align-self-center">
-            <h4 class="m-0">{{ ___('language.languages') }}</h4>
-        </div>
-        <div class="col-6 text-end">
-            @if (hasPermission('language_create'))
-                <a class="btn btn-sm btn-info" href="{{ route('languages.create') }}">
-                    <i class="fa-solid fa-plus"></i> {{ ___('common.add') }}
-                </a>
-            @endif
-        </div>
-    </div>
 
-    <div class="p-3 bg-white">
+    <div class="p-4 rounded-3 bg-white">
+        <div class="row justify-content-between mb-4">
+            <div class="col-6 align-self-center">
+                <h4 class="m-0">{{ ___('language.languages') }}</h4>
+            </div>
+            <div class="col-6 text-end">
+                @if (hasPermission('language_create'))
+                    <a class="btn btn-sm btn-info" href="{{ route('languages.create') }}">
+                        <i class="fa-solid fa-plus"></i> {{ ___('common.add') }}
+                    </a>
+                @endif
+            </div>
+        </div>
 
         <table id="datatable" class="table cell-border" style="width:100%">
             <thead>
@@ -103,12 +103,12 @@
                 @endforelse
             </tbody>
         </table>
-
+        
+        <div class="text-center p-4 bg-white">
+            {{ setting('footer_text') }}
+        </div>
     </div>
 
-    <div class="text-center p-3 rounded-3 rounded-top-0 bg-white">
-        {{setting('footer_text')}}
-    </div>
 
 
 @endsection

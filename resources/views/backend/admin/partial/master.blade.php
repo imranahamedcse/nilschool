@@ -12,12 +12,12 @@
 @section('mainsection')
   @include('backend.admin.partial.sidebar')
 
-  <div class="home-section p-3">
+  <div class="home-section p-4">
     @include('backend.admin.partial.header')
     @yield('content')
   </div>
 
-  @include('backend.admin.partial.footer')
+  {{-- @include('backend.admin.partial.footer') --}}
 @endsection
 
 @push('mainscript')

@@ -5,7 +5,7 @@
     div.dt-buttons>.dt-button {
         margin-left: 0px;
         margin-bottom: 18px;
-        padding: 3px 6px;
+        padding: 3px 10px;
         border: 0px;
         border-radius: 3px;
         color: #845ADF;
@@ -14,7 +14,7 @@
     div.dt-buttons>.dt-button:hover {
         margin-left: 0px !important;
         margin-bottom: 18px !important;
-        padding: 3px 6px !important;
+        padding: 3px 10px !important;
         border: 0px !important;
         border-radius: 3px !important;
         color: white !important;

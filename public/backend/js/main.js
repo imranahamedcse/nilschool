@@ -17,22 +17,23 @@ $(document).ready(function () {
   });
   // fullscreen end
 
-
   // theme change start
-  function updateTheme() {
-    const theme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-bs-theme", theme ?? 'light');
-    $('#theme').html((theme == 'light' || theme == null) ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>');
-  }
-
   $('#theme').on('click', function () {
     const theme = localStorage.getItem("theme");
     const colorMode = (theme == 'light' || theme == null) ? "dark" : "light";
     localStorage.setItem("theme", colorMode);
-    updateTheme();
-  })
 
-  updateTheme();
+    document.querySelector("html").setAttribute("data-bs-theme", colorMode ?? 'light');
+    if (colorMode == 'light' || colorMode == null) {
+      $('#theme').html('<i class="fa-solid fa-sun"></i>');
+      $("#dark-theme-style").attr("disabled", true);
+      $("#theme-style").removeAttr("disabled");
+    } else {
+      $('#theme').html('<i class="fa-solid fa-moon"></i>');
+      $("#theme-style").attr("disabled", true);
+      $("#dark-theme-style").removeAttr("disabled");
+    }
+  })
   // theme change end
 
   // tooltip start

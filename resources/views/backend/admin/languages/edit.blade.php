@@ -13,13 +13,13 @@
         </ol>
     </nav>
 
-    <div class="app-bar row justify-content-between m-0 p-2 rounded-4 rounded-bottom-0">
-        <div class="col-6 align-self-center">
-            <h4 class="m-0">{{ $data['title'] }}</h4>
-        </div>
-    </div>
+    <div class="bg-white p-4 rounded-3">
 
-    <div class="border-start border-end border-5 border-black p-3 bg-white">
+        <div class="row justify-content-between mb-4">
+            <div class="col-6 align-self-center">
+                <h4 class="m-0">{{ $data['title'] }}</h4>
+            </div>
+        </div>
         <form action="{{ route('languages.update', @$data['language']->id) }}" enctype="multipart/form-data" method="post"
             id="visitForm">
             @csrf
@@ -101,14 +101,14 @@
 
             <div class="col-md-12 mt-3">
                 <div class="text-end">
-                    <button class="btn btn-rounded-sm btn-primary rounded-5"><span><i class="fa-solid fa-save"></i>
+                    <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                         </span>{{ ___('common.update') }}</button>
                 </div>
             </div>
         </form>
     </div>
 
-    <div class="app-bar text-center p-3 rounded-4 rounded-top-0">
+    <div class="bg-white text-center p-4">
         {{ setting('footer_text') }}
     </div>
 @endsection

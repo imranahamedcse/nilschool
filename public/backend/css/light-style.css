@@ -19,28 +19,6 @@ body {
     width: 28%;
 }
 
-.form-control {
-    border-radius: 0;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
-
-.input-group-text {
-    background-color: transparent;
-    border-radius: 0;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
-
-.form-select {
-    border-radius: 0;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-}
-
 span#passwordShow {
     cursor: pointer;
 }
