@@ -16,29 +16,39 @@ class ShiftController extends Controller
     function __construct(ShiftInterface $shift)
     {
 
-        if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
-        } 
-        $this->shift       = $shift; 
+        }
+        $this->shift       = $shift;
     }
 
     public function index()
     {
         $data['shift'] = $this->shift->getAll();
-        $data['title'] = ___('academic.shift');
-        return view('backend.academic.shift.index', compact('data'));
+        $title             = ___('academic.shift');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'shift_create',
+            "create-route" => 'shift.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
+        return view('backend.admin.academic.shift.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('academic.create_shift');
-        return view('backend.academic.shift.create', compact('data'));
+        return view('backend.admin.academic.shift.create', compact('data'));
     }
 
     public function store(ShiftStoreRequest $request)
     {
         $result = $this->shift->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('shift.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -48,13 +58,13 @@ class ShiftController extends Controller
     {
         $data['shift']        = $this->shift->show($id);
         $data['title']        = ___('academic.edit_shift');
-        return view('backend.academic.shift.edit', compact('data'));
+        return view('backend.admin.academic.shift.edit', compact('data'));
     }
 
     public function update(ShiftUpdateRequest $request, $id)
     {
         $result = $this->shift->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('shift.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -63,17 +73,17 @@ class ShiftController extends Controller
     public function delete($id)
     {
         $result = $this->shift->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;    
+        endif;
     }
 }

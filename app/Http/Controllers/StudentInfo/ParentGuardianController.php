@@ -21,7 +21,7 @@ class ParentGuardianController extends Controller
     {
         $data['title']   = ___('student_info.parent_list');
         $data['parents'] = $this->repo->getPaginateAll();
-        return view('backend.student-info.parent.index', compact('data'));
+        return view('backend.admin.student-info.parent.index', compact('data'));
     }
 
     public function search(Request $request)
@@ -29,13 +29,13 @@ class ParentGuardianController extends Controller
         $data['title']   = ___('student_info.parent_list');
         $data['request'] = $request;
         $data['parents'] = $this->repo->searchParent($request);
-        return view('backend.student-info.parent.index', compact('data'));
+        return view('backend.admin.student-info.parent.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']              = ___('student_info.parent_create');
-        return view('backend.student-info.parent.create', compact('data'));
+        return view('backend.admin.student-info.parent.create', compact('data'));
     }
 
     public function getParent(Request $request)
@@ -57,7 +57,7 @@ class ParentGuardianController extends Controller
     {
         $data['parent']      = $this->repo->show($id);
         $data['title']       = ___('student_info.parent_edit');
-        return view('backend.student-info.parent.edit', compact('data'));
+        return view('backend.admin.student-info.parent.edit', compact('data'));
     }
 
     public function update(ParentGuardianUpdateRequest $request, $id)

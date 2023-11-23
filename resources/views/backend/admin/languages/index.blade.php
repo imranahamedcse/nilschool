@@ -34,46 +34,20 @@
                         <td> {{ $row->name }} {{ $row->summernote }}</td>
                         <td>{{ $row->code }}</td>
                         <td><i class="{{ $row->icon_class }} "></i></td>
-                        @if (hasPermission('language_update') || hasPermission('language_delete') || hasPermission('language_update_terms'))
-                            <td class="action">
-                                <div class="dropdown dropdown-action px-1">
-                                    <button type="button" class="btn btn-sm btn-primary btn-dropdown"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-screwdriver-wrench"></i> {{ ___('common.buttons') }}
-                                    </button>
-
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        @if (hasPermission('language_update'))
-                                            <li>
-                                                <a class="dropdown-item"
-                                                    href="{{ route('languages.edit', $row->id) }}"><span
-                                                        class="icon mr-8"><i class="fa-solid fa-pen-to-square"></i></span>
-                                                    <span>{{ ___('common.edit') }}</span></a>
-                                            </li>
-                                        @endif
-                                        @if ($row->code != 'en')
-                                            @if (hasPermission('language_delete'))
-                                                <li>
-                                                    <a class="dropdown-item" href="javascript:void(0);"
-                                                        onclick="delete_row('languages/delete', {{ $row->id }})">
-                                                        <span class="icon mr-8"><i class="fa-solid fa-trash-can"></i></span>
-                                                        <span>{{ ___('common.delete') }}</span>
-                                                    </a>
-                                                </li>
-                                            @endif
-                                        @endif
-                                        @if (hasPermission('language_update_terms'))
-                                            <li>
-                                                <a class="dropdown-item"
-                                                    href="{{ route('languages.edit.terms', $row->id) }}"><span
-                                                        class="icon mr-8"><i class="fa-solid fa-pen-to-square"></i></span>
-                                                    <span>{{ ___('language.edit_terms') }}</span></a>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </td>
-                        @endif
+                        <td>
+                            @if (hasPermission('language_update'))
+                                <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('common.edit') }}"
+                                    href="{{ route('languages.edit', $row->id) }}"><i class="fa-solid fa-pencil"></i></a>
+                            @endif
+                            @if (hasPermission('language_update_terms'))
+                                <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('language.edit_terms') }}"
+                                    href="{{ route('languages.edit.terms', $row->id) }}"><i class="fa-solid fa-file-pen"></i></a>
+                            @endif
+                            @if (hasPermission('language_delete') && $row->code != 'en')
+                                <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('common.delete') }}" 
+                                href="javascript:void(0);" onclick="delete_row('languages/delete', {{ $row->id }})"><i class="fa-solid fa-trash-can"></i></a>
+                            @endif
+                        </td>
                     </tr>
                 @empty
                     @include('backend.admin.components.table.empty')

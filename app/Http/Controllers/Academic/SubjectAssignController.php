@@ -53,10 +53,20 @@ class SubjectAssignController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('academic.subject_assign');
         $data['subject_assigns']    = $this->repo->getPaginateAll();
-
-        return view('backend.academic.assign-subject.index', compact('data'));
+        
+        
+        $title             = ___('academic.subject_assign');
+$data['headers']   = [
+    "title"        => $title,
+    "permission"   => 'subject_assign',
+    "create-route" => 'subject-assign.create',
+];
+$data['breadcrumbs']  = [
+    ["title" => ___("common.home"), "route" => "dashboard"],
+    ["title" => $title, "route" => ""]
+];
+        return view('backend.admin.academic.assign-subject.index', compact('data'));
         
     }
 
@@ -67,7 +77,7 @@ class SubjectAssignController extends Controller
         $data['sections']           = [];
         $data['shifts']             = $this->shiftRepo->all();
         // $data['subjects']           = $this->subjectRepo->all();
-        return view('backend.academic.assign-subject.create', compact('data'));
+        return view('backend.admin.academic.assign-subject.create', compact('data'));
         
     }
     
@@ -76,7 +86,7 @@ class SubjectAssignController extends Controller
         $counter          = $request->counter;
         $data['subjects'] = $this->subjectRepo->all();
         $data['teachers'] = $this->staffRepo->all();
-        return view('backend.academic.assign-subject.add-subject-teacher', compact('counter','data'))->render();
+        return view('backend.admin.academic.assign-subject.add-subject-teacher', compact('counter','data'))->render();
     }
 
     public function store(SubjectAssignStoreRequest $request)
@@ -92,7 +102,7 @@ class SubjectAssignController extends Controller
 
         $data['subject_assign_children'] = SubjectAssignChildren::where('subject_assign_id', $request->id)->get();
 
-        return view('backend.academic.assign-subject.view', compact('data'))->render();
+        return view('backend.admin.academic.assign-subject.view', compact('data'))->render();
     }
 
     public function getSubjects(Request $request){
@@ -119,7 +129,7 @@ class SubjectAssignController extends Controller
         if($data['redirect'])
             return redirect()->route('assign-subject.index')->with('danger', ___('academic.You cannot edit this'));
 
-        return view('backend.academic.assign-subject.edit', compact('data'));
+        return view('backend.admin.academic.assign-subject.edit', compact('data'));
     }
 
     public function update(SubjectAssignUpdateRequest $request, $id)

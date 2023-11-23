@@ -56,7 +56,7 @@ class OnlineAdmissionController extends Controller
         $data['sections'] = [];
         $data['title']    = ___('student_info.Online Admission');
         $data['students'] = $this->repo->all();
-        return view('backend.student-info.online-admission.index', compact('data'));
+        return view('backend.admin.student-info.online-admission.index', compact('data'));
     }
 
     public function search(Request $request)
@@ -66,7 +66,7 @@ class OnlineAdmissionController extends Controller
         $data['request']  = $request;
         $data['title']    = ___('student_info.Online Admission');
         $data['students'] = $this->repo->searchStudents($request);
-        return view('backend.student-info.online-admission.index', compact('data'));
+        return view('backend.admin.student-info.online-admission.index', compact('data'));
     }
 
     public function edit($id)
@@ -81,7 +81,7 @@ class OnlineAdmissionController extends Controller
         $data['religions']    = $this->religionRepo->all();
         $data['genders']      = $this->genderRepo->all();
         $data['categories']   = $this->categoryRepo->all();
-        return view('backend.student-info.online-admission.edit', compact('data'));
+        return view('backend.admin.student-info.online-admission.edit', compact('data'));
     }
     
     public function store(OnlineAdmissionRequest $request)

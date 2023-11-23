@@ -48,7 +48,7 @@ class StudentRepository implements StudentInterface
 
     public function getPaginateAll()
     {
-        return SessionClassStudent::where('session_id', setting('session'))->latest()->paginate(Settings::PAGINATE);
+        return SessionClassStudent::where('session_id', setting('session'))->latest()->get();
     }
     public function getSessionStudent($id)
     {

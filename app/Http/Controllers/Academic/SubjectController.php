@@ -25,14 +25,24 @@ class SubjectController extends Controller
     public function index()
     {
         $data['subject'] = $this->subject->getAll();
-        $data['title'] = ___('academic.subject');
-        return view('backend.academic.subject.index', compact('data'));
+
+        $title = ___('academic.subject');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'subject_create',
+            "create-route" => 'subject.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.academic.subject.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('academic.create_subject');
-        return view('backend.academic.subject.create', compact('data'));
+        return view('backend.admin.academic.subject.create', compact('data'));
     }
 
     public function store(SubjectStoreRequest $request)
@@ -48,7 +58,7 @@ class SubjectController extends Controller
     {
         $data['subject']        = $this->subject->show($id);
         $data['title']       = ___('academic.edit_subject');
-        return view('backend.academic.subject.edit', compact('data'));
+        return view('backend.admin.academic.subject.edit', compact('data'));
     }
 
     public function update(SubjectUpdateRequest $request, $id)

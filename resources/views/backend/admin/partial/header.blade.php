@@ -1,5 +1,5 @@
 <div class="row justify-content-between m-0 p-3 rounded-3 bg-white">
-    <div class="col">
+    <div class="col p-0">
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Menu">
             <button type="button" class="btn" id="btn-menu-bar">
                 <i class="fa-solid fa-bars"></i>
@@ -13,7 +13,7 @@
             </button>
         </span>
     </div>
-    <div class="col text-end">
+    <div class="col p-0 text-end">
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Full Screen">
             <button id="fullScreen" type="button" class="btn">
                 <i class="fa-solid fa-expand"></i>

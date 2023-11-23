@@ -38,10 +38,21 @@ class ClassSetupController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('academic.class_setup');
         $data['class_setups']       = $this->repo->getPaginateAll();
 
-        return view('backend.academic.class_setup.index', compact('data'));
+        $title             = ___('academic.class_setup');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'class_setup_create',
+            "create-route" => 'class-setup.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
+
+        return view('backend.admin.academic.class_setup.index', compact('data'));
         
     }
 
@@ -50,7 +61,7 @@ class ClassSetupController extends Controller
         $data['title']              = ___('academic.class_setup');
         $data['classes']            = $this->classes->all();
         $data['section']            = $this->section->all();
-        return view('backend.academic.class_setup.create', compact('data'));
+        return view('backend.admin.academic.class_setup.create', compact('data'));
         
     }
 
@@ -73,7 +84,7 @@ class ClassSetupController extends Controller
 
         $data['class_setup_sections']  = $data['class_setup']->classSetupChildrenAll->pluck('section_id')->toArray();
 
-        return view('backend.academic.class_setup.edit', compact('data'));
+        return view('backend.admin.academic.class_setup.edit', compact('data'));
     }
 
     public function update(ClassSetupUpdateRequest $request, $id)

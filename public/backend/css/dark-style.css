@@ -15,15 +15,27 @@ body {
   border: 0;
 }
 
-.btn-info {
+.btn-secondary {
   background: #23B7E5;
   color: #E9F8FC;
   border: 0;
 }
 
-.btn-info:hover {
+.btn-secondary:hover {
   background: white;
   color: #23B7E5;
+  border: 0;
+}
+
+.btn-info {
+  background: #49B6F5;
+  color: #ECF8FE;
+  border: 0;
+}
+
+.btn-info:hover {
+  background: white;
+  color: #49B6F5;
   border: 0;
 }
 
@@ -138,8 +150,8 @@ div.dt-buttons>.dt-button:hover {
 }
 
 .page-item .page-link:hover {
-  color: #845ADF;
-  background: #F2EEFC;
+  background: #23B7E5;
+  color: #E9F8FC;
 }
 
 li.paginate_button.page-item.active .page-link {
@@ -150,6 +162,7 @@ li.paginate_button.page-item.active .page-link {
 table.dataTable {
   margin-bottom: 25px !important;
 }
+
 /* datatable end */
 
 /* sidebar start */
@@ -180,4 +193,17 @@ table.dataTable {
 .sidebar .menu-group li .sub-menu {
   background: #262829 !important;
 }
+
+table.dataTable th {
+  font-size: 15px;
+  color: #F3F3F4;
+  background-color: #1A1C1E;
+}
+
+table.dataTable td {
+  font-size: 15px;
+  color: #F3F3F4;
+  background-color: #1A1C1E;
+}
+
 /* sidebar end */

@@ -25,14 +25,23 @@ class SectionController extends Controller
     public function index()
     {
         $data['section'] = $this->section->getAll();
-        $data['title'] = ___('academic.section');
-        return view('backend.academic.section.index', compact('data'));
+        $title = ___('academic.section');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'section_create',
+            "create-route" => 'section.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.academic.section.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('academic.create_section');
-        return view('backend.academic.section.create', compact('data'));
+        return view('backend.admin.academic.section.create', compact('data'));
     }
 
     public function store(SectionStoreRequest $request)
@@ -48,7 +57,7 @@ class SectionController extends Controller
     {
         $data['section']        = $this->section->show($id);
         $data['title']       = ___('academic.edit_section');
-        return view('backend.academic.section.edit', compact('data'));
+        return view('backend.admin.academic.section.edit', compact('data'));
     }
 
     public function update(SectionUpdateRequest $request, $id)

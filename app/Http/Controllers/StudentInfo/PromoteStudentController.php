@@ -48,7 +48,7 @@ class PromoteStudentController extends Controller
         $students                   = [];
         $request                    = [];
         $results                    = [''];
-        return view('backend.student-info.promote-student.index', compact('data','students','results','request'));
+        return view('backend.admin.student-info.promote-student.index', compact('data','students','results','request'));
 
     }
 
@@ -68,7 +68,7 @@ class PromoteStudentController extends Controller
 
         // dd($data);
 
-        return view('backend.student-info.promote-student.index', compact('data','students','results','request'));
+        return view('backend.admin.student-info.promote-student.index', compact('data','students','results','request'));
     }
 
     public function store(Request $request)
@@ -83,7 +83,7 @@ class PromoteStudentController extends Controller
             $data['promoteClasses']     = $this->classSetupRepo->promoteClasses($request->promote_session);
             $data['promoteSections']    = $this->classSetupRepo->promoteSections($request->promote_session, $request->promote_class);
             $items                   = $this->repo->search($request);
-            // return view('backend.student-info.promote-student.index', [
+            // return view('backend.admin.student-info.promote-student.index', [
             //     'data'     => $data,
             //     'students' => $items['data']['students'],
             //     'results'  => $items['data']['results'],

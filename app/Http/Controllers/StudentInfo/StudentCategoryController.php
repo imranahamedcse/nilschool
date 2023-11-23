@@ -19,17 +19,25 @@ class StudentCategoryController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('student_info.category_list');
+        $title             = ___('student_info.category_list');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'student_category_create',
+            "create-route" => 'student_category.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
         $data['student_categories'] = $this->repo->getPaginateAll();
-
-        return view('backend.student-info.student-category.index', compact('data'));
+        return view('backend.admin.student-info.student-category.index', compact('data'));
         
     }
 
     public function create()
     {
         $data['title']              = ___('student_info.category_create');
-        return view('backend.student-info.student-category.create', compact('data'));
+        return view('backend.admin.student-info.student-category.create', compact('data'));
         
     }
 
@@ -46,7 +54,7 @@ class StudentCategoryController extends Controller
     {
         $data['student_category']        = $this->repo->show($id);
         $data['title']       = ___('student_info.category_edit');
-        return view('backend.student-info.student-category.edit', compact('data'));
+        return view('backend.admin.student-info.student-category.edit', compact('data'));
     }
 
     public function update(StudentCategoryUpdateRequest $request, $id)

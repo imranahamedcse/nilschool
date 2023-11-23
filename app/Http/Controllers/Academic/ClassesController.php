@@ -24,15 +24,24 @@ class ClassesController extends Controller
 
     public function index()
     {
-        $data['class'] = $this->classes->getAll();
-        $data['title'] = ___('academic.class');
-        return view('backend.academic.class.index', compact('data'));
+        $data['class']     = $this->classes->getAll();
+        $title             = ___('academic.class');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'classes_create',
+            "create-route" => 'classes.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.academic.class.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('academic.create_class');
-        return view('backend.academic.class.create', compact('data'));
+        return view('backend.admin.academic.class.create', compact('data'));
     }
 
     public function store(ClassesStoreRequest $request)
@@ -48,7 +57,7 @@ class ClassesController extends Controller
     {
         $data['class']       = $this->classes->show($id);
         $data['title']       = ___('academic.edit_class');
-        return view('backend.academic.class.edit', compact('data'));
+        return view('backend.admin.academic.class.edit', compact('data'));
     }
 
     public function update(ClassesUpdateRequest $request, $id)

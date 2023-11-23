@@ -61,10 +61,20 @@ class StudentController extends Controller
     {
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['title']    = ___('student_info.student_list');
         $data['students'] = $this->repo->getPaginateAll();
+        
+        $title             = ___('student_info.student_list');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'student_create',
+            "create-route" => 'student.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
 
-        return view('backend.student-info.student.index', compact('data'));
+        return view('backend.admin.student-info.student.index', compact('data'));
     }
 
     public function search(Request $request)
@@ -74,7 +84,7 @@ class StudentController extends Controller
         $data['request']  = $request;
         $data['title']    = ___('student_info.student_list');
         $data['students'] = $this->repo->searchStudents($request);
-        return view('backend.student-info.student.index', compact('data'));
+        return view('backend.admin.student-info.student.index', compact('data'));
     }
 
     public function create()
@@ -89,20 +99,20 @@ class StudentController extends Controller
         $data['genders']      = $this->genderRepo->all();
         $data['categories']   = $this->categoryRepo->all();
 
-        return view('backend.student-info.student.create', compact('data'));
+        return view('backend.admin.student-info.student.create', compact('data'));
     }
 
     public function addNewDocument(Request $request)
     {
         $counter = $request->counter;
-        return view('backend.student-info.student.add-document', compact('counter'))->render();
+        return view('backend.admin.student-info.student.add-document', compact('counter'))->render();
     }
     public function getStudents(Request $request)
     {
         $examAssign = $this->examAssignRepo->getExamAssign($request);
         // dd($examAssign->mark_distribution);
         $students = $this->repo->getStudents($request);
-        return view('backend.student-info.student.students-list', compact('students','examAssign'))->render();
+        return view('backend.admin.student-info.student.students-list', compact('students','examAssign'))->render();
     }
     
     
@@ -130,14 +140,14 @@ class StudentController extends Controller
         $data['religions']    = $this->religionRepo->all();
         $data['genders']      = $this->genderRepo->all();
         $data['categories']   = $this->categoryRepo->all();
-        return view('backend.student-info.student.edit', compact('data'));
+        return view('backend.admin.student-info.student.edit', compact('data'));
     }
 
     
     public function show($id)
     {
         $data = $this->repo->show($id);
-        return view('backend.student-info.student.show', compact('data'));
+        return view('backend.admin.student-info.student.show', compact('data'));
     }
 
     
