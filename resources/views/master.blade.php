@@ -10,6 +10,7 @@
     </title>
 
     <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/icons/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/icons/css/brands.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/assets/icons/css/solid.css') }}">

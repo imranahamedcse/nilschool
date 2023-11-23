@@ -1,30 +1,6 @@
-/* Google fonts(Poppins) */
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"); */
-@import url("https://fonts.googleapis.com/css?family=Roboto");
-
 body {
-  background: #F0F1F7;
-  color: #707071;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* font-family: "Poppins", sans-serif; */
-  font-family: "Roboto";
-}
-
-.w-28 {
-    width: 28%;
-}
-
-span#passwordShow {
-    cursor: pointer;
-}
-
-td.action {
-    padding: 5px 0px 0px 0px;
+    background: #F0F1F7;
+    color: #707071;
 }
 
 .btn-primary {
@@ -32,6 +8,7 @@ td.action {
     background: #F2EEFC;
     border: 0;
 }
+
 .btn-primary:hover {
     color: white;
     background: #845ADF;
@@ -39,20 +16,51 @@ td.action {
 }
 
 .btn-info {
-    background: #23B7E5;
+    color: #23B7E5;
+    background: #E9F8FC;
+    border: 0;
+}
+
+.btn-info:hover {
     color: white;
+    background: #23B7E5;
+    border: 0;
 }
 
 .btn-success {
+    color: #26BF94;
+    background: #E9F8F4;
+    border: 0;
+}
+
+.btn-success:hover {
+    color: white;
     background: #26BF94;
+    border: 0;
 }
 
 .btn-warning {
+    color: #F5B849;
+    background: #FEF8EC;
+    border: 0;
+}
+
+.btn-warning:hover {
+    color: white;
     background: #F5B849;
+    border: 0;
 }
 
 .btn-danger {
+    color: #E6533C;
+    background: #FCEDEB;
+    border: 0;
+}
+
+.btn-danger:hover {
+    color: white;
     background: #E6533C;
+    border: 0;
 }
 
 .text-primary {
@@ -94,3 +102,47 @@ td.action {
 .bg-danger {
     background: #E6533C;
 }
+
+/* datatable start */
+div.dt-buttons>.dt-button {
+    margin-left: 0px !important;
+    margin-bottom: 18px !important;
+    padding: 3px 10px !important;
+    border: 0px !important;
+    border-radius: 3px !important;
+    color: #845ADF !important;
+    background: #F2EEFC !important;
+}
+
+div.dt-buttons>.dt-button:hover {
+    margin-left: 0px !important;
+    margin-bottom: 18px !important;
+    padding: 3px 10px !important;
+    border: 0px !important;
+    border-radius: 3px !important;
+    color: white !important;
+    background: #845ADF !important;
+}
+
+.page-item .page-link {
+    margin: 0 5px;
+    padding: 3px 10px;
+    border: 0px;
+    border-radius: 3px;
+    color: #845ADF;
+    background: #F2EEFC;
+}
+
+li.paginate_button.page-item.active .page-link {
+    background: #23B7E5;
+    color: white;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+    color: #845ADF;
+}
+
+table.dataTable {
+    margin-bottom: 25px !important;
+}
+/* datatable end */

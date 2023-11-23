@@ -1,32 +1,3 @@
-/* body {
-  background: #F0F1F7;
-}
-.sidebar {
-  background: #111C43;
-}
-.sidebar-hover {
-  background: #1D284D;
-}
-.primary {
-  background: #845ADF;
-}
-.info {
-  background: #23B7E5;
-}
-.success {
-  background: #26BF94;
-}
-.warning {
-  background: #F5B849;
-}
-.danger {
-  background: #E6533C;
-}*/
-
-
-
-
-
 /* Created by Tivotal */
 
 .sidebar {
@@ -96,7 +67,6 @@
 
 .sidebar .menu-group li:hover {
   background-color: #1D284D;
-  color: red;
 }
 
 .sidebar .menu-group li .icon-link {
@@ -279,42 +249,6 @@
   left: 78px;
   width: calc(100% - 78px);
 }
-
-/* .home-section .home-content {
-  display: flex;
-  height: 60px;
-  align-items: center;
-}
-
-.home-section .home-content i,
-.home-section .home-content .text {
-  color: #11101d;
-  font-size: 35px;
-}
-
-.home-section .home-content i {
-  margin: 0 15px;
-  cursor: pointer;
-}
-
-.home-section .home-content .text {
-  white-space: nowrap;
-  font-size: 20px;
-  font-weight: 600;
-} */
-
-/* .btn-rounded {
-  color: white !important;
-  background: #11101d !important;
-  border: 2px solid #88888E !important;
-  padding: 10px 15px !important;
-  font-size: 18px !important;
-}
-.btn-rounded-sm {
-  border: 2px solid #88888E !important;
-  padding: 5px 10px !important;
-  font-size: 16px !important;
-} */
 
 @media (max-width: 400px) {
   .sidebar.close .menu-group li .sub-menu {

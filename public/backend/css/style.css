@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Roboto";
+}
+
+.w-28 {
+    width: 28%;
+}
+
+span#passwordShow {
+    cursor: pointer;
+}
+
+td.action {
+    padding: 5px 0px 0px 0px;
+}

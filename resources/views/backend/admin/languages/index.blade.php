@@ -15,7 +15,7 @@
         @include('backend.admin.components.table.header')
 
 
-        <table id="datatable" class="table cell-border">
+        <table id="datatable" class="table">
             <thead>
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
@@ -36,7 +36,7 @@
                         <td><i class="{{ $row->icon_class }} "></i></td>
                         @if (hasPermission('language_update') || hasPermission('language_delete') || hasPermission('language_update_terms'))
                             <td class="action">
-                                <div class="dropdown dropdown-action">
+                                <div class="dropdown dropdown-action px-1">
                                     <button type="button" class="btn btn-sm btn-primary btn-dropdown"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-screwdriver-wrench"></i> {{ ___('common.buttons') }}
