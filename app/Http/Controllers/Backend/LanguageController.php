@@ -26,9 +26,9 @@ class LanguageController extends Controller
     function __construct(LanguageInterface $languageInterface, PermissionInterface $permissionInterface, FlagIconInterface $flagIconInterface)
     {
 
-        if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
-        } 
+        }
         $this->language   = $languageInterface;
         $this->permission = $permissionInterface;
         $this->flagIcon   = $flagIconInterface;
@@ -36,9 +36,18 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $data['languages']  = $this->language->getAll();
-        $data['title']      = ___('common.languages');
-        return view('backend.admin.languages.index',compact('data'));
+        $title             = ___('common.languages');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'language_create',
+            "create-route" => 'languages.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        $data['languages'] = $this->language->getAll();
+        return view('backend.admin.languages.index', compact('data'));
     }
 
     public function create()
@@ -64,13 +73,13 @@ class LanguageController extends Controller
         $data['title']       = ___('common.languages');
         $data['permissions'] = $this->permission->all();
         $data['flagIcons']   = $this->flagIcon->getAll();
-        return view('backend.admin.languages.edit',compact('data'));
+        return view('backend.admin.languages.edit', compact('data'));
     }
 
-    public function update(LanguageUpdateRequest $request,$id)
+    public function update(LanguageUpdateRequest $request, $id)
     {
-        $result = $this->language->update($request,$id);
-        if($result){
+        $result = $this->language->update($request, $id);
+        if ($result) {
             return redirect()->route('languages.index')->with('success', ___('alert.language_updated_successfully'));
         }
         return redirect()->route('languages.index')->with('danger', ___('alert.something_went_wrong_please_try_again'));
@@ -78,31 +87,30 @@ class LanguageController extends Controller
 
     public function delete($id)
     {
-        if ($this->language->destroy($id)):
+        if ($this->language->destroy($id)) :
             $success[0] = ___('alert.deleted_successfully');
             $success[1] = "success";
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
-        else:
+        else :
             $success[0] = ___('alert.something_went_wrong_please_try_again');
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
         endif;
         return response()->json($success);
-
     }
 
     public function terms($id)
     {
         $data = $this->language->terms($id);
-        return view('backend.admin.languages.terms',compact('data'));
+        return view('backend.admin.languages.terms', compact('data'));
     }
 
     public function termsUpdate(Request $request, $code)
     {
         $result = $this->language->termsUpdate($request, $code);
 
-        if($result){
+        if ($result) {
             return redirect()->route('languages.index')->with('success', ___('alert.language_terms_updated_successfully'));
         }
         return redirect()->route('languages.index')->with('danger', ___('alert.something_went_wrong_please_try_again'));
@@ -121,12 +129,10 @@ class LanguageController extends Controller
     public function changeLanguage(Request $request)
     {
         $path = base_path('lang/' . $request->code);
-        if(is_dir($path)){
+        if (is_dir($path)) {
             Session::put('locale', $request->code);
             return 1;
         }
         return 0;
-
     }
-
 }

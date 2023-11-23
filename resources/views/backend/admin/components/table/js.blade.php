@@ -20,7 +20,7 @@
                 'excelHtml5',
                 'csvHtml5',
                 'pdfHtml5'
-            ]
+            ],
         });
         // $('#myTable').DataTable({
         //     // searching: false,

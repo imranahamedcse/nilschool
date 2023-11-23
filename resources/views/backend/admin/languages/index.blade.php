@@ -1,37 +1,21 @@
 @extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['title'] }}
+    {{ @$data['headers']['title'] }}
 @endsection
 
 @push('style')
-    @include('backend.admin.partial.table_header')
+    @include('backend.admin.components.table.css')
 @endpush
 
 @section('content')
-    <nav class="mt-3" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="text-info" href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-            <li class="breadcrumb-item active">{{ $data['title'] }}</li>
-        </ol>
-    </nav>
-
+    @include('backend.admin.components.breadcrumb')
 
     <div class="p-4 rounded-3 bg-white">
-        <div class="row justify-content-between mb-4">
-            <div class="col-6 align-self-center">
-                <h4 class="m-0">{{ ___('language.languages') }}</h4>
-            </div>
-            <div class="col-6 text-end">
-                @if (hasPermission('language_create'))
-                    <a class="btn btn-sm btn-info" href="{{ route('languages.create') }}">
-                        <i class="fa-solid fa-plus"></i> {{ ___('common.add') }}
-                    </a>
-                @endif
-            </div>
-        </div>
+        @include('backend.admin.components.table.header')
 
-        <table id="datatable" class="table cell-border" style="width:100%">
+
+        <table id="datatable" class="table cell-border">
             <thead>
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
@@ -44,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($data['languages'] as $key => $row)
+                @forelse (@$data['languages'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
                         <td> {{ $row->name }} {{ $row->summernote }}</td>
@@ -92,28 +76,14 @@
                         @endif
                     </tr>
                 @empty
-                    <tr>
-                        <td colspan="100%" class="text-center gray-color">
-                            <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary" width="100">
-                            <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
-                            <p class="mb-0 text-center text-secondary font-size-90">
-                                {{ ___('common.Please add new entity regarding this table') }}</p>
-                        </td>
-                    </tr>
+                    @include('backend.admin.components.table.empty')
                 @endforelse
             </tbody>
         </table>
-        
-        <div class="text-center p-4 bg-white">
-            {{ setting('footer_text') }}
-        </div>
     </div>
-
-
-
 @endsection
 
 @push('script')
-    @include('backend.admin.partial.table_footer')
-    @include('backend.admin.partial.delete-ajax')
+    @include('backend.admin.components.table.js')
+    @include('backend.admin.components.table.delete-ajax')
 @endpush
