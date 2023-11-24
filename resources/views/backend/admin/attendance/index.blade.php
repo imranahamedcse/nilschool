@@ -1,4 +1,4 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
 @section('title')
     {{ @$data['title'] }}
 @endsection
@@ -199,5 +199,5 @@
 @endsection
 
 @push('script')
-    @include('backend.partials.delete-ajax')
+@include('backend.admin.components.table.delete-ajax')
 @endpush

@@ -36,7 +36,7 @@ class AttendanceController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
 
-        return view('backend.attendance.index', compact('data'));
+        return view('backend.admin.attendance.index', compact('data'));
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class AttendanceController extends Controller
         $data['status']   = $data['status'];
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = $this->classSetupRepo->getSections($request->class);
-        return view('backend.attendance.index', compact('data'));
+        return view('backend.admin.attendance.index', compact('data'));
     }
 
 
@@ -71,7 +71,7 @@ class AttendanceController extends Controller
         $data['students']           = [];
         $data['request']            = [];
 
-        return view('backend.attendance.report', compact('data'));
+        return view('backend.admin.attendance.report', compact('data'));
     }
 
     
@@ -85,7 +85,7 @@ class AttendanceController extends Controller
         $data['students']     = $results['students'];
         $data['days']         = $results['days'];
         $data['attendances']  = $results['attendances'];
-        return view('backend.attendance.report', compact('data'));
+        return view('backend.admin.attendance.report', compact('data'));
     }
 
     public function generatePDF(Request $request)
@@ -96,7 +96,7 @@ class AttendanceController extends Controller
         $data['attendances']  = $results['attendances'];
         $data['request']      = $request;
         
-        $pdf = PDF::loadView('backend.attendance.reportPDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.attendance.reportPDF', compact('data'));
 
         if($request->view == '0')
             $pdf->setPaper('A4', 'landscape');

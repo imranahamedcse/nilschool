@@ -19,17 +19,27 @@ class FeesGroupController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('fees.fees_group');
         $data['fees_groups'] = $this->repo->getPaginateAll();
+        
+        $title             = ___('fees.fees_group');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'fees_group',
+            "create-route" => 'fees-group.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
 
-        return view('backend.fees.group.index', compact('data'));
+        return view('backend.admin.fees.group.index', compact('data'));
         
     }
 
     public function create()
     {
         $data['title']              = ___('fees.fees_group');
-        return view('backend.fees.group.create', compact('data'));
+        return view('backend.admin.fees.group.create', compact('data'));
         
     }
 
@@ -46,7 +56,7 @@ class FeesGroupController extends Controller
     {
         $data['fees_group']        = $this->repo->show($id);
         $data['title']       = ___('fees.fees_group');
-        return view('backend.fees.group.edit', compact('data'));
+        return view('backend.admin.fees.group.edit', compact('data'));
     }
 
     public function update(FeesGroupUpdateRequest $request, $id)

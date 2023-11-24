@@ -19,17 +19,26 @@ class FeesTypeController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('fees.fees_type');
         $data['fees_types'] = $this->repo->getPaginateAll();
-
-        return view('backend.fees.type.index', compact('data'));
+        
+        $title             = ___('fees.fees_type');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'fees_type',
+            "create-route" => 'fees-type.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.fees.type.index', compact('data'));
         
     }
 
     public function create()
     {
         $data['title']              = ___('fees.fees_type');
-        return view('backend.fees.type.create', compact('data'));
+        return view('backend.admin.fees.type.create', compact('data'));
         
     }
 
@@ -46,7 +55,7 @@ class FeesTypeController extends Controller
     {
         $data['fees_type']        = $this->repo->show($id);
         $data['title']       = ___('fees.fees_type');
-        return view('backend.fees.type.edit', compact('data'));
+        return view('backend.admin.fees.type.edit', compact('data'));
     }
 
     public function update(FeesTypeUpdateRequest $request, $id)
