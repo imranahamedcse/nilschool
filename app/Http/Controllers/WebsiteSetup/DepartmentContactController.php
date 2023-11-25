@@ -24,14 +24,24 @@ class DepartmentContactController extends Controller
     public function index()
     {
         $data['dep_contact'] = $this->depContactRepo->getAll();
-        $data['title'] = ___('settings.Department Contact');
-        return view('website-setup.department-contact.index', compact('data'));
+        
+        $title             = ___('settings.Department Contact');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'dep_contact_create',
+            "create-route" => 'department-contact.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.department-contact.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create Department Contact');
-        return view('website-setup.department-contact.create', compact('data'));
+        return view('backend.admin.website-setup.department-contact.create', compact('data'));
     }
 
     public function store(DepartmentContactStoreRequest $request)
@@ -47,7 +57,7 @@ class DepartmentContactController extends Controller
     {
         $data['dep_contact']      = $this->depContactRepo->show($id);
         $data['title']       = ___('website.Edit Department Contact');
-        return view('website-setup.department-contact.edit', compact('data'));
+        return view('backend.admin.website-setup.department-contact.edit', compact('data'));
     }
 
     public function update(DepartmentContactUpdateRequest $request, $id)

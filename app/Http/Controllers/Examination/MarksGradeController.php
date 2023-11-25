@@ -19,17 +19,26 @@ class MarksGradeController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('examination.marks_grade');
         $data['marks_grades'] = $this->repo->getPaginateAll();
-
-        return view('backend.examination.marks-grade.index', compact('data'));
+        
+        $title             = ___('examination.marks_grade');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'marks_grade_create',
+            "create-route" => 'marks-grade.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.examination.marks-grade.index', compact('data'));
 
     }
 
     public function create()
     {
         $data['title']              = ___('examination.marks_grade');
-        return view('backend.examination.marks-grade.create', compact('data'));
+        return view('backend.admin.examination.marks-grade.create', compact('data'));
 
     }
 
@@ -46,7 +55,7 @@ class MarksGradeController extends Controller
     {
         $data['marks_grade']        = $this->repo->show($id);
         $data['title']       = ___('examination.marks_grade');
-        return view('backend.examination.marks-grade.edit', compact('data'));
+        return view('backend.admin.examination.marks-grade.edit', compact('data'));
     }
 
     public function update(MarksGradeUpdateRequest $request, $id)

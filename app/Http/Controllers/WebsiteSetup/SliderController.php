@@ -24,14 +24,24 @@ class SliderController extends Controller
     public function index()
     {
         $data['slider'] = $this->sliderRepo->getAll();
-        $data['title'] = ___('settings.Slider');
-        return view('website-setup.slider.index', compact('data'));
+
+        $title             = ___('settings.Slider');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'slider_create',
+            "create-route" => 'slider.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.slider.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create slider');
-        return view('website-setup.slider.create', compact('data'));
+        return view('backend.admin.website-setup.slider.create', compact('data'));
     }
 
     public function store(SliderStoreRequest $request)
@@ -47,7 +57,7 @@ class SliderController extends Controller
     {
         $data['slider']      = $this->sliderRepo->show($id);
         $data['title']       = ___('website.Edit slider');
-        return view('website-setup.slider.edit', compact('data'));
+        return view('backend.admin.website-setup.slider.edit', compact('data'));
     }
 
     public function update(SliderUpdateRequest $request, $id)

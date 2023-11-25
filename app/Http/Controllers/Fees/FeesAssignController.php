@@ -57,9 +57,19 @@ class FeesAssignController extends Controller
 
     public function index()
     {
-        $data['title']        = ___('fees.fees_assign');
         $data['fees_assigns'] = $this->repo->getPaginateAll();
-        return view('backend.fees.assign.index', compact('data'));
+
+        $title             = ___('fees.fees_assign');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'fees_assign_create',
+            "create-route" => 'fees-assign.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.fees.assign.index', compact('data'));
     }
 
     public function show(Request $request){
@@ -77,7 +87,7 @@ class FeesAssignController extends Controller
         $data['fees_groups']  = $this->feesMasterRepo->allGroups();
         $data['genders']      = $this->genderRepo->all();
         $data['categories']   = $this->categoryRepo->all();
-        return view('backend.fees.assign.create', compact('data'));
+        return view('backend.admin.fees.assign.create', compact('data'));
     }
 
     public function store(FeesAssignStoreRequest $request)
@@ -110,7 +120,7 @@ class FeesAssignController extends Controller
 
         $data['students']     = $this->studentRepo->getStudents($request);
 
-        return view('backend.fees.assign.edit', compact('data'));
+        return view('backend.admin.fees.assign.edit', compact('data'));
     }
 
     public function update(FeesAssignUpdateRequest $request, $id)
@@ -143,13 +153,13 @@ class FeesAssignController extends Controller
     public function getFeesAssignStudents(Request $request)
     {
         $students = $this->repo->getFeesAssignStudents($request);
-        return view('backend.fees.assign.fees-assing-students-list', compact('students'))->render();
+        return view('backend.admin.fees.assign.fees-assing-students-list', compact('students'))->render();
     }
 
     public function getAllTypes(Request $request)
     {
         $types = $this->repo->groupTypes($request);
-        return view('backend.fees.assign.fees-types', compact('types'))->render();
+        return view('backend.admin.fees.assign.fees-types', compact('types'))->render();
     }
 
 }

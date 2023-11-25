@@ -19,17 +19,25 @@ class DepartmentController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('staff.department');
         $data['departments'] = $this->repo->getPaginateAll();
-
-        return view('backend.staff.department.index', compact('data'));
         
+        $title             = ___('staff.department');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'department_create',
+            "create-route" => 'department.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.staff.department.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']              = ___('staff.department');
-        return view('backend.staff.department.create', compact('data'));
+        return view('backend.admin.staff.department.create', compact('data'));
         
     }
 
@@ -46,7 +54,7 @@ class DepartmentController extends Controller
     {
         $data['department']        = $this->repo->show($id);
         $data['title']       = ___('staff.department');
-        return view('backend.staff.department.edit', compact('data'));
+        return view('backend.admin.staff.department.edit', compact('data'));
     }
 
     public function update(DepartmentUpdateRequest $request, $id)

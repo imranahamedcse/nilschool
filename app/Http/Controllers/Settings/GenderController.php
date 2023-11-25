@@ -26,14 +26,24 @@ class GenderController extends Controller
     public function index()
     {
         $data['genders'] = $this->gender->getAll();
-        $data['title'] = ___('settings.genders');
-        return view('backend.gender.index', compact('data'));
+
+        $title             = ___('settings.genders');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'gender_create',
+            "create-route" => 'genders.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.gender.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('settings.create_gender');
-        return view('backend.gender.create', compact('data'));
+        return view('backend.admin.gender.create', compact('data'));
     }
 
     public function store(GenderStoreRequest $request)
@@ -49,7 +59,7 @@ class GenderController extends Controller
     {
         $data['gender']        = $this->gender->show($id);
         $data['title']       = ___('settings.edit_gender');
-        return view('backend.gender.edit', compact('data'));
+        return view('backend.admin.gender.edit', compact('data'));
     }
 
     public function update(GenderUpdateRequest $request, $id)

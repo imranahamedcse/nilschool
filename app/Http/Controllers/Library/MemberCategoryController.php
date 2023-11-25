@@ -24,14 +24,24 @@ class MemberCategoryController extends Controller
     public function index()
     {
         $data['member_category'] = $this->Repo->getAll();
-        $data['title'] = ___('settings.member category');
-        return view('backend.library.member-category.index', compact('data'));
+
+        $title             = ___('settings.member category');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'member_category_create',
+            "create-route" => 'member-category.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.library.member-category.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create member Category');
-        return view('backend.library.member-category.create', compact('data'));
+        return view('backend.admin.library.member-category.create', compact('data'));
     }
 
     public function store(MemberCategoryStoreRequest $request)
@@ -47,7 +57,7 @@ class MemberCategoryController extends Controller
     {
         $data['member_category']      = $this->Repo->show($id);
         $data['title']       = ___('website.Edit member Category');
-        return view('backend.library.member-category.edit', compact('data'));
+        return view('backend.admin.library.member-category.edit', compact('data'));
     }
 
     public function update(MemberCategoryUpdateRequest $request, $id)

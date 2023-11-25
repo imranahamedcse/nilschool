@@ -24,14 +24,24 @@ class CounterController extends Controller
     public function index()
     {
         $data['counter'] = $this->counterRepo->getAll();
-        $data['title'] = ___('settings.Counter');
-        return view('website-setup.counter.index', compact('data'));
+
+        $title             = ___('settings.Counter');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'counter_create',
+            "create-route" => 'counter.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.counter.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create counter');
-        return view('website-setup.counter.create', compact('data'));
+        return view('backend.admin.website-setup.counter.create', compact('data'));
     }
 
     public function store(CounterStoreRequest $request)
@@ -47,7 +57,7 @@ class CounterController extends Controller
     {
         $data['counter']      = $this->counterRepo->show($id);
         $data['title']       = ___('website.Edit counter');
-        return view('website-setup.counter.edit', compact('data'));
+        return view('backend.admin.website-setup.counter.edit', compact('data'));
     }
 
     public function update(CounterUpdateRequest $request, $id)

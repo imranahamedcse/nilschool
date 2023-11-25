@@ -64,11 +64,21 @@ class OnlineExamController extends Controller
     public function index()
     {
         $data['online_exam'] = $this->repo->getAll();
-        $data['title']       = ___('online-examination.online_exam');
         $data['classes']     = $this->classRepo->assignedAll();
         $data['sections']    = [];
         $data['subjects']    = [];
-        return view('backend.online-examination.online-exam.index', compact('data'));
+        
+        $title             = ___('online-examination.online_exam');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'online-exam_create',
+            "create-route" => 'online-exam.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.online-examination.online-exam.index', compact('data'));
     }
     
     public function search(Request $request)
@@ -85,7 +95,7 @@ class OnlineExamController extends Controller
         $data['request']     = $request;
         $data['title']       = ___('online-examination.online_exam');
         $data['online_exam'] = $this->repo->search($request);
-        return view('backend.online-examination.online-exam.index', compact('data'));
+        return view('backend.admin.online-examination.online-exam.index', compact('data'));
     }
 
     public function create()
@@ -99,7 +109,7 @@ class OnlineExamController extends Controller
         $data['categories']       = $this->categoryRepo->all();
         $data['types']            = $this->typeRepo->all();
 
-        return view('backend.online-examination.online-exam.create', compact('data'));
+        return view('backend.admin.online-examination.online-exam.create', compact('data'));
     }
 
     public function store(StoreRequest $request)
@@ -135,7 +145,7 @@ class OnlineExamController extends Controller
         $data['students']     = $this->studentRepo->getStudents($request);
         
         $data['title']            = ___('online-examination.edit_online_exam');
-        return view('backend.online-examination.online-exam.edit', compact('data'));
+        return view('backend.admin.online-examination.online-exam.edit', compact('data'));
     }
 
     public function update(UpdateRequest $request, $id)
@@ -167,26 +177,26 @@ class OnlineExamController extends Controller
     public function getAllQuestions(Request $request)
     {
         $items = $this->repo->getAllQuestions($request->id);
-        return view('backend.online-examination.online-exam.questions', compact('items'))->render();
+        return view('backend.admin.online-examination.online-exam.questions', compact('items'))->render();
     }
 
     public function viewStudents(Request $request)
     {
         $data = $this->repo->show($request->id);
-        return view('backend.online-examination.online-exam.view_students', compact('data'));
+        return view('backend.admin.online-examination.online-exam.view_students', compact('data'));
     }
 
     public function viewQuestions(Request $request)
     {
         $data = $this->repo->show($request->id);
-        return view('backend.online-examination.online-exam.view_questions', compact('data'));
+        return view('backend.admin.online-examination.online-exam.view_questions', compact('data'));
     }
     public function answer($id, $student_id)
     {
         $data['exam']    = $this->repo->show($id);
         $data['answer']  = $this->repo->answer($id, $student_id);
         $data['title']   = ___('online-examination.Exam Answer');
-        return view('backend.online-examination.online-exam.answer', compact('data','student_id'));
+        return view('backend.admin.online-examination.online-exam.answer', compact('data','student_id'));
     }
 
     public function markSubmit(Request $request)
@@ -200,7 +210,7 @@ class OnlineExamController extends Controller
 
     function questionDownload($id){
         $data = $this->repo->show($id);
-        $pdf = PDF::loadView('backend.online-examination.online-exam.download_questions', compact('data'));
+        $pdf = PDF::loadView('backend.admin.online-examination.online-exam.download_questions', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'.pdf');
     }
     

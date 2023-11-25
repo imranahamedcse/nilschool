@@ -29,15 +29,25 @@ class RoleController extends Controller
     public function index()
     {
         $data['roles'] = $this->role->getAll();
-        $data['title'] = ___('common.roles');
-        return view('backend.roles.index', compact('data'));
+
+        $title             = ___('common.roles');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'role_create',
+            "create-route" => 'roles.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.roles.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('common.create_role');
         $data['permissions'] = $this->permission->all();
-        return view('backend.roles.create', compact('data'));
+        return view('backend.admin.roles.create', compact('data'));
     }
 
     public function store(RoleStoreRequest $request)
@@ -54,7 +64,7 @@ class RoleController extends Controller
         $data['role']        = $this->role->show($id);
         $data['title']       = ___('common.roles');
         $data['permissions'] = $this->permission->all();
-        return view('backend.roles.edit', compact('data'));
+        return view('backend.admin.roles.edit', compact('data'));
     }
 
     public function update(RoleUpdateRequest $request, $id)

@@ -18,25 +18,35 @@ class FeesMasterController extends Controller
     private $group;
     private $classRepo;
 
-    function __construct(FeesMasterInterface $repo,FeesTypeInterface $type,FeesGroupInterface $group, ClassesRepository $classRepo)
+    function __construct(FeesMasterInterface $repo, FeesTypeInterface $type, FeesGroupInterface $group, ClassesRepository $classRepo)
     {
-        $this->repo       = $repo; 
-        $this->type       = $type; 
-        $this->group      = $group; 
-        $this->classRepo  = $classRepo; 
+        $this->repo       = $repo;
+        $this->type       = $type;
+        $this->group      = $group;
+        $this->classRepo  = $classRepo;
     }
-    
+
     public function index()
     {
-        $data['title']        = ___('fees.fees_master');
         $data['fees_masters'] = $this->repo->getPaginateAll();
-        return view('backend.fees.master.index', compact('data'));
+
+        $title             = ___('fees.fees_master');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'fees_master_create',
+            "create-route" => 'fees-master.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.fees.master.index', compact('data'));
     }
-    
+
     public function getAllTypes(Request $request)
     {
         $types = $this->repo->groupTypes($request);
-        return view('backend.fees.master.fees-types', compact('types'))->render();
+        return view('backend.admin.fees.master.fees-types', compact('types'))->render();
     }
 
     public function create()
@@ -44,14 +54,14 @@ class FeesMasterController extends Controller
         $data['title']        = ___('fees.fees_master');
         $data['fees_types']   = $this->type->all();
         $data['fees_groups']  = $this->group->all();
-        return view('backend.fees.master.create', compact('data'));
+        return view('backend.admin.fees.master.create', compact('data'));
     }
 
     public function store(FeesMasterStoreRequest $request)
     {
         // dd($request->all());
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-master.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -64,13 +74,13 @@ class FeesMasterController extends Controller
         $data['fees_types']   = $this->type->all();
         $data['fees_groups']  = $this->group->all();
         // dd($data);
-        return view('backend.fees.master.edit', compact('data'));
+        return view('backend.admin.fees.master.edit', compact('data'));
     }
 
     public function update(FeesMasterUpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-master.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -78,19 +88,19 @@ class FeesMasterController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

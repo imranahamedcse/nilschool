@@ -24,14 +24,24 @@ class NewsController extends Controller
     public function index()
     {
         $data['news'] = $this->newsRepo->getAll();
-        $data['title'] = ___('settings.News');
-        return view('website-setup.news.index', compact('data'));
+
+        $title             = ___('settings.News');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'news_create',
+            "create-route" => 'news.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.news.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create news');
-        return view('website-setup.news.create', compact('data'));
+        return view('backend.admin.website-setup.news.create', compact('data'));
     }
 
     public function store(NewsStoreRequest $request)
@@ -47,7 +57,7 @@ class NewsController extends Controller
     {
         $data['news']      = $this->newsRepo->show($id);
         $data['title']       = ___('website.Edit news');
-        return view('website-setup.news.edit', compact('data'));
+        return view('backend.admin.website-setup.news.edit', compact('data'));
     }
 
     public function update(NewsUpdateRequest $request, $id)

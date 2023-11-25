@@ -24,14 +24,24 @@ class IssueBookController extends Controller
     public function index()
     {
         $data['issue_book'] = $this->Repo->getAll();
-        $data['title'] = ___('settings.Issue book');
-        return view('backend.library.issue-book.index', compact('data'));
+
+        $title = ___('settings.Issue book');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'issue_book_create',
+            "create-route" => 'issue-book.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.library.issue-book.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create issue book');
-        return view('backend.library.issue-book.create', compact('data'));
+        return view('backend.admin.library.issue-book.create', compact('data'));
     }
 
     public function store(IssueBookStoreRequest $request)
@@ -49,7 +59,7 @@ class IssueBookController extends Controller
         $data['title']       = ___('website.Edit issue book');
         $data['user']        = $this->Repo->getUser($data['issue_book']->user_id);
         $data['book']        = $this->Repo->getBook($data['issue_book']->book_id);
-        return view('backend.library.issue-book.edit', compact('data'));
+        return view('backend.admin.library.issue-book.edit', compact('data'));
     }
 
     public function update(IssueBookUpdateRequest $request, $id)
@@ -104,6 +114,6 @@ class IssueBookController extends Controller
         $data['issue_book'] = $this->Repo->searchResult($request);
         $data['request']    = $request;
         
-        return view('backend.library.issue-book.index', compact('data'));
+        return view('backend.admin.library.issue-book.index', compact('data'));
     }
 }

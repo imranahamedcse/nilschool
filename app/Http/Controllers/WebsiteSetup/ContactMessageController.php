@@ -24,7 +24,15 @@ class ContactMessageController extends Controller
     public function index()
     {
         $data['contact'] = $this->repo->all();
-        $data['title'] = ___('settings.Contact Message');
-        return view('website-setup.contact-message.index', compact('data'));
+
+        $title             = ___('settings.Contact Message');
+        $data['headers']   = [
+            "title"        => $title
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.contact-message.index', compact('data'));
     }
 }

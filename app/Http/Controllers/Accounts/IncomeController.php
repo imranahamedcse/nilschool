@@ -27,15 +27,25 @@ class IncomeController extends Controller
     public function index()
     {
         $data['income'] = $this->incomeRepo->getAll();
-        $data['title'] = ___('account.income');
-        return view('backend.accounts.income.index', compact('data'));
+
+        $title             = ___('account.income');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'income_create',
+            "create-route" => 'income.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.accounts.income.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('account.create_income');
         $data['heads']       = $this->accountHeadRepository->getIncomeHeads();
-        return view('backend.accounts.income.create', compact('data'));
+        return view('backend.admin.accounts.income.create', compact('data'));
     }
 
     public function store(IncomeStoreRequest $request)
@@ -52,7 +62,7 @@ class IncomeController extends Controller
         $data['heads']       = $this->accountHeadRepository->getIncomeHeads();
         $data['income']      = $this->incomeRepo->show($id);
         $data['title']       = ___('account.edit_income');
-        return view('backend.accounts.income.edit', compact('data'));
+        return view('backend.admin.accounts.income.edit', compact('data'));
     }
 
     public function update(IncomeUpdateRequest $request, $id)

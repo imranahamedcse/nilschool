@@ -24,14 +24,24 @@ class ContactInfoController extends Controller
     public function index()
     {
         $data['contact_info'] = $this->contactInfoRepo->getAll();
-        $data['title'] = ___('settings.Contact information');
-        return view('website-setup.contact-info.index', compact('data'));
+
+        $title             = ___('settings.Contact information');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'contact_info_create',
+            "create-route" => 'contact-info.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.contact-info.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create contact information');
-        return view('website-setup.contact-info.create', compact('data'));
+        return view('backend.admin.website-setup.contact-info.create', compact('data'));
     }
 
     public function store(ContactInfoStoreRequest $request)
@@ -47,7 +57,7 @@ class ContactInfoController extends Controller
     {
         $data['contact_info']      = $this->contactInfoRepo->show($id);
         $data['title']       = ___('website.Edit contact information');
-        return view('website-setup.contact-info.edit', compact('data'));
+        return view('backend.admin.website-setup.contact-info.edit', compact('data'));
     }
 
     public function update(ContactInfoUpdateRequest $request, $id)

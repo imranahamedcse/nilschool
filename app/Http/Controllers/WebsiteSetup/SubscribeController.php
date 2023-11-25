@@ -21,7 +21,15 @@ class SubscribeController extends Controller
     public function index()
     {
         $data['subscribe'] = $this->repo->all();
-        $data['title'] = ___('settings.Subscription');
-        return view('website-setup.subscribe.index', compact('data'));
+
+        $title             = ___('settings.Subscription');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.subscribe.index', compact('data'));
     }
 }

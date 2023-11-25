@@ -25,14 +25,24 @@ class GalleryCategoryController extends Controller
     public function index()
     {
         $data['gallery_category'] = $this->Repo->getAll();
-        $data['title'] = ___('settings.Gallery_category');
-        return view('website-setup.gallery-category.index', compact('data'));
+
+        $title             = ___('settings.Gallery_category');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'gallery_category_create',
+            "create-route" => 'gallery-category.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.gallery-category.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create Gallery Category');
-        return view('website-setup.gallery-category.create', compact('data'));
+        return view('backend.admin.website-setup.gallery-category.create', compact('data'));
     }
 
     public function store(GalleryCategoryStoreRequest $request)
@@ -48,7 +58,7 @@ class GalleryCategoryController extends Controller
     {
         $data['gallery_category']      = $this->Repo->show($id);
         $data['title']       = ___('website.Edit Gallery Category');
-        return view('website-setup.gallery-category.edit', compact('data'));
+        return view('backend.admin.website-setup.gallery-category.edit', compact('data'));
     }
 
     public function update(GalleryCategoryUpdateRequest $request, $id)

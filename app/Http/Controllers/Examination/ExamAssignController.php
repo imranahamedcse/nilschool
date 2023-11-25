@@ -48,12 +48,21 @@ class ExamAssignController extends Controller
     
     public function index()
     {
-        $data['title']        = ___('examination.exam_assign');
         $data['classes']      = $this->classRepo->assignedAll();
         $data['exam_assigns'] = $this->repo->getPaginateAll();
-        // dd($data);
+        
+        $title             = ___('examination.exam_assign');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'exam_assign_create',
+            "create-route" => 'exam-assign.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
 
-        return view('backend.examination.exam-assign.index', compact('data'));
+        return view('backend.admin.examination.exam-assign.index', compact('data'));
         
     }
 
@@ -66,7 +75,7 @@ class ExamAssignController extends Controller
         $data['examArr']      = ExamType::pluck('name','id')->toArray();
         $data['classes']      = $this->classRepo->assignedAll();
 
-        return view('backend.examination.exam-assign.index', compact('data'));
+        return view('backend.admin.examination.exam-assign.index', compact('data'));
         
     }
 
@@ -75,21 +84,21 @@ class ExamAssignController extends Controller
         $data['title']                  = ___('examination.exam_assign');
         $data['classes']                = $this->classSetupRepo->all();
         $data['exam_types']             = $this->examTypeRepo->all();
-        return view('backend.examination.exam-assign.create', compact('data'));
+        return view('backend.admin.examination.exam-assign.create', compact('data'));
         
     }
 
     public function marksDistribution(Request $request)
     {
         // $subjectArr   = Subject::pluck('name','id')->toArray();
-        return view('backend.examination.exam-assign.marks_distribute', compact('request'))->render();
+        return view('backend.admin.examination.exam-assign.marks_distribute', compact('request'))->render();
     }
 
     public function subjectMarksDistribution(Request $request)
     {
         // return $request->all();
         $subjectArr   = Subject::pluck('name','id')->toArray();
-        return view('backend.examination.exam-assign.subject_marks_distribute', compact('subjectArr', 'request'))->render();
+        return view('backend.admin.examination.exam-assign.subject_marks_distribute', compact('subjectArr', 'request'))->render();
     }
 
     public function store(ExamAssignStoreRequest $request)
@@ -119,7 +128,7 @@ class ExamAssignController extends Controller
 
         $data['exam_types']         = $this->examTypeRepo->all();
         
-        return view('backend.examination.exam-assign.edit', compact('data'));
+        return view('backend.admin.examination.exam-assign.edit', compact('data'));
     }
 
     public function update(ExamAssignUpdateRequest $request, $id)

@@ -19,17 +19,26 @@ class DesignationController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('staff.designation');
         $data['designations'] = $this->repo->getPaginateAll();
-
-        return view('backend.staff.designation.index', compact('data'));
+        
+        $title             = ___('staff.designation');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'staff_create',
+            "create-route" => 'staff.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.staff.designation.index', compact('data'));
         
     }
 
     public function create()
     {
         $data['title']              = ___('staff.designation');
-        return view('backend.staff.designation.create', compact('data'));
+        return view('backend.admin.staff.designation.create', compact('data'));
         
     }
 
@@ -46,7 +55,7 @@ class DesignationController extends Controller
     {
         $data['designation']        = $this->repo->show($id);
         $data['title']       = ___('staff.designation');
-        return view('backend.staff.designation.edit', compact('data'));
+        return view('backend.admin.staff.designation.edit', compact('data'));
     }
 
     public function update(DesignationUpdateRequest $request, $id)

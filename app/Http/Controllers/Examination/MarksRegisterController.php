@@ -51,10 +51,20 @@ class MarksRegisterController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('examination.marks_register');
         $data['classes']            = $this->classRepo->assignedAll();
         $data['marks_registers']    = $this->repo->getPaginateAll();
-        return view('backend.examination.marks-register.index', compact('data'));
+
+        $title             = ___('examination.marks_register');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'marks_register_create',
+            "create-route" => 'marks-register.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.examination.marks-register.index', compact('data'));
     }
 
     public function search(Request $request)
@@ -62,7 +72,7 @@ class MarksRegisterController extends Controller
         $data['title']              = ___('examination.marks_register');
         $data['classes']            = $this->classRepo->assignedAll();
         $data['marks_registers']    = $this->repo->searchMarkRegister($request);
-        return view('backend.examination.marks-register.index', compact('data'));
+        return view('backend.admin.examination.marks-register.index', compact('data'));
     }
 
 
@@ -82,7 +92,7 @@ class MarksRegisterController extends Controller
         $data['students']              = $this->studentRepo->getStudents($request);
 
 
-        return view('backend.examination.marks-register.view', compact('data'));
+        return view('backend.admin.examination.marks-register.view', compact('data'));
     }
 
     public function create()
@@ -90,7 +100,7 @@ class MarksRegisterController extends Controller
         $data['classes']                = $this->classSetupRepo->all();
         $data['exam_types']             = $this->examAssignRepo->assignedExamType();
         $data['title']                  = ___('examination.marks_register');
-        return view('backend.examination.marks-register.create', compact('data'));
+        return view('backend.admin.examination.marks-register.create', compact('data'));
     }
 
     public function store(MarksRegisterStoreRequest $request)
@@ -126,7 +136,7 @@ class MarksRegisterController extends Controller
 
         $data['examAssign']            = $this->examAssignRepo->getExamAssign($request);
         $data['students']              = $this->studentRepo->getStudents($request);
-        return view('backend.examination.marks-register.edit', compact('data'));
+        return view('backend.admin.examination.marks-register.edit', compact('data'));
     }
 
     public function update(MarksRegisterUpdateRequest $request, $id)

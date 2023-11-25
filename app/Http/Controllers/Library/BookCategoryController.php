@@ -24,14 +24,24 @@ class BookCategoryController extends Controller
     public function index()
     {
         $data['book_category'] = $this->Repo->getAll();
-        $data['title'] = ___('settings.Book category');
-        return view('backend.library.book-category.index', compact('data'));
+        
+        $title = ___('settings.Book category');
+$data['headers']   = [
+    "title"        => $title,
+    "permission"   => 'book_category_create',
+    "create-route" => 'book-category.create',
+];
+$data['breadcrumbs']  = [
+    ["title" => ___("common.home"), "route" => "dashboard"],
+    ["title" => $title, "route" => ""]
+];
+        return view('backend.admin.library.book-category.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create book Category');
-        return view('backend.library.book-category.create', compact('data'));
+        return view('backend.admin.library.book-category.create', compact('data'));
     }
 
     public function store(BookCategoryStoreRequest $request)
@@ -47,7 +57,7 @@ class BookCategoryController extends Controller
     {
         $data['book_category']      = $this->Repo->show($id);
         $data['title']       = ___('website.Edit book Category');
-        return view('backend.library.book-category.edit', compact('data'));
+        return view('backend.admin.library.book-category.edit', compact('data'));
     }
 
     public function update(BookCategoryUpdateRequest $request, $id)

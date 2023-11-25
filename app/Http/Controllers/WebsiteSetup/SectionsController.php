@@ -25,15 +25,23 @@ class SectionsController extends Controller
     public function index()
     {
         $data['sections'] = $this->sectionsRepo->getAll();
-        $data['title'] = ___('settings.sections');
-        return view('website-setup.sections.index', compact('data'));
+
+        $title             = ___('settings.sections');
+        $data['headers']   = [
+            "title"        => $title
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.sections.index', compact('data'));
     }
 
     public function edit($id)
     {
         $data['sections']    = $this->sectionsRepo->show($id);
         $data['title']       = ___('website.Edit sections');
-        return view('website-setup.sections.edit', compact('data'));
+        return view('backend.admin.website-setup.sections.edit', compact('data'));
     }
 
     public function update(Request $request, $id)
@@ -47,17 +55,17 @@ class SectionsController extends Controller
 
     public function addSocialLink(Request $request)
     {
-        return view('website-setup.sections.add_social_link')->render();
+        return view('backend.admin.website-setup.sections.add_social_link')->render();
     }
 
     public function addChooseUs(Request $request)
     {
-        return view('website-setup.sections.add_choose_us')->render();
+        return view('backend.admin.website-setup.sections.add_choose_us')->render();
     }
 
     public function addAcademicCurriculum(Request $request)
     {
-        return view('website-setup.sections.add_academic_curriculum')->render();
+        return view('backend.admin.website-setup.sections.add_academic_curriculum')->render();
     }
 
 

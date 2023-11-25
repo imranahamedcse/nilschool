@@ -18,7 +18,7 @@ class ExaminationSettingsController extends Controller
     public function index()
     {
         $data['title']      = ___('settings.Examination Settings');
-        return view('backend.examination.settings.index', compact('data'));
+        return view('backend.admin.examination.settings.index', compact('data'));
     }
 
     public function update(Request $request)

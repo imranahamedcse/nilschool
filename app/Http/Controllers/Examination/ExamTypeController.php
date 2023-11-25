@@ -14,29 +14,36 @@ class ExamTypeController extends Controller
 
     function __construct(ExamTypeInterface $repo)
     {
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
-    
+
     public function index()
     {
-        $data['title']              = ___('examination.exam_type');
         $data['exam_types'] = $this->repo->getPaginateAll();
 
-        return view('backend.online-examination.type.index', compact('data'));
-        
+        $title             = ___('examination.exam_type');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'exam_type_create',
+            "create-route" => 'online-exam-type.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.online-examination.type.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']              = ___('examination.exam_type');
-        return view('backend.online-examination.type.create', compact('data'));
-        
+        return view('backend.admin.online-examination.type.create', compact('data'));
     }
 
     public function store(ExamTypeStoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('online-exam-type.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -46,13 +53,13 @@ class ExamTypeController extends Controller
     {
         $data['exam_type']        = $this->repo->show($id);
         $data['title']       = ___('examination.exam_type');
-        return view('backend.online-examination.type.edit', compact('data'));
+        return view('backend.admin.online-examination.type.edit', compact('data'));
     }
 
     public function update(ExamTypeUpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('online-exam-type.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -60,19 +67,19 @@ class ExamTypeController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

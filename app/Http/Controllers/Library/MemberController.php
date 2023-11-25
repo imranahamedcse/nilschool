@@ -26,15 +26,25 @@ class MemberController extends Controller
     public function index()
     {
         $data['member'] = $this->Repo->getAll();
-        $data['title'] = ___('settings.Member');
-        return view('backend.library.member.index', compact('data'));
+
+        $title             = ___('settings.Member');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'member_create',
+            "create-route" => 'member.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.library.member.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create member');
         $data['categories']  = $this->categoryRepo->all();
-        return view('backend.library.member.create', compact('data'));
+        return view('backend.admin.library.member.create', compact('data'));
     }
 
     public function store(MemberStoreRequest $request)
@@ -52,7 +62,7 @@ class MemberController extends Controller
         $data['user']        = $this->Repo->getUser($data['member']->user_id);
         $data['title']       = ___('website.Edit member');
         $data['categories']  = $this->categoryRepo->all();
-        return view('backend.library.member.edit', compact('data'));
+        return view('backend.admin.library.member.edit', compact('data'));
     }
 
     public function update(MemberUpdateRequest $request, $id)

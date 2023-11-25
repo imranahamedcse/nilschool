@@ -25,14 +25,24 @@ class AccountHeadController extends Controller
     public function index()
     {
         $data['account_head'] = $this->headRepo->getAll();
-        $data['title'] = ___('account.account_head');
-        return view('backend.accounts.head.index', compact('data'));
+
+        $title             = ___('account.account_head');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'account_head_create',
+            "create-route" => 'account_head.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.accounts.head.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('account.create_account_head');
-        return view('backend.accounts.head.create', compact('data'));
+        return view('backend.admin.accounts.head.create', compact('data'));
     }
 
     public function store(AccountHeadStoreRequest $request)
@@ -48,7 +58,7 @@ class AccountHeadController extends Controller
     {
         $data['account_head']        = $this->headRepo->show($id);
         $data['title']       = ___('account.edit_account_head');
-        return view('backend.accounts.head.edit', compact('data'));
+        return view('backend.admin.accounts.head.edit', compact('data'));
     }
 
     public function update(AccountHeadUpdateRequest $request, $id)

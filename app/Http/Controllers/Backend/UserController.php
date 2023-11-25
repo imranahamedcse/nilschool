@@ -50,8 +50,18 @@ class UserController extends Controller
     public function index()
     {
         $data['users'] = $this->user->getAll();
-        $data['title'] = ___('staff.staff');
-        return view('backend.users.index', compact('data'));
+
+        $title             = ___('staff.staff');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'user_create',
+            "create-route" => 'users.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.users.index', compact('data'));
     }
 
     public function create()
@@ -62,7 +72,7 @@ class UserController extends Controller
         $data['designations']  = $this->designation->all();
         $data['departments']   = $this->department->all();
         $data['genders']       = $this->gender->all();
-        return view('backend.users.create', compact('data'));
+        return view('backend.admin.users.create', compact('data'));
     }
 
     public function store(UserStoreRequest $request)
@@ -84,13 +94,13 @@ class UserController extends Controller
         $data['departments']   = $this->department->all();
         $data['genders']       = $this->gender->all();
         // dd($data);
-        return view('backend.users.edit', compact('data'));
+        return view('backend.admin.users.edit', compact('data'));
     }
 
     public function show($id)
     {
         $data = $this->user->show($id);
-        return view('backend.users.show', compact('data'));
+        return view('backend.admin.users.show', compact('data'));
     }
 
     public function update(UserUpdateRequest $request, $id)
@@ -121,7 +131,7 @@ class UserController extends Controller
     {
         $data['role_permissions'] = $this->role->show($request->role_id)->permissions;
         $data['permissions']      = $this->permission->all();
-        return view('backend.users.permissions', compact('data'))->render();
+        return view('backend.admin.users.permissions', compact('data'))->render();
     }
 
     public function status(Request $request)

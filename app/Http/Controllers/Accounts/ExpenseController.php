@@ -27,15 +27,25 @@ class ExpenseController extends Controller
     public function index()
     {
         $data['expense'] = $this->expenseRepo->getAll();
-        $data['title'] = ___('account.expense');
-        return view('backend.accounts.expense.index', compact('data'));
+
+        $title             = ___('account.expense');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'expense_create',
+            "create-route" => 'expense.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.accounts.expense.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('account.create_expense');
         $data['heads']       = $this->accountHeadRepository->getExpenseHeads();
-        return view('backend.accounts.expense.create', compact('data'));
+        return view('backend.admin.accounts.expense.create', compact('data'));
     }
 
     public function store(ExpenseStoreRequest $request)
@@ -52,7 +62,7 @@ class ExpenseController extends Controller
         $data['heads']       = $this->accountHeadRepository->getExpenseHeads();
         $data['expense']     = $this->expenseRepo->show($id);
         $data['title']       = ___('account.edit_expense');
-        return view('backend.accounts.expense.edit', compact('data'));
+        return view('backend.admin.accounts.expense.edit', compact('data'));
     }
 
     public function update(ExpenseUpdateRequest $request, $id)

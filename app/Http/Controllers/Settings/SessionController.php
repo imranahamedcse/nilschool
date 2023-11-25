@@ -27,14 +27,24 @@ class SessionController extends Controller
     public function index()
     {
         $data['sessions'] = $this->session->getAll();
-        $data['title'] = ___('settings.sessions');
-        return view('backend.session.index', compact('data'));
+
+        $title             = ___('settings.sessions');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'session_create',
+            "create-route" => 'sessions.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.session.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('settings.create_session');
-        return view('backend.session.create', compact('data'));
+        return view('backend.admin.session.create', compact('data'));
     }
 
     public function store(SessionStoreRequest $request)
@@ -50,7 +60,7 @@ class SessionController extends Controller
     {
         $data['session']        = $this->session->show($id);
         $data['title']       = ___('settings.edit_session');
-        return view('backend.session.edit', compact('data'));
+        return view('backend.admin.session.edit', compact('data'));
     }
 
     public function update(SessionUpdateRequest $request, $id)

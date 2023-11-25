@@ -27,8 +27,18 @@ class QuestionGroupController extends Controller
     public function index()
     {
         $data['question_group'] = $this->repo->getAll();
-        $data['title']          = ___('online-examination.question_group');
-        return view('backend.online-examination.question-group.index', compact('data'));
+
+        $title             = ___('online-examination.question_group');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'question_group_create',
+            "create-route" => 'question-group.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.online-examination.question-group.index', compact('data'));
     }
 
     public function search(Request $request)
@@ -36,13 +46,13 @@ class QuestionGroupController extends Controller
         $data['request']        = $request;
         $data['title']          = ___('online-examination.question_group');
         $data['question_group'] = $this->repo->search($request);
-        return view('backend.online-examination.question-group.index', compact('data'));
+        return view('backend.admin.online-examination.question-group.index', compact('data'));
     }
 
     public function create()
     {
         $data['title'] = ___('online-examination.create_question_group');
-        return view('backend.online-examination.question-group.create', compact('data'));
+        return view('backend.admin.online-examination.question-group.create', compact('data'));
     }
 
     public function store(StoreRequest $request)
@@ -58,7 +68,7 @@ class QuestionGroupController extends Controller
     {
         $data['question_group']        = $this->repo->show($id);
         $data['title']        = ___('online-examination.edit_question_group');
-        return view('backend.online-examination.question-group.edit', compact('data'));
+        return view('backend.admin.online-examination.question-group.edit', compact('data'));
     }
 
     public function update(UpdateRequest $request, $id)

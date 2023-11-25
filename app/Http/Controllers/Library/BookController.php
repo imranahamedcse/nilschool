@@ -16,9 +16,9 @@ class BookController extends Controller
 
     function __construct(BookRepository $Repo, BookCategoryRepository $categoryRepo)
     {
-        if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
-        } 
+        }
         $this->Repo                  = $Repo;
         $this->categoryRepo  = $categoryRepo;
     }
@@ -26,21 +26,31 @@ class BookController extends Controller
     public function index()
     {
         $data['book'] = $this->Repo->getAll();
-        $data['title'] = ___('settings.Book');
-        return view('backend.library.book.index', compact('data'));
+        $title              = ___('settings.Book');
+
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'book_create',
+            "create-route" => 'book.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.library.book.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create book');
         $data['categories']  = $this->categoryRepo->all();
-        return view('backend.library.book.create', compact('data'));
+        return view('backend.admin.library.book.create', compact('data'));
     }
 
     public function store(BookStoreRequest $request)
     {
         $result = $this->Repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('book.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -51,13 +61,13 @@ class BookController extends Controller
         $data['book']        = $this->Repo->show($id);
         $data['title']       = ___('website.Edit book');
         $data['categories']  = $this->categoryRepo->all();
-        return view('backend.library.book.edit', compact('data'));
+        return view('backend.admin.library.book.edit', compact('data'));
     }
 
     public function update(BookUpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('book.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -66,17 +76,17 @@ class BookController extends Controller
     public function delete($id)
     {
         $result = $this->Repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

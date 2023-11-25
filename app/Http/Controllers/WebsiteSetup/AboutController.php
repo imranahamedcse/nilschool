@@ -24,14 +24,24 @@ class AboutController extends Controller
     public function index()
     {
         $data['about'] = $this->aboutRepo->getAll();
-        $data['title'] = ___('settings.about');
-        return view('website-setup.about.index', compact('data'));
+
+        $title             = ___('settings.about');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'about_create',
+            "create-route" => 'about.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.website-setup.about.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('website.Create about');
-        return view('website-setup.about.create', compact('data'));
+        return view('backend.admin.website-setup.about.create', compact('data'));
     }
 
     public function store(AboutStoreRequest $request)
@@ -47,7 +57,7 @@ class AboutController extends Controller
     {
         $data['about']      = $this->aboutRepo->show($id);
         $data['title']       = ___('website.Edit about');
-        return view('website-setup.about.edit', compact('data'));
+        return view('backend.admin.website-setup.about.edit', compact('data'));
     }
 
     public function update(AboutUpdateRequest $request, $id)

@@ -26,14 +26,24 @@ class ReligionController extends Controller
     public function index()
     {
         $data['religions'] = $this->religion->getAll();
-        $data['title'] = ___('settings.religions');
-        return view('backend.religion.index', compact('data'));
+
+        $title             = ___('settings.religions');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'religion_create',
+            "create-route" => 'religions.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        return view('backend.admin.religion.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']       = ___('settings.create_religion');
-        return view('backend.religion.create', compact('data'));
+        return view('backend.admin.religion.create', compact('data'));
     }
 
     public function store(ReligionStoreRequest $request)
@@ -49,7 +59,7 @@ class ReligionController extends Controller
     {
         $data['religion']        = $this->religion->show($id);
         $data['title']       = ___('settings.edit_religion');
-        return view('backend.religion.edit', compact('data'));
+        return view('backend.admin.religion.edit', compact('data'));
     }
 
     public function update(ReligionUpdateRequest $request, $id)
