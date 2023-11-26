@@ -67,15 +67,6 @@ class StudentRepository implements StudentInterface
         if($request->section != "") {
             $students = $students->where('section_id', $request->section);
         }
-        if($request->keyword != "") {
-            $students = $students->whereHas('student', function ($query) use ($request) {
-                return $query->where('admission_no', 'LIKE', "%{$request->keyword}%")
-                ->orWhere('first_name', 'LIKE', "%{$request->keyword}%")
-                ->orWhere('last_name', 'LIKE', "%{$request->keyword}%")
-                ->orWhere('roll_no', 'LIKE', "%{$request->keyword}%")
-                ->orWhere('dob', 'LIKE', "%{$request->keyword}%");
-            });
-        }
 
         return $students->paginate(Settings::PAGINATE);
     }

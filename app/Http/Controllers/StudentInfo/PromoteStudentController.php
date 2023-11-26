@@ -39,6 +39,11 @@ class PromoteStudentController extends Controller
     public function index()
     {
         $data['title']              = ___('student_info.promote_list');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['student_categories'] = $this->repo->getPaginateAll();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
@@ -55,6 +60,11 @@ class PromoteStudentController extends Controller
     public function search(PromoteStudentSearchRequest $request)
     {
         $data['title']              = ___('student_info.promote_list');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['student_categories'] = $this->repo->getPaginateAll();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = $this->classSetupRepo->getSections($request->class);

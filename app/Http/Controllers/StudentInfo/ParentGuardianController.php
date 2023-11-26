@@ -19,14 +19,34 @@ class ParentGuardianController extends Controller
     
     public function index()
     {
-        $data['title']   = ___('student_info.parent_list');
+        $title             = ___('student_info.parent_list');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'parent_create',
+            "create-route" => 'parent.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['parents'] = $this->repo->getPaginateAll();
         return view('backend.admin.student-info.parent.index', compact('data'));
     }
 
     public function search(Request $request)
     {
-        $data['title']   = ___('student_info.parent_list');
+        $title             = ___('student_info.parent_list');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'parent_create',
+            "create-route" => 'parent.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['request'] = $request;
         $data['parents'] = $this->repo->searchParent($request);
         return view('backend.admin.student-info.parent.index', compact('data'));
@@ -35,6 +55,11 @@ class ParentGuardianController extends Controller
     public function create()
     {
         $data['title']              = ___('student_info.parent_create');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.student-info.parent.create', compact('data'));
     }
 
@@ -57,6 +82,11 @@ class ParentGuardianController extends Controller
     {
         $data['parent']      = $this->repo->show($id);
         $data['title']       = ___('student_info.parent_edit');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.student-info.parent.edit', compact('data'));
     }
 

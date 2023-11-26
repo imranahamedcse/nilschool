@@ -12,6 +12,10 @@
     width: 28%;
 }
 
+.card {
+    border: 0;
+}
+
 span#passwordShow {
     cursor: pointer;
 }

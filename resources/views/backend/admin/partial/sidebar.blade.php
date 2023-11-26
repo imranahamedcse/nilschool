@@ -1,9 +1,9 @@
 <div class="sidebar">
-    <div class="logo">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span class="logo-name">nilschool</span>
-    </div>
     <ul class="menu-group">
+        <div class="logo">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span class="logo-name">nilschool</span>
+        </div>
         <!-- Dashboard start -->
         <li>
             <a href="{{ route('dashboard') }}">
@@ -15,7 +15,7 @@
             </ul>
         </li>
         <!-- Dashboard end -->
-
+        
         {{-- Student info --}}
         @if (hasPermission('student_read') ||
                 hasPermission('student_category_read') ||
@@ -527,12 +527,14 @@
                 <ul class="sub-menu">
                     @if (hasPermission('subscribe_read'))
                         <li class="{{ set_menu(['subscribe*']) }}">
-                            <a href="{{ route('subscribe.index') }}" class="parent-item-content">{{ ___('settings.subscribe') }}</a>
+                            <a href="{{ route('subscribe.index') }}"
+                                class="parent-item-content">{{ ___('settings.subscribe') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('contact_message_read'))
                         <li class="{{ set_menu(['contact-message*']) }}">
-                            <a href="{{ route('contact-message.index') }}" class="parent-item-content">{{ ___('settings.contact_message') }}</a>
+                            <a href="{{ route('contact-message.index') }}"
+                                class="parent-item-content">{{ ___('settings.contact_message') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('page_sections_read'))
@@ -620,7 +622,7 @@
                 hasPermission('religion_read') ||
                 hasPermission('blood_group_read') ||
                 hasPermission('session_read'))
-            <li class="{{ set_menu(['setting*', 'genders*', 'religions*']) }}">
+            <li class="{{ set_menu(['setting*', 'genders*', 'religions*', 'blood-groups*', 'sessions*']) }}">
                 <div class="icon-link">
                     <a href="#" class="parent-item-content has-arrow">
                         <i class="fa-solid fa-gear"></i>

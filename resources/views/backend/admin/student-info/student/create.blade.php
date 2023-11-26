@@ -1,40 +1,27 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['title'] }}
+    {{ @$data['headers']['title'] }}
 @endsection
+
+@push('style')
+    @include('backend.admin.components.table.css')
+@endpush
+
 @section('content')
-    <div class="page-content">
+    @include('backend.admin.components.breadcrumb')
 
-        {{-- bradecrumb Area S t a r t --}}
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="bradecrumb-title mb-1">{{ $data['title'] }}</h1>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a
-                                    href="{{ route('student.index') }}">{{ ___('student_info.student_list') }}</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ ___('common.add_new') }}</li>
-                        </ol>
-                </div>
-            </div>
-        </div>
-        {{-- bradecrumb Area E n d --}}
-
-        <div class="card ot-card">
-            <div class="card-body">
-                <form action="{{ route('student.store') }}" enctype="multipart/form-data" method="post"
-                    id="visitForm">
-                    @csrf
+    <div class="card bg-white">
+        <div class="card-body">
+            <form action="{{ route('student.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
+                @csrf
                 <div class="row mb-3">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.admission_no') }} <span
-                                        class="fillable">*</span></label>
-                                <input class="form-control ot-input @error('admission_no') is-invalid @enderror" type="number"
+                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.admission_no') }}
+                                    <span class="fillable">*</span></label>
+                                <input class="form-control @error('admission_no') is-invalid @enderror" type="number"
                                     name="admission_no" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_admission_no') }}"
                                     value="{{ old('admission_no') }}">
@@ -47,8 +34,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.roll_no') }} <span
                                         class="fillable">*</span></label>
-                                <input class="form-control ot-input @error('roll_no') is-invalid @enderror"
-                                    name="roll_no" list="datalistOptions" id="exampleDataList" type="number"
+                                <input class="form-control @error('roll_no') is-invalid @enderror" name="roll_no"
+                                    list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('student_info.enter_roll_no') }}" value="{{ old('roll_no') }}">
                                 @error('roll_no')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
@@ -59,9 +46,10 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.first_name') }} <span
                                         class="fillable">*</span></label>
-                                <input class="form-control ot-input @error('first_name') is-invalid @enderror"
-                                    name="first_name" list="datalistOptions" id="exampleDataList"
-                                    placeholder="{{ ___('student_info.enter_first_name') }}" value="{{ old('first_name') }}">
+                                <input class="form-control @error('first_name') is-invalid @enderror" name="first_name"
+                                    list="datalistOptions" id="exampleDataList"
+                                    placeholder="{{ ___('student_info.enter_first_name') }}"
+                                    value="{{ old('first_name') }}">
                                 @error('first_name')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                         {{ $message }}
@@ -71,9 +59,10 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.last_name') }} <span
                                         class="fillable">*</span></label>
-                                <input class="form-control ot-input @error('last_name') is-invalid @enderror"
-                                    name="last_name" list="datalistOptions" id="exampleDataList"
-                                    placeholder="{{ ___('student_info.enter_last_name') }}" value="{{ old('last_name') }}">
+                                <input class="form-control @error('last_name') is-invalid @enderror" name="last_name"
+                                    list="datalistOptions" id="exampleDataList"
+                                    placeholder="{{ ___('student_info.enter_last_name') }}"
+                                    value="{{ old('last_name') }}">
                                 @error('last_name')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                         {{ $message }}
@@ -83,8 +72,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.mobile') }} <span
                                         class="fillable"></span></label>
-                                <input class="form-control ot-input @error('mobile') is-invalid @enderror"
-                                    name="mobile" list="datalistOptions" id="exampleDataList" type="number"
+                                <input class="form-control @error('mobile') is-invalid @enderror" name="mobile"
+                                    list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('student_info.enter_mobile') }}" value="{{ old('mobile') }}">
                                 @error('mobile')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
@@ -95,8 +84,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.email') }} <span
                                         class="fillable"></span></label>
-                                <input class="form-control ot-input @error('email') is-invalid @enderror"
-                                    name="email" list="datalistOptions" id="exampleDataList" type="email"
+                                <input class="form-control @error('email') is-invalid @enderror" name="email"
+                                    list="datalistOptions" id="exampleDataList" type="email"
                                     placeholder="{{ ___('student_info.enter_email') }}" value="{{ old('email') }}">
                                 @error('email')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
@@ -108,13 +97,12 @@
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
                                         class="fillable">*</span></label>
-                                <select id="getSections"
-                                    class="nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
-                                    name="class" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
+                                    name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
-                                        <option {{ old('class') == $item->id ? 'selected':'' }} value="{{ $item->class->id }}">{{ $item->class->name }}
+                                        <option {{ old('class') == $item->id ? 'selected' : '' }}
+                                            value="{{ $item->class->id }}">{{ $item->class->name }}
                                     @endforeach
                                     </option>
                                 </select>
@@ -130,10 +118,8 @@
                             <div class="col-md-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
                                         class="fillable">*</span></label>
-                                <select id="getSections"
-                                    class="nice-select sections niceSelect bordered_style wide @error('section') is-invalid @enderror"
-                                    name="section" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <select class="sections form-control @error('section') is-invalid @enderror"
+                                    name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                 </select>
                                 @error('section')
@@ -142,18 +128,17 @@
                                     </div>
                                 @enderror
                             </div>
-                            
+
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.shift') }} <span
                                         class="fillable"></span></label>
-                                <select
-                                    class="nice-select niceSelect bordered_style wide @error('shift') is-invalid @enderror"
-                                    name="shift" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <select class="form-control @error('shift') is-invalid @enderror" name="shift"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_shift') }}</option>
                                     @foreach ($data['shifts'] as $item)
-                                        <option  {{ old('shift') == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}
+                                        <option {{ old('shift') == $item->id ? 'selected' : '' }}
+                                            value="{{ $item->id }}">{{ $item->name }}
                                     @endforeach
                                 </select>
 
@@ -167,11 +152,9 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.date_of_birth') }}
                                     <span class="fillable">*</span></label>
-                                <input type="date"
-                                    class="form-control ot-input @error('date_of_birth') is-invalid @enderror"
+                                <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
                                     name="date_of_birth" list="datalistOptions" id="exampleDataList"
-                                    placeholder="{{ ___('common.date_of_birth') }}"
-                                    value="{{ old('date_of_birth') }}">
+                                    placeholder="{{ ___('common.date_of_birth') }}" value="{{ old('date_of_birth') }}">
                                 @error('date_of_birth')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                         {{ $message }}
@@ -180,15 +163,14 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.religion') }} <span
-                                        class="fillable"></span></label>
-                                <select
-                                    class="nice-select niceSelect bordered_style wide @error('religion') is-invalid @enderror"
-                                    name="religion" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <label for="validationServer04" class="form-label">{{ ___('student_info.religion') }}
+                                    <span class="fillable"></span></label>
+                                <select class="form-control @error('religion') is-invalid @enderror" name="religion"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_religion') }}</option>
                                     @foreach ($data['religions'] as $item)
-                                        <option {{ old('religion') == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}
+                                        <option {{ old('religion') == $item->id ? 'selected' : '' }}
+                                            value="{{ $item->id }}">{{ $item->name }}
                                     @endforeach
                                 </select>
 
@@ -203,13 +185,12 @@
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.gender') }} <span
                                         class="fillable"></span></label>
-                                <select
-                                    class="nice-select niceSelect bordered_style wide @error('gender') is-invalid @enderror"
-                                    name="gender" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <select class="form-control @error('gender') is-invalid @enderror" name="gender"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_gender') }}</option>
                                     @foreach ($data['genders'] as $item)
-                                        <option {{ old('gender') == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}
+                                        <option {{ old('gender') == $item->id ? 'selected' : '' }}
+                                            value="{{ $item->id }}">{{ $item->name }}
                                     @endforeach
                                 </select>
 
@@ -224,13 +205,12 @@
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.category') }} <span
                                         class="fillable"></span></label>
-                                <select
-                                    class="nice-select niceSelect bordered_style wide @error('category') is-invalid @enderror"
-                                    name="category" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <select class="form-control @error('category') is-invalid @enderror" name="category"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_category') }}</option>
                                     @foreach ($data['categories'] as $item)
-                                        <option {{ old('category') == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}
+                                        <option {{ old('category') == $item->id ? 'selected' : '' }}
+                                            value="{{ $item->id }}">{{ $item->name }}
                                     @endforeach
                                 </select>
 
@@ -245,13 +225,12 @@
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.blood') }} <span
                                         class="fillable"></span></label>
-                                <select
-                                    class="nice-select niceSelect bordered_style wide @error('blood') is-invalid @enderror"
-                                    name="blood" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <select class="form-control @error('blood') is-invalid @enderror" name="blood"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_blood') }}</option>
                                     @foreach ($data['bloods'] as $item)
-                                        <option {{ old('blood') == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}
+                                        <option {{ old('blood') == $item->id ? 'selected' : '' }}
+                                            value="{{ $item->id }}">{{ $item->name }}
                                     @endforeach
                                 </select>
 
@@ -263,11 +242,9 @@
 
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
-                                    class="form-label ">{{ ___('student_info.admission_date') }} <span
-                                        class="fillable">*</span></label>
-                                <input type="date"
-                                    class="form-control ot-input @error('admission_date') is-invalid @enderror"
+                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.admission_date') }}
+                                    <span class="fillable">*</span></label>
+                                <input type="date" class="form-control @error('admission_date') is-invalid @enderror"
                                     name="admission_date" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.admission_date') }}"
                                     value="{{ old('admission_date') }}">
@@ -278,31 +255,21 @@
                                 @enderror
                             </div>
                             <div class="col-md-3">
-                                <label for="exampleDataList"
-                                    class="form-label ">{{ ___('common.image') }} {{ ___('common.(100 x 100 px)') }}<span
-                                        class="fillable"></span></label>
+                                <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
+                                    {{ ___('common.(100 x 100 px)') }}<span class="fillable"></span></label>
 
+                                <input class="form-control" type="file" name="image"
+                                    placeholder="{{ ___('common.image') }}">
 
-                                <div class="ot_fileUploader left-side mb-3">
-                                    <input class="form-control" type="text"
-                                        placeholder="{{ ___('common.image') }}" readonly="" id="placeholder">
-                                    <button class="primary-btn-small-input" type="button">
-                                        <label class="btn btn-lg ot-btn-primary"
-                                            for="fileBrouse">{{ ___('common.browse') }}</label>
-                                        <input type="file" class="d-none form-control" name="image"
-                                            id="fileBrouse" accept="image/*">
-                                    </button>
-                                </div>
 
                             </div>
                             <div class="col-md-3 parent">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.select_parent') }}
+                                <label for="validationServer04"
+                                    class="form-label">{{ ___('student_info.select_parent') }}
                                     <span class="fillable">*</span></label>
-                                <select
-                                    class="parent nice-select niceSelect bordered_style wide @error('parent') is-invalid @enderror"
-                                    name="parent" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                <select class="form-control @error('parent') is-invalid @enderror" name="parent"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_parent') }}</option>
                                 </select>
 
@@ -317,13 +284,14 @@
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
                                         class="fillable">*</span></label>
-                                <select
-                                    class="nice-select niceSelect bordered_style wide @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
-                                    <option {{ old('status') ? 'selected':'' }} value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}
+                                <select class="form-control @error('status') is-invalid @enderror" name="status"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    <option {{ old('status') ? 'selected' : '' }} value="{{ App\Enums\Status::ACTIVE }}">
+                                        {{ ___('common.active') }}
                                     </option>
-                                    <option {{ old('status') ? 'selected':'' }} value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
+                                    <option {{ old('status') ? 'selected' : '' }}
+                                        value="{{ App\Enums\Status::INACTIVE }}">
+                                        {{ ___('common.inactive') }}
                                     </option>
                                 </select>
 
@@ -335,17 +303,17 @@
 
                             </div>
                         </div>
-                        <div class="row mt-24">
+                        <div class="row py-3">
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
-                                    <h3 class="m-0 flex-fill fs-4">
+                                    <h4 class="m-0 flex-fill">
                                         {{ ___('student_info.Upload Documents') }}
-                                    </h3>
-                                    <button type="button" class="btn btn-lg ot-btn-primary radius_30px small_add_btn addNewDocument"
+                                    </h4>
+                                    <button type="button" class="btn btn-sm btn-primary addNewDocument"
                                         onclick="addNewDocument()">
                                         <span><i class="fa-solid fa-plus"></i> </span>
                                         {{ ___('common.add') }}</button>
-                                        <input type="hidden" name="counter" id="counter" value="0">
+                                    <input type="hidden" name="counter" id="counter" value="0">
                                 </div>
                             </div>
                         </div>
@@ -378,7 +346,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -387,15 +355,81 @@
                         <div class="row">
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
-                                    <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
+                                    <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                                         </span>{{ ___('common.submit') }}</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 @endsection
 
+@push('script')
+    <script>
+        function addNewDocument() {
+
+            var url = $('#url').val();
+            var counter = parseInt($('#counter').val()) + 1;
+
+            var formData = {
+                counter: counter,
+            }
+
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/student/add-new-document',
+                success: function(data) {
+                    $("#student-document tbody").append(data);
+                    $("#counter").val(counter);
+                    console.log(data);
+                },
+                error: function(data) {}
+            });
+        }
+
+        function removeRow(element) {
+            element.closest('tr').remove();
+        }
+    </script>
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+
+                    var section_options = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+@endpush

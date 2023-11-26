@@ -52,7 +52,7 @@ function findDirectionOfLang(){
 
 // for menu active
 if (!function_exists('set_menu')) {
-    function set_menu(array $path, $active = 'mm-active')
+    function set_menu(array $path, $active = 'show')
     {
         foreach ($path as $route) {
             if (Route::currentRouteName() == $route) {

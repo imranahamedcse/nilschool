@@ -51,7 +51,7 @@
                                     download>{{ ___('common.download') }}</a>
                             @endif
                         </td>
-                        @if ((hasPermission('income_update') || hasPermission('income_delete')) && $row->fees_collect_id == null)
+                        @if (hasPermission('income_update') || hasPermission('income_delete'))
                             <td>
                                 @if (hasPermission('income_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"

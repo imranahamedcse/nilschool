@@ -33,6 +33,11 @@ class DisabledStudentController extends Controller
     public function index()
     {
         $data['title']              = ___('student_info.disabled_list');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $students                   = [];
@@ -43,8 +48,12 @@ class DisabledStudentController extends Controller
 
     public function search(DisabledStudentRequest $request)
     {
-        
         $data['title']              = ___('student_info.disabled_list');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = $this->classSetupRepo->getSections($request->class);
         $students                   = $this->repo->search($request);

@@ -37,6 +37,10 @@ class StudentCategoryController extends Controller
     public function create()
     {
         $data['title']              = ___('student_info.category_create');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.student-info.student-category.create', compact('data'));
         
     }
@@ -53,7 +57,12 @@ class StudentCategoryController extends Controller
     public function edit($id)
     {
         $data['student_category']        = $this->repo->show($id);
+        
         $data['title']       = ___('student_info.category_edit');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.student-info.student-category.edit', compact('data'));
     }
 

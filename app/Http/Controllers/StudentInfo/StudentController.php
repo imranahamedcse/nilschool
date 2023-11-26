@@ -82,14 +82,29 @@ class StudentController extends Controller
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = $this->classSetupRepo->getSections($request->class);
         $data['request']  = $request;
-        $data['title']    = ___('student_info.student_list');
         $data['students'] = $this->repo->searchStudents($request);
+
+        $title             = ___('student_info.student_list');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'student_create',
+            "create-route" => 'student.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
         return view('backend.admin.student-info.student.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']     = ___('student_info.student_create');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']   = $this->classRepo->assignedAll();
         $data['sections']  = [];
         $data['shifts']    = $this->shiftRepo->all();
@@ -130,6 +145,12 @@ class StudentController extends Controller
     public function edit($id)
     {
         $data['title']     = ___('student_info.student_edit');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+
         $data['session_class_student'] = $this->repo->getSessionStudent($id);
         $data['student']   = $this->repo->show($data['session_class_student']->student_id);
         $data['classes']   = $this->classRepo->assignedAll();
