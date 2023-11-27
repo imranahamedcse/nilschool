@@ -37,8 +37,7 @@ class OnlineAdmissionController extends Controller
         ReligionRepository           $religionRepo,
         GenderRepository             $genderRepo,
         StudentCategoryRepository    $categoryRepo,
-        )
-    {
+    ) {
         $this->repo         = $repo;
         $this->classRepo    = $classRepo;
         $this->sectionRepo  = $sectionRepo;
@@ -54,8 +53,16 @@ class OnlineAdmissionController extends Controller
     {
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['title']    = ___('student_info.Online Admission');
         $data['students'] = $this->repo->all();
+
+        $data['title']    = ___('student_info.Online Admission');
+        $data['headers']   = [
+            "title"        => $data['title'],
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.student-info.online-admission.index', compact('data'));
     }
 
@@ -64,8 +71,16 @@ class OnlineAdmissionController extends Controller
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = $this->classSetupRepo->getSections($request->class);
         $data['request']  = $request;
-        $data['title']    = ___('student_info.Online Admission');
         $data['students'] = $this->repo->searchStudents($request);
+
+        $data['title']    = ___('student_info.Online Admission');
+        $data['headers']   = [
+            "title"        => $data['title'],
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.student-info.online-admission.index', compact('data'));
     }
 
@@ -83,12 +98,12 @@ class OnlineAdmissionController extends Controller
         $data['categories']   = $this->categoryRepo->all();
         return view('backend.admin.student-info.online-admission.edit', compact('data'));
     }
-    
+
     public function store(OnlineAdmissionRequest $request)
     {
         $result = $this->repo->store($request);
 
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('online-admissions.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -97,17 +112,17 @@ class OnlineAdmissionController extends Controller
     public function delete($id)
     {
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

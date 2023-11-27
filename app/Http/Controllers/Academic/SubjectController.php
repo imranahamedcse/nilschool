@@ -42,6 +42,11 @@ class SubjectController extends Controller
     public function create()
     {
         $data['title']       = ___('academic.create_subject');
+        
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.subject.create', compact('data'));
     }
 
@@ -58,6 +63,11 @@ class SubjectController extends Controller
     {
         $data['subject']        = $this->subject->show($id);
         $data['title']       = ___('academic.edit_subject');
+        
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.subject.edit', compact('data'));
     }
 

@@ -41,6 +41,10 @@ class SectionController extends Controller
     public function create()
     {
         $data['title']       = ___('academic.create_section');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.section.create', compact('data'));
     }
 
@@ -57,6 +61,10 @@ class SectionController extends Controller
     {
         $data['section']        = $this->section->show($id);
         $data['title']       = ___('academic.edit_section');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.section.edit', compact('data'));
     }
 

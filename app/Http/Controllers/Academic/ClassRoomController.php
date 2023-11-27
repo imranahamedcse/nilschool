@@ -37,6 +37,10 @@ class ClassRoomController extends Controller
     public function create()
     {
         $data['title']              = ___('academic.class_room');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.class-room.create', compact('data'));
     }
 
@@ -52,8 +56,12 @@ class ClassRoomController extends Controller
 
     public function edit($id)
     {
-        $data['class_room']        = $this->repo->show($id);
         $data['title']       = ___('academic.class_room');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        $data['class_room']        = $this->repo->show($id);
         return view('backend.admin.academic.class-room.edit', compact('data'));
     }
 

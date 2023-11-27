@@ -59,6 +59,11 @@ class ClassSetupController extends Controller
     public function create()
     {
         $data['title']              = ___('academic.class_setup');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']            = $this->classes->all();
         $data['section']            = $this->section->all();
         return view('backend.admin.academic.class_setup.create', compact('data'));
@@ -67,7 +72,6 @@ class ClassSetupController extends Controller
 
     public function store(ClassSetupStoreRequest $request)
     {
-        // dd($request->all());
         $result = $this->repo->store($request);
         if($result['status']){
             return redirect()->route('class-setup.index')->with('success', $result['message']);
@@ -77,8 +81,13 @@ class ClassSetupController extends Controller
 
     public function edit($id)
     {
-        $data['class_setup']        = $this->repo->show($id);
         $data['title']              = ___('academic.class_setup');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['class_setup']        = $this->repo->show($id);
         $data['classes']            = $this->classes->all();
         $data['section']            = $this->section->all();
 

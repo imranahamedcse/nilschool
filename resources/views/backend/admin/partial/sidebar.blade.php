@@ -23,7 +23,7 @@
                 hasPermission('disabled_students_read') ||
                 hasPermission('admission_read') ||
                 hasPermission('parent_read'))
-            <li class="{{ set_menu(['students*', 'student*', 'student/category*']) }}">
+            <li class="{{ set_menu(['online-admissions*', 'student*', 'student/category*','promote/students*','disabled/students*','parent*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-graduation-cap"></i>
@@ -34,7 +34,7 @@
                 <ul class="sub-menu">
                     @if (hasPermission('admission_read'))
                         <li class="{{ set_menu(['online-admissions*']) }}">
-                            <a href="{{ route('online-admissions.index') }}" class="parent-item-content"></a>
+                            <a href="{{ route('online-admissions.index') }}" class="parent-item-content">{{ ___('settings.Online admissions') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('student_read'))
@@ -79,7 +79,7 @@
                 hasPermission('subject_assign_read') ||
                 hasPermission('time_schedule_read') ||
                 hasPermission('class_room_read'))
-            <li class="{{ set_menu(['academic*']) }}">
+            <li class="{{ set_menu(['classes*','section*','shift*','class-setup*','subject*','assign-subject*','time/schedule*','class-room*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-house-flag"></i>

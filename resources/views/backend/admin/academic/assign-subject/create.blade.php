@@ -1,27 +1,17 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
 
 @section('title')
-{{ @$data['title'] }}
+    {{ @$data['headers']['title'] }}
 @endsection
+
+@push('style')
+    @include('backend.admin.components.table.css')
+@endpush
+
 @section('content')
-<div class="page-content">
+    @include('backend.admin.components.breadcrumb')
 
-    {{-- bradecrumb Area S t a r t --}}
-    <div class="page-header">
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="bradecrumb-title mb-1">{{ $data['title'] }}</h1>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a href="{{ route('assign-subject.index') }}">{{ $data['title'] }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ ___('common.add_new') }}</li>
-                    </ol>
-            </div>
-        </div>
-    </div>
-    {{-- bradecrumb Area E n d --}}
-
-    <div class="card ot-card">
+    <div class="card">
         <div class="card-body">
             <form action="{{ route('assign-subject.store') }}" enctype="multipart/form-data" method="post" id="subjectAssign">
                 @csrf
@@ -30,53 +20,60 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span class="fillable">*</span></label>
-                                <select id="getSections" class="nice-select select-class niceSelect bordered_style wide @error('class') is-invalid @enderror" name="class" aria-describedby="validationServer04Feedback">
-                                    <option value="">{{  ___('student_info.select_class') }}</option>
+                                <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
+                                        class="fillable">*</span></label>
+                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
+                                    name="class" aria-describedby="validationServer04Feedback">
+                                    <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
-                                    <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
+                                        <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
                                     @endforeach
                                 </select>
 
                                 @error('class')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div id="show_sections">
-                                    <label for="validationServer04" class="form-label">{{ ___('academic.section') }} <span class="fillable">*</span></label>
-                                    <select onchange="return changeSection(this)" class="nice-select niceSelect bordered_style sections wide @error('section') is-invalid @enderror" name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
-                                        <option value="">{{  ___('student_info.select_section') }}</option>
+                                    <label for="validationServer04" class="form-label">{{ ___('academic.section') }} <span
+                                            class="fillable">*</span></label>
+                                    <select class="form-control sections @error('section') is-invalid @enderror"
+                                        name="section" id="validationServer04"
+                                        aria-describedby="validationServer04Feedback">
+                                        <option value="">{{ ___('student_info.select_section') }}</option>
                                     </select>
                                     @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span class="fillable">*</span></label>
-                                <select class="nice-select niceSelect bordered_style wide @error('status') is-invalid @enderror" name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                        class="fillable">*</span></label>
+                                <select class="form-control @error('status') is-invalid @enderror" name="status"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
                                     </option>
                                 </select>
 
                                 @error('status')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                             <div class="col-md-12 mt-3">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
-                                    <h5 class="m-0 flex-fill">
+                                    <h4 class="m-0 flex-fill">
                                         {{ ___('common.add') }} {{ ___('academic.Subject & Teacher') }}
-                                    </h5>
-                                    <button type="button" class="btn btn-lg ot-btn-primary radius_30px small_add_btn" onclick="addSubjectTeacher()">
+                                    </h4>
+                                    <button type="button" class="btn btn-primary" onclick="addSubjectTeacher()">
                                         <span><i class="fa-solid fa-plus"></i> </span>
                                         {{ ___('common.add') }}</button>
                                     <input type="hidden" name="counter" id="counter" value="1">
@@ -85,24 +82,26 @@
                             <div class="col-12">
                                 <div class="table-responsive">
                                     <div>
-                                        <table class="table school_borderLess_table table_border_hide2" id="subject-teacher">
+                                        <table class="table school_borderLess_table table_border_hide2"
+                                            id="subject-teacher">
                                             <thead>
                                                 <tr>
-                                                    <td scope="col">{{ ___('academic.subject') }} <span class="text-danger"></span>
+                                                    <td scope="col">{{ ___('academic.subject') }} <span
+                                                            class="text-danger"></span>
                                                         @if ($errors->any())
-                                                        @if ($errors->has('subjects.*'))
-                                                        <span class="text-danger">{{ 'The fields are required' }}
+                                                            @if ($errors->has('subjects.*'))
+                                                                <span class="text-danger">{{ 'The fields are required' }}
                                                             @endif
-                                                            @endif
+                                                        @endif
                                                     </td>
                                                     <td scope="col">
                                                         {{ ___('academic.teacher') }}
                                                         <span class="text-danger"></span>
                                                         @if ($errors->any())
-                                                        @if ($errors->has('teachers.*'))
-                                                        <span class="text-danger">{{ 'The fields are required' }}
+                                                            @if ($errors->has('teachers.*'))
+                                                                <span class="text-danger">{{ 'The fields are required' }}
                                                             @endif
-                                                            @endif
+                                                        @endif
                                                     </td>
                                                     <td scope="col">
 
@@ -110,7 +109,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -120,12 +119,79 @@
                         </div>
                         <div class="col-md-12 mt-24">
                             <div class="text-end">
-                                <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i> </span>{{ ___('common.submit') }}</button>
+                                <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
+                                    </span>{{ ___('common.submit') }}</button>
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
     </div>
-</div>
 @endsection
+
+@push('script')
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+
+                    var section_options = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+    <script>
+        function addSubjectTeacher() {
+            var url = $('#url').val();
+            var counter = parseInt($('#counter').val()) + 1;
+
+            var formData = {
+                counter: counter,
+            }
+
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/assign-subject/add-subject-teacher',
+                success: function(data) {
+                    $("#subject-teacher tbody").append(data);
+                    $("#counter").val(counter);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function removeRow(element) {
+            element.closest('tr').remove();
+        }
+    </script>
+@endpush

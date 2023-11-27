@@ -1,110 +1,97 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
+
 @section('title')
-    {{ @$data['title'] }}
+    {{ @$data['headers']['title'] }}
 @endsection
+
+@push('style')
+    @include('backend.admin.components.table.css')
+@endpush
+
 @section('content')
-    <div class="page-content">
+    @include('backend.admin.components.breadcrumb')
 
-        {{-- bradecrumb Area S t a r t --}}
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="bradecrumb-title mb-1">{{ $data['title'] }}</h1>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-                        <li class="breadcrumb-item">{{ $data['title'] }}</li>
-                    </ol>
-                </div>
+    <div class="p-4 rounded-3 bg-white">
+        <div class="row justify-content-between border-bottom pb-4 mb-4">
+            <div class="col align-self-center">
+                <h4 class="m-0">{{ @$data['headers']['title'] }}</h4>
             </div>
-        </div>
-        {{-- bradecrumb Area E n d --}}
+            <div class="col">
+                <form action="{{ route('online-admissions.search') }}" method="post" id="marksheed"
+                    enctype="multipart/form-data">
+                    @csrf
 
-
-        <div class="col-12">
-            <form action="{{ route('online-admissions.search') }}" method="post" id="marksheed" enctype="multipart/form-data">
-                @csrf
-                <div class="card ot-card mb-24 position-relative z_1">
-                    <div class="card-header d-flex align-items-center gap-4 flex-wrap">
-                        <h3 class="mb-0">{{ ___('common.Filtering') }}</h3>
-                        
-                        <div
-                            class="card_header_right d-flex align-items-center gap-3 flex-fill justify-content-end flex-wrap">
-                            <!-- table_searchBox -->
-                            <div class="single_large_selectBox">
-                                <select id="getSections" class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
-                                    name="class">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
-                                    @foreach ($data['classes'] as $item)
-                                        <option {{ old('class', @$data['request']->class) == $item->class->id ? 'selected' : '' }}
-                                            value="{{ $item->class->id }}">{{ $item->class->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="single_large_selectBox">
-                                <select class="sections section nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
-                                    name="section">
-                                    <option value="">{{ ___('student_info.select_section') }}</option>
-                                    @foreach ($data['sections'] as $item)
-                                        <option {{ old('section', @$data['request']->section) == $item->section->id ? 'selected' : '' }}
-                                            value="{{ $item->section->id }}">{{ $item->section->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="single_large_selectBox">
-                                <input class="form-control ot-input"
-                                    name="keyword" list="datalistOptions" id="exampleDataList"
-                                    placeholder="{{ ___('student_info.Enter keyword') }}"
-                                    value="{{ old('keyword', @$data['request']->keyword) }}">
-                            </div>
-
-                            <button class="btn btn-lg ot-btn-primary" type="submit">
-                                {{___('common.Search')}}
+                    <div class="row">
+                        <div class="col">
+                            <select id="getSections" class="form-control @error('class') is-invalid @enderror"
+                                name="class">
+                                <option value="">{{ ___('student_info.select_class') }}</option>
+                                @foreach ($data['classes'] as $item)
+                                    <option
+                                        {{ old('class', @$data['request']->class) == $item->class->id ? 'selected' : '' }}
+                                        value="{{ $item->class->id }}">{{ $item->class->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('class')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col">
+                            <select class="sections form-control @error('section') is-invalid @enderror" name="section">
+                                <option value="">{{ ___('student_info.select_section') }}</option>
+                                @foreach ($data['sections'] as $item)
+                                    <option
+                                        {{ old('section', @$data['request']->section) == $item->section->id ? 'selected' : '' }}
+                                        value="{{ $item->section->id }}">{{ $item->section->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('section')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">
+                                {{ ___('common.Search') }}
                             </button>
                         </div>
                     </div>
-                </div>
-            </form>
+
+                </form>
+            </div>
+            <div class="col text-end">
+            </div>
         </div>
 
 
-        <!--  table content start -->
-        <div class="table-content table-basic mt-20">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">{{ $data['title'] }}</h4>
-                </div>
-                @if (@$data['students'])
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered role-table">
-                            <thead class="thead">
-                                <tr>
-                                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                                    <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                                    <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                                    <th class="purchase">{{ ___('student_info.Date Of Birth') }}</th>
-                                    <th class="purchase">{{ ___('student_info.mobile') }}</th>
-                                    <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
-                                    <th class="purchase">{{ ___('student_info.guardian_mobile') }}</th>
-                                    @if (hasPermission('student_update') || hasPermission('student_delete'))
-                                        <th class="action">{{ ___('common.action') }}</th>
-                                    @endif
-                                </tr>
-                            </thead>
-                            <tbody class="tbody">
-                                @forelse ($data['students'] as $key => $row)
+
+
+
+
+
+        @if (@$data['students'])
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatable" class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th class="serial">{{ ___('common.sr_no') }}</th>
+                                <th class="purchase">{{ ___('student_info.Student Name') }}</th>
+                                <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
+                                <th class="purchase">{{ ___('student_info.Date Of Birth') }}</th>
+                                <th class="purchase">{{ ___('student_info.mobile') }}</th>
+                                <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
+                                <th class="purchase">{{ ___('student_info.guardian_mobile') }}</th>
+                                @if (hasPermission('student_update') || hasPermission('student_delete'))
+                                    <th class="action">{{ ___('common.action') }}</th>
+                                @endif
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            @forelse ($data['students'] as $key => $row)
                                 <tr id="row_{{ $row->id }}">
                                     <td class="serial">{{ ++$key }}</td>
                                     <td>{{ @$row->first_name }} {{ @$row->last_name }}</td>
@@ -145,48 +132,79 @@
                                         </td>
                                     @endif
                                 </tr>
-                                @empty
+                            @empty
                                 <tr>
                                     <td colspan="100%" class="text-center gray-color">
-                                        <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary" width="100">
+                                        <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary"
+                                            width="100">
                                         <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
                                         <p class="mb-0 text-center text-secondary font-size-90">
                                             {{ ___('common.Please add new entity regarding this table') }}</p>
                                     </td>
                                 </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                    <!--  table end -->
-                    <!--  pagination start -->
-
-                        <div class="ot-pagination pagination-content d-flex justify-content-end align-content-center py-3">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-between">
-                                    {!!$data['students']->appends(\Request::capture()->except('page'))->links() !!}
-                                </ul>
-                            </nav>
-                        </div>
-
-                    <!--  pagination end -->
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
-                @else
-                <div class="text-center gray-color p-5">
-                    <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary" width="100">
-                    <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
-                    <p class="mb-0 text-center text-secondary font-size-90">
-                        {{ ___('common.Please add new entity regarding this table') }}</p>
-                </div>
-                @endif
+                <!--  table end -->
+                <!--  pagination start -->
 
+                <div class="ot-pagination pagination-content d-flex justify-content-end align-content-center py-3">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-between">
+                            {!! $data['students']->appends(\Request::capture()->except('page'))->links() !!}
+                        </ul>
+                    </nav>
+                </div>
+
+                <!--  pagination end -->
             </div>
-        </div>
-        <!--  table content end -->
+        @else
+            <div class="text-center gray-color p-5">
+                <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary" width="100">
+                <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
+                <p class="mb-0 text-center text-secondary font-size-90">
+                    {{ ___('common.Please add new entity regarding this table') }}</p>
+            </div>
+        @endif
 
     </div>
 @endsection
 
 @push('script')
-    @include('backend.partials.delete-ajax')
+    @include('backend.admin.components.table.js')
+    @include('backend.admin.components.table.delete-ajax')
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+
+                    var section_options = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
 @endpush

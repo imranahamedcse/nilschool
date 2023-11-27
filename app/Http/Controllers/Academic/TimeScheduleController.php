@@ -43,6 +43,11 @@ class TimeScheduleController extends Controller
     public function create()
     {
         $data['title']       = ___('academic.create_time_schedule');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
         return view('backend.admin.academic.time-schedule.create', compact('data'));
     }
 
@@ -57,8 +62,13 @@ class TimeScheduleController extends Controller
 
     public function edit($id)
     {
-        $data['time_schedule']        = $this->timeRepo->show($id);
         $data['title']        = ___('academic.edit_time_schedule');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['time_schedule']        = $this->timeRepo->show($id);
         return view('backend.admin.academic.time-schedule.edit', compact('data'));
     }
 

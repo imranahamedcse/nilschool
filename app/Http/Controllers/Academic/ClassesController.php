@@ -41,6 +41,10 @@ class ClassesController extends Controller
     public function create()
     {
         $data['title']       = ___('academic.create_class');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.class.create', compact('data'));
     }
 
@@ -57,6 +61,10 @@ class ClassesController extends Controller
     {
         $data['class']       = $this->classes->show($id);
         $data['title']       = ___('academic.edit_class');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.class.edit', compact('data'));
     }
 

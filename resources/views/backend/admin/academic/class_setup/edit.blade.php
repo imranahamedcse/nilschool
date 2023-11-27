@@ -1,28 +1,17 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['title'] }}
+    {{ @$data['headers']['title'] }}
 @endsection
+
+@push('style')
+    @include('backend.admin.components.table.css')
+@endpush
+
 @section('content')
-    <div class="page-content">
+    @include('backend.admin.components.breadcrumb')
 
-        {{-- bradecrumb Area S t a r t --}}
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="bradecrumb-title mb-1">{{ $data['title'] }}</h1>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a
-                                    href="{{ route('class-setup.index') }}">{{ $data['title'] }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ ___('common.update') }}</li>
-                        </ol>
-                </div>
-            </div>
-        </div>
-        {{-- bradecrumb Area E n d --}}
-
-        <div class="card ot-card">
+        <div class="card">
             <div class="card-body">
                 <form action="{{ route('class-setup.update', @$data['class_setup']->id) }}" enctype="multipart/form-data"
                     method="post" id="visitForm">
@@ -35,7 +24,7 @@
                                     <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
                                             class="fillable">*</span></label>
                                     <select
-                                        class="nice-select niceSelect bordered_style wide @error('classes') is-invalid @enderror"
+                                        class="form-control @error('classes') is-invalid @enderror"
                                         name="classes" id="validationServer04"
                                         aria-describedby="validationServer04Feedback">
                                         <option value="">{{ ___('common.select class') }}</option>
@@ -56,9 +45,9 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">{{ ___('academic.section') }} <span
                                             class="fillable">*</span></label>
-                                    <div class="input-check-radio academic-section @error('sections') is-invalid @enderror">
+                                    <div class="@error('sections') is-invalid @enderror">
                                         @foreach ($data['section'] as $item)
-                                            <div class="form-check">
+                                            <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" name="sections[]"
                                                     value="{{ $item->id }}" id="flexCheckDefault" {{ in_array($item->id, $data['class_setup_sections']) ? 'checked':'' }}/>
                                                 <label class="form-check-label ps-2 pe-5"
@@ -76,7 +65,7 @@
                                     <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
                                             class="fillable">*</span></label>
                                     <select
-                                        class="nice-select niceSelect bordered_style wide @error('status') is-invalid @enderror"
+                                        class="form-control @error('status') is-invalid @enderror"
                                         name="status" id="validationServer04"
                                         aria-describedby="validationServer04Feedback">
                                         <option value="{{ App\Enums\Status::ACTIVE }}"
@@ -97,7 +86,7 @@
                             </div>
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
-                                    <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
+                                    <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                                         </span>{{ ___('common.submit') }}</button>
                                 </div>
                             </div>

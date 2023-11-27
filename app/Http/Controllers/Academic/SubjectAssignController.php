@@ -39,81 +39,90 @@ class SubjectAssignController extends Controller
         SubjectInterface       $subjectRepo,
         UserInterface          $staffRepo,
         ClassSetupRepository   $classSetupRepo,
-        )
-    {
-        $this->repo              = $repo; 
-        $this->sessionRepo       = $sessionRepo; 
-        $this->classesRepo       = $classesRepo; 
-        $this->sectionRepo       = $sectionRepo; 
-        $this->shiftRepo         = $shiftRepo; 
-        $this->subjectRepo       = $subjectRepo; 
-        $this->staffRepo         = $staffRepo; 
-        $this->classSetupRepo    = $classSetupRepo; 
+    ) {
+        $this->repo              = $repo;
+        $this->sessionRepo       = $sessionRepo;
+        $this->classesRepo       = $classesRepo;
+        $this->sectionRepo       = $sectionRepo;
+        $this->shiftRepo         = $shiftRepo;
+        $this->subjectRepo       = $subjectRepo;
+        $this->staffRepo         = $staffRepo;
+        $this->classSetupRepo    = $classSetupRepo;
     }
-    
+
     public function index()
     {
         $data['subject_assigns']    = $this->repo->getPaginateAll();
-        
-        
+
+
         $title             = ___('academic.subject_assign');
-$data['headers']   = [
-    "title"        => $title,
-    "permission"   => 'subject_assign',
-    "create-route" => 'subject-assign.create',
-];
-$data['breadcrumbs']  = [
-    ["title" => ___("common.home"), "route" => "dashboard"],
-    ["title" => $title, "route" => ""]
-];
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'subject_assign_create',
+            "create-route" => 'assign-subject.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
         return view('backend.admin.academic.assign-subject.index', compact('data'));
-        
     }
 
     public function create()
     {
         $data['title']              = ___('academic.subject_assign');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']            = $this->classesRepo->assignedAll();
         $data['sections']           = [];
         $data['shifts']             = $this->shiftRepo->all();
         // $data['subjects']           = $this->subjectRepo->all();
         return view('backend.admin.academic.assign-subject.create', compact('data'));
-        
     }
-    
+
     public function addSubjectTeacher(Request $request)
     {
         $counter          = $request->counter;
         $data['subjects'] = $this->subjectRepo->all();
         $data['teachers'] = $this->staffRepo->all();
-        return view('backend.admin.academic.assign-subject.add-subject-teacher', compact('counter','data'))->render();
+        return view('backend.admin.academic.assign-subject.add-subject-teacher', compact('counter', 'data'))->render();
     }
 
     public function store(SubjectAssignStoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('assign-subject.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
 
-    public function show(Request $request){
+    public function show(Request $request)
+    {
 
         $data['subject_assign_children'] = SubjectAssignChildren::where('subject_assign_id', $request->id)->get();
 
         return view('backend.admin.academic.assign-subject.view', compact('data'))->render();
     }
 
-    public function getSubjects(Request $request){
+    public function getSubjects(Request $request)
+    {
         $result = $this->repo->getSubjects($request);
         return response()->json($result, 200);
     }
 
     public function edit($id)
     {
+        
         $data                       = $this->repo->show($id);
         $data['title']              = ___('academic.subject_assign');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['subject_assign']     = $data['row'];
         $data['assignSubjects']     = $data['assignSubjects'];
         $data['disabled']           = $data['disabled'];
@@ -124,10 +133,10 @@ $data['breadcrumbs']  = [
         $data['subjects']           = $this->subjectRepo->all();
         $data['teachers']           = $this->staffRepo->all();
         $data['all_subject_assign'] = $data['subject_assign']->subjectTeacher->pluck('subject_id')->toArray();
-        
+
         // dd($data['redirect']);
-        if($data['redirect'])
-            return redirect()->route('assign-subject.index')->with('danger', ___('academic.You cannot edit this'));
+        // if ($data['redirect'])
+        //     return redirect()->route('assign-subject.index')->with('danger', ___('academic.You cannot edit this'));
 
         return view('backend.admin.academic.assign-subject.edit', compact('data'));
     }
@@ -136,7 +145,7 @@ $data['breadcrumbs']  = [
     {
         // dd($request->all());
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('assign-subject.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -144,20 +153,20 @@ $data['breadcrumbs']  = [
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 
     public function checkSection(Request $request)
@@ -171,5 +180,4 @@ $data['breadcrumbs']  = [
         $result = $this->repo->checkExamAssign($id);
         return response()->json($result, 200);
     }
-
 }

@@ -42,6 +42,11 @@ class ShiftController extends Controller
     public function create()
     {
         $data['title']       = ___('academic.create_shift');
+        
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.shift.create', compact('data'));
     }
 
@@ -58,6 +63,11 @@ class ShiftController extends Controller
     {
         $data['shift']        = $this->shift->show($id);
         $data['title']        = ___('academic.edit_shift');
+        
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.academic.shift.edit', compact('data'));
     }
 
