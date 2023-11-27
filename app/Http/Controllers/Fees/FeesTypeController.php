@@ -24,7 +24,7 @@ class FeesTypeController extends Controller
         $title             = ___('fees.fees_type');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'fees_type',
+            "permission"   => 'fees_type_create',
             "create-route" => 'fees-type.create',
         ];
         $data['breadcrumbs']  = [
@@ -38,6 +38,10 @@ class FeesTypeController extends Controller
     public function create()
     {
         $data['title']              = ___('fees.fees_type');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.fees.type.create', compact('data'));
         
     }
@@ -55,6 +59,10 @@ class FeesTypeController extends Controller
     {
         $data['fees_type']        = $this->repo->show($id);
         $data['title']       = ___('fees.fees_type');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.fees.type.edit', compact('data'));
     }
 

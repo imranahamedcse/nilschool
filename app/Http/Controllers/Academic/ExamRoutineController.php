@@ -70,7 +70,7 @@ class ExamRoutineController extends Controller
         $title             = ___('academic.exam_routine');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'exam_routine',
+            "permission"   => 'exam_routine_create',
             "create-route" => 'exam-routine.create',
         ];
         $data['breadcrumbs']  = [
@@ -83,6 +83,11 @@ class ExamRoutineController extends Controller
     public function create()
     {
         $data['title']              = ___('academic.exam_routine');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']            = $this->classesRepo->assignedAll();
         $data['sections']           = $this->sectionRepo->all();
         // dd($data['types']);
@@ -115,6 +120,11 @@ class ExamRoutineController extends Controller
     public function edit($id)
     {
         $data['title']              = ___('academic.exam_routine');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['exam_routine']      = $this->repo->show($id);
 
         $data['classes']            = $this->classesRepo->assignedAll();

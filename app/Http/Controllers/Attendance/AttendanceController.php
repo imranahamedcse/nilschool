@@ -35,6 +35,10 @@ class AttendanceController extends Controller
         $data['title']              = ___('attendance.Attendance');
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
 
         return view('backend.admin.attendance.index', compact('data'));
     }
@@ -52,6 +56,10 @@ class AttendanceController extends Controller
     {
         $data = $this->repo->searchStudents($request);
         $data['title']    = ___('attendance.Attendance');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['request']  = $request;
         $data['students'] = $data['students'];
         $data['status']   = $data['status'];
@@ -66,6 +74,10 @@ class AttendanceController extends Controller
     public function report()
     {
         $data['title']              = ___('attendance.Attendance');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['students']           = [];
@@ -78,6 +90,10 @@ class AttendanceController extends Controller
     public function reportSearch(AttendanceRequest $request)
     {
         $data['title']        = ___('attendance.Attendance');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);

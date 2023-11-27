@@ -1,6 +1,6 @@
 <tr id="document-file">
     <td>
-        <select class="nice-select niceSelect bordered_style wide"
+        <select class="form-control"
             name="subjects[]" id="subject{{$counter}}" required>
             <option value="">{{ ___('academic.Select subject') }}</option>
             @foreach ($data['subjects'] as $item)
@@ -9,7 +9,7 @@
         </select> 
     </td>
     <td>
-        <select class="nice-select niceSelect bordered_style wide"
+        <select class="form-control"
             name="time_schedules[]" id="teacher{{$counter}}" required>
             <option value="">{{ ___('academic.Select time schedule') }}</option>
             @foreach ($data['time_schedules'] as $item)
@@ -18,7 +18,7 @@
         </select> 
     </td>
     <td>
-        <select class="nice-select niceSelect bordered_style wide"
+        <select class="form-control"
             name="class_rooms[]" id="class_room{{$counter}}" required>
             <option value="">{{ ___('academic.Select class room') }}</option>
             @foreach ($data['class_rooms'] as $item)
@@ -27,7 +27,7 @@
         </select> 
     </td>
     <td>
-        <button class="drax_close_icon mark_distribution_close" onclick="removeRow(this)">
+        <button class="btn btn-danger" onclick="removeRow(this)">
             <i class="fa-solid fa-xmark"></i>
         </button>
     </td>

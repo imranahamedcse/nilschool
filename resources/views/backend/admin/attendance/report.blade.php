@@ -471,19 +471,7 @@
 
 @section('content')
     <div class="page-content">
-        {{-- bradecrumb Area S t a r t --}}
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="bradecrumb-title mb-1">{{ $data['title'] }}</h1>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-                            <li class="breadcrumb-item">{{ $data['title'] }}</li>
-                        </ol>
-                </div>
-            </div>
-        </div>
-        {{-- bradecrumb Area E n d --}}
+        @include('backend.admin.components.breadcrumb')
 
         <div class="row">
             <div class="col-12">
@@ -491,14 +479,13 @@
                     <form action="{{ route('attendance.report-search') }}" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="card-header d-flex align-items-center gap-4 flex-wrap">
-                            <h3 class="mb-0">{{ ___('common.Filtering') }}</h3>
-
+                            <h4 class="mb-0">{{ ___('common.Filtering') }}</h4>
                             <div
                                 class="card_header_right d-flex align-items-center gap-3 flex-fill justify-content-end flex-wrap">
                                 <!-- table_searchBox -->
 
                                 <div class="single_large_selectBox">
-                                    <select class="class nice-select niceSelect bordered_style wide" name="view">
+                                    <select class="form-control" name="view">
                                         <option {{ old('view', @$data['request']->view) == '0' ? 'selected' : '' }}
                                             value="0">{{ ___('report.Short view') }}</option>
                                         <option {{ old('view', @$data['request']->view) == '1' ? 'selected' : '' }}
@@ -507,7 +494,7 @@
                                 </div>
                                 <div class="single_large_selectBox">
                                     <select id="getSections"
-                                        class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                        class="form-control @error('class') is-invalid @enderror"
                                         name="class">
                                         <option value="">{{ ___('student_info.select_class') }} *</option>
                                         @foreach ($data['classes'] as $item)
@@ -524,7 +511,7 @@
                                 </div>
                                 <div class="single_large_selectBox">
                                     <select
-                                        class="sections section nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
+                                        class="sections form-control @error('section') is-invalid @enderror"
                                         name="section">
                                         <option value="">{{ ___('student_info.select_section') }} *</option>
                                         @foreach ($data['sections'] as $item)
@@ -541,7 +528,7 @@
                                 </div>
                                 <div class="single_large_selectBox">
                                     <input value="{{ old('month', @$data['request']->month) }}" name="month"
-                                        class="form-control ot-input @error('month') is-invalid @enderror" type="month"
+                                        class="form-control @error('month') is-invalid @enderror" type="month"
                                         placeholder="Search month" min="2023-01" max="2023-12">
 
                                     @error('month')
@@ -573,12 +560,10 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <button class="btn btn-lg ot-btn-primary">
+                                <button class="btn btn-primary">
                                     {{ ___('common.Search') }}
                                 </button>
                             </div>
-
-
                         </div>
                     </form>
                 </div>
@@ -768,3 +753,40 @@
         @endif
     </div>
 @endsection
+
+
+@push('script')
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+
+                    var section_options = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+@endpush
