@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <input type="hidden" name="url" id="url" value="{{ url('') }}">
+    
+    <!-- Delete alert confarmation text-->
+    <input type="hidden" id="alert_title" value="{{ ___('common.Are you sure?') }}">
+    <input type="hidden" id="alert_subtitle" value="{{ ___('common.You wont be able to revert this!') }}">
+    <input type="hidden" id="alert_yes_btn" value="{{ ___('common.Yes') }}">
+    <input type="hidden" id="alert_cancel_btn" value="{{ ___('common.No') }}">
+
 
     <title>
         @yield('maintitle')

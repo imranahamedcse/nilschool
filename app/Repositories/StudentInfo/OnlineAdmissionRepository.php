@@ -140,7 +140,7 @@ class OnlineAdmissionRepository implements OnlineAdmissionInterface
             $row->delete();
 
             DB::commit();
-            return $this->responseWithSuccess(___('alert.created_successfully'), []);
+            return $this->responseWithSuccess(___('alert.Approved successfully'), []);
         } catch (\Throwable $th) {
             DB::rollback();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);

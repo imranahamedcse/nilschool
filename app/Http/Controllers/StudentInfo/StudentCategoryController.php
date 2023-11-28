@@ -19,7 +19,7 @@ class StudentCategoryController extends Controller
     
     public function index()
     {
-        $title             = ___('student_info.category_list');
+        $title             = ___('student_info.Categories');
         $data['headers']   = [
             "title"        => $title,
             "permission"   => 'student_category_create',
@@ -27,6 +27,7 @@ class StudentCategoryController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         $data['student_categories'] = $this->repo->getPaginateAll();
@@ -36,13 +37,14 @@ class StudentCategoryController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('student_info.category_create');
+        $data['title']        = ___('student_info.Add category');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
+            ["title" => ___('student_info.Categories'), "route" => "student_category.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.student-info.student-category.create', compact('data'));
-        
     }
 
     public function store(StudentCategoryStoreRequest $request)
@@ -58,9 +60,11 @@ class StudentCategoryController extends Controller
     {
         $data['student_category']        = $this->repo->show($id);
         
-        $data['title']       = ___('student_info.category_edit');
+        $data['title']       = ___('student_info.Edit category');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
+            ["title" => ___('student_info.Categories'), "route" => "student_category.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.student-info.student-category.edit', compact('data'));

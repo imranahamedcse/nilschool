@@ -1,7 +1,7 @@
 @extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['headers']['title'] }}
+    {{ @$data['title'] }}
 @endsection
 
 @push('style')
@@ -13,7 +13,11 @@
 
     <div class="card bg-white">
         <div class="card-body">
-            <h4>{{ ___('student_info.promote_student') }}</h4>
+            <div class="border-bottom pb-3 mb-4">
+                <h4 class="m-0">{{ @$data['title'] }}</h4>
+            </div>
+
+            <h4>{{ ___('student_info.From') }},</h4>
 
             <form action="{{ route('promote_students.search') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
@@ -51,9 +55,9 @@
                         @enderror
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <h4>{{ ___('student_info.Promote Students In Next Session') }}</h4>
-                </div>
+
+                <h4>{{ ___('student_info.To') }},</h4>
+                
                 <div class="row mb-3">
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.Promote session') }} <span
@@ -138,6 +142,7 @@
                     <input type="hidden" name="promote_session" value="{{ $request->promote_session }}">
                     <input type="hidden" name="promote_class" value="{{ $request->promote_class }}">
                     <input type="hidden" name="promote_section" value="{{ $request->promote_section }}">
+                    
                     <table id="datatable" class="table">
                         <thead class="thead">
                             <tr>

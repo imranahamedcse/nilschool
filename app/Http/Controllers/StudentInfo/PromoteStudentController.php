@@ -38,9 +38,10 @@ class PromoteStudentController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('student_info.promote_list');
+        $data['title']              = ___('student_info.Promote');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -49,7 +50,7 @@ class PromoteStudentController extends Controller
         $data['sections']           = [];
         $data['sessions']           = $this->sessionRepo->all();
         $data['promoteClasses']     = [];
-        $data['promoteSections']     = [];
+        $data['promoteSections']    = [];
         $students                   = [];
         $request                    = [];
         $results                    = [''];
@@ -59,9 +60,10 @@ class PromoteStudentController extends Controller
 
     public function search(PromoteStudentSearchRequest $request)
     {
-        $data['title']              = ___('student_info.promote_list');
+        $data['title']              = ___('student_info.Promote');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -85,7 +87,7 @@ class PromoteStudentController extends Controller
     {
         $result = $this->repo->store($request);
         if($result['status']){
-            $data['title']              = ___('student_info.promote_list');
+            $data['title']              = ___('student_info.Promote');
             $data['student_categories'] = $this->repo->getPaginateAll();
             $data['classes']            = $this->classRepo->assignedAll();
             $data['sections']           = $this->classSetupRepo->getSections($request->class);

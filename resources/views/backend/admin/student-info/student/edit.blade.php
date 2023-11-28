@@ -1,7 +1,7 @@
 @extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['headers']['title'] }}
+    {{ @$data['title'] }}
 @endsection
 
 @push('style')
@@ -14,7 +14,9 @@
 
     <div class="card bg-white">
         <div class="card-body">
-            {{-- @dd($data) --}}
+            <div class="border-bottom pb-4 mb-4">
+                <h4 class="m-0">{{ @$data['title'] }}</h4>
+            </div>
             <form action="{{ route('student.update') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
                 @method('PUT')

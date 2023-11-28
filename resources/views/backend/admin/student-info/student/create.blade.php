@@ -1,7 +1,7 @@
 @extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['headers']['title'] }}
+    {{ @$data['title'] }}
 @endsection
 
 @push('style')
@@ -13,6 +13,9 @@
 
     <div class="card bg-white">
         <div class="card-body">
+            <div class="border-bottom pb-4 mb-4">
+                <h4 class="m-0">{{ @$data['title'] }}</h4>
+            </div>
             <form action="{{ route('student.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
                 <div class="row mb-3">
@@ -116,8 +119,8 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
-                                        class="fillable">*</span></label>
+                                <label for="validationServer04" class="form-label">{{ ___('student_info.section') }}
+                                    <span class="fillable">*</span></label>
                                 <select class="sections form-control @error('section') is-invalid @enderror"
                                     name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_section') }}</option>

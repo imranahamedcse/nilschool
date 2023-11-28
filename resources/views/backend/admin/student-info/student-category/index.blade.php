@@ -38,21 +38,22 @@
                                 <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
                             @endif
                         </td>
-                        <td>
-
-                            @if (hasPermission('student_category_update'))
-                                <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.edit') }}"
-                                    href="{{ route('student_category.edit', $row->id) }}"><i
-                                        class="fa-solid fa-pencil"></i></a>
-                            @endif
-                            @if (hasPermission('student_category_delete') && $row->code != 'en')
-                                <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                    onclick="delete_row('student/category/delete', {{ $row->id }})"><i
-                                        class="fa-solid fa-trash-can"></i></a>
-                            @endif
-                        </td>
+                        @if (hasPermission('student_category_update') || hasPermission('student_category_delete'))
+                            <td>
+                                @if (hasPermission('student_category_update'))
+                                    <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="{{ ___('common.edit') }}"
+                                        href="{{ route('student_category.edit', $row->id) }}"><i
+                                            class="fa-solid fa-pencil"></i></a>
+                                @endif
+                                @if (hasPermission('student_category_delete') && $row->code != 'en')
+                                    <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        onclick="delete_row('student/category/delete', {{ $row->id }})"><i
+                                            class="fa-solid fa-trash-can"></i></a>
+                                @endif
+                            </td>
+                        @endif
                     </tr>
                 @empty
                     @include('backend.admin.components.table.empty')

@@ -56,11 +56,9 @@ class OnlineAdmissionController extends Controller
         $data['students'] = $this->repo->all();
 
         $data['title']    = ___('student_info.Online Admission');
-        $data['headers']   = [
-            "title"        => $data['title'],
-        ];
         $data['breadcrumbs']  = [
-            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Dashboard"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.student-info.online-admission.index', compact('data'));
@@ -74,11 +72,9 @@ class OnlineAdmissionController extends Controller
         $data['students'] = $this->repo->searchStudents($request);
 
         $data['title']    = ___('student_info.Online Admission');
-        $data['headers']   = [
-            "title"        => $data['title'],
-        ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.student-info.online-admission.index', compact('data'));
@@ -86,7 +82,13 @@ class OnlineAdmissionController extends Controller
 
     public function edit($id)
     {
-        $data['title']        = ___('student_info.Update Online Admission');
+        $data['title']        = ___('student_info.Admission approval');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
+            ["title" => ___("common.Online Admission"), "route" => "online-admissions.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['student']      = $this->repo->show($id);
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($data['student']->class->id);

@@ -11,6 +11,7 @@
 
 <script>
     $(document).ready(function() {
+        $.fn.dataTable.ext.errMode = 'none';
         new DataTable('#datatable', {
             responsive: true,
             dom: 'Bfrtip',
@@ -28,5 +29,27 @@
         //     // info: false,
         //     responsive: true
         // });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(".all").on('click', function(e) {
+            if ($(".all").is(':checked')) {
+                $(".child").prop("checked", true);
+            } else {
+                $(".child").prop("checked", false);
+            }
+        });
+
+        $(document).on('click', '.child', function() {
+            const checkboxes = document.querySelectorAll('.child');
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (!checkboxes[i].checked) {
+                    $(".all").prop("checked", false);
+                    break;
+                } else
+                    $(".all").prop("checked", true);
+            }
+        });
     });
 </script>

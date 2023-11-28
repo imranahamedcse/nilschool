@@ -63,7 +63,7 @@ class StudentController extends Controller
         $data['sections'] = [];
         $data['students'] = $this->repo->getPaginateAll();
         
-        $title             = ___('student_info.student_list');
+        $title             = ___('student_info.Students');
         $data['headers']   = [
             "title"        => $title,
             "permission"   => 'student_create',
@@ -71,6 +71,7 @@ class StudentController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -84,7 +85,7 @@ class StudentController extends Controller
         $data['request']  = $request;
         $data['students'] = $this->repo->searchStudents($request);
 
-        $title             = ___('student_info.student_list');
+        $title             = ___('student_info.Students');
         $data['headers']   = [
             "title"        => $title,
             "permission"   => 'student_create',
@@ -92,6 +93,7 @@ class StudentController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.student-info.student.index', compact('data'));
@@ -99,9 +101,11 @@ class StudentController extends Controller
 
     public function create()
     {
-        $data['title']     = ___('student_info.student_create');
+        $data['title']     = ___('student_info.Add student');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
+            ["title" => ___('student_info.Students'), "route" => "student.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -144,9 +148,11 @@ class StudentController extends Controller
     
     public function edit($id)
     {
-        $data['title']     = ___('student_info.student_edit');
+        $data['title']     = ___('student_info.Edit student');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
+            ["title" => ___('student_info.Students'), "route" => "student.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

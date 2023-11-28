@@ -39,13 +39,13 @@
                     @endif
                     @if (hasPermission('student_read'))
                         <li class="{{ set_menu(['student', 'student/create', 'student/edit']) }}">
-                            <a href="{{ route('student.index') }}">{{ ___('settings.students') }}</a>
+                            <a href="{{ route('student.index') }}">{{ ___('settings.Students') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('student_category_read'))
                         <li class="{{ set_menu(['student/category*']) }}">
                             <a
-                                href="{{ route('student_category.index') }}">{{ ___('student_info.student_category') }}</a>
+                                href="{{ route('student_category.index') }}">{{ ___('student_info.Categories') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('promote_students_read'))
