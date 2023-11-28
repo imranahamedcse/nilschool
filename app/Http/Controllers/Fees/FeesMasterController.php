@@ -52,6 +52,11 @@ class FeesMasterController extends Controller
     public function create()
     {
         $data['title']        = ___('fees.fees_master');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['fees_types']   = $this->type->all();
         $data['fees_groups']  = $this->group->all();
         return view('backend.admin.fees.master.create', compact('data'));
@@ -70,6 +75,11 @@ class FeesMasterController extends Controller
     public function edit($id)
     {
         $data['title']        = ___('fees.fees_master');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
         $data['fees_master']  = $this->repo->show($id);
         $data['fees_types']   = $this->type->all();
         $data['fees_groups']  = $this->group->all();

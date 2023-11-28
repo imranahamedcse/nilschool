@@ -38,17 +38,21 @@ class FeesCollectController extends Controller
     public function index()
     {
         $data['title']              = ___('fees.fees_collect');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['fees_collects']      = $this->repo->getPaginateAll();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = $this->sectionRepo->all();
 
-        return view('backend.fees.collect.index', compact('data'));
+        return view('backend.admin.fees.collect.index', compact('data'));
     }
 
     public function create()
     {
         $data['title']        = ___('fees.fees_collect');
-        return view('backend.fees.collect.create', compact('data'));
+        return view('backend.admin.fees.collect.create', compact('data'));
         
     }
 
@@ -59,7 +63,7 @@ class FeesCollectController extends Controller
         $data['fees_assigned']  = $this->repo->feesAssigned($id);
 
         // dd($data);
-        return view('backend.fees.collect.collect', compact('data'));
+        return view('backend.admin.fees.collect.collect', compact('data'));
     }
 
     public function store(Request $request)
@@ -75,7 +79,7 @@ class FeesCollectController extends Controller
     {
         $data['fees_collect']  = $this->repo->show($id);
         $data['title']         = ___('fees.fees_collect');
-        return view('backend.fees.collect.edit', compact('data'));
+        return view('backend.admin.fees.collect.edit', compact('data'));
     }
 
     public function update(FeesCollectUpdateRequest $request, $id)
@@ -110,14 +114,14 @@ class FeesCollectController extends Controller
         $data['students'] = $this->repo->getFeesAssignStudents($request);
         $data['title']    = ___('fees.fees_collect');
         $data['classes']  = $this->classRepo->assignedAll();
-        return view('backend.fees.collect.index', compact('data'));
+        return view('backend.admin.fees.collect.index', compact('data'));
     }
 
     public function feesShow(Request $request)
     {
         $data = $this->repo->feesShow($request);
    
-        return view('backend.fees.collect.fees-show', compact('data'));
+        return view('backend.admin.fees.collect.fees-show', compact('data'));
     }
 
 

@@ -81,6 +81,11 @@ class FeesAssignController extends Controller
     public function create()
     {
         $data['title']        = ___('fees.fees_assign');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']      = $this->classRepo->assignedAll();
         // $data['sections']     = $this->sectionRepo->all();
         $data['sections']     = [];
@@ -102,6 +107,11 @@ class FeesAssignController extends Controller
     public function edit($id)
     {
         $data['title']        = ___('fees.fees_assign');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
         $data['fees_assign']  = $this->repo->show($id);
         $data['classes']      = $this->classRepo->assignedAll();
         // $data['sections']     = $this->sectionRepo->all();
