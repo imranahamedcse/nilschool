@@ -63,6 +63,7 @@ class SubjectAssignController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.academic.assign-subject.index', compact('data'));
@@ -70,9 +71,11 @@ class SubjectAssignController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.subject_assign');
+        $data['title']              = ___('academic.Add subject assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Subject Assign"), "route" => "assign-subject.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -118,9 +121,11 @@ class SubjectAssignController extends Controller
     {
         
         $data                       = $this->repo->show($id);
-        $data['title']              = ___('academic.subject_assign');
+        $data['title']              = ___('academic.Edit subject assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Subject Assign"), "route" => "assign-subject.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         $data['subject_assign']     = $data['row'];

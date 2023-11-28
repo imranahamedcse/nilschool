@@ -32,9 +32,10 @@ class DisabledStudentController extends Controller
     
     public function index()
     {
-        $data['title']              = ___('student_info.disabled_list');
-        $data['breadcrumbs']  = [
+        $data['title']       = ___('student_info.disabled_list');
+        $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -51,6 +52,7 @@ class DisabledStudentController extends Controller
         $data['title']              = ___('student_info.disabled_list');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
 

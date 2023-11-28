@@ -51,18 +51,18 @@
                     @if (hasPermission('promote_students_read'))
                         <li class="{{ set_menu(['promote/students*']) }}">
                             <a
-                                href="{{ route('promote_students.index') }}">{{ ___('student_info.promote_students') }}</a>
+                                href="{{ route('promote_students.index') }}">{{ ___('student_info.Promote students') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('disabled_students_read'))
                         <li class="{{ set_menu(['disabled/students*']) }}">
                             <a
-                                href="{{ route('disabled_students.index') }}">{{ ___('student_info.disabled_students') }}</a>
+                                href="{{ route('disabled_students.index') }}">{{ ___('student_info.Disabled students') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('parent_read'))
                         <li class="{{ set_menu(['parent*']) }}">
-                            <a href="{{ route('parent.index') }}">{{ ___('student_info.guardian') }}</a>
+                            <a href="{{ route('parent.index') }}">{{ ___('student_info.Guardian') }}</a>
                         </li>
                     @endif
                 </ul>

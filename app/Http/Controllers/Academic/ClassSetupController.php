@@ -48,6 +48,7 @@ class ClassSetupController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -58,9 +59,11 @@ class ClassSetupController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.class_setup');
+        $data['title']              = ___('academic.Add class setup');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Class setup"), "route" => "class-setup.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -81,9 +84,11 @@ class ClassSetupController extends Controller
 
     public function edit($id)
     {
-        $data['title']              = ___('academic.class_setup');
+        $data['title']              = ___('academic.Edit class setup');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Class setup"), "route" => "class-setup.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

@@ -1,7 +1,7 @@
 @extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['headers']['title'] }}
+    {{ @$data['title'] }}
 @endsection
 
 @push('style')
@@ -13,118 +13,119 @@
 
     <div class="card">
         <div class="card-body">
+            <div class="border-bottom pb-3 mb-4">
+                <h4 class="m-0">{{ @$data['title'] }}</h4>
+            </div>
+
             <form action="{{ route('assign-subject.store') }}" enctype="multipart/form-data" method="post" id="subjectAssign">
                 @csrf
                 <input type="hidden" name="form_type" id="form_type" value="create" />
-                <div class="row mb-3">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
-                                        class="fillable">*</span></label>
-                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
-                                    name="class" aria-describedby="validationServer04Feedback">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
-                                    @foreach ($data['classes'] as $item)
-                                        <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
-                                    @endforeach
-                                </select>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
+                                class="fillable">*</span></label>
+                        <select id="getSections" class="form-control @error('class') is-invalid @enderror"
+                            name="class" aria-describedby="validationServer04Feedback">
+                            <option value="">{{ ___('student_info.select_class') }}</option>
+                            @foreach ($data['classes'] as $item)
+                                <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
+                            @endforeach
+                        </select>
 
-                                @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                        @error('class')
+                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                {{ $message }}
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <div id="show_sections">
-                                    <label for="validationServer04" class="form-label">{{ ___('academic.section') }} <span
-                                            class="fillable">*</span></label>
-                                    <select class="form-control sections @error('section') is-invalid @enderror"
-                                        name="section" id="validationServer04"
-                                        aria-describedby="validationServer04Feedback">
-                                        <option value="">{{ ___('student_info.select_section') }}</option>
-                                    </select>
-                                    @error('section')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                        @enderror
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div id="show_sections">
+                            <label for="validationServer04" class="form-label">{{ ___('academic.section') }} <span
+                                    class="fillable">*</span></label>
+                            <select class="form-control sections @error('section') is-invalid @enderror"
+                                name="section" id="validationServer04"
+                                aria-describedby="validationServer04Feedback">
+                                <option value="">{{ ___('student_info.select_section') }}</option>
+                            </select>
+                            @error('section')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    {{ $message }}
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
-                                <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
-                                    <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
-                                    <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
-                                    </option>
-                                </select>
-
-                                @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <div class="d-flex align-items-center gap-4 flex-wrap">
-                                    <h4 class="m-0 flex-fill">
-                                        {{ ___('common.add') }} {{ ___('academic.Subject & Teacher') }}
-                                    </h4>
-                                    <button type="button" class="btn btn-primary" onclick="addSubjectTeacher()">
-                                        <span><i class="fa-solid fa-plus"></i> </span>
-                                        {{ ___('common.add') }}</button>
-                                    <input type="hidden" name="counter" id="counter" value="1">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="table-responsive">
-                                    <div>
-                                        <table class="table school_borderLess_table table_border_hide2"
-                                            id="subject-teacher">
-                                            <thead>
-                                                <tr>
-                                                    <td scope="col">{{ ___('academic.subject') }} <span
-                                                            class="text-danger"></span>
-                                                        @if ($errors->any())
-                                                            @if ($errors->has('subjects.*'))
-                                                                <span class="text-danger">{{ 'The fields are required' }}
-                                                            @endif
-                                                        @endif
-                                                    </td>
-                                                    <td scope="col">
-                                                        {{ ___('academic.teacher') }}
-                                                        <span class="text-danger"></span>
-                                                        @if ($errors->any())
-                                                            @if ($errors->has('teachers.*'))
-                                                                <span class="text-danger">{{ 'The fields are required' }}
-                                                            @endif
-                                                        @endif
-                                                    </td>
-                                                    <td scope="col">
-
-                                                    </td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-                            </div>
+                            @enderror
                         </div>
-                        <div class="col-md-12 mt-24">
-                            <div class="text-end">
-                                <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.submit') }}</button>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                class="fillable">*</span></label>
+                        <select class="form-control @error('status') is-invalid @enderror" name="status"
+                            id="validationServer04" aria-describedby="validationServer04Feedback">
+                            <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
+                            <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
+                            </option>
+                        </select>
+
+                        @error('status')
+                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                {{ $message }}
                             </div>
+                        @enderror
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <div class="d-flex align-items-center gap-4 flex-wrap">
+                            <h5 class="m-0 flex-fill text-info">
+                                {{ ___('common.add') }} {{ ___('academic.Subject & Teacher') }}
+                            </h5>
+                            <button type="button" class="btn btn-sm btn-info" onclick="addSubjectTeacher()">
+                                <span><i class="fa-solid fa-plus"></i> </span>
+                                {{ ___('common.add') }}</button>
+                            <input type="hidden" name="counter" id="counter" value="1">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <div>
+                                <table class="table school_borderLess_table table_border_hide2"
+                                    id="subject-teacher">
+                                    <thead>
+                                        <tr>
+                                            <td scope="col">{{ ___('academic.subject') }} <span
+                                                    class="text-danger"></span>
+                                                @if ($errors->any())
+                                                    @if ($errors->has('subjects.*'))
+                                                        <span class="text-danger">{{ 'The fields are required' }}
+                                                    @endif
+                                                @endif
+                                            </td>
+                                            <td scope="col">
+                                                {{ ___('academic.teacher') }}
+                                                <span class="text-danger"></span>
+                                                @if ($errors->any())
+                                                    @if ($errors->has('teachers.*'))
+                                                        <span class="text-danger">{{ 'The fields are required' }}
+                                                    @endif
+                                                @endif
+                                            </td>
+                                            <td scope="col">
+
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12 mt-24">
+                    <div class="text-end">
+                        <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
+                            </span>{{ ___('common.submit') }}</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 @endsection

@@ -33,6 +33,7 @@ class SectionController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.academic.section.index', compact('data'));
@@ -40,9 +41,11 @@ class SectionController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.create_section');
+        $data['title']       = ___('academic.Add section');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Section"), "route" => "section.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.academic.section.create', compact('data'));
@@ -59,10 +62,12 @@ class SectionController extends Controller
 
     public function edit($id)
     {
-        $data['section']        = $this->section->show($id);
-        $data['title']       = ___('academic.edit_section');
+        $data['section']  = $this->section->show($id);
+        $data['title']    = ___('academic.Edit section');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Section"), "route" => "section.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.academic.section.edit', compact('data'));

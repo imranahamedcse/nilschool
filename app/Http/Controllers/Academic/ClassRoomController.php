@@ -29,6 +29,7 @@ class ClassRoomController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.academic.class-room.index', compact('data'));
@@ -36,9 +37,11 @@ class ClassRoomController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.class_room');
+        $data['title']              = ___('academic.Add class room');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Class room"), "route" => "class-room.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.academic.class-room.create', compact('data'));
@@ -56,9 +59,11 @@ class ClassRoomController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('academic.class_room');
+        $data['title']       = ___('academic.Edit class room');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Class room"), "route" => "class-room.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         $data['class_room']        = $this->repo->show($id);

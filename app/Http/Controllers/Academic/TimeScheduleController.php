@@ -34,6 +34,7 @@ class TimeScheduleController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -42,9 +43,11 @@ class TimeScheduleController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.create_time_schedule');
+        $data['title']       = ___('academic.Add time schedule');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Time schedule"), "route" => "time_schedule.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         
@@ -62,9 +65,11 @@ class TimeScheduleController extends Controller
 
     public function edit($id)
     {
-        $data['title']        = ___('academic.edit_time_schedule');
+        $data['title']        = ___('academic.Edit time schedule');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Time schedule"), "route" => "time_schedule.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

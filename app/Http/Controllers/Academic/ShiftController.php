@@ -33,6 +33,7 @@ class ShiftController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -41,10 +42,12 @@ class ShiftController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.create_shift');
+        $data['title']       = ___('academic.Add shift');
         
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Shift"), "route" => "shift.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.academic.shift.create', compact('data'));
@@ -62,10 +65,12 @@ class ShiftController extends Controller
     public function edit($id)
     {
         $data['shift']        = $this->shift->show($id);
-        $data['title']        = ___('academic.edit_shift');
+        $data['title']        = ___('academic.Edit shift');
         
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Shift"), "route" => "shift.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.academic.shift.edit', compact('data'));
