@@ -45,6 +45,7 @@ class ClassesController extends Controller
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Class"), "route" => "classes.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.academic.class.create', compact('data'));
@@ -65,6 +66,8 @@ class ClassesController extends Controller
         $data['title']       = ___('academic.edit_class');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Academic"), "route" => ""],
+            ["title" => ___("common.Class"), "route" => "classes.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.academic.class.edit', compact('data'));

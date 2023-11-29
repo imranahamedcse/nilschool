@@ -140,19 +140,19 @@
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-map"></i>
-                        <span class="link-name">{{ ___('settings.routines') }}</span>
+                        <span class="link-name">{{ ___('settings.Routines') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('class_routine_read'))
                         <li class="{{ set_menu(['class-routine*']) }}">
-                            <a href="{{ route('class-routine.index') }}">{{ ___('settings.class_routine') }}</a>
+                            <a href="{{ route('class-routine.index') }}">{{ ___('settings.Class routine') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('exam_routine_read'))
                         <li class="{{ set_menu(['exam-routine*']) }}">
-                            <a href="{{ route('exam-routine.index') }}">{{ ___('settings.exam_routine') }}</a>
+                            <a href="{{ route('exam-routine.index') }}">{{ ___('settings.Exam routine') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -166,19 +166,19 @@
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-arrow-up-right-dots"></i>
-                        <span class="link-name">{{ ___('settings.attendance') }}</span>
+                        <span class="link-name">{{ ___('settings.Attendance') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('attendance_read'))
                         <li class="{{ set_menu(['attendance.index', 'attendance.search']) }}">
-                            <a href="{{ route('attendance.index') }}">{{ ___('settings.attendance') }}</a>
+                            <a href="{{ route('attendance.index') }}">{{ ___('settings.Attendance') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_attendance_read'))
                         <li class="{{ set_menu(['attendance/report*']) }}">
-                            <a href="{{ route('attendance.report') }}">{{ ___('settings.attendance_report') }}</a>
+                            <a href="{{ route('attendance.report') }}">{{ ___('settings.Attendance report') }}</a>
                         </li>
                     @endif
                 </ul>

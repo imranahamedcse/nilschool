@@ -75,6 +75,7 @@ class ExamRoutineController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Routine"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.academic.exam-routine.index', compact('data'));
@@ -82,9 +83,11 @@ class ExamRoutineController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.exam_routine');
+        $data['title']              = ___('academic.Add exam routine');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Routine"), "route" => ""],
+            ["title" => ___("common.Exam routine"), "route" => "exam-routine.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -119,9 +122,11 @@ class ExamRoutineController extends Controller
 
     public function edit($id)
     {
-        $data['title']              = ___('academic.exam_routine');
+        $data['title']              = ___('academic.Edit exam routine');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Routine"), "route" => ""],
+            ["title" => ___("common.Exam routine"), "route" => "exam-routine.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

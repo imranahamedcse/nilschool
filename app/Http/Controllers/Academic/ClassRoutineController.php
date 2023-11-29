@@ -77,6 +77,7 @@ class ClassRoutineController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Routine"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.academic.class-routine.index', compact('data'));
@@ -84,9 +85,11 @@ class ClassRoutineController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.class_routine');
+        $data['title']              = ___('academic.Add class routine');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Routine"), "route" => ""],
+            ["title" => ___("common.Class routine"), "route" => "class-routine.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -121,9 +124,11 @@ class ClassRoutineController extends Controller
 
     public function edit($id)
     {
-        $data['title']              = ___('academic.class_routine');
+        $data['title']              = ___('academic.Edit class routine');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Routine"), "route" => ""],
+            ["title" => ___("common.Class routine"), "route" => "class-routine.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
