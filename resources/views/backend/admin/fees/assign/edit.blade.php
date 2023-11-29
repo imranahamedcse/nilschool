@@ -1,7 +1,7 @@
 @extends('backend.admin.partial.master')
 
 @section('title')
-    {{ @$data['headers']['title'] }}
+    {{ @$data['title'] }}
 @endsection
 
 @section('content')
@@ -9,6 +9,10 @@
 
     <div class="card">
         <div class="card-body">
+            <div class="border-bottom pb-3 mb-4">
+                <h4 class="m-0">{{ @$data['title'] }}</h4>
+            </div>
+            
             <form action="{{ route('fees-assign.update', @$data['fees_assign']->id) }}" enctype="multipart/form-data"
                 method="post" id="visitForm">
                 @csrf
@@ -118,7 +122,7 @@
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <h3>{{ ___('student_info.Fees Types') }}</h3>
+                                <h5 class="text-info">{{ ___('student_info.Fees Types') }}</h5>
                                 <div class="table-responsive">
                                     <table class="table table-bordered role-table" id="types_table">
                                         <thead class="thead">
@@ -162,7 +166,7 @@
                                 </div>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h3>{{ ___('student_info.Students List') }}</h3>
+                                <h5 class="text-info">{{ ___('student_info.Students List') }}</h5>
                                 <div class="table-responsive">
                                     <input type="hidden" id="page" value="edit">
                                     <table class="table table-bordered role-table" id="students_table">
@@ -214,3 +218,169 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        // Fees master type
+        $("#fees_group").on('change', function(e) {
+            groupTypes();
+        });
+
+        // groupTypes();
+
+        function groupTypes() {
+            var url = $('#url').val();
+            var id = $("#fees_group").val();
+
+            var formData = {
+                id: id
+            }
+
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/fees-assign/get-all-type',
+                success: function(data) {
+                    // console.log(data);
+                    $("#types_table tbody").empty();
+                    $("#types_table tbody").append(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+        // Fees master type end
+    </script>
+
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+
+                    var section_options = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Fees master assing
+        $("#section").on('change', function(e) {
+            assingStudents();
+        });
+
+        $("#student_category").on('change', function(e) {
+            assingStudents();
+        });
+        $("#gender").on('change', function(e) {
+            assingStudents();
+        });
+
+        if ($("#page").val() == "create") {
+            assingStudents();
+        }
+
+        function assingStudents() {
+            var url = $('#url').val();
+            var classId = $("#getSections").val();
+            var sectionId = $("#section").val();
+            var categoryId = $("#student_category").val();
+            var genderId = $("#gender").val();
+
+            var formData = {
+                class: classId,
+                section: sectionId,
+                category: categoryId,
+                gender: genderId,
+                section: sectionId,
+            }
+
+            $("#students_table tbody").empty();
+            if (classId && sectionId) {
+                $.ajax({
+                    type: "GET",
+                    dataType: 'html',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: url + '/fees-assign/get-fees-assign-students',
+                    success: function(data) {
+                        // console.log(data);
+                        $("#students_table tbody").append(data);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+        // Fees master assing end
+    </script>
+
+    <script>
+        $("#all_students").on('click', function(e) {
+            if ($("#all_students").is(':checked')) {
+                $(".student").prop("checked", true);
+            } else {
+                $(".student").prop("checked", false);
+            }
+        });
+        $(document).on('click', '.student', function() {
+            const checkboxes = document.querySelectorAll('.student');
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (!checkboxes[i].checked) {
+                    $("#all_students").prop("checked", false);
+                    break;
+                } else
+                    $("#all_students").prop("checked", true);
+            }
+        });
+
+        $("#all_fees_masters").on('click', function(e) {
+            if ($("#all_fees_masters").is(':checked')) {
+                $(".fees_master").prop("checked", true);
+            } else {
+                $(".fees_master").prop("checked", false);
+            }
+        });
+        $(document).on('click', '.fees_master', function() {
+            const checkboxes = document.querySelectorAll('.fees_master');
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (!checkboxes[i].checked) {
+                    $("#all_fees_masters").prop("checked", false);
+                    break;
+                } else
+                    $("#all_fees_masters").prop("checked", true);
+            }
+        });
+    </script>
+@endpush

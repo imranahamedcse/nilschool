@@ -8,6 +8,10 @@
 
     <div class="card">
         <div class="card-body">
+            <div class="border-bottom pb-3 mb-4">
+                <h4 class="m-0">{{ @$data['title'] }}</h4>
+            </div>
+            
             <form action="{{ route('fees-type.update', @$data['fees_type']->id) }}" enctype="multipart/form-data"
                 method="post" id="visitForm">
                 @csrf

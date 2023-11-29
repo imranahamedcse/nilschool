@@ -130,16 +130,6 @@ class FeesCollectRepository implements FeesCollectInterface
             $students = $students->where('section_id', $request->section);
         }
 
-        if($request->name != "") {
-            $students = $students->whereHas('student', function ($query) use ($request) {
-                return $query->where('first_name', $request->name)->orWhere('last_name', $request->name);
-            });
-        }
-
-        if($request->student != "") {
-            $students = $students->where('student_id', $request->student);
-        }
-
         return $students->paginate(10);
     }
 

@@ -67,6 +67,7 @@ class FeesAssignController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.fees.assign.index', compact('data'));
@@ -75,14 +76,16 @@ class FeesAssignController extends Controller
     public function show(Request $request){
 
         $data['fees_assign']  = $this->repo->show($request->id);
-        return view('backend.student-info.student.view', compact('data'))->render();
+        return view('backend.admin.fees.assign.view', compact('data'))->render();
     }
 
     public function create()
     {
-        $data['title']        = ___('fees.fees_assign');
+        $data['title']        = ___('fees.Add fees assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees assign"), "route" => "fees-assign.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -106,9 +109,11 @@ class FeesAssignController extends Controller
 
     public function edit($id)
     {
-        $data['title']        = ___('fees.fees_assign');
+        $data['title']        = ___('fees.Edit fees assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees assign"), "route" => "fees-assign.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         

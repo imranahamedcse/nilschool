@@ -40,6 +40,7 @@ class FeesCollectController extends Controller
         $data['title']              = ___('fees.fees_collect');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
         $data['fees_collects']      = $this->repo->getPaginateAll();
@@ -111,8 +112,14 @@ class FeesCollectController extends Controller
 
     public function getFeesCollectStudents(Request $request)
     {
-        $data['students'] = $this->repo->getFeesAssignStudents($request);
         $data['title']    = ___('fees.fees_collect');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
+        $data['students'] = $this->repo->getFeesAssignStudents($request);
         $data['classes']  = $this->classRepo->assignedAll();
         return view('backend.admin.fees.collect.index', compact('data'));
     }

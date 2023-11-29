@@ -29,6 +29,7 @@ class FeesTypeController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.fees.type.index', compact('data'));
@@ -37,9 +38,11 @@ class FeesTypeController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('fees.fees_type');
+        $data['title']              = ___('fees.Add fees type');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees type"), "route" => "fees-type.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.type.create', compact('data'));
@@ -58,9 +61,11 @@ class FeesTypeController extends Controller
     public function edit($id)
     {
         $data['fees_type']        = $this->repo->show($id);
-        $data['title']       = ___('fees.fees_type');
+        $data['title']       = ___('fees.Edit fees type');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees type"), "route" => "fees-type.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.type.edit', compact('data'));

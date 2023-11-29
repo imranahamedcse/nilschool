@@ -67,9 +67,43 @@
         </table>
 
     </div>
+
+
+    <div class="modal fade" id="modalCustomizeWidth" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+                
+        </div>
+    </div>
+
+
 @endsection
 
 @push('script')
     @include('backend.admin.components.table.js')
     @include('backend.admin.components.table.delete-ajax')
+
+    <script>
+        function viewStudentList(id) {
+            var url = $('#url').val();
+            var formData = {
+                id: id,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/fees-assign/show',
+                success: function(data) {
+                    // $("#view-modal").append(data);
+                    $("#modalCustomizeWidth .modal-dialog").html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
 @endpush

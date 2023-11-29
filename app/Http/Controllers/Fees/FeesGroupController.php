@@ -29,6 +29,7 @@ class FeesGroupController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -38,9 +39,11 @@ class FeesGroupController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('fees.fees_group');
+        $data['title']              = ___('fees.Add fees group');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees group"), "route" => "fees-group.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.group.create', compact('data'));
@@ -59,9 +62,11 @@ class FeesGroupController extends Controller
     public function edit($id)
     {
         $data['fees_group']        = $this->repo->show($id);
-        $data['title']       = ___('fees.fees_group');
+        $data['title']       = ___('fees.Edit fees group');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees group"), "route" => "fees-group.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.group.edit', compact('data'));

@@ -38,6 +38,7 @@ class FeesMasterController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.fees.master.index', compact('data'));
@@ -51,9 +52,11 @@ class FeesMasterController extends Controller
 
     public function create()
     {
-        $data['title']        = ___('fees.fees_master');
+        $data['title']        = ___('fees.Add fees master');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees master"), "route" => "fees-master.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -74,9 +77,11 @@ class FeesMasterController extends Controller
 
     public function edit($id)
     {
-        $data['title']        = ___('fees.fees_master');
+        $data['title']        = ___('fees.Edit fees master');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___("common.Fees master"), "route" => "fees-master.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         
