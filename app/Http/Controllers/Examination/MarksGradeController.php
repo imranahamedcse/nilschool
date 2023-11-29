@@ -29,6 +29,7 @@ class MarksGradeController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.examination.marks-grade.index', compact('data'));
@@ -37,7 +38,13 @@ class MarksGradeController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('examination.marks_grade');
+        $data['title']              = ___('examination.Add marks rade');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Exam group"), "route" => "marks-grade.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.examination.marks-grade.create', compact('data'));
 
     }
@@ -53,8 +60,15 @@ class MarksGradeController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('examination.Edit marks grade');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Exam group"), "route" => "marks-grade.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['marks_grade']        = $this->repo->show($id);
-        $data['title']       = ___('examination.marks_grade');
         return view('backend.admin.examination.marks-grade.edit', compact('data'));
     }
 

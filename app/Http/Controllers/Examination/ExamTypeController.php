@@ -29,6 +29,7 @@ class ExamTypeController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.online-examination.type.index', compact('data'));
@@ -36,7 +37,13 @@ class ExamTypeController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('examination.exam_type');
+        $data['title']              = ___('examination.Add exam type');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Exam type"), "route" => "online-exam-type.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.online-examination.type.create', compact('data'));
     }
 
@@ -51,8 +58,15 @@ class ExamTypeController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('examination.Edit exam type');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Exam type"), "route" => "online-exam-type.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['exam_type']        = $this->repo->show($id);
-        $data['title']       = ___('examination.exam_type');
         return view('backend.admin.online-examination.type.edit', compact('data'));
     }
 

@@ -36,6 +36,7 @@ class IncomeController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.accounts.income.index', compact('data'));
@@ -43,7 +44,14 @@ class IncomeController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.create_income');
+        $data['title']       = ___('account.Add income');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___('account.Income'), "route" => "income.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['heads']       = $this->accountHeadRepository->getIncomeHeads();
         return view('backend.admin.accounts.income.create', compact('data'));
     }
@@ -59,9 +67,16 @@ class IncomeController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('account.Edit income');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___('account.Income'), "route" => "income.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['heads']       = $this->accountHeadRepository->getIncomeHeads();
         $data['income']      = $this->incomeRepo->show($id);
-        $data['title']       = ___('account.edit_income');
         return view('backend.admin.accounts.income.edit', compact('data'));
     }
 

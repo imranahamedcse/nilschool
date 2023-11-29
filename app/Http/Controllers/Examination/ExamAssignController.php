@@ -59,6 +59,7 @@ class ExamAssignController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -68,7 +69,18 @@ class ExamAssignController extends Controller
 
     public function search(Request $request)
     {
-        $data['title']        = ___('examination.exam_assign');
+        $title             = ___('examination.exam_assign');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'exam_assign_create',
+            "create-route" => 'exam-assign.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['exam_assigns'] = $this->repo->searchExamAssign($request);
         $data['subjectArr']   = Subject::pluck('name','id')->toArray();
         $data['sectionArr']   = Section::pluck('name','id')->toArray();
@@ -81,7 +93,14 @@ class ExamAssignController extends Controller
 
     public function create()
     {
-        $data['title']                  = ___('examination.exam_assign');
+        $data['title']                  = ___('examination.Add exam assign');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Exam group"), "route" => "exam-assign.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']                = $this->classSetupRepo->all();
         $data['exam_types']             = $this->examTypeRepo->all();
         return view('backend.admin.examination.exam-assign.create', compact('data'));
@@ -117,8 +136,15 @@ class ExamAssignController extends Controller
         if(!$result)
             return redirect()->route('exam-assign.index')->with('danger', 'You cannot edit this! because, already marks registred.');
 
+        $data['title']              = ___('examination.Edit exam assign');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Exam group"), "route" => "exam-assign.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['exam_assign']        = $result;
-        $data['title']              = ___('examination.exam_assign');
         $data['classes']            = $this->classRepo->all();
         $data['sections']           = $this->classSetupRepo->getSections($data['exam_assign']->classes_id);
  

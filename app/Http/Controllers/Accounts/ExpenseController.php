@@ -36,6 +36,7 @@ class ExpenseController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.accounts.expense.index', compact('data'));
@@ -44,6 +45,13 @@ class ExpenseController extends Controller
     public function create()
     {
         $data['title']       = ___('account.create_expense');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___('account.Expense'), "route" => "expense.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['heads']       = $this->accountHeadRepository->getExpenseHeads();
         return view('backend.admin.accounts.expense.create', compact('data'));
     }
@@ -59,9 +67,16 @@ class ExpenseController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('account.edit_expense');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___('account.Expense'), "route" => "expense.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['heads']       = $this->accountHeadRepository->getExpenseHeads();
         $data['expense']     = $this->expenseRepo->show($id);
-        $data['title']       = ___('account.edit_expense');
         return view('backend.admin.accounts.expense.edit', compact('data'));
     }
 

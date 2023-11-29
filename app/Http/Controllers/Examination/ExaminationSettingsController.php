@@ -18,6 +18,11 @@ class ExaminationSettingsController extends Controller
     public function index()
     {
         $data['title']      = ___('settings.Examination Settings');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" =>$data['title'], "route" => ""]
+        ];
         return view('backend.admin.examination.settings.index', compact('data'));
     }
 

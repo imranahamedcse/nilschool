@@ -34,6 +34,7 @@ class AccountHeadController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.accounts.head.index', compact('data'));
@@ -42,6 +43,12 @@ class AccountHeadController extends Controller
     public function create()
     {
         $data['title']       = ___('account.create_account_head');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___('account.account_head'), "route" => "account_head.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.accounts.head.create', compact('data'));
     }
 
@@ -56,8 +63,15 @@ class AccountHeadController extends Controller
 
     public function edit($id)
     {
-        $data['account_head']        = $this->headRepo->show($id);
         $data['title']       = ___('account.edit_account_head');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___('account.account_head'), "route" => "account_head.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
+        $data['account_head']        = $this->headRepo->show($id);
         return view('backend.admin.accounts.head.edit', compact('data'));
     }
 

@@ -11,20 +11,19 @@
 @section('content')
     @include('backend.admin.components.breadcrumb')
 
-    <div class="col-12">
-        <form action="{{ route('marks-register.search') }}" method="post" id="marksheet" class="exam_assign"
-            enctype="multipart/form-data">
-            @csrf
-            <div class="card ot-card mb-24 position-relative z_1">
-                <div class="card-header d-flex align-items-center gap-4 flex-wrap">
-                    <h3 class="mb-0">{{ ___('common.Filtering') }}</h3>
-
-                    <div class="card_header_right d-flex align-items-center gap-3 flex-fill justify-content-end flex-wrap">
-                        <!-- table_searchBox -->
-
-                        <div class="single_large_selectBox">
+    <div class="p-4 rounded-3 bg-white">
+        <div class="row justify-content-between border-bottom pb-4 mb-4">
+            <div class="col-3 align-self-center">
+                <h4 class="m-0">{{ @$data['headers']['title'] }}</h4>
+            </div>
+            <div class="col-6">
+                <form action="{{ route('marks-register.search') }}" method="post" id="marksheet" class="exam_assign"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col">
                             <select id="getSections"
-                                class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                class="class form-control @error('class') is-invalid @enderror"
                                 name="class">
                                 <option value="">{{ ___('student_info.select_class') }} </option>
                                 @foreach ($data['classes'] as $item)
@@ -37,10 +36,9 @@
                                 </div>
                             @enderror
                         </div>
-
-                        <div class="single_large_selectBox">
+                        <div class="col">
                             <select
-                                class="sections section nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
+                                class="sections section form-control @error('section') is-invalid @enderror"
                                 name="section">
                                 <option value="">{{ ___('student_info.select_section') }} </option>
                             </select>
@@ -50,10 +48,9 @@
                                 </div>
                             @enderror
                         </div>
-
-                        <div class="single_large_selectBox">
+                        <div class="col">
                             <select
-                                class="nice-select niceSelect bordered_style wide exam_types @error('exam_type') is-invalid @enderror"
+                                class="form-control exam_types @error('exam_type') is-invalid @enderror"
                                 name="exam_type">
                                 <option value="">{{ ___('examination.select_exam_type') }} </option>
                             </select>
@@ -63,10 +60,9 @@
                                 </div>
                             @enderror
                         </div>
-
-                        <div class="single_large_selectBox">
+                        <div class="col">
                             <select
-                                class="subjects nice-select niceSelect bordered_style wide @error('subject') is-invalid @enderror"
+                                class="subjects form-control @error('subject') is-invalid @enderror"
                                 name="subject">
                                 <option value="">{{ ___('academic.Select subject') }} </option>
 
@@ -77,18 +73,22 @@
                                 </div>
                             @enderror
                         </div>
-
-                        <button class="btn btn-lg ot-btn-primary" type="submit">
-                            {{ ___('common.Search') }}
-                        </button>
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">
+                                {{ ___('common.Search') }}
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
-        </form>
-    </div>
-
-    <div class="p-4 rounded-3 bg-white">
-        @include('backend.admin.components.table.header')
+            <div class="col-3 text-end">
+                @if (hasPermission(@$data['headers']['permission']))
+                    <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">
+                        <i class="fa-solid fa-plus"></i> {{ ___('common.add') }}
+                    </a>
+                @endif
+            </div>
+        </div>
 
 
         <table id="datatable" class="table">
