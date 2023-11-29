@@ -37,9 +37,9 @@ class AttendanceController extends Controller
         $data['sections']           = [];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Attendance"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
-
         return view('backend.admin.attendance.index', compact('data'));
     }
 
@@ -58,6 +58,7 @@ class AttendanceController extends Controller
         $data['title']    = ___('attendance.Attendance');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Attendance"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
         $data['request']  = $request;
@@ -76,6 +77,7 @@ class AttendanceController extends Controller
         $data['title']              = ___('attendance.Attendance');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Attendance"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
         $data['classes']            = $this->classRepo->assignedAll();
@@ -92,6 +94,7 @@ class AttendanceController extends Controller
         $data['title']        = ___('attendance.Attendance');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Attendance"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
         $data['request']      = $request;

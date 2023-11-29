@@ -110,9 +110,6 @@ class AttendanceRepository implements AttendanceInterface
         if ($request->date != "") {
             $students = $students->where('date', $request->date);
         }
-        if ($request->roll != "") {
-            $students = $students->where('roll', $request->roll);
-        }
 
         $year = 0;
         $month = 0;
