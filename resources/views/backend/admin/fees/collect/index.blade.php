@@ -71,20 +71,15 @@
                                 <td>{{ @$item->student->parent->guardian_name }}</td>
                                 <td>{{ @$item->student->mobile }}</td>
                                 @if (hasPermission('fees_collect_create'))
-                                    <td><a href="{{ route('fees-collect.collect', $item) }}" target="_blank"
-                                            class="btn btn-sm btn-info">{{ ___('fees.Collect') }}</a></td>
+                                    <td>
+                                        <a href="{{ route('fees-collect.collect', $item) }}" target="_blank"
+                                            class="btn btn-sm btn-info">{{ ___('fees.Details') }}
+                                        </a>
+                                    </td>
                                 @endif
                             </tr>
                         @empty
-                            <tr>
-                                <td colspan="100%" class="text-center gray-color">
-                                    <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary"
-                                        width="100">
-                                    <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
-                                    <p class="mb-0 text-center text-secondary font-size-90">
-                                        {{ ___('common.Please add new entity regarding this table') }}</p>
-                                </td>
-                            </tr>
+                            @include('backend.admin.components.table.empty')
                         @endforelse
                     </tbody>
                 </table>

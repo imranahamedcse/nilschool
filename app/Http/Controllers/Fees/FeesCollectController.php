@@ -59,7 +59,14 @@ class FeesCollectController extends Controller
 
     public function collect($id)
     { // student id
-        $data['title']          = ___('fees.fees_collect');
+        $data['title']          = ___('fees.Collect');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Fees"), "route" => ""],
+            ["title" => ___('fees.fees_collect'), "route" => "fees-collect.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['student']        = $this->studentRepo->show($id);
         $data['fees_assigned']  = $this->repo->feesAssigned($id);
 
