@@ -25,7 +25,7 @@ class MemberCategoryController extends Controller
     {
         $data['member_category'] = $this->Repo->getAll();
 
-        $title             = ___('settings.member category');
+        $title             = ___('settings.Member category');
         $data['headers']   = [
             "title"        => $title,
             "permission"   => 'member_category_create',
@@ -33,6 +33,7 @@ class MemberCategoryController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.library.member-category.index', compact('data'));
@@ -40,7 +41,14 @@ class MemberCategoryController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create member Category');
+        $data['title']       = ___('website.Add member Category');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Member category"), "route" => "member-category.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.library.member-category.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class MemberCategoryController extends Controller
 
     public function edit($id)
     {
-        $data['member_category']      = $this->Repo->show($id);
         $data['title']       = ___('website.Edit member Category');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Member category"), "route" => "member-category.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['member_category']      = $this->Repo->show($id);
         return view('backend.admin.library.member-category.edit', compact('data'));
     }
 

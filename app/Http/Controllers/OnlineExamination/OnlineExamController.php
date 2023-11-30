@@ -76,6 +76,7 @@ class OnlineExamController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.online-examination.online-exam.index', compact('data'));
@@ -93,14 +94,33 @@ class OnlineExamController extends Controller
         $data['subjects']         = $this->subjectAssingRepo->getSubjects($searchRequest);
 
         $data['request']     = $request;
-        $data['title']       = ___('online-examination.online_exam');
         $data['online_exam'] = $this->repo->search($request);
+        
+        $title             = ___('online-examination.online_exam');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'online-exam_create',
+            "create-route" => 'online-exam.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         return view('backend.admin.online-examination.online-exam.index', compact('data'));
     }
 
     public function create()
     {
-        $data['title']            = ___('online-examination.create_online_exam');
+        $data['title']            = ___('online-examination.Add online exam');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => ___("common.Question group"), "route" => "online-exam.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']          = $this->classRepo->assignedAll();
         $data['sections']         = [];
         $data['subjects']         = [];
@@ -144,7 +164,14 @@ class OnlineExamController extends Controller
         $request->replace(['class' => $data['online_exam']->classes_id, 'section' => $data['online_exam']->section_id]);
         $data['students']     = $this->studentRepo->getStudents($request);
         
-        $data['title']            = ___('online-examination.edit_online_exam');
+        $data['title']            = ___('online-examination.Edit online exam');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => ___("common.Question group"), "route" => "online-exam.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.online-examination.online-exam.edit', compact('data'));
     }
 

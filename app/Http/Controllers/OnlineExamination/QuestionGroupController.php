@@ -28,7 +28,7 @@ class QuestionGroupController extends Controller
     {
         $data['question_group'] = $this->repo->getAll();
 
-        $title             = ___('online-examination.question_group');
+        $title             = ___('online-examination.Question group');
         $data['headers']   = [
             "title"        => $title,
             "permission"   => 'question_group_create',
@@ -36,6 +36,7 @@ class QuestionGroupController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.online-examination.question-group.index', compact('data'));
@@ -43,15 +44,33 @@ class QuestionGroupController extends Controller
 
     public function search(Request $request)
     {
+        $title             = ___('online-examination.Question group');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'question_group_create',
+            "create-route" => 'question-group.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['request']        = $request;
-        $data['title']          = ___('online-examination.question_group');
         $data['question_group'] = $this->repo->search($request);
         return view('backend.admin.online-examination.question-group.index', compact('data'));
     }
 
     public function create()
     {
-        $data['title'] = ___('online-examination.create_question_group');
+        $data['title'] = ___('online-examination.Add question group');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => ___("common.Question group"), "route" => "question-group.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.online-examination.question-group.create', compact('data'));
     }
 
@@ -66,8 +85,15 @@ class QuestionGroupController extends Controller
 
     public function edit($id)
     {
+        $data['title']        = ___('online-examination.Edit question group');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => ___("common.Question group"), "route" => "question-group.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['question_group']        = $this->repo->show($id);
-        $data['title']        = ___('online-examination.edit_question_group');
         return view('backend.admin.online-examination.question-group.edit', compact('data'));
     }
 

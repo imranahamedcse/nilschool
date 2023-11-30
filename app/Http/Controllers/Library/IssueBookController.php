@@ -33,6 +33,7 @@ class IssueBookController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.library.issue-book.index', compact('data'));
@@ -40,7 +41,14 @@ class IssueBookController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create issue book');
+        $data['title']       = ___('website.Add issue book');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Issue book"), "route" => "issue-book.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.library.issue-book.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class IssueBookController extends Controller
 
     public function edit($id)
     {
-        $data['issue_book']  = $this->Repo->show($id);
         $data['title']       = ___('website.Edit issue book');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Issue book"), "route" => "issue-book.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['issue_book']  = $this->Repo->show($id);
         $data['user']        = $this->Repo->getUser($data['issue_book']->user_id);
         $data['book']        = $this->Repo->getBook($data['issue_book']->book_id);
         return view('backend.admin.library.issue-book.edit', compact('data'));
@@ -110,7 +125,18 @@ class IssueBookController extends Controller
 
     public function search(Request $request)
     {
-        $data['title']      = ___('settings.Issue book');
+        $title = ___('settings.Issue book');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'issue_book_create',
+            "create-route" => 'issue-book.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['issue_book'] = $this->Repo->searchResult($request);
         $data['request']    = $request;
         

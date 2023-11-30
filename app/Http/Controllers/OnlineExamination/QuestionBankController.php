@@ -33,7 +33,7 @@ class QuestionBankController extends Controller
     {
         $data['question_bank'] = $this->repo->getAll();
 
-        $title         = ___('online-examination.question_bank');
+        $title         = ___('online-examination.Question bank');
         $data['headers']   = [
             "title"        => $title,
             "permission"   => 'question_bank_create',
@@ -41,6 +41,7 @@ class QuestionBankController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.online-examination.question-bank.index', compact('data'));
@@ -49,15 +50,33 @@ class QuestionBankController extends Controller
     
     public function search(Request $request)
     {
+        $title         = ___('online-examination.question_bank');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'question_bank_create',
+            "create-route" => 'question-bank.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['request']        = $request;
-        $data['title']          = ___('online-examination.question_bank');
         $data['question_bank']  = $this->repo->search($request);
         return view('backend.admin.online-examination.question-bank.index', compact('data'));
     }
 
     public function create()
     {
-        $data['title']          = ___('online-examination.create_question_bank');
+        $data['title']          = ___('online-examination.Add question bank');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => ___("common.Question group"), "route" => "question-bank.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.online-examination.question-bank.create', compact('data'));
     }
 
@@ -73,9 +92,16 @@ class QuestionBankController extends Controller
 
     public function edit($id)
     {
+        $data['title']         = ___('online-examination.Edit question bank');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Online Examination"), "route" => ""],
+            ["title" => ___("common.Question group"), "route" => "question-bank.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['question_bank'] = $this->repo->show($id);
         $data['question_group']= $this->groupRepo->show($data['question_bank']->question_group_id);
-        $data['title']         = ___('online-examination.edit_question_bank');
         return view('backend.admin.online-examination.question-bank.edit', compact('data'));
     }
 

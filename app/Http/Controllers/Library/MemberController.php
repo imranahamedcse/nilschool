@@ -35,6 +35,7 @@ class MemberController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.library.member.index', compact('data'));
@@ -43,6 +44,13 @@ class MemberController extends Controller
     public function create()
     {
         $data['title']       = ___('website.Create member');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Member"), "route" => "member.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.library.member.create', compact('data'));
     }
@@ -58,9 +66,16 @@ class MemberController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('website.Edit member');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Member"), "route" => "member.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['member']      = $this->Repo->show($id);
         $data['user']        = $this->Repo->getUser($data['member']->user_id);
-        $data['title']       = ___('website.Edit member');
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.library.member.edit', compact('data'));
     }

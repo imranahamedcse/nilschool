@@ -35,6 +35,7 @@ class BookController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.library.book.index', compact('data'));
@@ -43,6 +44,13 @@ class BookController extends Controller
     public function create()
     {
         $data['title']       = ___('website.Create book');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Book"), "route" => "book.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.library.book.create', compact('data'));
     }
@@ -58,8 +66,15 @@ class BookController extends Controller
 
     public function edit($id)
     {
-        $data['book']        = $this->Repo->show($id);
         $data['title']       = ___('website.Edit book');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Library"), "route" => ""],
+            ["title" => ___("common.Book"), "route" => "book.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['book']        = $this->Repo->show($id);
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.library.book.edit', compact('data'));
     }
