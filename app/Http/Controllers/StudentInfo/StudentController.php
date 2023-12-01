@@ -66,7 +66,8 @@ class StudentController extends Controller
         $title             = ___('student_info.Students');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'student_create',
+            "filter"            => ['student.search', 'class', 'section'],
+            "create-permission"   => 'student_create',
             "create-route" => 'student.create',
         ];
         $data['breadcrumbs']  = [
@@ -88,7 +89,8 @@ class StudentController extends Controller
         $title             = ___('student_info.Students');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'student_create',
+            "filter"            => ['student.search', 'class', 'section'],
+            "create-permission"   => 'student_create',
             "create-route" => 'student.create',
         ];
         $data['breadcrumbs']  = [

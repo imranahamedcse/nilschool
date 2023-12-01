@@ -29,32 +29,34 @@ class ExamAssignController extends Controller
     private $classSetupRepo;
 
     function __construct(
-        ExamAssignRepository $repo, 
-        ClassesRepository $classRepo, 
-        SectionRepository $sectionRepo, 
-        SubjectRepository $subjectRepo, 
+        ExamAssignRepository $repo,
+        ClassesRepository $classRepo,
+        SectionRepository $sectionRepo,
+        SubjectRepository $subjectRepo,
         ExamTypeRepository $examTypeRepo,
         ClassSetupRepository $classSetupRepo,
         SubjectAssignInterface $subjectAssignRepo,
-        )
-    {
-        $this->repo               = $repo; 
-        $this->classRepo          = $classRepo; 
-        $this->sectionRepo        = $sectionRepo; 
-        $this->subjectRepo        = $subjectRepo; 
-        $this->examTypeRepo       = $examTypeRepo; 
-        $this->classSetupRepo     = $classSetupRepo; 
+    ) {
+        $this->repo               = $repo;
+        $this->classRepo          = $classRepo;
+        $this->sectionRepo        = $sectionRepo;
+        $this->subjectRepo        = $subjectRepo;
+        $this->examTypeRepo       = $examTypeRepo;
+        $this->classSetupRepo     = $classSetupRepo;
     }
-    
+
     public function index()
     {
         $data['classes']      = $this->classRepo->assignedAll();
+
+        $data['sections'] = [];
         $data['exam_assigns'] = $this->repo->getPaginateAll();
-        
+
         $title             = ___('examination.exam_assign');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'exam_assign_create',
+            "filter"            => ['exam-assign.search', 'class', 'section', 'exam_type', 'subject'],
+            "create-permission" => 'exam_assign_create',
             "create-route" => 'exam-assign.create',
         ];
         $data['breadcrumbs']  = [
@@ -64,7 +66,6 @@ class ExamAssignController extends Controller
         ];
 
         return view('backend.admin.examination.exam-assign.index', compact('data'));
-        
     }
 
     public function search(Request $request)
@@ -72,7 +73,8 @@ class ExamAssignController extends Controller
         $title             = ___('examination.exam_assign');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'exam_assign_create',
+            "filter"            => ['exam-assign.search', 'class', 'section', 'exam_type', 'subject'],
+            "create-permission" => 'exam_assign_create',
             "create-route" => 'exam-assign.create',
         ];
         $data['breadcrumbs']  = [
@@ -82,13 +84,14 @@ class ExamAssignController extends Controller
         ];
 
         $data['exam_assigns'] = $this->repo->searchExamAssign($request);
-        $data['subjectArr']   = Subject::pluck('name','id')->toArray();
-        $data['sectionArr']   = Section::pluck('name','id')->toArray();
-        $data['examArr']      = ExamType::pluck('name','id')->toArray();
+        $data['subjectArr']   = Subject::pluck('name', 'id')->toArray();
+        $data['sectionArr']   = Section::pluck('name', 'id')->toArray();
+        $data['examArr']      = ExamType::pluck('name', 'id')->toArray();
         $data['classes']      = $this->classRepo->assignedAll();
 
+        $data['sections'] = [];
+
         return view('backend.admin.examination.exam-assign.index', compact('data'));
-        
     }
 
     public function create()
@@ -104,7 +107,6 @@ class ExamAssignController extends Controller
         $data['classes']                = $this->classSetupRepo->all();
         $data['exam_types']             = $this->examTypeRepo->all();
         return view('backend.admin.examination.exam-assign.create', compact('data'));
-        
     }
 
     public function marksDistribution(Request $request)
@@ -116,7 +118,7 @@ class ExamAssignController extends Controller
     public function subjectMarksDistribution(Request $request)
     {
         // return $request->all();
-        $subjectArr   = Subject::pluck('name','id')->toArray();
+        $subjectArr   = Subject::pluck('name', 'id')->toArray();
         return view('backend.admin.examination.exam-assign.subject_marks_distribute', compact('subjectArr', 'request'))->render();
     }
 
@@ -124,7 +126,7 @@ class ExamAssignController extends Controller
     {
         // dd($request->all());
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('exam-assign.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -133,7 +135,7 @@ class ExamAssignController extends Controller
     public function edit($id)
     {
         $result = $this->repo->show($id);
-        if(!$result)
+        if (!$result)
             return redirect()->route('exam-assign.index')->with('danger', 'You cannot edit this! because, already marks registred.');
 
         $data['title']              = ___('examination.Edit exam assign');
@@ -147,20 +149,20 @@ class ExamAssignController extends Controller
         $data['exam_assign']        = $result;
         $data['classes']            = $this->classRepo->all();
         $data['sections']           = $this->classSetupRepo->getSections($data['exam_assign']->classes_id);
- 
+
 
         $result                   = SubjectAssign::active()->where('session_id', setting('session'))->where('classes_id', $data['exam_assign']->classes_id)->where('section_id', $data['exam_assign']->section_id)->first();
         $data['subjects']         = SubjectAssignChildren::with('subject')->where('subject_assign_id', @$result->id)->select('subject_id')->get();
 
         $data['exam_types']         = $this->examTypeRepo->all();
-        
+
         return view('backend.admin.examination.exam-assign.edit', compact('data'));
     }
 
     public function update(ExamAssignUpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('exam-assign.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -171,23 +173,23 @@ class ExamAssignController extends Controller
         $result = $this->repo->checkMarkRegister($id);
         return response()->json($result, 200);
     }
-    
+
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 
     public function getSections(Request $request)

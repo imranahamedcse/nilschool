@@ -53,11 +53,13 @@ class MarksRegisterController extends Controller
     {
         $data['classes']            = $this->classRepo->assignedAll();
         $data['marks_registers']    = $this->repo->getPaginateAll();
+        $data['sections'] = [];
 
         $title             = ___('examination.Marks register');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'marks_register_create',
+            "filter"            => ['marks-register.search', 'class', 'section', 'exam_type', 'subject'],
+            "create-permission"   => 'marks_register_create',
             "create-route" => 'marks-register.create',
         ];
         $data['breadcrumbs']  = [
@@ -73,7 +75,8 @@ class MarksRegisterController extends Controller
         $title             = ___('examination.Marks register');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'marks_register_create',
+            "filter"            => ['marks-register.search', 'class', 'section', 'exam_type', 'subject'],
+            "create-permission"   => 'marks_register_create',
             "create-route" => 'marks-register.create',
         ];
         $data['breadcrumbs']  = [
@@ -84,6 +87,7 @@ class MarksRegisterController extends Controller
 
         $data['classes']            = $this->classRepo->assignedAll();
         $data['marks_registers']    = $this->repo->searchMarkRegister($request);
+        $data['sections'] = [];
         return view('backend.admin.examination.marks-register.index', compact('data'));
     }
 

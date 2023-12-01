@@ -200,16 +200,22 @@
                 },
                 url: url + '/class-setup/get-sections',
                 success: function(data) {
-
                     var section_options = '';
+                    var section_li = '';
 
                     $.each(JSON.parse(data), function(i, item) {
                         section_options += "<option value=" + item.section.id + ">" + item
                             .section.name + "</option>";
+                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
+                            item.section.name + "</li>";
                     });
 
                     $("select.sections option").not(':first').remove();
                     $("select.sections").append(section_options);
+
+                    $("div .sections .current").html($("div .sections .list li:first").html());
+                    $("div .sections .list li").not(':first').remove();
+                    $("div .sections .list").append(section_li);
                 },
                 error: function(data) {
                     console.log(data);

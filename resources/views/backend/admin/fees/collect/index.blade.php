@@ -13,39 +13,8 @@
 
     <div class="card">
         <div class="card-body">
-            <div class="row justify-content-between border-bottom pb-3 mb-4">
-                <div class="col align-self-center">
-                    <h4 class="m-0">{{ @$data['title'] }}</h4>
-                </div>
-                <div class="col text-end">
-                    <form action="{{ route('fees-collect-search') }}" enctype="multipart/form-data" method="post"
-                        id="fees-collect">
-                        @csrf
-                        <div class="row">
-                            <div class="col">
-                                <select id="getSections" class="class form-control" name="class">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
-                                    @foreach ($data['classes'] as $item)
-                                        <option {{ old('class') == $item->id ? 'selected' : '' }}
-                                            value="{{ $item->class->id }}">{{ $item->class->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select class="sections section form-control" name="section">
-                                    <option value="">{{ ___('student_info.select_section') }}</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <button class="btn btn-primary">
-                                    {{ ___('common.Search') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
             
+            @include('backend.admin.components.table.header')            
 
             @isset($data['students'])
 
@@ -109,16 +78,22 @@
                     },
                     url: url + '/class-setup/get-sections',
                     success: function(data) {
-
                         var section_options = '';
+                    var section_li = '';
 
-                        $.each(JSON.parse(data), function(i, item) {
-                            section_options += "<option value=" + item.section.id + ">" + item
-                                .section.name + "</option>";
-                        });
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
+                            item.section.name + "</li>";
+                    });
 
-                        $("select.sections option").not(':first').remove();
-                        $("select.sections").append(section_options);
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+
+                    $("div .sections .current").html($("div .sections .list li:first").html());
+                    $("div .sections .list li").not(':first').remove();
+                    $("div .sections .list").append(section_li);
                     },
                     error: function(data) {
                         console.log(data);

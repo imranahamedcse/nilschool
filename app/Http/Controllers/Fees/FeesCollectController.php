@@ -11,6 +11,7 @@ use App\Repositories\Academic\SectionRepository;
 use App\Repositories\Fees\FeesMasterRepository;
 use App\Repositories\StudentInfo\StudentRepository;
 use Illuminate\Http\Request;
+use App\Repositories\Academic\ClassSetupRepository;
 
 class FeesCollectController extends Controller
 {
@@ -19,11 +20,13 @@ class FeesCollectController extends Controller
     private $sectionRepo;
     private $studentRepo;
     private $feesMasterRepo;
+    private $classSetupRepo;
 
     function __construct(
         FeesCollectInterface   $repo,
         ClassesRepository      $classRepo, 
         SectionRepository      $sectionRepo,
+        ClassSetupRepository   $classSetupRepo,
         StudentRepository      $studentRepo,
         FeesMasterRepository   $feesMasterRepo,
         )
@@ -31,6 +34,7 @@ class FeesCollectController extends Controller
         $this->repo              = $repo;  
         $this->classRepo         = $classRepo; 
         $this->sectionRepo       = $sectionRepo;
+        $this->classSetupRepo    = $classSetupRepo;
         $this->studentRepo       = $studentRepo;
         $this->feesMasterRepo    = $feesMasterRepo;
     }
@@ -43,9 +47,16 @@ class FeesCollectController extends Controller
             ["title" => ___("common.Fees"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
+        $data['headers']  = [
+            "title"             => $data['title'],
+            "filter"            => ['fees-collect-search', 'class', 'section'],
+            "create-permission" => '',
+            "create-route"      => '',
+        ];
+        
         $data['fees_collects']      = $this->repo->getPaginateAll();
         $data['classes']            = $this->classRepo->assignedAll();
-        $data['sections']           = $this->sectionRepo->all();
+        $data['sections']           = [];
 
         return view('backend.admin.fees.collect.index', compact('data'));
     }
@@ -125,9 +136,18 @@ class FeesCollectController extends Controller
             ["title" => ___("common.Fees"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
+        $data['headers']  = [
+            "title"             => $data['title'],
+            "filter"            => ['fees-collect-search', 'class', 'section'],
+            "create-permission" => '',
+            "create-route"      => '',
+        ];
         
         $data['students'] = $this->repo->getFeesAssignStudents($request);
         $data['classes']  = $this->classRepo->assignedAll();
+        $data['sections'] = $this->classSetupRepo->getSections($request->class);
+        $data['request']  = $request;
+
         return view('backend.admin.fees.collect.index', compact('data'));
     }
 

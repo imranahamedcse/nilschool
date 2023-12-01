@@ -39,7 +39,7 @@ class LanguageController extends Controller
         $title             = ___('common.languages');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'language_create',
+            "create-permission"   => 'language_create',
             "create-route" => 'languages.create',
         ];
         $data['breadcrumbs']  = [

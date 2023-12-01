@@ -12,79 +12,8 @@
     @include('backend.admin.components.breadcrumb')
 
     <div class="p-4 rounded-3 bg-white">
-        <div class="row justify-content-between border-bottom pb-4 mb-4">
-            <div class="col-3 align-self-center">
-                <h4 class="m-0">{{ @$data['headers']['title'] }}</h4>
-            </div>
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                <form action="{{ route('marks-register.search') }}" method="post" id="marksheet" class="exam_assign"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="input-group">
-                        <div>
-                            <select id="getSections" class="class @error('class') is-invalid @enderror"
-                                name="class">
-                                <option value="">{{ ___('student_info.select_class') }} </option>
-                                @foreach ($data['classes'] as $item)
-                                    <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('class')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div>
-                            <select class="sections section @error('section') is-invalid @enderror"
-                                name="section">
-                                <option value="">{{ ___('student_info.select_section') }} </option>
-                            </select>
-                            @error('section')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div>
-                            <select class="exam_types @error('exam_type') is-invalid @enderror"
-                                name="exam_type">
-                                <option value="">{{ ___('examination.select_exam_type') }} </option>
-                            </select>
-                            @error('exam_type')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div>
-                            <select class="subjects @error('subject') is-invalid @enderror" name="subject">
-                                <option value="">{{ ___('academic.Select subject') }} </option>
 
-                            </select>
-                            @error('subject')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div>
-                            <button class="btn btn-primary" type="submit">
-                                {{ ___('common.Search') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-3 text-end">
-                @if (hasPermission(@$data['headers']['permission']))
-                    <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">
-                        <i class="fa-solid fa-plus"></i> {{ ___('common.add') }}
-                    </a>
-                @endif
-            </div>
-        </div>
-
+        @include('backend.admin.components.table.header')
 
         <table id="datatable" class="table">
             <thead class="thead">
@@ -141,4 +70,44 @@
 @push('script')
     @include('backend.admin.components.table.js')
     @include('backend.admin.components.table.delete-ajax')
+
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+                    var section_options = '';
+                    var section_li = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
+                            item.section.name + "</li>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+
+                    $("div .sections .current").html($("div .sections .list li:first").html());
+                    $("div .sections .list li").not(':first').remove();
+                    $("div .sections .list").append(section_li);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
 @endpush

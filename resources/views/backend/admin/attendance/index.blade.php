@@ -14,103 +14,47 @@
 
     <div class="card">
         <div class="card-body">
-            <div class="row justify-content-center border-bottom pb-3 mb-3">
-                <div class="col-6">
-                    <form action="{{ route('attendance.search') }}" enctype="multipart/form-data" method="post">
-                        @csrf
-                        <div class="row">
-                            <div class="col">
-                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
-                                    name="class">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
-                                    @foreach ($data['classes'] as $item)
-                                        <option
-                                            {{ old('class', @$data['request']->class) == $item->class->id ? 'selected' : '' }}
-                                            value="{{ $item->class->id }}">{{ $item->class->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col">
-                                <select class="sections form-control @error('section') is-invalid @enderror" name="section">
-                                    <option value="">{{ ___('student_info.select_section') }}</option>
-                                    @foreach ($data['sections'] as $item)
-                                        <option
-                                            {{ old('section', @$data['request']->section) == $item->section->id ? 'selected' : '' }}
-                                            value="{{ $item->section->id }}">{{ $item->section->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col">
-                                <input value="{{ old('date', @$data['request']->date) }}" name="date"
-                                    class="form-control @error('date') is-invalid @enderror" type="date">
 
-                                @error('date')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col">
-                                <button class="btn btn-primary">
-                                    {{ ___('common.Search') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-
-
+            @include('backend.admin.components.table.header')
+            
             @isset($data['students'])
-            @if (@$data['status'] == 1)
-                <div class="alert alert-warning text-center">
-                    {{ ___('attendance.Attendance already collected! You can edit record.') }}
-                </div>
-            @endif
+                @if (@$data['status'] == 1)
+                    <div class="alert alert-warning text-center">
+                        {{ ___('attendance.Attendance already collected! You can edit record.') }}
+                    </div>
+                @endif
 
-            <form action="{{ route('attendance.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
+                <form action="{{ route('attendance.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
 
-                <!--  start hidden items -->
-                <input type="hidden" name="status" value="{{ @$data['status'] }}">
-                <input type="hidden" name="class" value="{{ @$data['request']->class }}">
-                <input type="hidden" name="section" value="{{ @$data['request']->section }}">
-                <input type="hidden" name="date" value="{{ @$data['request']->date }}">
-                <!--  end -->
+                    <!--  start hidden items -->
+                    <input type="hidden" name="status" value="{{ @$data['status'] }}">
+                    <input type="hidden" name="class" value="{{ @$data['request']->class }}">
+                    <input type="hidden" name="section" value="{{ @$data['request']->section }}">
+                    <input type="hidden" name="date" value="{{ @$data['request']->date }}">
+                    <!--  end -->
 
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="holidayId" name="holiday">
-                    <label class="form-check-label" for="holidayId">
-                        {{ ___('attendance.Holiday') }}
-                    </label>
-                </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="holidayId" name="holiday">
+                        <label class="form-check-label" for="holidayId">
+                            {{ ___('attendance.Holiday') }}
+                        </label>
+                    </div>
 
 
-                <table id="datatable" class="table">
-                    <thead class="thead">
-                        <tr>
-                            <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                            <th class="purchase">{{ ___('student_info.roll_no') }}</th>
-                            <th class="purchase">{{ ___('student_info.admission_no') }}</th>
-                            <th class="purchase">{{ ___('student_info.class') }}
-                                ({{ ___('student_info.section') }})</th>
-                            <th class="purchase">{{ ___('attendance.Attendance') }}</th>
-                            <th class="purchase">{{ ___('attendance.Note') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <table id="datatable" class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th class="purchase">{{ ___('student_info.Student Name') }}</th>
+                                <th class="purchase">{{ ___('student_info.roll_no') }}</th>
+                                <th class="purchase">{{ ___('student_info.admission_no') }}</th>
+                                <th class="purchase">{{ ___('student_info.class') }}
+                                    ({{ ___('student_info.section') }})</th>
+                                <th class="purchase">{{ ___('attendance.Attendance') }}</th>
+                                <th class="purchase">{{ ___('attendance.Note') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
 
                             @forelse ($data['students'] as $item)
@@ -194,7 +138,7 @@
                     @endif
                 </form>
             </div>
-            
+
             @endif
         </div>
     @endsection
@@ -219,16 +163,22 @@
                     },
                     url: url + '/class-setup/get-sections',
                     success: function(data) {
-
                         var section_options = '';
+                        var section_li = '';
 
                         $.each(JSON.parse(data), function(i, item) {
                             section_options += "<option value=" + item.section.id + ">" + item
                                 .section.name + "</option>";
+                            section_li += "<li data-value=" + item.section.id + " class='option'>" +
+                                item.section.name + "</li>";
                         });
 
                         $("select.sections option").not(':first').remove();
                         $("select.sections").append(section_options);
+
+                        $("div .sections .current").html($("div .sections .list li:first").html());
+                        $("div .sections .list li").not(':first').remove();
+                        $("div .sections .list").append(section_li);
                     },
                     error: function(data) {
                         console.log(data);

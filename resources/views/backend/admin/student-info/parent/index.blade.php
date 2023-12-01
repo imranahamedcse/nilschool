@@ -19,17 +19,13 @@
             <div class="col">
                 <form action="{{ route('parent.search') }}" method="post" id="marksheed" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col">
-                            <input class="form-control" name="keyword" list="datalistOptions" id="exampleDataList"
-                                placeholder="{{ ___('student_info.Enter keyword') }}"
-                                value="{{ old('keyword', @$data['request']->keyword) }}">
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-primary ml-3" type="submit">
-                                {{ ___('common.Search') }}
-                            </button>
-                        </div>
+                    <div class="input-group">
+                        <input class="form-control" name="keyword" list="datalistOptions" id="exampleDataList"
+                            placeholder="{{ ___('student_info.Enter keyword') }}"
+                            value="{{ old('keyword', @$data['request']->keyword) }}">
+                        <button class="btn btn-primary ml-3" type="submit">
+                            {{ ___('common.Search') }}
+                        </button>
                     </div>
                 </form>
             </div>
