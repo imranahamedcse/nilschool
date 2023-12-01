@@ -28,11 +28,12 @@ class SliderController extends Controller
         $title             = ___('settings.Slider');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'slider_create',
+            "create-permission"   => 'slider_create',
             "create-route" => 'slider.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.slider.index', compact('data'));
@@ -40,7 +41,14 @@ class SliderController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create slider');
+        $data['title']       = ___('website.Add slider');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Slider"), "route" => "slider.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.website-setup.slider.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class SliderController extends Controller
 
     public function edit($id)
     {
-        $data['slider']      = $this->sliderRepo->show($id);
         $data['title']       = ___('website.Edit slider');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Slider"), "route" => "slider.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['slider']      = $this->sliderRepo->show($id);
         return view('backend.admin.website-setup.slider.edit', compact('data'));
     }
 

@@ -28,11 +28,12 @@ class DepartmentContactController extends Controller
         $title             = ___('settings.Department Contact');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'dep_contact_create',
+            "create-permission"   => 'dep_contact_create',
             "create-route" => 'department-contact.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.department-contact.index', compact('data'));
@@ -40,7 +41,14 @@ class DepartmentContactController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create Department Contact');
+        $data['title']       = ___('website.Add Department Contact');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Department information"), "route" => "department-contact.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.website-setup.department-contact.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class DepartmentContactController extends Controller
 
     public function edit($id)
     {
-        $data['dep_contact']      = $this->depContactRepo->show($id);
         $data['title']       = ___('website.Edit Department Contact');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Department information"), "route" => "department-contact.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['dep_contact']      = $this->depContactRepo->show($id);
         return view('backend.admin.website-setup.department-contact.edit', compact('data'));
     }
 

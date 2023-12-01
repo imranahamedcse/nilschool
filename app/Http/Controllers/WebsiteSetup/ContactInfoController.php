@@ -28,11 +28,12 @@ class ContactInfoController extends Controller
         $title             = ___('settings.Contact information');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'contact_info_create',
+            "create-permission"   => 'contact_info_create',
             "create-route" => 'contact-info.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.contact-info.index', compact('data'));
@@ -40,7 +41,14 @@ class ContactInfoController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create contact information');
+        $data['title']       = ___('website.Add contact information');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Contact information"), "route" => "contact-info.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.website-setup.contact-info.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class ContactInfoController extends Controller
 
     public function edit($id)
     {
-        $data['contact_info']      = $this->contactInfoRepo->show($id);
         $data['title']       = ___('website.Edit contact information');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Contact information"), "route" => "contact-info.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['contact_info']      = $this->contactInfoRepo->show($id);
         return view('backend.admin.website-setup.contact-info.edit', compact('data'));
     }
 

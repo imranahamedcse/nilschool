@@ -25,14 +25,15 @@ class EventController extends Controller
     {
         $data['event'] = $this->eventRepo->getAll();
 
-        $title             = ___('settings.event');
+        $title             = ___('settings.Event');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'event_create',
+            "create-permission"   => 'event_create',
             "create-route" => 'event.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.event.index', compact('data'));
@@ -41,6 +42,13 @@ class EventController extends Controller
     public function create()
     {
         $data['title']       = ___('website.Create event');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Event"), "route" => "event.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.website-setup.event.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class EventController extends Controller
 
     public function edit($id)
     {
-        $data['event']      = $this->eventRepo->show($id);
         $data['title']       = ___('website.Edit event');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Event"), "route" => "event.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['event']      = $this->eventRepo->show($id);
         return view('backend.admin.website-setup.event.edit', compact('data'));
     }
 

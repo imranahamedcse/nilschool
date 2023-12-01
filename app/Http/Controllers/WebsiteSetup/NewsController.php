@@ -28,11 +28,12 @@ class NewsController extends Controller
         $title             = ___('settings.News');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'news_create',
+            "create-permission"   => 'news_create',
             "create-route" => 'news.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.news.index', compact('data'));
@@ -40,7 +41,14 @@ class NewsController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create news');
+        $data['title']       = ___('website.Add news');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.News"), "route" => "news.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.website-setup.news.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        $data['news']      = $this->newsRepo->show($id);
         $data['title']       = ___('website.Edit news');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.News"), "route" => "news.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['news']      = $this->newsRepo->show($id);
         return view('backend.admin.website-setup.news.edit', compact('data'));
     }
 

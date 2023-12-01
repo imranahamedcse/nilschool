@@ -28,7 +28,7 @@ class CounterController extends Controller
         $title             = ___('settings.Counter');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'counter_create',
+            "create-permission"   => 'counter_create',
             "create-route" => 'counter.create',
         ];
         $data['breadcrumbs']  = [
@@ -41,6 +41,13 @@ class CounterController extends Controller
     public function create()
     {
         $data['title']       = ___('website.Create counter');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Counter"), "route" => "counter.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.website-setup.counter.create', compact('data'));
     }
 
@@ -55,8 +62,15 @@ class CounterController extends Controller
 
     public function edit($id)
     {
-        $data['counter']      = $this->counterRepo->show($id);
         $data['title']       = ___('website.Edit counter');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Counter"), "route" => "counter.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['counter']      = $this->counterRepo->show($id);
         return view('backend.admin.website-setup.counter.edit', compact('data'));
     }
 

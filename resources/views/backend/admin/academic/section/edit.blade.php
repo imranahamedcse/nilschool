@@ -4,10 +4,6 @@
     {{ @$data['title'] }}
 @endsection
 
-@push('style')
-    @include('backend.admin.components.table.css')
-@endpush
-
 @section('content')
     @include('backend.admin.components.breadcrumb')
 

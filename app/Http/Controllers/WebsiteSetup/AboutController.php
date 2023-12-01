@@ -25,14 +25,15 @@ class AboutController extends Controller
     {
         $data['about'] = $this->aboutRepo->getAll();
 
-        $title             = ___('settings.about');
+        $title             = ___('settings.About');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'about_create',
+            "create-permission"   => 'about_create',
             "create-route" => 'about.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.about.index', compact('data'));
@@ -40,7 +41,14 @@ class AboutController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create about');
+        $data['title']       = ___('website.Add about');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.About"), "route" => "about.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.website-setup.about.create', compact('data'));
     }
 
@@ -55,8 +63,15 @@ class AboutController extends Controller
 
     public function edit($id)
     {
-        $data['about']      = $this->aboutRepo->show($id);
         $data['title']       = ___('website.Edit about');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.About"), "route" => "about.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['about']      = $this->aboutRepo->show($id);
         return view('backend.admin.website-setup.about.edit', compact('data'));
     }
 

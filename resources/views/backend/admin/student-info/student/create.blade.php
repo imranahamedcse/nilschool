@@ -4,10 +4,6 @@
     {{ @$data['title'] }}
 @endsection
 
-@push('style')
-    @include('backend.admin.components.table.css')
-@endpush
-
 @section('content')
     @include('backend.admin.components.breadcrumb')
 
@@ -309,9 +305,9 @@
                         <div class="row py-3">
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
-                                    <h4 class="m-0 flex-fill">
+                                    <h5 class="m-0 flex-fill text-info">
                                         {{ ___('student_info.Upload Documents') }}
-                                    </h4>
+                                    </h5>
                                     <button type="button" class="btn btn-sm btn-primary addNewDocument"
                                         onclick="addNewDocument()">
                                         <span><i class="fa-solid fa-plus"></i> </span>

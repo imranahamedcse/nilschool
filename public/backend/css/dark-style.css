@@ -207,3 +207,23 @@ table.dataTable td {
 }
 
 /* sidebar end */
+
+/* nice select start */
+
+.nice-select {
+  background: #212529 !important;
+  border: 1px solid #495057 !important;
+}
+
+.nice-select.open .list {
+  background: #212529 !important;
+}
+
+.nice-select .option.focus,
+.nice-select .option.selected.focus,
+.nice-select .option:hover {
+  background-color: #99C8FF !important;
+  color: #3B3B3B !important;
+}
+
+/* nice select end */
