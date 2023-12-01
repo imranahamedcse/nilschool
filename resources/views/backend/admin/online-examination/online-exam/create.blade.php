@@ -276,7 +276,7 @@
                     {{-- Second row end --}}
                     <div class="col-md-12 mt-24">
                         <div class="text-end">
-                            <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
+                            <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                                 </span>{{ ___('common.submit') }}
                             </button>
                         </div>

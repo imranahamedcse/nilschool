@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/icons/css/solid.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/light-style.css') }}" id="theme-style" disabled>
     <link rel="stylesheet" href="{{ asset('backend/css/dark-style.css') }}" id="dark-theme-style" disabled>
+    <link rel="stylesheet" href="{{ asset('backend/css/nice-select.min.css') }}" />
 
     @stack('mainstyle')
 
@@ -55,9 +56,15 @@
     </script>
     <!-- light/dark theme end -->
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{ asset('backend/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/js/main.js') }}"></script>
+    <script src="{{ asset('backend/js/jquery.nice-select.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('select').niceSelect();
+        });
+    </script>
 
     @stack('mainscript')
 

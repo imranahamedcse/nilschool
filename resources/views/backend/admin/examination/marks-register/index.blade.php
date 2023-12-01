@@ -16,14 +16,13 @@
             <div class="col-3 align-self-center">
                 <h4 class="m-0">{{ @$data['headers']['title'] }}</h4>
             </div>
-            <div class="col-6">
+            <div class="col-6 d-flex justify-content-center align-items-center">
                 <form action="{{ route('marks-register.search') }}" method="post" id="marksheet" class="exam_assign"
                     enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
-                        <div class="col">
-                            <select id="getSections"
-                                class="class form-control @error('class') is-invalid @enderror"
+                    <div class="input-group">
+                        <div>
+                            <select id="getSections" class="class @error('class') is-invalid @enderror"
                                 name="class">
                                 <option value="">{{ ___('student_info.select_class') }} </option>
                                 @foreach ($data['classes'] as $item)
@@ -36,9 +35,8 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
-                            <select
-                                class="sections section form-control @error('section') is-invalid @enderror"
+                        <div>
+                            <select class="sections section @error('section') is-invalid @enderror"
                                 name="section">
                                 <option value="">{{ ___('student_info.select_section') }} </option>
                             </select>
@@ -48,9 +46,8 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
-                            <select
-                                class="form-control exam_types @error('exam_type') is-invalid @enderror"
+                        <div>
+                            <select class="exam_types @error('exam_type') is-invalid @enderror"
                                 name="exam_type">
                                 <option value="">{{ ___('examination.select_exam_type') }} </option>
                             </select>
@@ -60,10 +57,8 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
-                            <select
-                                class="subjects form-control @error('subject') is-invalid @enderror"
-                                name="subject">
+                        <div>
+                            <select class="subjects @error('subject') is-invalid @enderror" name="subject">
                                 <option value="">{{ ___('academic.Select subject') }} </option>
 
                             </select>
@@ -73,7 +68,7 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col">
+                        <div>
                             <button class="btn btn-primary" type="submit">
                                 {{ ___('common.Search') }}
                             </button>

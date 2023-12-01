@@ -54,7 +54,7 @@ class MarksRegisterController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['marks_registers']    = $this->repo->getPaginateAll();
 
-        $title             = ___('examination.marks_register');
+        $title             = ___('examination.Marks register');
         $data['headers']   = [
             "title"        => $title,
             "permission"   => 'marks_register_create',
@@ -62,6 +62,7 @@ class MarksRegisterController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.examination.marks-register.index', compact('data'));
@@ -69,7 +70,18 @@ class MarksRegisterController extends Controller
 
     public function search(Request $request)
     {
-        $data['title']              = ___('examination.marks_register');
+        $title             = ___('examination.Marks register');
+        $data['headers']   = [
+            "title"        => $title,
+            "permission"   => 'marks_register_create',
+            "create-route" => 'marks-register.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['marks_registers']    = $this->repo->searchMarkRegister($request);
         return view('backend.admin.examination.marks-register.index', compact('data'));
@@ -97,9 +109,16 @@ class MarksRegisterController extends Controller
 
     public function create()
     {
+        $data['title']                  = ___('examination.marks_register');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Marks register"), "route" => "marks-register.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['classes']                = $this->classSetupRepo->all();
         $data['exam_types']             = $this->examAssignRepo->assignedExamType();
-        $data['title']                  = ___('examination.marks_register');
         return view('backend.admin.examination.marks-register.create', compact('data'));
     }
 
@@ -119,7 +138,14 @@ class MarksRegisterController extends Controller
 
         $data['subjects']              = $this->subjectRepo->all();
         $data['marks_register']        = $this->repo->show($id);
+
         $data['title']                 = ___('examination.marks_register');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Marks register"), "route" => "marks-register.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
 
         $request = new Request([
             'class'     => $data['marks_register']->classes_id,

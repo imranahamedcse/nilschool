@@ -25,8 +25,7 @@
                                 <label for="validationServer04"
                                     class="form-label">{{ ___('online-examination.question_type') }} <span
                                         class="fillable">*</span></label>
-                                <select
-                                    class="question_type @error('type') is-invalid @enderror" name="type"
+                                <select class="question_type @error('type') is-invalid @enderror" name="type"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('online-examination.select_type') }}</option>
                                     @foreach (\Config::get('site.question_types') as $key => $type)
@@ -46,11 +45,10 @@
                                 <label for="validationServer04"
                                     class="form-label">{{ ___('online-examination.question_group') }}
                                     <span class="fillable">*</span></label>
-                                <select
-                                    class="question_group @error('question_group') is-invalid @enderror"
-                                    name="question_group" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
-                                    <option value="">{{ ___('online-examination.select_question_group') }}</option>
+                                <select class="question_group @error('question_group') is-invalid @enderror"
+                                    name="question_group" id="a-select" aria-describedby="validationServer04Feedback">
+                                    <option data-display="Select">{{ ___('online-examination.select_question_group') }}
+                                    </option>
                                     @if (old('question_group'))
                                         @php
                                             $questionGroupName = \App\Models\OnlineExamination\QuestionGroup::find(old('question_group'))?->name ?? '';

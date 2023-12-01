@@ -26,7 +26,9 @@ td.w-150 {
 
 .nice-select {
     width: 100% !important;
+    height: 36px !important;
+    line-height: 36px !important;
 }
-.nice-select .nice-select-dropdown {
+.nice-select.open .list {
     width: 100% !important;
 }
