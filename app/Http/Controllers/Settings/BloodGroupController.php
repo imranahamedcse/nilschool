@@ -27,14 +27,15 @@ class BloodGroupController extends Controller
     {
         $data['bloodGroup'] = $this->bloodGroup->getAll();
 
-        $title             = ___('settings.blood_groups');
+        $title             = ___('settings.Blood groups');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'blood_group_create',
+            "create-permission"   => 'blood_group_create',
             "create-route" => 'blood-groups.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.blood_group.index', compact('data'));
@@ -42,7 +43,14 @@ class BloodGroupController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.create_blood_group');
+        $data['title']       = ___('settings.Add blood group');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Blood groups"), "route" => "blood-groups.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.blood_group.create', compact('data'));
     }
 
@@ -57,8 +65,15 @@ class BloodGroupController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('settings.Edit blood group');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Blood groups"), "route" => "blood-groups.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['bloodGroup']        = $this->bloodGroup->show($id);
-        $data['title']       = ___('settings.edit_blood_group');
         return view('backend.admin.blood_group.edit', compact('data'));
     }
 

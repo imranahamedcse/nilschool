@@ -27,14 +27,15 @@ class GenderController extends Controller
     {
         $data['genders'] = $this->gender->getAll();
 
-        $title             = ___('settings.genders');
+        $title             = ___('settings.Genders');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'gender_create',
+            "create-permission"   => 'gender_create',
             "create-route" => 'genders.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.gender.index', compact('data'));
@@ -42,7 +43,14 @@ class GenderController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.create_gender');
+        $data['title']       = ___('settings.Add gender');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Genders"), "route" => "genders.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.gender.create', compact('data'));
     }
 
@@ -57,8 +65,15 @@ class GenderController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('settings.Edit gender');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Genders"), "route" => "genders.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['gender']        = $this->gender->show($id);
-        $data['title']       = ___('settings.edit_gender');
         return view('backend.admin.gender.edit', compact('data'));
     }
 

@@ -27,14 +27,15 @@ class ReligionController extends Controller
     {
         $data['religions'] = $this->religion->getAll();
 
-        $title             = ___('settings.religions');
+        $title             = ___('settings.Religions');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'religion_create',
+            "create-permission"   => 'religion_create',
             "create-route" => 'religions.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.religion.index', compact('data'));
@@ -42,7 +43,14 @@ class ReligionController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.create_religion');
+        $data['title']       = ___('settings.Add religion');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Religions"), "route" => "religions.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.religion.create', compact('data'));
     }
 
@@ -57,8 +65,15 @@ class ReligionController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('settings.Edit religion');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Religions"), "route" => "religions.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['religion']        = $this->religion->show($id);
-        $data['title']       = ___('settings.edit_religion');
         return view('backend.admin.religion.edit', compact('data'));
     }
 

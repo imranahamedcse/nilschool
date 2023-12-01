@@ -19,9 +19,6 @@
                 @method('PUT')
                 <div class="row mb-3">
                     <div class="col-lg-12">
-
-                        {{-- @dd($data['sections']) --}}
-
                         <div class="row">
 
                             @if (@$data['sections']->name)
@@ -162,9 +159,6 @@
                                                     {{ ___('common.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][0]"
                                                     accept="image/*" id="fileBrouse2">
-
-
-                                                {{-- <input class="form-control ot-input mb-2" value="{{ @$data['sections']->data[0]['icon'] }}" name="data[icon][]" placeholder="{{ ___('common.Enter icon') }}"> --}}
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">{{ ___('common.title') }}</label>
@@ -184,9 +178,6 @@
                                                     {{ ___('common.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][1]"
                                                     accept="image/*" id="fileBrouse3">
-
-
-                                                {{-- <input class="form-control ot-input mb-2" value="{{ @$data['sections']->data[1]['icon'] }}" name="data[icon][]" placeholder="{{ ___('common.Enter icon') }}"> --}}
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">{{ ___('common.title') }}</label>

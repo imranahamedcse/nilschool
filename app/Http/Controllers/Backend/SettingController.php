@@ -29,12 +29,18 @@ class SettingController extends Controller
     // General setting start
     public function generalSettings()
     {
-        $data['title']      = ___('common.general_settings');
+        $data['title']       = ___('common.General settings');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['data']       = $this->setting->getAll();
         $data['languages']  = $this->setting->getLanguage();
         $data['sessions']   = $this->setting->getSessions();
         $data['currencies'] = $this->setting->getCurrencies();
-        return view('backend.settings.general-settings', compact('data'));
+        return view('backend.admin.settings.general-settings', compact('data'));
     }
 
     public function updateGeneralSetting(GeneralSettingStoreRequest $request)
@@ -54,7 +60,7 @@ class SettingController extends Controller
         try {
             $data['title'] = ___('common.storage_settings');
             $data['data']  = $this->setting->getAll();
-            return view('backend.settings.storage_setting',compact('data'));
+            return view('backend.admin.settings.storage_setting',compact('data'));
         } catch (\Throwable $th) {
             return redirect('/');
         }
@@ -76,7 +82,7 @@ class SettingController extends Controller
     {
         $data['title'] = ___('common.recaptcha_settings');
         $data['data']  = $this->setting->getAll();
-        return view('backend.settings.recaptcha-settings', compact('data'));
+        return view('backend.admin.settings.recaptcha-settings', compact('data'));
     }
 
     public function updateRecaptchaSetting(SettingStoreRequest $request)
@@ -95,8 +101,14 @@ class SettingController extends Controller
     public function mailSetting()
     {
         $data['title'] = ___('settings.email_settings');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
         $data['data']  = $this->setting->getAll();
-        return view('backend.settings.mail-settings', compact('data'));
+        return view('backend.admin.settings.mail-settings', compact('data'));
     }
 
     public function updateMailSetting(EmailSettingStoreRequest $request)
@@ -120,7 +132,13 @@ class SettingController extends Controller
     public function taskSchedulers()
     {
         $data['title']      = ___('settings.Task Schedules');
-        return view('backend.settings.task-schedulers', compact('data'));
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
+        return view('backend.admin.settings.task-schedulers', compact('data'));
     }
     public function resultGenerate()
     {
@@ -138,7 +156,13 @@ class SettingController extends Controller
     public function softwareUpdate()
     {
         $data['title']      = ___('settings.Software Update');
-        return view('backend.settings.software_update', compact('data'));
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        return view('backend.admin.settings.software_update', compact('data'));
     }
     public function installUpdate()
     {

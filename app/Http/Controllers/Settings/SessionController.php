@@ -28,14 +28,15 @@ class SessionController extends Controller
     {
         $data['sessions'] = $this->session->getAll();
 
-        $title             = ___('settings.sessions');
+        $title             = ___('settings.Sessions');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'session_create',
+            "create-permission"   => 'session_create',
             "create-route" => 'sessions.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.session.index', compact('data'));
@@ -43,7 +44,14 @@ class SessionController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.create_session');
+        $data['title']       = ___('settings.Add session');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Sessions"), "route" => "sessions.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.session.create', compact('data'));
     }
 
@@ -58,8 +66,15 @@ class SessionController extends Controller
 
     public function edit($id)
     {
+        $data['title']       = ___('settings.Edit session');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Settings"), "route" => ""],
+            ["title" => ___("common.Sessions"), "route" => "sessions.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['session']        = $this->session->show($id);
-        $data['title']       = ___('settings.edit_session');
         return view('backend.admin.session.edit', compact('data'));
     }
 
