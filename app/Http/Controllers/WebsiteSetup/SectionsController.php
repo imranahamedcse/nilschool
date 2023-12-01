@@ -26,12 +26,13 @@ class SectionsController extends Controller
     {
         $data['sections'] = $this->sectionsRepo->getAll();
 
-        $title             = ___('settings.sections');
+        $title             = ___('settings.Sections');
         $data['headers']   = [
             "title"        => $title
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.sections.index', compact('data'));
@@ -39,8 +40,15 @@ class SectionsController extends Controller
 
     public function edit($id)
     {
-        $data['sections']    = $this->sectionsRepo->show($id);
         $data['title']       = ___('website.Edit sections');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Sections"), "route" => "sections.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['sections']    = $this->sectionsRepo->show($id);
         return view('backend.admin.website-setup.sections.edit', compact('data'));
     }
 

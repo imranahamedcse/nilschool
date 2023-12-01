@@ -111,7 +111,7 @@
                 <div class="profile-body">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h2 class="title">{{ ___('common.my_profile') }}</h2>
-                        <a href="{{ route('my.profile.edit') }}" class="btn btn-lg ot-btn-primary mb-5">
+                        <a href="{{ route('my.profile.edit') }}" class="btn btn-primary mb-5">
                             <span class="icon"><i class="fa-solid fa-pen-to-square"></i></span>
                             <span class="">{{ ___('common.edit') }}</span>
                         </a>

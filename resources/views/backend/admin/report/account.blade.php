@@ -495,7 +495,7 @@
 
                                 <div class="single_large_selectBox">
                                     <select
-                                        class="nice-select niceSelect bordered_style wide account_head_type @error('type') is-invalid @enderror"
+                                        class="form-control account_head_type @error('type') is-invalid @enderror"
                                         name="type">
                                         <option value="{{ App\Enums\AccountHeadType::INCOME }}"
                                             {{ @$data['request']->type == App\Enums\AccountHeadType::INCOME ? 'selected' : '' }}>
@@ -513,7 +513,7 @@
 
                                 <div class="single_large_selectBox">
                                     <select
-                                        class="nice-select niceSelect bordered_style wide account_types @error('head') is-invalid @enderror"
+                                        class="form-control account_types @error('head') is-invalid @enderror"
                                         name="head">
                                         <option value="">{{ ___('student_info.select head') }}</option>
                                         @foreach ($data['account_head'] as $item)
@@ -535,7 +535,7 @@
                                         value="{{ @$data['request']->dates }}" name="dates">
                                 </div>
 
-                                <button class="btn btn-lg ot-btn-primary" type="submit">
+                                <button class="btn btn-primary" type="submit">
                                     {{ ___('common.Search') }}
                                 </button>
                             </div>
@@ -547,7 +547,7 @@
                 <div class="col-lg-12">
                     @if (count($data['result']) > 0)
                         <div class="download_print_btns">
-                            <button class="btn btn-lg ot-btn-primary" onclick="printDiv('printableArea')">
+                            <button class="btn btn-primary" onclick="printDiv('printableArea')">
                                 {{ ___('common.Print Now') }}
                                 <span><i class="fa-solid fa-print"></i></span>
                             </button>
@@ -556,7 +556,7 @@
                                 <input type="hidden" name="type" value="{{ $data['request']->type }}">
                                 <input type="hidden" name="head" value="{{ $data['request']->head }}">
                                 <input type="hidden" name="dates" value="{{ $data['request']->dates }}">
-                                <button class="btn btn-lg ot-btn-primary mt-3"
+                                <button class="btn btn-primary mt-3"
                                     type="submit">{{ ___('common.PDF Download') }} <span><i
                                             class="fa-brands fa-dochub"></i></span></button>
                             </form>

@@ -24,7 +24,7 @@
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
                                         class="fillable">*</span></label>
                                 <select id="getSections"
-                                    class="nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                    class="form-control @error('class') is-invalid @enderror"
                                     name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
@@ -68,7 +68,7 @@
                                 <label for="validationServer04" class="form-label">{{ ___('examination.exam_type') }}
                                     <span class="fillable">*</span></label>
                                 <select
-                                    class="nice-select niceSelect bordered_style wide @error('exam_type') is-invalid @enderror"
+                                    class="form-control @error('exam_type') is-invalid @enderror"
                                     name="exam_type">
                                     <option value="">{{ ___('examination.select_exam_type') }}</option>
                                     @foreach ($data['exam_types'] as $item)

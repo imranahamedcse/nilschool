@@ -111,7 +111,7 @@
 
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
-                                    <button type="submit" class="btn btn-lg ot-btn-primary"><span><i
+                                    <button type="submit" class="btn btn-primary"><span><i
                                                 class="fa-solid fa-save"></i>
                                         </span>{{ ___('common.submit') }}</button>
                                 </div>

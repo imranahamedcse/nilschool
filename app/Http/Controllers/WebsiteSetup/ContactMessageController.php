@@ -31,6 +31,7 @@ class ContactMessageController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.contact-message.index', compact('data'));

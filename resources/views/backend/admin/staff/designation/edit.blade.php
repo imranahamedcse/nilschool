@@ -43,7 +43,7 @@
                                         class="fillable">*</span></label>
 
                                 <select
-                                    class="nice-select niceSelect bordered_style wide @error('status') is-invalid @enderror"
+                                    class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
 
                                     <option value="{{ App\Enums\Status::ACTIVE }}"

@@ -602,7 +602,7 @@
                                 <!-- table_searchBox -->
 
                                 <div class="single_large_selectBox">
-                                    <select id="getSections" class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                    <select id="getSections" class="class form-control @error('class') is-invalid @enderror"
                                         name="class">
                                         <option value="">{{ ___('student_info.select_class') }} *</option>
                                         @foreach ($data['classes'] as $item)
@@ -618,7 +618,7 @@
                                 </div>
 
                                 <div class="single_large_selectBox">
-                                    <select class="sections section nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
+                                    <select class="sections section form-control @error('section') is-invalid @enderror"
                                         name="section">
                                         <option value="">{{ ___('student_info.select_section') }} *</option>
                                         @foreach ($data['sections'] as $item)
@@ -634,7 +634,7 @@
                                 </div>
 
                                 <div class="single_large_selectBox">
-                                    <select class="students nice-select niceSelect bordered_style wide @error('student') is-invalid @enderror"
+                                    <select class="students form-control @error('student') is-invalid @enderror"
                                         name="student">
                                         <option value="">{{ ___('student_info.Select student') }} *</option>
                                         @foreach ($data['students'] as $item)
@@ -649,7 +649,7 @@
                                     @enderror
                                 </div>
 
-                                <button class="btn btn-lg ot-btn-primary" type="submit">
+                                <button class="btn btn-primary" type="submit">
                                     {{___('common.Search')}}
                                 </button>
                             </div>
@@ -660,11 +660,11 @@
             @if (@$data['marks_registers'])
                 <div class="col-lg-12">
                     <div class="download_print_btns ">
-                        <button class="btn btn-lg ot-btn-primary" onclick="printDiv('printableArea')">
+                        <button class="btn btn-primary" onclick="printDiv('printableArea')">
                             {{___('common.Print Now')}}
                             <span><i class="fa-solid fa-print"></i></span>
                         </button>
-                        <a class="btn btn-lg ot-btn-primary" href="{{ route('report-progress-card.pdf-generate', ['class'=>$data['request']->class, 'section'=>$data['request']->section, 'student'=>$data['request']->student ]) }}">
+                        <a class="btn btn-primary" href="{{ route('report-progress-card.pdf-generate', ['class'=>$data['request']->class, 'section'=>$data['request']->section, 'student'=>$data['request']->student ]) }}">
                             {{___('common.Pdf Preview')}}
                             <span><i class="fa-brands fa-dochub"></i></span>
                         </a>

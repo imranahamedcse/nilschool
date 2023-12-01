@@ -8,7 +8,7 @@
     <td class="pr-0">
         <div class="d-flex align-items-center justify-content-between mt-0">
             <div></div>
-            <button type="button" class="btn btn-lg ot-btn-primary radius_30px small_add_btn"
+            <button type="button" class="btn btn-primary radius_30px small_add_btn"
             onclick="marksDistribution({{$item}})">
             <span><i class="fa-solid fa-plus"></i> </span>
             {{ ___('common.add') }}</button>

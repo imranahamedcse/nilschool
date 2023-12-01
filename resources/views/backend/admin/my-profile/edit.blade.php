@@ -129,7 +129,7 @@
                                     <div class="ot_fileUploader left-side mb-3">
                                         <input class="form-control" type="text" placeholder="{{ ___('common.image') }}" readonly="" id="placeholder">
                                         <button class="primary-btn-small-input" type="button">
-                                            <label class="btn btn-lg ot-btn-primary" for="fileBrouse">{{ ___('common.browse') }}</label>
+                                            <label class="btn btn-primary" for="fileBrouse">{{ ___('common.browse') }}</label>
                                             <input type="file" class="d-none form-control" name="image" id="fileBrouse" accept="image/*">
                                         </button>
                                     </div>
@@ -185,7 +185,7 @@
 
                                 <div class="col-md-12 mt-3">
                                     <div class="text-end">
-                                        <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
+                                        <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                                             </span>{{ ___('common.update') }} </button>
                                     </div>
                                 </div>

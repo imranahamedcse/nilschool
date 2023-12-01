@@ -44,7 +44,7 @@
                                 <div class="col-md-6">
 
                                     <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span class="fillable">*</span></label>
-                                    <select class="nice-select niceSelect bordered_style wide @error('status') is-invalid @enderror"
+                                    <select class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04"
                                     aria-describedby="validationServer04Feedback">
                                         <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-md-12 mt-24">
                                     <div class="text-end">
-                                        <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
+                                        <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                                             </span>{{ ___('common.submit') }}</button>
                                     </div>
                                 </div>

@@ -31,7 +31,7 @@
                             <!-- table_searchBox -->
 
                             <div class="single_large_selectBox">
-                                <select id="getSections" class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                <select id="getSections" class="class form-control @error('class') is-invalid @enderror"
                                     name="class">
                                     <option value="">{{ ___('student_info.select_class') }} </option>
                                     @foreach ($data['classes'] as $item)
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="single_large_selectBox">
-                                <select class="sections section nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
+                                <select class="sections section form-control @error('section') is-invalid @enderror"
                                     name="section">
                                     <option value="">{{ ___('student_info.select_section') }} </option>
                                 </select>
@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="single_large_selectBox">
-                                <select class="subjects nice-select niceSelect bordered_style wide @error('subject') is-invalid @enderror"
+                                <select class="subjects form-control @error('subject') is-invalid @enderror"
                                     name="subject">
                                     <option value="">{{ ___('academic.Select subject') }} </option>
                                     
@@ -70,7 +70,7 @@
                                 @enderror
                             </div>
 
-                            <button class="btn btn-lg ot-btn-primary" type="submit">
+                            <button class="btn btn-primary" type="submit">
                                 {{___('common.Search')}}
                             </button>
                         </div>
@@ -85,7 +85,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ $data['title'] }}</h4>
                     @if (hasPermission('homework_create'))
-                        <a href="{{ route('homework.create') }}" class="btn btn-lg ot-btn-primary">
+                        <a href="{{ route('homework.create') }}" class="btn btn-primary">
                             <span><i class="fa-solid fa-plus"></i> </span>
                             <span class="">{{ ___('common.add') }}</span>
                         </a>

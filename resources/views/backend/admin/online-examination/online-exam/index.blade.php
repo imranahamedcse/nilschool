@@ -25,7 +25,7 @@
                         <div class="input-group">
                             <div>
                                 <select id="getSections"
-                                    class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                    class="class form-control @error('class') is-invalid @enderror"
                                     name="class">
                                     <option value="">{{ ___('student_info.select_class') }} </option>
                                     @foreach ($data['classes'] as $item)
@@ -43,7 +43,7 @@
 
                             <div>
                                 <select id="section"
-                                    class="sections section nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
+                                    class="sections section form-control @error('section') is-invalid @enderror"
                                     name="section">
                                     <option value="">{{ ___('student_info.select_section') }} </option>
                                     @foreach ($data['sections'] as $item)
@@ -61,7 +61,7 @@
 
                             <div>
                                 <select
-                                    class="subjects nice-select niceSelect bordered_style wide @error('subject') is-invalid @enderror"
+                                    class="subjects form-control @error('subject') is-invalid @enderror"
                                     name="subject">
                                     <option value="">{{ ___('online-examination.Select subject') }} </option>
                                     @foreach ($data['subjects'] as $item)

@@ -132,7 +132,7 @@
                     <div class="col-md-12 mt-3">
                         <div class="text-end">
                             @if (hasPermission('email_settings_update'))
-                                <button class="btn btn-lg ot-btn-primary">
+                                <button class="btn btn-primary">
                                     <span>
                                         <i class="fa-solid fa-save"></i>
                                     </span>{{ ___('common.update') }}

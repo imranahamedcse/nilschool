@@ -30,11 +30,12 @@ class GalleryController extends Controller
         $title             = ___('settings.Images');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'gallery_create',
+            "create-permission"   => 'gallery_create',
             "create-route" => 'gallery.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.gallery.index', compact('data'));
@@ -43,6 +44,13 @@ class GalleryController extends Controller
     public function create()
     {
         $data['title']       = ___('website.Create Image');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Images"), "route" => "gallery.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.website-setup.gallery.create', compact('data'));
     }
@@ -59,6 +67,13 @@ class GalleryController extends Controller
     public function edit($id)
     {
         $data['title']       = ___('website.Edit Image');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Images"), "route" => "gallery.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
         $data['gallery']     = $this->Repo->show($id);
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.website-setup.gallery.edit', compact('data'));

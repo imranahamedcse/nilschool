@@ -76,7 +76,7 @@
                                     <div class="ot_fileUploader left-side mb-3">
                                         <input class="form-control" type="text" placeholder="{{ ___('settings.browse_light_logo') }}" readonly="" id="placeholder">
                                         <button class="primary-btn-small-input" type="button">
-                                            <label class="btn btn-lg ot-btn-primary" for="fileBrouse">{{ ___('common.browse') }}</label>
+                                            <label class="btn btn-primary" for="fileBrouse">{{ ___('common.browse') }}</label>
                                             <input type="file" class="d-none form-control" name="light_logo" id="fileBrouse" accept="image/*">
                                         </button>
                                     </div>
@@ -95,7 +95,7 @@
                                     <div class="ot_fileUploader left-side mb-3">
                                         <input class="form-control" type="text" placeholder="{{ ___('settings.browse_dark_logo') }}" readonly="" id="placeholder2">
                                         <button class="primary-btn-small-input" type="button">
-                                            <label class="btn btn-lg ot-btn-primary" for="fileBrouse2">{{ ___('common.browse') }}</label>
+                                            <label class="btn btn-primary" for="fileBrouse2">{{ ___('common.browse') }}</label>
                                             <input type="file" class="d-none form-control" name="dark_logo" id="fileBrouse2" accept="image/*">
                                         </button>
                                     </div>
@@ -118,7 +118,7 @@
                                                     <div class="ot_fileUploader left-side mb-3">
                                                         <input class="form-control" type="text" placeholder="{{ ___('settings.browse_favicon') }}" readonly="" id="placeholder3">
                                                         <button class="primary-btn-small-input" type="button">
-                                                            <label class="btn btn-lg ot-btn-primary" for="fileBrouse3">{{ ___('common.browse') }}</label>
+                                                            <label class="btn btn-primary" for="fileBrouse3">{{ ___('common.browse') }}</label>
                                                             <input type="file" class="d-none form-control" name="favicon" id="fileBrouse3" accept="image/*">
                                                         </button>
                                                     </div>
@@ -235,7 +235,7 @@
                             <!-- Update Button Start-->
                             <div class="text-end">
                                 @if (hasPermission('general_settings_update'))
-                                    <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
+                                    <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                                         </span>{{ ___('common.update') }}</button>
                                 @endif
                             </div>

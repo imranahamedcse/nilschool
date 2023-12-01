@@ -497,7 +497,7 @@
                             <!-- table_searchBox -->
 
                             <div class="single_large_selectBox">
-                                <select id="getSections" class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                <select id="getSections" class="class form-control @error('class') is-invalid @enderror"
                                     name="class">
                                     <option value="">{{ ___('student_info.select_class') }} *</option>
                                     @foreach ($data['classes'] as $item)
@@ -513,7 +513,7 @@
                             </div>
 
                             <div class="single_large_selectBox">
-                                <select class="sections section nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
+                                <select class="sections section form-control @error('section') is-invalid @enderror"
                                     name="section">
                                     <option value="">{{ ___('student_info.select_section') }} *</option>
                                     @foreach ($data['sections'] as $item)
@@ -530,7 +530,7 @@
 
                             <div class="single_large_selectBox">
                                 <select
-                                    class="nice-select niceSelect bordered_style wide exam_types @error('exam_type') is-invalid @enderror"
+                                    class="form-control exam_types @error('exam_type') is-invalid @enderror"
                                     name="exam_type">
                                     <option value="">{{ ___('examination.select_exam_type') }} *</option>
                                     @foreach ($data['exam_types'] as $item)
@@ -546,7 +546,7 @@
                             </div>
                             <div class="single_large_selectBox">
                                 <select
-                                    class="shift nice-select niceSelect bordered_style wide"
+                                    class="shift form-control"
                                     name="shift" id="validationServer04"
                                     aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_shift') }}</option>
@@ -556,7 +556,7 @@
                                 </select>
                             </div>
 
-                            <button class="btn btn-lg ot-btn-primary" type="submit">
+                            <button class="btn btn-primary" type="submit">
                                 {{___('common.Search')}}
                             </button>
                         </div>
@@ -568,11 +568,11 @@
             <div class="col-lg-12">
                 @if (count(@$data['resultData']) > 0)
                 <div class="download_print_btns ">
-                    <button class="btn btn-lg ot-btn-primary" onclick="printDiv('printableArea')">
+                    <button class="btn btn-primary" onclick="printDiv('printableArea')">
                         {{___('common.Print Now')}}
                         <span><i class="fa-solid fa-print"></i></span>
                     </button>
-                    <a class="btn btn-lg ot-btn-primary" href="{{ route('report-merit-list.pdf-generate', ['type'=>$data['request']->exam_type, 'class'=>$data['request']->class, 'section'=>$data['request']->section ]) }}">
+                    <a class="btn btn-primary" href="{{ route('report-merit-list.pdf-generate', ['type'=>$data['request']->exam_type, 'class'=>$data['request']->class, 'section'=>$data['request']->section ]) }}">
                         {{___('common.Pdf Preview')}}
                         <span><i class="fa-brands fa-dochub"></i></span>
                     </a>

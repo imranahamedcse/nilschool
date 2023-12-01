@@ -25,7 +25,7 @@
                                 <label for="validationServer04" class="form-label">{{ ___('examination.exam_type') }}
                                     <span class="fillable">*</span></label>
                                 <select
-                                    class="nice-select niceSelect bordered_style wide  @error('exam_types') is-invalid @enderror"
+                                    class="form-control  @error('exam_types') is-invalid @enderror"
                                     name="exam_types">
                                     <option value="">{{ ___('examination.select_exam_type') }}</option>
                                     @foreach ($data['exam_types'] as $item)
@@ -88,7 +88,7 @@
                                 <label for="validationServer04" class="form-label">{{ ___('examination.subjects') }} <span
                                         class="fillable">*</span></label>
                                 <select id="subjectMark"
-                                    class="nice-select niceSelect bordered_style wide subjects @error('subjects') is-invalid @enderror"
+                                    class="form-control subjects @error('subjects') is-invalid @enderror"
                                     name="subjects" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $key => $item)
@@ -128,7 +128,7 @@
                                                     <div class="d-flex align-items-center justify-content-between mt-0">
                                                         <div></div>
                                                         <button type="button"
-                                                            class="btn btn-lg ot-btn-primary radius_30px small_add_btn"
+                                                            class="btn btn-primary radius_30px small_add_btn"
                                                             onclick="marksDistribution({{ @$data['exam_assign']->subject->id }})">
                                                             <span><i class="fa-solid fa-plus"></i> </span>
                                                             {{ ___('academic.add') }}</button>
@@ -174,7 +174,7 @@
                         <div class="row">
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
-                                    <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
+                                    <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
                                         </span>{{ ___('common.submit') }}</button>
                                 </div>
                             </div>

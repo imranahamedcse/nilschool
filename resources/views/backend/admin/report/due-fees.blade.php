@@ -498,7 +498,7 @@
                             <!-- table_searchBox -->
 
                             <div class="single_large_selectBox">
-                                <select id="getSections" class="class nice-select niceSelect bordered_style wide @error('class') is-invalid @enderror"
+                                <select id="getSections" class="class form-control @error('class') is-invalid @enderror"
                                     name="class">
                                     <option value="">{{ ___('student_info.select_class') }} *</option>
                                     @foreach ($data['classes'] as $item)
@@ -514,7 +514,7 @@
                             </div>
 
                             <div class="single_large_selectBox">
-                                <select class="sections nice-select niceSelect bordered_style wide @error('section') is-invalid @enderror"
+                                <select class="sections form-control @error('section') is-invalid @enderror"
                                     name="section">
                                     <option value="">{{ ___('student_info.select_section') }} *</option>
                                     @foreach ($data['sections'] as $item)
@@ -530,7 +530,7 @@
                             </div>
 
                             <div class="single_large_selectBox">
-                                <select class="fees-masters nice-select niceSelect bordered_style wide @error('fees_master') is-invalid @enderror"
+                                <select class="fees-masters form-control @error('fees_master') is-invalid @enderror"
                                     name="fees_master">
                                     <option value="">{{ ___('fees.select_fees_type') }} *</option>
                                     @foreach ($data['fees_masters'] as $item)
@@ -544,7 +544,7 @@
                                 @enderror
                             </div>
 
-                            <button class="btn btn-lg ot-btn-primary" type="submit">
+                            <button class="btn btn-primary" type="submit">
                                 {{___('common.Search')}}
                             </button>
                         </div>
@@ -556,7 +556,7 @@
             <div class="col-lg-12">
                 @if (count($data['result']) > 0)
                 <div class="download_print_btns">
-                    <button class="btn btn-lg ot-btn-primary" onclick="printDiv('printableArea')">
+                    <button class="btn btn-primary" onclick="printDiv('printableArea')">
                         {{___('common.Print Now')}}
                         <span><i class="fa-solid fa-print"></i></span>
                     </button>
@@ -565,7 +565,7 @@
                         <input type="hidden" name="class" value="{{ $data['request']->class }}">
                         <input type="hidden" name="section" value="{{ $data['request']->section }}">
                         <input type="hidden" name="type" value="{{ $data['request']->fees_master }}">
-                        <button class="btn btn-lg ot-btn-primary mt-3" type="submit">{{___('common.PDF Download')}} <span><i class="fa-brands fa-dochub"></i></span></button>
+                        <button class="btn btn-primary mt-3" type="submit">{{___('common.PDF Download')}} <span><i class="fa-brands fa-dochub"></i></span></button>
                     </form>
                 </div>
                 @endif

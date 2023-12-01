@@ -41,7 +41,7 @@
                             <label for="validationServer04" class="form-label">{{ ___('common.roles') }} <span
                                     class="fillable">*</span></label>
                             <select
-                                class="nice-select niceSelect bordered_style wide @error('role') is-invalid @enderror change-role"
+                                class="form-control @error('role') is-invalid @enderror change-role"
                                 name="role" id="validationServer04" aria-describedby="validationServer04Feedback">
                                 <option value="">{{ ___('staff.select_role') }}</option>
                                 @foreach ($data['roles'] as $role)
@@ -59,7 +59,7 @@
                             <label for="validationServer04" class="form-label">{{ ___('staff.designations') }} <span
                                     class="fillable">*</span></label>
                             <select
-                                class="nice-select niceSelect bordered_style wide @error('designation') is-invalid @enderror change-designation"
+                                class="form-control @error('designation') is-invalid @enderror change-designation"
                                 name="designation" id="validationServer04" aria-describedby="validationServer04Feedback">
                                 <option value="">{{ ___('staff.select_designation') }}</option>
                                 @foreach ($data['designations'] as $designation)
@@ -78,7 +78,7 @@
                             <label for="validationServer04" class="form-label">{{ ___('staff.departments') }} <span
                                     class="fillable">*</span></label>
                             <select
-                                class="nice-select niceSelect bordered_style wide @error('department') is-invalid @enderror change-department"
+                                class="form-control @error('department') is-invalid @enderror change-department"
                                 name="department" id="validationServer04" aria-describedby="validationServer04Feedback">
                                 <option value="">{{ ___('staff.select_department') }}</option>
                                 @foreach ($data['departments'] as $department)
@@ -157,7 +157,7 @@
                             <label for="validationServer04" class="form-label">{{ ___('staff.genders') }} <span
                                     class="fillable">*</span></label>
                             <select
-                                class="nice-select niceSelect bordered_style wide @error('gender') is-invalid @enderror change-gender"
+                                class="form-control @error('gender') is-invalid @enderror change-gender"
                                 name="gender" id="validationServer04" aria-describedby="validationServer04Feedback">
                                 <option value="">{{ ___('staff.select_gender') }}</option>
                                 @foreach ($data['genders'] as $gender)
@@ -225,7 +225,7 @@
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="validationServer04" class="form-label">{{ ___('staff.marital_status') }} </label>
                             <select
-                                class="nice-select niceSelect bordered_style wide @error('marital_status') is-invalid @enderror"
+                                class="form-control @error('marital_status') is-invalid @enderror"
                                 name="marital_status" id="validationServer04"
                                 aria-describedby="validationServer04Feedback">
                                 <option
@@ -247,7 +247,7 @@
                             <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
                                     class="fillable">*</span></label>
                             <select
-                                class="nice-select niceSelect bordered_style wide @error('status') is-invalid @enderror"
+                                class="form-control @error('status') is-invalid @enderror"
                                 name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
                                 <option
                                     {{ old('status', @$data['user']->status) == App\Enums\Status::ACTIVE ? 'selected' : '' }}

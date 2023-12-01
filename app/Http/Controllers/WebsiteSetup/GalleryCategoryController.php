@@ -26,14 +26,15 @@ class GalleryCategoryController extends Controller
     {
         $data['gallery_category'] = $this->Repo->getAll();
 
-        $title             = ___('settings.Gallery_category');
+        $title             = ___('settings.Gallery category');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'gallery_category_create',
+            "create-permission"   => 'gallery_category_create',
             "create-route" => 'gallery-category.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.website-setup.gallery-category.index', compact('data'));
@@ -41,7 +42,13 @@ class GalleryCategoryController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create Gallery Category');
+        $data['title']       = ___('website.Add Gallery Category');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Gallery category"), "route" => "gallery-category.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.admin.website-setup.gallery-category.create', compact('data'));
     }
 
@@ -56,8 +63,15 @@ class GalleryCategoryController extends Controller
 
     public function edit($id)
     {
-        $data['gallery_category']      = $this->Repo->show($id);
         $data['title']       = ___('website.Edit Gallery Category');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Website setup"), "route" => ""],
+            ["title" => ___("common.Gallery category"), "route" => "gallery-category.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['gallery_category']      = $this->Repo->show($id);
         return view('backend.admin.website-setup.gallery-category.edit', compact('data'));
     }
 

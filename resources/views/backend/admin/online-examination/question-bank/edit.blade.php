@@ -29,7 +29,7 @@
                                     class="form-label">{{ ___('online-examination.question_type') }} <span
                                         class="fillable">*</span></label>
                                 <select
-                                    class="question_type nice-select niceSelect bordered_style wide @error('type') is-invalid @enderror"
+                                    class="question_type form-control @error('type') is-invalid @enderror"
                                     name="type" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('online-examination.select_type') }}</option>
                                     @foreach (\Config::get('site.question_types') as $key => $type)
@@ -51,7 +51,7 @@
                                     class="form-label">{{ ___('online-examination.question_group') }}
                                     <span class="fillable">*</span></label>
                                 <select
-                                    class="question_group nice-select niceSelect bordered_style wide @error('question_group') is-invalid @enderror"
+                                    class="question_group form-control @error('question_group') is-invalid @enderror"
                                     name="question_group" id="validationServer04"
                                     aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('online-examination.select_question_group') }}</option>
@@ -69,7 +69,7 @@
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
                                         class="fillable">*</span></label>
                                 <select
-                                    class="nice-select niceSelect bordered_style wide @error('status') is-invalid @enderror"
+                                    class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ old('status', $data['question_bank']->status) == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
@@ -131,7 +131,7 @@
                                 <label class="form-label">{{ ___('online-examination.Total option') }} <span
                                         class="fillable">*</span></label>
                                 <select
-                                    class="nice-select niceSelect bordered_style wide @error('total_option') is-invalid @enderror"
+                                    class="form-control @error('total_option') is-invalid @enderror"
                                     name="total_option" id="total_option">
                                     <option value="">{{ ___('online-examination.select_option') }}</option>
                                     @for ($i = 1; $i <= 10; $i++)
@@ -190,7 +190,7 @@
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
                                         class="fillable">*</span></label>
                                 <select
-                                    class="nice-select niceSelect bordered_style wide @error('single_choice_ans') is-invalid @enderror"
+                                    class="form-control @error('single_choice_ans') is-invalid @enderror"
                                     name="single_choice_ans" id="single_choice_ans">
                                     <option value="">{{ ___('online-examination.select_option') }}</option>
                                     @if (old('option'))
@@ -252,7 +252,7 @@
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
                                         class="fillable">*</span></label>
                                 <select
-                                    class="nice-select niceSelect bordered_style wide @error('true_false_ans') is-invalid @enderror"
+                                    class="form-control @error('true_false_ans') is-invalid @enderror"
                                     name="true_false_ans">
                                     <option value="">{{ ___('online-examination.select_option') }}</option>
                                     <option

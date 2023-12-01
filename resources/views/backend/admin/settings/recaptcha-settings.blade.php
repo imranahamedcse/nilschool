@@ -69,7 +69,7 @@
                                         <label for="validationServer04"
                                             class="form-label">{{ ___('settings.recaptcha_status') }} <span
                                                 class="fillable">*</span></label>
-                                        <select class="nice-select niceSelect bordered_style wide @error('recaptcha_status') is-invalid @enderror"
+                                        <select class="form-control @error('recaptcha_status') is-invalid @enderror"
                                             value="{{ Setting('recaptcha_status') }}" name="recaptcha_status"
                                             id="validationServer04" aria-describedby="validationServer04Feedback">
                                             <option value=""> {{ ___('common.select') }}</option>
@@ -93,7 +93,7 @@
                             <div class="col-md-12 mt-3">
                                 <div class="text-end">
                                     @if (hasPermission('recaptcha_settings_update'))
-                                        <button class="btn btn-lg ot-btn-primary">
+                                        <button class="btn btn-primary">
                                             <span>
                                                 <i class="fa-solid fa-save"></i>
                                             </span>{{ ___('common.update') }}

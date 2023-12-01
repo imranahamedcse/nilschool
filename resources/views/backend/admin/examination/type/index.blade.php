@@ -25,7 +25,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">{{ $data['title'] }}</h4>
                     @if (hasPermission('exam_type_create'))
-                        <a href="{{ route('exam-type.create') }}" class="btn btn-lg ot-btn-primary">
+                        <a href="{{ route('exam-type.create') }}" class="btn btn-primary">
                             <span><i class="fa-solid fa-plus"></i> </span>
                             <span class="">{{ ___('common.add') }}</span>
                         </a>
