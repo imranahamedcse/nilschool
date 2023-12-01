@@ -41,7 +41,7 @@ class DueFeesController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['fees_masters']       = $this->repo->assignedFeesTypes();
-        return view('backend.report.due-fees', compact('data'));
+        return view('backend.admin.report.due-fees', compact('data'));
     }
 
     public function search(DueFeesRequest $request)
@@ -51,7 +51,7 @@ class DueFeesController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
         $data['fees_masters'] = $this->repo->assignedFeesTypes();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
-        return view('backend.report.due-fees', compact('data'));
+        return view('backend.admin.report.due-fees', compact('data'));
     }
     
     public function generatePDF(Request $request)
@@ -64,7 +64,7 @@ class DueFeesController extends Controller
 
         $data['result']       = $this->repo->searchPDF($request);
         
-        $pdf = PDF::loadView('backend.report.due-feesPDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.due-feesPDF', compact('data'));
         return $pdf->download('due_fees'.'_'.date('d_m_Y').'.pdf');
     }
 }

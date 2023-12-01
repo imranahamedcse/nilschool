@@ -24,11 +24,12 @@ class DepartmentController extends Controller
         $title             = ___('staff.department');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'department_create',
+            "create-permission"   => 'department_create',
             "create-route" => 'department.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.staff.department.index', compact('data'));
@@ -37,6 +38,13 @@ class DepartmentController extends Controller
     public function create()
     {
         $data['title']              = ___('staff.department');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Department"), "route" => "department.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.staff.department.create', compact('data'));
         
     }
@@ -52,8 +60,15 @@ class DepartmentController extends Controller
 
     public function edit($id)
     {
-        $data['department']        = $this->repo->show($id);
         $data['title']       = ___('staff.department');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Department"), "route" => "department.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
+        $data['department']        = $this->repo->show($id);
         return view('backend.admin.staff.department.edit', compact('data'));
     }
 

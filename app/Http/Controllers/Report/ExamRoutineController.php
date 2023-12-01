@@ -45,7 +45,7 @@ class ExamRoutineController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['types']              = $this->typeRepo->all();
-        return view('backend.report.exam-routine', compact('data'));
+        return view('backend.admin.report.exam-routine', compact('data'));
     }
 
     public function search(SearchRequest $request)
@@ -57,7 +57,7 @@ class ExamRoutineController extends Controller
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['types']        = $this->typeRepo->all();
         // dd($data);
-        return view('backend.report.exam-routine', compact('data'));
+        return view('backend.admin.report.exam-routine', compact('data'));
     }
 
     public function generatePDF($class, $section, $type)
@@ -71,7 +71,7 @@ class ExamRoutineController extends Controller
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
         
-        $pdf = PDF::loadView('backend.report.exam-routinePDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.exam-routinePDF', compact('data'));
         return $pdf->download('exam_routine'.'_'.date('d_m_Y').'.pdf');
     }
 }

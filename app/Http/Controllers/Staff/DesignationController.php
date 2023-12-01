@@ -24,11 +24,12 @@ class DesignationController extends Controller
         $title             = ___('staff.designation');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'staff_create',
-            "create-route" => 'staff.create',
+            "create-permission"   => 'designation_create',
+            "create-route" => 'designation.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.staff.designation.index', compact('data'));
@@ -38,6 +39,13 @@ class DesignationController extends Controller
     public function create()
     {
         $data['title']              = ___('staff.designation');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Designation"), "route" => "designation.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         return view('backend.admin.staff.designation.create', compact('data'));
         
     }
@@ -53,8 +61,15 @@ class DesignationController extends Controller
 
     public function edit($id)
     {
-        $data['designation']        = $this->repo->show($id);
         $data['title']       = ___('staff.designation');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Designation"), "route" => "designation.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['designation']        = $this->repo->show($id);
         return view('backend.admin.staff.designation.edit', compact('data'));
     }
 

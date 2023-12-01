@@ -41,7 +41,7 @@ class ProgressCardController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['students']           = [];
-        return view('backend.report.progress-card', compact('data'));
+        return view('backend.admin.report.progress-card', compact('data'));
     }
 
     public function getStudents(Request $request){
@@ -59,7 +59,7 @@ class ProgressCardController extends Controller
         $data['students']     = $this->studentRepo->getStudents($request);
         
         // dd($data);
-        return view('backend.report.progress-card', compact('data'));
+        return view('backend.admin.report.progress-card', compact('data'));
     }
     
     public function generatePDF($class, $section, $student)
@@ -73,7 +73,7 @@ class ProgressCardController extends Controller
         $data                 = $this->repo->search($request);
         $data['student']      = $this->studentRepo->show($request->student);
         
-        $pdf = PDF::loadView('backend.report.progress-cardPDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.progress-cardPDF', compact('data'));
         return $pdf->download('progress_card'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
     }
 }

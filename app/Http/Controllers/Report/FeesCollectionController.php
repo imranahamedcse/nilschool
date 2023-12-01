@@ -41,7 +41,7 @@ class FeesCollectionController extends Controller
     {
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
-        return view('backend.report.fees-collection', compact('data'));
+        return view('backend.admin.report.fees-collection', compact('data'));
     }
 
     public function search(FeesCollectionRequest $request)
@@ -50,7 +50,7 @@ class FeesCollectionController extends Controller
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
-        return view('backend.report.fees-collection', compact('data'));
+        return view('backend.admin.report.fees-collection', compact('data'));
     }
     
     public function generatePDF($class, $section, $dates)
@@ -63,7 +63,7 @@ class FeesCollectionController extends Controller
 
         $data['result']       = $this->repo->searchPDF($request);
         
-        $pdf = PDF::loadView('backend.report.fees-collectionPDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.fees-collectionPDF', compact('data'));
         return $pdf->download('fees_collection'.'_'.date('d_m_Y').'.pdf');
     }
 }

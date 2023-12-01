@@ -54,11 +54,12 @@ class UserController extends Controller
         $title             = ___('staff.staff');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'user_create',
+            "create-permission"   => 'user_create',
             "create-route" => 'users.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.users.index', compact('data'));
@@ -67,6 +68,13 @@ class UserController extends Controller
     public function create()
     {
         $data['title']         = ___('staff.create_staff');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Staff"), "route" => "users.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['permissions']   = $this->permission->all();
         $data['roles']         = $this->role->all();
         $data['designations']  = $this->designation->all();
@@ -86,8 +94,15 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $data['user']          = $this->user->show($id);
         $data['title']         = ___('staff.update_staff');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Staff"), "route" => "users.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
+        $data['user']          = $this->user->show($id);
         $data['permissions']   = $this->permission->all();
         $data['roles']         = $this->role->all();
         $data['designations']  = $this->designation->all();

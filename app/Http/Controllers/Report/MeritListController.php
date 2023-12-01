@@ -46,7 +46,7 @@ class MeritListController extends Controller
         $data['sections']           = [];
         $data['exam_types']         = [];
         $data['shifts']             = $this->shiftRepo->all();
-        return view('backend.report.merit-list', compact('data'));
+        return view('backend.admin.report.merit-list', compact('data'));
     }
 
     public function search(MeritListRequest $request)
@@ -58,7 +58,7 @@ class MeritListController extends Controller
         $data['exam_types']   = $this->examTypeRepo->all();
         $data['shifts']       = $this->shiftRepo->all();
         // dd($data);
-        return view('backend.report.merit-list', compact('data'));
+        return view('backend.admin.report.merit-list', compact('data'));
     }
 
 
@@ -73,7 +73,7 @@ class MeritListController extends Controller
 
         $data['resultData']   = $this->repo->searchPDF($request);
         
-        $pdf = PDF::loadView('backend.report.merit-listPDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.merit-listPDF', compact('data'));
         return $pdf->download('merit_list'.'_'.date('d_m_Y').'.pdf');
     }
 }

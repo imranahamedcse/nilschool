@@ -1,4 +1,4 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
 
 @section('title')
 {{ ___('common.Online Exam Routine 2023') }}

@@ -33,11 +33,12 @@ class RoleController extends Controller
         $title             = ___('common.roles');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'role_create',
+            "create-permission"   => 'role_create',
             "create-route" => 'roles.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.roles.index', compact('data'));
@@ -46,6 +47,13 @@ class RoleController extends Controller
     public function create()
     {
         $data['title']       = ___('common.create_role');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Roles"), "route" => "roles.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
         $data['permissions'] = $this->permission->all();
         return view('backend.admin.roles.create', compact('data'));
     }
@@ -61,8 +69,15 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        $data['role']        = $this->role->show($id);
         $data['title']       = ___('common.roles');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Staff Manage"), "route" => ""],
+            ["title" => ___("common.Roles"), "route" => "roles.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        
+        $data['role']        = $this->role->show($id);
         $data['permissions'] = $this->permission->all();
         return view('backend.admin.roles.edit', compact('data'));
     }

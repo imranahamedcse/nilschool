@@ -33,7 +33,7 @@ class AccountController extends Controller
     public function index()
     {
         $data['account_head'] = $this->accountHeadRepo->getIncomeHeads();
-        return view('backend.report.account', compact('data'));
+        return view('backend.admin.report.account', compact('data'));
     }
 
     public function search(Request $request)
@@ -47,7 +47,7 @@ class AccountController extends Controller
             $data['account_head'] = $this->accountHeadRepo->getExpenseHeads();
 
         // dd($data);
-        return view('backend.report.account', compact('data'));
+        return view('backend.admin.report.account', compact('data'));
     }
 
     public function getAccountTypes(Request $request){
@@ -67,7 +67,7 @@ class AccountController extends Controller
 
         $data                 = $this->repo->searchPDF($request);
         
-        $pdf = PDF::loadView('backend.report.accountPDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.accountPDF', compact('data'));
         return $pdf->download('transaction'.'_'.date('d_m_Y').'.pdf');
     }
 }

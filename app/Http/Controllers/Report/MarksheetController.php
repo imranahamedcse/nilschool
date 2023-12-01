@@ -36,7 +36,7 @@ class MarksheetController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['students']           = [];
-        return view('backend.report.marksheet', compact('data'));
+        return view('backend.admin.report.marksheet', compact('data'));
     }
 
     public function getStudents(Request $request){
@@ -52,7 +52,7 @@ class MarksheetController extends Controller
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['students']     = $this->studentRepo->getStudents($request);
         
-        return view('backend.report.marksheet', compact('data'));
+        return view('backend.admin.report.marksheet', compact('data'));
     }
 
     public function generatePDF($id, $type, $class, $section)
@@ -67,7 +67,7 @@ class MarksheetController extends Controller
         $data['student']      = $this->studentRepo->show($request->student);
         $data['resultData']   = $this->repo->search($request);
         
-        $pdf = PDF::loadView('backend.report.marksheetPDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.marksheetPDF', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
     }
 }

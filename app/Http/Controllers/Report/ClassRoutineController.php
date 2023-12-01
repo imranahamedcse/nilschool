@@ -40,7 +40,7 @@ class ClassRoutineController extends Controller
     {
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
-        return view('backend.report.class-routine', compact('data'));
+        return view('backend.admin.report.class-routine', compact('data'));
     }
 
     public function search(SearchRequest $request)
@@ -52,7 +52,7 @@ class ClassRoutineController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         // dd($data['time']);
-        return view('backend.report.class-routine', compact('data'));
+        return view('backend.admin.report.class-routine', compact('data'));
     }
 
     public function generatePDF($class, $section)
@@ -65,7 +65,7 @@ class ClassRoutineController extends Controller
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
         
-        $pdf = PDF::loadView('backend.report.class-routinePDF', compact('data'));
+        $pdf = PDF::loadView('backend.admin.report.class-routinePDF', compact('data'));
         return $pdf->download('class_routine'.'_'.date('d_m_Y').'.pdf');
     }
 }
