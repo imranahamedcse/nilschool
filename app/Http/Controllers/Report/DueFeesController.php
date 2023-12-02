@@ -38,6 +38,19 @@ class DueFeesController extends Controller
 
     public function index()
     {
+        $title             = ___('student_info.Due fees');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['due-fees.search', 'class', 'section', 'fees'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['fees_masters']       = $this->repo->assignedFeesTypes();
@@ -46,6 +59,19 @@ class DueFeesController extends Controller
 
     public function search(DueFeesRequest $request)
     {
+        $title             = ___('student_info.Due fees');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['due-fees.search', 'class', 'section', 'fees'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['result']       = $this->repo->search($request);
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();

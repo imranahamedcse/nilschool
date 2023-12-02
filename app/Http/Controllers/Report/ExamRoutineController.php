@@ -42,21 +42,48 @@ class ExamRoutineController extends Controller
 
     public function index()
     {
+        $title             = ___('student_info.Exam routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['report-exam-routine.search', 'class', 'section', 'exam_type'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
-        $data['types']              = $this->typeRepo->all();
+        $data['exam_types']         = $this->typeRepo->all();
+
         return view('backend.admin.report.exam-routine', compact('data'));
     }
 
     public function search(SearchRequest $request)
     {
+        $title             = ___('student_info.Exam routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['report-exam-routine.search', 'class', 'section', 'exam_type'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
-        $data['types']        = $this->typeRepo->all();
-        // dd($data);
+        $data['exam_types']   = $this->typeRepo->all();
+
         return view('backend.admin.report.exam-routine', compact('data'));
     }
 

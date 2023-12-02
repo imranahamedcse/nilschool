@@ -38,6 +38,19 @@ class ClassRoutineController extends Controller
 
     public function index()
     {
+        $title             = ___('student_info.Class routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['report-class-routine.search', 'class', 'section'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         return view('backend.admin.report.class-routine', compact('data'));
@@ -45,6 +58,19 @@ class ClassRoutineController extends Controller
 
     public function search(SearchRequest $request)
     {
+        $title             = ___('student_info.Class routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['report-class-routine.search', 'class', 'section'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
         // $data['time']         = $this->timeScheduleRepo->all();

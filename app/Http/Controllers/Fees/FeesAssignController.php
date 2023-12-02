@@ -62,7 +62,7 @@ class FeesAssignController extends Controller
         $title             = ___('fees.fees_assign');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'fees_assign_create',
+            "create-permission"   => 'fees_assign_create',
             "create-route" => 'fees-assign.create',
         ];
         $data['breadcrumbs']  = [

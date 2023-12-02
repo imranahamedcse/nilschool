@@ -26,7 +26,7 @@ class SearchRequest extends FormRequest
         return [
             'class'        => 'required',
             'section'      => 'required',
-            'type'      => 'required',
+            'exam_type'    => 'required',
         ];
     }
 }

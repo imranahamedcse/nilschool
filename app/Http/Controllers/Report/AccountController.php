@@ -32,6 +32,19 @@ class AccountController extends Controller
 
     public function index()
     {
+        $title             = ___('student_info.Transactions');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['account.search', 'transaction', 'account_head', 'date_range'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['account_head'] = $this->accountHeadRepo->getIncomeHeads();
         return view('backend.admin.report.account', compact('data'));
     }
@@ -39,6 +52,19 @@ class AccountController extends Controller
     public function search(Request $request)
     {
         $data                 = $this->repo->search($request);
+        $title             = ___('student_info.Transactions');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['account.search', 'transaction', 'account_head', 'date_range'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['request']      = $request;
 
         if($data['request']->type == AccountHeadType::INCOME)

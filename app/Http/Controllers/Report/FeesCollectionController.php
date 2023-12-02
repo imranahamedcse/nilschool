@@ -39,6 +39,19 @@ class FeesCollectionController extends Controller
 
     public function index()
     {
+        $title             = ___('student_info.Fees collection');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['fees-collection.search', 'class', 'section', 'date_range'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         return view('backend.admin.report.fees-collection', compact('data'));
@@ -46,6 +59,19 @@ class FeesCollectionController extends Controller
 
     public function search(FeesCollectionRequest $request)
     {
+        $title             = ___('student_info.Fees collection');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['fees-collection.search', 'class', 'section', 'date_range'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         $data['result']       = $this->repo->search($request);
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();

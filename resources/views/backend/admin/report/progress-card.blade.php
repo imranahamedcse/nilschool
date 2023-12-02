@@ -102,15 +102,15 @@
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
                                                 {{ ___('report.Exam Name') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.Result') }}</th>
-                                            <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.GPA') }}</th>
-                                            <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
                                                 {{ ___('report.Total Marks') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
                                                 {{ ___('report.Avg Marks') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
                                                 {{ ___('report.Avg Grade') }}</th>
+                                            <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
+                                                {{ ___('report.GPA') }}</th>
+                                            <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
+                                                {{ ___('report.Result') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -119,17 +119,17 @@
                                                 <td style="border: 1px solid #dee2e6; padding: 3px;">
                                                     {{ $item->exam_type->name }}</td>
                                                 <td style="border: 1px solid #dee2e6; padding: 3px;">
-                                                    {{ $data['result'][$key] }}</td>
-                                                <td style="border: 1px solid #dee2e6; padding: 3px;">
-                                                    {{ $data['result'][$key] == 'Failed' ? '0.00' : $data['gpa'][$key] }}
-                                                </td>
-                                                <td style="border: 1px solid #dee2e6; padding: 3px;">
                                                     {{ $data['total_marks'][$key] }}</td>
                                                 <td style="border: 1px solid #dee2e6; padding: 3px;">
                                                     {{ substr($data['avg_marks'][$key], 0, 5) }}</td>
                                                 <td style="border: 1px solid #dee2e6; padding: 3px;">
                                                     {{ $data['result'][$key] == 'Failed' ? 'F' : markGrade((int) $data['avg_marks'][$key]) }}
                                                 </td>
+                                                <td style="border: 1px solid #dee2e6; padding: 3px;">
+                                                    {{ $data['result'][$key] == 'Failed' ? '0.00' : $data['gpa'][$key] }}
+                                                </td>
+                                                <td style="border: 1px solid #dee2e6; padding: 3px;">
+                                                    {{ $data['result'][$key] }}</td>
                                             </tr>
                                         @endforeach
                                         <tr>
