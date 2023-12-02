@@ -11,6 +11,7 @@ use App\Http\Requests\SettingStoreRequest;
 use App\Http\Requests\Settings\EmailSettingStoreRequest;
 use App\Http\Requests\GeneralSetting\StorageUpdateRequest;
 use App\Http\Requests\GeneralSetting\GeneralSettingStoreRequest;
+use Illuminate\Support\Facades\Artisan;
 use PhpParser\Node\Stmt\TryCatch;
 
 class SettingController extends Controller
@@ -143,7 +144,7 @@ class SettingController extends Controller
     public function resultGenerate()
     {
         try {
-            \Artisan::call('exam:result-generate');
+            Artisan::call('exam:result-generate');
             return redirect()->back()->with('success', ___('alert.run_successfully'));
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', ___('alert.something_went_wrong_please_try_again'));
@@ -167,7 +168,7 @@ class SettingController extends Controller
     public function installUpdate()
     {
         try {
-            \Artisan::call('migrate');
+            Artisan::call('migrate');
             return redirect()->back()->with('success', ___('alert.updated_successfully'));
         } catch (\Exception $e) {
             return redirect()->back()->with('danger', ___('alert.something_went_wrong_please_try_again'));
