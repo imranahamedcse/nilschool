@@ -42,10 +42,25 @@ class MeritListController extends Controller
 
     public function index()
     {
+        $data['resultData']         = [];
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['exam_types']         = [];
         $data['shifts']             = $this->shiftRepo->all();
+        
+        $title             = ___('student_info.Merit List');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['merit-list.search', 'class', 'section', 'exam_type', 'shift'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.admin.report.merit-list', compact('data'));
     }
 
@@ -57,7 +72,20 @@ class MeritListController extends Controller
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['exam_types']   = $this->examTypeRepo->all();
         $data['shifts']       = $this->shiftRepo->all();
-        // dd($data);
+        
+        $title             = ___('student_info.Merit List');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['merit-list.search', 'class', 'section', 'exam_type', 'shift'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+        
         return view('backend.admin.report.merit-list', compact('data'));
     }
 

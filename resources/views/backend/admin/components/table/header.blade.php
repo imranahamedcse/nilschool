@@ -56,6 +56,18 @@
                         @endif
                     </div>
                     <div>
+                        @if (in_array('shift', @$data['headers']['filter']))
+                            <select class="shift form-control" name="shift" id="validationServer04"
+                                aria-describedby="validationServer04Feedback">
+                                <option value="">{{ ___('student_info.select_shift') }}</option>
+                                @foreach ($data['shifts'] as $item)
+                                    <option {{ old('shift', @$data['request']->shift) == $item->id ? 'selected' : '' }}
+                                        value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        @endif
+                    </div>
+                    <div>
                         @if (in_array('month', @$data['headers']['filter']))
                             <input value="{{ old('month', @$data['request']->month) }}" name="month"
                                 class="form-control @error('month') is-invalid @enderror" type="month"
@@ -84,6 +96,11 @@
                             <select class="form-control exam_types @error('exam_type') is-invalid @enderror"
                                 name="exam_type">
                                 <option value="">{{ ___('examination.select_exam_type') }} </option>
+                                @foreach ($data['exam_types'] as $item)
+                                    <option
+                                        {{ old('exam_type', @$data['request']->exam_type) == $item->id ? 'selected' : '' }}
+                                        value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                             @error('exam_type')
                                 <div id="validationServer04Feedback" class="invalid-feedback">

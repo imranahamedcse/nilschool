@@ -9,6 +9,7 @@ use App\Repositories\Report\MarksheetRepository;
 use App\Repositories\Academic\ClassSetupRepository;
 use App\Repositories\StudentInfo\StudentRepository;
 use App\Http\Requests\Report\Marksheet\SearchRequest;
+use App\Repositories\Examination\ExamTypeRepository;
 use PDF;
 
 class MarksheetController extends Controller
@@ -17,18 +18,21 @@ class MarksheetController extends Controller
     private $classRepo;
     private $classSetupRepo;
     private $studentRepo;
+    private $examTypeRepo;
 
     function __construct(
         MarksheetRepository    $repo,
         ClassesRepository      $classRepo,
         ClassSetupRepository   $classSetupRepo,
         StudentRepository      $studentRepo,
+        ExamTypeRepository     $examTypeRepo,
     ) 
     {
         $this->repo               = $repo;
         $this->classRepo          = $classRepo;
         $this->classSetupRepo     = $classSetupRepo;
         $this->studentRepo        = $studentRepo;
+        $this->examTypeRepo       = $examTypeRepo;
     }
 
     public function index()
@@ -49,6 +53,7 @@ class MarksheetController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['students']           = [];
+        $data['exam_types']         = [];
         
         return view('backend.admin.report.marksheet', compact('data'));
     }
@@ -78,6 +83,7 @@ class MarksheetController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['students']     = $this->studentRepo->getStudents($request);
+        $data['exam_types']   = $this->examTypeRepo->all();
         
         return view('backend.admin.report.marksheet', compact('data'));
     }

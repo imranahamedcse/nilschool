@@ -38,6 +38,19 @@ class ProgressCardController extends Controller
 
     public function index()
     {
+        $title             = ___('student_info.Progress Card');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['report-progress-card.search', 'class', 'section', 'student'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['students']           = [];
@@ -51,6 +64,20 @@ class ProgressCardController extends Controller
     public function search(SearchRequest $request)
     {
         $data                 = $this->repo->search($request);
+        
+        $title             = ___('student_info.Progress Card');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['report-progress-card.search', 'class', 'section', 'student'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['student']      = $this->studentRepo->show($request->student);
         $data['exam_types']   = $this->examAssignRepo->assignedExamType();
         $data['request']      = $request;
