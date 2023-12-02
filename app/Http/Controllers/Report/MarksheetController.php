@@ -33,9 +33,23 @@ class MarksheetController extends Controller
 
     public function index()
     {
+        $title             = ___('student_info.Marksheet');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['marksheet.search', 'class', 'section', 'exam_type', 'student'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['students']           = [];
+        
         return view('backend.admin.report.marksheet', compact('data'));
     }
 
@@ -45,6 +59,19 @@ class MarksheetController extends Controller
 
     public function search(SearchRequest $request)
     {
+        $title             = ___('student_info.Marksheet');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['marksheet.search', 'class', 'section', 'exam_type', 'student'],
+            "create-permission"   => '',
+            "create-route" => '',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Report"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['student']      = $this->studentRepo->show($request->student);
         $data['resultData']   = $this->repo->search($request);
         $data['request']      = $request;

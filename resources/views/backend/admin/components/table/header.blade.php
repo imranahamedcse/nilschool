@@ -105,6 +105,26 @@
                             @enderror
                         @endif
                     </div>
+
+                    <div>
+                        @if (in_array('student', @$data['headers']['filter']))
+                            <select class="students form-control @error('student') is-invalid @enderror" name="student">
+                                <option value="">{{ ___('student_info.Select student') }} *</option>
+                                @foreach ($data['students'] as $item)
+                                    <option
+                                        {{ old('student', @$data['student']->id) == $item->student_id ? 'selected' : '' }}
+                                        value="{{ $item->student_id }}">{{ $item->student->first_name }}
+                                        {{ $item->student->last_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('student')
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        @endif
+                    </div>
+
                     <button class="btn btn-primary" type="submit">
                         {{ ___('common.Search') }}
                     </button>

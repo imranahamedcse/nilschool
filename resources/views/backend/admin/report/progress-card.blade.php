@@ -533,11 +533,13 @@
         height: 93px;
         margin: 0 30px 0 40px;
     }
-    .print_copyright_text{
+
+    .print_copyright_text {
         display: flex;
         align-items: center;
         padding-bottom: 10px;
     }
+
     @media (max-width: 768px) {
         .student_info_single {
             width: 100%;
@@ -591,12 +593,13 @@
 
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('report-progress-card.search') }}" method="post" id="marksheet" enctype="multipart/form-data">
+                <form action="{{ route('report-progress-card.search') }}" method="post" id="marksheet"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="card ot-card mb-24 position-relative z_1">
                         <div class="card-header d-flex align-items-center gap-4 flex-wrap">
                             <h3 class="mb-0">{{ ___('common.Filtering') }}</h3>
-                            
+
                             <div
                                 class="card_header_right d-flex align-items-center gap-3 flex-fill justify-content-end flex-wrap">
                                 <!-- table_searchBox -->
@@ -606,7 +609,8 @@
                                         name="class">
                                         <option value="">{{ ___('student_info.select_class') }} *</option>
                                         @foreach ($data['classes'] as $item)
-                                            <option {{ old('class', @$data['student']->session_class_student->class->id) == $item->id ? 'selected' : '' }}
+                                            <option
+                                                {{ old('class', @$data['student']->session_class_student->class->id) == $item->id ? 'selected' : '' }}
                                                 value="{{ $item->class->id }}">{{ $item->class->name }}</option>
                                         @endforeach
                                     </select>
@@ -622,7 +626,8 @@
                                         name="section">
                                         <option value="">{{ ___('student_info.select_section') }} *</option>
                                         @foreach ($data['sections'] as $item)
-                                            <option {{ old('section', @$data['student']->session_class_student->section->id) == $item->section->id ? 'selected' : '' }}
+                                            <option
+                                                {{ old('section', @$data['student']->session_class_student->section->id) == $item->section->id ? 'selected' : '' }}
                                                 value="{{ $item->section->id }}">{{ $item->section->name }}</option>
                                         @endforeach
                                     </select>
@@ -638,8 +643,10 @@
                                         name="student">
                                         <option value="">{{ ___('student_info.Select student') }} *</option>
                                         @foreach ($data['students'] as $item)
-                                            <option {{ old('student', @$data['student']->id) == $item->student_id ? 'selected' : '' }}
-                                                value="{{ $item->student_id }}">{{ $item->student->first_name }} {{ $item->student->last_name }}</option>
+                                            <option
+                                                {{ old('student', @$data['student']->id) == $item->student_id ? 'selected' : '' }}
+                                                value="{{ $item->student_id }}">{{ $item->student->first_name }}
+                                                {{ $item->student->last_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('student')
@@ -650,7 +657,7 @@
                                 </div>
 
                                 <button class="btn btn-primary" type="submit">
-                                    {{___('common.Search')}}
+                                    {{ ___('common.Search') }}
                                 </button>
                             </div>
                         </div>
@@ -661,11 +668,12 @@
                 <div class="col-lg-12">
                     <div class="download_print_btns ">
                         <button class="btn btn-primary" onclick="printDiv('printableArea')">
-                            {{___('common.Print Now')}}
+                            {{ ___('common.Print Now') }}
                             <span><i class="fa-solid fa-print"></i></span>
                         </button>
-                        <a class="btn btn-primary" href="{{ route('report-progress-card.pdf-generate', ['class'=>$data['request']->class, 'section'=>$data['request']->section, 'student'=>$data['request']->student ]) }}">
-                            {{___('common.Pdf Preview')}}
+                        <a class="btn btn-primary"
+                            href="{{ route('report-progress-card.pdf-generate', ['class' => $data['request']->class, 'section' => $data['request']->section, 'student' => $data['request']->student]) }}">
+                            {{ ___('common.Pdf Preview') }}
                             <span><i class="fa-brands fa-dochub"></i></span>
                         </a>
                     </div>
@@ -680,25 +688,30 @@
                                 </div>
                                 <div class="vertical_seperator"></div>
                                 <div class="routine_wrapper_header_content">
-                                    <h3>{{___('common.Progress Card Report')}}</h3>
-                                    <p>{{___('common.Name')}}: {{ @$data['student']->first_name }} {{ @$data['student']->last_name }}
-                                    <br> {{___('common.Class(Section)')}}: {{ @$data['student']->session_class_student->class->name }}
-                                    ({{ @$data['student']->session_class_student->section->name }}) , {{___('common.Roll No')}} : {{@$data['student']->session_class_student->roll}}</p>
+                                    <h3>{{ ___('common.Progress Card Report') }}</h3>
+                                    <p>{{ ___('common.Name') }}: {{ @$data['student']->first_name }}
+                                        {{ @$data['student']->last_name }}
+                                        <br> {{ ___('common.Class(Section)') }}:
+                                        {{ @$data['student']->session_class_student->class->name }}
+                                        ({{ @$data['student']->session_class_student->section->name }}) ,
+                                        {{ ___('common.Roll No') }} : {{ @$data['student']->session_class_student->roll }}
+                                    </p>
                                 </div>
                             </div>
                             <div class="routine_wrapper_body">
                                 <!-- student_info_wrapper part end -->
                                 <div class="markseet_title">
-                                    <h5>{{___('report.Grade Sheet')}}</h5>
+                                    <h5>{{ ___('report.Grade Sheet') }}</h5>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table border_table mb-0">
                                         <thead>
                                             <tr>
-                                                <th class="marked_bg">{{___('report.Subject Code')}}</th>
-                                                <th class="marked_bg">{{___('report.Subject Name')}}</th>
+                                                <th class="marked_bg">{{ ___('report.Subject Code') }}</th>
+                                                <th class="marked_bg">{{ ___('report.Subject Name') }}</th>
                                                 @foreach (@$data['exams'] as $item)
-                                                    <th class="marked_bg">{{$item->exam_type->name}} <small>{{___('report.(Mark-Grade)')}}</small></th>
+                                                    <th class="marked_bg">{{ $item->exam_type->name }}
+                                                        <small>{{ ___('report.(Mark-Grade)') }}</small></th>
                                                 @endforeach
                                             </tr>
                                         </thead>
@@ -715,7 +728,7 @@
                                                             <h5>{{ $item->subject->name }}</h5>
                                                         </div>
                                                     </td>
-                                                    @foreach (@$data['exams'] as $key=>$exam)
+                                                    @foreach (@$data['exams'] as $key => $exam)
                                                         <td>
                                                             @foreach ($data['marks_registers'][$key] as $result)
                                                                 @if ($result->subject_id == $item->subject->id)
@@ -724,11 +737,11 @@
                                                                             $n = 0;
                                                                         @endphp
                                                                         @foreach ($result->marksRegisterChilds as $mark)
-                                                                                @php
-                                                                                    $n += $mark->mark;
-                                                                                @endphp
+                                                                            @php
+                                                                                $n += $mark->mark;
+                                                                            @endphp
                                                                         @endforeach
-                                                                        <h5>{{$n}} - {{ markGrade($n) }}</h5>
+                                                                        <h5>{{ $n }} - {{ markGrade($n) }}</h5>
                                                                     </div>
                                                                 @endif
                                                             @endforeach
@@ -742,23 +755,25 @@
                                 <table class="table border_table mt-5">
                                     <thead>
                                         <tr>
-                                            <th>{{___('report.Exam Name')}}</th>
-                                            <th>{{___('report.Result')}}</th>
-                                            <th>{{___('report.GPA')}}</th>
-                                            <th>{{___('report.Total Marks')}}</th>
-                                            <th>{{___('report.Avg Marks')}}</th>
-                                            <th>{{___('report.Avg Grade')}}</th>
+                                            <th>{{ ___('report.Exam Name') }}</th>
+                                            <th>{{ ___('report.Result') }}</th>
+                                            <th>{{ ___('report.GPA') }}</th>
+                                            <th>{{ ___('report.Total Marks') }}</th>
+                                            <th>{{ ___('report.Avg Marks') }}</th>
+                                            <th>{{ ___('report.Avg Grade') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data['exams'] as $key=>$item)
+                                        @foreach ($data['exams'] as $key => $item)
                                             <tr>
                                                 <td>{{ $item->exam_type->name }}</td>
                                                 <td>{{ $data['result'][$key] }}</td>
-                                                <td>{{ $data['result'][$key] == 'Failed' ? '0.00' : $data['gpa'][$key] }}</td>
+                                                <td>{{ $data['result'][$key] == 'Failed' ? '0.00' : $data['gpa'][$key] }}
+                                                </td>
                                                 <td>{{ $data['total_marks'][$key] }}</td>
-                                                <td>{{ substr($data['avg_marks'][$key],0,5) }}</td>
-                                                <td>{{ $data['result'][$key] == 'Failed' ? 'F' : markGrade((int)$data['avg_marks'][$key]) }}</td>
+                                                <td>{{ substr($data['avg_marks'][$key], 0, 5) }}</td>
+                                                <td>{{ $data['result'][$key] == 'Failed' ? 'F' : markGrade((int) $data['avg_marks'][$key]) }}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -775,3 +790,98 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+                    var section_options = '';
+                    var section_li = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
+                            item.section.name + "</li>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+
+                    $("div .sections .current").html($("div .sections .list li:first").html());
+                    $("div .sections .list li").not(':first').remove();
+                    $("div .sections .list").append(section_li);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+    <script>
+        // Marksheet students start
+        $(".class").on('change', function(e) {
+            getStudents();
+        });
+        $(".section").on('change', function(e) {
+            getStudents();
+        });
+
+        // Start Class Section wise get Students
+        function getStudents() {
+            var url = $('#url').val();
+            var classId = $(".class").val();
+            var sectionId = $(".section").val();
+            var formData = {
+                class: classId,
+                section: sectionId,
+            }
+
+            if (classId && sectionId) {
+                $.ajax({
+                    type: "GET",
+                    dataType: 'json',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/report-marksheet/get-students',
+                    success: function(data) {
+                        var student_options = '';
+                        var student_li = '';
+                        $.each(data, function(i, item) {
+                            student_options += "<option value=" + item.student_id + ">" + item.student
+                                .first_name + ' ' + item.student.last_name + "</option>";
+                            student_li += "<li data-value=" + item.student_id + " class='option'>" +
+                                item.student.first_name + ' ' + item.student.last_name + "</li>";
+                        });
+
+                        $("select.students option").not(':first').remove();
+                        $("select.students").append(student_options);
+
+                        $("div .students .current").html($("div .students .list li:first").html());
+                        $("div .students .list li").not(':first').remove();
+                        $("div .students .list").append(student_li);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+        // Marksheet students end.
+    </script>
+@endpush

@@ -121,7 +121,6 @@
 
 .sidebar .menu-group li .sub-menu {
   padding: 6px 6px 14px 75px;
-  margin-top: -10px;
   background: #1D284D;
   display: none;
   transition: all 0.3s ease;
