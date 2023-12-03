@@ -54,13 +54,13 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a class="profile-expand-item {{ set_menu(['my.profile'], 'active') }}"
+                    <a class="dropdown-item {{ set_menu(['my.profile'], 'active') }}"
                         href="{{ route('my.profile') }}">
                         <span>{{ ___('common.my_profile') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a class="profile-expand-item {{ set_menu(['passwordUpdate'], 'active') }}"
+                    <a class="dropdown-item {{ set_menu(['passwordUpdate'], 'active') }}"
                         href="{{ route('passwordUpdate') }}">
                         <span>{{ ___('common.update_password') }}</span>
                     </a>
@@ -68,7 +68,7 @@
                 <li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="profile-expand-item">
+                        <button type="submit" class="dropdown-item">
                             <span>
                                 {{ ___('common.logout') }}</span>
                         </button>

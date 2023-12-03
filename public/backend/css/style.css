@@ -33,3 +33,25 @@ td.w-150 {
 .nice-select.open .list {
     width: 100% !important;
 }
+
+.list-group-item.active {
+    z-index: 2;
+    color: #49B6F5;
+    background: #ECF8FE;
+    border-color: #ECF8FE;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    color: #49B6F5;
+    background: #ECF8FE;
+}
+
+input[type="file"]::-ms-browse {
+    color: #49B6F5;
+    background: #ECF8FE;
+}
+
+input[type="file"]::file-selector-button {
+    color: #49B6F5;
+    background: #ECF8FE;
+}

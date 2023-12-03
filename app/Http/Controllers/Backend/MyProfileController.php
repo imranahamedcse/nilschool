@@ -26,15 +26,23 @@ class MyProfileController extends Controller
 
     public function profile()
     {
-        $data['title'] = 'My Profile';
-        return view('backend.my-profile.profile',compact('data'));
+        $data['title'] = 'Profile';
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        return view('backend.admin.my-profile.profile',compact('data'));
     }
 
     public function edit()
     {
+        $data['title']       = "Edit profile";
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['user']        = $this->user->show(Auth::user()->id);
-        $data['title']       = "My Profile Edit";
-        return view('backend.my-profile.edit',compact('data'));
+        return view('backend.admin.my-profile.edit',compact('data'));
     }
 
     public function update(ProfileUpdateRequest $request)
@@ -50,7 +58,11 @@ class MyProfileController extends Controller
     public function passwordUpdate()
     {
         $data['title'] = 'Password Update';
-        return view('backend.my-profile.update_password',compact('data'));
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        return view('backend.admin.my-profile.update_password',compact('data'));
     }
 
     public function passwordUpdateStore(PasswordUpdateRequest $request)
