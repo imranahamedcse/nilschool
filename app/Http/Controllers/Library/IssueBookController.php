@@ -28,7 +28,7 @@ class IssueBookController extends Controller
         $title = ___('settings.Issue book');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'issue_book_create',
+            "create-permission"   => 'issue_book_create',
             "create-route" => 'issue-book.create',
         ];
         $data['breadcrumbs']  = [
@@ -128,7 +128,7 @@ class IssueBookController extends Controller
         $title = ___('settings.Issue book');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'issue_book_create',
+            "create-permission"   => 'issue_book_create',
             "create-route" => 'issue-book.create',
         ];
         $data['breadcrumbs']  = [

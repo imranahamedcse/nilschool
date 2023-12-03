@@ -30,7 +30,7 @@ class BookController extends Controller
 
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'book_create',
+            "create-permission"   => 'book_create',
             "create-route" => 'book.create',
         ];
         $data['breadcrumbs']  = [

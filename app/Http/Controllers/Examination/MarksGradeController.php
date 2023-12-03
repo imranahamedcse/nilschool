@@ -24,7 +24,7 @@ class MarksGradeController extends Controller
         $title             = ___('examination.marks_grade');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'marks_grade_create',
+            "create-permission"   => 'marks_grade_create',
             "create-route" => 'marks-grade.create',
         ];
         $data['breadcrumbs']  = [

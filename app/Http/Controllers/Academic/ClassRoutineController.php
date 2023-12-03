@@ -72,7 +72,7 @@ class ClassRoutineController extends Controller
         $title             = ___('academic.class_routine');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'class_routine_create',
+            "create-permission"   => 'class_routine_create',
             "create-route" => 'class-routine.create',
         ];
         $data['breadcrumbs']  = [

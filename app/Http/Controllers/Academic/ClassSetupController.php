@@ -43,7 +43,7 @@ class ClassSetupController extends Controller
         $title             = ___('academic.class_setup');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'class_setup_create',
+            "create-permission"   => 'class_setup_create',
             "create-route" => 'class-setup.create',
         ];
         $data['breadcrumbs']  = [

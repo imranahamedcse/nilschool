@@ -31,7 +31,7 @@ class QuestionGroupController extends Controller
         $title             = ___('online-examination.Question group');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'question_group_create',
+            "create-permission"   => 'question_group_create',
             "create-route" => 'question-group.create',
         ];
         $data['breadcrumbs']  = [
@@ -47,7 +47,7 @@ class QuestionGroupController extends Controller
         $title             = ___('online-examination.Question group');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'question_group_create',
+            "create-permission"   => 'question_group_create',
             "create-route" => 'question-group.create',
         ];
         $data['breadcrumbs']  = [

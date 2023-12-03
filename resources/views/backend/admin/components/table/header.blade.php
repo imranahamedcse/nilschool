@@ -9,8 +9,8 @@
                 enctype="multipart/form-data">
                 @csrf
                 <div class="input-group">
-                    <div>
-                        @if (in_array('view', @$data['headers']['filter']))
+                    @if (in_array('view', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="form-control" name="view">
                                 <option {{ old('view', @$data['request']->view) == '0' ? 'selected' : '' }}
                                     value="0">
@@ -19,11 +19,11 @@
                                     value="1">
                                     {{ ___('report.Details view') }}</option>
                             </select>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('class', @$data['headers']['filter']))
+                    @if (in_array('class', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select id="getSections" class="form-control @error('class') is-invalid @enderror"
                                 name="class">
                                 <option value="">{{ ___('student_info.select_class') }} </option>
@@ -37,11 +37,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('section', @$data['headers']['filter']))
+                    @if (in_array('section', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="sections form-control @error('section') is-invalid @enderror" name="section">
                                 <option value="">{{ ___('student_info.select_section') }} </option>
                                 @foreach ($data['sections'] as $item)
@@ -55,11 +55,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('shift', @$data['headers']['filter']))
+                    @if (in_array('shift', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="shift form-control" name="shift" id="validationServer04"
                                 aria-describedby="validationServer04Feedback">
                                 <option value="">{{ ___('student_info.select_shift') }}</option>
@@ -68,11 +68,11 @@
                                         value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('transaction', @$data['headers']['filter']))
+                    @if (in_array('transaction', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="form-control account_head_type @error('type') is-invalid @enderror"
                                 name="type">
                                 <option value="{{ App\Enums\AccountHeadType::INCOME }}"
@@ -87,11 +87,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('account_head', @$data['headers']['filter']))
+                    @if (in_array('account_head', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="form-control account_types @error('head') is-invalid @enderror"
                                 name="head">
                                 <option value="">{{ ___('student_info.select head') }}</option>
@@ -105,11 +105,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('month', @$data['headers']['filter']))
+                    @if (in_array('month', @$data['headers']['filter']))
+                        <div class="px-1">
                             <input value="{{ old('month', @$data['request']->month) }}" name="month"
                                 class="form-control @error('month') is-invalid @enderror" type="month"
                                 placeholder="Search month" min="2023-01" max="2023-12">
@@ -118,11 +118,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('date', @$data['headers']['filter']))
+                    @if (in_array('date', @$data['headers']['filter']))
+                        <div class="px-1">
                             <input value="{{ old('date', @$data['request']->date) }}" name="date"
                                 class="form-control @error('date') is-invalid @enderror" type="date">
 
@@ -131,20 +131,20 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('date_range', @$data['headers']['filter']))
+                    @if (in_array('date_range', @$data['headers']['filter']))
+                        <div class="px-1">
                             <div class="single_large_selectBox">
-                                <input type="text" class="form-control ot-input"
-                                    value="{{ @$data['request']->dates }}" name="dates">
+                                <input type="text" class="form-control" value="{{ @$data['request']->dates }}"
+                                    name="dates">
                             </div>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('exam_type', @$data['headers']['filter']))
+                    @if (in_array('exam_type', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="form-control exam_types @error('exam_type') is-invalid @enderror"
                                 name="exam_type">
                                 <option value="">{{ ___('examination.select_exam_type') }} </option>
@@ -159,11 +159,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('subject', @$data['headers']['filter']))
+                    @if (in_array('subject', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="subjects form-control @error('subject') is-invalid @enderror" name="subject">
                                 <option value="">{{ ___('academic.Select subject') }} </option>
                             </select>
@@ -172,11 +172,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('student', @$data['headers']['filter']))
+                    @if (in_array('student', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="students form-control @error('student') is-invalid @enderror" name="student">
                                 <option value="">{{ ___('student_info.Select student') }} *</option>
                                 @foreach ($data['students'] as $item)
@@ -191,11 +191,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
-                    </div>
+                        </div>
+                    @endif
 
-                    <div>
-                        @if (in_array('fees', @$data['headers']['filter']))
+                    @if (in_array('fees', @$data['headers']['filter']))
+                        <div class="px-1">
                             <select class="fees-masters form-control @error('fees_master') is-invalid @enderror"
                                 name="fees_master">
                                 <option value="">{{ ___('fees.select_fees_type') }} *</option>
@@ -210,12 +210,13 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                        @endif
+                        </div>
+                    @endif
+                    <div class="px-1">
+                        <button class="btn btn-primary" type="submit">
+                            {{ ___('common.Search') }}
+                        </button>
                     </div>
-
-                    <button class="btn btn-primary" type="submit">
-                        {{ ___('common.Search') }}
-                    </button>
                 </div>
             </form>
         @endif

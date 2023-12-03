@@ -28,7 +28,7 @@ class SectionController extends Controller
         $title = ___('academic.section');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'section_create',
+            "create-permission"   => 'section_create',
             "create-route" => 'section.create',
         ];
         $data['breadcrumbs']  = [

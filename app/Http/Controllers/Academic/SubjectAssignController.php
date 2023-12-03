@@ -58,7 +58,7 @@ class SubjectAssignController extends Controller
         $title             = ___('academic.subject_assign');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'subject_assign_create',
+            "create-permission"   => 'subject_assign_create',
             "create-route" => 'assign-subject.create',
         ];
         $data['breadcrumbs']  = [

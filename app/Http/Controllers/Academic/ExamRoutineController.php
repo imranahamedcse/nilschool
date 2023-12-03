@@ -70,7 +70,7 @@ class ExamRoutineController extends Controller
         $title             = ___('academic.exam_routine');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'exam_routine_create',
+            "create-permission"   => 'exam_routine_create',
             "create-route" => 'exam-routine.create',
         ];
         $data['breadcrumbs']  = [

@@ -29,7 +29,7 @@ class TimeScheduleController extends Controller
         $title = ___('academic.time_schedule');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'time_schedule_create',
+            "create-permission"   => 'time_schedule_create',
             "create-route" => 'time_schedule.create',
         ];
         $data['breadcrumbs']  = [

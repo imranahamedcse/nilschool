@@ -28,7 +28,7 @@ class ShiftController extends Controller
         $title             = ___('academic.shift');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'shift_create',
+            "create-permission"   => 'shift_create',
             "create-route" => 'shift.create',
         ];
         $data['breadcrumbs']  = [

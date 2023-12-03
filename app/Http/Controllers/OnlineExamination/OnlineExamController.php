@@ -71,7 +71,7 @@ class OnlineExamController extends Controller
         $title             = ___('online-examination.online_exam');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'online_exam_create',
+            "create-permission"   => 'online_exam_create',
             "create-route" => 'online-exam.create',
         ];
         $data['breadcrumbs']  = [
@@ -99,7 +99,7 @@ class OnlineExamController extends Controller
         $title             = ___('online-examination.online_exam');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'online-exam_create',
+            "create-permission"   => 'online-exam_create',
             "create-route" => 'online-exam.create',
         ];
         $data['breadcrumbs']  = [

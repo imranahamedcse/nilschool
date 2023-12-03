@@ -28,7 +28,7 @@ class BookCategoryController extends Controller
         $title = ___('settings.Book category');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'book_category_create',
+            "create-permission"   => 'book_category_create',
             "create-route" => 'book-category.create',
         ];
         $data['breadcrumbs']  = [

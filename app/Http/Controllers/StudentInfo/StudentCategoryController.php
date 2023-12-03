@@ -22,7 +22,7 @@ class StudentCategoryController extends Controller
         $title             = ___('student_info.Categories');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'student_category_create',
+            "create-permission"   => 'student_category_create',
             "create-route" => 'student_category.create',
         ];
         $data['breadcrumbs']  = [

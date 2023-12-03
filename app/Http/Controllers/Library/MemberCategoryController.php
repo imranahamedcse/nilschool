@@ -28,7 +28,7 @@ class MemberCategoryController extends Controller
         $title             = ___('settings.Member category');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'member_category_create',
+            "create-permission"   => 'member_category_create',
             "create-route" => 'member-category.create',
         ];
         $data['breadcrumbs']  = [

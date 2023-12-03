@@ -31,7 +31,7 @@ class IncomeController extends Controller
         $title             = ___('account.income');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'income_create',
+            "create-permission"   => 'income_create',
             "create-route" => 'income.create',
         ];
         $data['breadcrumbs']  = [

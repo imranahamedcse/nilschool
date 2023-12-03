@@ -33,7 +33,7 @@ class FeesMasterController extends Controller
         $title             = ___('fees.fees_master');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'fees_master_create',
+            "create-permission"   => 'fees_master_create',
             "create-route" => 'fees-master.create',
         ];
         $data['breadcrumbs']  = [

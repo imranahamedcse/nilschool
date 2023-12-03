@@ -28,7 +28,7 @@ class ClassesController extends Controller
         $title             = ___('academic.class');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'classes_create',
+            "create-permission"   => 'classes_create',
             "create-route" => 'classes.create',
         ];
         $data['breadcrumbs']  = [

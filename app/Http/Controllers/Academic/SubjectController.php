@@ -29,7 +29,7 @@ class SubjectController extends Controller
         $title = ___('academic.subject');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'subject_create',
+            "create-permission"   => 'subject_create',
             "create-route" => 'subject.create',
         ];
         $data['breadcrumbs']  = [

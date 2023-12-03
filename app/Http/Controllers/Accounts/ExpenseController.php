@@ -31,7 +31,7 @@ class ExpenseController extends Controller
         $title             = ___('account.expense');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'expense_create',
+            "create-permission"   => 'expense_create',
             "create-route" => 'expense.create',
         ];
         $data['breadcrumbs']  = [

@@ -24,7 +24,7 @@ class FeesTypeController extends Controller
         $title             = ___('fees.fees_type');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'fees_type_create',
+            "create-permission"   => 'fees_type_create',
             "create-route" => 'fees-type.create',
         ];
         $data['breadcrumbs']  = [

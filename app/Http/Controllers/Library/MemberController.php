@@ -30,7 +30,7 @@ class MemberController extends Controller
         $title             = ___('settings.Member');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'member_create',
+            "create-permission"   => 'member_create',
             "create-route" => 'member.create',
         ];
         $data['breadcrumbs']  = [

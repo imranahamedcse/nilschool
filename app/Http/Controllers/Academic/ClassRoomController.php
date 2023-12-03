@@ -24,7 +24,7 @@ class ClassRoomController extends Controller
         $title             = ___('academic.class_room');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'class_room_create',
+            "create-permission"   => 'class_room_create',
             "create-route" => 'class-room.create',
         ];
         $data['breadcrumbs']  = [

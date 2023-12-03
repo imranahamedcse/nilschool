@@ -29,7 +29,7 @@ class AccountHeadController extends Controller
         $title             = ___('account.account_head');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'account_head_create',
+            "create-permission"   => 'account_head_create',
             "create-route" => 'account_head.create',
         ];
         $data['breadcrumbs']  = [

@@ -36,7 +36,7 @@ class QuestionBankController extends Controller
         $title         = ___('online-examination.Question bank');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'question_bank_create',
+            "create-permission"   => 'question_bank_create',
             "create-route" => 'question-bank.create',
         ];
         $data['breadcrumbs']  = [
@@ -53,7 +53,7 @@ class QuestionBankController extends Controller
         $title         = ___('online-examination.question_bank');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'question_bank_create',
+            "create-permission"   => 'question_bank_create',
             "create-route" => 'question-bank.create',
         ];
         $data['breadcrumbs']  = [

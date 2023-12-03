@@ -24,7 +24,7 @@ class ExamTypeController extends Controller
         $title             = ___('examination.exam_type');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'exam_type_create',
+            "create-permission"   => 'exam_type_create',
             "create-route" => 'online-exam-type.create',
         ];
         $data['breadcrumbs']  = [

@@ -24,7 +24,7 @@ class FeesGroupController extends Controller
         $title             = ___('fees.fees_group');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'fees_group_create',
+            "create-permission"   => 'fees_group_create',
             "create-route" => 'fees-group.create',
         ];
         $data['breadcrumbs']  = [

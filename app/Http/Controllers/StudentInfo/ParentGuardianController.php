@@ -22,7 +22,7 @@ class ParentGuardianController extends Controller
         $title             = ___('student_info.parent_list');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'parent_create',
+            "create-permission"   => 'parent_create',
             "create-route" => 'parent.create',
         ];
         $data['breadcrumbs']  = [
@@ -39,7 +39,7 @@ class ParentGuardianController extends Controller
         $title             = ___('student_info.parent_list');
         $data['headers']   = [
             "title"        => $title,
-            "permission"   => 'parent_create',
+            "create-permission"   => 'parent_create',
             "create-route" => 'parent.create',
         ];
         $data['breadcrumbs']  = [
