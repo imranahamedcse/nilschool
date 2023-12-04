@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Examination;
+namespace App\Http\Controllers\ClassRoom;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Examination\HomeworkRepository;
-use App\Http\Requests\Examination\Homework\HomeworkStoreRequest;
-use App\Http\Requests\Examination\Homework\HomeworkUpdateRequest;
+use App\Repositories\ClassRoom\AssignmentRepository;
+use App\Http\Requests\ClassRoom\Assignment\AssignmentStoreRequest;
+use App\Http\Requests\ClassRoom\Assignment\AssignmentUpdateRequest;
 use App\Repositories\Academic\ClassesRepository;
 use App\Repositories\Academic\SectionRepository;
 use App\Repositories\Academic\SubjectRepository;
 
-class HomeworkController extends Controller
+class AssignmentController extends Controller
 {
     private $repo;
     private $classRepo;
@@ -21,7 +21,7 @@ class HomeworkController extends Controller
     private $subjectRepo;
 
     function __construct(
-        HomeworkRepository $repo, 
+        AssignmentRepository $repo, 
         ClassSetupRepository $classSetupRepo, 
         ClassesRepository $classRepo, 
         SectionRepository $sectionRepo, 
@@ -37,12 +37,12 @@ class HomeworkController extends Controller
 
     public function index()
     {
-        $title              = ___('examination.Homework');
+        $title              = ___('examination.Assignment');
         $data['headers']   = [
             "title"        => $title,
-            "filter"            => ['homework.search', 'class', 'section', 'subject'],
-            "create-permission"   => 'homework_create',
-            "create-route" => 'homework.create',
+            "filter"            => ['assignment.search', 'class', 'section', 'subject'],
+            "create-permission"   => 'assignment_create',
+            "create-route" => 'assignment.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -52,18 +52,18 @@ class HomeworkController extends Controller
 
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['homeworks']    = $this->repo->getPaginateAll();
-        return view('backend.admin.examination.homework.index', compact('data'));
+        $data['assignments']    = $this->repo->getPaginateAll();
+        return view('backend.admin.class_room.assignment.index', compact('data'));
     }
 
     public function search(Request $request)
     {
-        $title              = ___('examination.Homework');
+        $title              = ___('examination.Assignment');
         $data['headers']   = [
             "title"        => $title,
-            "filter"            => ['homework.search', 'class', 'section', 'subject'],
-            "create-permission"   => 'homework_create',
-            "create-route" => 'homework.create',
+            "filter"            => ['assignment.search', 'class', 'section', 'subject'],
+            "create-permission"   => 'assignment_create',
+            "create-route" => 'assignment.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -72,45 +72,45 @@ class HomeworkController extends Controller
         ];
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['homeworks']    = $this->repo->searchMarkRegister($request);
-        return view('backend.admin.examination.homework.index', compact('data'));
+        $data['assignments']    = $this->repo->searchMarkRegister($request);
+        return view('backend.admin.class_room.assignment.index', compact('data'));
     }
 
     
     public function show(Request $request)
     {
-        $data['homework']        = $this->repo->show($request->id);
+        $data['assignment']        = $this->repo->show($request->id);
 
         
         $request = new Request([
-            'class'     => $data['homework']->classes_id,
-            'section'   => $data['homework']->section_id,
-            'exam_type' => $data['homework']->exam_type_id,
-            'subject'   => $data['homework']->subject_id
+            'class'     => $data['assignment']->classes_id,
+            'section'   => $data['assignment']->section_id,
+            'exam_type' => $data['assignment']->exam_type_id,
+            'subject'   => $data['assignment']->subject_id
         ]);
 
-        return view('backend.admin.examination.homework.index', compact('data'));
+        return view('backend.admin.class_room.assignment.index', compact('data'));
     }
 
     public function create()
     {
-        $data['title']                  = ___('examination.homework');
+        $data['title']                  = ___('examination.Assignment');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
-            ["title" => ___("common.Homework"), "route" => "homework.index"],
+            ["title" => ___("common.assignment"), "route" => "assignment.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
         $data['classes']                = $this->classSetupRepo->all();
-        return view('backend.admin.examination.homework.create', compact('data'));
+        return view('backend.admin.class_room.assignment.create', compact('data'));
     }
 
-    public function store(HomeworkStoreRequest $request)
+    public function store(AssignmentStoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
-            return redirect()->route('homework.index')->with('success', $result['message']);
+            return redirect()->route('assignment.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
@@ -121,35 +121,35 @@ class HomeworkController extends Controller
         $data['sections']              = $this->sectionRepo->all();
 
         $data['subjects']              = $this->subjectRepo->all();
-        $data['homework']        = $this->repo->show($id);
+        $data['assignment']        = $this->repo->show($id);
 
-        $data['title']                 = ___('examination.homework');
+        $data['title']                 = ___('examination.Assignment');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
-            ["title" => ___("common.Homework"), "route" => "homework.index"],
+            ["title" => ___("common.assignment"), "route" => "assignment.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
         $request = new Request([
-            'class'     => $data['homework']->classes_id,
-            'section'   => $data['homework']->section_id,
+            'class'     => $data['assignment']->classes_id,
+            'section'   => $data['assignment']->section_id,
         ]);
         $request = new Request([
-            'class'     => $data['homework']->classes_id,
-            'section'   => $data['homework']->section_id,
-            'exam_type' => $data['homework']->exam_type_id,
-            'subject'   => $data['homework']->subject_id
+            'class'     => $data['assignment']->classes_id,
+            'section'   => $data['assignment']->section_id,
+            'exam_type' => $data['assignment']->exam_type_id,
+            'subject'   => $data['assignment']->subject_id
         ]);
 
-        return view('backend.admin.examination.homework.edit', compact('data'));
+        return view('backend.admin.class_room.assignment.edit', compact('data'));
     }
 
-    public function update(HomeworkUpdateRequest $request, $id)
+    public function update(AssignmentUpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){
-            return redirect()->route('homework.index')->with('success', $result['message']);
+            return redirect()->route('assignment.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }

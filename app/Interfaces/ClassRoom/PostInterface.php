@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Interfaces\Examination;
+namespace App\Interfaces\ClassRoom;
 
-interface HomeworkInterface
+interface PostInterface
 {
 
     public function all();

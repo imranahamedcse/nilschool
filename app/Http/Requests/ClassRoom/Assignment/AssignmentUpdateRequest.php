@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Examination\Homework;
+namespace App\Http\Requests\ClassRoom\Assignment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HomeworkUpdateRequest extends FormRequest
+class AssignmentUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

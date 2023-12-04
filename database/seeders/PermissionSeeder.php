@@ -33,6 +33,10 @@ class PermissionSeeder extends Seeder
             'class_routine'     => ['read' => 'class_routine_read', 'create' => 'class_routine_create', 'update' => 'class_routine_update', 'delete' => 'class_routine_delete'],
             'time_schedule'     => ['read' => 'time_schedule_read', 'create' => 'time_schedule_create', 'update' => 'time_schedule_update', 'delete' => 'time_schedule_delete'],
             'class_room'        => ['read' => 'class_room_read', 'create' => 'class_room_create', 'update' => 'class_room_update', 'delete' => 'class_room_delete'],
+            // Class Room
+            'homework'          => ['read' => 'homework_read', 'create' => 'homework_create', 'update' => 'homework_update', 'delete' => 'homework_delete'],
+            'assignment'        => ['read' => 'assignment_read', 'create' => 'assignment_create', 'update' => 'assignment_update', 'delete' => 'assignment_delete'],
+            'post'              => ['read' => 'post_read', 'create' => 'post_create', 'update' => 'post_update', 'delete' => 'post_delete'],
             // Fees
             'fees_group'        => ['read' => 'fees_group_read', 'create' => 'fees_group_create', 'update' => 'fees_group_update', 'delete' => 'fees_group_delete'],
             'fees_type'         => ['read' => 'fees_type_read', 'create' => 'fees_type_create', 'update' => 'fees_type_update', 'delete' => 'fees_type_delete'],
@@ -45,7 +49,6 @@ class PermissionSeeder extends Seeder
             'exam_assign'       => ['read' => 'exam_assign_read', 'create' => 'exam_assign_create', 'update' => 'exam_assign_update', 'delete' => 'exam_assign_delete'],
             'exam_routine'      => ['read' => 'exam_routine_read', 'create' => 'exam_routine_create', 'update' => 'exam_routine_update', 'delete' => 'exam_routine_delete'],
             'marks_register'    => ['read' => 'marks_register_read', 'create' => 'marks_register_create', 'update' => 'marks_register_update', 'delete' => 'marks_register_delete'],
-            'homework'          => ['read' => 'homework_read', 'create' => 'homework_create', 'update' => 'homework_update', 'delete' => 'homework_delete'],
             'exam_setting'      => ['read' => 'exam_setting_read', 'update' => 'exam_setting_update'],
             // Transaction
             'account_head'      => ['read' => 'account_head_read', 'create' => 'account_head_create', 'update' => 'account_head_update', 'delete' => 'account_head_delete'],

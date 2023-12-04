@@ -6,9 +6,7 @@ use App\Http\Controllers\Examination\MarksGradeController;
 use App\Http\Controllers\Examination\ExamAssignController;
 use App\Http\Controllers\Examination\MarksRegisterController;
 use App\Http\Controllers\Academic\ExamRoutineController;
-use App\Http\Controllers\Examination\MarksheetController;
 use App\Http\Controllers\Examination\ExaminationSettingsController;
-use App\Http\Controllers\Examination\HomeworkController;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
@@ -41,16 +39,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('marks-register.update')->middleware('PermissionCheck:marks_register_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('marks-register.delete')->middleware('PermissionCheck:marks_register_delete', 'DemoCheck');
                 Route::get('/show',             'show');
-            });
-
-            Route::controller(HomeworkController::class)->prefix('homework')->name('homework.')->group(function () {
-                Route::get('/',                 'index')->name('index')->middleware('PermissionCheck:homework_read');
-                Route::any('/search',           'search')->name('search')->middleware('PermissionCheck:homework_read');
-                Route::get('/create',           'create')->name('create')->middleware('PermissionCheck:homework_create');
-                Route::post('/store',           'store')->name('store')->middleware('PermissionCheck:homework_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('edit')->middleware('PermissionCheck:homework_update');
-                Route::put('/update/{id}',      'update')->name('update')->middleware('PermissionCheck:homework_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('delete')->middleware('PermissionCheck:homework_delete', 'DemoCheck');
             });
 
             Route::controller(ExamRoutineController::class)->prefix('exam-routine')->group(function () {

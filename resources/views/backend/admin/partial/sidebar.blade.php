@@ -160,6 +160,37 @@
         @endif
         {{-- End routines --}}
 
+        {{-- start class room --}}
+        @if (hasPermission('homework_read') || hasPermission('assignment_read') || hasPermission('post_read'))
+            <li class="{{ set_menu(['homework*','assignment*','post*']) }}">
+                <div class="icon-link">
+                    <a class="parent-item-content has-arrow">
+                        <i class="fa-solid fa-map"></i>
+                        <span class="link-name">{{ ___('settings.Class Room') }}</span>
+                    </a>
+                    <i class="fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    @if (hasPermission('homework_read'))
+                        <li class="{{ set_menu(['homework*']) }}">
+                            <a href="{{ route('homework.index') }}">{{ ___('settings.Homework') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('assignment_read'))
+                        <li class="{{ set_menu(['assignment*']) }}">
+                            <a href="{{ route('assignment.index') }}">{{ ___('settings.Assignment') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('post_read'))
+                        <li class="{{ set_menu(['post*']) }}">
+                            <a href="{{ route('post.index') }}">{{ ___('settings.Post') }}</a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+        {{-- End class room --}}
+
         {{-- Start Attendance --}}
         @if (hasPermission('attendance_read') || hasPermission('report_attendance_read'))
             <li class="{{ set_menu(['attendance*']) }}">
@@ -270,11 +301,6 @@
                     @if (hasPermission('exam_setting_read'))
                         <li class="{{ set_menu(['examination-settings*']) }}">
                             <a href="{{ route('examination-settings.index') }}">{{ ___('settings.settings') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('homework_read'))
-                        <li class="{{ set_menu(['homework*']) }}">
-                            <a href="{{ route('homework.index') }}">{{ ___('settings.Homework') }}</a>
                         </li>
                     @endif
                 </ul>

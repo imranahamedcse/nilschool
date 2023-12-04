@@ -12,7 +12,7 @@
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
 
-            <form action="{{ route('homework.store') }}" enctype="multipart/form-data" method="post" id="markRegister">
+            <form action="{{ route('assignment.store') }}" enctype="multipart/form-data" method="post" id="markRegister">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-lg-12">

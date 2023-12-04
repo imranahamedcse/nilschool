@@ -5,7 +5,6 @@ namespace App\Models\ClassRoom;
 use App\Models\Academic\Classes;
 use App\Models\Academic\Section;
 use App\Models\Academic\Subject;
-use App\Models\Examination\ExamType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

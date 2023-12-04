@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Interfaces\ClassRoom;
+
+interface AssignmentInterface
+{
+
+    public function all();
+
+    public function getPaginateAll();
+
+    public function store($request);
+
+    public function show($id);
+
+    public function update($request, $id);
+
+    public function destroy($id);
+}

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Repositories\Examination;
+namespace App\Repositories\ClassRoom;
 
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
-use App\Interfaces\Examination\HomeworkInterface;
-use App\Models\Examination\Homework;
+use App\Interfaces\ClassRoom\PostInterface;
+use App\Models\ClassRoom\Post;
 
-class HomeworkRepository implements HomeworkInterface
+class PostRepository implements PostInterface
 {
     use ReturnFormatTrait;
 
     private $model;
 
-    public function __construct(Homework $model)
+    public function __construct(Post $model)
     {
         $this->model = $model;
     }

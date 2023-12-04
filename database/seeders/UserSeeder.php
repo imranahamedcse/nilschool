@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -110,6 +111,24 @@ class UserSeeder extends Seeder
                 'class_room_update',
                 'class_room_delete',
                 // End Academic
+                
+                // Start Class Room
+                // homework
+                'homework_read',
+                'homework_create',
+                'homework_update',
+                'homework_delete',
+                // assignment
+                'assignment_read',
+                'assignment_create',
+                'assignment_update',
+                'assignment_delete',
+                // post
+                'post_read',
+                'post_create',
+                'post_update',
+                'post_delete',
+                // End Class Room
 
                 // Start Fees
                 // group
@@ -399,7 +418,7 @@ class UserSeeder extends Seeder
         ]);
 
 
-        if (\Config::get('app.APP_DEMO') == true) {
+        if (Config::get('app.APP_DEMO') == true) {
 
             User::create([
                 'name'              => 'Admin',

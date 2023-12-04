@@ -102,6 +102,24 @@ class RoleSeeder extends Seeder
                     'class_room_delete',
                 // End Academic
 
+                // Start Class Room
+                // homework
+                'homework_read',
+                'homework_create',
+                'homework_update',
+                'homework_delete',
+                // assignment
+                'assignment_read',
+                'assignment_create',
+                'assignment_update',
+                'assignment_delete',
+                // post
+                'post_read',
+                'post_create',
+                'post_update',
+                'post_delete',
+                // End Class Room
+
                 // Start Fees
                     // group
                     'fees_group_read',
