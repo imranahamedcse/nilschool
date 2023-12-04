@@ -40,6 +40,9 @@ use Database\Seeders\Examination\MarkRegisterSeeder;
 use Database\Seeders\StudentInfo\ParentGuardianSeeder;
 use Database\Seeders\StudentInfo\StudentCategorySeeder;
 use Database\Seeders\Academic\ClassSetupChildrensSeeder;
+use Database\Seeders\ClassRoom\AssignmentSeeder;
+use Database\Seeders\ClassRoom\HomeworkSeeder;
+use Database\Seeders\ClassRoom\Postseeder;
 use Database\Seeders\Examination\ExaminationSettingsSeeder;
 use Database\Seeders\Examination\ExamRoutineSeeder;
 use Database\Seeders\Library\BookCategorySeeder;
@@ -140,7 +143,12 @@ class DatabaseSeeder extends Seeder
             QuestionGroupSeeder::class,
             QuestionBankSeeder::class,
             OnlineExamSeeder::class,
-            CurrencySeeder::class
+            CurrencySeeder::class,
+
+            // Class Room
+            AssignmentSeeder::class,
+            HomeworkSeeder::class,
+            Postseeder::class
         ]);
     }
 }

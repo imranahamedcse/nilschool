@@ -37,18 +37,43 @@ class HomeworkController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('examination.homework');
+        $title              = ___('examination.Homework');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['homework.search', 'class', 'section', 'subject'],
+            "create-permission"   => 'homework_create',
+            "create-route" => 'homework.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
+
         $data['classes']            = $this->classRepo->assignedAll();
+        $data['sections'] = [];
         $data['homeworks']    = $this->repo->getPaginateAll();
-        return view('backend.examination.homework.index', compact('data'));
+        return view('backend.admin.examination.homework.index', compact('data'));
     }
 
     public function search(Request $request)
     {
-        $data['title']              = ___('examination.homework');
+        $title              = ___('examination.Homework');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['homework.search', 'class', 'section', 'subject'],
+            "create-permission"   => 'homework_create',
+            "create-route" => 'homework.create',
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => $title, "route" => ""]
+        ];
         $data['classes']            = $this->classRepo->assignedAll();
+        $data['sections'] = [];
         $data['homeworks']    = $this->repo->searchMarkRegister($request);
-        return view('backend.examination.homework.index', compact('data'));
+        return view('backend.admin.examination.homework.index', compact('data'));
     }
 
     
@@ -64,14 +89,21 @@ class HomeworkController extends Controller
             'subject'   => $data['homework']->subject_id
         ]);
 
-        return view('backend.examination.homework.view', compact('data'));
+        return view('backend.admin.examination.homework.index', compact('data'));
     }
 
     public function create()
     {
-        $data['classes']                = $this->classSetupRepo->all();
         $data['title']                  = ___('examination.homework');
-        return view('backend.examination.homework.create', compact('data'));
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Homework"), "route" => "homework.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+
+        $data['classes']                = $this->classSetupRepo->all();
+        return view('backend.admin.examination.homework.create', compact('data'));
     }
 
     public function store(HomeworkStoreRequest $request)
@@ -90,7 +122,14 @@ class HomeworkController extends Controller
 
         $data['subjects']              = $this->subjectRepo->all();
         $data['homework']        = $this->repo->show($id);
+
         $data['title']                 = ___('examination.homework');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Homework"), "route" => "homework.index"],
+            ["title" => $data['title'], "route" => ""]
+        ];
 
         $request = new Request([
             'class'     => $data['homework']->classes_id,
@@ -103,7 +142,7 @@ class HomeworkController extends Controller
             'subject'   => $data['homework']->subject_id
         ]);
 
-        return view('backend.examination.homework.edit', compact('data'));
+        return view('backend.admin.examination.homework.edit', compact('data'));
     }
 
     public function update(HomeworkUpdateRequest $request, $id)

@@ -1,180 +1,157 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
+
 @section('title')
-    {{ @$data['title'] }}
+    {{ @$data['headers']['title'] }}
 @endsection
+
+@push('style')
+    @include('backend.admin.components.table.css')
+@endpush
+
 @section('content')
-    <div class="page-content">
+    @include('backend.admin.components.breadcrumb')
 
-        {{-- bradecrumb Area S t a r t --}}
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="bradecrumb-title mb-1">{{ $data['title'] }}</h1>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-                        <li class="breadcrumb-item">{{ $data['title'] }}</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        {{-- bradecrumb Area E n d --}}
+    <div class="p-4 rounded-3 bg-white">
+        @include('backend.admin.components.table.header')
 
-        <div class="col-12">
-            <form action="{{ route('homework.search') }}" method="post" id="marksheet" class="exam_assign" enctype="multipart/form-data">
-                @csrf
-                <div class="card ot-card mb-24 position-relative z_1">
-                    <div class="card-header d-flex align-items-center gap-4 flex-wrap">
-                        <h3 class="mb-0">{{ ___('common.Filtering') }}</h3>
-                        
-                        <div
-                            class="card_header_right d-flex align-items-center gap-3 flex-fill justify-content-end flex-wrap">
-                            <!-- table_searchBox -->
 
-                            <div class="single_large_selectBox">
-                                <select id="getSections" class="class form-control @error('class') is-invalid @enderror"
-                                    name="class">
-                                    <option value="">{{ ___('student_info.select_class') }} </option>
-                                    @foreach ($data['classes'] as $item)
-                                        <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="single_large_selectBox">
-                                <select class="sections section form-control @error('section') is-invalid @enderror"
-                                    name="section">
-                                    <option value="">{{ ___('student_info.select_section') }} </option>
-                                </select>
-                                @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="single_large_selectBox">
-                                <select class="subjects form-control @error('subject') is-invalid @enderror"
-                                    name="subject">
-                                    <option value="">{{ ___('academic.Select subject') }} </option>
-                                    
-                                </select>
-                                @error('subject')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <button class="btn btn-primary" type="submit">
-                                {{___('common.Search')}}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        
-        <!--  table content start -->
-        <div class="table-content table-basic mt-20">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0">{{ $data['title'] }}</h4>
-                    @if (hasPermission('homework_create'))
-                        <a href="{{ route('homework.create') }}" class="btn btn-primary">
-                            <span><i class="fa-solid fa-plus"></i> </span>
-                            <span class="">{{ ___('common.add') }}</span>
-                        </a>
+        <table id="datatable" class="table">
+            <thead class="thead">
+                <tr>
+                    <th class="serial">{{ ___('common.sr_no') }}</th>
+                    <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
+                    <th class="purchase">{{ ___('academic.subject') }}</th>
+                    @if (hasPermission('homework_update') || hasPermission('homework_delete'))
+                        <th class="action">{{ ___('common.action') }}</th>
                     @endif
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered role-table">
-                            <thead class="thead">
-                                <tr>
-                                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                                    <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                                    <th class="purchase">{{ ___('academic.subject') }}</th>
-                                    @if (hasPermission('homework_update') || hasPermission('homework_delete'))
-                                        <th class="action">{{ ___('common.action') }}</th>
-                                    @endif
-                                </tr>
-                            </thead>
-                            <tbody class="tbody">
-                                @forelse ($data['homeworks'] as $key => $row)
-                                <tr id="row_{{ $row->id }}">
-                                    <td class="serial">{{ ++$key }}</td>
-                                    <td>{{ $row->class->name }} ({{ $row->section->name }})</td>
-                                    <td>{{ $row->subject->name }}</td>
-                                    @if (hasPermission('homework_update') || hasPermission('homework_delete'))
-                                        <td class="action">
-                                            <div class="dropdown dropdown-action">
-                                                <button type="button" class="btn-dropdown" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
-                                                    <i class="fa-solid fa-ellipsis"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end ">
-                                                    @if (hasPermission('homework_update'))
-                                                        <li>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('homework.edit', $row->id) }}"><span
-                                                                    class="icon mr-8"><i
-                                                                        class="fa-solid fa-pen-to-square"></i></span>
-                                                                {{ ___('common.edit') }}</a>
-                                                        </li>
-                                                    @endif
-                                                    @if (hasPermission('homework_delete'))
-                                                        <li>
-                                                            <a class="dropdown-item" href="javascript:void(0);"
-                                                                onclick="delete_row('homework/delete', {{ $row->id }})">
-                                                                <span class="icon mr-8"><i
-                                                                        class="fa-solid fa-trash-can"></i></span>
-                                                                <span>{{ ___('common.delete') }}</span>
-                                                            </a>
-                                                        </li>
-                                                    @endif
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    @endif
-                                </tr>
-                                @empty
-                                <tr>
-                                    <td colspan="100%" class="text-center gray-color">
-                                        <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary" width="100">
-                                        <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
-                                        <p class="mb-0 text-center text-secondary font-size-90">
-                                            {{ ___('common.Please add new entity regarding this table') }}</p>
-                                    </td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                    <!--  table end -->
-                    <!--  pagination start -->
-
-                        <div class="ot-pagination pagination-content d-flex justify-content-end align-content-center py-3">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-between">
-                                    {!!$data['homeworks']->appends(\Request::capture()->except('page'))->links() !!}
-                                </ul>
-                            </nav>
-                        </div>
-
-                    <!--  pagination end -->
-                </div>
-            </div>
-        </div>
-        <!--  table content end -->
-
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                @forelse ($data['homeworks'] as $key => $row)
+                    <tr id="row_{{ $row->id }}">
+                        <td class="serial">{{ ++$key }}</td>
+                        <td>{{ $row->class->name }} ({{ $row->section->name }})</td>
+                        <td>{{ $row->subject->name }}</td>
+                        @if (hasPermission('homework_update') || hasPermission('homework_delete'))
+                            <td>
+                                @if (hasPermission('fees_type_update'))
+                                    <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="{{ ___('common.edit') }}" href="{{ route('homework.edit', $row->id) }}"><i
+                                            class="fa-solid fa-pencil"></i></a>
+                                @endif
+                                @if (hasPermission('fees_type_delete') && $row->code != 'en')
+                                    <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        onclick="delete_row('homework/delete', {{ $row->id }})"><i
+                                            class="fa-solid fa-trash-can"></i></a>
+                                @endif
+                            </td>
+                        @endif
+                    </tr>
+                @empty
+                    @include('backend.admin.components.table.empty')
+                @endforelse
+            </tbody>
+        </table>
     </div>
 @endsection
 
 @push('script')
-    @include('backend.partials.delete-ajax')
+    @include('backend.admin.components.table.js')
+    @include('backend.admin.components.table.delete-ajax')
+
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+                    var section_options = '';
+                    var section_li = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
+                            item.section.name + "</li>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+
+                    $("div .sections .current").html($("div .sections .list li:first").html());
+                    $("div .sections .list li").not(':first').remove();
+                    $("div .sections .list").append(section_li);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Start examination filter get subjects
+        $("#getSections").on('change', function(e) {
+            getExaminationFilterSubject();
+        });
+        $(".sections").on('change', function(e) {
+            getExaminationFilterSubject();
+        });
+
+        function getExaminationFilterSubject() {
+            var classId = $("#getSections").val();
+            var sectionId = $(".sections").val();
+
+            if (classId && sectionId) {
+                var url = $('#url').val();
+                var formData = {
+                    classes_id: classId,
+                    section_id: sectionId,
+                }
+                $.ajax({
+                    type: "GET",
+                    dataType: 'html',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: url + '/assign-subject/get-subjects',
+                    success: function(data) {
+                        var subject_options = '';
+                        var subject_li = '';
+
+                        $.each(JSON.parse(data), function(i, item) {
+                            subject_options += "<option value=" + item.subject.id + ">" + item.subject
+                                .name + "</option>";
+                            subject_li += "<li data-value=" + item.subject.id + " class='option'>" +
+                                item.subject.name + "</li>";
+                        });
+
+                        $("select.subjects option").not(':first').remove();
+                        $("select.subjects").append(subject_options);
+
+
+                        $("div .subjects .current").html($("div .subjects .list li:first").html());
+                        $("div .subjects .list li").not(':first').remove();
+                        $("div .subjects .list").append(subject_li);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+        // End examination filter get subjects
+    </script>
 @endpush

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Examination;
+namespace App\Models\ClassRoom;
 
 use App\Models\Academic\Classes;
 use App\Models\Academic\Section;

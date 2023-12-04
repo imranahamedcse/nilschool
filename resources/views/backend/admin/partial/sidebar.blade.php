@@ -272,6 +272,11 @@
                             <a href="{{ route('examination-settings.index') }}">{{ ___('settings.settings') }}</a>
                         </li>
                     @endif
+                    @if (hasPermission('homework_read'))
+                        <li class="{{ set_menu(['homework*']) }}">
+                            <a href="{{ route('homework.index') }}">{{ ___('settings.Homework') }}</a>
+                        </li>
+                    @endif
                 </ul>
             </li>
         @endif
