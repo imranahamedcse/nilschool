@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.title') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('title') is-invalid @enderror" name="title"
                                     value="{{ old('title', @$data['event']->title) }}" list="datalistOptions"
                                     id="exampleDataList" placeholder="{{ ___('common.enter_title') }}">
@@ -41,7 +41,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.Date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('date') is-invalid @enderror" name="date"
                                     value="{{ old('date', @$data['event']->date) }}" list="datalistOptions"
                                     id="exampleDataList" type="date" placeholder="{{ ___('common.enter_date') }}">
@@ -91,7 +91,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"

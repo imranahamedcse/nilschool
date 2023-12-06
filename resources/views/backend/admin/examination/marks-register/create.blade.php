@@ -21,7 +21,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSections"
                                     class="form-control class @error('class') is-invalid @enderror"
                                     name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSubjects"
                                     class="nice-select niceSelect sections bordered_style wide section @error('section') is-invalid @enderror"
                                     name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -58,7 +58,7 @@
 
                             <div class="col-lg-3">
                                 <label for="validationServer04" class="form-label">{{ ___('examination.exam_type') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select
                                     class="exam_types form-control @error('exam_type') is-invalid @enderror"
                                     name="exam_type">
@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('academic.subject') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="subject"
                                     class="nice-select niceSelect subjects bordered_style wide @error('subject') is-invalid @enderror"
                                     name="subject" id="validationServer04" aria-describedby="validationServer04Feedback">

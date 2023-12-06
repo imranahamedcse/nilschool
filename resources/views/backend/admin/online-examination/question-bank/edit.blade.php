@@ -27,7 +27,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04"
                                     class="form-label">{{ ___('online-examination.question_type') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="question_type form-control @error('type') is-invalid @enderror"
                                     name="type" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -49,7 +49,7 @@
                             <div class="col-md-3 question_group mb-3">
                                 <label for="validationServer04"
                                     class="form-label">{{ ___('online-examination.question_group') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select
                                     class="question_group form-control @error('question_group') is-invalid @enderror"
                                     name="question_group" id="validationServer04"
@@ -67,7 +67,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -90,7 +90,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('online-examination.Mark') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('mark') is-invalid @enderror" name="mark"
                                     list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('online-examination.Enter mark') }}"
@@ -109,7 +109,7 @@
                             {{-- question --}}
                             <div class="col-12 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('online-examination.question') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('question') is-invalid @enderror" name="question"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('online-examination.enter_question') }}"
@@ -129,7 +129,7 @@
                             {{-- total options --}}
                             <div class="col-md-12 mb-3 total_option">
                                 <label class="form-label">{{ ___('online-examination.Total option') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('total_option') is-invalid @enderror"
                                     name="total_option" id="total_option">
@@ -158,7 +158,7 @@
                                         @foreach (old('option') as $oldMultipleChoiceAns)
                                             <div class="col-md-3 mb-3">
                                                 <label class="form-label">Option {{ $loop->iteration }} <span
-                                                        class="fillable">*</span></label>
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control ot-input" name="option[{{ $loop->iteration }}]"
                                                     value="{{ $oldMultipleChoiceAns }}" placeholder="Enter option"
                                                     required>
@@ -168,7 +168,7 @@
                                         @foreach (@$data['question_bank']->questionOptions as $questionOption)
                                             <div class="col-md-3 mb-3">
                                                 <label class="form-label">{{ ___('online-examination.option') }}
-                                                    {{ $loop->iteration }} <span class="fillable">*</span></label>
+                                                    {{ $loop->iteration }} <span class="text-danger">*</span></label>
                                                 <input class="form-control ot-input" name="option[{{ $loop->iteration }}]"
                                                     value="{{ $questionOption->option }}">
                                             </div>
@@ -188,7 +188,7 @@
                             {{-- Answer --}}
                             <div class="col-md-12 mb-3 single_choice_ans">
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('single_choice_ans') is-invalid @enderror"
                                     name="single_choice_ans" id="single_choice_ans">
@@ -217,7 +217,7 @@
                             </div>
                             <div class="col-md-12 mb-3 multiple_choice_ans">
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <div class="input-check-radio academic-section" id="multiple_choice_ans">
                                     @if (old('option'))
                                         @foreach (old('option') as $oldMultipleChoiceAns)
@@ -250,7 +250,7 @@
                             </div>
                             <div class="col-md-12 mb-3 true_false_ans">
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('true_false_ans') is-invalid @enderror"
                                     name="true_false_ans">

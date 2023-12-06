@@ -21,7 +21,7 @@
                             <!--Application Name Start -->
                             <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3 ">
                                 <label for="inputname" class="form-label">{{ ___('settings.application_name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input type="text" name="application_name"
                                     class="form-control ot-input @error('application_name') is-invalid @enderror"
                                     value="{{ Setting('application_name') }}"
@@ -36,7 +36,7 @@
                             <!--Footer Text Start -->
                             <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3 ">
                                 <label for="inputname" class="form-label">{{ ___('settings.footer_text') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input type="text" name="footer_text"
                                     class="form-control ot-input @error('footer_text') is-invalid @enderror"
                                     value="{{ Setting('footer_text') }}"
@@ -103,7 +103,7 @@
                                             <div class="d-flex flex-column">
                                                 <label for="default langauge"
                                                     class="form-label">{{ ___('settings.default_langauge') }} <span
-                                                        class="fillable">*</span></label>
+                                                        class="text-danger">*</span></label>
                                                 <select name="default_langauge" id="defaultlangaugeId"
                                                     class="form-select ot-input flag_icon_list @error('default_langauge') is-invalid @enderror">
 
@@ -125,7 +125,7 @@
                                             <div class="d-flex flex-column">
                                                 <label for="currency_code" class="form-label">
                                                     {{ ___('settings.Currency') }}
-                                                    <span class="fillable">*</span>
+                                                    <span class="text-danger">*</span>
                                                 </label>
                                                 <select name="currency_code" id="currency_code"
                                                     class="form-select ot-input flag_icon_list @error('currency_code') is-invalid @enderror">
@@ -144,7 +144,7 @@
                                         <div class="col-md-6 default-langauge mb-3">
                                             <div class="d-flex flex-column">
                                                 <label for="session" class="form-label">{{ ___('settings.Session') }}
-                                                    <span class="fillable">*</span></label>
+                                                    <span class="text-danger">*</span></label>
                                                 <select name="session" id="session"
                                                     class="form-select ot-input flag_icon_list @error('session') is-invalid @enderror">
                                                     @foreach ($data['sessions'] as $row)
@@ -159,7 +159,7 @@
                                         <!--Address Start -->
                                         <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                             <label for="inputname" class="form-label">{{ ___('common.address') }} <span
-                                                    class="fillable">*</span></label>
+                                                    class="text-danger">*</span></label>
                                             <input type="text" name="address"
                                                 class="form-control ot-input @error('address') is-invalid @enderror"
                                                 value="{{ Setting('address') }}"
@@ -175,7 +175,7 @@
                                         <!--Phone Start -->
                                         <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                             <label for="inputname" class="form-label">{{ ___('common.phone') }} <span
-                                                    class="fillable">*</span></label>
+                                                    class="text-danger">*</span></label>
                                             <input type="text" name="phone"
                                                 class="form-control ot-input @error('phone') is-invalid @enderror"
                                                 value="{{ Setting('phone') }}"
@@ -191,7 +191,7 @@
                                         <!--Email Start -->
                                         <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                             <label for="inputname" class="form-label">{{ ___('common.email') }} <span
-                                                    class="fillable">*</span></label>
+                                                    class="text-danger">*</span></label>
                                             <input type="email" name="email"
                                                 class="form-control ot-input @error('email') is-invalid @enderror"
                                                 value="{{ Setting('email') }}"
@@ -207,7 +207,7 @@
                                         <!--School about Start -->
                                         <div class="col-12 mb-3">
                                             <label for="inputname" class="form-label">{{ ___('settings.School about') }}
-                                                <span class="fillable">*</span></label>
+                                                <span class="text-danger">*</span></label>
                                             <textarea name="school_about" class="m-0 form-control ot-input @error('school_about') is-invalid @enderror"
                                                 cols="30" rows="3">{{ Setting('school_about') }}"</textarea>
                                             @error('school_about')

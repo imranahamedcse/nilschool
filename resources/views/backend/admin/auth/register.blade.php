@@ -16,7 +16,7 @@
         @csrf
         <!-- username input field  -->
         <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.name') }} <sup class="fillable">*</sup></label><br />
+            <label for="username">{{ ___('common.name') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
                 <input type="text" name="name" id="username" class="ot-input @error('name') is-invalid @enderror" placeholder="{{ ___('common.enter_your_name') }}" value="{{ old('name') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.email') }} <sup class="fillable">*</sup></label><br />
+            <label for="username">{{ ___('common.email') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
                 <input type="email" name="email" class="ot-input @error('email') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_email') }}" value="{{ old('email') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/email-cus.svg" alt="">
@@ -49,7 +49,7 @@
         </div>
 
         <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.date_of_birth') }} <sup class="fillable">*</sup></label><br />
+            <label for="username">{{ ___('common.date_of_birth') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
                 <input type="date" name="date_of_birth" class="ot-input @error('date_of_birth') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_date_of_birth') }}" value="{{ old('phone') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/calender.svg" alt="">
@@ -60,7 +60,7 @@
 
         </div>
 
-        <label class="form-label">{{ ___('common.gender') }} <sup class="fillable">*</sup></label>
+        <label class="form-label">{{ ___('common.gender') }} <sup class="text-danger">*</sup></label>
         <div class="remember-me d-flex align-items-center input-check-radio mb-20 gap-4">
             <div class="form-check d-flex align-items-center mt-6">
                 <input class="form-check-input" type="radio" id="flexRadioDefault1" name="gender"
@@ -82,7 +82,7 @@
 
         <!-- password input field  -->
         <div class="input-field-group mb-20">
-            <label for="password">{{ ___('common.password') }} <sup class="fillable">*</sup></label><br />
+            <label for="password">{{ ___('common.password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
                 <input type="password" name="password" class="ot-input @error('password') is-invalid @enderror" id="password" placeholder="******************" />
                 <i class="lar la-eye"></i>
@@ -94,7 +94,7 @@
         </div>
         <!-- password input field  -->
         <div class="input-field-group mb-20">
-            <label for="password">{{ ___('common.confirm_password') }} <sup class="fillable">*</sup></label><br />
+            <label for="password">{{ ___('common.confirm_password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
                 <input type="password" name="confirm_password" id="confirm_password" class="ot-input @error('confirm_password') is-invalid @enderror" placeholder="******************" />
                 <i class="lar la-eye"></i>

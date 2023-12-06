@@ -21,6 +21,10 @@
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
                     <th class="purchase">{{ ___('academic.subject') }}</th>
+                    <th class="purchase">{{ ___('academic.Mark') }}</th>
+                    <th class="purchase">{{ ___('academic.Assigned date') }}</th>
+                    <th class="purchase">{{ ___('academic.Submission date') }}</th>
+                    <th class="purchase">{{ ___('common.document') }}</th>
                     @if (hasPermission('assignment_update') || hasPermission('assignment_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
@@ -32,6 +36,15 @@
                         <td class="serial">{{ ++$key }}</td>
                         <td>{{ $row->class->name }} ({{ $row->section->name }})</td>
                         <td>{{ $row->subject->name }}</td>
+                        <td>{{ $row->mark }}</td>
+                        <td>{{ $row->assigned_date }}</td>
+                        <td>{{ $row->submission_date }}</td>
+                        <td>
+                            @if (@$row->upload->path)
+                                <a href="{{ @globalAsset(@$row->upload->path) }}"
+                                    download>{{ ___('common.download') }}</a>
+                            @endif
+                        </td>
                         @if (hasPermission('assignment_update') || hasPermission('assignment_delete'))
                             <td>
                                 @if (hasPermission('fees_type_update'))

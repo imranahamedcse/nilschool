@@ -6,10 +6,12 @@ use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 use App\Interfaces\ClassRoom\AssignmentInterface;
 use App\Models\ClassRoom\Assignment;
+use App\Traits\CommonHelperTrait;
 
 class AssignmentRepository implements AssignmentInterface
 {
     use ReturnFormatTrait;
+    use CommonHelperTrait;
 
     private $model;
 
@@ -53,9 +55,15 @@ class AssignmentRepository implements AssignmentInterface
         try {
             $row                   = new $this->model;
             $row->session_id       = setting('session');
-            $row->classes_id         = $request->class;
+            $row->classes_id       = $request->class;
             $row->section_id       = $request->section;
             $row->subject_id       = $request->subject;
+            $row->mark             = $request->mark;
+            $row->assigned_date    = $request->assigned_date;
+            $row->submission_date  = $request->submission_date;
+            $row->upload_id        = $this->UploadImageCreate($request->document, 'backend/uploads/class_room');
+            $row->description      = $request->description;
+            $row->status           = $request->status;
             $row->save();
 
             DB::commit();
@@ -81,6 +89,12 @@ class AssignmentRepository implements AssignmentInterface
             $row->classes_id       = $request->class;
             $row->section_id       = $request->section;
             $row->subject_id       = $request->subject;
+            $row->mark             = $request->mark;
+            $row->assigned_date    = $request->assigned_date;
+            $row->submission_date  = $request->submission_date;
+            $row->upload_id        = $this->UploadImageUpdate($request->document, 'backend/uploads/students', $row->upload_id);
+            $row->description      = $request->description;
+            $row->status           = $request->status;
             $row->save();
             
             DB::commit();
@@ -96,6 +110,7 @@ class AssignmentRepository implements AssignmentInterface
         DB::beginTransaction();
         try {
             $row = $this->model->find($id);
+            $this->UploadImageDelete($row->upload_id);
             $row->delete();
             DB::commit();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);

@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
                                     list="datalistOptions" id="exampleDataList" placeholder="{{ ___('common.enter_name') }}"
                                     value="{{ old('name') }}">
@@ -33,7 +33,7 @@
                             <div class="col-md-6">
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.start_date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input type="date"
                                     class="form-control ot-input @error('start_date') is-invalid @enderror"
                                     name="start_date" list="datalistOptions" id="exampleDataList"
@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.end_date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input type="date" class="form-control ot-input @error('end_date') is-invalid @enderror"
                                     name="end_date" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('common.enter_end_date') }}" value="{{ old('end_date') }}">

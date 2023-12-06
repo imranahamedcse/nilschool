@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.admission_no') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('admission_no') is-invalid @enderror" name="admission_no"
                                     list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('student_info.enter_admission_no') }}"
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.roll_no') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('roll_no') is-invalid @enderror" name="roll_no"
                                     list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('student_info.enter_roll_no') }}"
@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.first_name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('first_first_name') is-invalid @enderror"
                                     name="first_name" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_first_name') }}"
@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.last_name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('last_name') is-invalid @enderror" name="last_name"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_last_name') }}"
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.mobile') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('mobile') is-invalid @enderror" name="mobile"
                                     list="datalistOptions" id="exampleDataList" type="text"
                                     placeholder="{{ ___('student_info.enter_mobile') }}"
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.email') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('email') is-invalid @enderror" name="email"
                                     list="datalistOptions" id="exampleDataList" type="email"
                                     placeholder="{{ ___('student_info.enter_email') }}"
@@ -103,7 +103,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSections" class="form-control @error('class') is-invalid @enderror"
                                     name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
@@ -122,7 +122,7 @@
 
                             <div class="col-md-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.section') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select id="getSections"
                                     class="sections form-control @error('section') is-invalid @enderror" name="section"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -143,7 +143,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.shift') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <select class="form-control @error('shift') is-invalid @enderror" name="shift"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_shift') }}</option>
@@ -163,7 +163,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.date_of_birth') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
                                     name="date_of_birth" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('common.date_of_birth') }}"
@@ -178,7 +178,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.religion') }}
-                                    <span class="fillable"></span></label>
+                                    <span class="text-danger"></span></label>
                                 <select class="form-control @error('religion') is-invalid @enderror" name="religion"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_religion') }}</option>
@@ -198,7 +198,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.gender') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <select class="form-control @error('gender') is-invalid @enderror" name="gender"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_gender') }}</option>
@@ -218,7 +218,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.category') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <select class="form-control @error('category') is-invalid @enderror" name="category"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_category') }}</option>
@@ -238,7 +238,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.blood') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <select class="form-control @error('blood') is-invalid @enderror" name="blood"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_blood') }}</option>
@@ -258,7 +258,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.admission_date') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('admission_date') is-invalid @enderror"
                                     name="admission_date" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.admission_date') }}"
@@ -271,7 +271,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
-                                    {{ ___('common.(100 x 100 px)') }}<span class="fillable"></span></label>
+                                    {{ ___('common.(100 x 100 px)') }}<span class="text-danger"></span></label>
                                 <input type="file" class="form-control" name="image" accept="image/*">
 
                             </div>
@@ -279,7 +279,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option {{ @$data['student']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}
@@ -384,7 +384,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.father_name') }}
-                                    <span class="fillable"></span></label>
+                                    <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_name') is-invalid @enderror" name="father_name"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_name') }}" type="text"
@@ -397,7 +397,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.father_mobile') }}
-                                    <span class="fillable"></span></label>
+                                    <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_mobile') is-invalid @enderror"
                                     name="father_mobile" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_mobile') }}" type="text"
@@ -411,7 +411,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList"
                                     class="form-label ">{{ ___('student_info.father_profession') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('father_profession') is-invalid @enderror"
                                     name="father_profession" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_profession') }}" type="text"
@@ -435,7 +435,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.mother_name') }}
-                                    <span class="fillable"></span></label>
+                                    <span class="text-danger"></span></label>
                                 <input class="form-control @error('mother_name') is-invalid @enderror" name="mother_name"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_mother_name') }}" type="text"
@@ -448,7 +448,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.mother_mobile') }}
-                                    <span class="fillable"></span></label>
+                                    <span class="text-danger"></span></label>
                                 <input class="form-control @error('mother_mobile') is-invalid @enderror"
                                     name="mother_mobile" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_mother_mobile') }}" type="text"
@@ -462,7 +462,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList"
                                     class="form-label ">{{ ___('student_info.mother_profession') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('mother_profession') is-invalid @enderror"
                                     name="mother_profession" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_profession') }}" type="text"
@@ -486,7 +486,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.guardian_name') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_name') is-invalid @enderror"
                                     name="guardian_name" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_name') }}" type="text"
@@ -500,7 +500,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList"
                                     class="form-label ">{{ ___('student_info.guardian_mobile') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_mobile') is-invalid @enderror"
                                     name="guardian_mobile" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_mobile') }}" type="text"
@@ -514,7 +514,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList"
                                     class="form-label ">{{ ___('student_info.guardian_profession') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_profession') is-invalid @enderror"
                                     name="guardian_profession" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_profession') }}" type="text"
@@ -548,7 +548,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList"
                                     class="form-label ">{{ ___('student_info.guardian_address') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_address') is-invalid @enderror"
                                     name="guardian_address" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_address') }}" type="text"
@@ -562,7 +562,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList"
                                     class="form-label ">{{ ___('student_info.guardian_relation') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_relation') is-invalid @enderror"
                                     name="guardian_relation" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_relation') }}" type="text"
@@ -576,7 +576,7 @@
                             <div class="col-md-3">
 
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.status') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('student_info.active') }}

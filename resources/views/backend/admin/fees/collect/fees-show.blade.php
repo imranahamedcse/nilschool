@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="exampleDataList" class="form-label ">{{ ___('fees.due_date') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('date') is-invalid @enderror" name="date"
                                 list="datalistOptions" id="exampleDataList" type="date"
                                 placeholder="{{ ___('fees.enter_date') }}" value="{{ old('date') }}" required>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">{{ ___('fees.Payment Method') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <div
                                 class="input-check-radio academic-section @error('payment_method') is-invalid @enderror">
                                 @foreach (\Config::get('site.payment_methods') as $key => $item)

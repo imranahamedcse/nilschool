@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
                                     list="datalistOptions" id="exampleDataList" type="text"
                                     placeholder="{{ ___('common.enter_name') }}"
@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('examination.point') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('point') is-invalid @enderror" name="point"
                                     list="datalistOptions" id="exampleDataList" type="number" step="any"
                                     placeholder="{{ ___('common.enter_point') }}"
@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('examination.percent_from') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('percent_from') is-invalid @enderror"
                                     name="percent_from" list="datalistOptions" id="exampleDataList" type="number"
                                     step="any" placeholder="{{ ___('common.enter_percent_from') }}"
@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('examination.percent_upto') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('percent_upto') is-invalid @enderror"
                                     name="percent_upto" list="datalistOptions" id="exampleDataList" type="number"
                                     step="any" placeholder="{{ ___('common.enter_percent_upto') }}"
@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('examination.remarks') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('remarks') is-invalid @enderror" name="remarks"
                                     list="datalistOptions" id="exampleDataList" type="text"
                                     placeholder="{{ ___('common.enter_remarks') }}"
@@ -88,7 +88,7 @@
                             <div class="col-md-6">
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">

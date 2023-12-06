@@ -24,7 +24,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04"
                                     class="form-label">{{ ___('online-examination.question_type') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="question_type @error('type') is-invalid @enderror" name="type"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('online-examination.select_type') }}</option>
@@ -44,7 +44,7 @@
                             <div class="col-md-3 question_group mb-3">
                                 <label for="validationServer04"
                                     class="form-label">{{ ___('online-examination.question_group') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select class="question_group @error('question_group') is-invalid @enderror"
                                     name="question_group" id="a-select" aria-describedby="validationServer04Feedback">
                                     <option data-display="Select">{{ ___('online-examination.select_question_group') }}
@@ -66,7 +66,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="@error('status') is-invalid @enderror" name="status"
                                     aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
@@ -83,7 +83,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('online-examination.Mark') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('mark') is-invalid @enderror" name="mark"
                                     list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('online-examination.Enter mark') }}" value="{{ old('mark') }}"
@@ -102,7 +102,7 @@
                             {{-- question --}}
                             <div class="col-12 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('online-examination.question') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('question') is-invalid @enderror" name="question"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('online-examination.enter_question') }}"
@@ -121,7 +121,7 @@
                             {{-- total options --}}
                             <div class="col-md-12 mb-3 total_option">
                                 <label class="form-label">{{ ___('online-examination.Total option') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('total_option') is-invalid @enderror" name="total_option"
                                     id="total_option">
                                     <option value="">{{ ___('online-examination.select_option') }}</option>
@@ -146,7 +146,7 @@
                                         @foreach (old('option') as $oldMultipleChoiceAns)
                                             <div class="col-md-3 mb-3">
                                                 <label class="form-label">Option {{ $loop->iteration }} <span
-                                                        class="fillable">*</span></label>
+                                                        class="text-danger">*</span></label>
                                                 <input class="form-control" name="option[{{ $loop->iteration }}]"
                                                     value="{{ $oldMultipleChoiceAns }}" placeholder="Enter option"
                                                     required>
@@ -168,7 +168,7 @@
                             {{-- Answer --}}
                             <div class="col-md-12 mb-3 single_choice_ans">
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('single_choice_ans') is-invalid @enderror"
                                     name="single_choice_ans" id="single_choice_ans">
                                     <option value="">{{ ___('online-examination.select_option') }}</option>
@@ -190,7 +190,7 @@
                             </div>
                             <div class="col-md-12 mb-3 multiple_choice_ans">
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <div class="input-check-radio academic-section" id="multiple_choice_ans">
                                     {{-- options load in js --}}
                                     @if (old('option'))
@@ -213,7 +213,7 @@
                             </div>
                             <div class="col-md-12 mb-3 true_false_ans">
                                 <label class="form-label">{{ ___('online-examination.Answer') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('true_false_ans') is-invalid @enderror"
                                     name="true_false_ans">
                                     <option value="">{{ ___('online-examination.select_option') }}</option>
@@ -312,7 +312,7 @@
                 for (var i = 1; i <= total_option; i++) {
                     options += `
                 <div class="col-md-3 mb-3">
-                    <label class="form-label">Option ${i} <span class="fillable">*</span></label>
+                    <label class="form-label">Option ${i} <span class="text-danger">*</span></label>
                     <input class="form-control ot-input" name="option[${i}]" value="" placeholder="Enter option" required>
                 </div>
             `;

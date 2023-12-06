@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSections" class="form-control @error('class') is-invalid @enderror"
                                     name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
@@ -38,7 +38,7 @@
                             <div class="col-md-3 mb-3">
                                 <div id="show_sections">
                                     <label for="validationServer04" class="form-label">{{ ___('academic.section') }}
-                                        <span class="fillable">*</span></label>
+                                        <span class="text-danger">*</span></label>
                                     <select class="sections form-control @error('section') is-invalid @enderror"
                                         name="section" id="validationServer04"
                                         aria-describedby="validationServer04Feedback">
@@ -54,7 +54,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('academic.type') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control exam_types @error('type') is-invalid @enderror" name="type"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_type') }}</option>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control date @error('date') is-invalid @enderror" name="date"
                                     list="datalistOptions" id="exampleDataList" type="date"
                                     placeholder="{{ ___('common.enter_date') }}" value="{{ old('date') }}">

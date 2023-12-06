@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name') }}" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('common.enter_name') }}">
@@ -33,7 +33,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.Total count') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('total_count') is-invalid @enderror"
                                     name="total_count" value="{{ old('total_count') }}" list="datalistOptions"
                                     id="exampleDataList" type="number" placeholder="{{ ___('common.Enter total count') }}">
@@ -46,7 +46,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
-                                    {{ ___('common.(65 x 75 px)') }}<span class="fillable">*</span></label>
+                                    {{ ___('common.(65 x 75 px)') }}<span class="text-danger">*</span></label>
                                 <input type="file" class="form-control" name="image" accept="image/*"
                                     id="fileBrouse">
                                 @error('image')
@@ -58,7 +58,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
@@ -74,7 +74,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.Serial') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control ot-input @error('serial') is-invalid @enderror" name="serial"
                                     value="{{ old('serial') }}" list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('common.Enter serial') }}">

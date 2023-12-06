@@ -18,7 +18,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name',@$data['subject']->name) }}" list="datalistOptions" id="exampleDataList"
                                         placeholder="{{ ___('common.enter_name') }}">
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="exampleDataList" class="form-label ">{{ ___('academic.code') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <input class="form-control @error('code') is-invalid @enderror" name="code"
                                         list="datalistOptions" id="exampleDataList" type="number"
                                         placeholder="{{ ___('academic.enter_code') }}" value="{{ old('code',@$data['subject']->code) }}">
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
 
-                                    <label for="validationServer04" class="form-label">{{ ___('academic.type') }} <span class="fillable">*</span></label>
+                                    <label for="validationServer04" class="form-label">{{ ___('academic.type') }} <span class="text-danger">*</span></label>
                                     <select class="form-control @error('type') is-invalid @enderror"
                                     name="type" id="validationServer04"
                                     aria-describedby="validationServer04Feedback">
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     {{-- Status  --}}
-                                    <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span class="fillable">*</span></label>
+                                    <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span class="text-danger">*</span></label>
 
                                     <select class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04"

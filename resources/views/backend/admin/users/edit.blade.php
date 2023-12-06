@@ -23,7 +23,7 @@
 
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="exampleDataList" class="form-label ">{{ ___('staff.staff_id') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('staff_id') is-invalid @enderror" name="staff_id"
                                 value="{{ old('staff_id', @$data['user']->staff_id) }}" list="datalistOptions"
                                 id="exampleDataList" type="number" placeholder="{{ ___('staff.enter_staff_id') }}">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="validationServer04" class="form-label">{{ ___('common.roles') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <select
                                 class="form-control @error('role') is-invalid @enderror change-role"
                                 name="role" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="validationServer04" class="form-label">{{ ___('staff.designations') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <select
                                 class="form-control @error('designation') is-invalid @enderror change-designation"
                                 name="designation" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="validationServer04" class="form-label">{{ ___('staff.departments') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <select
                                 class="form-control @error('department') is-invalid @enderror change-department"
                                 name="department" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -91,7 +91,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="exampleDataList" class="form-label ">{{ ___('staff.first_name') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('first_name') is-invalid @enderror" name="first_name"
                                 value="{{ old('first_name', @$data['user']->first_name) }}" list="datalistOptions"
                                 id="exampleDataList" placeholder="{{ ___('staff.enter_first_name') }}">
@@ -138,7 +138,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="exampleInputEmail1" class="form-label">{{ ___('common.email') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input type="email" name="email" value="{{ old('email', @$data['user']->email) }}"
                                 class="form-control ot-input  @error('email') is-invalid @enderror"
                                 id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -151,7 +151,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="validationServer04" class="form-label">{{ ___('staff.genders') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <select
                                 class="form-control @error('gender') is-invalid @enderror change-gender"
                                 name="gender" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="exampleDataList" class="form-label ">{{ ___('staff.date_of_birth') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('dob') is-invalid @enderror" name="dob"
                                 value="{{ old('dob', @$data['user']->dob) }}" list="datalistOptions"
                                 id="exampleDataList" type="date"
@@ -194,7 +194,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="exampleDataList" class="form-label ">{{ ___('staff.phone') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('phone') is-invalid @enderror" name="phone"
                                 value="{{ old('phone', @$data['user']->phone) }}" list="datalistOptions"
                                 id="exampleDataList" placeholder="{{ ___('staff.enter_phone') }}">
@@ -241,7 +241,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <select
                                 class="form-control @error('status') is-invalid @enderror"
                                 name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -293,7 +293,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-3">
                             <label for="exampleDataList" class="form-label ">{{ ___('staff.basic_salary') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('basic_salary') is-invalid @enderror"
                                 name="basic_salary" value="{{ old('basic_salary', @$data['user']->basic_salary) }}"
                                 list="datalistOptions" id="exampleDataList" type="number"

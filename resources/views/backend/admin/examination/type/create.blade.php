@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
                                         list="datalistOptions" id="exampleDataList" type="text"
                                         placeholder="{{ ___('common.enter_name') }}" value="{{ old('name') }}">
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-md-6">
 
-                                    <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span class="fillable">*</span></label>
+                                    <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span class="text-danger">*</span></label>
                                     <select class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04"
                                     aria-describedby="validationServer04Feedback">

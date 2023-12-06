@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('academic.room_no') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('room_no') is-invalid @enderror" name="room_no"
                                     list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('academic.enter_room_no') }}" value="{{ old('room_no') }}">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('academic.capacity') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('capacity') is-invalid @enderror" name="capacity"
                                     list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('academic.enter_capacity') }}" value="{{ old('capacity') }}">
@@ -45,7 +45,7 @@
                             <div class="col-md-6">
 
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>

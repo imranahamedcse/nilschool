@@ -20,7 +20,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSections" class="form-control class @error('class') is-invalid @enderror"
                                     name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSubjects"
                                     class="sections form-control section @error('section') is-invalid @enderror"
                                     name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -56,7 +56,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('academic.subject') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="subject"
                                     class="subjects form-control @error('subject') is-invalid @enderror"
                                     name="subject" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -72,7 +72,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>

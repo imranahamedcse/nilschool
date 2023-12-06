@@ -36,7 +36,7 @@
                                 <div class="row mb-3">
                                     <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                         <label for="inputname" class="form-label">{{ ___('settings.recaptcha_sitekey') }}
-                                            <span class="fillable">*</span></label>
+                                            <span class="text-danger">*</span></label>
                                         <input type="text" name="recaptcha_sitekey"
                                             class="form-control ot-input @error('recaptcha_sitekey') is-invalid @enderror"
                                             value="{{ Setting('recaptcha_sitekey') }}" placeholder="Recaptcha Sitekey">
@@ -51,7 +51,7 @@
                                     {{-- Recaptch SECRET start --}}
                                     <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                         <label for="inputname" class="form-label">{{ ___('settings.recaptcha_secret') }}
-                                            <span class="fillable">*</span></label>
+                                            <span class="text-danger">*</span></label>
                                         <input type="text" name="recaptcha_secret"
                                             class="form-control ot-input @error('recaptcha_secret') is-invalid @enderror"
                                             value="{{ Setting('recaptcha_secret') }}" placeholder="Recaptcha Secret">
@@ -68,7 +68,7 @@
                                     <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                         <label for="validationServer04"
                                             class="form-label">{{ ___('settings.recaptcha_status') }} <span
-                                                class="fillable">*</span></label>
+                                                class="text-danger">*</span></label>
                                         <select class="form-control @error('recaptcha_status') is-invalid @enderror"
                                             value="{{ Setting('recaptcha_status') }}" name="recaptcha_status"
                                             id="validationServer04" aria-describedby="validationServer04Feedback">

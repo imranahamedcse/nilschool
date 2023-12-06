@@ -22,7 +22,7 @@
                             {{-- {{dd($data['assignment'])}} --}}
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSections" class="form-control @error('class') is-invalid @enderror"
                                     name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
@@ -42,9 +42,9 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSubjects"
-                                    class="nice-select niceSelect sections bordered_style wide @error('section') is-invalid @enderror"
+                                    class="sections form-control @error('section') is-invalid @enderror"
                                     name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
@@ -65,9 +65,9 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('academic.subject') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="subject"
-                                    class="form-control subjects wide nice-select bordered_style  @error('subject') is-invalid @enderror"
+                                    class="form-control subjects @error('subject') is-invalid @enderror"
                                     name="subject">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $item)
@@ -86,6 +86,88 @@
                             </div>
 
 
+                            <div class="col-md-3 mb-3">
+                                {{-- Status  --}}
+                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                        class="text-danger">*</span></label>
+
+                                <select class="form-control @error('status') is-invalid @enderror" name="status"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+
+                                    <option value="{{ App\Enums\Status::ACTIVE }}"
+                                        {{ @$data['assignment']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
+                                        {{ ___('common.active') }}</option>
+                                    <option value="{{ App\Enums\Status::INACTIVE }}"
+                                        {{ @$data['assignment']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
+                                        {{ ___('common.inactive') }}
+                                    </option>
+                                </select>
+                                @error('status')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label for="exampleDataList" class="form-label ">{{ ___('fees.Mark') }} </label>
+                                <input class="form-control @error('mark') is-invalid @enderror" name="mark"
+                                    list="datalistOptions" value="{{ old('mark', @$data['assignment']->mark) }}"
+                                    id="exampleDataList" type="number" placeholder="{{ ___('fees.Enter mark') }}">
+                                @error('mark')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label for="exampleDataList" class="form-label ">{{ ___('fees.Assigned date') }} </label>
+                                <input class="form-control @error('assigned_date') is-invalid @enderror" name="assigned_date"
+                                    list="datalistOptions" value="{{ old('assigned_date', @$data['assignment']->assigned_date) }}"
+                                    id="exampleDataList" type="date" placeholder="{{ ___('fees.Enter assigned date') }}">
+                                @error('assigned_date')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label for="exampleDataList" class="form-label ">{{ ___('fees.Submission date') }} </label>
+                                <input class="form-control @error('submission_date') is-invalid @enderror" name="submission_date"
+                                    list="datalistOptions" value="{{ old('submission_date', @$data['assignment']->submission_date) }}"
+                                    id="exampleDataList" type="date" placeholder="{{ ___('fees.Enter submission date') }}">
+                                @error('submission_date')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label for="exampleDataList" class="form-label ">{{ ___('fees.Document') }} </label>
+                                <input class="form-control @error('document') is-invalid @enderror" name="document"
+                                    list="datalistOptions"
+                                    id="exampleDataList" type="file" placeholder="{{ ___('fees.enter_document') }}">
+                                @error('document')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="exampleDataList" class="form-label ">{{ ___('fees.Description') }}</label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" list="datalistOptions"
+                                    id="exampleDataList" type="text" placeholder="{{ ___('fees.Enter description') }}">{{ old('description', @$data['assignment']->description) }}</textarea>
+                                @error('description')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
@@ -99,3 +181,101 @@
         </div>
     </div>
 @endsection
+
+
+@push('script')
+    <script>
+        $("#getSections").on('change', function(e) {
+            var classId = $("#getSections").val();
+            var url = $('#url').val();
+            var formData = {
+                id: classId,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/class-setup/get-sections',
+                success: function(data) {
+                    var section_options = '';
+                    var section_li = '';
+
+                    $.each(JSON.parse(data), function(i, item) {
+                        section_options += "<option value=" + item.section.id + ">" + item
+                            .section.name + "</option>";
+                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
+                            item.section.name + "</li>";
+                    });
+
+                    $("select.sections option").not(':first').remove();
+                    $("select.sections").append(section_options);
+
+                    $("div .sections .current").html($("div .sections .list li:first").html());
+                    $("div .sections .list li").not(':first').remove();
+                    $("div .sections .list").append(section_li);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Start examination filter get subjects
+        $("#getSections").on('change', function(e) {
+            getExaminationFilterSubject();
+        });
+        $(".sections").on('change', function(e) {
+            getExaminationFilterSubject();
+        });
+
+        function getExaminationFilterSubject() {
+            var classId = $("#getSections").val();
+            var sectionId = $(".sections").val();
+
+            if (classId && sectionId) {
+                var url = $('#url').val();
+                var formData = {
+                    classes_id: classId,
+                    section_id: sectionId,
+                }
+                $.ajax({
+                    type: "GET",
+                    dataType: 'html',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: url + '/assign-subject/get-subjects',
+                    success: function(data) {
+                        var subject_options = '';
+                        var subject_li = '';
+
+                        $.each(JSON.parse(data), function(i, item) {
+                            subject_options += "<option value=" + item.subject.id + ">" + item.subject
+                                .name + "</option>";
+                            subject_li += "<li data-value=" + item.subject.id + " class='option'>" +
+                                item.subject.name + "</li>";
+                        });
+
+                        $("select.subjects option").not(':first').remove();
+                        $("select.subjects").append(subject_options);
+
+
+                        $("div .subjects .current").html($("div .subjects .list li:first").html());
+                        $("div .subjects .list li").not(':first').remove();
+                        $("div .subjects .list").append(subject_li);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+        // End examination filter get subjects
+    </script>
+@endpush

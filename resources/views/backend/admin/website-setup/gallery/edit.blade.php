@@ -23,7 +23,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.Gallery category') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select class="form-control @error('category') is-invalid @enderror" name="category"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">Select Category</option>
@@ -53,7 +53,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"

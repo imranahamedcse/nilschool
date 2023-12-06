@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('fees.fees_group') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('fees_group_id') is-invalid @enderror"
                                     name="fees_group_id" id="validationServer04"
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('fees.fees_type') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select id="getSubjects"
                                     class="form-control @error('fees_type_id') is-invalid @enderror"
                                     name="fees_type_id">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('fees.due_date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('due_date') is-invalid @enderror" name="due_date"
                                     list="datalistOptions" id="exampleDataList" type="date"
                                     placeholder="{{ ___('fees.enter_due_date') }}"
@@ -73,7 +73,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('fees.amount') }}
-                                    ({{ Setting('currency_symbol') }}) <span class="fillable">*</span></label>
+                                    ({{ Setting('currency_symbol') }}) <span class="text-danger">*</span></label>
                                 <input class="form-control amount @error('amount') is-invalid @enderror"
                                     name="amount" list="datalistOptions" id="exampleDataList" type="number"
                                     placeholder="{{ ___('fees.enter_amount') }}"
@@ -86,7 +86,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('fees.fine_type') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control fine_type @error('fine_type') is-invalid @enderror"
                                     name="fine_type" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -108,7 +108,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -128,7 +128,7 @@
                             </div>
                             <div class="col-md-6 mb-3 percentage">
                                 <label for="exampleDataList" class="form-label ">{{ ___('fees.percentage') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input
                                     class="form-control percentage_input @error('percentage') is-invalid @enderror"
                                     name="percentage" list="datalistOptions" id="exampleDataList" type="number"
@@ -142,7 +142,7 @@
                             </div>
                             <div class="col-md-6 mb-3 fine_amount">
                                 <label for="exampleDataList" class="form-label ">{{ ___('fees.fine_amount') }}
-                                    ({{ Setting('currency_symbol') }}) <span class="fillable">*</span></label>
+                                    ({{ Setting('currency_symbol') }}) <span class="text-danger">*</span></label>
                                 <input
                                     class="form-control fine_amount_input @error('fine_amount') is-invalid @enderror"
                                     name="fine_amount" list="datalistOptions" id="exampleDataList" type="number"

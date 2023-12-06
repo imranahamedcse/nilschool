@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select id="getSections" class="form-control @error('class') is-invalid @enderror" name="class"
                             id="validationServer04" aria-describedby="validationServer04Feedback">
                             <option {{ @$data['disabled'] ? 'disabled' : '' }} value="">
@@ -44,7 +44,7 @@
                     <div class="col-md-4 mb-3">
                         <div id="show_sections">
                             <label for="validationServer04" class="form-label">{{ ___('academic.section') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <select onchange="return changeSection(this)"
                                 class="form-control @error('section') is-invalid @enderror" name="section"
                                 id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select class="form-control @error('status') is-invalid @enderror" name="status"
                             id="validationServer04" aria-describedby="validationServer04Feedback">
                             <option

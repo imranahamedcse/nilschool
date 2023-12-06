@@ -21,6 +21,7 @@
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
                     <th class="purchase">{{ ___('academic.subject') }}</th>
+                    <th class="purchase">{{ ___('common.document') }}</th>
                     @if (hasPermission('homework_update') || hasPermission('homework_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
@@ -32,6 +33,12 @@
                         <td class="serial">{{ ++$key }}</td>
                         <td>{{ $row->class->name }} ({{ $row->section->name }})</td>
                         <td>{{ $row->subject->name }}</td>
+                        <td>
+                            @if (@$row->upload->path)
+                                <a href="{{ @globalAsset(@$row->upload->path) }}"
+                                    download>{{ ___('common.download') }}</a>
+                            @endif
+                        </td>
                         @if (hasPermission('homework_update') || hasPermission('homework_delete'))
                             <td>
                                 @if (hasPermission('fees_type_update'))

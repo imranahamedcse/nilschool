@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('fees.fees_group') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select id="fees_group" class="form-control @error('fees_group') is-invalid @enderror"
                             name="fees_group" aria-describedby="validationServer04Feedback">
                             <option value="">{{ ___('fees.select_fees_group') }}</option>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select id="getSections" class="form-control @error('class') is-invalid @enderror" name="class"
                             aria-describedby="validationServer04Feedback">
                             <option value="">{{ ___('student_info.select_class') }}</option>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select id="section" class="sections form-control @error('section') is-invalid @enderror"
                             name="section" aria-describedby="validationServer04Feedback">
                             <option value="">{{ ___('student_info.select_section') }}</option>

@@ -23,7 +23,7 @@
 
                             <div class="col-md-4 member">
                                 <label for="validationServer04" class="form-label">{{ ___('library.select_member') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('member') is-invalid @enderror"
                                     name="member" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -39,7 +39,7 @@
 
                             <div class="col-md-4">
                                 <label for="validationServer04" class="form-label">{{ ___('settings.Member category') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('category') is-invalid @enderror"
                                     name="category" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -59,7 +59,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">

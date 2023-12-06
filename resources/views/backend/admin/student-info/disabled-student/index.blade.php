@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select id="getSections" class="form-control @error('class') is-invalid @enderror" name="class">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select class="sections form-control @error('section') is-invalid @enderror" name="section">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach (@$data['sections'] as $item)

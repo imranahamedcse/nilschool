@@ -27,7 +27,7 @@
                             <div class="col-12 col-md-12 mb-3 ">
                                 <label for="inputname"
                                     class="form-label">{{ ___('settings.Average Pass marks(Percentage)') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input type="number" name="values[]"
                                     class="form-control ot-input @error('average_pass_marks') is-invalid @enderror"
                                     value="{{ examSetting('average_pass_marks') }}"

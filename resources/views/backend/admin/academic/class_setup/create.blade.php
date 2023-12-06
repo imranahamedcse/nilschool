@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('classes') is-invalid @enderror" name="classes"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('common.select class') }}</option>
@@ -38,7 +38,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">{{ ___('academic.section') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <div class="@error('sections') is-invalid @enderror">
                                     @foreach ($data['section'] as $item)
                                         <div class="form-check form-check-inline">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>

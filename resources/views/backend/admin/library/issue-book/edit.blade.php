@@ -23,7 +23,7 @@
 
                             <div class="col-md-6 book mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('library.select_book') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('book') is-invalid @enderror"
                                     name="book" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -40,7 +40,7 @@
 
                             <div class="col-md-6 member mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('library.select_member') }}
-                                    <span class="fillable">*</span></label>
+                                    <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('member') is-invalid @enderror"
                                     name="member" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -57,7 +57,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.issue_date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('issue_date') is-invalid @enderror"
                                     name="issue_date" type="date"
                                     value="{{ old('issue_date', @$data['issue_book']->issue_date) }}" list="datalistOptions"
@@ -71,7 +71,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.return_date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('return_date') is-invalid @enderror"
                                     name="return_date" type="date"
                                     value="{{ old('return_date', @$data['issue_book']->return_date) }}"
@@ -86,7 +86,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.phone') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('phone') is-invalid @enderror" name="phone"
                                     value="{{ old('phone', @$data['issue_book']->phone) }}" list="datalistOptions"
                                     id="exampleDataList" placeholder="{{ ___('library.enter_phone_no') }}">

@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name', @$data['expense']->name) }}" list="datalistOptions"
                                     id="exampleDataList" placeholder="{{ ___('common.enter_name') }}">
@@ -35,7 +35,7 @@
 
                             <div class="col-md-6">
                                 <label for="validationServer04" class="form-label">{{ ___('account.expense_head') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
 
                                 <select
                                     class="form-control @error('expense_head') is-invalid @enderror"
@@ -55,7 +55,7 @@
                             @enderror
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('account.date') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('date') is-invalid @enderror" name="date"
                                     type="date" value="{{ old('date', @$data['expense']->date) }}" list="datalistOptions"
                                     id="exampleDataList" placeholder="{{ ___('account.enter_date') }}">
@@ -81,7 +81,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('account.amount') }}
-                                    ({{ Setting('currency_symbol') }}) <span class="fillable">*</span></label>
+                                    ({{ Setting('currency_symbol') }}) <span class="text-danger">*</span></label>
                                 <input class="form-control @error('amount') is-invalid @enderror" name="amount"
                                     type="number" value="{{ old('amount', @$data['expense']->amount) }}"
                                     list="datalistOptions" id="exampleDataList"
@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.document') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                     <input type="file" class="form-control" name="document" id="fileBrouse">
                             </div>
                             <div class="col-md-12 mb-3">

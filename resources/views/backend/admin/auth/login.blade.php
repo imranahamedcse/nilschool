@@ -17,7 +17,7 @@
         @csrf
         <!-- username input field  -->
         <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.Mobile or Email') }} <sup class="fillable">*</sup></label><br />
+            <label for="username">{{ ___('common.Mobile or Email') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
                 <input type="text" name="email" class="ot-input @error('email') is-invalid @enderror" id="username"
                     placeholder="{{ ___('common.Enter mobile or email') }}" />
@@ -30,7 +30,7 @@
         </div>
         <!-- password input field  -->
         <div class="input-field-group mb-20">
-            <label for="password">{{ ___('common.password') }} <sup class="fillable">*</sup></label><br />
+            <label for="password">{{ ___('common.password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
                 <input type="password" name="password" class="ot-input @error('password') is-invalid @enderror"
                     id="password" placeholder="******************" />
@@ -48,7 +48,7 @@
                 <div class="form-group {{ $errors->has('g-recaptcha-response') ? 'is-invalid' : '' }}">
                     <label
                         class="control-label {{ $errors->has('g-recaptcha-response') ? 'is-invalid' : '' }}">{{ ___('common.captcha') }}
-                        <sup class="fillable">*</sup></label>
+                        <sup class="text-danger">*</sup></label>
                     {!! app('captcha')->display() !!}
                     @if ($errors->has('g-recaptcha-response'))
                         <p class="input-error error-danger invalid-feedback">{{ $errors->first('g-recaptcha-response') }}

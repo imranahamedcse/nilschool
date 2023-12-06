@@ -22,7 +22,7 @@
                                 {{-- Mail drive start --}}
                                 <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                     <label for="inputname" class="form-label">{{ ___('settings.mail_host') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <input type="text" name="mail_host"
                                         class="form-control ot-input @error('mail_host') is-invalid @enderror"
                                         value="{{ setting('mail_host') }}" placeholder="{{ ___('settings.mail_host') }}">
@@ -37,7 +37,7 @@
                                 {{-- Mail drive start --}}
                                 <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                     <label for="inputname" class="form-label">{{ ___('settings.mail_address') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <input type="text" name="mail_address"
                                         class="form-control ot-input @error('mail_address') is-invalid @enderror"
                                         value="{{ Setting('mail_address') }}"
@@ -53,7 +53,7 @@
                                 {{-- Mail drive start --}}
                                 <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                     <label for="inputname" class="form-label">{{ ___('settings.from_name') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <input type="text" name="from_name"
                                         class="form-control ot-input @error('from_name') is-invalid @enderror"
                                         value="{{ Setting('from_name') }}" placeholder="{{ ___('settings.from_name') }}">
@@ -68,7 +68,7 @@
                                 {{-- Mail drive start --}}
                                 <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                     <label for="inputname" class="form-label">{{ ___('settings.mail_username') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <input type="text" name="mail_username"
                                         class="form-control ot-input @error('mail_username') is-invalid @enderror"
                                         value="{{ Setting('mail_username') }}"
@@ -85,7 +85,7 @@
                                 <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                     <label for="exampleInputPassword1"
                                         class="form-label ">{{ ___('settings.mail_password') }} <span
-                                            class="fillable"></span></label> <input type="password" name="mail_password"
+                                            class="text-danger"></span></label> <input type="password" name="mail_password"
                                         class="form-control ot-input @error('mail_password') is-invalid @enderror"
                                         id="exampleInputmail_password1"
                                         placeholder="{{ ___('settings.enter_your_mail_password') }}">
@@ -99,7 +99,7 @@
                                 <!-- Mail Password start -->
                                 <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                     <label for="exampleInputPassword1" class="form-label ">{{ ___('settings.mail_port') }}
-                                        <span class="fillable">*</span></label> <input type="text" name="mail_port"
+                                        <span class="text-danger">*</span></label> <input type="text" name="mail_port"
                                         value="{{ Setting('mail_port') }}"
                                         class="form-control ot-input @error('mail_port') is-invalid @enderror"
                                         id="exampleInputmail_password1"
@@ -115,7 +115,7 @@
                                 <!-- Encryption start-->
                                 <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                     <label for="Encryption" class="form-label">{{ ___('settings.encryption') }} <span
-                                            class="fillable">*</span></label>
+                                            class="text-danger">*</span></label>
                                     <select name="encryption" id="encryptionId"
                                         class="@error('encryption') is-invalid @enderror niceSelect bordered_style wide">
                                         <option value="">{{ ___('settings.select_encryption') }}</option>

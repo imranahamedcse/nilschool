@@ -29,7 +29,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6 mb-3">
                             <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
                                 list="datalistOptions" id="exampleDataList" placeholder="{{ ___('common.enter_name') }} "
                                 value="{{ $data['language']->name }}">
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="exampleDataList" class="form-label ">{{ ___('language.code') }} <span
-                                    class="fillable">*</span></label>
+                                    class="text-danger">*</span></label>
                             <input class="form-control ot-input @error('code') is-invalid @enderror" name="code"
                                 list="datalistOptions" id="exampleDataList" placeholder="{{ ___('language.enter_code') }}"
                                 value="{{ $data['language']->code }}">
@@ -55,7 +55,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="validationServer04" class="form-label">{{ ___('language.flag_icon') }}
-                                <span class="fillable">*</span></label>
+                                <span class="text-danger">*</span></label>
                             <select class="form-select ot-input flag_icon_list @error('flagIcon') is-invalid @enderror"
                                 name="flagIcon" id="validationServer04" aria-describedby="validationServer04Feedback">
                                 <option value="">{{ ___('common.select') }}</option>

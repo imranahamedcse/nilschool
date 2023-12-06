@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ @$data['role']->name }}" list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('common.enter_name') }}">
@@ -37,7 +37,7 @@
                             <div class="col-md-12">
                                 {{-- Status  --}}
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
 
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationServer04" aria-describedby="validationServer04Feedback">

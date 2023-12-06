@@ -5,6 +5,7 @@ namespace App\Models\ClassRoom;
 use App\Models\Academic\Classes;
 use App\Models\Academic\Section;
 use App\Models\Academic\Subject;
+use App\Models\Upload;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -23,5 +24,10 @@ class Homework extends Model
     public function subject()
     {
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
+    }
+    
+    public function upload()
+    {
+        return $this->belongsTo(Upload::class, 'upload_id', 'id');
     }
 }

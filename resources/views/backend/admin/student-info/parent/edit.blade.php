@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.father_name') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('father_name') is-invalid @enderror" name="father_name"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_name') }}" type="text" value="{{ old('father_name',$data['parent']->father_name) }}">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.father_mobile') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('father_mobile') is-invalid @enderror" name="father_mobile"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_mobile') }}" type="text" value="{{ old('father_mobile',$data['parent']->father_mobile) }}">
@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.father_profession') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('father_profession') is-invalid @enderror" name="father_profession"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_profession') }}" type="text" value="{{ old('father_profession',$data['parent']->father_profession) }}">
@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.mother_name') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('mother_name') is-invalid @enderror" name="mother_name"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_mother_name') }}" type="text" value="{{ old('mother_name',$data['parent']->mother_name) }}">
@@ -78,7 +78,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.mother_mobile') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('mother_mobile') is-invalid @enderror" name="mother_mobile"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_mother_mobile') }}" type="text" value="{{ old('mother_mobile',$data['parent']->mother_mobile) }}">
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.mother_profession') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('mother_profession') is-invalid @enderror" name="mother_profession"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_father_profession') }}" type="text" value="{{ old('mother_profession',$data['parent']->mother_profession) }}">
@@ -112,7 +112,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.guardian_name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_name') is-invalid @enderror" name="guardian_name"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_name') }}" type="text" value="{{ old('guardian_name',$data['parent']->user->name) }}">
@@ -124,7 +124,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.guardian_mobile') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_mobile') is-invalid @enderror" name="guardian_mobile"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_mobile') }}" type="text" value="{{ old('guardian_mobile',$data['parent']->user->phone) }}">
@@ -136,7 +136,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.guardian_profession') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_profession') is-invalid @enderror" name="guardian_profession"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_profession') }}" type="text" value="{{ old('guardian_profession',$data['parent']->guardian_profession) }}">
@@ -165,7 +165,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.guardian_address') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_address') is-invalid @enderror" name="guardian_address"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_address') }}" type="text" value="{{ old('guardian_address',$data['parent']->guardian_address) }}">
@@ -177,7 +177,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('student_info.guardian_relation') }} <span
-                                        class="fillable"></span></label>
+                                        class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_relation') is-invalid @enderror" name="guardian_relation"
                                     list="datalistOptions" id="exampleDataList"
                                     placeholder="{{ ___('student_info.enter_guardian_relation') }}" type="text" value="{{ old('guardian_relation',$data['parent']->guardian_relation) }}">
@@ -189,7 +189,7 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.status') }} <span class="fillable">*</span></label>
+                                <label for="validationServer04" class="form-label">{{ ___('student_info.status') }} <span class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror"
                                 name="status" id="validationServer04"
                                 aria-describedby="validationServer04Feedback">

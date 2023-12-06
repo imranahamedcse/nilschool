@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="validationServer04" class="form-label">{{ ___('settings.Book category') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('category') is-invalid @enderror"
                                     name="category" id="validationServer04" aria-describedby="validationServer04Feedback">
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name', @$data['book']->name) }}" list="datalistOptions"
                                     id="exampleDataList" placeholder="{{ ___('common.enter_name') }}">
@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.code') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('code') is-invalid @enderror" name="code"
                                     value="{{ old('code', @$data['book']->code) }}" list="datalistOptions"
                                     id="exampleDataList" placeholder="{{ ___('library.enter_code') }}">
@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.publisher_name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('publisher_name') is-invalid @enderror"
                                     name="publisher_name"
                                     value="{{ old('publisher_name', @$data['book']->publisher_name) }}"
@@ -79,7 +79,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.author_name') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('author_name') is-invalid @enderror"
                                     name="author_name" value="{{ old('author_name', @$data['book']->author_name) }}"
                                     list="datalistOptions" id="exampleDataList"
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.rack_no') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('rack_no') is-invalid @enderror" name="rack_no"
                                     value="{{ old('rack_no', @$data['book']->rack_no) }}" list="datalistOptions"
                                     id="exampleDataList" type="number" placeholder="{{ ___('library.enter_rack_no') }}">
@@ -104,7 +104,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.price') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('price') is-invalid @enderror" name="price"
                                     type="number" value="{{ old('price', @$data['book']->price) }}" list="datalistOptions"
                                     id="exampleDataList" placeholder="{{ ___('library.enter_price') }}">
@@ -116,7 +116,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('library.quantity') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <input class="form-control @error('quantity') is-invalid @enderror"
                                     name="quantity" type="number"
                                     value="{{ old('quantity', @$data['book']->quantity) }}" list="datalistOptions"
@@ -130,7 +130,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
-                                        class="fillable">*</span></label>
+                                        class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">

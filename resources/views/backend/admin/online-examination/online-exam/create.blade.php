@@ -19,7 +19,7 @@
 
                     <div class="col-md-4 mb-3">
                         <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
                             list="datalistOptions" id="exampleDataList" type="text"
                             placeholder="{{ ___('common.enter_name') }}" value="{{ old('name') }}">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="exampleDataList" class="form-label ">{{ ___('online-examination.Start') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <input class="form-control ot-input @error('start') is-invalid @enderror" name="start"
                             type="datetime-local" list="datalistOptions" id="exampleDataList" type="text"
                             placeholder="{{ ___('online-examination.Enter start') }}" value="{{ old('start') }}">
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="exampleDataList" class="form-label ">{{ ___('online-examination.End') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <input class="form-control ot-input @error('end') is-invalid @enderror" name="end"
                             type="datetime-local" list="datalistOptions" id="exampleDataList" type="text"
                             placeholder="{{ ___('online-examination.Enter end') }}" value="{{ old('end') }}">
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="exampleDataList" class="form-label ">{{ ___('online-examination.Published') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <input class="form-control ot-input @error('published') is-invalid @enderror" name="published"
                             type="datetime-local" list="datalistOptions" id="exampleDataList" type="text"
                             placeholder="{{ ___('online-examination.Enter published') }}" value="{{ old('published') }}">
@@ -73,7 +73,7 @@
 
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('online-examination.Question group') }}
-                            <span class="fillable">*</span></label>
+                            <span class="text-danger">*</span></label>
                         <select id="question_group"
                             class="form-control @error('question_group') is-invalid @enderror"
                             name="question_group" aria-describedby="validationServer04Feedback">
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select id="getSections"
                             class="form-control @error('class') is-invalid @enderror"
                             name="class" aria-describedby="validationServer04Feedback">
@@ -110,7 +110,7 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <select id="section"
                             class="sections form-control @error('section') is-invalid @enderror"
                             name="section" aria-describedby="validationServer04Feedback">
@@ -156,7 +156,7 @@
 
                     <div class="col-md-4 mb-3">
                         <label for="exampleDataList" class="form-label ">{{ ___('online-examination.Total Mark') }} <span
-                                class="fillable">*</span></label>
+                                class="text-danger">*</span></label>
                         <input class="form-control ot-input @error('mark') is-invalid @enderror" name="mark"
                             list="datalistOptions" id="exampleDataList" type="number"
                             placeholder="{{ ___('online-examination.Enter total mark') }}" value="{{ old('mark') }}">
