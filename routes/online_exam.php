@@ -37,7 +37,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::any('/search',           'search')->name('question-bank.search')->middleware('PermissionCheck:question_bank_read');
                 Route::get('/get-question-group','getQuestionGroup');
             });
-            Route::controller(OnlineExamController::class)->prefix('/')->group(function () {
+            Route::controller(OnlineExamController::class)->prefix('/list')->group(function () {
                 Route::get('/',                 'index')->name('online-exam.index')->middleware('PermissionCheck:online_exam_read');
                 Route::get('/create',           'create')->name('online-exam.create')->middleware('PermissionCheck:online_exam_create');
                 Route::post('/store',           'store')->name('online-exam.store')->middleware('PermissionCheck:online_exam_create');

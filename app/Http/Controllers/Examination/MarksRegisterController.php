@@ -54,6 +54,7 @@ class MarksRegisterController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['marks_registers']    = $this->repo->getPaginateAll();
         $data['sections'] = [];
+        $data['exam_types'] = [];
 
         $title             = ___('examination.Marks register');
         $data['headers']   = [

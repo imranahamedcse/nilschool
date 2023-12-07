@@ -79,7 +79,7 @@
   display: block;
 }
 
-.sidebar .menu-group li i {
+.sidebar .menu-group li i.prepend-icon {
   height: 45px;
   min-width: 75px;
   text-align: center;
@@ -88,6 +88,28 @@
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.sidebar .menu-group li i.append-icon {
+  height: 45px;
+  min-width: 40px;
+  text-align: center;
+  line-height: 47px;
+  color: #99A4C7;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sub-menu .show a{
+  opacity: 1 !important;
+  color: white !important;
+}
+.show .link-name{
+  color: white !important;
+}
+li.show .icon-link{
+  background: #1D284D !important;
 }
 
 .sidebar.close .menu-group li i.arrow {

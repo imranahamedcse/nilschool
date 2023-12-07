@@ -51,6 +51,7 @@ class ExamAssignController extends Controller
 
         $data['sections'] = [];
         $data['exam_assigns'] = $this->repo->getPaginateAll();
+        $data['exam_types'] = [];
 
         $title             = ___('examination.exam_assign');
         $data['headers']   = [

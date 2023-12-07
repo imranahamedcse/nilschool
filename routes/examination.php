@@ -32,7 +32,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
 
             Route::controller(MarksRegisterController::class)->prefix('marks-register')->group(function () {
                 Route::get('/',                 'index')->name('marks-register.index')->middleware('PermissionCheck:marks_register_read');
-                Route::any('/search',          'search')->name('marks-register.search')->middleware('PermissionCheck:marks_register_read');
+                Route::any('/search',           'search')->name('marks-register.search')->middleware('PermissionCheck:marks_register_read');
                 Route::get('/create',           'create')->name('marks-register.create')->middleware('PermissionCheck:marks_register_create');
                 Route::post('/store',           'store')->name('marks-register.store')->middleware('PermissionCheck:marks_register_create', 'DemoCheck');
                 Route::get('/edit/{id}',        'edit')->name('marks-register.edit')->middleware('PermissionCheck:marks_register_update');
