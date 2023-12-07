@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
-        // auth routes
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
-            Route::controller(FeesGroupController::class)->prefix('fees-group')->group(function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix' => 'fees'], function () {
+
+            Route::controller(FeesGroupController::class)->prefix('group')->group(function () {
                 Route::get('/',                 'index')->name('fees-group.index')->middleware('PermissionCheck:fees_group_read');
                 Route::get('/create',           'create')->name('fees-group.create')->middleware('PermissionCheck:fees_group_create');
                 Route::post('/store',           'store')->name('fees-group.store')->middleware('PermissionCheck:fees_group_create', 'DemoCheck');
@@ -20,7 +20,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::delete('/delete/{id}',   'delete')->name('fees-group.delete')->middleware('PermissionCheck:fees_group_delete', 'DemoCheck');
             });
 
-            Route::controller(FeesTypeController::class)->prefix('fees-type')->group(function () {
+            Route::controller(FeesTypeController::class)->prefix('type')->group(function () {
                 Route::get('/',                 'index')->name('fees-type.index')->middleware('PermissionCheck:fees_type_read');
                 Route::get('/create',           'create')->name('fees-type.create')->middleware('PermissionCheck:fees_type_create');
                 Route::post('/store',           'store')->name('fees-type.store')->middleware('PermissionCheck:fees_type_create', 'DemoCheck');
@@ -29,7 +29,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::delete('/delete/{id}',   'delete')->name('fees-type.delete')->middleware('PermissionCheck:fees_type_delete', 'DemoCheck');
             });
 
-            Route::controller(FeesMasterController::class)->prefix('fees-master')->group(function () {
+            Route::controller(FeesMasterController::class)->prefix('master')->group(function () {
                 Route::get('/',                 'index')->name('fees-master.index')->middleware('PermissionCheck:fees_master_read');
                 Route::get('/create',           'create')->name('fees-master.create')->middleware('PermissionCheck:fees_master_create');
                 Route::post('/store',           'store')->name('fees-master.store')->middleware('PermissionCheck:fees_master_create', 'DemoCheck');
@@ -39,7 +39,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/get-all-type',     'getAllTypes');
             });
 
-            Route::controller(FeesAssignController::class)->prefix('fees-assign')->group(function () {
+            Route::controller(FeesAssignController::class)->prefix('assign')->group(function () {
                 Route::get('/',                 'index')->name('fees-assign.index')->middleware('PermissionCheck:fees_assign_read');
                 Route::get('/create',           'create')->name('fees-assign.create')->middleware('PermissionCheck:fees_assign_create');
                 Route::post('/store',           'store')->name('fees-assign.store')->middleware('PermissionCheck:fees_assign_create', 'DemoCheck');
@@ -47,13 +47,11 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('fees-assign.update')->middleware('PermissionCheck:fees_assign_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('fees-assign.delete')->middleware('PermissionCheck:fees_assign_delete', 'DemoCheck');
                 Route::get('/show',              'show');
-
                 Route::get('/get-all-type',     'getAllTypes');
-
                 Route::get('/get-fees-assign-students',  'getFeesAssignStudents');
             });
 
-            Route::controller(FeesCollectController::class)->prefix('fees-collect')->group(function () {
+            Route::controller(FeesCollectController::class)->prefix('collect')->group(function () {
                 Route::get('/',                 'index')->name('fees-collect.index')->middleware('PermissionCheck:fees_collect_read');
                 Route::get('/create',           'create')->name('fees-collect.create')->middleware('PermissionCheck:fees_collect_create');
                 Route::post('/store',           'store')->name('fees-collect.store')->middleware('PermissionCheck:fees_collect_create', 'DemoCheck');
@@ -61,8 +59,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('fees-collect.update')->middleware('PermissionCheck:fees_collect_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('fees-collect.delete')->middleware('PermissionCheck:fees_collect_delete', 'DemoCheck');
                 Route::get('/collect/{id}',     'collect')->name('fees-collect.collect')->middleware('PermissionCheck:fees_collect_update');
-
-
                 Route::any('/search', 'getFeesCollectStudents')->name('fees-collect-search');
                 Route::get('/fees-show', 'feesShow');
             });

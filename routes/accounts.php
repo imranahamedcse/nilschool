@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
         // auth routes
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
-            Route::controller(AccountHeadController::class)->prefix('account_head')->group(function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix' => 'account'], function () {
+            Route::controller(AccountHeadController::class)->prefix('head')->group(function () {
                 Route::get('/',                 'index')->name('account_head.index')->middleware('PermissionCheck:account_head_read');
                 Route::get('/create',           'create')->name('account_head.create')->middleware('PermissionCheck:account_head_create');
                 Route::post('/store',           'store')->name('account_head.store')->middleware('PermissionCheck:account_head_create', 'DemoCheck');

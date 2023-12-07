@@ -26,7 +26,7 @@ class AccountHeadController extends Controller
     {
         $data['account_head'] = $this->headRepo->getAll();
 
-        $title             = ___('account.account_head');
+        $title             = ___('account.Head');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'account_head_create',
@@ -34,7 +34,7 @@ class AccountHeadController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___("common.Account"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.accounts.head.index', compact('data'));
@@ -42,11 +42,11 @@ class AccountHeadController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.create_account_head');
+        $data['title']       = ___('account.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Transactions"), "route" => ""],
-            ["title" => ___('account.account_head'), "route" => "account_head.index"],
+            ["title" => ___("common.Account"), "route" => ""],
+            ["title" => ___('account.Head'), "route" => "account_head.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.accounts.head.create', compact('data'));
@@ -63,11 +63,11 @@ class AccountHeadController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.edit_account_head');
+        $data['title']       = ___('account.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Transactions"), "route" => ""],
-            ["title" => ___('account.account_head'), "route" => "account_head.index"],
+            ["title" => ___("common.Account"), "route" => ""],
+            ["title" => ___('account.Head'), "route" => "account_head.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         

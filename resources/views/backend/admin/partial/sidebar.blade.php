@@ -231,7 +231,7 @@
                 hasPermission('exam_setting_read') ||
                 hasPermission('exam_routine_read'))
             <li
-                class="{{ set_menu(['exam-type*', 'marks-grade*', 'exam-assign*', 'marks-register*', 'examination-settings*', 'exam-routine*']) }}">
+                class="{{ set_menu(['exam*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-book-open-reader"></i>
@@ -268,7 +268,7 @@
 
                     @if (hasPermission('exam_routine_read'))
                         <li class="{{ set_menu(['exam-routine*']) }}">
-                            <a href="{{ route('exam-routine.index') }}">{{ ___('menu.Exam routine') }}</a>
+                            <a href="{{ route('exam-routine.index') }}">{{ ___('menu.Routine') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -281,7 +281,7 @@
                 hasPermission('question_bank_read') ||
                 hasPermission('online_exam_read') ||
                 hasPermission('online_exam_type_read'))
-            <li class="{{ set_menu(['question-group*', 'question-bank*', 'online-exam*', 'online-exam-type*']) }}">
+            <li class="{{ set_menu(['online-exam*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-laptop-file"></i>
@@ -321,7 +321,7 @@
                 hasPermission('member_category_read') ||
                 hasPermission('member_read') ||
                 hasPermission('issue_book_read'))
-            <li class="{{ set_menu(['book-category*']) }}">
+            <li class="{{ set_menu(['library*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-swatchbook"></i>
@@ -362,18 +362,18 @@
 
         <!-- Start Transactions -->
         @if (hasPermission('account_head_read') || hasPermission('income_read') || hasPermission('expense_read'))
-            <li class="{{ set_menu(['accounts*']) }}">
+            <li class="{{ set_menu(['account*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-money-bill-transfer"></i>
-                        <span class="link-name">{{ ___('menu.Transactions') }}</span>
+                        <span class="link-name">{{ ___('menu.Account') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('account_head_read'))
                         <li class="{{ set_menu(['account_head*']) }}">
-                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Account head') }}</a>
+                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('income_read'))

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
         // auth routes
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix' => 'library'], function () {
+
             Route::controller(BookCategoryController::class)->prefix('book-category')->group(function () {
                 Route::get('/',                 'index')->name('book-category.index')->middleware('PermissionCheck:book_category_read');
                 Route::get('/create',           'create')->name('book-category.create')->middleware('PermissionCheck:book_category_create');
@@ -19,6 +20,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('book-category.update')->middleware('PermissionCheck:book_category_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('book-category.delete')->middleware('PermissionCheck:book_category_delete', 'DemoCheck');
             });
+
             Route::controller(BookController::class)->prefix('book')->group(function () {
                 Route::get('/',                 'index')->name('book.index')->middleware('PermissionCheck:book_read');
                 Route::get('/create',           'create')->name('book.create')->middleware('PermissionCheck:book_create');
@@ -27,15 +29,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('book.update')->middleware('PermissionCheck:book_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('book.delete')->middleware('PermissionCheck:book_delete', 'DemoCheck');
             });
-            Route::controller(MemberController::class)->prefix('member')->group(function () {
-                Route::get('/',                 'index')->name('member.index')->middleware('PermissionCheck:member_read');
-                Route::get('/create',           'create')->name('member.create')->middleware('PermissionCheck:member_create');
-                Route::post('/store',           'store')->name('member.store')->middleware('PermissionCheck:member_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('member.edit')->middleware('PermissionCheck:member_update');
-                Route::put('/update/{id}',      'update')->name('member.update')->middleware('PermissionCheck:member_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('member.delete')->middleware('PermissionCheck:member_delete', 'DemoCheck');
-                Route::get('/get-member',       'getMember');
-            });
+
             Route::controller(IssueBookController::class)->prefix('issue-book')->group(function () {
                 Route::get('/',                 'index')->name('issue-book.index')->middleware('PermissionCheck:issue_book_read');
                 Route::get('/create',           'create')->name('issue-book.create')->middleware('PermissionCheck:issue_book_create');
@@ -48,6 +42,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/get-member',       'getMember');
                 Route::get('/get-book',         'getBook');
             });
+
             Route::controller(MemberCategoryController::class)->prefix('member-category')->group(function () {
                 Route::get('/',                 'index')->name('member-category.index')->middleware('PermissionCheck:member_category_read');
                 Route::get('/create',           'create')->name('member-category.create')->middleware('PermissionCheck:member_category_create');
@@ -57,6 +52,15 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::delete('/delete/{id}',   'delete')->name('member-category.delete')->middleware('PermissionCheck:member_category_delete', 'DemoCheck');
             });
 
+            Route::controller(MemberController::class)->prefix('member')->group(function () {
+                Route::get('/',                 'index')->name('member.index')->middleware('PermissionCheck:member_read');
+                Route::get('/create',           'create')->name('member.create')->middleware('PermissionCheck:member_create');
+                Route::post('/store',           'store')->name('member.store')->middleware('PermissionCheck:member_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('member.edit')->middleware('PermissionCheck:member_update');
+                Route::put('/update/{id}',      'update')->name('member.update')->middleware('PermissionCheck:member_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('member.delete')->middleware('PermissionCheck:member_delete', 'DemoCheck');
+                Route::get('/get-member',       'getMember');
+            });
         });
     });
 });

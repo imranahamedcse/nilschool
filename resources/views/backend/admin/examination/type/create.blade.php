@@ -1,30 +1,19 @@
-@extends('backend.master')
+@extends('backend.admin.partial.master')
 
 @section('title')
     {{ @$data['title'] }}
 @endsection
+
 @section('content')
-    <div class="page-content">
+    @include('backend.admin.components.breadcrumb')
 
-        {{-- bradecrumb Area S t a r t --}}
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4 class="bradecrumb-title mb-1">{{ $data['title'] }}</h1>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a
-                                href="{{ route('exam-type.index') }}">{{ $data['title'] }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ ___('common.add_new') }}</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        {{-- bradecrumb Area E n d --}}
-
-        <div class="card ot-card">
+        <div class="card">
             <div class="card-body">
-                <form action="{{ route('exam-type.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
+                <div class="border-bottom pb-3 mb-4">
+                    <h4 class="m-0">{{ @$data['title'] }}</h4>
+                </div>
+
+                <form action="{{ route('online-exam-type.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
                     @csrf
                     <div class="row mb-3">
                         <div class="col-lg-12">
@@ -32,7 +21,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
                                             class="text-danger">*</span></label>
-                                    <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
+                                    <input class="form-control @error('name') is-invalid @enderror" name="name"
                                         list="datalistOptions" id="exampleDataList" type="text"
                                         placeholder="{{ ___('common.enter_name') }}" value="{{ old('name') }}">
                                     @error('name')
@@ -68,6 +57,7 @@
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>

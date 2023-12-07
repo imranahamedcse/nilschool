@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Examination;
+namespace App\Http\Controllers\OnlineExamination;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Examination\Type\ExamTypeStoreRequest;
@@ -32,7 +32,7 @@ class ExamTypeController extends Controller
             ["title" => ___("common.Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.examination.type.index', compact('data'));
+        return view('backend.admin.online-examination.type.index', compact('data'));
     }
 
     public function create()
@@ -44,7 +44,7 @@ class ExamTypeController extends Controller
             ["title" => ___("common.Exam type"), "route" => "online-exam-type.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        return view('backend.admin.examination.type.create', compact('data'));
+        return view('backend.admin.online-examination.type.create', compact('data'));
     }
 
     public function store(ExamTypeStoreRequest $request)
@@ -67,7 +67,7 @@ class ExamTypeController extends Controller
         ];
 
         $data['exam_type']        = $this->repo->show($id);
-        return view('backend.admin.examination.type.edit', compact('data'));
+        return view('backend.admin.online-examination.type.edit', compact('data'));
     }
 
     public function update(ExamTypeUpdateRequest $request, $id)

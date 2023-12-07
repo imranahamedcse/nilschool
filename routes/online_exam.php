@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Examination\ExamTypeController;
+use App\Http\Controllers\OnlineExamination\ExamTypeController;
 use App\Http\Controllers\OnlineExamination\OnlineExamController;
 use App\Http\Controllers\OnlineExamination\QuestionBankController;
 use App\Http\Controllers\OnlineExamination\QuestionGroupController;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix' => 'online-exam'], function () {
 
-            Route::controller(ExamTypeController::class)->prefix('online-exam-type')->group(function () {
+            Route::controller(ExamTypeController::class)->prefix('type')->group(function () {
                 Route::get('/',                 'index')->name('online-exam-type.index')->middleware('PermissionCheck:online_exam_type_read');
                 Route::get('/create',           'create')->name('online-exam-type.create')->middleware('PermissionCheck:online_exam_type_create');
                 Route::post('/store',           'store')->name('online-exam-type.store')->middleware('PermissionCheck:online_exam_type_create');
@@ -37,7 +37,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::any('/search',           'search')->name('question-bank.search')->middleware('PermissionCheck:question_bank_read');
                 Route::get('/get-question-group','getQuestionGroup');
             });
-            Route::controller(OnlineExamController::class)->prefix('online-exam')->group(function () {
+            Route::controller(OnlineExamController::class)->prefix('/')->group(function () {
                 Route::get('/',                 'index')->name('online-exam.index')->middleware('PermissionCheck:online_exam_read');
                 Route::get('/create',           'create')->name('online-exam.create')->middleware('PermissionCheck:online_exam_create');
                 Route::post('/store',           'store')->name('online-exam.store')->middleware('PermissionCheck:online_exam_create');

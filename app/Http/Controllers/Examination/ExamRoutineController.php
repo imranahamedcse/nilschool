@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Academic;
+namespace App\Http\Controllers\Examination;
 
 use Illuminate\Http\Request;
 use App\Interfaces\UserInterface;

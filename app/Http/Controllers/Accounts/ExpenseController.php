@@ -28,7 +28,7 @@ class ExpenseController extends Controller
     {
         $data['expense'] = $this->expenseRepo->getAll();
 
-        $title             = ___('account.expense');
+        $title             = ___('account.Expense');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'expense_create',
@@ -36,7 +36,7 @@ class ExpenseController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___("common.Account"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.accounts.expense.index', compact('data'));
@@ -44,10 +44,10 @@ class ExpenseController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.create_expense');
+        $data['title']       = ___('account.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___("common.Account"), "route" => ""],
             ["title" => ___('account.Expense'), "route" => "expense.index"],
             ["title" => $data['title'], "route" => ""]
         ];
@@ -67,10 +67,10 @@ class ExpenseController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.edit_expense');
+        $data['title']       = ___('account.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Transactions"), "route" => ""],
+            ["title" => ___("common.Account"), "route" => ""],
             ["title" => ___('account.Expense'), "route" => "expense.index"],
             ["title" => $data['title'], "route" => ""]
         ];

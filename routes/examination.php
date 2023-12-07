@@ -5,14 +5,14 @@ use App\Http\Controllers\Examination\ExamTypeController;
 use App\Http\Controllers\Examination\MarksGradeController;
 use App\Http\Controllers\Examination\ExamAssignController;
 use App\Http\Controllers\Examination\MarksRegisterController;
-use App\Http\Controllers\Academic\ExamRoutineController;
+use App\Http\Controllers\Examination\ExamRoutineController;
 use App\Http\Controllers\Examination\ExaminationSettingsController;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix' => 'exam'], function () {
 
-            Route::controller(ExamTypeController::class)->prefix('exam-type')->group(function () {
+            Route::controller(ExamTypeController::class)->prefix('type')->group(function () {
                 Route::get('/',                 'index')->name('exam-type.index')->middleware('PermissionCheck:exam_type_read');
                 Route::get('/create',           'create')->name('exam-type.create')->middleware('PermissionCheck:exam_type_create');
                 Route::post('/store',           'store')->name('exam-type.store')->middleware('PermissionCheck:exam_type_create', 'DemoCheck');
@@ -41,19 +41,19 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/show',             'show');
             });
 
-            Route::controller(ExamRoutineController::class)->prefix('exam-routine')->group(function () {
+            Route::controller(ExamRoutineController::class)->prefix('routine')->group(function () {
                 Route::get('/',                 'index')->name('exam-routine.index')->middleware('PermissionCheck:exam_routine_read');
                 Route::get('/create',           'create')->name('exam-routine.create')->middleware('PermissionCheck:exam_routine_create');
                 Route::post('/store',           'store')->name('exam-routine.store')->middleware('PermissionCheck:exam_routine_create');
                 Route::get('/edit/{id}',        'edit')->name('exam-routine.edit')->middleware('PermissionCheck:exam_routine_update');
                 Route::put('/update/{id}',      'update')->name('exam-routine.update')->middleware('PermissionCheck:exam_routine_update');
                 Route::delete('/delete/{id}',   'delete')->name('exam-routine.delete')->middleware('PermissionCheck:exam_routine_delete');
-                Route::get('/add-exam-routine','addexamRoutine');
+                Route::get('/add-exam-routine', 'addexamRoutine');
 
-                Route::get('/check-exam-routine','checkExamRoutine');
+                Route::get('/check-exam-routine', 'checkExamRoutine');
             });
 
-            Route::controller(ExamAssignController::class)->prefix('exam-assign')->group(function () {
+            Route::controller(ExamAssignController::class)->prefix('assign')->group(function () {
                 Route::get('/',                 'index')->name('exam-assign.index')->middleware('PermissionCheck:exam_assign_read');
                 Route::any('/search',           'search')->name('exam-assign.search')->middleware('PermissionCheck:exam_assign_read');
                 Route::get('/create',           'create')->name('exam-assign.create')->middleware('PermissionCheck:exam_assign_create');
@@ -61,21 +61,20 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/edit/{id}',        'edit')->name('exam-assign.edit')->middleware('PermissionCheck:exam_assign_update');
                 Route::put('/update/{id}',      'update')->name('exam-assign.update')->middleware('PermissionCheck:exam_assign_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('exam-assign.delete')->middleware('PermissionCheck:exam_assign_delete', 'DemoCheck');
-                Route::get('/marks-distribution','marksDistribution');
-                Route::get('/subject-marks-distribution','subjectMarksDistribution');
+                Route::get('/marks-distribution', 'marksDistribution');
+                Route::get('/subject-marks-distribution', 'subjectMarksDistribution');
 
                 Route::get('/get-sections',     'getSections');
                 Route::get('/get-subjects',     'getSubjects');
                 Route::get('/get-exam-type',    'getExamType');
                 Route::post('/check-submit',    'checkSubmit')->middleware('DemoCheck');
-                Route::get('/check-mark-register/{id}','checkMarkRegister');
+                Route::get('/check-mark-register/{id}', 'checkMarkRegister');
             });
 
-            Route::controller(ExaminationSettingsController::class)->prefix('examination-settings')->group(function () {
+            Route::controller(ExaminationSettingsController::class)->prefix('settings')->group(function () {
                 Route::get('/',                 'index')->name('examination-settings.index')->middleware('PermissionCheck:exam_assign_read');
                 Route::put('/update',           'update')->name('examination-settings.update')->middleware('PermissionCheck:exam_assign_create', 'DemoCheck');
             });
-
         });
     });
 });
