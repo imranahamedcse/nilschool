@@ -136,7 +136,9 @@ class StudentController extends Controller
         return view('backend.admin.student-info.student.students-list', compact('students','examAssign'))->render();
     }
     
-    
+    public function getClassSectionStudents(Request $request){
+        return $this->repo->getStudents($request);
+    }
 
     public function store(StudentStoreRequest $request)
     {

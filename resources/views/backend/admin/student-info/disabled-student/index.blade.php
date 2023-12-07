@@ -23,7 +23,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
                                 class="text-danger">*</span></label>
-                        <select id="getSections" class="form-control @error('class') is-invalid @enderror" name="class">
+                        <select class="class form-control @error('class') is-invalid @enderror" name="class">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option {{ old('class', @$request->class) == $item->id ? 'selected' : '' }}
@@ -39,7 +39,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="sections form-control @error('section') is-invalid @enderror" name="section">
+                        <select class="section form-control @error('section') is-invalid @enderror" name="section">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach (@$data['sections'] as $item)
                                 <option {{ old('section', @$request->section) == $item->section->id ? 'selected' : '' }}
@@ -172,43 +172,5 @@
 
 @push('script')
     @include('backend.admin.components.table.js')
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
 @endpush

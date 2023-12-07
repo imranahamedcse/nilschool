@@ -11,92 +11,9 @@
 @section('content')
     @include('backend.admin.components.breadcrumb')
 
-
     <div class="p-4 rounded-3 bg-white">
-        <div class="row justify-content-between border-bottom pb-4 mb-4">
-            <div class="col-3 align-self-center">
-                <h4 class="m-0">{{ @$data['headers']['title'] }}</h4>
-            </div>
-            <div class="col-6">
-                <form action="{{ route('online-exam.search') }}" method="post" id="marksheet" class="exam_assign"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="row justify-content-center align-items-center">
-                        <div class="input-group">
-                            <div>
-                                <select id="getSections"
-                                    class="class form-control @error('class') is-invalid @enderror"
-                                    name="class">
-                                    <option value="">{{ ___('student_info.select_class') }} </option>
-                                    @foreach ($data['classes'] as $item)
-                                        <option value="{{ $item->class->id }}"
-                                            {{ old('class', @$data['request']->class) == $item->class->id ? 'selected' : '' }}>
-                                            {{ $item->class->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <select id="section"
-                                    class="sections section form-control @error('section') is-invalid @enderror"
-                                    name="section">
-                                    <option value="">{{ ___('student_info.select_section') }} </option>
-                                    @foreach ($data['sections'] as $item)
-                                        <option value="{{ $item->section->id }}"
-                                            {{ old('section', @$data['request']->section) == $item->section->id ? 'selected' : '' }}>
-                                            {{ $item->section->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <select
-                                    class="subjects form-control @error('subject') is-invalid @enderror"
-                                    name="subject">
-                                    <option value="">{{ ___('online-examination.Select subject') }} </option>
-                                    @foreach ($data['subjects'] as $item)
-                                        <option value="{{ $item->subject->id }}"
-                                            {{ old('subject', @$data['request']->subject) == $item->subject->id ? 'selected' : '' }}>
-                                            {{ $item->subject->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('subject')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <input class="form-control" name="keyword" list="datalistOptions" id="exampleDataList"
-                                placeholder="{{ ___('online-examination.Search Exam / Start') }}"
-                                value="{{ old('keyword', @$data['request']->keyword) }}">
-
-                            <button class="btn btn-primary" type="submit">
-                                {{ ___('common.Search') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-3 text-end">
-                @if (hasPermission(@$data['headers']['permission']))
-                    <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">
-                        <i class="fa-solid fa-plus"></i> {{ ___('common.add') }}
-                    </a>
-                @endif
-            </div>
-        </div>
-
+        
+        @include('backend.admin.components.table.header')
 
         <table id="datatable" class="table">
             <thead class="thead">
@@ -218,4 +135,8 @@
 @push('script')
     @include('backend.admin.components.table.js')
     @include('backend.admin.components.table.delete-ajax')
+    
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-subject.js') }}"></script>
+    
 @endpush

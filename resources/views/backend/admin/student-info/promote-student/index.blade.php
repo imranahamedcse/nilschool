@@ -25,7 +25,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
                                 class="text-danger">*</span></label>
-                        <select id="getSections" class="form-control @error('class') is-invalid @enderror" name="class">
+                        <select class="class form-control @error('class') is-invalid @enderror" name="class">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option {{ old('class', @$request->class) == $item->id ? 'selected' : '' }}
@@ -41,7 +41,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="sections form-control @error('section') is-invalid @enderror" name="section">
+                        <select class="section form-control @error('section') is-invalid @enderror" name="section">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach (@$data['sections'] as $item)
                                 <option {{ old('section', @$request->section) == $item->section->id ? 'selected' : '' }}
@@ -81,7 +81,7 @@
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.Promote class') }}
                             <span class="text-danger">*</span></label>
-                        <select class="classes form-control @error('promote_class') is-invalid @enderror"
+                        <select class="promote_class form-control @error('promote_class') is-invalid @enderror"
                             name="promote_class">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach (@$data['promoteClasses'] as $item)
@@ -99,7 +99,7 @@
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.Promote section') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="promoteSections form-control @error('promote_section') is-invalid @enderror"
+                        <select class="promote_section form-control @error('promote_section') is-invalid @enderror"
                             name="promote_section">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach (@$data['promoteSections'] as $item)
@@ -217,125 +217,7 @@
 
 @push('script')
     @include('backend.admin.components.table.js')
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
-    <script>
-        // Start promote students
-        // get classes
-        $(".session").on('change', function(e) {
-            var sessionId = $(".session").val();
-            var url = $('#url').val();
-            var formData = {
-                id: sessionId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/promote/students/get-class',
-                success: function(data) {
-                    var session_options = '';
-                    var session_li = '';
-                    $.each(JSON.parse(data), function(i, item) {
-                        session_options += "<option value=" + item.classes_id + ">" + item.class
-                            .name + "</option>";
-                        session_li += "<li data-value=" + item.classes_id + " class='option'>" +
-                            item.class.name + "</li>";
-                    });
-                    $("select.classes option").not(':first').remove();
-                    $("select.classes").append(session_options);
-
-                    $("div .classes .current").html($("div .classes .list li:first").html());
-                    $("div .classes .list li").not(':first').remove();
-                    $("div .classes .list").append(session_li);
-
-                    $("div .promoteSections .current").html($("div .promoteSections .list li:first")
-                        .html());
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-        // get classes
-        $(".classes").on('change', function(e) {
-            var sessionId = $(".session").val();
-            var classId = $(".classes").val();
-            var url = $('#url').val();
-            var formData = {
-                session: sessionId,
-                class: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/promote/students/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-                    $("select.promoteSections option").not(':first').remove();
-                    $("select.promoteSections").append(section_options);
-
-                    $("div .promoteSections .current").html($("div .promoteSections .list li:first")
-                        .html());
-                    $("div .promoteSections .list li").not(':first').remove();
-                    $("div .promoteSections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-        // End promote students
-    </script>
+    
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-promote-class-section.js') }}"></script>
 @endpush

@@ -57,7 +57,7 @@ class ExamRoutineController extends Controller
         
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
-        $data['exam_types']         = $this->typeRepo->all();
+        $data['exam_types']         = [];
 
         return view('backend.admin.report.exam-routine', compact('data'));
     }

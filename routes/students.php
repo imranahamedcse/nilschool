@@ -24,6 +24,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
 
                 Route::get('/add-new-document', 'addNewDocument');
                 Route::get('/get-students',     'getStudents');
+                Route::get('/get-class-section-students',     'getClassSectionStudents');
             });
 
             Route::controller(StudentCategoryController::class)->prefix('category')->group(function () {

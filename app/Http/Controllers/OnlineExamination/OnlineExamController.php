@@ -71,6 +71,7 @@ class OnlineExamController extends Controller
         $title             = ___('online-examination.online_exam');
         $data['headers']   = [
             "title"        => $title,
+            "filter"            => ['online-exam.search', 'class', 'section', 'subject'],
             "create-permission"   => 'online_exam_create',
             "create-route" => 'online-exam.create',
         ];

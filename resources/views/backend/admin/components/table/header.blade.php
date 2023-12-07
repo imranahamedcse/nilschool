@@ -24,7 +24,7 @@
 
                     @if (in_array('class', @$data['headers']['filter']))
                         <div class="px-1">
-                            <select id="getSections" class="form-control @error('class') is-invalid @enderror"
+                            <select class="class form-control @error('class') is-invalid @enderror"
                                 name="class">
                                 <option value="">{{ ___('student_info.select_class') }} </option>
                                 @foreach ($data['classes'] as $item)
@@ -42,7 +42,7 @@
 
                     @if (in_array('section', @$data['headers']['filter']))
                         <div class="px-1">
-                            <select class="sections form-control @error('section') is-invalid @enderror" name="section">
+                            <select class="section form-control @error('section') is-invalid @enderror" name="section">
                                 <option value="">{{ ___('student_info.select_section') }} </option>
                                 @foreach ($data['sections'] as $item)
                                     <option
@@ -145,7 +145,7 @@
 
                     @if (in_array('exam_type', @$data['headers']['filter']))
                         <div class="px-1">
-                            <select class="form-control exam_types @error('exam_type') is-invalid @enderror"
+                            <select class="exam_type form-control @error('exam_type') is-invalid @enderror"
                                 name="exam_type">
                                 <option value="">{{ ___('examination.select_exam_type') }} </option>
                                 @foreach ($data['exam_types'] as $item)
@@ -164,7 +164,7 @@
 
                     @if (in_array('subject', @$data['headers']['filter']))
                         <div class="px-1">
-                            <select class="subjects form-control @error('subject') is-invalid @enderror" name="subject">
+                            <select class="subject form-control @error('subject') is-invalid @enderror" name="subject">
                                 <option value="">{{ ___('academic.Select subject') }} </option>
                             </select>
                             @error('subject')
@@ -177,7 +177,7 @@
 
                     @if (in_array('student', @$data['headers']['filter']))
                         <div class="px-1">
-                            <select class="students form-control @error('student') is-invalid @enderror" name="student">
+                            <select class="student form-control @error('student') is-invalid @enderror" name="student">
                                 <option value="">{{ ___('student_info.Select student') }} *</option>
                                 @foreach ($data['students'] as $item)
                                     <option

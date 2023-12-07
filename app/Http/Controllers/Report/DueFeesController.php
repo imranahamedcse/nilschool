@@ -54,6 +54,7 @@ class DueFeesController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['fees_masters']       = $this->repo->assignedFeesTypes();
+        
         return view('backend.admin.report.due-fees', compact('data'));
     }
 
