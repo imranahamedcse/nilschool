@@ -591,7 +591,7 @@
                 hasPermission('blood_group_read') ||
                 hasPermission('session_read'))
             <li
-                class="{{ set_menu(['languages*', 'setting*', 'genders*', 'religions*', 'blood-groups*', 'sessions*']) }}">
+                class="{{ set_menu(['settings*']) }}">
                 <div class="icon-link">
                     <a href="#" class="parent-item-content has-arrow">
                         <i class="fa-solid fa-gear"></i>
