@@ -7,7 +7,7 @@ use App\Http\Controllers\ClassRoom\HomeworkController;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix'=>'class-room'], function () {
 
             Route::controller(HomeworkController::class)->prefix('homework')->name('homework.')->group(function () {
                 Route::get('/',                 'index')->name('index')->middleware('PermissionCheck:homework_read');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Attendance;
+namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Attendance\AttendanceReportRequest;

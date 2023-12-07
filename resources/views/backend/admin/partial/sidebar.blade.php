@@ -24,7 +24,7 @@
                 hasPermission('admission_read') ||
                 hasPermission('parent_read'))
             <li
-                class="{{ set_menu(['online-admissions*', 'student*', 'student/category*', 'promote/students*', 'disabled/students*', 'parent*']) }}">
+                class="{{ set_menu(['students*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-graduation-cap"></i>
@@ -81,7 +81,7 @@
                 hasPermission('class_routine_read') ||
                 hasPermission('attendance_read'))
             <li
-                class="{{ set_menu(['classes*', 'section*', 'shift*', 'class-setup*', 'subject*', 'assign-subject*', 'time/schedule*', 'class-room*', 'class-routine*', 'attendance*']) }}">
+                class="{{ set_menu(['academic*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-house-flag"></i>
@@ -149,7 +149,7 @@
 
         <!-- start class room -->
         @if (hasPermission('homework_read') || hasPermission('assignment_read') || hasPermission('post_read'))
-            <li class="{{ set_menu(['homework*', 'assignment*', 'post*']) }}">
+            <li class="{{ set_menu(['class-room*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-map"></i>

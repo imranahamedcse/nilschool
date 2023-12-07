@@ -9,46 +9,21 @@ use App\Http\Controllers\Academic\ClassRoutineController;
 use App\Http\Controllers\Academic\ClassSetupController;
 use App\Http\Controllers\Academic\SubjectAssignController;
 use App\Http\Controllers\Academic\TimeScheduleController;
+use App\Http\Controllers\Academic\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
         // auth routes
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
-            Route::controller(ClassesController::class)->prefix('classes')->group(function () {
-                Route::get('/',                 'index')->name('classes.index')->middleware('PermissionCheck:classes_read');
-                Route::get('/create',           'create')->name('classes.create')->middleware('PermissionCheck:classes_create');
-                Route::post('/store',           'store')->name('classes.store')->middleware('PermissionCheck:classes_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('classes.edit')->middleware('PermissionCheck:classes_update');
-                Route::put('/update/{id}',      'update')->name('classes.update')->middleware('PermissionCheck:classes_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('classes.delete')->middleware('PermissionCheck:classes_delete', 'DemoCheck');
-            });
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix'=>'academic'], function () {
 
-            Route::controller(SectionController::class)->prefix('section')->group(function () {
-                Route::get('/',                 'index')->name('section.index')->middleware('PermissionCheck:section_read');
-                Route::get('/create',           'create')->name('section.create')->middleware('PermissionCheck:section_create');
-                Route::post('/store',           'store')->name('section.store')->middleware('PermissionCheck:section_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('section.edit')->middleware('PermissionCheck:section_update');
-                Route::put('/update/{id}',      'update')->name('section.update')->middleware('PermissionCheck:section_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('section.delete')->middleware('PermissionCheck:section_delete', 'DemoCheck');
-            });
-
-            Route::controller(SubjectController::class)->prefix('subject')->group(function () {
-                Route::get('/',                 'index')->name('subject.index')->middleware('PermissionCheck:subject_read');
-                Route::get('/create',           'create')->name('subject.create')->middleware('PermissionCheck:subject_create');
-                Route::post('/store',           'store')->name('subject.store')->middleware('PermissionCheck:subject_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('subject.edit')->middleware('PermissionCheck:subject_update');
-                Route::put('/update/{id}',      'update')->name('subject.update')->middleware('PermissionCheck:subject_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('subject.delete')->middleware('PermissionCheck:subject_delete', 'DemoCheck');
-            });
-
-            Route::controller(ShiftController::class)->prefix('shift')->group(function () {
-                Route::get('/',                 'index')->name('shift.index')->middleware('PermissionCheck:shift_read');
-                Route::get('/create',           'create')->name('shift.create')->middleware('PermissionCheck:shift_create');
-                Route::post('/store',           'store')->name('shift.store')->middleware('PermissionCheck:shift_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('shift.edit')->middleware('PermissionCheck:shift_update');
-                Route::put('/update/{id}',      'update')->name('shift.update')->middleware('PermissionCheck:shift_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('shift.delete')->middleware('PermissionCheck:shift_delete', 'DemoCheck');
+            Route::controller(TimeScheduleController::class)->prefix('time/schedule')->group(function () {
+                Route::get('/',                 'index')->name('time_schedule.index')->middleware('PermissionCheck:time_schedule_read');
+                Route::get('/create',           'create')->name('time_schedule.create')->middleware('PermissionCheck:time_schedule_create');
+                Route::post('/store',           'store')->name('time_schedule.store')->middleware('PermissionCheck:time_schedule_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('time_schedule.edit')->middleware('PermissionCheck:time_schedule_update');
+                Route::put('/update/{id}',      'update')->name('time_schedule.update')->middleware('PermissionCheck:time_schedule_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('time_schedule.delete')->middleware('PermissionCheck:time_schedule_delete', 'DemoCheck');
             });
 
             Route::controller(ClassRoomController::class)->prefix('class-room')->group(function () {
@@ -60,6 +35,33 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::delete('/delete/{id}',   'delete')->name('class-room.delete')->middleware('PermissionCheck:class_room_delete', 'DemoCheck');
             });
 
+            Route::controller(ShiftController::class)->prefix('shift')->group(function () {
+                Route::get('/',                 'index')->name('shift.index')->middleware('PermissionCheck:shift_read');
+                Route::get('/create',           'create')->name('shift.create')->middleware('PermissionCheck:shift_create');
+                Route::post('/store',           'store')->name('shift.store')->middleware('PermissionCheck:shift_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('shift.edit')->middleware('PermissionCheck:shift_update');
+                Route::put('/update/{id}',      'update')->name('shift.update')->middleware('PermissionCheck:shift_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('shift.delete')->middleware('PermissionCheck:shift_delete', 'DemoCheck');
+            });
+
+            Route::controller(SectionController::class)->prefix('section')->group(function () {
+                Route::get('/',                 'index')->name('section.index')->middleware('PermissionCheck:section_read');
+                Route::get('/create',           'create')->name('section.create')->middleware('PermissionCheck:section_create');
+                Route::post('/store',           'store')->name('section.store')->middleware('PermissionCheck:section_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('section.edit')->middleware('PermissionCheck:section_update');
+                Route::put('/update/{id}',      'update')->name('section.update')->middleware('PermissionCheck:section_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('section.delete')->middleware('PermissionCheck:section_delete', 'DemoCheck');
+            });
+
+            Route::controller(ClassesController::class)->prefix('classes')->group(function () {
+                Route::get('/',                 'index')->name('classes.index')->middleware('PermissionCheck:classes_read');
+                Route::get('/create',           'create')->name('classes.create')->middleware('PermissionCheck:classes_create');
+                Route::post('/store',           'store')->name('classes.store')->middleware('PermissionCheck:classes_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('classes.edit')->middleware('PermissionCheck:classes_update');
+                Route::put('/update/{id}',      'update')->name('classes.update')->middleware('PermissionCheck:classes_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('classes.delete')->middleware('PermissionCheck:classes_delete', 'DemoCheck');
+            });
+
             Route::controller(ClassSetupController::class)->prefix('class-setup')->group(function () {
                 Route::get('/',                 'index')->name('class-setup.index')->middleware('PermissionCheck:class_setup_read');
                 Route::get('/create',           'create')->name('class-setup.create')->middleware('PermissionCheck:class_setup_create');
@@ -68,6 +70,15 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('class-setup.update')->middleware('PermissionCheck:class_setup_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('class-setup.delete')->middleware('PermissionCheck:class_setup_delete', 'DemoCheck');
                 Route::get('/get-sections',     'getSections');
+            });
+
+            Route::controller(SubjectController::class)->prefix('subject')->group(function () {
+                Route::get('/',                 'index')->name('subject.index')->middleware('PermissionCheck:subject_read');
+                Route::get('/create',           'create')->name('subject.create')->middleware('PermissionCheck:subject_create');
+                Route::post('/store',           'store')->name('subject.store')->middleware('PermissionCheck:subject_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('subject.edit')->middleware('PermissionCheck:subject_update');
+                Route::put('/update/{id}',      'update')->name('subject.update')->middleware('PermissionCheck:subject_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('subject.delete')->middleware('PermissionCheck:subject_delete', 'DemoCheck');
             });
 
             Route::controller(SubjectAssignController::class)->prefix('assign-subject')->group(function () {
@@ -92,18 +103,17 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('class-routine.update')->middleware('PermissionCheck:class_routine_update');
                 Route::delete('/delete/{id}',   'delete')->name('class-routine.delete')->middleware('PermissionCheck:class_routine_delete');
                 Route::get('/add-class-routine','addClassRoutine');
-
                 Route::get('/check-class-routine','checkClassRoutine');
             });
 
-            Route::controller(TimeScheduleController::class)->prefix('time/schedule')->group(function () {
-                Route::get('/',                 'index')->name('time_schedule.index')->middleware('PermissionCheck:time_schedule_read');
-                Route::get('/create',           'create')->name('time_schedule.create')->middleware('PermissionCheck:time_schedule_create');
-                Route::post('/store',           'store')->name('time_schedule.store')->middleware('PermissionCheck:time_schedule_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('time_schedule.edit')->middleware('PermissionCheck:time_schedule_update');
-                Route::put('/update/{id}',      'update')->name('time_schedule.update')->middleware('PermissionCheck:time_schedule_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('time_schedule.delete')->middleware('PermissionCheck:time_schedule_delete', 'DemoCheck');
+            Route::controller(AttendanceController::class)->prefix('attendance')->group(function () {
+                Route::get('/',                 'index')->name('attendance.index')->middleware('PermissionCheck:attendance_read');
+                Route::post('/store',           'store')->name('attendance.store')->middleware('PermissionCheck:attendance_create', 'DemoCheck');
+                Route::any('/search',           'searchStudents')->name('attendance.search');
+                Route::get('/report',           'report')->name('attendance.report')->middleware('PermissionCheck:attendance_read');
+                Route::any('/report-search',    'reportSearch')->name('attendance.report-search')->middleware('PermissionCheck:attendance_read');
             });
+
         });
     });
 });
