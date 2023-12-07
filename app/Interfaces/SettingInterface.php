@@ -14,10 +14,6 @@ interface SettingInterface{
 
     public function getCurrencies();
 
-    public function updateRecaptchaSetting(SettingStoreRequest $request);
-
-    public function storageSettingUpdate($request);
-
     public function updateMailSetting($request);
 
     public function updateGeneralSetting($request);

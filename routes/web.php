@@ -206,12 +206,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                     Route::get('/general-settings',             'generalSettings')->name('settings.general-settings')->middleware('PermissionCheck:general_settings_read');
                     Route::post('/general-settings',            'updateGeneralSetting')->name('settings.general-settings')->middleware('PermissionCheck:general_settings_update', 'DemoCheck');
 
-                    Route::get('/storage-setting',              'storagesetting')->name('settings.storagesetting')->middleware('PermissionCheck:storage_settings_read');
-                    Route::put('/storage-setting-update',       'storageSettingUpdate')->name('settings.storageSettingUpdate')->middleware("PermissionCheck:storage_settings_update", 'DemoCheck');
-
-                    Route::get('/recaptcha-setting',            'recaptchaSetting')->name('settings.recaptcha-setting')->middleware('PermissionCheck:recaptcha_settings_read');
-                    Route::post('/recaptcha-setting',           'updateRecaptchaSetting')->name('settings.recaptcha-setting')->middleware('PermissionCheck:recaptcha_settings_update', 'DemoCheck');
-
                     Route::get('/email-setting',                 'mailSetting')->name('settings.mail-setting')->middleware('PermissionCheck:email_settings_read');
                     Route::post('/email-setting',                'updateMailSetting')->name('settings.mail-setting')->middleware('PermissionCheck:email_settings_update', 'DemoCheck');
 

@@ -54,50 +54,6 @@ class SettingController extends Controller
     }
     // General setting end
 
-    // Storage setting start
-    public function storagesetting()
-    {
-
-        try {
-            $data['title'] = ___('common.storage_settings');
-            $data['data']  = $this->setting->getAll();
-            return view('backend.admin.settings.storage_setting',compact('data'));
-        } catch (\Throwable $th) {
-            return redirect('/');
-        }
-    }
-
-    public function storageSettingUpdate(StorageUpdateRequest $request)
-    {
-        try {
-            $result = $this->setting->storageSettingUpdate($request);
-            return back()->with('success', ___('alert.storage_settings_updated_successfully'));
-        } catch (\Throwable $th) {
-            return back()->with('danger', ___('alert.something_went_wrong_please_try_again'));
-        }
-    }
-    // Storage setting start
-
-    // Recaptcha setting start
-    public function recaptchaSetting()
-    {
-        $data['title'] = ___('common.recaptcha_settings');
-        $data['data']  = $this->setting->getAll();
-        return view('backend.admin.settings.recaptcha-settings', compact('data'));
-    }
-
-    public function updateRecaptchaSetting(SettingStoreRequest $request)
-    {
-        // return $request;
-        $result = $this->setting->updateRecaptchaSetting($request);
-        // dd($request);
-        if ($result) {
-            return redirect()->back()->with('success', ___('alert.recaptcha_settings_updated_successfully'));
-        }
-        return redirect()->back()->with('danger', ___('alert.something_went_wrong_please_try_again'));
-    }
-    // Recaptcha setting end
-
     // mail settings start
     public function mailSetting()
     {

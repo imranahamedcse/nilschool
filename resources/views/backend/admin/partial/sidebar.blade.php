@@ -8,69 +8,68 @@
         <li>
             <a href="{{ route('dashboard') }}">
                 <i class="fa-solid fa-school"></i>
-                <span class="link-name">{{ ___('common.dashboard') }}</span>
+                <span class="link-name">{{ ___('menu.Dashboard') }}</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a href="{{ route('dashboard') }}" class="link-name">{{ ___('common.dashboard') }}</a></li>
+                <li><a href="{{ route('dashboard') }}" class="link-name">{{ ___('menu.Dashboard') }}</a></li>
             </ul>
         </li>
         <!-- Dashboard end -->
-        
-        {{-- Student info --}}
+
+        <!-- Student info -->
         @if (hasPermission('student_read') ||
                 hasPermission('student_category_read') ||
                 hasPermission('promote_students_read') ||
                 hasPermission('disabled_students_read') ||
                 hasPermission('admission_read') ||
                 hasPermission('parent_read'))
-            <li class="{{ set_menu(['online-admissions*', 'student*', 'student/category*','promote/students*','disabled/students*','parent*']) }}">
+            <li
+                class="{{ set_menu(['online-admissions*', 'student*', 'student/category*', 'promote/students*', 'disabled/students*', 'parent*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-graduation-cap"></i>
-                        <span class="link-name">{{ ___('settings.student_info') }}</span>
+                        <span class="link-name">{{ ___('menu.Student info') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('admission_read'))
                         <li class="{{ set_menu(['online-admissions*']) }}">
-                            <a href="{{ route('online-admissions.index') }}" class="parent-item-content">{{ ___('settings.Online admissions') }}</a>
+                            <a href="{{ route('online-admissions.index') }}"
+                                class="parent-item-content">{{ ___('menu.Online admissions') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('student_read'))
                         <li class="{{ set_menu(['student', 'student/create', 'student/edit']) }}">
-                            <a href="{{ route('student.index') }}">{{ ___('settings.Students') }}</a>
+                            <a href="{{ route('student.index') }}">{{ ___('menu.Students') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('student_category_read'))
                         <li class="{{ set_menu(['student/category*']) }}">
-                            <a
-                                href="{{ route('student_category.index') }}">{{ ___('student_info.Categories') }}</a>
+                            <a href="{{ route('student_category.index') }}">{{ ___('menu.Categories') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('promote_students_read'))
                         <li class="{{ set_menu(['promote/students*']) }}">
-                            <a
-                                href="{{ route('promote_students.index') }}">{{ ___('student_info.Promote students') }}</a>
+                            <a href="{{ route('promote_students.index') }}">{{ ___('menu.Promote students') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('disabled_students_read'))
                         <li class="{{ set_menu(['disabled/students*']) }}">
-                            <a
-                                href="{{ route('disabled_students.index') }}">{{ ___('student_info.Disabled students') }}</a>
+                            <a href="{{ route('disabled_students.index') }}">{{ ___('menu.Disabled students') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('parent_read'))
                         <li class="{{ set_menu(['parent*']) }}">
-                            <a href="{{ route('parent.index') }}">{{ ___('student_info.Guardian') }}</a>
+                            <a href="{{ route('parent.index') }}">{{ ___('menu.Guardian') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        {{-- Student info end --}}
+        <!-- Student info end -->
 
-        {{-- Start Academic --}}
+        <!-- Start Academic -->
         @if (hasPermission('classes_read') ||
                 hasPermission('section_read') ||
                 hasPermission('shift_read') ||
@@ -78,146 +77,108 @@
                 hasPermission('subject_read') ||
                 hasPermission('subject_assign_read') ||
                 hasPermission('time_schedule_read') ||
-                hasPermission('class_room_read'))
-            <li class="{{ set_menu(['classes*','section*','shift*','class-setup*','subject*','assign-subject*','time/schedule*','class-room*']) }}">
+                hasPermission('class_room_read') ||
+                hasPermission('class_routine_read') ||
+                hasPermission('attendance_read'))
+            <li
+                class="{{ set_menu(['classes*', 'section*', 'shift*', 'class-setup*', 'subject*', 'assign-subject*', 'time/schedule*', 'class-room*', 'class-routine*', 'attendance*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-house-flag"></i>
-                        <span class="link-name">{{ ___('settings.academic') }}</span>
+                        <span class="link-name">{{ ___('menu.Academic') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    @if (hasPermission('classes_read'))
-                        <li class="{{ set_menu(['classes*']) }}">
-                            <a href="{{ route('classes.index') }}">{{ ___('settings.class') }}</a>
+
+                    @if (hasPermission('time_schedule_read'))
+                        <li class="{{ set_menu(['time/schedule*']) }}">
+                            <a href="{{ route('time_schedule.index') }}">{{ ___('menu.Time schedule') }}</a>
                         </li>
                     @endif
-                    @if (hasPermission('section_read'))
-                        <li class="{{ set_menu(['section*']) }}">
-                            <a href="{{ route('section.index') }}">{{ ___('settings.section') }}</a>
+                    @if (hasPermission('class_room_read'))
+                        <li class="{{ set_menu(['class-room*']) }}">
+                            <a href="{{ route('class-room.index') }}">{{ ___('menu.Room') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('shift_read'))
                         <li class="{{ set_menu(['shift*']) }}">
-                            <a href="{{ route('shift.index') }}">{{ ___('settings.shift') }}</a>
+                            <a href="{{ route('shift.index') }}">{{ ___('menu.Shift') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('section_read'))
+                        <li class="{{ set_menu(['section*']) }}">
+                            <a href="{{ route('section.index') }}">{{ ___('menu.Section') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('classes_read'))
+                        <li class="{{ set_menu(['classes*']) }}">
+                            <a href="{{ route('classes.index') }}">{{ ___('menu.Class') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('class_setup_read'))
                         <li class="{{ set_menu(['class-setup*']) }}">
-                            <a href="{{ route('class-setup.index') }}">{{ ___('settings.class_setup') }}</a>
+                            <a href="{{ route('class-setup.index') }}">{{ ___('menu.Class setup') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('subject_read'))
                         <li class="{{ set_menu(['subject*']) }}">
-                            <a href="{{ route('subject.index') }}">{{ ___('settings.subject') }}</a>
+                            <a href="{{ route('subject.index') }}">{{ ___('menu.Subject') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('subject_assign_read'))
                         <li class="{{ set_menu(['assign-subject*']) }}">
-                            <a href="{{ route('assign-subject.index') }}">{{ ___('settings.subject_assign') }}</a>
+                            <a href="{{ route('assign-subject.index') }}">{{ ___('menu.Subject assign') }}</a>
                         </li>
                     @endif
-                    @if (hasPermission('time_schedule_read'))
-                        <li class="{{ set_menu(['time/schedule*']) }}">
-                            <a href="{{ route('time_schedule.index') }}">{{ ___('academic.time_schedule') }}</a>
-                        </li>
-                    @endif
-
-                    @if (hasPermission('class_room_read'))
-                        <li class="{{ set_menu(['class-room*']) }}">
-                            <a href="{{ route('class-room.index') }}">{{ ___('settings.class_room') }}</a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        @endif
-        {{-- End Academic --}}
-
-        {{-- start routines --}}
-        @if (hasPermission('class_routine_read'))
-            <li class="{{ set_menu(['class-routine*', 'exam-routine*']) }}">
-                <div class="icon-link">
-                    <a class="parent-item-content has-arrow">
-                        <i class="fa-solid fa-map"></i>
-                        <span class="link-name">{{ ___('settings.Routines') }}</span>
-                    </a>
-                    <i class="fa-solid fa-angle-down arrow"></i>
-                </div>
-                <ul class="sub-menu">
                     @if (hasPermission('class_routine_read'))
                         <li class="{{ set_menu(['class-routine*']) }}">
-                            <a href="{{ route('class-routine.index') }}">{{ ___('settings.Class routine') }}</a>
+                            <a href="{{ route('class-routine.index') }}">{{ ___('menu.Class routine') }}</a>
                         </li>
                     @endif
-                    @if (hasPermission('exam_routine_read'))
-                        <li class="{{ set_menu(['exam-routine*']) }}">
-                            <a href="{{ route('exam-routine.index') }}">{{ ___('settings.Exam routine') }}</a>
+                    @if (hasPermission('attendance_read'))
+                        <li class="{{ set_menu(['attendance.index', 'attendance.search']) }}">
+                            <a href="{{ route('attendance.index') }}">{{ ___('menu.Attendance') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        {{-- End routines --}}
+        <!-- End Academic -->
 
-        {{-- start class room --}}
+
+        <!-- start class room -->
         @if (hasPermission('homework_read') || hasPermission('assignment_read') || hasPermission('post_read'))
-            <li class="{{ set_menu(['homework*','assignment*','post*']) }}">
+            <li class="{{ set_menu(['homework*', 'assignment*', 'post*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-map"></i>
-                        <span class="link-name">{{ ___('settings.Class Room') }}</span>
+                        <span class="link-name">{{ ___('menu.Class Room') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('homework_read'))
                         <li class="{{ set_menu(['homework*']) }}">
-                            <a href="{{ route('homework.index') }}">{{ ___('settings.Homework') }}</a>
+                            <a href="{{ route('homework.index') }}">{{ ___('menu.Homework') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('assignment_read'))
                         <li class="{{ set_menu(['assignment*']) }}">
-                            <a href="{{ route('assignment.index') }}">{{ ___('settings.Assignment') }}</a>
+                            <a href="{{ route('assignment.index') }}">{{ ___('menu.Assignment') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('post_read'))
                         <li class="{{ set_menu(['post*']) }}">
-                            <a href="{{ route('post.index') }}">{{ ___('settings.Post') }}</a>
+                            <a href="{{ route('post.index') }}">{{ ___('menu.Post') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        {{-- End class room --}}
+        <!-- End class room -->
 
-        {{-- Start Attendance --}}
-        @if (hasPermission('attendance_read') || hasPermission('report_attendance_read'))
-            <li class="{{ set_menu(['attendance*']) }}">
-                <div class="icon-link">
-                    <a class="parent-item-content has-arrow">
-                        <i class="fa-solid fa-arrow-up-right-dots"></i>
-                        <span class="link-name">{{ ___('settings.Attendance') }}</span>
-                    </a>
-                    <i class="fa-solid fa-angle-down arrow"></i>
-                </div>
-                <ul class="sub-menu">
-                    @if (hasPermission('attendance_read'))
-                        <li class="{{ set_menu(['attendance.index', 'attendance.search']) }}">
-                            <a href="{{ route('attendance.index') }}">{{ ___('settings.Attendance') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('report_attendance_read'))
-                        <li class="{{ set_menu(['attendance/report*']) }}">
-                            <a href="{{ route('attendance.report') }}">{{ ___('settings.Attendance report') }}</a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        @endif
-        {{-- End Attendance --}}
-
-        {{-- Start Fees --}}
+        <!-- Start Fees -->
         @if (hasPermission('fees_group_read') ||
                 hasPermission('fees_type_read') ||
                 hasPermission('fees_master_read') ||
@@ -227,116 +188,126 @@
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-sack-dollar"></i>
-                        <span class="link-name">{{ ___('settings.fees') }}</span>
+                        <span class="link-name">{{ ___('menu.Fees') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('fees_group_read'))
                         <li class="{{ set_menu(['fees-group*']) }}">
-                            <a href="{{ route('fees-group.index') }}">{{ ___('settings.group') }}</a>
+                            <a href="{{ route('fees-group.index') }}">{{ ___('menu.Group') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('fees_type_read'))
                         <li class="{{ set_menu(['fees-type*']) }}">
-                            <a href="{{ route('fees-type.index') }}">{{ ___('settings.type') }}</a>
+                            <a href="{{ route('fees-type.index') }}">{{ ___('menu.Type') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('fees_master_read'))
                         <li class="{{ set_menu(['fees-master*']) }}">
-                            <a href="{{ route('fees-master.index') }}">{{ ___('settings.master') }}</a>
+                            <a href="{{ route('fees-master.index') }}">{{ ___('menu.Master') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('fees_assign_read'))
                         <li class="{{ set_menu(['fees-assign*']) }}">
-                            <a href="{{ route('fees-assign.index') }}">{{ ___('settings.assign') }}</a>
+                            <a href="{{ route('fees-assign.index') }}">{{ ___('menu.Assign') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('fees_collect_read'))
                         <li class="{{ set_menu(['fees-collect*']) }}">
-                            <a href="{{ route('fees-collect.index') }}">{{ ___('settings.collect') }}</a>
+                            <a href="{{ route('fees-collect.index') }}">{{ ___('menu.Collect') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        {{-- End Fees --}}
+        <!-- End Fees -->
 
-        {{-- Start exam --}}
+        <!-- Start exam -->
         @if (hasPermission('exam_type_read') ||
                 hasPermission('marks_grade_read') ||
                 hasPermission('exam_assign_read') ||
                 hasPermission('marks_register_read') ||
-                hasPermission('exam_setting_read'))
+                hasPermission('exam_setting_read') ||
+                hasPermission('exam_routine_read'))
             <li
-                class="{{ set_menu(['exam-type*', 'marks-grade*', 'exam-assign*', 'marks-register*', 'examination-settings*']) }}">
+                class="{{ set_menu(['exam-type*', 'marks-grade*', 'exam-assign*', 'marks-register*', 'examination-settings*', 'exam-routine*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-book-open-reader"></i>
-                        <span class="link-name">{{ ___('settings.examination') }}</span>
+                        <span class="link-name">{{ ___('menu.Examination') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('exam_type_read'))
                         <li class="{{ set_menu(['exam-type*']) }}">
-                            <a href="{{ route('exam-type.index') }}">{{ ___('settings.type') }}</a>
+                            <a href="{{ route('exam-type.index') }}">{{ ___('menu.Type') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('marks_grade_read'))
                         <li class="{{ set_menu(['marks-grade*']) }}">
-                            <a href="{{ route('marks-grade.index') }}">{{ ___('examination.marks_grade') }}</a>
+                            <a href="{{ route('marks-grade.index') }}">{{ ___('menu.Marks / Grade') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('exam_assign_read'))
                         <li class="{{ set_menu(['exam-assign*']) }}">
-                            <a href="{{ route('exam-assign.index') }}">{{ ___('examination.exam_assign') }}</a>
+                            <a href="{{ route('exam-assign.index') }}">{{ ___('menu.Assign') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('marks_register_read'))
                         <li class="{{ set_menu(['marks-register*']) }}">
-                            <a href="{{ route('marks-register.index') }}">{{ ___('examination.marks_register') }}</a>
+                            <a href="{{ route('marks-register.index') }}">{{ ___('menu.Marks register') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('exam_setting_read'))
                         <li class="{{ set_menu(['examination-settings*']) }}">
-                            <a href="{{ route('examination-settings.index') }}">{{ ___('settings.settings') }}</a>
+                            <a href="{{ route('examination-settings.index') }}">{{ ___('menu.Settings') }}</a>
+                        </li>
+                    @endif
+
+                    @if (hasPermission('exam_routine_read'))
+                        <li class="{{ set_menu(['exam-routine*']) }}">
+                            <a href="{{ route('exam-routine.index') }}">{{ ___('menu.Exam routine') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        {{-- End exam --}}
+        <!-- End exam -->
 
         <!-- Online Examination start -->
-        @if (hasPermission('question_group_read'))
+        @if (hasPermission('question_group_read') ||
+                hasPermission('question_bank_read') ||
+                hasPermission('online_exam_read') ||
+                hasPermission('online_exam_type_read'))
             <li class="{{ set_menu(['question-group*', 'question-bank*', 'online-exam*', 'online-exam-type*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-laptop-file"></i>
-                        <span class="link-name">{{ ___('online-examination.online_examination') }}</span>
+                        <span class="link-name">{{ ___('menu.Online examination') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    @if (hasPermission('question_group_read') ||
-                            hasPermission('question_bank_read') ||
-                            hasPermission('online_exam_read') ||
-                            hasPermission('online_exam_type_read'))
+                    @if (hasPermission('online_exam_type_read'))
                         <li class="{{ set_menu(['online-exam-type*']) }}">
-                            <a href="{{ route('online-exam-type.index') }}">{{ ___('settings.type') }}</a>
+                            <a href="{{ route('online-exam-type.index') }}">{{ ___('menu.Type') }}</a>
                         </li>
+                    @endif
+                    @if (hasPermission('question_group_read'))
                         <li class="{{ set_menu(['question-group*']) }}">
-                            <a
-                                href="{{ route('question-group.index') }}">{{ ___('online-examination.question_group') }}</a>
+                            <a href="{{ route('question-group.index') }}">{{ ___('menu.Question group') }}</a>
                         </li>
+                    @endif
+                    @if (hasPermission('question_bank_read'))
                         <li class="{{ set_menu(['question-bank*']) }}">
-                            <a
-                                href="{{ route('question-bank.index') }}">{{ ___('online-examination.question_bank') }}</a>
+                            <a href="{{ route('question-bank.index') }}">{{ ___('menu.Question bank') }}</a>
                         </li>
+                    @endif
+                    @if (hasPermission('online_exam_read'))
                         <li class="{{ set_menu(['online-exam', 'online-exam/create', 'online-exam/edit*']) }}">
-                            <a
-                                href="{{ route('online-exam.index') }}">{{ ___('online-examination.online_exam') }}</a>
+                            <a href="{{ route('online-exam.index') }}">{{ ___('menu.Exam') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -345,35 +316,43 @@
         <!-- Online Examination end -->
 
         <!-- Library start -->
-        @if (hasPermission('book_category_read'))
+        @if (hasPermission('book_category_read') ||
+                hasPermission('book_read') ||
+                hasPermission('member_category_read') ||
+                hasPermission('member_read') ||
+                hasPermission('issue_book_read'))
             <li class="{{ set_menu(['book-category*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-swatchbook"></i>
-                        <span class="link-name">{{ ___('settings.library') }}</span>
+                        <span class="link-name">{{ ___('menu.Library') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    @if (hasPermission('book_category_read') ||
-                            hasPermission('book_read') ||
-                            hasPermission('member_read') ||
-                            hasPermission('issue_book_read'))
+                    @if (hasPermission('book_category_read'))
                         <li class="{{ set_menu(['book-category*']) }}">
-                            <a href="{{ route('book-category.index') }}">{{ ___('settings.book_category') }}</a>
+                            <a href="{{ route('book-category.index') }}">{{ ___('menu.Book category') }}</a>
                         </li>
+                    @endif
+                    @if (hasPermission('book_read'))
                         <li class="{{ set_menu(['book', 'book/create', 'book/edit*']) }}">
-                            <a href="{{ route('book.index') }}">{{ ___('settings.book') }}</a>
+                            <a href="{{ route('book.index') }}">{{ ___('menu.Book') }}</a>
                         </li>
+                    @endif
+                    @if (hasPermission('member_category_read'))
                         <li class="{{ set_menu(['member-category*']) }}">
-                            <a
-                                href="{{ route('member-category.index') }}">{{ ___('settings.member_category') }}</a>
+                            <a href="{{ route('member-category.index') }}">{{ ___('menu.Member category') }}</a>
                         </li>
+                    @endif
+                    @if (hasPermission('member_read'))
                         <li class="{{ set_menu(['member', 'member/create', 'member/edit*']) }}">
-                            <a href="{{ route('member.index') }}">{{ ___('settings.member') }}</a>
+                            <a href="{{ route('member.index') }}">{{ ___('menu.Member') }}</a>
                         </li>
+                    @endif
+                    @if (hasPermission('issue_book_read'))
                         <li class="{{ set_menu(['issue-book*']) }}">
-                            <a href="{{ route('issue-book.index') }}">{{ ___('settings.issue_book') }}</a>
+                            <a href="{{ route('issue-book.index') }}">{{ ___('menu.Issue book') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -381,122 +360,96 @@
         @endif
         <!-- Library end -->
 
-        {{-- Start Transactions --}}
+        <!-- Start Transactions -->
         @if (hasPermission('account_head_read') || hasPermission('income_read') || hasPermission('expense_read'))
             <li class="{{ set_menu(['accounts*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-money-bill-transfer"></i>
-                        <span class="link-name">{{ ___('account.transactions') }}</span>
+                        <span class="link-name">{{ ___('menu.Transactions') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('account_head_read'))
                         <li class="{{ set_menu(['account_head*']) }}">
-                            <a href="{{ route('account_head.index') }}">{{ ___('account.account_head') }}</a>
+                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Account head') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('income_read'))
                         <li class="{{ set_menu(['income*']) }}">
-                            <a href="{{ route('income.index') }}">{{ ___('account.income') }}</a>
+                            <a href="{{ route('income.index') }}">{{ ___('menu.Income') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('expense_read'))
                         <li class="{{ set_menu(['expense*']) }}">
-                            <a href="{{ route('expense.index') }}">{{ ___('account.expense') }}</a>
+                            <a href="{{ route('expense.index') }}">{{ ___('menu.Expense') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        {{-- End Transactions --}}
+        <!-- End Transactions -->
 
-        {{-- Report start --}}
+        <!-- Report start -->
         @if (hasPermission('report_marksheet_read') ||
                 hasPermission('report_merit_list_read') ||
                 hasPermission('report_progress_card_read') ||
                 hasPermission('report_due_fees_read') ||
                 hasPermission('report_fees_collection_read') ||
                 hasPermission('report_transaction_read') ||
-                hasPermission('class_routine_read') ||
-                hasPermission('exam_routine_read') ||
                 hasPermission('report_attendance_read'))
-            <li class="{{ set_menu(['report-*']) }}">
+            <li class="{{ set_menu(['report-*', 'attendance/report*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-file-contract"></i>
-                        <span class="link-name">{{ ___('settings.report') }}</span>
+                        <span class="link-name">{{ ___('menu.Report') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('report_marksheet_read'))
                         <li class="{{ set_menu(['report-marksheet*']) }}">
-                            <a href="{{ route('report-marksheet.index') }}">{{ ___('settings.marksheet') }}</a>
+                            <a href="{{ route('report-marksheet.index') }}">{{ ___('menu.Marksheet') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_merit_list_read'))
                         <li class="{{ set_menu(['report-merit-list*']) }}">
-                            <a href="{{ route('report-merit-list.index') }}">{{ ___('settings.merit_list') }}</a>
+                            <a href="{{ route('report-merit-list.index') }}">{{ ___('menu.Merit list') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_progress_card_read'))
                         <li class="{{ set_menu(['report-progress-card*']) }}">
-                            <a
-                                href="{{ route('report-progress-card.index') }}">{{ ___('settings.progress_card') }}</a>
+                            <a href="{{ route('report-progress-card.index') }}">{{ ___('menu.Progress card') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_due_fees_read'))
                         <li class="{{ set_menu(['report-due-fees*']) }}">
-                            <a href="{{ route('report-due-fees.index') }}">{{ ___('settings.due_fees') }}</a>
+                            <a href="{{ route('report-due-fees.index') }}">{{ ___('menu.Due fees') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_fees_collection_read'))
                         <li class="{{ set_menu(['report-fees-collection*']) }}">
                             <a
-                                href="{{ route('report-fees-collection.index') }}">{{ ___('settings.fees_collection') }}</a>
+                                href="{{ route('report-fees-collection.index') }}">{{ ___('menu.Fees collection') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_transaction_read'))
                         <li class="{{ set_menu(['report-account*']) }}">
-                            <a href="{{ route('report-account.index') }}">{{ ___('settings.transactions') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('class_routine_read'))
-                        <li class="{{ set_menu(['report-class-routine*']) }}">
-                            <a
-                                href="{{ route('report-class-routine.index') }}">{{ ___('settings.class_routine') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('exam_routine_read'))
-                        <li class="{{ set_menu(['report-exam-routine*']) }}">
-                            <a
-                                href="{{ route('report-exam-routine.index') }}">{{ ___('settings.exam_routine') }}</a>
+                            <a href="{{ route('report-account.index') }}">{{ ___('menu.Transactions') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_attendance_read'))
-                        <li class="{{ set_menu(['report-attendance/report*']) }}">
-                            <a href="{{ route('report-attendance.report') }}">{{ ___('settings.attendance') }}</a>
+                        <li class="{{ set_menu(['attendance/report*']) }}">
+                            <a href="{{ route('attendance.report') }}">{{ ___('menu.Attendance report') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        {{-- Report end --}}
+        <!-- Report end -->
 
-        <!-- Language layout start -->
-        @if (hasPermission('language_read'))
-            <li class="{{ set_menu(['languages*']) }}">
-                <a href="{{ route('languages.index') }}" class="parent-item-content">
-                    <i class="fa-solid fa-language"></i>
-                    <span class="link-name">{{ ___('common.language') }}</span>
-                </a>
-            </li>
-        @endif
-        <!-- Language layout end -->
-
-        <!-- Staff start -->
+        <!-- User start -->
         @if (hasPermission('role_read') ||
                 hasPermission('user_read') ||
                 hasPermission('department_read') ||
@@ -505,35 +458,35 @@
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-users"></i>
-                        <span class="link-name">{{ ___('settings.staff_manage') }}</span>
+                        <span class="link-name">{{ ___('menu.User manage') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('role_read'))
                         <li class="{{ set_menu(['roles*']) }}">
-                            <a href="{{ route('roles.index') }}">{{ ___('users_roles.roles') }}</a>
+                            <a href="{{ route('roles.index') }}">{{ ___('menu.Roles') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('user_read'))
                         <li class="{{ set_menu(['users*']) }}">
-                            <a href="{{ route('users.index') }}">{{ ___('settings.staff') }}</a>
+                            <a href="{{ route('users.index') }}">{{ ___('menu.Staff') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('department_read'))
                         <li class="{{ set_menu(['department', 'department/create', 'department/edit*']) }}">
-                            <a href="{{ route('department.index') }}">{{ ___('staff.department') }}</a>
+                            <a href="{{ route('department.index') }}">{{ ___('menu.Department') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('designation_read'))
                         <li class="{{ set_menu(['designation*']) }}">
-                            <a href="{{ route('designation.index') }}">{{ ___('staff.designation') }}</a>
+                            <a href="{{ route('designation.index') }}">{{ ___('menu.Designation') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        <!-- Staff end -->
+        <!-- User end -->
 
         <!-- Website setup start -->
         @if (hasPermission('page_sections_read') ||
@@ -545,13 +498,15 @@
                 hasPermission('news_read') ||
                 hasPermission('event_read') ||
                 hasPermission('subscribe_read') ||
-                hasPermission('contact_message_read'))
+                hasPermission('contact_message_read') ||
+                hasPermission('gallery_category_read') ||
+                hasPermission('gallery_read'))
             <li
-                class="{{ set_menu(['page-sections*', 'slider*', 'about*', 'counter*', 'contact-info*', 'department-contact*', 'admin-news*', 'event*']) }}">
+                class="{{ set_menu(['page-sections*', 'slider*', 'about*', 'counter*', 'contact-info*', 'department-contact*', 'admin-news*', 'event*', 'gallery-category*', 'gallery/*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
-                        <span class="link-name">{{ ___('settings.website_setup') }}</span>
+                        <span class="link-name">{{ ___('menu.Website setup') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
@@ -559,55 +514,64 @@
                     @if (hasPermission('subscribe_read'))
                         <li class="{{ set_menu(['subscribe*']) }}">
                             <a href="{{ route('subscribe.index') }}"
-                                class="parent-item-content">{{ ___('settings.subscribe') }}</a>
+                                class="parent-item-content">{{ ___('menu.Subscribe') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('contact_message_read'))
                         <li class="{{ set_menu(['contact-message*']) }}">
                             <a href="{{ route('contact-message.index') }}"
-                                class="parent-item-content">{{ ___('settings.contact_message') }}</a>
+                                class="parent-item-content">{{ ___('menu.Contact message') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('page_sections_read'))
                         <li class="{{ set_menu(['page-sections*']) }}">
-                            <a href="{{ route('sections.index') }}">{{ ___('settings.sections') }}</a>
+                            <a href="{{ route('sections.index') }}">{{ ___('menu.Sections') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('slider_read'))
                         <li class="{{ set_menu(['slider*']) }}">
-                            <a href="{{ route('slider.index') }}">{{ ___('settings.slider') }}</a>
+                            <a href="{{ route('slider.index') }}">{{ ___('menu.Slider') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('about_read'))
                         <li class="{{ set_menu(['about*']) }}">
-                            <a href="{{ route('about.index') }}">{{ ___('settings.about') }}</a>
+                            <a href="{{ route('about.index') }}">{{ ___('menu.About') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('counter_read'))
                         <li class="{{ set_menu(['counter*']) }}">
-                            <a href="{{ route('counter.index') }}">{{ ___('settings.counter') }}</a>
+                            <a href="{{ route('counter.index') }}">{{ ___('menu.Counter') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('contact_info_read'))
                         <li class="{{ set_menu(['contact-info*']) }}">
-                            <a
-                                href="{{ route('contact-info.index') }}">{{ ___('settings.contact_information') }}</a>
+                            <a href="{{ route('contact-info.index') }}">{{ ___('menu.Contact info') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('dep_contact_read'))
                         <li class="{{ set_menu(['department-contact*']) }}">
                             <a
-                                href="{{ route('department-contact.index') }}">{{ ___('settings.department_contact') }}</a>
+                                href="{{ route('department-contact.index') }}">{{ ___('menu.Department contact') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('news_read'))
                         <li class="{{ set_menu(['admin-news*']) }}">
-                            <a href="{{ route('news.index') }}">{{ ___('settings.news') }}</a>
+                            <a href="{{ route('news.index') }}">{{ ___('menu.News') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('event_read'))
                         <li class="{{ set_menu(['event*']) }}">
-                            <a href="{{ route('event.index') }}">{{ ___('settings.event') }}</a>
+                            <a href="{{ route('event.index') }}">{{ ___('menu.Event') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('gallery_category_read'))
+                        <li class="{{ set_menu(['gallery-category*']) }}">
+                            <a href="{{ route('gallery-category.index') }}">{{ ___('menu.Gallery category') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('gallery_read'))
+                        <li class="{{ set_menu(['gallery', 'gallery/*']) }}">
+                            <a href="{{ route('gallery.index') }}">{{ ___('menu.Images') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -615,36 +579,9 @@
         @endif
         <!-- Website setup end -->
 
-        <!-- Gallery start -->
-        @if (hasPermission('gallery_category_read') || hasPermission('gallery_read'))
-            <li class="{{ set_menu(['gallery-category*', 'gallery/*']) }}">
-                <div class="icon-link">
-                    <a class="parent-item-content has-arrow">
-                        <i class="fa-solid fa-photo-film"></i>
-                        <span class="link-name">{{ ___('settings.gallery') }}</span>
-                    </a>
-                    <i class="fa-solid fa-angle-down arrow"></i>
-                </div>
-                <ul class="sub-menu">
-                    @if (hasPermission('gallery_category_read'))
-                        <li class="{{ set_menu(['gallery-category*']) }}">
-                            <a
-                                href="{{ route('gallery-category.index') }}">{{ ___('settings.gallery_category') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('gallery_read'))
-                        <li class="{{ set_menu(['gallery', 'gallery/*']) }}">
-                            <a href="{{ route('gallery.index') }}">{{ ___('settings.images') }}</a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
-        @endif
-        <!-- Gallery end -->
-
-        <!-- Settings layout start -->
-        @if (hasPermission('general_settings_read') ||
-                hasPermission('storage_settings_read') ||
+        <!-- Settings start -->
+        @if (hasPermission('language_read') ||
+                hasPermission('general_settings_read') ||
                 hasPermission('task_schedules_read') ||
                 hasPermission('software_update_read') ||
                 hasPermission('recaptcha_settings_read') ||
@@ -653,73 +590,66 @@
                 hasPermission('religion_read') ||
                 hasPermission('blood_group_read') ||
                 hasPermission('session_read'))
-            <li class="{{ set_menu(['setting*', 'genders*', 'religions*', 'blood-groups*', 'sessions*']) }}">
+            <li
+                class="{{ set_menu(['languages*', 'setting*', 'genders*', 'religions*', 'blood-groups*', 'sessions*']) }}">
                 <div class="icon-link">
                     <a href="#" class="parent-item-content has-arrow">
                         <i class="fa-solid fa-gear"></i>
-                        <span class="link-name">{{ ___('common.settings') }}</span>
+                        <span class="link-name">{{ ___('menu.Settings') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
+
+                    @if (hasPermission('language_read'))
+                        <li class="{{ set_menu(['languages*']) }}">
+                            <a href="{{ route('languages.index') }}">{{ ___('menu.Language') }}</a>
+                        </li>
+                    @endif
                     @if (hasPermission('general_settings_read'))
                         <li class="{{ set_menu(['settings.general-settings']) }}">
                             <a
-                                href="{{ route('settings.general-settings') }}">{{ ___('settings.general_settings') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('storage_settings_read'))
-                        <li class="{{ set_menu(['settings.storagesetting']) }}">
-                            <a
-                                href="{{ route('settings.storagesetting') }}">{{ ___('settings.storage_settings') }}</a>
+                                href="{{ route('settings.general-settings') }}">{{ ___('menu.General settings') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('task_schedules_read'))
                         <li class="{{ set_menu(['settings.task-schedulers']) }}">
-                            <a
-                                href="{{ route('settings.task-schedulers') }}">{{ ___('settings.task_schedules') }}</a>
+                            <a href="{{ route('settings.task-schedulers') }}">{{ ___('menu.Task schedules') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('software_update_read'))
                         <li class="{{ set_menu(['settings.software-update']) }}">
-                            <a
-                                href="{{ route('settings.software-update') }}">{{ ___('settings.software_update') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('recaptcha_settings_read'))
-                        <li class="{{ set_menu(['settings.recaptcha-setting']) }}">
-                            <a
-                                href="{{ route('settings.recaptcha-setting') }}">{{ ___('settings.recaptcha_settings') }}</a>
+                            <a href="{{ route('settings.software-update') }}">{{ ___('menu.Software update') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('email_settings_read'))
                         <li class="{{ set_menu(['settings.mail-setting']) }}">
-                            <a href="{{ route('settings.mail-setting') }}">{{ ___('settings.email_settings') }}</a>
+                            <a href="{{ route('settings.mail-setting') }}">{{ ___('menu.Email settings') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('gender_read'))
                         <li class="{{ set_menu(['genders*']) }}">
-                            <a href="{{ route('genders.index') }}">{{ ___('settings.genders') }}</a>
+                            <a href="{{ route('genders.index') }}">{{ ___('menu.Genders') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('religion_read'))
                         <li class="{{ set_menu(['religions*']) }}">
-                            <a href="{{ route('religions.index') }}">{{ ___('settings.religions') }}</a>
+                            <a href="{{ route('religions.index') }}">{{ ___('menu.Religions') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('blood_group_read'))
                         <li class="{{ set_menu(['blood-groups*']) }}">
-                            <a href="{{ route('blood-groups.index') }}">{{ ___('settings.blood_groups') }}</a>
+                            <a href="{{ route('blood-groups.index') }}">{{ ___('menu.Blood groups') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('session_read'))
                         <li class="{{ set_menu(['sessions*']) }}">
-                            <a href="{{ route('sessions.index') }}">{{ ___('settings.sessions') }}</a>
+                            <a href="{{ route('sessions.index') }}">{{ ___('menu.Sessions') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        <!-- Settings layout end -->
+        <!-- Settings end -->
     </ul>
 </div>
