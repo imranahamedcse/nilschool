@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
-        Route::group(['middleware' => ['auth.routes']], function () {
+        Route::group(['middleware' => ['auth.routes'], 'prefix'=>'website-setup'], function () {
 
             Route::controller(SectionsController::class)->prefix('page-sections')->group(function () {
                 Route::get('/',                         'index')->name('sections.index')->middleware('PermissionCheck:page_sections_read');
@@ -26,7 +26,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/add-choose-us',            'addChooseUs');
                 Route::get('/add-academic-curriculum',  'addAcademicCurriculum');
             });
-
             
             Route::controller(AboutController::class)->prefix('abouts')->group(function () {
                 Route::get('/',                         'index')->name('about.index')->middleware('PermissionCheck:about_read');
@@ -36,7 +35,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',              'update')->name('about.update')->middleware('PermissionCheck:about_update', 'DemoCheck');
                 Route::delete('/delete/{id}',           'delete')->name('about.delete')->middleware('PermissionCheck:about_delete', 'DemoCheck');
             });
-
 
             Route::controller(SliderController::class)->prefix('slider')->group(function () {
                 Route::get('/',                         'index')->name('slider.index')->middleware('PermissionCheck:slider_read');
@@ -113,6 +111,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
             Route::controller(SubscribeController::class)->prefix('subscribe')->group(function () {
                 Route::get('/',                         'index')->name('subscribe.index')->middleware('PermissionCheck:subscribe_read');
             });
+
             Route::controller(ContactMessageController::class)->prefix('contact-message')->group(function () {
                 Route::get('/',                         'index')->name('contact-message.index')->middleware('PermissionCheck:contact_message_read');
             });

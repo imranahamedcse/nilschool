@@ -399,7 +399,7 @@
                 hasPermission('report_fees_collection_read') ||
                 hasPermission('report_transaction_read') ||
                 hasPermission('report_attendance_read'))
-            <li class="{{ set_menu(['report-*', 'attendance/report*']) }}">
+            <li class="{{ set_menu(['report*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-file-contract"></i>
@@ -440,8 +440,18 @@
                         </li>
                     @endif
                     @if (hasPermission('report_attendance_read'))
-                        <li class="{{ set_menu(['attendance/report*']) }}">
-                            <a href="{{ route('attendance.report') }}">{{ ___('menu.Attendance report') }}</a>
+                        <li class="{{ set_menu(['report/attendance*']) }}">
+                            <a href="{{ route('report-attendance.report') }}">{{ ___('menu.Attendance') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('report_class_routine_read'))
+                        <li class="{{ set_menu(['report/class-routine*']) }}">
+                            <a href="{{ route('report-class-routine.index') }}">{{ ___('menu.Class routine') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('report_exam_routine_read'))
+                        <li class="{{ set_menu(['report/exam-routine*']) }}">
+                            <a href="{{ route('report-exam-routine.index') }}">{{ ___('menu.Exam routine') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -454,11 +464,11 @@
                 hasPermission('user_read') ||
                 hasPermission('department_read') ||
                 hasPermission('designation_read'))
-            <li class="{{ set_menu(['users*', 'roles*']) }}">
+            <li class="{{ set_menu(['staff*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-users"></i>
-                        <span class="link-name">{{ ___('menu.User manage') }}</span>
+                        <span class="link-name">{{ ___('menu.Staff') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
@@ -470,7 +480,7 @@
                     @endif
                     @if (hasPermission('user_read'))
                         <li class="{{ set_menu(['users*']) }}">
-                            <a href="{{ route('users.index') }}">{{ ___('menu.Staff') }}</a>
+                            <a href="{{ route('users.index') }}">{{ ___('menu.List') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('department_read'))
@@ -502,7 +512,7 @@
                 hasPermission('gallery_category_read') ||
                 hasPermission('gallery_read'))
             <li
-                class="{{ set_menu(['page-sections*', 'slider*', 'about*', 'counter*', 'contact-info*', 'department-contact*', 'admin-news*', 'event*', 'gallery-category*', 'gallery/*']) }}">
+                class="{{ set_menu(['website-setup*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
