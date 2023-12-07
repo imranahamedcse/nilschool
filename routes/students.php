@@ -9,13 +9,10 @@ use App\Http\Controllers\StudentInfo\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
-
     Route::group(['middleware' => 'lang'], function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix'=>'students'], function () {
 
-        // auth routes
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel']], function () {
-
-            Route::controller(StudentController::class)->prefix('student')->group(function () {
+            Route::controller(StudentController::class)->prefix('list')->group(function () {
                 Route::get('/',                 'index')->name('student.index')->middleware('PermissionCheck:student_read');
                 Route::any('/search',           'search')->name('student.search')->middleware('PermissionCheck:student_read');
                 Route::get('/create',           'create')->name('student.create')->middleware('PermissionCheck:student_create');
@@ -25,14 +22,11 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::PUT('update',            'update')->name('student.update')->middleware('PermissionCheck:student_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('student.delete')->middleware('PermissionCheck:student_delete', 'DemoCheck');
 
-                Route::get('/add-new-document',          'addNewDocument');
-                Route::get('/get-students',              'getStudents');
-                // Route::get('/get-fees-collect-students', 'getFeesCollectStudents');
-                // Route::get('/get-fees-assign-students',  'getFeesAssignStudents');
-
+                Route::get('/add-new-document', 'addNewDocument');
+                Route::get('/get-students',     'getStudents');
             });
 
-            Route::controller(StudentCategoryController::class)->prefix('student/category')->group(function () {
+            Route::controller(StudentCategoryController::class)->prefix('category')->group(function () {
                 Route::get('/',                 'index')->name('student_category.index')->middleware('PermissionCheck:student_category_read');
                 Route::get('/create',           'create')->name('student_category.create')->middleware('PermissionCheck:student_category_create');
                 Route::post('/store',           'store')->name('student_category.store')->middleware('PermissionCheck:student_category_create', 'DemoCheck');
@@ -41,14 +35,15 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::delete('/delete/{id}',   'delete')->name('student_category.delete')->middleware('PermissionCheck:student_category_delete', 'DemoCheck');
             });
 
-            Route::controller(PromoteStudentController::class)->prefix('promote/students')->group(function () {
+            Route::controller(PromoteStudentController::class)->prefix('promote')->group(function () {
                 Route::get('/',                 'index')->name('promote_students.index')->middleware('PermissionCheck:promote_students_read');
                 Route::post('/search',          'search')->name('promote_students.search')->middleware('PermissionCheck:promote_students_read');
                 Route::post('/store',           'store')->name('promote_students.store')->middleware('PermissionCheck:promote_students_create', 'DemoCheck');
                 Route::get('/get-class',        'getClass');
                 Route::get('/get-sections',     'getSections');
             });
-            Route::controller(DisabledStudentController::class)->prefix('disabled/students')->group(function () {
+
+            Route::controller(DisabledStudentController::class)->prefix('disabled')->group(function () {
                 Route::get('/',                 'index')->name('disabled_students.index')->middleware('PermissionCheck:disabled_students_read');
                 Route::post('/search',          'search')->name('disabled_students.search')->middleware('PermissionCheck:disabled_students_read');
                 Route::post('/store',           'store')->name('disabled_students.store')->middleware('PermissionCheck:disabled_students_create', 'DemoCheck');
@@ -71,7 +66,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('edit/{id}',         'edit')->name('online-admissions.edit')->middleware('PermissionCheck:admission_update');
                 Route::post('/store',           'store')->name('online-admissions.store')->middleware('PermissionCheck:admission_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('online-admissions.delete')->middleware('PermissionCheck:admission_delete', 'DemoCheck');
-
             });
 
         });

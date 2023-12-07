@@ -17,7 +17,7 @@
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
 
-            <h4>{{ ___('student_info.From') }},</h4>
+            <h5 class="text-info">{{ ___('student_info.From') }}</h5>
 
             <form action="{{ route('promote_students.search') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <h4>{{ ___('student_info.To') }},</h4>
+                <h5 class="text-info">{{ ___('student_info.To') }}</h5>
                 
                 <div class="row mb-3">
                     <div class="col-md-4 mb-3">

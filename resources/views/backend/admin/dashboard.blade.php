@@ -6,7 +6,7 @@
 
 @section('content')
     
-<h1>Empty dashboard</h1>
+<!-- -->
 
 @endsection
 

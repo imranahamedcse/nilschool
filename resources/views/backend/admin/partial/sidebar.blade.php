@@ -28,40 +28,40 @@
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="fa-solid fa-graduation-cap"></i>
-                        <span class="link-name">{{ ___('menu.Student info') }}</span>
+                        <span class="link-name">{{ ___('menu.Students') }}</span>
                     </a>
                     <i class="fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    @if (hasPermission('admission_read'))
-                        <li class="{{ set_menu(['online-admissions*']) }}">
-                            <a href="{{ route('online-admissions.index') }}"
-                                class="parent-item-content">{{ ___('menu.Online admissions') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('student_read'))
-                        <li class="{{ set_menu(['student', 'student/create', 'student/edit']) }}">
-                            <a href="{{ route('student.index') }}">{{ ___('menu.Students') }}</a>
-                        </li>
-                    @endif
                     @if (hasPermission('student_category_read'))
                         <li class="{{ set_menu(['student/category*']) }}">
                             <a href="{{ route('student_category.index') }}">{{ ___('menu.Categories') }}</a>
                         </li>
                     @endif
-                    @if (hasPermission('promote_students_read'))
-                        <li class="{{ set_menu(['promote/students*']) }}">
-                            <a href="{{ route('promote_students.index') }}">{{ ___('menu.Promote students') }}</a>
+                    @if (hasPermission('student_read'))
+                        <li class="{{ set_menu(['student', 'student/create', 'student/edit']) }}">
+                            <a href="{{ route('student.index') }}">{{ ___('menu.List') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('disabled_students_read'))
                         <li class="{{ set_menu(['disabled/students*']) }}">
-                            <a href="{{ route('disabled_students.index') }}">{{ ___('menu.Disabled students') }}</a>
+                            <a href="{{ route('disabled_students.index') }}">{{ ___('menu.Inactive') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('parent_read'))
                         <li class="{{ set_menu(['parent*']) }}">
                             <a href="{{ route('parent.index') }}">{{ ___('menu.Guardian') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('admission_read'))
+                        <li class="{{ set_menu(['online-admissions*']) }}">
+                            <a href="{{ route('online-admissions.index') }}"
+                                class="parent-item-content">{{ ___('menu.Applied') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('promote_students_read'))
+                        <li class="{{ set_menu(['promote/students*']) }}">
+                            <a href="{{ route('promote_students.index') }}">{{ ___('menu.Promote') }}</a>
                         </li>
                     @endif
                 </ul>
