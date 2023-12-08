@@ -22,6 +22,7 @@
                     <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
                     <th class="purchase">{{ ___('academic.subject') }}</th>
                     <th class="purchase">{{ ___('common.document') }}</th>
+                    <th class="purchase">{{ ___('common.Assigned By') }}</th>
                     @if (hasPermission('homework_update') || hasPermission('homework_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
@@ -39,6 +40,7 @@
                                     download>{{ ___('common.download') }}</a>
                             @endif
                         </td>
+                        <td>{{ @$row->user->name }}</td>
                         @if (hasPermission('homework_update') || hasPermission('homework_delete'))
                             <td>
                                 @if (hasPermission('fees_type_update'))

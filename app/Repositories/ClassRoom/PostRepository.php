@@ -6,10 +6,12 @@ use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 use App\Interfaces\ClassRoom\PostInterface;
 use App\Models\ClassRoom\Post;
+use App\Traits\CommonHelperTrait;
 
 class PostRepository implements PostInterface
 {
     use ReturnFormatTrait;
+    use CommonHelperTrait;
 
     private $model;
 
@@ -53,9 +55,13 @@ class PostRepository implements PostInterface
         try {
             $row                   = new $this->model;
             $row->session_id       = setting('session');
-            $row->classes_id         = $request->class;
+            $row->classes_id       = $request->class;
             $row->section_id       = $request->section;
             $row->subject_id       = $request->subject;
+            $row->upload_id        = $this->UploadImageCreate($request->document, 'backend/uploads/post');
+            $row->description      = $request->description;
+            $row->status           = $request->status;
+            $row->assigned_by      = auth()->user()->id;
             $row->save();
 
             DB::commit();
@@ -63,7 +69,6 @@ class PostRepository implements PostInterface
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-
         }
     }
 
@@ -81,6 +86,9 @@ class PostRepository implements PostInterface
             $row->classes_id       = $request->class;
             $row->section_id       = $request->section;
             $row->subject_id       = $request->subject;
+            $row->upload_id        = $this->UploadImageUpdate($request->document, 'backend/uploads/post', $row->upload_id);
+            $row->description      = $request->description;
+            $row->status           = $request->status;
             $row->save();
             
             DB::commit();
@@ -96,6 +104,7 @@ class PostRepository implements PostInterface
         DB::beginTransaction();
         try {
             $row = $this->model->find($id);
+            $this->UploadImageDelete($row->upload_id);
             $row->delete();
             DB::commit();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);

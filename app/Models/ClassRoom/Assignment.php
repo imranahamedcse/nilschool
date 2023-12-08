@@ -9,6 +9,7 @@ use App\Models\Academic\Classes;
 use App\Models\Academic\Section;
 use App\Models\Academic\Subject;
 use App\Models\Upload;
+use App\Models\User;
 
 class Assignment extends Model
 {
@@ -30,5 +31,10 @@ class Assignment extends Model
     public function upload()
     {
         return $this->belongsTo(Upload::class, 'upload_id', 'id');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'assigned_by', 'id');
     }
 }

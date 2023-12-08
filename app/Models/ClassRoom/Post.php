@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Academic\Classes;
 use App\Models\Academic\Section;
 use App\Models\Academic\Subject;
+use App\Models\User;
 
 class Post extends Model
 {
@@ -24,5 +25,10 @@ class Post extends Model
     public function subject()
     {
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'assigned_by', 'id');
     }
 }

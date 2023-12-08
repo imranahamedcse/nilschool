@@ -7,7 +7,7 @@
         <!-- Dashboard start -->
         <li>
             <a class="{{ set_menu(['dashboard']) }}" href="{{ route('dashboard') }}">
-                <i class="prepend-icon fa-solid fa-school"></i>
+                <i class="prepend-icon fa-solid fa-desktop"></i>
                 <span class="link-name">{{ ___('menu.Dashboard') }}</span>
             </a>
             <ul class="sub-menu">
@@ -392,6 +392,69 @@
             </li>
         @endif
         <!-- End Transactions -->
+
+        <!-- Start Canteen -->
+        @if (hasPermission('account_head_read'))
+            <li class="{{ set_menu(['account*']) }}">
+                <div class="icon-link">
+                    <a class="parent-item-content has-arrow">
+                        <i class="prepend-icon fa-solid fa-utensils"></i>
+                        <span class="link-name">{{ ___('menu.Canteen') }}</span>
+                    </a>
+                    <i class="append-icon fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    @if (hasPermission('account_head_read'))
+                        <li class="{{ set_menu(['account/head*']) }}">
+                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+        <!-- End Canteen -->
+
+        <!-- Start Dormitory -->
+        @if (hasPermission('account_head_read'))
+            <li class="{{ set_menu(['account*']) }}">
+                <div class="icon-link">
+                    <a class="parent-item-content has-arrow">
+                        <i class="prepend-icon fa-solid fa-hotel"></i>
+                        <span class="link-name">{{ ___('menu.Dormitory') }}</span>
+                    </a>
+                    <i class="append-icon fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    @if (hasPermission('account_head_read'))
+                        <li class="{{ set_menu(['account/head*']) }}">
+                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+        <!-- End Dormitory -->
+
+        <!-- Start Transport -->
+        @if (hasPermission('account_head_read'))
+            <li class="{{ set_menu(['account*']) }}">
+                <div class="icon-link">
+                    <a class="parent-item-content has-arrow">
+                        <i class="prepend-icon fa-solid fa-bus"></i>
+                        <span class="link-name">{{ ___('menu.Transport') }}</span>
+                    </a>
+                    <i class="append-icon fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    @if (hasPermission('account_head_read'))
+                        <li class="{{ set_menu(['account/head*']) }}">
+                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+        <!-- End Transport -->
 
         <!-- Report start -->
         @if (hasPermission('report_marksheet_read') ||

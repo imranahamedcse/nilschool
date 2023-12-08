@@ -25,6 +25,7 @@
                     <th class="purchase">{{ ___('academic.Assigned date') }}</th>
                     <th class="purchase">{{ ___('academic.Submission date') }}</th>
                     <th class="purchase">{{ ___('common.document') }}</th>
+                    <th class="purchase">{{ ___('common.Assigned By') }}</th>
                     @if (hasPermission('assignment_update') || hasPermission('assignment_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
@@ -45,6 +46,7 @@
                                     download>{{ ___('common.download') }}</a>
                             @endif
                         </td>
+                        <td>{{ @$row->user->name }}</td>
                         @if (hasPermission('assignment_update') || hasPermission('assignment_delete'))
                             <td>
                                 @if (hasPermission('fees_type_update'))

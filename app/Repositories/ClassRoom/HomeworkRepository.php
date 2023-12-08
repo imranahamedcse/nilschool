@@ -58,9 +58,10 @@ class HomeworkRepository implements HomeworkInterface
             $row->classes_id       = $request->class;
             $row->section_id       = $request->section;
             $row->subject_id       = $request->subject;
-            $row->upload_id        = $this->UploadImageCreate($request->document, 'backend/uploads/class_room');
+            $row->upload_id        = $this->UploadImageCreate($request->document, 'backend/uploads/homework');
             $row->description      = $request->description;
             $row->status           = $request->status;
+            $row->assigned_by      = auth()->user()->id;
             $row->save();
 
             DB::commit();
@@ -86,7 +87,7 @@ class HomeworkRepository implements HomeworkInterface
             $row->classes_id       = $request->class;
             $row->section_id       = $request->section;
             $row->subject_id       = $request->subject;
-            $row->upload_id        = $this->UploadImageUpdate($request->document, 'backend/uploads/students', $row->upload_id);
+            $row->upload_id        = $this->UploadImageUpdate($request->document, 'backend/uploads/homework', $row->upload_id);
             $row->description      = $request->description;
             $row->status           = $request->status;
             $row->save();

@@ -23,7 +23,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
+                                <select class="class form-control @error('class') is-invalid @enderror"
                                     name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
@@ -40,11 +40,12 @@
                                     </div>
                                 @enderror
                             </div>
+
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="getSubjects"
-                                    class="nice-select niceSelect sections bordered_style wide @error('section') is-invalid @enderror"
+                                    class="section form-control @error('section') is-invalid @enderror"
                                     name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
@@ -66,8 +67,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('academic.subject') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="subject"
-                                    class="form-control subjects wide nice-select bordered_style  @error('subject') is-invalid @enderror"
+                                <select
+                                    class="subject form-control @error('subject') is-invalid @enderror"
                                     name="subject">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $item)
@@ -85,6 +86,51 @@
                                 @enderror
                             </div>
 
+                            <div class="col-md-3 mb-3">
+                                {{-- Status  --}}
+                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                        class="text-danger">*</span></label>
+
+                                <select class="form-control @error('status') is-invalid @enderror" name="status"
+                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+
+                                    <option value="{{ App\Enums\Status::ACTIVE }}"
+                                        {{ @$data['homework']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
+                                        {{ ___('common.active') }}</option>
+                                    <option value="{{ App\Enums\Status::INACTIVE }}"
+                                        {{ @$data['homework']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
+                                        {{ ___('common.inactive') }}
+                                    </option>
+                                </select>
+                                @error('status')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="exampleDataList" class="form-label ">{{ ___('fees.Document') }} </label>
+                                <input class="form-control @error('document') is-invalid @enderror" name="document"
+                                    list="datalistOptions"
+                                    id="exampleDataList" type="file" placeholder="{{ ___('fees.enter_document') }}">
+                                @error('document')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="exampleDataList" class="form-label ">{{ ___('fees.description') }}</label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" list="datalistOptions"
+                                    id="exampleDataList" type="text" placeholder="{{ ___('fees.enter_description') }}">{{ old('description', @$data['homework']->description) }}</textarea>
+                                @error('description')
+                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
@@ -99,3 +145,8 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-subject.js') }}"></script>
+@endpush

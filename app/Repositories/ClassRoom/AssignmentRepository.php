@@ -61,9 +61,10 @@ class AssignmentRepository implements AssignmentInterface
             $row->mark             = $request->mark;
             $row->assigned_date    = $request->assigned_date;
             $row->submission_date  = $request->submission_date;
-            $row->upload_id        = $this->UploadImageCreate($request->document, 'backend/uploads/class_room');
+            $row->upload_id        = $this->UploadImageCreate($request->document, 'backend/uploads/assignment');
             $row->description      = $request->description;
             $row->status           = $request->status;
+            $row->assigned_by      = auth()->user()->id;
             $row->save();
 
             DB::commit();
@@ -92,7 +93,7 @@ class AssignmentRepository implements AssignmentInterface
             $row->mark             = $request->mark;
             $row->assigned_date    = $request->assigned_date;
             $row->submission_date  = $request->submission_date;
-            $row->upload_id        = $this->UploadImageUpdate($request->document, 'backend/uploads/students', $row->upload_id);
+            $row->upload_id        = $this->UploadImageUpdate($request->document, 'backend/uploads/assignment', $row->upload_id);
             $row->description      = $request->description;
             $row->status           = $request->status;
             $row->save();
