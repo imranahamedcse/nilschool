@@ -111,7 +111,7 @@
                                         @if (hasPermission('online_exam_delete'))
                                             <li>
                                                 <a class="dropdown-item" href="javascript:void(0);"
-                                                    onclick="delete_row('online-exam/delete', {{ $row->id }})">
+                                                    onclick="delete_row('online-exam/list/delete', {{ $row->id }})">
                                                     <span class="icon mr-8"><i class="fa-solid fa-trash-can"></i></span>
                                                     <span>{{ ___('common.delete') }}</span>
                                                 </a>

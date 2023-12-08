@@ -57,7 +57,7 @@
                                 @if (hasPermission('account_head_delete') && $row->id != 1)
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('account_head/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('account/head/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

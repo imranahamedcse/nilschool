@@ -49,7 +49,7 @@
                                 @if (hasPermission('blood_group_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('blood-groups/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('settings/blood-groups/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

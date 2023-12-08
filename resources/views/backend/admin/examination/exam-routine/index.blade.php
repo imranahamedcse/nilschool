@@ -45,7 +45,7 @@
                                 @if (hasPermission('exam_routine_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('exam-routine/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('exam/routine/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

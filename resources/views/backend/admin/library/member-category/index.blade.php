@@ -51,7 +51,7 @@
                                 @if (hasPermission('member_category_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('member-category/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('library/member-category/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

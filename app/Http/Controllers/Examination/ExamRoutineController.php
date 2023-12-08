@@ -78,7 +78,7 @@ class ExamRoutineController extends Controller
             ["title" => ___("common.Routine"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.academic.exam-routine.index', compact('data'));
+        return view('backend.admin.examination.exam-routine.index', compact('data'));
     }
 
     public function create()
@@ -95,7 +95,7 @@ class ExamRoutineController extends Controller
         $data['sections']           = $this->sectionRepo->all();
         // dd($data['types']);
         // $data['subjects']           = $this->subjectRepo->all();
-        return view('backend.admin.academic.exam-routine.create', compact('data'));
+        return view('backend.admin.examination.exam-routine.create', compact('data'));
     }
 
     public function addexamRoutine(Request $request)
@@ -108,7 +108,7 @@ class ExamRoutineController extends Controller
         // $data['teachers']        = $this->staffRepo->all();
         $data['class_rooms']     = $this->classRoomRepo->all();
         $data['time_schedules']  = $this->timeScheduleRepo->allExamSchedule();
-        return view('backend.admin.academic.exam-routine.add-exam-routine', compact('counter', 'data'))->render();
+        return view('backend.admin.examination.exam-routine.add-exam-routine', compact('counter', 'data'))->render();
     }
 
     public function store(ExamRoutineStoreRequest $request)
@@ -147,7 +147,7 @@ class ExamRoutineController extends Controller
         $data['class_rooms']        = $this->classRoomRepo->all();
         $data['time_schedules']     = $this->timeScheduleRepo->allExamSchedule();
 
-        return view('backend.admin.academic.exam-routine.edit', compact('data'));
+        return view('backend.admin.examination.exam-routine.edit', compact('data'));
     }
 
     public function update(ExamRoutineUpdateRequest $request, $id)

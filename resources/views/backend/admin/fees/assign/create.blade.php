@@ -19,8 +19,8 @@
                     <div class="col-md-4 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('fees.fees_group') }} <span
                                 class="text-danger">*</span></label>
-                        <select id="fees_group" class="form-control @error('fees_group') is-invalid @enderror"
-                            name="fees_group" aria-describedby="validationServer04Feedback">
+                        <select class="fees_group form-control @error('fees_group') is-invalid @enderror" name="fees_group"
+                            aria-describedby="validationServer04Feedback">
                             <option value="">{{ ___('fees.select_fees_group') }}</option>
                             @foreach ($data['fees_groups'] as $item)
                                 <option {{ old('fees_group') == $item->group->id ? 'selected' : '' }}
@@ -36,7 +36,7 @@
                     <div class="col-md-2 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
                                 class="text-danger">*</span></label>
-                        <select id="getSections" class="form-control @error('class') is-invalid @enderror" name="class"
+                        <select class="class form-control @error('class') is-invalid @enderror" name="class"
                             aria-describedby="validationServer04Feedback">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
@@ -54,8 +54,8 @@
                     <div class="col-md-2 mb-3">
                         <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
                                 class="text-danger">*</span></label>
-                        <select id="section" class="sections form-control @error('section') is-invalid @enderror"
-                            name="section" aria-describedby="validationServer04Feedback">
+                        <select class="section form-control @error('section') is-invalid @enderror" name="section"
+                            aria-describedby="validationServer04Feedback">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach ($data['sections'] as $item)
                                 @if (old('section') == $item->id)
@@ -73,8 +73,7 @@
                     <div class="col-md-2 mb-3">
                         <div>
                             <label for="validationServer04" class="form-label">{{ ___('fees.gender') }}</label>
-                            <select id="gender" class="gender form-control @error('gender') is-invalid @enderror"
-                                name="gender">
+                            <select class="gender form-control @error('gender') is-invalid @enderror" name="gender">
                                 <option value="">{{ ___('student_info.select_gender') }}</option>
                                 @foreach ($data['genders'] as $item)
                                     <option {{ old('gender') == $item->id ? 'selected' : '' }}
@@ -92,8 +91,7 @@
                         <div>
                             <label for="validationServer04"
                                 class="form-label">{{ ___('student_info.student_category') }}</label>
-                            <select id="student_category"
-                                class="student_category form-control @error('student_category') is-invalid @enderror"
+                            <select class="student_category form-control @error('student_category') is-invalid @enderror"
                                 name="student_category">
                                 <option value="">{{ ___('fees.select_student_category') }}</option>
                                 @foreach ($data['categories'] as $item)
@@ -162,137 +160,9 @@
 @endsection
 
 @push('script')
-    <script>
-        // Fees master type
-        $("#fees_group").on('change', function(e) {
-            groupTypes();
-        });
-
-        // groupTypes();
-
-        function groupTypes() {
-            var url = $('#url').val();
-            var id = $("#fees_group").val();
-
-            var formData = {
-                id: id
-            }
-
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/fees-assign/get-all-type',
-                success: function(data) {
-                    // console.log(data);
-                    $("#types_table tbody").empty();
-                    $("#types_table tbody").append(data);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-        // Fees master type end
-    </script>
-
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
-
-    <script>
-        // Fees master assing
-        $("#section").on('change', function(e) {
-            assingStudents();
-        });
-
-        $("#student_category").on('change', function(e) {
-            assingStudents();
-        });
-        $("#gender").on('change', function(e) {
-            assingStudents();
-        });
-
-        if ($("#page").val() == "create") {
-            assingStudents();
-        }
-
-        function assingStudents() {
-            var url = $('#url').val();
-            var classId = $("#getSections").val();
-            var sectionId = $("#section").val();
-            var categoryId = $("#student_category").val();
-            var genderId = $("#gender").val();
-
-            var formData = {
-                class: classId,
-                section: sectionId,
-                category: categoryId,
-                gender: genderId,
-                section: sectionId,
-            }
-
-            $("#students_table tbody").empty();
-            if (classId && sectionId) {
-                $.ajax({
-                    type: "GET",
-                    dataType: 'html',
-                    data: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: url + '/fees-assign/get-fees-assign-students',
-                    success: function(data) {
-                        // console.log(data);
-                        $("#students_table tbody").append(data);
-                    },
-                    error: function(data) {
-                        console.log(data);
-                    }
-                });
-            }
-        }
-        // Fees master assing end
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-fees-type.js') }}"></script>
+    <script src="{{ asset('backend/js/get-fees-assign-students.js') }}"></script>
 
     <script>
         $("#all_students").on('click', function(e) {

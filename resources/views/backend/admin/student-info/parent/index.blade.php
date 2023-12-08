@@ -81,7 +81,7 @@
                                             <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
                                                 data-bs-placement="bottom" title="{{ ___('common.delete') }}"
                                                 href="javascript:void(0);"
-                                                onclick="delete_row('parent/delete', {{ $row->id }})"><i
+                                                onclick="delete_row('students/parent/delete', {{ $row->id }})"><i
                                                     class="fa-solid fa-trash-can"></i></a>
                                         @endif
                                     </td>

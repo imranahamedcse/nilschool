@@ -45,7 +45,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::delete('/delete/{id}',           'delete')->name('slider.delete')->middleware('PermissionCheck:slider_delete', 'DemoCheck');
             });
            
-            Route::controller(NewsController::class)->prefix('admin-news')->group(function () {
+            Route::controller(NewsController::class)->prefix('news')->group(function () {
                 Route::get('/',                         'index')->name('news.index')->middleware('PermissionCheck:news_read');
                 Route::get('/create',                   'create')->name('news.create')->middleware('PermissionCheck:news_create');
                 Route::post('/store',                   'store')->name('news.store')->middleware('PermissionCheck:news_create', 'DemoCheck');

@@ -57,7 +57,7 @@
                                 @if (hasPermission('contact_info_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('contact-info/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('website-setup/contact-info/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>
