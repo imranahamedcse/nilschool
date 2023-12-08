@@ -5,8 +5,8 @@ use App\Http\Controllers\Settings\BloodGroupController;
 use App\Http\Controllers\Settings\GenderController;
 use App\Http\Controllers\Settings\ReligionController;
 use App\Http\Controllers\Settings\SessionController;
-use App\Http\Controllers\Backend\SettingController;
-use App\Http\Controllers\Backend\LanguageController;
+use App\Http\Controllers\Settings\SettingController;
+use App\Http\Controllers\Settings\LanguageController;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {

@@ -1,21 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Settings;
 
 use App;
 use Config;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 use App\Interfaces\FlagIconInterface;
 use App\Interfaces\LanguageInterface;
-use Session;
 use Illuminate\Support\Facades\Schema;
 use App\Interfaces\PermissionInterface;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Language\LanguageStoreRequest;
 use App\Http\Requests\Language\LanguageUpdateRequest;
+use Illuminate\Support\Facades\Session;
 
 class LanguageController extends Controller
 {
@@ -47,7 +44,7 @@ class LanguageController extends Controller
             ["title" => $title, "route" => ""]
         ];
         $data['languages'] = $this->language->getAll();
-        return view('backend.admin.languages.index', compact('data'));
+        return view('backend.admin.settings.languages.index', compact('data'));
     }
 
     public function create()
@@ -55,7 +52,7 @@ class LanguageController extends Controller
         $data['title']       = ___('common.create_language');
         $data['permissions'] = $this->permission->all();
         $data['flagIcons']   = $this->flagIcon->getAll();
-        return view('backend.admin.languages.create', compact('data'));
+        return view('backend.admin.settings.languages.create', compact('data'));
     }
 
     public function store(LanguageStoreRequest $request)
@@ -73,7 +70,7 @@ class LanguageController extends Controller
         $data['title']       = ___('common.languages');
         $data['permissions'] = $this->permission->all();
         $data['flagIcons']   = $this->flagIcon->getAll();
-        return view('backend.admin.languages.edit', compact('data'));
+        return view('backend.admin.settings.languages.edit', compact('data'));
     }
 
     public function update(LanguageUpdateRequest $request, $id)
@@ -103,7 +100,7 @@ class LanguageController extends Controller
     public function terms($id)
     {
         $data = $this->language->terms($id);
-        return view('backend.admin.languages.terms', compact('data'));
+        return view('backend.admin.settings.languages.terms', compact('data'));
     }
 
     public function termsUpdate(Request $request, $code)
@@ -122,7 +119,7 @@ class LanguageController extends Controller
         $jsonString     = file_get_contents(base_path("lang/$request->code/$request->module.json"));
         $data['terms']  = json_decode($jsonString, true);
 
-        return view('backend.admin.languages.ajax_terms', compact('data'))->render();
+        return view('backend.admin.settings.languages.ajax_terms', compact('data'))->render();
     }
 
 

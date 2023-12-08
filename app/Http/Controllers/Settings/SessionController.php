@@ -39,7 +39,7 @@ class SessionController extends Controller
             ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.session.index', compact('data'));
+        return view('backend.admin.settings.session.index', compact('data'));
     }
 
     public function create()
@@ -52,7 +52,7 @@ class SessionController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        return view('backend.admin.session.create', compact('data'));
+        return view('backend.admin.settings.session.create', compact('data'));
     }
 
     public function store(SessionStoreRequest $request)
@@ -75,7 +75,7 @@ class SessionController extends Controller
         ];
 
         $data['session']        = $this->session->show($id);
-        return view('backend.admin.session.edit', compact('data'));
+        return view('backend.admin.settings.session.edit', compact('data'));
     }
 
     public function update(SessionUpdateRequest $request, $id)

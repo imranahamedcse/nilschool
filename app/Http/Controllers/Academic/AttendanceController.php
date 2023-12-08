@@ -47,7 +47,7 @@ class AttendanceController extends Controller
             "create-route"      => '',
         ];
 
-        return view('backend.admin.attendance.index', compact('data'));
+        return view('backend.admin.academic.attendance.index', compact('data'));
     }
 
     public function store(Request $request)
@@ -81,6 +81,6 @@ class AttendanceController extends Controller
         $data['status']   = $data['status'];
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = $this->classSetupRepo->getSections($request->class);
-        return view('backend.admin.attendance.index', compact('data'));
+        return view('backend.admin.academic.attendance.index', compact('data'));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Staff\DepartmentController;
-use App\Http\Controllers\Staff\DesignationController;
-use App\Http\Controllers\Backend\RoleController;
-use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\HR\DepartmentController;
+use App\Http\Controllers\HR\DesignationController;
+use App\Http\Controllers\HR\RoleController;
+use App\Http\Controllers\HR\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {

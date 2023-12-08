@@ -38,7 +38,7 @@ class ReligionController extends Controller
             ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.religion.index', compact('data'));
+        return view('backend.admin.settings.religion.index', compact('data'));
     }
 
     public function create()
@@ -51,7 +51,7 @@ class ReligionController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        return view('backend.admin.religion.create', compact('data'));
+        return view('backend.admin.settings.religion.create', compact('data'));
     }
 
     public function store(ReligionStoreRequest $request)
@@ -74,7 +74,7 @@ class ReligionController extends Controller
         ];
 
         $data['religion']        = $this->religion->show($id);
-        return view('backend.admin.religion.edit', compact('data'));
+        return view('backend.admin.settings.religion.edit', compact('data'));
     }
 
     public function update(ReligionUpdateRequest $request, $id)

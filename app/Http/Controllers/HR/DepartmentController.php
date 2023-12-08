@@ -1,83 +1,82 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Staff\Designation\DesignationStoreRequest;
-use App\Http\Requests\Staff\Designation\DesignationUpdateRequest;
-use App\Interfaces\Staff\DesignationInterface;
+use App\Http\Requests\Staff\Department\DepartmentStoreRequest;
+use App\Http\Requests\Staff\Department\DepartmentUpdateRequest;
+use App\Interfaces\Staff\DepartmentInterface;
 use Illuminate\Http\Request;
 
-class DesignationController extends Controller
+class DepartmentController extends Controller
 {
     private $repo;
 
-    function __construct(DesignationInterface $repo)
+    function __construct(DepartmentInterface $repo)
     {
         $this->repo       = $repo; 
     }
     
     public function index()
     {
-        $data['designations'] = $this->repo->getPaginateAll();
+        $data['departments'] = $this->repo->getPaginateAll();
         
-        $title             = ___('staff.designation');
+        $title             = ___('staff.department');
         $data['headers']   = [
             "title"        => $title,
-            "create-permission"   => 'designation_create',
-            "create-route" => 'designation.create',
+            "create-permission"   => 'department_create',
+            "create-route" => 'department.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.staff.designation.index', compact('data'));
-        
+        return view('backend.admin.hr.department.index', compact('data'));
     }
 
     public function create()
     {
-        $data['title']              = ___('staff.designation');
+        $data['title']              = ___('staff.department');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],
-            ["title" => ___("common.Designation"), "route" => "designation.index"],
+            ["title" => ___("common.Department"), "route" => "department.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
-        return view('backend.admin.staff.designation.create', compact('data'));
+        return view('backend.admin.hr.department.create', compact('data'));
         
     }
 
-    public function store(DesignationStoreRequest $request)
+    public function store(DepartmentStoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
-            return redirect()->route('designation.index')->with('success', $result['message']);
+            return redirect()->route('department.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
 
     public function edit($id)
     {
-        $data['title']       = ___('staff.designation');
+        $data['title']       = ___('staff.department');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],
-            ["title" => ___("common.Designation"), "route" => "designation.index"],
+            ["title" => ___("common.Department"), "route" => "department.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-
-        $data['designation']        = $this->repo->show($id);
-        return view('backend.admin.staff.designation.edit', compact('data'));
+        
+        $data['department']        = $this->repo->show($id);
+        return view('backend.admin.hr.department.edit', compact('data'));
     }
 
-    public function update(DesignationUpdateRequest $request, $id)
+    public function update(DepartmentUpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result){
-            return redirect()->route('designation.index')->with('success', $result['message']);
+            return redirect()->route('department.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }

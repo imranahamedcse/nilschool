@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\HR;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -41,7 +41,7 @@ class RoleController extends Controller
             ["title" => ___("common.Staff Manage"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.roles.index', compact('data'));
+        return view('backend.admin.hr.roles.index', compact('data'));
     }
 
     public function create()
@@ -55,7 +55,7 @@ class RoleController extends Controller
         ];
 
         $data['permissions'] = $this->permission->all();
-        return view('backend.admin.roles.create', compact('data'));
+        return view('backend.admin.hr.roles.create', compact('data'));
     }
 
     public function store(RoleStoreRequest $request)
@@ -79,7 +79,7 @@ class RoleController extends Controller
         
         $data['role']        = $this->role->show($id);
         $data['permissions'] = $this->permission->all();
-        return view('backend.admin.roles.edit', compact('data'));
+        return view('backend.admin.hr.roles.edit', compact('data'));
     }
 
     public function update(RoleUpdateRequest $request, $id)

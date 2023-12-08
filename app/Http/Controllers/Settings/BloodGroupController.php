@@ -38,7 +38,7 @@ class BloodGroupController extends Controller
             ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.blood_group.index', compact('data'));
+        return view('backend.admin.settings.blood_group.index', compact('data'));
     }
 
     public function create()
@@ -51,7 +51,7 @@ class BloodGroupController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        return view('backend.admin.blood_group.create', compact('data'));
+        return view('backend.admin.settings.blood_group.create', compact('data'));
     }
 
     public function store(BloodGroupStoreRequest $request)
@@ -74,7 +74,7 @@ class BloodGroupController extends Controller
         ];
 
         $data['bloodGroup']        = $this->bloodGroup->show($id);
-        return view('backend.admin.blood_group.edit', compact('data'));
+        return view('backend.admin.settings.blood_group.edit', compact('data'));
     }
 
     public function update(BloodGroupUpdateRequest $request, $id)

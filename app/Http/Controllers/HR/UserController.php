@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\HR;
 
 use Illuminate\Http\Request;
 use App\Interfaces\RoleInterface;
@@ -62,7 +62,7 @@ class UserController extends Controller
             ["title" => ___("common.Staff Manage"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.users.index', compact('data'));
+        return view('backend.admin.hr.users.index', compact('data'));
     }
 
     public function create()
@@ -80,7 +80,7 @@ class UserController extends Controller
         $data['designations']  = $this->designation->all();
         $data['departments']   = $this->department->all();
         $data['genders']       = $this->gender->all();
-        return view('backend.admin.users.create', compact('data'));
+        return view('backend.admin.hr.users.create', compact('data'));
     }
 
     public function store(UserStoreRequest $request)
@@ -109,13 +109,13 @@ class UserController extends Controller
         $data['departments']   = $this->department->all();
         $data['genders']       = $this->gender->all();
         // dd($data);
-        return view('backend.admin.users.edit', compact('data'));
+        return view('backend.admin.hr.users.edit', compact('data'));
     }
 
     public function show($id)
     {
         $data = $this->user->show($id);
-        return view('backend.admin.users.show', compact('data'));
+        return view('backend.admin.hr.users.show', compact('data'));
     }
 
     public function update(UserUpdateRequest $request, $id)
@@ -146,7 +146,7 @@ class UserController extends Controller
     {
         $data['role_permissions'] = $this->role->show($request->role_id)->permissions;
         $data['permissions']      = $this->permission->all();
-        return view('backend.admin.users.permissions', compact('data'))->render();
+        return view('backend.admin.hr.users.permissions', compact('data'))->render();
     }
 
     public function status(Request $request)

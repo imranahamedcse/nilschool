@@ -38,7 +38,7 @@ class GenderController extends Controller
             ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.gender.index', compact('data'));
+        return view('backend.admin.settings.gender.index', compact('data'));
     }
 
     public function create()
@@ -51,7 +51,7 @@ class GenderController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        return view('backend.admin.gender.create', compact('data'));
+        return view('backend.admin.settings.gender.create', compact('data'));
     }
 
     public function store(GenderStoreRequest $request)
@@ -74,7 +74,7 @@ class GenderController extends Controller
         ];
 
         $data['gender']        = $this->gender->show($id);
-        return view('backend.admin.gender.edit', compact('data'));
+        return view('backend.admin.settings.gender.edit', compact('data'));
     }
 
     public function update(GenderUpdateRequest $request, $id)
