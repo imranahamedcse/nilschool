@@ -63,6 +63,7 @@ use App\Interfaces\StudentPanel\DashboardInterface;
 use App\Interfaces\StudentPanel\ExamRoutineInterface as StudentPanelExamRoutineInterface;
 use App\Interfaces\StudentPanel\MarksheetInterface as StudentPanelMarksheetInterface;
 use App\Interfaces\Transport\RouteInterface;
+use App\Interfaces\Transport\VehicleInterface;
 use App\Repositories\Academic\ClassRoomRepository;
 use App\Repositories\Academic\ClassRoutineRepository;
 use App\Repositories\Academic\ClassSetupRepository;
@@ -101,6 +102,7 @@ use App\Repositories\StudentPanel\DashboardRepository;
 use App\Repositories\StudentPanel\ExamRoutineRepository as StudentPanelExamRoutineRepository;
 use App\Repositories\StudentPanel\MarksheetRepository as StudentPanelMarksheetRepository;
 use App\Repositories\Transport\RouteRepository;
+use App\Repositories\Transport\VehicleRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -178,6 +180,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // Transport
         $this->app->bind(RouteInterface::class,              RouteRepository::class);
+        $this->app->bind(VehicleInterface::class,            VehicleRepository::class);
 
     }
 

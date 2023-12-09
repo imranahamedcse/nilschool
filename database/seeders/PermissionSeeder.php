@@ -112,6 +112,7 @@ class PermissionSeeder extends Seeder
 
             // Transport
             'route'             => ['read' => 'route_read', 'create' => 'route_create', 'update' => 'route_update', 'delete' => 'route_delete'],
+            'vehicle'           => ['read' => 'vehicle_read', 'create' => 'vehicle_create', 'update' => 'vehicle_update', 'delete' => 'vehicle_delete'],
             
         ];
 

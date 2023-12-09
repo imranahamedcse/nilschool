@@ -221,6 +221,7 @@
             </form>
         @endif
     </div>
+    
     <div class="col-2 text-end">
         @if (@$data['headers']['create-permission'] != '' && hasPermission(@$data['headers']['create-permission']))
             <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">

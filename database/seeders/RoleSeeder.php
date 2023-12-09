@@ -409,6 +409,11 @@ class RoleSeeder extends Seeder
                     'route_create',
                     'route_update',
                     'route_delete',
+                    // vehicle
+                    'vehicle_read',
+                    'vehicle_create',
+                    'vehicle_update',
+                    'vehicle_delete',
                 // Transport end
             ],
         ]);

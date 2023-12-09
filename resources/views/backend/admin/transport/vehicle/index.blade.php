@@ -22,13 +22,13 @@
                     <th class="purchase">{{ ___('common.name') }}</th>
                     <th class="purchase">{{ ___('account.type') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
-                    @if (hasPermission('account_head_update') || hasPermission('account_head_delete'))
+                    @if (hasPermission('vehicle_update') || hasPermission('vehicle_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
                 </tr>
             </thead>
             <tbody class="tbody">
-                @forelse ($data['account_head'] as $key => $row)
+                @forelse ($data['vehicle'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
                         <td>{{ $row->name }}</td>
@@ -46,18 +46,18 @@
                                 <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
                             @endif
                         </td>
-                        @if ((hasPermission('account_head_update') || hasPermission('account_head_delete')))
+                        @if ((hasPermission('vehicle_update') || hasPermission('vehicle_delete')))
                             <td>
-                                @if (hasPermission('account_head_update'))
+                                @if (hasPermission('vehicle_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.edit') }}"
-                                        href="{{ route('account_head.edit', $row->id) }}"><i
+                                        href="{{ route('vehicle.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
-                                @if (hasPermission('account_head_delete') && $row->id != 1)
+                                @if (hasPermission('vehicle_delete'))
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('account/head/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('transport/vehicle/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>
