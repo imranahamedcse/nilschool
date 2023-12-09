@@ -456,6 +456,11 @@
                             <a href="{{ route('vehicle.index') }}">{{ ___('menu.Vehicle') }}</a>
                         </li>
                     @endif
+                    @if (hasPermission('pickup_point_read'))
+                        <li class="{{ set_menu(['transport/pickup-point*']) }}">
+                            <a href="{{ route('pickup-point.index') }}">{{ ___('menu.Pickup Point') }}</a>
+                        </li>
+                    @endif
                 </ul>
             </li>
         @endif

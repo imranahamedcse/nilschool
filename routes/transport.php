@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Transport\PickupPointController;
 use App\Http\Controllers\Transport\RouteController;
 use App\Http\Controllers\Transport\VehicleController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,14 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/edit/{id}',        'edit')->name('vehicle.edit')->middleware('PermissionCheck:vehicle_update');
                 Route::put('/update/{id}',      'update')->name('vehicle.update')->middleware('PermissionCheck:vehicle_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('vehicle.delete')->middleware('PermissionCheck:vehicle_delete', 'DemoCheck');
+            });
+            Route::controller(PickupPointController::class)->prefix('pickup-point')->group(function () {
+                Route::get('/',                 'index')->name('pickup-point.index')->middleware('PermissionCheck:pickup_point_read');
+                Route::get('/create',           'create')->name('pickup-point.create')->middleware('PermissionCheck:pickup_point_create');
+                Route::post('/store',           'store')->name('pickup-point.store')->middleware('PermissionCheck:pickup_point_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('pickup-point.edit')->middleware('PermissionCheck:pickup_point_update');
+                Route::put('/update/{id}',      'update')->name('pickup-point.update')->middleware('PermissionCheck:pickup_point_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('pickup-point.delete')->middleware('PermissionCheck:pickup_point_delete', 'DemoCheck');
             });
         });
     });
