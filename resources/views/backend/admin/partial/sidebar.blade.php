@@ -436,8 +436,8 @@
         <!-- End Dormitory -->
 
         <!-- Start Transport -->
-        @if (hasPermission('account_head_read'))
-            <li class="{{ set_menu(['account*']) }}">
+        @if (hasPermission('route_read'))
+            <li class="{{ set_menu(['transport*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-bus"></i>
@@ -446,9 +446,9 @@
                     <i class="append-icon fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    @if (hasPermission('account_head_read'))
-                        <li class="{{ set_menu(['account/head*']) }}">
-                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
+                    @if (hasPermission('route_read'))
+                        <li class="{{ set_menu(['transport/route*']) }}">
+                            <a href="{{ route('route.index') }}">{{ ___('menu.Route') }}</a>
                         </li>
                     @endif
                 </ul>

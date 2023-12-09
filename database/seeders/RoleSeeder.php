@@ -403,6 +403,13 @@ class RoleSeeder extends Seeder
                     'online_exam_delete',
                 // Online exam end
 
+                // Transport start
+                    // route
+                    'route_read',
+                    'route_create',
+                    'route_update',
+                    'route_delete',
+                // Transport end
             ],
         ]);
         Role::create([

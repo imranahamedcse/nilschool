@@ -110,6 +110,8 @@ class PermissionSeeder extends Seeder
             'question_bank'     => ['read' => 'question_bank_read', 'create' => 'question_bank_create', 'update' => 'question_bank_update', 'delete' => 'question_bank_delete'],
             'online_exam'       => ['read' => 'online_exam_read', 'create' => 'online_exam_create', 'update' => 'online_exam_update', 'delete' => 'online_exam_delete'],
 
+            // Transport
+            'route'             => ['read' => 'route_read', 'create' => 'route_create', 'update' => 'route_update', 'delete' => 'route_delete'],
             
         ];
 

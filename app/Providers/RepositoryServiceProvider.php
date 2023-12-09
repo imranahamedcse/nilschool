@@ -62,6 +62,7 @@ use App\Interfaces\StudentPanel\ClassRoutineInterface as StudentPanelClassRoutin
 use App\Interfaces\StudentPanel\DashboardInterface;
 use App\Interfaces\StudentPanel\ExamRoutineInterface as StudentPanelExamRoutineInterface;
 use App\Interfaces\StudentPanel\MarksheetInterface as StudentPanelMarksheetInterface;
+use App\Interfaces\Transport\RouteInterface;
 use App\Repositories\Academic\ClassRoomRepository;
 use App\Repositories\Academic\ClassRoutineRepository;
 use App\Repositories\Academic\ClassSetupRepository;
@@ -99,6 +100,7 @@ use App\Repositories\StudentPanel\ClassRoutineRepository as StudentPanelClassRou
 use App\Repositories\StudentPanel\DashboardRepository;
 use App\Repositories\StudentPanel\ExamRoutineRepository as StudentPanelExamRoutineRepository;
 use App\Repositories\StudentPanel\MarksheetRepository as StudentPanelMarksheetRepository;
+use App\Repositories\Transport\RouteRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -173,6 +175,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(QuestionGroupInterface::class,           QuestionGroupRepository::class);
         $this->app->bind(QuestionBankInterface::class,            QuestionBankRepository::class);
         $this->app->bind(OnlineExamInterface::class,              OnlineExamRepository::class);
+
+        // Transport
+        $this->app->bind(RouteInterface::class,              RouteRepository::class);
 
     }
 
