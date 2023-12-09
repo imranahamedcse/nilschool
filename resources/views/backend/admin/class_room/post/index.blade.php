@@ -54,6 +54,9 @@
                                         onclick="delete_row('class-room/post/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
+                                <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    title="{{ ___('common.edit') }}" href="{{ route('post.view', $row->id) }}"><i
+                                        class="fa-solid fa-eye"></i></a>
                             </td>
                         @endif
                     </tr>
@@ -68,8 +71,7 @@
 @push('script')
     @include('backend.admin.components.table.js')
     @include('backend.admin.components.table.delete-ajax')
-    
+
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-subject.js') }}"></script>
-
 @endpush

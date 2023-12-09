@@ -26,9 +26,12 @@ class Post extends Model
     {
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
     }
-    
     public function user()
     {
         return $this->belongsTo(User::class, 'assigned_by', 'id');
+    }
+    public function comments()
+    {
+        return $this->hasmany(PostComment::class, 'post_id', 'id');
     }
 }

@@ -121,7 +121,7 @@ class PostController extends Controller
         $data['sections']              = $this->sectionRepo->all();
 
         $data['subjects']              = $this->subjectRepo->all();
-        $data['post']        = $this->repo->show($id);
+        $data['post']                  = $this->repo->show($id);
 
         $data['title']                 = ___('examination.Post');
         $data['breadcrumbs']  = [
@@ -170,5 +170,21 @@ class PostController extends Controller
             $success[2] = ___('alert.oops');
             return response()->json($success);
         endif;
+    }
+
+    public function view($id) {
+        $title              = ___('examination.View Post');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.post"), "route" => "post.index"],
+            ["title" => $title, "route" => ""]
+        ];
+        $data['post']  = $this->repo->show($id);
+
+        return view('backend.admin.class_room.post.view', compact('data'));
     }
 }
