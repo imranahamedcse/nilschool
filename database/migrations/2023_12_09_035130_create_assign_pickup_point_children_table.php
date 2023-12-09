@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assign_vehicle_children', function (Blueprint $table) {
+        Schema::create('assign_pickup_point_children', function (Blueprint $table) {
             $table->id();
             $table->foreignId('assign_vehicle_id')->constrained('assign_vehicles')->cascadeOnDelete();
-            $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
+            $table->foreignId('pickup_point_id')->constrained('pickup_points')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assign_vehicle_children');
+        Schema::dropIfExists('assign_pickup_point_children');
     }
 };

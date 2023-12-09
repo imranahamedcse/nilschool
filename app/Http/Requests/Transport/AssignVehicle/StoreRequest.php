@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Transport\PickupPoint;
+namespace App\Http\Requests\Transport\AssignVehicle;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required|max:255|unique:pickup_points,name,'.Request()->id,
-            'status' => 'required'
+            'route_id' => 'required|max:255|unique:assign_vehicles',
+            'status'   => 'required'
         ];
     }
 }

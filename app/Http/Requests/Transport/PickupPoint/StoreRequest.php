@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required|max:255|unique:routes',
+            'name'   => 'required|max:255|unique:pickup_points',
             'status' => 'required'
         ];
     }

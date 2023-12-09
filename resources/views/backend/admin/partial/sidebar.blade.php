@@ -436,7 +436,7 @@
         <!-- End Dormitory -->
 
         <!-- Start Transport -->
-        @if (hasPermission('route_read') || hasPermission('vehicle_read'))
+        @if (hasPermission('route_read') || hasPermission('vehicle_read') || hasPermission('pickup_point_read') || hasPermission('assign_vehicle_read'))
             <li class="{{ set_menu(['transport*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
@@ -459,6 +459,11 @@
                     @if (hasPermission('pickup_point_read'))
                         <li class="{{ set_menu(['transport/pickup-point*']) }}">
                             <a href="{{ route('pickup-point.index') }}">{{ ___('menu.Pickup Point') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('assign_vehicle_read'))
+                        <li class="{{ set_menu(['transport/assign-vehicle*']) }}">
+                            <a href="{{ route('assign-vehicle.index') }}">{{ ___('menu.Assign Vehicle') }}</a>
                         </li>
                     @endif
                 </ul>

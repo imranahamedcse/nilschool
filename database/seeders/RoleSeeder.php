@@ -419,6 +419,11 @@ class RoleSeeder extends Seeder
                     'pickup_point_create',
                     'pickup_point_update',
                     'pickup_point_delete',
+                    // assign_vehicle
+                    'assign_vehicle_read',
+                    'assign_vehicle_create',
+                    'assign_vehicle_update',
+                    'assign_vehicle_delete',
                 // Transport end
             ],
         ]);

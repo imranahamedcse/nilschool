@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Schema;
 
 class PickupPointController extends Controller
 {
-    private $headRepo;
+    private $repo;
 
-    function __construct(PickupPointInterface $headRepo)
+    function __construct(PickupPointInterface $repo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
         } 
-        $this->headRepo       = $headRepo; 
+        $this->repo       = $repo; 
     }
 
     public function index()
     {
-        $data['pickup_point'] = $this->headRepo->getAll();
+        $data['pickup_point'] = $this->repo->getAll();
 
         $title             = ___('account.Pickup Point');
         $data['headers']   = [
@@ -52,7 +52,7 @@ class PickupPointController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $result = $this->headRepo->store($request);
+        $result = $this->repo->store($request);
         if($result['status']){
             return redirect()->route('pickup-point.index')->with('success', $result['message']);
         }
@@ -69,13 +69,13 @@ class PickupPointController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
         
-        $data['pickup_point']        = $this->headRepo->show($id);
+        $data['pickup_point']        = $this->repo->show($id);
         return view('backend.admin.transport.pickup_point.edit', compact('data'));
     }
 
     public function update(UpdateRequest $request, $id)
     {
-        $result = $this->headRepo->update($request, $id);
+        $result = $this->repo->update($request, $id);
         if($result['status']){
             return redirect()->route('pickup-point.index')->with('success', $result['message']);
         }
@@ -84,7 +84,7 @@ class PickupPointController extends Controller
 
     public function delete($id)
     {
-        $result = $this->headRepo->destroy($id);
+        $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
             $success[1] = 'success';

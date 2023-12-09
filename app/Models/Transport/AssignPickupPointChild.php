@@ -5,12 +5,12 @@ namespace App\Models\Transport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignVehicleChild extends Model
+class AssignPickupPointChild extends Model
 {
     use HasFactory;
 
-    public function vehicle()
+    public function pickupPoint()
     {
-        return $this->belongsTo(Vehicle::class, 'vehicle_id', 'id');
+        return $this->belongsTo(PickupPoint::class, 'pickup_point_id', 'id');
     }
 }

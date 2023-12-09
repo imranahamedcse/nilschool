@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Schema;
 
 class RouteController extends Controller
 {
-    private $headRepo;
+    private $repo;
 
-    function __construct(RouteInterface $headRepo)
+    function __construct(RouteInterface $repo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
         } 
-        $this->headRepo       = $headRepo; 
+        $this->repo       = $repo; 
     }
 
     public function index()
     {
-        $data['route'] = $this->headRepo->getAll();
+        $data['route'] = $this->repo->getAll();
 
         $title             = ___('account.Route');
         $data['headers']   = [
@@ -52,7 +52,7 @@ class RouteController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $result = $this->headRepo->store($request);
+        $result = $this->repo->store($request);
         if($result['status']){
             return redirect()->route('route.index')->with('success', $result['message']);
         }
@@ -69,13 +69,13 @@ class RouteController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
         
-        $data['route']        = $this->headRepo->show($id);
+        $data['route']        = $this->repo->show($id);
         return view('backend.admin.transport.route.edit', compact('data'));
     }
 
     public function update(UpdateRequest $request, $id)
     {
-        $result = $this->headRepo->update($request, $id);
+        $result = $this->repo->update($request, $id);
         if($result['status']){
             return redirect()->route('route.index')->with('success', $result['message']);
         }
@@ -84,7 +84,7 @@ class RouteController extends Controller
 
     public function delete($id)
     {
-        $result = $this->headRepo->destroy($id);
+        $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
             $success[1] = 'success';
