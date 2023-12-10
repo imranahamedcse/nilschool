@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Transport;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Transport\AssignVehicle\StoreRequest;
-use App\Http\Requests\Transport\AssignVehicle\UpdateRequest;
-use App\Interfaces\Transport\AssignVehicleInterface;
+use App\Http\Requests\Transport\TransportSetup\StoreRequest;
+use App\Http\Requests\Transport\TransportSetup\UpdateRequest;
+use App\Interfaces\Transport\TransportSetupInterface;
 use App\Interfaces\Transport\PickupPointInterface;
 use App\Interfaces\Transport\RouteInterface;
 use App\Interfaces\Transport\VehicleInterface;
 use Illuminate\Support\Facades\Schema;
 
-class AssignVehicleController extends Controller
+class TransportSetupController extends Controller
 {
     private $repo, $pickupPointRepo, $routeRepo, $vehicleRepo;
 
     function __construct(
-        AssignVehicleInterface $repo,
+        TransportSetupInterface $repo,
         PickupPointInterface $pickupPointRepo,
         RouteInterface $routeRepo,
         VehicleInterface $vehicleRepo
@@ -24,28 +24,28 @@ class AssignVehicleController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->repo            = $repo; 
-        $this->pickupPointRepo = $pickupPointRepo; 
-        $this->routeRepo       = $routeRepo; 
-        $this->vehicleRepo     = $vehicleRepo; 
+        }
+        $this->repo            = $repo;
+        $this->pickupPointRepo = $pickupPointRepo;
+        $this->routeRepo       = $routeRepo;
+        $this->vehicleRepo     = $vehicleRepo;
     }
 
     public function index()
     {
-        $data['assign_vehicle'] = $this->repo->getAll();
-        $title             = ___('account.Assign vehicle');
+        $data['transport_setup'] = $this->repo->getAll();
+        $title             = ___('account.Transport setup');
         $data['headers']   = [
             "title"        => $title,
-            "create-permission" => 'assign_vehicle_create',
-            "create-route" => 'assign-vehicle.create',
+            "create-permission" => 'transport_setup_create',
+            "create-route" => 'transport-setup.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.transport.assign_vehicle.index', compact('data'));
+        return view('backend.admin.transport.transport_setup.index', compact('data'));
     }
 
     public function create()
@@ -54,7 +54,7 @@ class AssignVehicleController extends Controller
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
-            ["title" => ___('common.Assign vehicle'), "route" => "assign-vehicle.index"],
+            ["title" => ___('common.Transport setup'), "route" => "transport-setup.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -62,14 +62,14 @@ class AssignVehicleController extends Controller
         $data['route'] = $this->routeRepo->getAll();
         $data['vehicle'] = $this->vehicleRepo->getAll();
 
-        return view('backend.admin.transport.assign_vehicle.create', compact('data'));
+        return view('backend.admin.transport.transport_setup.create', compact('data'));
     }
 
     public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
-            return redirect()->route('assign-vehicle.index')->with('success', $result['message']);
+            return redirect()->route('transport-setup.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
@@ -80,26 +80,26 @@ class AssignVehicleController extends Controller
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
-            ["title" => ___('common.Assign vehicle'), "route" => "assign-vehicle.index"],
+            ["title" => ___('common.Transport setup'), "route" => "transport-setup.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['pickup_point'] = $this->pickupPointRepo->getAll();
         $data['route'] = $this->routeRepo->getAll();
         $data['vehicle'] = $this->vehicleRepo->getAll();
-        
-        $data['assign_vehicle'] = $this->repo->show($id);
-        $data['assign_pickup_point'] = array_unique($data['assign_vehicle']->pickupPoints->pluck('pickup_point_id')->toArray());
-        $data['assign_vehicles'] = array_unique($data['assign_vehicle']->vehicles->pluck('vehicle_id')->toArray());
 
-        return view('backend.admin.transport.assign_vehicle.edit', compact('data'));
+        $data['transport_setup'] = $this->repo->show($id);
+        $data['assign_pickup_point'] = array_unique($data['transport_setup']->pickupPoints->pluck('pickup_point_id')->toArray());
+        $data['transport_setups'] = array_unique($data['transport_setup']->vehicles->pluck('vehicle_id')->toArray());
+
+        return view('backend.admin.transport.transport_setup.edit', compact('data'));
     }
 
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){
-            return redirect()->route('assign-vehicle.index')->with('success', $result['message']);
+            return redirect()->route('transport-setup.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
@@ -118,7 +118,7 @@ class AssignVehicleController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }
 

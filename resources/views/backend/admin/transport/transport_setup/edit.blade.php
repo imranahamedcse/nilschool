@@ -13,14 +13,14 @@
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
 
-            <form action="{{ route('assign-vehicle.update', @$data['assign_vehicle']->id) }}" enctype="multipart/form-data"
+            <form action="{{ route('transport-setup.update', @$data['transport_setup']->id) }}" enctype="multipart/form-data"
                 method="post" id="visitForm">
                 @csrf
                 @method('PUT')
                 <div class="row mb-3">
                     <div class="col-lg-12">
                         <div class="row">
-                            
+
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.Route') }} <span
                                         class="text-danger">*</span></label>
@@ -29,7 +29,7 @@
 
                                     <option selected>{{ ___('common.Select Route') }}</option>
                                     @foreach ($data['route'] as $item)
-                                        <option {{ old('route', $data['assign_vehicle']->route_id) == $item->id ? 'selected' : '' }}
+                                        <option {{ old('route', $data['transport_setup']->route_id) == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">
                                             {{ $item->name }}</option>
                                     @endforeach
@@ -41,7 +41,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            
+
                             <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.Status') }} <span
                                         class="text-danger">*</span></label>
@@ -49,10 +49,10 @@
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
-                                        {{ @$data['assign_vehicle']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
+                                        {{ @$data['transport_setup']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
                                         {{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
-                                        {{ @$data['assign_vehicle']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
+                                        {{ @$data['transport_setup']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
                                         {{ ___('common.inactive') }}
                                     </option>
                                 </select>
@@ -68,7 +68,7 @@
                                 @foreach ($data['vehicle'] as $key => $item)
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
-                                            id="vehicle{{ $key }}" name="vehicle[]" {{ in_array($item->id, $data['assign_vehicles']) ? 'checked' : '' }}>
+                                            id="vehicle{{ $key }}" name="vehicle[]" {{ in_array($item->id, $data['transport_setups']) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="vehicle{{ $key }}">
                                             {{ $item->name }}
                                         </label>
@@ -88,11 +88,11 @@
                                     </div>
                                 @endforeach
                             </div>
-                            
+
                             <div class="col-md-12 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('account.Description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('account.Enter description') }}">{{ old('description', @$data['assign_vehicle']->description) }}</textarea>
+                                    id="exampleDataList" placeholder="{{ ___('account.Enter description') }}">{{ old('description', @$data['transport_setup']->description) }}</textarea>
                                 @error('description')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                         {{ $message }}

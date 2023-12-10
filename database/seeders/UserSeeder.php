@@ -111,7 +111,7 @@ class UserSeeder extends Seeder
                 'class_room_update',
                 'class_room_delete',
                 // End Academic
-                
+
                 // Start Class Room
                 // homework
                 'homework_read',
@@ -391,7 +391,7 @@ class UserSeeder extends Seeder
                     'issue_book_delete',
                 // Library end
 
-                
+
                 // Online exam start
                     // online_exam_type
                     'online_exam_type_read',
@@ -431,11 +431,11 @@ class UserSeeder extends Seeder
                     'pickup_point_create',
                     'pickup_point_update',
                     'pickup_point_delete',
-                    // assign_vehicle
-                    'assign_vehicle_read',
-                    'assign_vehicle_create',
-                    'assign_vehicle_update',
-                    'assign_vehicle_delete',
+                    // transport_setup
+                    'transport_setup_read',
+                    'transport_setup_create',
+                    'transport_setup_update',
+                    'transport_setup_delete',
                 // Transport end
             ],
         ]);

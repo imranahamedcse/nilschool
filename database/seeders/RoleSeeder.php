@@ -24,7 +24,7 @@ class RoleSeeder extends Seeder
                     'upcoming_events_read',
                     'attendance_chart_read',
                     'calendar_read',
-                
+
                 // Start student info
                     // Student
                     'student_read',
@@ -201,7 +201,7 @@ class RoleSeeder extends Seeder
                     'expense_delete',
                 // End Transactions
 
-                
+
                 // Start Attendance
                     // attendance
                     'attendance_read',
@@ -419,11 +419,11 @@ class RoleSeeder extends Seeder
                     'pickup_point_create',
                     'pickup_point_update',
                     'pickup_point_delete',
-                    // assign_vehicle
-                    'assign_vehicle_read',
-                    'assign_vehicle_create',
-                    'assign_vehicle_update',
-                    'assign_vehicle_delete',
+                    // transport_setup
+                    'transport_setup_read',
+                    'transport_setup_create',
+                    'transport_setup_update',
+                    'transport_setup_delete',
                 // Transport end
             ],
         ]);
@@ -449,7 +449,7 @@ class RoleSeeder extends Seeder
                 'email_settings_read',
             ],
         ]);
-        
+
         Role::create([
             'name' => 'Staff',
             'permissions' => [
@@ -496,6 +496,6 @@ class RoleSeeder extends Seeder
                 //
             ],
         ]);
-        
+
     }
 }

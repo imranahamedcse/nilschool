@@ -3,19 +3,19 @@
 namespace App\Repositories\Transport;
 
 use App\Enums\Settings;
-use App\Interfaces\Transport\AssignVehicleInterface;
-use App\Models\Transport\AssignPickupPointChild;
-use App\Models\Transport\AssignVehicle;
-use App\Models\Transport\AssignVehicleChild;
+use App\Interfaces\Transport\TransportSetupInterface;
+use App\Models\Transport\TransportSetup;
+use App\Models\Transport\TransportSetupPickupPoint;
+use App\Models\Transport\TransportSetupVehicle;
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 
-class AssignVehicleRepository implements AssignVehicleInterface
+class TransportSetupRepository implements TransportSetupInterface
 {
     use ReturnFormatTrait;
     private $model;
 
-    public function __construct(AssignVehicle $model)
+    public function __construct(TransportSetup $model)
     {
         $this->model = $model;
     }
@@ -40,15 +40,15 @@ class AssignVehicleRepository implements AssignVehicleInterface
                 $row->save();
 
                 foreach ($request->vehicle as $key => $value) {
-                    $vehicle = new AssignVehicleChild();
-                    $vehicle->assign_vehicle_id = $row->id;
+                    $vehicle = new TransportSetupVehicle();
+                    $vehicle->transport_setup_id = $row->id;
                     $vehicle->vehicle_id = (int)$value;
                     $vehicle->save();
                 }
 
                 foreach ($request->pickup_point as $key => $value) {
-                    $pickup_point = new AssignPickupPointChild();
-                    $pickup_point->assign_vehicle_id = $row->id;
+                    $pickup_point = new TransportSetupPickupPoint();
+                    $pickup_point->transport_setup_id = $row->id;
                     $pickup_point->pickup_point_id = (int)$value;
                     $pickup_point->save();
                 }
@@ -74,18 +74,18 @@ class AssignVehicleRepository implements AssignVehicleInterface
                 $row->status           = $request->status;
                 $row->save();
 
-                AssignVehicleChild::where('assign_vehicle_id', $row->id)->delete();
+                TransportSetupVehicle::where('transport_setup_id', $row->id)->delete();
                 foreach ($request->vehicle as $key => $value) {
-                    $vehicle = new AssignVehicleChild();
-                    $vehicle->assign_vehicle_id = $row->id;
+                    $vehicle = new TransportSetupVehicle();
+                    $vehicle->transport_setup_id = $row->id;
                     $vehicle->vehicle_id = (int)$value;
                     $vehicle->save();
                 }
 
-                AssignPickupPointChild::where('assign_vehicle_id', $row->id)->delete();
+                TransportSetupPickupPoint::where('transport_setup_id', $row->id)->delete();
                 foreach ($request->pickup_point as $key => $value) {
-                    $pickup_point = new AssignPickupPointChild();
-                    $pickup_point->assign_vehicle_id = $row->id;
+                    $pickup_point = new TransportSetupPickupPoint();
+                    $pickup_point->transport_setup_id = $row->id;
                     $pickup_point->pickup_point_id = (int)$value;
                     $pickup_point->save();
                 }

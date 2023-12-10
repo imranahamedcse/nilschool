@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assign_vehicles', function (Blueprint $table) {
+        Schema::create('transport_setup_vehicles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('route_id')->constrained('routes')->cascadeOnDelete();
-            $table->text('description')->nullable();
-            $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
+            $table->foreignId('transport_setup_id')->constrained('transport_setups')->cascadeOnDelete();
+            $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assign_vehicles');
+        Schema::dropIfExists('transport_setup_vehicles');
     }
 };

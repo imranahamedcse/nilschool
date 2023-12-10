@@ -62,7 +62,7 @@ use App\Interfaces\StudentPanel\ClassRoutineInterface as StudentPanelClassRoutin
 use App\Interfaces\StudentPanel\DashboardInterface;
 use App\Interfaces\StudentPanel\ExamRoutineInterface as StudentPanelExamRoutineInterface;
 use App\Interfaces\StudentPanel\MarksheetInterface as StudentPanelMarksheetInterface;
-use App\Interfaces\Transport\AssignVehicleInterface;
+use App\Interfaces\Transport\TransportSetupInterface;
 use App\Interfaces\Transport\PickupPointInterface;
 use App\Interfaces\Transport\RouteInterface;
 use App\Interfaces\Transport\VehicleInterface;
@@ -103,7 +103,7 @@ use App\Repositories\StudentPanel\ClassRoutineRepository as StudentPanelClassRou
 use App\Repositories\StudentPanel\DashboardRepository;
 use App\Repositories\StudentPanel\ExamRoutineRepository as StudentPanelExamRoutineRepository;
 use App\Repositories\StudentPanel\MarksheetRepository as StudentPanelMarksheetRepository;
-use App\Repositories\Transport\AssignVehicleRepository;
+use App\Repositories\Transport\TransportSetupRepository;
 use App\Repositories\Transport\PickupPointRepository;
 use App\Repositories\Transport\RouteRepository;
 use App\Repositories\Transport\VehicleRepository;
@@ -155,7 +155,7 @@ class RepositoryServiceProvider extends ServiceProvider
         // Staff
         $this->app->bind(DepartmentInterface::class,               DepartmentRepository::class);
         $this->app->bind(DesignationInterface::class,              DesignationRepository::class);
-        
+
         // Examination
         $this->app->bind(ExamTypeInterface::class,                 ExamTypeRepository::class);
         $this->app->bind(MarksRegisterInterface::class,            MarksRegisterRepository::class);
@@ -169,8 +169,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ExpenseInterface::class,                  ExpenseRepository::class);
         // Students
         $this->app->bind(PromoteStudentInterface::class,           PromoteStudentRepository::class);
-        
-        
+
+
         // Student panel
         $this->app->bind(DashboardInterface::class,                          DashboardRepository::class);
         $this->app->bind(StudentPanelClassRoutineInterface::class,           StudentPanelClassRoutineRepository::class);
@@ -186,7 +186,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(RouteInterface::class,              RouteRepository::class);
         $this->app->bind(VehicleInterface::class,            VehicleRepository::class);
         $this->app->bind(PickupPointInterface::class,        PickupPointRepository::class);
-        $this->app->bind(AssignVehicleInterface::class,      AssignVehicleRepository::class);
+        $this->app->bind(TransportSetupInterface::class,     TransportSetupRepository::class);
 
     }
 

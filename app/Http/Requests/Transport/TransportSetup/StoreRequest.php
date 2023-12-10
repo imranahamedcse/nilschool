@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Transport\AssignVehicle;
+namespace App\Http\Requests\Transport\TransportSetup;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'route_id' => 'required|max:255|unique:assign_vehicles,route_id,'.Request()->id,
+            'route_id' => 'required|max:255|unique:transport_setups',
             'status'   => 'required'
         ];
     }

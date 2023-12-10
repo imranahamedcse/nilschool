@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Transport\AssignVehicleController;
+use App\Http\Controllers\Transport\TransportSetupController;
 use App\Http\Controllers\Transport\PickupPointController;
 use App\Http\Controllers\Transport\RouteController;
 use App\Http\Controllers\Transport\VehicleController;
@@ -33,13 +33,13 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('pickup-point.update')->middleware('PermissionCheck:pickup_point_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('pickup-point.delete')->middleware('PermissionCheck:pickup_point_delete', 'DemoCheck');
             });
-            Route::controller(AssignVehicleController::class)->prefix('assign-vehicle')->group(function () {
-                Route::get('/',                 'index')->name('assign-vehicle.index')->middleware('PermissionCheck:assign_vehicle_read');
-                Route::get('/create',           'create')->name('assign-vehicle.create')->middleware('PermissionCheck:assign_vehicle_create');
-                Route::post('/store',           'store')->name('assign-vehicle.store')->middleware('PermissionCheck:assign_vehicle_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('assign-vehicle.edit')->middleware('PermissionCheck:assign_vehicle_update');
-                Route::put('/update/{id}',      'update')->name('assign-vehicle.update')->middleware('PermissionCheck:assign_vehicle_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('assign-vehicle.delete')->middleware('PermissionCheck:assign_vehicle_delete', 'DemoCheck');
+            Route::controller(TransportSetupController::class)->prefix('setup')->group(function () {
+                Route::get('/',                 'index')->name('transport-setup.index')->middleware('PermissionCheck:transport_setup_read');
+                Route::get('/create',           'create')->name('transport-setup.create')->middleware('PermissionCheck:transport_setup_create');
+                Route::post('/store',           'store')->name('transport-setup.store')->middleware('PermissionCheck:transport_setup_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('transport-setup.edit')->middleware('PermissionCheck:transport_setup_update');
+                Route::put('/update/{id}',      'update')->name('transport-setup.update')->middleware('PermissionCheck:transport_setup_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('transport-setup.delete')->middleware('PermissionCheck:transport_setup_delete', 'DemoCheck');
             });
         });
     });

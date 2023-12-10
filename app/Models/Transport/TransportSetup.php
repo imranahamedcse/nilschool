@@ -5,7 +5,7 @@ namespace App\Models\Transport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignVehicle extends Model
+class TransportSetup extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,10 @@ class AssignVehicle extends Model
     }
     public function pickupPoints()
     {
-        return $this->hasmany(AssignPickupPointChild::class, 'assign_vehicle_id', 'id');
+        return $this->hasmany(TransportSetupPickupPoint::class, 'transport_setup_id', 'id');
     }
     public function vehicles()
     {
-        return $this->hasmany(AssignVehicleChild::class, 'assign_vehicle_id', 'id');
+        return $this->hasmany(TransportSetupVehicle::class, 'transport_setup_id', 'id');
     }
 }

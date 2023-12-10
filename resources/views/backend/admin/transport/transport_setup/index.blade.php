@@ -21,13 +21,13 @@
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('account.Route') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
-                    @if (hasPermission('assign_vehicle_update') || hasPermission('assign_vehicle_delete'))
+                    @if (hasPermission('transport_setup_update') || hasPermission('transport_setup_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
                 </tr>
             </thead>
             <tbody class="tbody">
-                @forelse ($data['assign_vehicle'] as $key => $row)
+                @forelse ($data['transport_setup'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
                         <td>{{ $row->route->name }}</td>
@@ -38,18 +38,18 @@
                                 <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
                             @endif
                         </td>
-                        @if ((hasPermission('assign_vehicle_update') || hasPermission('assign_vehicle_delete')))
+                        @if ((hasPermission('transport_setup_update') || hasPermission('transport_setup_delete')))
                             <td>
-                                @if (hasPermission('assign_vehicle_update'))
+                                @if (hasPermission('transport_setup_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.edit') }}"
-                                        href="{{ route('assign-vehicle.edit', $row->id) }}"><i
+                                        href="{{ route('transport-setup.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
-                                @if (hasPermission('assign_vehicle_delete'))
+                                @if (hasPermission('transport_setup_delete'))
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('transport/assign-vehicle/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('transport/setup/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

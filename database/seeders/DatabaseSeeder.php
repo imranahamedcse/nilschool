@@ -49,7 +49,7 @@ use Database\Seeders\Library\BookCategorySeeder;
 use Database\Seeders\OnlineExamination\OnlineExamSeeder;
 use Database\Seeders\OnlineExamination\QuestionBankSeeder;
 use Database\Seeders\OnlineExamination\QuestionGroupSeeder;
-use Database\Seeders\Transport\AssignVehicleSeeder;
+use Database\Seeders\Transport\TransportSetupSeeder;
 use Database\Seeders\Transport\PickupPointSeeder;
 use Database\Seeders\Transport\RouteSeeder;
 use Database\Seeders\Transport\VehicleSeeder;
@@ -88,11 +88,11 @@ class DatabaseSeeder extends Seeder
             ReligionSeeder::class,
             BloodGroupSeeder::class,
             SessionSeeder::class,
-            
+
             // Staff
             DepartmentSeeder::class,
             StaffSeeder::class,
-            
+
             // Academic
             ClassesSeeder::class,
             SectionSeeder::class,
@@ -159,7 +159,7 @@ class DatabaseSeeder extends Seeder
             RouteSeeder::class,
             VehicleSeeder::class,
             PickupPointSeeder::class,
-            // AssignVehicleSeeder::class,
+            TransportSetupSeeder::class,
             // VehicleStudentSeeder::class
         ]);
     }

@@ -55,3 +55,19 @@ input[type="file"]::file-selector-button {
     color: #49B6F5;
     background: #ECF8FE;
 }
+
+
+/* Checkbox start */
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+}
+.form-check-input:checked {
+    background-color: #49B6F5;
+    border-color: #49B6F5;
+}
+label.form-check-label {
+    padding-top: 3px;
+    padding-left: 3px;
+}
+/* Checkbox end */

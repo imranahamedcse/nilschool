@@ -5,7 +5,7 @@ namespace App\Models\Transport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignVehicleChild extends Model
+class TransportSetupVehicle extends Model
 {
     use HasFactory;
 

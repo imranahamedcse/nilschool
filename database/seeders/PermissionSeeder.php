@@ -40,7 +40,7 @@ class PermissionSeeder extends Seeder
             // Fees
             'fees_group'        => ['read' => 'fees_group_read', 'create' => 'fees_group_create', 'update' => 'fees_group_update', 'delete' => 'fees_group_delete'],
             'fees_type'         => ['read' => 'fees_type_read', 'create' => 'fees_type_create', 'update' => 'fees_type_update', 'delete' => 'fees_type_delete'],
-            'fees_master'       => ['read' => 'fees_master_read', 'create' => 'fees_master_create', 'update' => 'fees_master_update', 'delete' => 'fees_master_delete'], 
+            'fees_master'       => ['read' => 'fees_master_read', 'create' => 'fees_master_create', 'update' => 'fees_master_update', 'delete' => 'fees_master_delete'],
             'fees_assign'       => ['read' => 'fees_assign_read', 'create' => 'fees_assign_create', 'update' => 'fees_assign_update', 'delete' => 'fees_assign_delete'],
             'fees_collect'      => ['read' => 'fees_collect_read', 'create' => 'fees_collect_create', 'update' => 'fees_collect_update', 'delete' => 'fees_collect_delete'],
             // examinations
@@ -69,7 +69,7 @@ class PermissionSeeder extends Seeder
             'attendance_report' => ['read' => 'report_attendance_read'],
             // Language
             'language'          => ['read' => 'language_read', 'create' => 'language_create', 'update' => 'language_update','update terms' => 'language_update_terms', 'delete' => 'language_delete'],
-            // Staff 
+            // Staff
             'roles'             => ['read' => 'role_read', 'create' => 'role_create', 'update' => 'role_update', 'delete' => 'role_delete'],
             'users'             => ['read' => 'user_read', 'create' => 'user_create', 'update' => 'user_update', 'delete' => 'user_delete'],
             'department'        => ['read' => 'department_read', 'create' => 'department_create', 'update' => 'department_update', 'delete' => 'department_delete'],
@@ -114,8 +114,8 @@ class PermissionSeeder extends Seeder
             'route'             => ['read' => 'route_read', 'create' => 'route_create', 'update' => 'route_update', 'delete' => 'route_delete'],
             'vehicle'           => ['read' => 'vehicle_read', 'create' => 'vehicle_create', 'update' => 'vehicle_update', 'delete' => 'vehicle_delete'],
             'pickup_point'      => ['read' => 'pickup_point_read', 'create' => 'pickup_point_create', 'update' => 'pickup_point_update', 'delete' => 'pickup_point_delete'],
-            'assign_vehicle'    => ['read' => 'assign_vehicle_read', 'create' => 'assign_vehicle_create', 'update' => 'assign_vehicle_update', 'delete' => 'assign_vehicle_delete'],
-            
+            'transport_setup'   => ['read' => 'transport_setup_read', 'create' => 'transport_setup_create', 'update' => 'transport_setup_update', 'delete' => 'transport_setup_delete'],
+
         ];
 
         foreach($attributes as $key => $attribute){

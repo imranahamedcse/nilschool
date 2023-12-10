@@ -2,7 +2,7 @@
 
 namespace App\Interfaces\Transport;
 
-interface AssignVehicleInterface
+interface TransportSetupInterface
 {
     public function getAll();
 
