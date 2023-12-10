@@ -2,14 +2,13 @@
 
 namespace App\Interfaces\Transport;
 
-interface TransportSetupInterface
+interface TransportStudentInterface
 {
     public function getAll();
 
     public function store($request);
 
     public function show($id);
-    public function getTransport($id);
 
     public function update($request, $id);
 

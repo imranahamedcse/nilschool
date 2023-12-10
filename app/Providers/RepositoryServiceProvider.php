@@ -65,6 +65,7 @@ use App\Interfaces\StudentPanel\MarksheetInterface as StudentPanelMarksheetInter
 use App\Interfaces\Transport\TransportSetupInterface;
 use App\Interfaces\Transport\PickupPointInterface;
 use App\Interfaces\Transport\RouteInterface;
+use App\Interfaces\Transport\TransportStudentInterface;
 use App\Interfaces\Transport\VehicleInterface;
 use App\Repositories\Academic\ClassRoomRepository;
 use App\Repositories\Academic\ClassRoutineRepository;
@@ -106,6 +107,7 @@ use App\Repositories\StudentPanel\MarksheetRepository as StudentPanelMarksheetRe
 use App\Repositories\Transport\TransportSetupRepository;
 use App\Repositories\Transport\PickupPointRepository;
 use App\Repositories\Transport\RouteRepository;
+use App\Repositories\Transport\TransportStudentRepository;
 use App\Repositories\Transport\VehicleRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -187,6 +189,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(VehicleInterface::class,            VehicleRepository::class);
         $this->app->bind(PickupPointInterface::class,        PickupPointRepository::class);
         $this->app->bind(TransportSetupInterface::class,     TransportSetupRepository::class);
+        $this->app->bind(TransportStudentInterface::class,   TransportStudentRepository::class);
 
     }
 

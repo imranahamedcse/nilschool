@@ -62,7 +62,7 @@ class StudentController extends Controller
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = [];
         $data['students'] = $this->repo->getPaginateAll();
-        
+
         $title             = ___('student_info.Students');
         $data['headers']   = [
             "title"        => $title,
@@ -135,7 +135,7 @@ class StudentController extends Controller
         $students = $this->repo->getStudents($request);
         return view('backend.admin.student-info.student.students-list', compact('students','examAssign'))->render();
     }
-    
+
     public function getClassSectionStudents(Request $request){
         return $this->repo->getStudents($request);
     }
@@ -149,7 +149,7 @@ class StudentController extends Controller
         }
         return back()->with('danger', $result['message']);
     }
-    
+
     public function edit($id)
     {
         $data['title']     = ___('student_info.Edit student');
@@ -174,14 +174,14 @@ class StudentController extends Controller
         return view('backend.admin.student-info.student.edit', compact('data'));
     }
 
-    
+
     public function show($id)
     {
         $data = $this->repo->show($id);
         return view('backend.admin.student-info.student.show', compact('data'));
     }
 
-    
+
     public function update(StudentUpdateRequest $request)
     {
         $result = $this->repo->update($request, $request->id);
@@ -194,7 +194,7 @@ class StudentController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
@@ -207,6 +207,6 @@ class StudentController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

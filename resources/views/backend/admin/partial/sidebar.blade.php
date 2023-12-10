@@ -25,8 +25,7 @@
                 hasPermission('disabled_students_read') ||
                 hasPermission('admission_read') ||
                 hasPermission('parent_read'))
-            <li
-                class="{{ set_menu(['students*']) }}">
+            <li class="{{ set_menu(['students*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-graduation-cap"></i>
@@ -82,8 +81,7 @@
                 hasPermission('class_room_read') ||
                 hasPermission('class_routine_read') ||
                 hasPermission('attendance_read'))
-            <li
-                class="{{ set_menu(['academic*']) }}">
+            <li class="{{ set_menu(['academic*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-house-flag"></i>
@@ -232,8 +230,7 @@
                 hasPermission('marks_register_read') ||
                 hasPermission('exam_setting_read') ||
                 hasPermission('exam_routine_read'))
-            <li
-                class="{{ set_menu(['exam*']) }}">
+            <li class="{{ set_menu(['exam*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-book-open-reader"></i>
@@ -338,7 +335,7 @@
                         </li>
                     @endif
                     @if (hasPermission('book_read'))
-                        <li class="{{ set_menu(['library/book','library/book/*']) }}">
+                        <li class="{{ set_menu(['library/book', 'library/book/*']) }}">
                             <a href="{{ route('book.index') }}">{{ ___('menu.Book') }}</a>
                         </li>
                     @endif
@@ -348,7 +345,7 @@
                         </li>
                     @endif
                     @if (hasPermission('member_read'))
-                        <li class="{{ set_menu(['library/member','library/member/*']) }}">
+                        <li class="{{ set_menu(['library/member', 'library/member/*']) }}">
                             <a href="{{ route('member.index') }}">{{ ___('menu.Member') }}</a>
                         </li>
                     @endif
@@ -436,7 +433,11 @@
         <!-- End Dormitory -->
 
         <!-- Start Transport -->
-        @if (hasPermission('route_read') || hasPermission('vehicle_read') || hasPermission('pickup_point_read') || hasPermission('transport_setup_read'))
+        @if (hasPermission('route_read') ||
+                hasPermission('vehicle_read') ||
+                hasPermission('pickup_point_read') ||
+                hasPermission('transport_setup_read') ||
+                hasPermission('transport_student_read'))
             <li class="{{ set_menu(['transport*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
@@ -463,7 +464,13 @@
                     @endif
                     @if (hasPermission('transport_setup_read'))
                         <li class="{{ set_menu(['transport/transport-setup*']) }}">
-                            <a href="{{ route('transport-setup.index') }}">{{ ___('menu.Transport setup') }}</a>
+                            <a href="{{ route('transport-setup.index') }}">{{ ___('menu.Setup') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('transport_student_read'))
+                        <li class="{{ set_menu(['transport/transport-student*']) }}">
+                            <a
+                                href="{{ route('transport-student.index') }}">{{ ___('menu.Student') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -591,8 +598,7 @@
                 hasPermission('contact_message_read') ||
                 hasPermission('gallery_category_read') ||
                 hasPermission('gallery_read'))
-            <li
-                class="{{ set_menu(['website-setup*']) }}">
+            <li class="{{ set_menu(['website-setup*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-screwdriver-wrench"></i>
@@ -680,8 +686,7 @@
                 hasPermission('religion_read') ||
                 hasPermission('blood_group_read') ||
                 hasPermission('session_read'))
-            <li
-                class="{{ set_menu(['settings*']) }}">
+            <li class="{{ set_menu(['settings*']) }}">
                 <div class="icon-link">
                     <a href="#" class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-gear"></i>
@@ -698,7 +703,8 @@
                     @endif
                     @if (hasPermission('general_settings_read'))
                         <li class="{{ set_menu(['settings/general']) }}">
-                            <a href="{{ route('settings.general-settings') }}">{{ ___('menu.General settings') }}</a>
+                            <a
+                                href="{{ route('settings.general-settings') }}">{{ ___('menu.General settings') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('task_schedules_read'))

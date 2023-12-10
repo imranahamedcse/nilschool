@@ -436,6 +436,11 @@ class UserSeeder extends Seeder
                     'transport_setup_create',
                     'transport_setup_update',
                     'transport_setup_delete',
+                    // transport_student
+                    'transport_student_read',
+                    'transport_student_create',
+                    'transport_student_update',
+                    'transport_student_delete',
                 // Transport end
             ],
         ]);

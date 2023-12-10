@@ -106,4 +106,9 @@ class TransportSetupRepository implements TransportSetupInterface
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
         }
     }
+
+    public function getTransport($id)
+    {
+        return $this->model->where('route_id', $id)->with('vehicles','vehicles.vehicle', 'pickupPoints', 'pickupPoints.pickupPoint')->first();
+    }
 }

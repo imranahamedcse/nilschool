@@ -3,24 +3,30 @@
 namespace App\Http\Controllers\Transport;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Transport\TransportSetup\StoreRequest;
-use App\Http\Requests\Transport\TransportSetup\UpdateRequest;
-use App\Interfaces\Transport\TransportSetupInterface;
+use App\Http\Requests\Transport\TransportStudent\StoreRequest;
+use App\Http\Requests\Transport\TransportStudent\UpdateRequest;
+use App\Interfaces\Transport\TransportStudentInterface;
 use App\Interfaces\Transport\PickupPointInterface;
 use App\Interfaces\Transport\RouteInterface;
 use App\Interfaces\Transport\VehicleInterface;
+use App\Repositories\Academic\ClassesRepository;
+use App\Repositories\Academic\ClassSetupRepository;
+use App\Repositories\StudentInfo\StudentRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
-class TransportSetupController extends Controller
+class TransportStudentController extends Controller
 {
-    private $repo, $pickupPointRepo, $routeRepo, $vehicleRepo;
+    private $repo, $pickupPointRepo, $routeRepo, $vehicleRepo, $classRepo, $classSetupRepo, $studentRepo;
 
     function __construct(
-        TransportSetupInterface $repo,
+        TransportStudentInterface $repo,
         PickupPointInterface $pickupPointRepo,
         RouteInterface $routeRepo,
-        VehicleInterface $vehicleRepo
+        VehicleInterface $vehicleRepo,
+        ClassesRepository $classRepo,
+        ClassSetupRepository $classSetupRepo,
+        StudentRepository $studentRepo,
     )
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
@@ -30,23 +36,26 @@ class TransportSetupController extends Controller
         $this->pickupPointRepo = $pickupPointRepo;
         $this->routeRepo       = $routeRepo;
         $this->vehicleRepo     = $vehicleRepo;
+        $this->classRepo       = $classRepo;
+        $this->classSetupRepo  = $classSetupRepo;
+        $this->studentRepo     = $studentRepo;
     }
 
     public function index()
     {
-        $data['transport_setup'] = $this->repo->getAll();
+        $data['transport_student'] = $this->repo->getAll();
         $title             = ___('account.Transport setup');
         $data['headers']   = [
             "title"        => $title,
-            "create-permission" => 'transport_setup_create',
-            "create-route" => 'transport-setup.create',
+            "create-permission" => 'transport_student_create',
+            "create-route" => 'transport-student.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        return view('backend.admin.transport.transport_setup.index', compact('data'));
+        return view('backend.admin.transport.transport_student.index', compact('data'));
     }
 
     public function create()
@@ -55,22 +64,26 @@ class TransportSetupController extends Controller
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
-            ["title" => ___('common.Transport setup'), "route" => "transport-setup.index"],
+            ["title" => ___('common.Transport setup'), "route" => "transport-student.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['pickup_point'] = $this->pickupPointRepo->getAll();
         $data['route'] = $this->routeRepo->getAll();
-        $data['vehicle'] = $this->vehicleRepo->getAll();
+        $data['pickup_points'] = [];
+        $data['vehicles'] = [];
 
-        return view('backend.admin.transport.transport_setup.create', compact('data'));
+        $data['classes']            = $this->classRepo->assignedAll();
+        $data['sections']           = [];
+        $data['students']           = [];
+
+        return view('backend.admin.transport.transport_student.create', compact('data'));
     }
 
     public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
-            return redirect()->route('transport-setup.index')->with('success', $result['message']);
+            return redirect()->route('transport-student.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
@@ -81,26 +94,33 @@ class TransportSetupController extends Controller
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
-            ["title" => ___('common.Transport setup'), "route" => "transport-setup.index"],
+            ["title" => ___('common.Transport setup'), "route" => "transport-student.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['pickup_point'] = $this->pickupPointRepo->getAll();
-        $data['route'] = $this->routeRepo->getAll();
-        $data['vehicle'] = $this->vehicleRepo->getAll();
+        $data['transport_student'] = $this->repo->show($id);
 
-        $data['transport_setup'] = $this->repo->show($id);
-        $data['assign_pickup_point'] = array_unique($data['transport_setup']->pickupPoints->pluck('pickup_point_id')->toArray());
-        $data['transport_setups'] = array_unique($data['transport_setup']->vehicles->pluck('vehicle_id')->toArray());
+        $data['route']        = $this->routeRepo->getAll();
+        $data['pickup_points'] = $this->pickupPointRepo->getAll();
+        $data['vehicles']      = $this->vehicleRepo->getAll();
 
-        return view('backend.admin.transport.transport_setup.edit', compact('data'));
+        $request = new Request([
+            'class'   => $data['transport_student']->class_id,
+            'section' => $data['transport_student']->section_id,
+        ]);
+
+        $data['classes']      = $this->classRepo->assignedAll();
+        $data['sections']     = $this->classSetupRepo->getSections($request->class);
+        $data['students']     = $this->studentRepo->getStudents($request);
+
+        return view('backend.admin.transport.transport_student.edit', compact('data'));
     }
 
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){
-            return redirect()->route('transport-setup.index')->with('success', $result['message']);
+            return redirect()->route('transport-student.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
@@ -120,10 +140,6 @@ class TransportSetupController extends Controller
             $success[2] = ___('alert.oops');
             return response()->json($success);
         endif;
-    }
-
-    public function getVehiclePickupPoint(Request $request){
-        return $this->repo->getTransport($request->id);
     }
 }
 

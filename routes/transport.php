@@ -3,6 +3,7 @@
 use App\Http\Controllers\Transport\TransportSetupController;
 use App\Http\Controllers\Transport\PickupPointController;
 use App\Http\Controllers\Transport\RouteController;
+use App\Http\Controllers\Transport\TransportStudentController;
 use App\Http\Controllers\Transport\VehicleController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,15 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/edit/{id}',        'edit')->name('transport-setup.edit')->middleware('PermissionCheck:transport_setup_update');
                 Route::put('/update/{id}',      'update')->name('transport-setup.update')->middleware('PermissionCheck:transport_setup_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('transport-setup.delete')->middleware('PermissionCheck:transport_setup_delete', 'DemoCheck');
+                Route::get('/get-vehicle-pickup-point', 'getVehiclePickupPoint');
+            });
+            Route::controller(TransportStudentController::class)->prefix('student')->group(function () {
+                Route::get('/',                 'index')->name('transport-student.index')->middleware('PermissionCheck:transport_student_read');
+                Route::get('/create',           'create')->name('transport-student.create')->middleware('PermissionCheck:transport_student_create');
+                Route::post('/store',           'store')->name('transport-student.store')->middleware('PermissionCheck:transport_student_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('transport-student.edit')->middleware('PermissionCheck:transport_student_update');
+                Route::put('/update/{id}',      'update')->name('transport-student.update')->middleware('PermissionCheck:transport_student_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('transport-student.delete')->middleware('PermissionCheck:transport_student_delete', 'DemoCheck');
             });
         });
     });

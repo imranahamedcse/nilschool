@@ -115,6 +115,7 @@ class PermissionSeeder extends Seeder
             'vehicle'           => ['read' => 'vehicle_read', 'create' => 'vehicle_create', 'update' => 'vehicle_update', 'delete' => 'vehicle_delete'],
             'pickup_point'      => ['read' => 'pickup_point_read', 'create' => 'pickup_point_create', 'update' => 'pickup_point_update', 'delete' => 'pickup_point_delete'],
             'transport_setup'   => ['read' => 'transport_setup_read', 'create' => 'transport_setup_create', 'update' => 'transport_setup_update', 'delete' => 'transport_setup_delete'],
+            'transport_student' => ['read' => 'transport_student_read', 'create' => 'transport_student_create', 'update' => 'transport_student_update', 'delete' => 'transport_student_delete'],
 
         ];
 
