@@ -12,27 +12,27 @@ use Illuminate\Support\Facades\DB;
 class DormitorySetupRepository implements DormitorySetupInterface
 {
     use ReturnFormatTrait;
-    private $head;
+    private $model;
 
-    public function __construct(DormitorySetup $head)
+    public function __construct(DormitorySetup $model)
     {
-        $this->head = $head;
+        $this->model = $model;
     }
 
     public function all()
     {
-        return $this->head->active()->orderBy('name')->get();
+        return $this->model->active()->orderBy('name')->get();
     }
     public function getAll()
     {
-        return $this->head->latest()->paginate(Settings::PAGINATE);
+        return $this->model->latest()->paginate(Settings::PAGINATE);
     }
 
     public function store($request)
     {
         try {
             DB::transaction(function () use ($request) {
-                $row                   = new $this->head;
+                $row                   = new $this->model;
                 $row->dormitory_id     = $request->dormitory_id;
                 $row->status           = $request->status;
                 $row->save();
@@ -52,14 +52,14 @@ class DormitorySetupRepository implements DormitorySetupInterface
 
     public function show($id)
     {
-        return $this->head->find($id);
+        return $this->model->find($id);
     }
 
     public function update($request, $id)
     {
         try {
             DB::transaction(function () use ($request, $id) {
-                $row                   = $this->head->findOrfail($id);
+                $row                   = $this->model->findOrfail($id);
                 $row->dormitory_id     = $request->dormitory_id;
                 $row->status           = $request->status;
                 $row->save();
@@ -82,11 +82,21 @@ class DormitorySetupRepository implements DormitorySetupInterface
     public function destroy($id)
     {
         try {
-            $headDestroy = $this->head->find($id);
-            $headDestroy->delete();
+            $row = $this->model->find($id);
+            $row->delete();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
         }
+    }
+
+    public function getRoom($id){
+        $data = $this->model->where('dormitory_id', $id)->first();
+        return $data->rooms;
+    }
+
+    public function getDormitoryRoom($id)
+    {
+        return $this->model->where('dormitory_id', $id)->with('rooms', 'rooms.room')->first();
     }
 }

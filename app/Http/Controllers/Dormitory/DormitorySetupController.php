@@ -114,4 +114,8 @@ class DormitorySetupController extends Controller
             return response()->json($success);
         endif;
     }
+
+    public function getDormitoryRoom(Request $request){
+        return $this->repo->getDormitoryRoom($request->id);
+    }
 }

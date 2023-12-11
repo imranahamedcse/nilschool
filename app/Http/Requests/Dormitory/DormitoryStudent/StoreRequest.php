@@ -24,7 +24,6 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required|max:255|unique:room_types',
             'status' => 'required'
         ];
     }

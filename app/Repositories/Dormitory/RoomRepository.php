@@ -10,26 +10,26 @@ use App\Traits\ReturnFormatTrait;
 class RoomRepository implements RoomInterface
 {
     use ReturnFormatTrait;
-    private $head;
+    private $model;
 
-    public function __construct(Room $head)
+    public function __construct(Room $model)
     {
-        $this->head = $head;
+        $this->model = $model;
     }
 
     public function all()
     {
-        return $this->head->active()->orderBy('name')->get();
+        return $this->model->active()->orderBy('name')->get();
     }
     public function getAll()
     {
-        return $this->head->latest()->paginate(Settings::PAGINATE);
+        return $this->model->latest()->paginate(Settings::PAGINATE);
     }
 
     public function store($request)
     {
         try {
-            $row                   = new $this->head;
+            $row                   = new $this->model;
             $row->room_type_id     = $request->type;
             $row->room_no          = $request->room_no;
             $row->status           = $request->status;
@@ -43,13 +43,13 @@ class RoomRepository implements RoomInterface
 
     public function show($id)
     {
-        return $this->head->find($id);
+        return $this->model->find($id);
     }
 
     public function update($request, $id)
     {
         try {
-            $row                   = $this->head->findOrfail($id);
+            $row                   = $this->model->findOrfail($id);
             $row->room_type_id     = $request->type;
             $row->room_no          = $request->room_no;
             $row->status           = $request->status;
@@ -64,11 +64,16 @@ class RoomRepository implements RoomInterface
     public function destroy($id)
     {
         try {
-            $headDestroy = $this->head->find($id);
-            $headDestroy->delete();
+            $row = $this->model->find($id);
+            $row->delete();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
         }
+    }
+
+    public function getRoom($id)
+    {
+        return $this->model->where('id', $id)->with('type')->first();
     }
 }

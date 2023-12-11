@@ -12,6 +12,8 @@ interface RoomInterface
 
     public function show($id);
 
+    public function getRoom($id);
+
     public function update($request, $id);
 
     public function destroy($id);

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('dormitory_students', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->foreignId('class_id')->constrained('classes')->cascadeOnDelete();
+            $table->foreignId('section_id')->constrained('sections')->cascadeOnDelete();
             $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
-            $table->foreignId('room_type_id')->constrained('room_types')->cascadeOnDelete();
-            $table->foreignId('rooms_id')->constrained('rooms')->cascadeOnDelete();
+            $table->foreignId('dormitory_id')->constrained('dormitories')->cascadeOnDelete();
+            $table->foreignId('room_id')->constrained('rooms')->cascadeOnDelete();
             $table->integer('seat_no')->nullable();
             $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
             $table->timestamps();

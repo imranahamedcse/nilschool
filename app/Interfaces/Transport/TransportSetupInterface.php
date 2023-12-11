@@ -9,6 +9,7 @@ interface TransportSetupInterface
     public function store($request);
 
     public function show($id);
+    
     public function getTransport($id);
 
     public function update($request, $id);

@@ -8,14 +8,16 @@ use App\Http\Requests\Dormitory\DormitoryStudent\UpdateRequest;
 use App\Interfaces\Academic\ClassesInterface;
 use App\Interfaces\Academic\ClassSetupInterface;
 use App\Interfaces\Dormitory\DormitoryInterface;
+use App\Interfaces\Dormitory\DormitorySetupInterface;
 use App\Interfaces\Dormitory\DormitoryStudentInterface;
+use App\Interfaces\Dormitory\RoomInterface;
 use App\Repositories\StudentInfo\StudentRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
 class DormitoryStudentController extends Controller
 {
-    private $repo, $classRepo, $classSetupRepo, $studentRepo, $dormitoryRepo;
+    private $repo, $classRepo, $classSetupRepo, $studentRepo, $dormitoryRepo, $setupRepo, $roomRepo;
 
     function __construct(
         DormitoryStudentInterface $repo,
@@ -23,16 +25,20 @@ class DormitoryStudentController extends Controller
         ClassSetupInterface $classSetupRepo,
         StudentRepository $studentRepo,
         DormitoryInterface $dormitoryRepo,
+        DormitorySetupInterface $setupRepo,
+        RoomInterface $roomRepo,
     )
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
         }
-        $this->repo       = $repo;
+        $this->repo            = $repo;
         $this->classRepo       = $classRepo;
         $this->classSetupRepo  = $classSetupRepo;
         $this->studentRepo     = $studentRepo;
-        $this->dormitoryRepo  = $dormitoryRepo;
+        $this->dormitoryRepo   = $dormitoryRepo;
+        $this->setupRepo       = $setupRepo;
+        $this->roomRepo        = $roomRepo;
     }
 
     public function index()
@@ -93,7 +99,22 @@ class DormitoryStudentController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['dormitory_student']        = $this->repo->show($id);
+        $data['dormitory_student'] = $this->repo->show($id);
+
+        $request = new Request([
+            'class'   => $data['dormitory_student']->class_id,
+            'section' => $data['dormitory_student']->section_id,
+        ]);
+
+        $data['classes']      = $this->classRepo->assignedAll();
+        $data['sections']     = $this->classSetupRepo->getSections($request->class);
+        $data['students']     = $this->studentRepo->getStudents($request);
+
+        $data['dormitories']     = $this->dormitoryRepo->getAll();
+
+        $data['rooms']           = $this->setupRepo->getRoom($data['dormitory_student']->dormitory_id);
+        $data['seats']           = $this->roomRepo->show($data['dormitory_student']->room_id);
+
         return view('backend.admin.dormitory.dormitory_student.edit', compact('data'));
     }
 

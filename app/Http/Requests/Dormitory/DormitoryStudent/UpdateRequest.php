@@ -24,7 +24,6 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required|max:255|unique:room_types,name,'.Request()->id,
             'status' => 'required'
         ];
     }

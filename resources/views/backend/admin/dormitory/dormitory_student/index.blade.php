@@ -19,9 +19,9 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('account.Total seat') }}</th>
-                    <th class="purchase">{{ ___('account.Seat Fee') }}</th>
+                    <th class="purchase">{{ ___('common.Student') }}</th>
+                    <th class="purchase">{{ ___('account.Room No') }}</th>
+                    <th class="purchase">{{ ___('account.Seat No') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('dormitory_student_update') || hasPermission('dormitory_student_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
@@ -32,9 +32,9 @@
                 @forelse ($data['dormitory_student'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
-                        <td>{{ $row->name }}</td>
-                        <td>{{ $row->total_seat }}</td>
-                        <td>{{ $row->seat_fee }}</td>
+                        <td>{{ $row->student->first_name .' '. $row->student->last_name }}</td>
+                        <td>{{ $row->room->room_no }}</td>
+                        <td>{{ $row->seat_no }}</td>
                         <td>
                             @if ($row->status == App\Enums\Status::ACTIVE)
                                 <span class="badge-basic-success-text">{{ ___('common.active') }}</span>

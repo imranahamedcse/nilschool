@@ -61,7 +61,7 @@
                                     <option value="">{{ ___('student_info.Select student') }} *</option>
                                     @foreach ($data['students'] as $item)
                                         <option
-                                            {{ old('student', @$data['student']->id) == $item->student_id ? 'selected' : '' }}
+                                            {{ old('student', @$data['student']->student) == $item->student_id ? 'selected' : '' }}
                                             value="{{ $item->student_id }}">{{ $item->student->first_name }}
                                             {{ $item->student->last_name }}</option>
                                     @endforeach
@@ -93,15 +93,15 @@
                             <div class="col-md-4 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.Room No') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="room form-control @error('room_no') is-invalid @enderror" name="room_no">
+                                <select class="room form-control @error('room') is-invalid @enderror" name="room">
                                     <option value="">{{ ___('student_info.Select room no') }} </option>
                                     @foreach ($data['rooms'] as $item)
                                         <option
-                                            {{ old('room_no', @$data['request']->room_no) == $item->id ? 'selected' : '' }}
+                                            {{ old('room', @$data['request']->room) == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('room_no')
+                                @error('room')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -111,15 +111,15 @@
                             <div class="col-md-4 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.Seat No') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="seat form-control @error('seat_no') is-invalid @enderror" name="seat_no">
+                                <select class="seat form-control @error('seat') is-invalid @enderror" name="seat">
                                     <option value="">{{ ___('student_info.Select seat no') }} *</option>
                                     @foreach ($data['seats'] as $item)
                                         <option
-                                            {{ old('seat_no', @$data['seat_no']->id) == $item_id ? 'selected' : '' }}
+                                            {{ old('seat', @$data['seat']->seat) == $item_id ? 'selected' : '' }}
                                             value="{{ $item_id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('seat_no')
+                                @error('seat')
                                     <div id="validationServer04Feedback" class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -160,4 +160,6 @@
 @push('script')
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-student.js') }}"></script>
+    <script src="{{ asset('backend/js/get-dormitory-rooms.js') }}"></script>
+    <script src="{{ asset('backend/js/get-room-seats.js') }}"></script>
 @endpush

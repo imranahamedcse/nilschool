@@ -109,5 +109,9 @@ class RoomController extends Controller
             return response()->json($success);
         endif;
     }
+
+    public function getRoom(Request $request){
+        return $this->repo->getRoom($request->id);
+    }
 }
 
