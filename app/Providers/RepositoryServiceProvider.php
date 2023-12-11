@@ -38,6 +38,7 @@ use App\Interfaces\Academic\TimeScheduleInterface;
 use App\Interfaces\Accounts\AccountHeadInterface;
 use App\Interfaces\Accounts\ExpenseInterface;
 use App\Interfaces\Accounts\IncomeInterface;
+use App\Interfaces\Dormitory\RoomTypeInterface;
 use App\Interfaces\WebsiteSetup\CounterInterface;
 use App\Interfaces\Examination\ExamTypeInterface;
 use App\Interfaces\Report\MarksheetInterface;
@@ -76,6 +77,7 @@ use App\Repositories\Accounts\AccountHeadRepository;
 use App\Repositories\Accounts\ExpenseRepository;
 use App\Repositories\Accounts\IncomeRepository;
 use App\Repositories\BloodGroupRepository;
+use App\Repositories\Dormitory\RoomTypeRepository;
 use App\Repositories\WebsiteSetup\CounterRepository;
 use App\Repositories\Examination\ExamTypeRepository;
 use App\Repositories\Report\MarksheetRepository;
@@ -190,6 +192,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PickupPointInterface::class,        PickupPointRepository::class);
         $this->app->bind(TransportSetupInterface::class,     TransportSetupRepository::class);
         $this->app->bind(TransportStudentInterface::class,   TransportStudentRepository::class);
+
+        // Dormitory
+        $this->app->bind(RoomTypeInterface::class,   RoomTypeRepository::class);
+
 
     }
 

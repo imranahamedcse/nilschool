@@ -442,6 +442,15 @@ class UserSeeder extends Seeder
                     'transport_student_update',
                     'transport_student_delete',
                 // Transport end
+
+
+                // Dormitory start
+                    // room_type
+                    'room_type_read',
+                    'room_type_create',
+                    'room_type_update',
+                    'room_type_delete',
+                // Dormitory end
             ],
         ]);
 

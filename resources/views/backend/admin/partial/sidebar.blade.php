@@ -412,7 +412,7 @@
         <!-- End Canteen -->
 
         <!-- Start Dormitory -->
-        @if (hasPermission('account_head_read'))
+        @if (hasPermission('room_type_read'))
             <li class="{{ set_menu(['account*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
@@ -422,9 +422,9 @@
                     <i class="append-icon fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    @if (hasPermission('account_head_read'))
-                        <li class="{{ set_menu(['account/head*']) }}">
-                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
+                    @if (hasPermission('room_type_read'))
+                        <li class="{{ set_menu(['dormitory/room-type*']) }}">
+                            <a href="{{ route('room-type.index') }}">{{ ___('menu.Room Type') }}</a>
                         </li>
                     @endif
                 </ul>

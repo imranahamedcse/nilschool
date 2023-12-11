@@ -117,6 +117,9 @@ class PermissionSeeder extends Seeder
             'transport_setup'   => ['read' => 'transport_setup_read', 'create' => 'transport_setup_create', 'update' => 'transport_setup_update', 'delete' => 'transport_setup_delete'],
             'transport_student' => ['read' => 'transport_student_read', 'create' => 'transport_student_create', 'update' => 'transport_student_update', 'delete' => 'transport_student_delete'],
 
+            // Dormitory
+            'room_type'         => ['read' => 'room_type_read', 'create' => 'room_type_create', 'update' => 'room_type_update', 'delete' => 'room_type_delete'],
+
         ];
 
         foreach($attributes as $key => $attribute){
