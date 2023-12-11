@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dormitory\DormitoryController;
+use App\Http\Controllers\Dormitory\RoomController;
 use App\Http\Controllers\Dormitory\RoomTypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,14 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/edit/{id}',        'edit')->name('dormitory.edit')->middleware('PermissionCheck:dormitory_update');
                 Route::put('/update/{id}',      'update')->name('dormitory.update')->middleware('PermissionCheck:dormitory_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('dormitory.delete')->middleware('PermissionCheck:dormitory_delete', 'DemoCheck');
+            });
+            Route::controller(RoomController::class)->prefix('room')->group(function () {
+                Route::get('/',                 'index')->name('room.index')->middleware('PermissionCheck:room_read');
+                Route::get('/create',           'create')->name('room.create')->middleware('PermissionCheck:room_create');
+                Route::post('/store',           'store')->name('room.store')->middleware('PermissionCheck:room_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('room.edit')->middleware('PermissionCheck:room_update');
+                Route::put('/update/{id}',      'update')->name('room.update')->middleware('PermissionCheck:room_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('room.delete')->middleware('PermissionCheck:room_delete', 'DemoCheck');
             });
         });
     });

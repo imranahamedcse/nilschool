@@ -3,16 +3,16 @@
 namespace App\Repositories\Dormitory;
 
 use App\Enums\Settings;
-use App\Interfaces\Dormitory\DormitoryInterface;
-use App\Models\Dormitory\Dormitory;
+use App\Interfaces\Dormitory\RoomInterface;
+use App\Models\Dormitory\Room;
 use App\Traits\ReturnFormatTrait;
 
-class DormitoryRepository implements DormitoryInterface
+class RoomRepository implements RoomInterface
 {
     use ReturnFormatTrait;
     private $head;
 
-    public function __construct(Dormitory $head)
+    public function __construct(Room $head)
     {
         $this->head = $head;
     }
@@ -30,10 +30,11 @@ class DormitoryRepository implements DormitoryInterface
     {
         try {
             $row                   = new $this->head;
-            $row->name             = $request->name;
-            $row->type             = $request->type;
-            $row->address          = $request->address;
+            $row->dormitory_id     = $request->dormitory;
+            $row->room_type_id     = $request->type;
+            $row->room_no          = $request->room_no;
             $row->status           = $request->status;
+            $row->description      = $request->description;
             $row->save();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
@@ -50,10 +51,11 @@ class DormitoryRepository implements DormitoryInterface
     {
         try {
             $row                   = $this->head->findOrfail($id);
-            $row->name             = $request->name;
-            $row->type             = $request->type;
-            $row->address          = $request->address;
+            $row->dormitory_id     = $request->dormitory;
+            $row->room_type_id     = $request->type;
+            $row->room_no          = $request->room_no;
             $row->status           = $request->status;
+            $row->description      = $request->description;
             $row->save();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
         } catch (\Throwable $th) {

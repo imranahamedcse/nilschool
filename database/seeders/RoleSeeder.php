@@ -443,6 +443,11 @@ class RoleSeeder extends Seeder
                     'dormitory_create',
                     'dormitory_update',
                     'dormitory_delete',
+                    // room
+                    'room_read',
+                    'room_create',
+                    'room_update',
+                    'room_delete',
                 // Dormitory end
             ],
         ]);

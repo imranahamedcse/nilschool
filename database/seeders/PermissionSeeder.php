@@ -120,6 +120,7 @@ class PermissionSeeder extends Seeder
             // Dormitory
             'room_type'         => ['read' => 'room_type_read', 'create' => 'room_type_create', 'update' => 'room_type_update', 'delete' => 'room_type_delete'],
             'dormitory'         => ['read' => 'dormitory_read', 'create' => 'dormitory_create', 'update' => 'dormitory_update', 'delete' => 'dormitory_delete'],
+            'room'              => ['read' => 'room_read', 'create' => 'room_create', 'update' => 'room_update', 'delete' => 'room_delete'],
 
         ];
 
