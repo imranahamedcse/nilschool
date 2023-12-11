@@ -38,6 +38,7 @@ use App\Interfaces\Academic\TimeScheduleInterface;
 use App\Interfaces\Accounts\AccountHeadInterface;
 use App\Interfaces\Accounts\ExpenseInterface;
 use App\Interfaces\Accounts\IncomeInterface;
+use App\Interfaces\Dormitory\DormitoryInterface;
 use App\Interfaces\Dormitory\RoomTypeInterface;
 use App\Interfaces\WebsiteSetup\CounterInterface;
 use App\Interfaces\Examination\ExamTypeInterface;
@@ -77,6 +78,7 @@ use App\Repositories\Accounts\AccountHeadRepository;
 use App\Repositories\Accounts\ExpenseRepository;
 use App\Repositories\Accounts\IncomeRepository;
 use App\Repositories\BloodGroupRepository;
+use App\Repositories\Dormitory\DormitoryRepository;
 use App\Repositories\Dormitory\RoomTypeRepository;
 use App\Repositories\WebsiteSetup\CounterRepository;
 use App\Repositories\Examination\ExamTypeRepository;
@@ -195,6 +197,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // Dormitory
         $this->app->bind(RoomTypeInterface::class,   RoomTypeRepository::class);
+        $this->app->bind(DormitoryInterface::class,  DormitoryRepository::class);
 
 
     }

@@ -450,6 +450,11 @@ class UserSeeder extends Seeder
                     'room_type_create',
                     'room_type_update',
                     'room_type_delete',
+                    // dormitory
+                    'dormitory_read',
+                    'dormitory_create',
+                    'dormitory_update',
+                    'dormitory_delete',
                 // Dormitory end
             ],
         ]);

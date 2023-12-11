@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dormitories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->tinyInteger('type')->default(1)->comment('1 = boys, 2 = girls');
+            $table->string('type')->nullable();
             $table->string('address')->nullable();
             $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
             $table->timestamps();
