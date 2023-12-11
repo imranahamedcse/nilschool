@@ -20,23 +20,6 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Dormitory') }} <span
-                                        class="text-danger">*</span></label>
-                                <select class="class form-control @error('dormitory') is-invalid @enderror" name="dormitory">
-                                    <option value="">{{ ___('student_info.Select dormitory') }} </option>
-                                    @foreach ($data['dormitories'] as $item)
-                                        <option {{ old('dormitory') == $item->id ? 'selected' : '' }}
-                                            value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('dormitory')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-3">
                                 <label for="validationServer04" class="form-label">{{ ___('common.Type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="section form-control @error('type') is-invalid @enderror" name="type">
@@ -84,7 +67,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label for="exampleDataList" class="form-label ">{{ ___('common.Description') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('description') is-invalid @enderror" name="description"

@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('dormitory_setup_children', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_type_id')->constrained('room_types')->cascadeOnDelete();
-            $table->string('name')->nullable();
-            $table->integer('room_no')->nullable();
-            $table->text('description')->nullable();
-            $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
+            $table->foreignId('dormitory_setup_id')->constrained('dormitory_setups')->cascadeOnDelete();
+            $table->foreignId('room_id')->constrained('rooms')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('dormitory_setup_children');
     }
 };

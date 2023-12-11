@@ -19,20 +19,22 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('account.Type') }}</th>
-                    <th class="purchase">{{ ___('account.Room no') }}</th>
+                    <th class="purchase">{{ ___('common.name') }}</th>
+                    <th class="purchase">{{ ___('account.Total seat') }}</th>
+                    <th class="purchase">{{ ___('account.Seat Fee') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
-                    @if (hasPermission('room_update') || hasPermission('room_delete'))
+                    @if (hasPermission('dormitory_student_update') || hasPermission('dormitory_student_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
                 </tr>
             </thead>
             <tbody class="tbody">
-                @forelse ($data['room'] as $key => $row)
+                @forelse ($data['dormitory_student'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
-                        <td>{{ $row->type->name }}</td>
-                        <td>{{ $row->room_no }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->total_seat }}</td>
+                        <td>{{ $row->seat_fee }}</td>
                         <td>
                             @if ($row->status == App\Enums\Status::ACTIVE)
                                 <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
@@ -40,18 +42,18 @@
                                 <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
                             @endif
                         </td>
-                        @if ((hasPermission('room_update') || hasPermission('room_delete')))
+                        @if ((hasPermission('dormitory_student_update') || hasPermission('dormitory_student_delete')))
                             <td>
-                                @if (hasPermission('room_update'))
+                                @if (hasPermission('dormitory_student_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.edit') }}"
-                                        href="{{ route('room.edit', $row->id) }}"><i
+                                        href="{{ route('dormitory-student.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
-                                @if (hasPermission('room_delete'))
+                                @if (hasPermission('dormitory_student_delete'))
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('dormitory/room/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('dormitory/student/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

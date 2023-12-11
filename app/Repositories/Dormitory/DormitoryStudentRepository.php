@@ -3,16 +3,16 @@
 namespace App\Repositories\Dormitory;
 
 use App\Enums\Settings;
-use App\Interfaces\Dormitory\RoomInterface;
-use App\Models\Dormitory\Room;
+use App\Interfaces\Dormitory\DormitoryStudentInterface;
+use App\Models\Dormitory\DormitoryStudent;
 use App\Traits\ReturnFormatTrait;
 
-class RoomRepository implements RoomInterface
+class DormitoryStudentRepository implements DormitoryStudentInterface
 {
     use ReturnFormatTrait;
     private $head;
 
-    public function __construct(Room $head)
+    public function __construct(DormitoryStudent $head)
     {
         $this->head = $head;
     }
@@ -30,10 +30,10 @@ class RoomRepository implements RoomInterface
     {
         try {
             $row                   = new $this->head;
-            $row->room_type_id     = $request->type;
-            $row->room_no          = $request->room_no;
+            $row->name             = $request->name;
+            $row->total_seat       = $request->total_seat;
+            $row->seat_fee         = $request->seat_fee;
             $row->status           = $request->status;
-            $row->description      = $request->description;
             $row->save();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
@@ -50,10 +50,10 @@ class RoomRepository implements RoomInterface
     {
         try {
             $row                   = $this->head->findOrfail($id);
-            $row->room_type_id     = $request->type;
-            $row->room_no          = $request->room_no;
+            $row->name             = $request->name;
+            $row->total_seat       = $request->total_seat;
+            $row->seat_fee         = $request->seat_fee;
             $row->status           = $request->status;
-            $row->description      = $request->description;
             $row->save();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
         } catch (\Throwable $th) {

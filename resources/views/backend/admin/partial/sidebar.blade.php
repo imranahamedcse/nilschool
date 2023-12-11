@@ -412,7 +412,7 @@
         <!-- End Canteen -->
 
         <!-- Start Dormitory -->
-        @if (hasPermission('dormitory_read') || hasPermission('room_type_read') || hasPermission('room_read'))
+        @if (hasPermission('dormitory_read') || hasPermission('room_type_read') || hasPermission('room_read') || hasPermission('dormitory_student_read'))
             <li class="{{ set_menu(['dormitory*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
@@ -435,6 +435,11 @@
                     @if (hasPermission('room_read'))
                         <li class="{{ set_menu(['dormitory/room*']) }}">
                             <a href="{{ route('room.index') }}">{{ ___('menu.Room') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('dormitory_student_read'))
+                        <li class="{{ set_menu(['dormitory/dormitory-student*']) }}">
+                            <a href="{{ route('dormitory-student.index') }}">{{ ___('menu.Student') }}</a>
                         </li>
                     @endif
                 </ul>

@@ -39,6 +39,7 @@ use App\Interfaces\Accounts\AccountHeadInterface;
 use App\Interfaces\Accounts\ExpenseInterface;
 use App\Interfaces\Accounts\IncomeInterface;
 use App\Interfaces\Dormitory\DormitoryInterface;
+use App\Interfaces\Dormitory\DormitoryStudentInterface;
 use App\Interfaces\Dormitory\RoomInterface;
 use App\Interfaces\Dormitory\RoomTypeInterface;
 use App\Interfaces\WebsiteSetup\CounterInterface;
@@ -80,6 +81,7 @@ use App\Repositories\Accounts\ExpenseRepository;
 use App\Repositories\Accounts\IncomeRepository;
 use App\Repositories\BloodGroupRepository;
 use App\Repositories\Dormitory\DormitoryRepository;
+use App\Repositories\Dormitory\DormitoryStudentRepository;
 use App\Repositories\Dormitory\RoomRepository;
 use App\Repositories\Dormitory\RoomTypeRepository;
 use App\Repositories\WebsiteSetup\CounterRepository;
@@ -198,9 +200,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(TransportStudentInterface::class,   TransportStudentRepository::class);
 
         // Dormitory
-        $this->app->bind(RoomTypeInterface::class,   RoomTypeRepository::class);
-        $this->app->bind(DormitoryInterface::class,  DormitoryRepository::class);
-        $this->app->bind(RoomInterface::class,       RoomRepository::class);
+        $this->app->bind(RoomTypeInterface::class,           RoomTypeRepository::class);
+        $this->app->bind(DormitoryInterface::class,          DormitoryRepository::class);
+        $this->app->bind(RoomInterface::class,               RoomRepository::class);
+        $this->app->bind(DormitoryStudentInterface::class,   DormitoryStudentRepository::class);
 
 
     }
