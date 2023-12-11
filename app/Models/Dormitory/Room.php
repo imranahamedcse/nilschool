@@ -13,4 +13,9 @@ class Room extends Model
     {
         return $this->belongsTo(RoomType::class, 'room_type_id', 'id');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', \App\Enums\Status::ACTIVE);
+    }
 }

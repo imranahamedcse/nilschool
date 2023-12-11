@@ -43,6 +43,9 @@ use Database\Seeders\Academic\ClassSetupChildrensSeeder;
 use Database\Seeders\ClassRoom\AssignmentSeeder;
 use Database\Seeders\ClassRoom\HomeworkSeeder;
 use Database\Seeders\ClassRoom\Postseeder;
+use Database\Seeders\Dormitory\DormitorySeeder;
+use Database\Seeders\Dormitory\RoomSeeder;
+use Database\Seeders\Dormitory\RoomTypeSeeder;
 use Database\Seeders\Examination\ExaminationSettingsSeeder;
 use Database\Seeders\Examination\ExamRoutineSeeder;
 use Database\Seeders\Library\BookCategorySeeder;
@@ -161,6 +164,11 @@ class DatabaseSeeder extends Seeder
             PickupPointSeeder::class,
             TransportSetupSeeder::class,
             // VehicleStudentSeeder::class
+
+            // Dormitory
+            DormitorySeeder::class,
+            RoomTypeSeeder::class,
+            RoomSeeder::class
         ]);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Interfaces\Dormitory;
 
 interface DormitoryInterface
 {
+    public function all();
+
     public function getAll();
 
     public function store($request);

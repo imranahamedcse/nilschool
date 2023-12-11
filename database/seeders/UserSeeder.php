@@ -445,16 +445,16 @@ class UserSeeder extends Seeder
 
 
                 // Dormitory start
-                    // room_type
-                    'room_type_read',
-                    'room_type_create',
-                    'room_type_update',
-                    'room_type_delete',
                     // dormitory
                     'dormitory_read',
                     'dormitory_create',
                     'dormitory_update',
                     'dormitory_delete',
+                    // room_type
+                    'room_type_read',
+                    'room_type_create',
+                    'room_type_update',
+                    'room_type_delete',
                     // room
                     'room_read',
                     'room_create',
@@ -465,6 +465,11 @@ class UserSeeder extends Seeder
                     'dormitory_student_create',
                     'dormitory_student_update',
                     'dormitory_student_delete',
+                    // dormitory_setup
+                    'dormitory_setup_read',
+                    'dormitory_setup_create',
+                    'dormitory_setup_update',
+                    'dormitory_setup_delete',
                 // Dormitory end
             ],
         ]);

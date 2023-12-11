@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dormitory\DormitoryController;
+use App\Http\Controllers\Dormitory\DormitorySetupController;
 use App\Http\Controllers\Dormitory\DormitoryStudentController;
 use App\Http\Controllers\Dormitory\RoomController;
 use App\Http\Controllers\Dormitory\RoomTypeController;
@@ -32,6 +33,14 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('/edit/{id}',        'edit')->name('room.edit')->middleware('PermissionCheck:room_update');
                 Route::put('/update/{id}',      'update')->name('room.update')->middleware('PermissionCheck:room_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('room.delete')->middleware('PermissionCheck:room_delete', 'DemoCheck');
+            });
+            Route::controller(DormitorySetupController::class)->prefix('setup')->group(function () {
+                Route::get('/',                 'index')->name('dormitory-setup.index')->middleware('PermissionCheck:dormitory_setup_read');
+                Route::get('/create',           'create')->name('dormitory-setup.create')->middleware('PermissionCheck:dormitory_setup_create');
+                Route::post('/store',           'store')->name('dormitory-setup.store')->middleware('PermissionCheck:dormitory_setup_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('dormitory-setup.edit')->middleware('PermissionCheck:dormitory_setup_update');
+                Route::put('/update/{id}',      'update')->name('dormitory-setup.update')->middleware('PermissionCheck:dormitory_setup_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('dormitory-setup.delete')->middleware('PermissionCheck:dormitory_setup_delete', 'DemoCheck');
             });
             Route::controller(DormitoryStudentController::class)->prefix('student')->group(function () {
                 Route::get('/',                 'index')->name('dormitory-student.index')->middleware('PermissionCheck:dormitory_student_read');

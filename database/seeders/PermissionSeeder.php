@@ -118,9 +118,10 @@ class PermissionSeeder extends Seeder
             'transport_student' => ['read' => 'transport_student_read', 'create' => 'transport_student_create', 'update' => 'transport_student_update', 'delete' => 'transport_student_delete'],
 
             // Dormitory
-            'room_type'         => ['read' => 'room_type_read', 'create' => 'room_type_create', 'update' => 'room_type_update', 'delete' => 'room_type_delete'],
             'dormitory'         => ['read' => 'dormitory_read', 'create' => 'dormitory_create', 'update' => 'dormitory_update', 'delete' => 'dormitory_delete'],
+            'room_type'         => ['read' => 'room_type_read', 'create' => 'room_type_create', 'update' => 'room_type_update', 'delete' => 'room_type_delete'],
             'room'              => ['read' => 'room_read', 'create' => 'room_create', 'update' => 'room_update', 'delete' => 'room_delete'],
+            'dormitory_setup'   => ['read' => 'dormitory_setup_read', 'create' => 'dormitory_setup_create', 'update' => 'dormitory_setup_update', 'delete' => 'dormitory_setup_delete'],
             'dormitory_student' => ['read' => 'dormitory_student_read', 'create' => 'dormitory_student_create', 'update' => 'dormitory_student_update', 'delete' => 'dormitory_student_delete'],
 
         ];

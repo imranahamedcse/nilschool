@@ -2,10 +2,8 @@
 
 namespace App\Interfaces\Dormitory;
 
-interface RoomInterface
+interface DormitorySetupInterface
 {
-    public function all();
-
     public function getAll();
 
     public function store($request);
