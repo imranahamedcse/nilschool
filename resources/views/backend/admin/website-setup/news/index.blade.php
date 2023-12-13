@@ -42,11 +42,7 @@
                         <td>{{ dateFormat(@$row->date) }}</td>
                         <td>{{ dateFormat(@$row->publish_date) }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('news_update') || hasPermission('news_delete'))
                             <td>

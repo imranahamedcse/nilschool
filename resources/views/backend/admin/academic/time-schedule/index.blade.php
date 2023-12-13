@@ -44,11 +44,7 @@
                         <td>{{ $row->start_time }}</td>
                         <td>{{ $row->end_time }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('time_schedule_update') || hasPermission('time_schedule_delete'))
                             <td>

@@ -36,11 +36,7 @@
                         <td>{{ dateFormat($row->start_date) }}</td>
                         <td>{{ dateFormat($row->end_date) }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('session_update') || hasPermission('session_delete'))
                             <td>

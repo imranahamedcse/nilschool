@@ -67,11 +67,7 @@
                         <td>{{ $row->question }}</td>
                         <td>{{ $row->mark }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('question_bank_update') || hasPermission('question_bank_delete'))
                             <td>

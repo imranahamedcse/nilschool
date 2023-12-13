@@ -46,11 +46,7 @@
                         </td>
                         <td>{{ @$row->serial }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if ((hasPermission('about_update') || hasPermission('about_delete')) && $row->fees_collect_id == null)
                             <td>

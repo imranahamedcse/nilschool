@@ -36,11 +36,7 @@
                         <td>{{ $row->room->room_no }}</td>
                         <td>{{ $row->seat_no }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if ((hasPermission('dormitory_student_update') || hasPermission('dormitory_student_delete')))
                             <td>

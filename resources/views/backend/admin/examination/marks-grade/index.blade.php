@@ -41,11 +41,7 @@
                         <td>{{ $row->percent_upto }}</td>
                         <td>{{ $row->remarks }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('marks_grade_update') || hasPermission('marks_grade_delete'))
                             <td>

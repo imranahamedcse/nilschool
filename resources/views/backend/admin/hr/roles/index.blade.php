@@ -36,11 +36,7 @@
                                 class="badge-basic-success-text">{{ $row->permissions != '' ? count($row->permissions) : '0' }}</span>
                         </td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('role_update') || hasPermission('role_delete'))
                             <td>

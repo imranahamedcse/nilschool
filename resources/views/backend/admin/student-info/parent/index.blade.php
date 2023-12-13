@@ -63,11 +63,7 @@
                                 <td>{{ $row->user->email }}</td>
                                 <td>{{ $row->guardian_address }}</td>
                                 <td>
-                                    @if ($row->status == App\Enums\Status::ACTIVE)
-                                        <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                                    @else
-                                        <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                                    @endif
+                                    @include('backend.admin.components.table.status')
                                 </td>
                                 @if (hasPermission('parent_update') || hasPermission('parent_delete'))
                                     <td>

@@ -11,7 +11,7 @@
 @section('content')
     @include('backend.admin.components.breadcrumb')
 
-    
+
     <div class="p-4 rounded-3 bg-white">
         <div class="row justify-content-between border-bottom pb-4 mb-4">
             <div class="col align-self-center">
@@ -35,7 +35,7 @@
                     </div>
                 </form>
             </div>
-        
+
             <div class="col text-end">
                 @if (hasPermission(@$data['headers']['permission']))
                     <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">
@@ -72,11 +72,7 @@
                         <td>{{ dateFormat(@$row->issue_date) }}</td>
                         <td>{{ dateFormat(@$row->return_date) }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('library.return') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('library.issued') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('issue_book_update') ||
                                 hasPermission('issue_book_delete') ||

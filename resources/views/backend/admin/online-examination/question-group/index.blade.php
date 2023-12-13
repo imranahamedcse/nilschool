@@ -59,11 +59,7 @@
                         <td class="serial">{{ ++$key }}</td>
                         <td>{{ $row->name }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('question_group_update') || hasPermission('question_group_delete'))
                             <td>

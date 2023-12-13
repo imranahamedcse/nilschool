@@ -52,11 +52,7 @@
                         <td>{{ $row->percentage }}</td>
                         <td>{{ $row->fine_amount }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('fees_master_update') || hasPermission('fees_master_delete'))
                             <td>

@@ -34,11 +34,7 @@
                         <td>{{ $row->type->name }}</td>
                         <td>{{ $row->room_no }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if ((hasPermission('room_update') || hasPermission('room_delete')))
                             <td>

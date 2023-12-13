@@ -40,11 +40,7 @@
                         <td>{{ @$row->user->email }}</td>
                         <td>{{ @$row->user->userGender->name }}</td>
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if ((hasPermission('member_update') || hasPermission('member_delete')) && $row->fees_collect_id == null)
                             <td>

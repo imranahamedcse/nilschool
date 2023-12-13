@@ -12,7 +12,7 @@
     @include('backend.admin.components.breadcrumb')
 
     <div class="p-4 rounded-3 bg-white">
-        
+
         @include('backend.admin.components.table.header')
 
         <table id="datatable" class="table">
@@ -61,11 +61,7 @@
                         <td>{{ date('d-m-Y H:i a', strtotime(@$row->published)) }}</td>
 
                         <td>
-                            @if ($row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('online_exam_update') || hasPermission('online_exam_delete'))
                             <td class="action">
@@ -135,8 +131,8 @@
 @push('script')
     @include('backend.admin.components.table.js')
     @include('backend.admin.components.table.delete-ajax')
-    
+
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-subject.js') }}"></script>
-    
+
 @endpush
