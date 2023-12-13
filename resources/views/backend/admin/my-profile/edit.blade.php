@@ -38,24 +38,23 @@
 
                         <div class="col-12 mb-3">
                             <div class="d-flex flex-column align-items-center justify-content-center">
-                                <img class="img-thumbnail ot-input-image-preview mb-3"
+                                <img class="img-thumbnail-image-preview mb-3"
                                     src="{{ @globalAsset(Auth::user()->upload->path, '100X100.webp') }}"
                                     alt="{{ Auth::user()->name }}">
                             </div>
                             <label class="form-label" for="image">{{ ___('common.image_') }}
                                 {{ ___('common.(95 x 95 px)') }}</label>
-                            <input type="file" class="form-control" name="image" id="fileBrouse"
-                                accept="image/*">
+                            <input type="file" class="form-control" name="image" accept="image/*">
                         </div>
 
                         <div class="col-12 mb-3">
                             <label for="inputname" class="form-label">{{ ___('common.name') }} <span
                                     class="text-danger">*</span></label>
                             <input name="name" type="text"
-                                class="form-control ot-input @error('name') is-invalid @enderror"
+                                class="form-control @error('name') is-invalid @enderror"
                                 value="{{ Auth::user()->name }}" placeholder="{{ ___('common.name.') }}" />
                             @error('name')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -65,10 +64,10 @@
                             <label for="inputname" class="form-label">{{ ___('common.date_of_birth') }}</label>
                             <div class="col-sm-12">
                                 <input name="date_of_birth" type="date"
-                                    class="form-control ot-input @error('date_of_birth') is-invalid @enderror"
+                                    class="form-control @error('date_of_birth') is-invalid @enderror"
                                     value="{{ Auth::user()->date_of_birth }}" />
                                 @error('date_of_birth')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -79,11 +78,11 @@
                                     class="text-danger">*</span></label>
                             <div class="col-sm-12">
                                 <input name="phone" type="text"
-                                    class="form-control ot-input @error('phone') is-invalid @enderror"
+                                    class="form-control @error('phone') is-invalid @enderror"
                                     placeholder="{{ ___('common.880_249_897632') }}"
                                     value="{{ Auth::user()->phone }}" />
                                 @error('phone')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -96,7 +95,7 @@
                                     </span>{{ ___('common.update') }} </button>
                             </div>
                         </div>
-                        
+
                     </form>
 
 

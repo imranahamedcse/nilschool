@@ -24,79 +24,79 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.admission_no') }}
+                                <label for="validationDefault01" class="form-label ">{{ ___('student_info.admission_no') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('admission_no') is-invalid @enderror" type="number"
-                                    name="admission_no" list="datalistOptions" id="exampleDataList"
+                                    name="admission_no" id="validationDefault01"
                                     placeholder="{{ ___('student_info.enter_admission_no') }}"
                                     value="{{ old('admission_no', @$data['student']->admission_no) }}">
                                 @error('admission_no')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.roll_no') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('student_info.roll_no') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('roll_no') is-invalid @enderror" name="roll_no"
-                                    list="datalistOptions" id="exampleDataList" type="number"
+                                    id="validationDefault02" type="number"
                                     placeholder="{{ ___('student_info.enter_roll_no') }}"
                                     value="{{ old('roll_no', @$data['session_class_student']->roll) }}">
                                 @error('roll_no')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.first_name') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('student_info.first_name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('first_first_name') is-invalid @enderror"
-                                    name="first_name" list="datalistOptions" id="exampleDataList"
+                                    name="first_name" id="validationDefault03"
                                     placeholder="{{ ___('student_info.enter_first_name') }}"
                                     value="{{ old('first_name', @$data['student']->first_name) }}">
                                 @error('first_name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.last_name') }} <span
+                                <label for="validationDefault04" class="form-label ">{{ ___('student_info.last_name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('last_name') is-invalid @enderror" name="last_name"
-                                    list="datalistOptions" id="exampleDataList"
+                                    id="validationDefault04"
                                     placeholder="{{ ___('student_info.enter_last_name') }}"
                                     value="{{ old('last_name', @$data['student']->last_name) }}">
                                 @error('last_name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.mobile') }} <span
+                                <label for="validationDefault05" class="form-label ">{{ ___('student_info.mobile') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('mobile') is-invalid @enderror" name="mobile"
-                                    list="datalistOptions" id="exampleDataList" type="number"
+                                    id="validationDefault05" type="number"
                                     placeholder="{{ ___('student_info.enter_mobile') }}"
                                     value="{{ old('mobile', @$data['student']->mobile) }}">
                                 @error('mobile')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.email') }} <span
+                                <label for="validationDefault06" class="form-label ">{{ ___('common.email') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('email') is-invalid @enderror" name="email"
-                                    list="datalistOptions" id="exampleDataList" type="email"
+                                    id="validationDefault06" type="email"
                                     placeholder="{{ ___('student_info.enter_email') }}"
                                     value="{{ old('email', @$data['student']->email) }}">
                                 @error('email')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -104,10 +104,10 @@
 
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
+                                <label for="validationDefault07" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="getSections" class="form-control @error('class') is-invalid @enderror"
-                                    name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="class" id="validationDefault07">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
@@ -117,17 +117,17 @@
                                     </option>
                                 </select>
                                 @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-3">
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.section') }}
+                                <label for="validationDefault08" class="form-label">{{ ___('student_info.section') }}
                                     <span class="text-danger">*</span></label>
                                 <select id="getSections" class="form-control @error('section') is-invalid @enderror"
-                                    name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="section" id="validationDefault08">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
                                         <option
@@ -136,7 +136,7 @@
                                     @endforeach
                                 </select>
                                 @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -144,10 +144,10 @@
 
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.shift') }} <span
+                                <label for="validationDefault09" class="form-label">{{ ___('student_info.shift') }} <span
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('shift') is-invalid @enderror" name="shift"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault09">
                                     <option value="">{{ ___('student_info.select_shift') }}</option>
                                     @foreach ($data['shifts'] as $item)
                                         <option
@@ -157,7 +157,7 @@
                                 </select>
 
                                 @error('shift')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -165,14 +165,14 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.date_of_birth') }}
+                                <label for="validationDefault10" class="form-label ">{{ ___('common.date_of_birth') }}
                                     <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
-                                    name="date_of_birth" list="datalistOptions" id="exampleDataList"
+                                    name="date_of_birth" id="validationDefault10"
                                     placeholder="{{ ___('common.date_of_birth') }}"
                                     value="{{ old('date_of_birth', @$data['student']->dob) }}">
                                 @error('date_of_birth')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -180,10 +180,10 @@
 
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.religion') }}
+                                <label for="validationDefault11" class="form-label">{{ ___('student_info.religion') }}
                                     <span class="text-danger"></span></label>
                                 <select class="form-control @error('religion') is-invalid @enderror" name="religion"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault11">
                                     <option value="">{{ ___('student_info.select_religion') }}</option>
                                     @foreach ($data['religions'] as $item)
                                         <option {{ @$data['student']->religion_id == $item->id ? 'selected' : '' }}
@@ -192,7 +192,7 @@
                                 </select>
 
                                 @error('religion')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -200,10 +200,10 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('common.gender') }} <span
+                                <label for="validationDefault12" class="form-label">{{ ___('common.gender') }} <span
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('gender') is-invalid @enderror" name="gender"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault12">
                                     <option value="">{{ ___('student_info.select_gender') }}</option>
                                     @foreach ($data['genders'] as $item)
                                         <option {{ @$data['student']->gender_id == $item->id ? 'selected' : '' }}
@@ -212,7 +212,7 @@
                                 </select>
 
                                 @error('gender')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -220,10 +220,10 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('common.category') }} <span
+                                <label for="validationDefault13" class="form-label">{{ ___('common.category') }} <span
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('category') is-invalid @enderror" name="category"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault13">
                                     <option value="">{{ ___('student_info.select_category') }}</option>
                                     @foreach ($data['categories'] as $item)
                                         <option {{ @$data['student']->student_category_id == $item->id ? 'selected' : '' }}
@@ -232,7 +232,7 @@
                                 </select>
 
                                 @error('category')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -240,10 +240,10 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.blood') }} <span
+                                <label for="validationDefault14" class="form-label">{{ ___('student_info.blood') }} <span
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('blood') is-invalid @enderror" name="blood"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault14">
                                     <option value="">{{ ___('student_info.select_blood') }}</option>
                                     @foreach ($data['bloods'] as $item)
                                         <option {{ @$data['student']->blood_group_id == $item->id ? 'selected' : '' }}
@@ -252,7 +252,7 @@
                                 </select>
 
                                 @error('blood')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -260,40 +260,40 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.admission_date') }}
+                                <label for="validationDefault15" class="form-label ">{{ ___('student_info.admission_date') }}
                                     <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('admission_date') is-invalid @enderror"
-                                    name="admission_date" list="datalistOptions" id="exampleDataList"
+                                    name="admission_date" id="validationDefault15"
                                     placeholder="{{ ___('student_info.admission_date') }}"
                                     value="{{ old('admission_date', @$data['student']->admission_date) }}">
                                 @error('admission_date')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
+                                <label for="validationDefault16" class="form-label ">{{ ___('common.image') }}
                                     {{ ___('common.(100 x 100 px)') }}<span class="text-danger"></span></label>
 
 
-                                <input class="form-control" type="file" name="image">
+                                <input id="validationDefault16" class="form-control" type="file" name="image">
 
                             </div>
                             <div class="col-md-3 parent">
 
-                                <label for="validationServer04"
+                                <label for="validationDefault17"
                                     class="form-label">{{ ___('student_info.select_parent') }}
                                     <span class="text-danger">*</span></label>
                                 <select class="form-control @error('parent') is-invalid @enderror" name="parent"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault17">
                                     <option value="">{{ ___('student_info.select_parent') }}</option>
                                     <option selected value="{{ @$data['student']->parent_guardian_id }}">
                                         {{ @$data['student']->parent->guardian_name }}
                                 </select>
 
                                 @error('parent')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -302,10 +302,10 @@
 
                             <div class="col-md-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault18" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault18">
                                     <option {{ @$data['student']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}
                                         value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}
                                     </option>
@@ -315,7 +315,7 @@
                                 </select>
 
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

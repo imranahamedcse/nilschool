@@ -16,7 +16,7 @@
         <div class="card-body">
 
             @include('backend.admin.components.table.header')
-            
+
             @isset($data['students'])
                 @if (@$data['status'] == 1)
                     <div class="alert alert-warning text-center">
@@ -117,7 +117,7 @@
 
                                     </td>
                                     <td>
-                                        <input class="form-control ot-input" name="note[]"
+                                        <input class="form-control" name="note[]"
                                             placeholder="{{ ___('attendance.Note') }}"
                                             value="{{ old('note', @$item->note) }}">
                                     </td>
@@ -130,7 +130,7 @@
                     </table>
 
                     @if (hasPermission('attendance_create'))
-                        <div class="ot-pagination pagination-content d-flex justify-content-end align-content-center pt-3">
+                        <div class="pagination pagination-content d-flex justify-content-end align-content-center pt-3">
                             <button class="btn btn-primary" type="submit">
                                 {{ ___('common.submit') }}
                             </button>

@@ -22,53 +22,53 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.Name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('common.Name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    value="{{ old('name', @$data['dormitory']->name) }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('common.Enter name') }}">
+                                    value="{{ old('name', @$data['dormitory']->name) }}"
+                                    id="validationDefault01" placeholder="{{ ___('common.Enter name') }}">
                                 @error('name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.type') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('type') is-invalid @enderror"
-                                    name="type" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="type" id="validationDefault02">
                                     <option {{ @$data['dormitory']->type == 'Boys' ? 'selected' : '' }} value="Boys">{{ ___('common.Boys') }}</option>
                                     <option {{ @$data['dormitory']->type == 'Girls' ? 'selected' : '' }} value="Girls">{{ ___('common.Girls') }}</option>
                                 </select>
                                 @error('type')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.Address') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.Address') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('address') is-invalid @enderror" name="address"
-                                    value="{{ old('address', @$data['dormitory']->address) }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('common.Enter address') }}">
+                                    value="{{ old('address', @$data['dormitory']->address) }}"
+                                    id="validationDefault03" placeholder="{{ ___('common.Enter address') }}">
                                 @error('address')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Status') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('common.Status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="status" id="validationDefault04">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['dormitory']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
                                         {{ ___('common.active') }}</option>
@@ -78,7 +78,7 @@
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

@@ -19,7 +19,7 @@
         <div class="input-field-group mb-20">
             <label for="username">{{ ___('common.email') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
-                <input type="email" name="email" class="ot-input @error('email') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_email') }}" value="{{$data['email']}}" />
+                <input type="email" name="email" class="@error('email') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_email') }}" value="{{$data['email']}}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
                 @error('email')
                 <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
@@ -31,7 +31,7 @@
         <div class="input-field-group mb-20">
             <label for="password">{{ ___('common.password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
-                <input type="password" name="password" class="ot-input @error('password') is-invalid @enderror" id="password" placeholder="******************" />
+                <input type="password" name="password" class="@error('password') is-invalid @enderror" id="password" placeholder="******************" />
                 <i class="lar la-eye"></i>
                 <img src="{{ asset('backend') }}/assets/images/icons/lock-cus.svg" alt="">
                 @error('password')
@@ -43,7 +43,7 @@
         <div class="input-field-group">
             <label for="password">{{ ___('common.confirm_password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
-                <input type="password" name="confirm_password" id="confirm_password" class="ot-input @error('confirm_password') is-invalid @enderror" placeholder="******************" />
+                <input type="password" name="confirm_password" id="confirm_password" class="@error('confirm_password') is-invalid @enderror" placeholder="******************" />
                 <i class="lar la-eye"></i>
                 <img src="{{ asset('backend') }}/assets/images/icons/lock-cus.svg" alt="">
                 @error('confirm_password')

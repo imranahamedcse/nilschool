@@ -23,12 +23,12 @@
 
                             @if (@$data['sections']->name)
                                 <div class="col-md-6 mb-3">
-                                    <label for="exampleDataList" class="form-label ">{{ ___('common.name') }}</label>
-                                    <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name', @$data['sections']->name) }}" list="datalistOptions"
-                                        id="exampleDataList" placeholder="{{ ___('common.enter_name') }}">
+                                    <label for="validationDefault01" class="form-label ">{{ ___('common.name') }}</label>
+                                    <input class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name', @$data['sections']->name) }}" id="validationDefault01"
+                                        placeholder="{{ ___('common.enter_name') }}">
                                     @error('name')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
@@ -37,7 +37,7 @@
 
                             @if (@$data['sections']->upload_id)
                                 <div class="col-md-6 mb-3">
-                                    <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
+                                    <label for="validationDefault02" class="form-label ">{{ ___('common.image') }}
 
                                         @if (@$data['sections']->key == 'statement')
                                             {{ ___('common.(580 x 465 px)') }}
@@ -48,18 +48,17 @@
                                         @endif
 
                                     </label>
-                                    <input type="file" class="form-control" name="image" accept="image/*"
-                                        id="fileBrouse">
+                                    <input id="validationDefault02" type="file" class="form-control" name="image" accept="image/*">
                                 </div>
                             @endif
 
                             @if (@$data['sections']->description)
                                 <div class="col-md-12 mb-3">
-                                    <label for="exampleDataList" class="form-label">{{ ___('common.Description') }}</label>
-                                    <textarea class="form-control ot-textarea @error('description') is-invalid @enderror" name="description"
-                                        list="datalistOptions" id="exampleDataList" placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['sections']->description) }}</textarea>
+                                    <label for="validationDefault03" class="form-label">{{ ___('common.Description') }}</label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="validationDefault03"
+                                        placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['sections']->description) }}</textarea>
                                     @error('description')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
@@ -85,21 +84,18 @@
                                                 <tr>
                                                     <td>
                                                         <label class="form-label">{{ ___('common.name') }}</label>
-                                                        <input class="form-control ot-input mb-4"
-                                                            value="{{ $item['name'] }}"
+                                                        <input class="form-control mb-4" value="{{ $item['name'] }}"
                                                             name="data[name][]"placeholder="{{ ___('common.Enter name') }}">
                                                     </td>
                                                     <td>
                                                         <label class="form-label">{{ ___('common.Icon') }}</label>
-                                                        <input class="form-control ot-input mb-4"
-                                                            value="{{ $item['icon'] }}"
+                                                        <input class="form-control mb-4" value="{{ $item['icon'] }}"
                                                             name="data[icon][]"placeholder="{{ ___('common.Enter icon') }}">
                                                     </td>
                                                     <td>
                                                         <label class="form-label">{{ ___('common.Link') }}</label>
                                                         <div class="d-flex align-items-center mb-4">
-                                                            <input class="form-control ot-input mr-2"
-                                                                value="{{ $item['link'] }}"
+                                                            <input class="form-control mr-2" value="{{ $item['link'] }}"
                                                                 name="data[link][]"placeholder="{{ ___('common.Enter link') }}">
                                                             <button class="btn btn-danger" onclick="removeRow(this)">
                                                                 <i class="fa-solid fa-xmark"></i>
@@ -121,27 +117,26 @@
                                         <div class="col-md-6 mb-18">
                                             <div class="mb-18">
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[0]['title'] }}" name="data[title][]"
                                                     placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0 mb-5" name="data[description][]"
+                                                <textarea class="form-control mt-0 mb-5" name="data[description][]"
                                                     placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-18">
                                             <div class="mb-18">
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['title'] }}" name="data[title][]"
                                                     placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -158,17 +153,17 @@
                                                 <label class="form-label">{{ ___('common.Icon') }}
                                                     {{ ___('common.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][0]"
-                                                    accept="image/*" id="fileBrouse2">
+                                                    accept="image/*">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
-                                                    value="{{ @$data['sections']->data[0]['title'] }}"
-                                                    name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
+                                                <input class="form-control mb-2"
+                                                    value="{{ @$data['sections']->data[0]['title'] }}" name="data[title][]"
+                                                    placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0 mb-5" name="data[description][]"
+                                                <textarea class="form-control mt-0 mb-5" name="data[description][]"
                                                     placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
                                             </div>
                                         </div>
@@ -177,18 +172,17 @@
                                                 <label class="form-label">{{ ___('common.Icon') }}
                                                     {{ ___('common.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][1]"
-                                                    accept="image/*" id="fileBrouse3">
+                                                    accept="image/*">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['title'] }}"
                                                     name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -196,19 +190,18 @@
                                                 <label class="form-label">{{ ___('common.Icon') }}
                                                     {{ ___('common.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][2]"
-                                                    accept="image/*" id="fileBrouse4">
+                                                    accept="image/*">
 
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['title'] }}"
                                                     name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -223,77 +216,74 @@
                                         <div class="col-6">
                                             <div>
                                                 <label class="form-label">{{ ___('common.Tab') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[0]['tab'] }}" name="data[tab][]"
                                                     placeholder="{{ ___('common.Enter tab') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[0]['title'] }}"
                                                     name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0 mb-5" name="data[description][]"
+                                                <textarea class="form-control mt-0 mb-5" name="data[description][]"
                                                     placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div>
                                                 <label class="form-label">{{ ___('common.Tab') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['tab'] }}" name="data[tab][]"
                                                     placeholder="{{ ___('common.Enter tab') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['title'] }}"
                                                     name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div>
                                                 <label class="form-label">{{ ___('common.Tab') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['tab'] }}" name="data[tab][]"
                                                     placeholder="{{ ___('common.Enter tab') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['title'] }}"
                                                     name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div>
                                                 <label class="form-label">{{ ___('common.Tab') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['tab'] }}" name="data[tab][]"
                                                     placeholder="{{ ___('common.Enter tab') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control ot-input mb-2"
+                                                <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['title'] }}"
                                                     name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
                                             </div>
                                             <div>
                                                 <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control ot-textarea mt-0" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -320,8 +310,7 @@
                                                     <td>
                                                         <label class="form-label">{{ ___('common.name') }}</label>
                                                         <div class="d-flex align-items-center mb-2">
-                                                            <input class="form-control ot-input mr-2"
-                                                                value="{{ $item }}"
+                                                            <input class="form-control mr-2" value="{{ $item }}"
                                                                 name="data[]"placeholder="{{ ___('common.Enter name') }}">
                                                             <button class="btn btn-danger" onclick="removeRow(this)">
                                                                 <i class="fa-solid fa-xmark"></i>
@@ -355,8 +344,7 @@
                                                     <td>
                                                         <label class="form-label">{{ ___('common.name') }}</label>
                                                         <div class="d-flex align-items-center mb-2">
-                                                            <input class="form-control ot-input mr-2"
-                                                                value="{{ $item }}"
+                                                            <input class="form-control mr-2" value="{{ $item }}"
                                                                 name="data[]"placeholder="{{ ___('common.Enter name') }}">
                                                             <button class="btn btn-danger" onclick="removeRow(this)">
                                                                 <i class="fa-solid fa-xmark"></i>

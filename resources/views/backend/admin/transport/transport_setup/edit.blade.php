@@ -22,10 +22,10 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Route') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.Route') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('route_id') is-invalid @enderror" name="route_id"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault01">
 
                                     <option selected>{{ ___('common.Select Route') }}</option>
                                     @foreach ($data['route'] as $item)
@@ -36,18 +36,18 @@
 
                                 </select>
                                 @error('route_id')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.Status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="status" id="validationDefault02">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['transport_setup']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
                                         {{ ___('common.active') }}</option>
@@ -57,7 +57,7 @@
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -90,11 +90,11 @@
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('account.Description') }}</label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('account.Enter description') }}">{{ old('description', @$data['transport_setup']->description) }}</textarea>
+                                <label for="validationDefault03" class="form-label ">{{ ___('account.Description') }}</label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                                    id="validationDefault03" placeholder="{{ ___('account.Enter description') }}">{{ old('description', @$data['transport_setup']->description) }}</textarea>
                                 @error('description')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

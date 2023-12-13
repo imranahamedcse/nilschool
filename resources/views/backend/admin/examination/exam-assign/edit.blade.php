@@ -22,9 +22,9 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="validationServer04" class="form-label">{{ ___('examination.exam_type') }}
+                                <label for="validationDefault01" class="form-label">{{ ___('examination.exam_type') }}
                                     <span class="text-danger">*</span></label>
-                                <select
+                                <select id="validationDefault01"
                                     class="form-control  @error('exam_types') is-invalid @enderror"
                                     name="exam_types">
                                     <option value="">{{ ___('examination.select_exam_type') }}</option>
@@ -35,7 +35,7 @@
                                     @endforeach
                                 </select>
                                 @error('exam_types')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -43,11 +43,11 @@
 
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select onchange="changeExamAssignClass(this)"
                                     class="nice-select niceSelect bordered_style class wide @error('class') is-invalid @enderror"
-                                    name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="class" id="validationDefault02">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
@@ -58,7 +58,7 @@
                                 </select>
 
                                 @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -84,11 +84,11 @@
 
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('examination.subjects') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('examination.subjects') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="subjectMark"
+                                <select id="subjectMark validationDefault03"
                                     class="form-control subjects @error('subjects') is-invalid @enderror"
-                                    name="subjects" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="subjects" id="validationServer04">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $key => $item)
                                         <option
@@ -98,7 +98,7 @@
                                 </select>
 
                                 @error('subjects')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

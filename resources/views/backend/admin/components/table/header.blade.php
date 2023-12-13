@@ -33,7 +33,7 @@
                                 @endforeach
                             </select>
                             @error('class')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -51,7 +51,7 @@
                                 @endforeach
                             </select>
                             @error('section')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -61,7 +61,7 @@
                     @if (in_array('shift', @$data['headers']['filter']))
                         <div class="px-1">
                             <select class="shift form-control" name="shift" id="validationServer04"
-                                aria-describedby="validationServer04Feedback">
+                               >
                                 <option value="">{{ ___('student_info.select_shift') }}</option>
                                 @foreach ($data['shifts'] as $item)
                                     <option {{ old('shift', @$data['request']->shift) == $item->id ? 'selected' : '' }}
@@ -83,7 +83,7 @@
                                     {{ ___('account.expense') }}</option>
                             </select>
                             @error('type')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -101,7 +101,7 @@
                                 @endforeach
                             </select>
                             @error('head')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -114,7 +114,7 @@
                                 class="form-control @error('month') is-invalid @enderror" type="month"
                                 placeholder="Search month" min="2023-01" max="2023-12">
                             @error('month')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -127,7 +127,7 @@
                                 class="form-control @error('date') is-invalid @enderror" type="date">
 
                             @error('date')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -155,7 +155,7 @@
                                 @endforeach
                             </select>
                             @error('exam_type')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -168,7 +168,7 @@
                                 <option value="">{{ ___('academic.Select subject') }} </option>
                             </select>
                             @error('subject')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -187,7 +187,7 @@
                                 @endforeach
                             </select>
                             @error('student')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -206,7 +206,7 @@
                                 @endforeach
                             </select>
                             @error('fees_master')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -221,7 +221,7 @@
             </form>
         @endif
     </div>
-    
+
     <div class="col-2 text-end">
         @if (@$data['headers']['create-permission'] != '' && hasPermission(@$data['headers']['create-permission']))
             <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">

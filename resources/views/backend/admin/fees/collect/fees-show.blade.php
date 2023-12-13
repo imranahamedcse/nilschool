@@ -14,13 +14,13 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="exampleDataList" class="form-label ">{{ ___('fees.due_date') }} <span
+                            <label for="validationDefault01" class="form-label ">{{ ___('fees.due_date') }} <span
                                     class="text-danger">*</span></label>
-                            <input class="form-control ot-input @error('date') is-invalid @enderror" name="date"
-                                list="datalistOptions" id="exampleDataList" type="date"
+                            <input class="form-control @error('date') is-invalid @enderror" name="date"
+                                id="validationDefault01" type="date"
                                 placeholder="{{ ___('fees.enter_date') }}" value="{{ old('date') }}" required>
                             @error('date')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror

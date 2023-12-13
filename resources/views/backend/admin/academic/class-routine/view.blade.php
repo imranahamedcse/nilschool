@@ -12,7 +12,7 @@ aria-hidden="true">
             </div>
             <div class="modal-body p-5">
                 <div class="table-responsive table_height_450 niceScroll">
-                    <table class="table ot-table-bg">
+                    <table class="table table-bg">
                         <thead class="thead">
                             <tr>
                                 <th class="serial">{{ ___('academic.subject') }}</th>
@@ -22,15 +22,15 @@ aria-hidden="true">
                         <tbody class="tbody">
                             @foreach ($data['subject_assign_children'] as $key => $row)
                             <tr>
-                                <td> 
-                                    
+                                <td>
+
                                     {{ $row->subject->name }}<br>
-                                 
+
                                 </td>
-                                <td> 
-                                    
+                                <td>
+
                                     {{ $row->teacher->first_name }} {{ $row->teacher->last_name }}<br>
-                                    
+
                                 </td>
                             </tr>
                             @endforeach

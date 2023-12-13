@@ -12,7 +12,7 @@
          </div>
          <div class="modal-body p-5">
             <div class="table-responsive table_height_450 niceScroll">
-                <table class="table ot-table-bg">
+                <table class="table table-bg">
                     <thead class="thead">
                         <tr>
                             <th>{{ ___('common.sr_no') }}</th>
@@ -40,7 +40,7 @@
                                     @for($i = 0; $i < $item->question->total_option; $i++)
                                         {{++$i}}. {{$item->question->questionOptions[--$i]->option}} <br>
                                     @endfor
-                                    {{ ___('online-examination.Answer') }}: 
+                                    {{ ___('online-examination.Answer') }}:
                                     @foreach ($item->question->answer as $ans)
                                         {{$ans}}.
                                     @endforeach
@@ -49,7 +49,7 @@
 
                                     {{ ___('online-examination.1') }}. {{ ___('online-examination.True') }} <br>
                                     {{ ___('online-examination.2') }}. {{ ___('online-examination.False') }} <br>
-                                
+
                                     {{ ___('online-examination.Answer') }}: {{$item->question->answer}}.
 
                                 @endif

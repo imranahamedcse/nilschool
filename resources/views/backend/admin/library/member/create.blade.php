@@ -20,26 +20,26 @@
                         <div class="row">
 
                             <div class="col-md-4 member">
-                                <label for="validationServer04" class="form-label">{{ ___('library.select_member') }}
+                                <label for="validationDefault01" class="form-label">{{ ___('library.select_member') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('member') is-invalid @enderror"
-                                    name="member" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="member" id="validationDefault01">
                                     <option value="">{{ ___('library.select_member') }}</option>
                                 </select>
                                 @error('member')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4">
-                                <label for="validationServer04" class="form-label">{{ ___('settings.Member category') }}
+                                <label for="validationDefault02" class="form-label">{{ ___('settings.Member category') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('category') is-invalid @enderror"
-                                    name="category" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="category" id="validationDefault02">
                                     <option value="">{{ ___('library.Select category') }}</option>
                                     @foreach ($data['categories'] as $item)
                                         <option value="{{ $item->id }}"
@@ -48,24 +48,24 @@
                                     @endforeach
                                 </select>
                                 @error('category')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="status" id="validationDefault03">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

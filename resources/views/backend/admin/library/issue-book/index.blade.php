@@ -23,7 +23,7 @@
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <input class="form-control" name="keyword" list="datalistOptions" id="exampleDataList"
+                            <input class="form-control" name="keyword"
                                 placeholder="{{ ___('student_info.Enter keyword') }}"
                                 value="{{ @$data['request']->keyword }}">
                         </div>

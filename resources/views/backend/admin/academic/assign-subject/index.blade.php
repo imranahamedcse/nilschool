@@ -33,7 +33,7 @@
                         <td class="serial">{{ ++$key }}</td>
                         <td>{{ @$row->class->name }} ({{ @$row->section->name }})</td>
                         <td>
-                            <a href="#" class="btn btn-sm ot-btn-primary" data-bs-toggle="modal"
+                            <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#basicModal" onclick="viewSubjectTeacher({{ $row->id }})">
                                 <span><i class="fa-solid fa-eye"></i> </span>
                             </a>

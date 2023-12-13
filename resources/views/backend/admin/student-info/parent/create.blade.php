@@ -16,50 +16,50 @@
                         {{-- father --}}
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.father_name') }}
+                                <label for="validationDefault01" class="form-label ">{{ ___('student_info.father_name') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_name') is-invalid @enderror"
-                                    name="father_name" list="datalistOptions" id="exampleDataList"
+                                    name="father_name" id="validationDefault01"
                                     placeholder="{{ ___('student_info.enter_father_name') }}" type="text"
                                     value="{{ old('father_name') }}">
                                 @error('father_name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.father_mobile') }}
+                                <label for="validationDefault02" class="form-label ">{{ ___('student_info.father_mobile') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_mobile') is-invalid @enderror"
-                                    name="father_mobile" list="datalistOptions" id="exampleDataList"
+                                    name="father_mobile" id="validationDefault02"
                                     placeholder="{{ ___('student_info.enter_father_mobile') }}" type="text"
                                     value="{{ old('father_mobile') }}">
                                 @error('father_mobile')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault03"
                                     class="form-label ">{{ ___('student_info.father_profession') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('father_profession') is-invalid @enderror"
-                                    name="father_profession" list="datalistOptions" id="exampleDataList"
+                                    name="father_profession" id="validationDefault03"
                                     placeholder="{{ ___('student_info.enter_father_profession') }}" type="text"
                                     value="{{ old('father_profession') }}">
                                 @error('father_profession')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
 
-                                <label class="form-label" for="inputImage">{{ ___('student_info.father_image') }}
+                                <label class="form-label" for="validationDefault04">{{ ___('student_info.father_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
-                                <input type="file" class="form-control" name="father_image" id="fileBrouse"
+                                <input type="file" class="form-control" name="father_image" id="validationDefault04"
                                     accept="image/*">
 
                             </div>
@@ -68,51 +68,51 @@
                         {{-- mother --}}
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('student_info.mother_name') }}
+                                <label for="validationDefault05" class="form-label ">{{ ___('student_info.mother_name') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('mother_name') is-invalid @enderror"
-                                    name="mother_name" list="datalistOptions" id="exampleDataList"
+                                    name="mother_name" id="validationDefault05"
                                     placeholder="{{ ___('student_info.enter_mother_name') }}" type="text"
                                     value="{{ old('mother_name') }}">
                                 @error('mother_name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault06"
                                     class="form-label ">{{ ___('student_info.mother_mobile') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('mother_mobile') is-invalid @enderror"
-                                    name="mother_mobile" list="datalistOptions" id="exampleDataList"
+                                    name="mother_mobile" id="validationDefault06"
                                     placeholder="{{ ___('student_info.enter_mother_mobile') }}" type="text"
                                     value="{{ old('mother_mobile') }}">
                                 @error('mother_mobile')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault07"
                                     class="form-label ">{{ ___('student_info.mother_profession') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('mother_profession') is-invalid @enderror"
-                                    name="mother_profession" list="datalistOptions" id="exampleDataList"
+                                    name="mother_profession" id="validationDefault07"
                                     placeholder="{{ ___('student_info.enter_father_profession') }}" type="text"
                                     value="{{ old('mother_profession') }}">
                                 @error('mother_profession')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
 
-                                <label class="form-label" for="inputImage">{{ ___('student_info.mother_image') }}
+                                <label class="form-label" for="validationDefault08">{{ ___('student_info.mother_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
-                                <input type="file" class="form-control" name="mother_image" id="fileBrouse2"
+                                <input type="file" class="form-control" name="mother_image" id="validationDefault08"
                                     accept="image/*">
 
                             </div>
@@ -121,104 +121,104 @@
                         {{-- guardian --}}
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault09"
                                     class="form-label ">{{ ___('student_info.guardian_name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_name') is-invalid @enderror"
-                                    name="guardian_name" list="datalistOptions" id="exampleDataList"
+                                    name="guardian_name" id="validationDefault09"
                                     placeholder="{{ ___('student_info.enter_guardian_name') }}" type="text"
                                     value="{{ old('guardian_name') }}">
                                 @error('guardian_name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault10"
                                     class="form-label ">{{ ___('student_info.guardian_mobile') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_mobile') is-invalid @enderror"
-                                    name="guardian_mobile" list="datalistOptions" id="exampleDataList"
+                                    name="guardian_mobile" id="validationDefault10"
                                     placeholder="{{ ___('student_info.enter_guardian_mobile') }}" type="text"
                                     value="{{ old('guardian_mobile') }}">
                                 @error('guardian_mobile')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault11"
                                     class="form-label ">{{ ___('student_info.guardian_profession') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_profession') is-invalid @enderror"
-                                    name="guardian_profession" list="datalistOptions" id="exampleDataList"
+                                    name="guardian_profession" id="validationDefault11"
                                     placeholder="{{ ___('student_info.enter_guardian_profession') }}" type="text"
                                     value="{{ old('guardian_profession') }}">
                                 @error('guardian_profession')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
 
-                                <label class="form-label" for="inputImage">{{ ___('student_info.guardian_image') }}
+                                <label class="form-label" for="validationDefault12">{{ ___('student_info.guardian_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
-                                <input type="file" class="form-control" name="guardian_image" id="fileBrouse3"
+                                <input type="file" class="form-control" name="guardian_image" id="validationDefault12"
                                     accept="image/*">
 
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault13"
                                     class="form-label ">{{ ___('student_info.guardian_email') }}</label>
                                 <input class="form-control @error('guardian_email') is-invalid @enderror"
-                                    name="guardian_email" list="datalistOptions" id="exampleDataList"
+                                    name="guardian_email" id="validationDefault13"
                                     placeholder="{{ ___('student_info.enter_guardian_email') }}" type="email"
                                     value="{{ old('guardian_email') }}">
                                 @error('guardian_email')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault14"
                                     class="form-label ">{{ ___('student_info.guardian_address') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_address') is-invalid @enderror"
-                                    name="guardian_address" list="datalistOptions" id="exampleDataList"
+                                    name="guardian_address" id="validationDefault14"
                                     placeholder="{{ ___('student_info.enter_guardian_address') }}" type="text"
                                     value="{{ old('guardian_address') }}">
                                 @error('guardian_address')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList"
+                                <label for="validationDefault15"
                                     class="form-label ">{{ ___('student_info.guardian_relation') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_relation') is-invalid @enderror"
-                                    name="guardian_relation" list="datalistOptions" id="exampleDataList"
+                                    name="guardian_relation" id="validationDefault15"
                                     placeholder="{{ ___('student_info.enter_guardian_relation') }}" type="text"
                                     value="{{ old('guardian_relation') }}">
                                 @error('guardian_relation')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
 
-                                <label class="form-label" for="validationServer04">{{ ___('student_info.status') }}
+                                <label class="form-label" for="validationDefault16">{{ ___('student_info.status') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                    name="status" id="validationDefault16"
+                                   >
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}
                                     </option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
@@ -226,7 +226,7 @@
                                 </select>
 
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -248,5 +248,5 @@
             </form>
         </div>
     </div>
-    
+
 @endsection

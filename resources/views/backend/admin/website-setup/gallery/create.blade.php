@@ -20,11 +20,11 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Gallery category') }}
+                                <label for="validationDefault01" class="form-label">{{ ___('common.Gallery category') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('category') is-invalid @enderror"
-                                    name="category" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="category" id="validationDefault01">
                                     <option value="">Select Category</option>
                                     @foreach ($data['categories'] as $item)
                                         <option value="{{ $item->id }}"
@@ -33,34 +33,34 @@
                                     @endforeach
                                 </select>
                                 @error('category')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.image') }}
                                     {{ ___('common.(335 x 405 px)') }} <span class="text-danger">*</span></label>
-                                <input type="file" class="form-control" name="image" accept="image/*" id="fileBrouse">
+                                <input type="file" class="form-control" name="image" accept="image/*" id="validationDefault02">
                                 @error('image')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault03">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

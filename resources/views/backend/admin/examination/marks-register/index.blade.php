@@ -36,7 +36,7 @@
                         <td>{{ $row->class->name }} ({{ $row->section->name }})</td>
                         <td>{{ $row->subject->name }}</td>
                         <td>
-                            <a href="#" class="btn btn-sm ot-btn-primary" data-bs-toggle="modal"
+                            <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#modalCustomizeWidth" onclick="viewStudentMark({{ $row->id }})">
                                 <span><i class="fa-solid fa-eye"></i> </span>
                             </a>
@@ -74,5 +74,5 @@
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-subject.js') }}"></script>
     <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>
-    
+
 @endpush

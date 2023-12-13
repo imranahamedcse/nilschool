@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body p-5 table-content table-basic">
                 <div class="table-responsive table_height_450 niceScroll">
-                    <table class="table ot-table-bg">
+                    <table class="table table-bg">
                         <thead class="thead">
                             <tr>
                                 <th class="serial">{{ ___('academic.subject') }}</th>

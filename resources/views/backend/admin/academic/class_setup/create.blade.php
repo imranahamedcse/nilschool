@@ -19,10 +19,10 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('academic.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('classes') is-invalid @enderror" name="classes"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault01">
                                     <option value="">{{ ___('common.select class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -30,7 +30,7 @@
                                 </select>
 
                                 @error('classes')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -50,23 +50,23 @@
                                     @endforeach
                                 </div>
                                 @error('sections')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault03">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
                                     </option>
                                 </select>
 
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

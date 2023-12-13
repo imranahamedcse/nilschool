@@ -23,9 +23,10 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="class form-control @error('class') is-invalid @enderror" name="class">
+                        <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror"
+                            name="class">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option {{ old('class', @$request->class) == $item->id ? 'selected' : '' }}
@@ -33,15 +34,16 @@
                             @endforeach
                         </select>
                         @error('class')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
+                        <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="section form-control @error('section') is-invalid @enderror" name="section">
+                        <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror"
+                            name="section">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach (@$data['sections'] as $item)
                                 <option {{ old('section', @$request->section) == $item->section->id ? 'selected' : '' }}
@@ -49,7 +51,7 @@
                             @endforeach
                         </select>
                         @error('section')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -57,12 +59,13 @@
                 </div>
 
                 <h5 class="text-info">{{ ___('student_info.To') }}</h5>
-                
+
                 <div class="row mb-3">
                     <div class="col-md-4 mb-3">
-                        <label for="validationServer04" class="form-label">{{ ___('student_info.Promote session') }} <span
+                        <label for="validationDefault03" class="form-label">{{ ___('student_info.Promote session') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="session form-control @error('promote_session') is-invalid @enderror"
+                        <select id="validationDefault03"
+                            class="session form-control @error('promote_session') is-invalid @enderror"
                             name="promote_session">
                             <option value="">{{ ___('student_info.select_session') }}</option>
                             @foreach ($data['sessions'] as $item)
@@ -73,15 +76,16 @@
                             @endforeach
                         </select>
                         @error('promote_session')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationServer04" class="form-label">{{ ___('student_info.Promote class') }}
+                        <label for="validationDefault04" class="form-label">{{ ___('student_info.Promote class') }}
                             <span class="text-danger">*</span></label>
-                        <select class="promote_class form-control @error('promote_class') is-invalid @enderror"
+                        <select id="validationDefault04"
+                            class="promote_class form-control @error('promote_class') is-invalid @enderror"
                             name="promote_class">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach (@$data['promoteClasses'] as $item)
@@ -91,15 +95,16 @@
                             @endforeach
                         </select>
                         @error('promote_class')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationServer04" class="form-label">{{ ___('student_info.Promote section') }} <span
+                        <label for="validationDefault05" class="form-label">{{ ___('student_info.Promote section') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="promote_section form-control @error('promote_section') is-invalid @enderror"
+                        <select id="validationDefault05"
+                            class="promote_section form-control @error('promote_section') is-invalid @enderror"
                             name="promote_section">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach (@$data['promoteSections'] as $item)
@@ -109,7 +114,7 @@
                             @endforeach
                         </select>
                         @error('promote_section')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -142,7 +147,7 @@
                     <input type="hidden" name="promote_session" value="{{ $request->promote_session }}">
                     <input type="hidden" name="promote_class" value="{{ $request->promote_class }}">
                     <input type="hidden" name="promote_section" value="{{ $request->promote_section }}">
-                    
+
                     <table id="datatable" class="table">
                         <thead class="thead">
                             <tr>
@@ -182,17 +187,17 @@
                                         @if (array_key_exists(@$item->student->id, $results))
                                             <span
                                                 class="badge-basic-{{ $results[@$item->student->id] == 'Pass' ? 'primary' : 'warning' }}-text">{{ $results[@$item->student->id] == 'Pass' ? 'Passed' : 'Failed' }}</span>
-                                            <input class="form-control ot-input" type="hidden"
+                                            <input class="form-control" type="hidden"
                                                 name="result[{{ $key }}][]"
                                                 value="{{ $results[@$item->student->id] == 'Pass' ? 1 : 0 }}">
                                         @else
                                             <span class="badge-basic-danger-text">{{ ___('common.Pending') }}</span>
-                                            <input class="form-control ot-input" type="hidden"
+                                            <input class="form-control" type="hidden"
                                                 name="result[{{ $key }}][]" value="0">
                                         @endif
                                     </td>
                                     <td>
-                                        <input class="form-control ot-input" type="number"
+                                        <input class="form-control" type="number"
                                             name="roll[{{ $key }}][]" value="{{ old('role') }}">
                                     </td>
 
@@ -217,7 +222,7 @@
 
 @push('script')
     @include('backend.admin.components.table.js')
-    
+
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-promote-class-section.js') }}"></script>
 @endpush

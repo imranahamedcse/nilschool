@@ -21,43 +21,43 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
                                         class="text-danger">*</span></label>
-                                <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
-                                    value="{{ old('name', @$data['counter']->name) }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('common.enter_name') }}">
+                                <input class="form-control @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name', @$data['counter']->name) }}"
+                                    id="validationDefault01" placeholder="{{ ___('common.enter_name') }}">
                                 @error('name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.Total count') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.Total count') }} <span
                                         class="text-danger">*</span></label>
-                                <input class="form-control ot-input @error('total_count') is-invalid @enderror"
+                                <input class="form-control @error('total_count') is-invalid @enderror"
                                     name="total_count" value="{{ old('total_count', @$data['counter']->total_count) }}"
-                                    list="datalistOptions" id="exampleDataList" type="number"
+                                    id="validationDefault02" type="number"
                                     placeholder="{{ ___('common.Enter total count') }}">
                                 @error('total_count')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.image') }}
                                     {{ ___('common.(65 x 75 px)') }}</label>
-                                <input type="file" class="form-control" name="image" accept="image/*" id="fileBrouse">
+                                <input type="file" class="form-control" name="image" accept="image/*" id="validationDefault03">
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault04">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['counter']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
                                         {{ ___('common.active') }}</option>
@@ -67,20 +67,20 @@
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.Serial') }} <span
+                                <label for="validationDefault05" class="form-label ">{{ ___('common.Serial') }} <span
                                         class="text-danger">*</span></label>
-                                <input class="form-control ot-input @error('serial') is-invalid @enderror" name="serial"
-                                    value="{{ old('serial', @$data['counter']->serial) }}" list="datalistOptions"
-                                    id="exampleDataList" type="number" placeholder="{{ ___('common.Enter serial') }}">
+                                <input class="form-control @error('serial') is-invalid @enderror" name="serial"
+                                    value="{{ old('serial', @$data['counter']->serial) }}"
+                                    id="validationDefault05" type="number" placeholder="{{ ___('common.Enter serial') }}">
                                 @error('serial')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

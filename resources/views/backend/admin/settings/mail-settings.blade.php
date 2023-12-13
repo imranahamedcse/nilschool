@@ -24,10 +24,10 @@
                                     <label for="inputname" class="form-label">{{ ___('settings.mail_host') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="text" name="mail_host"
-                                        class="form-control ot-input @error('mail_host') is-invalid @enderror"
+                                        class="form-control @error('mail_host') is-invalid @enderror"
                                         value="{{ setting('mail_host') }}" placeholder="{{ ___('settings.mail_host') }}">
                                     @error('mail_host')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
@@ -39,11 +39,11 @@
                                     <label for="inputname" class="form-label">{{ ___('settings.mail_address') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="text" name="mail_address"
-                                        class="form-control ot-input @error('mail_address') is-invalid @enderror"
+                                        class="form-control @error('mail_address') is-invalid @enderror"
                                         value="{{ Setting('mail_address') }}"
                                         placeholder="{{ ___('settings.mail_address') }}">
                                     @error('mail_address')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
@@ -55,10 +55,10 @@
                                     <label for="inputname" class="form-label">{{ ___('settings.from_name') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="text" name="from_name"
-                                        class="form-control ot-input @error('from_name') is-invalid @enderror"
+                                        class="form-control @error('from_name') is-invalid @enderror"
                                         value="{{ Setting('from_name') }}" placeholder="{{ ___('settings.from_name') }}">
                                     @error('from_name')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
@@ -70,11 +70,11 @@
                                     <label for="inputname" class="form-label">{{ ___('settings.mail_username') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="text" name="mail_username"
-                                        class="form-control ot-input @error('mail_username') is-invalid @enderror"
+                                        class="form-control @error('mail_username') is-invalid @enderror"
                                         value="{{ Setting('mail_username') }}"
                                         placeholder="{{ ___('settings.mail_username') }}">
                                     @error('mail_username')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
@@ -86,11 +86,11 @@
                                     <label for="exampleInputPassword1"
                                         class="form-label ">{{ ___('settings.mail_password') }} <span
                                             class="text-danger"></span></label> <input type="password" name="mail_password"
-                                        class="form-control ot-input @error('mail_password') is-invalid @enderror"
+                                        class="form-control @error('mail_password') is-invalid @enderror"
                                         id="exampleInputmail_password1"
                                         placeholder="{{ ___('settings.enter_your_mail_password') }}">
                                     @error('mail_password')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
@@ -101,11 +101,11 @@
                                     <label for="exampleInputPassword1" class="form-label ">{{ ___('settings.mail_port') }}
                                         <span class="text-danger">*</span></label> <input type="text" name="mail_port"
                                         value="{{ Setting('mail_port') }}"
-                                        class="form-control ot-input @error('mail_port') is-invalid @enderror"
+                                        class="form-control @error('mail_port') is-invalid @enderror"
                                         id="exampleInputmail_password1"
                                         placeholder="{{ ___('settings.enter_your_mail_post') }}">
                                     @error('mail_port')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror

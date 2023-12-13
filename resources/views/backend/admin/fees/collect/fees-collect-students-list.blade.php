@@ -7,7 +7,7 @@
     <td>{{ @$item->student->parent->guardian_name }}</td>
     <td>{{ @$item->student->mobile }}</td>
     <td>
-        <a href="{{ route('fees-collect.collect',$item) }}" class="btn btn-sm ot-btn-primary">{{ ___('common.Collect')}}</a>
+        <a href="{{ route('fees-collect.collect',$item) }}" class="btn btn-sm btn-primary">{{ ___('common.Collect')}}</a>
     </td>
 </tr>
 @endforeach

@@ -595,8 +595,8 @@
 
         <div class="row">
             <div class="col-lg-12">
-                
-                <div class="card ot-card mb-24" id="printableArea">
+
+                <div class="card card mb-24" id="printableArea">
 
                     <div class="routine_wrapper">
                         <!-- routine_wrapper_header part here -->
@@ -641,7 +641,7 @@
                             @php
                                 $answers = @$data['answer']->allAnswers->pluck('question_bank_id')->toArray();
                             @endphp
-                            
+
                             <div class="table-content table-basic">
                                 <div class="card">
                                     <div class="card-body">
@@ -651,7 +651,7 @@
                                             <input type="hidden" name="student_id" value="{{$student_id}}">
                                             @foreach (@$data['exam']->examQuestions as $key=>$item)
                                                 <input type="hidden" name="answer_ids[]" value="{{$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()?->id}}">
-                                                
+
                                                 <div class="py-2 d-flex justify-content-between">
                                                     <h5 class="d-inline m-0">{{ ++$key }}. {{ @$item->question->question }}</h5>
                                                     <div >
@@ -668,14 +668,14 @@
                                                         <h5 class="d-inline m-0">{{ @$item->question->mark }}</h5>
                                                     </div>
                                                 </div>
-                                                
+
                                                 @if (@$item->question->type == 1)
 
                                                     @for($i = 0; $i < @$item->question->total_option; $i++)
                                                         {{++$i}}. {{@$item->question->questionOptions[--$i]->option}} <br>
                                                     @endfor
                                                     @if (in_array(@$item->question->id, $answers))
-                                                        <strong class="text-danger">{{ ___('online-examination.Answer') }}:</strong> {{ $data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer }}. 
+                                                        <strong class="text-danger">{{ ___('online-examination.Answer') }}:</strong> {{ $data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer }}.
                                                     @endif <br>
                                                     <strong class="text-success">{{ ___('online-examination.Correct Answer') }}:</strong> {{@$item->question->answer}}.
 
@@ -685,23 +685,23 @@
                                                         {{++$i}}. {{@$item->question->questionOptions[--$i]->option}} <br>
                                                     @endfor
                                                     @if (in_array(@$item->question->id, $answers))
-                                                        <strong class="text-danger">{{ ___('online-examination.Answer') }}:</strong> 
+                                                        <strong class="text-danger">{{ ___('online-examination.Answer') }}:</strong>
                                                         @foreach ($data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer as $ans)
                                                             {{$ans}}.
                                                         @endforeach
                                                     @endif
                                                     <br>
-                                                    <strong class="text-success">{{ ___('online-examination.Correct Answer') }}:</strong> 
+                                                    <strong class="text-success">{{ ___('online-examination.Correct Answer') }}:</strong>
                                                     @foreach (@$item->question->answer as $ans)
                                                         {{$ans}}.
                                                     @endforeach
-                                                    
+
                                                 @elseif(@$item->question->type == 3)
 
                                                     {{ ___('online-examination.1') }} {{ ___('online-examination.True') }} <br>
                                                     {{ ___('online-examination.2') }} {{ ___('online-examination.False') }} <br>
                                                     @if (in_array(@$item->question->id, $answers))
-                                                    <strong class="text-danger">{{ ___('online-examination.Answer') }}:</strong> 
+                                                    <strong class="text-danger">{{ ___('online-examination.Answer') }}:</strong>
                                                         @if ((int)$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer == 1)
                                                             {{ ___('online-examination.1') }}
                                                         @else
@@ -712,11 +712,11 @@
                                                     <strong class="text-success">{{ ___('online-examination.Correct Answer') }}:</strong> {{@$item->question->answer}}
 
                                                 @else
-                                                    
+
                                                     @if (in_array(@$item->question->id, $answers))
                                                         <strong class="text-danger">{{ ___('online-examination.Answer') }}:</strong> {{ $data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer}}
                                                     @endif
-                                                
+
                                                 @endif
                                             @endforeach
 

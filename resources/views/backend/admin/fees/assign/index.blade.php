@@ -38,7 +38,7 @@
                         <td>{{ @$row->category->name }}</td>
                         <td>{{ @$row->gender->name }}</td>
                         <td>
-                            <a href="#" class="btn btn-sm ot-btn-primary" data-bs-toggle="modal"
+                            <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#modalCustomizeWidth" onclick="viewStudentList({{ $row->id }})">
                                 <span><i class="fa-solid fa-eye"></i> </span>
                             </a>
@@ -71,7 +71,7 @@
 
     <div class="modal fade" id="modalCustomizeWidth" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
-                
+
         </div>
     </div>
 

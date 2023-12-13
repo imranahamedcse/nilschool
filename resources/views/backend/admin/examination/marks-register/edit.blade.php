@@ -20,11 +20,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="getSections"
                                     class="form-control @error('class') is-invalid @enderror"
-                                    name="class" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="class" id="validationDefault01">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
@@ -35,17 +35,17 @@
                                 </select>
 
                                 @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="getSubjects"
                                     class="nice-select niceSelect sections bordered_style wide @error('section') is-invalid @enderror"
-                                    name="section" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="section" id="validationDefault02">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
                                         @if ($data['marks_register']->section_id == $item->id)
@@ -57,16 +57,16 @@
                                 </select>
 
                                 @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-lg-3">
-                                <label for="validationServer04" class="form-label">{{ ___('examination.exam_type') }}
+                                <label for="validationDefault03" class="form-label">{{ ___('examination.exam_type') }}
                                     <span class="text-danger">*</span></label>
-                                <select
+                                <select id="validationDefault03"
                                     class="form-control @error('exam_type') is-invalid @enderror"
                                     name="exam_type">
                                     <option value="">{{ ___('examination.select_exam_type') }}</option>
@@ -77,15 +77,15 @@
                                     @endforeach
                                 </select>
                                 @error('exam_type')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('academic.subject') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('academic.subject') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="subject"
+                                <select id="subject" id="validationDefault04"
                                     class="form-control subjects wide nice-select bordered_style  @error('subject') is-invalid @enderror"
                                     name="subject">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
@@ -98,7 +98,7 @@
                                     @endforeach
                                 </select>
                                 @error('subject')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -139,7 +139,7 @@
                                                                                 <input type="number"
                                                                                     name="marks[{{ $item->student_id }}][{{ @$row->title }}]"
                                                                                     value="{{ $child->mark }}"
-                                                                                    class="form-control ot-input min_width_200"
+                                                                                    class="form-control min_width_200"
                                                                                     placeholder="{{ ___('examination.Enter mark out of') }} {{ @$row->mark }}"
                                                                                     required>
                                                                             @endif

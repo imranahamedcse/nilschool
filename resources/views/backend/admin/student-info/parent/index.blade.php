@@ -20,7 +20,7 @@
                 <form action="{{ route('parent.search') }}" method="post" id="marksheed" enctype="multipart/form-data">
                     @csrf
                     <div class="input-group">
-                        <input class="form-control" name="keyword" list="datalistOptions" id="exampleDataList"
+                        <input class="form-control" name="keyword"
                             placeholder="{{ ___('student_info.Enter keyword') }}"
                             value="{{ old('keyword', @$data['request']->keyword) }}">
                         <button class="btn btn-primary ml-3" type="submit">

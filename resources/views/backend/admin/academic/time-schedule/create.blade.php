@@ -20,17 +20,17 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('academic.type') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('academic.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('type') is-invalid @enderror" name="type"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault01">
                                     <option value="1">{{ ___('academic.class') }}</option>
                                     <option value="2">{{ ___('academic.exam') }}
                                     </option>
                                 </select>
 
                                 @error('type')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -38,42 +38,42 @@
                             </div>
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault02">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
                                     </option>
                                 </select>
 
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('academic.start_time') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('academic.start_time') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('start_time') is-invalid @enderror" name="start_time"
-                                    list="datalistOptions" id="exampleDataList" type="time"
+                                    id="validationDefault03" type="time"
                                     placeholder="{{ ___('academic.enter_start_time') }}" value="{{ old('start_time') }}">
                                 @error('start_time')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('academic.end_time') }} <span
+                                <label for="validationDefault04" class="form-label ">{{ ___('academic.end_time') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('end_time') is-invalid @enderror" name="end_time"
-                                    list="datalistOptions" id="exampleDataList" type="time"
+                                    id="validationDefault04" type="time"
                                     placeholder="{{ ___('academic.enter_end_time') }}" value="{{ old('end_time') }}">
                                 @error('end_time')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

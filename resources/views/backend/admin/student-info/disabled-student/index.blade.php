@@ -16,14 +16,14 @@
             <div class="border-bottom pb-2 mb-4">
                 <h4>{{ ___('student_info.disabled_students') }}</h4>
             </div>
-            
+
             <form action="{{ route('disabled_students.search') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="validationServer04" class="form-label">{{ ___('student_info.class') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="class form-control @error('class') is-invalid @enderror" name="class">
+                        <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror" name="class">
                             <option value="">{{ ___('student_info.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option {{ old('class', @$request->class) == $item->id ? 'selected' : '' }}
@@ -31,15 +31,15 @@
                             @endforeach
                         </select>
                         @error('class')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="validationServer04" class="form-label">{{ ___('student_info.section') }} <span
+                        <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="section form-control @error('section') is-invalid @enderror" name="section">
+                        <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror" name="section">
                             <option value="">{{ ___('student_info.select_section') }}</option>
                             @foreach (@$data['sections'] as $item)
                                 <option {{ old('section', @$request->section) == $item->section->id ? 'selected' : '' }}
@@ -47,7 +47,7 @@
                             @endforeach
                         </select>
                         @error('section')
-                            <div id="validationServer04Feedback" class="invalid-feedback">
+                            <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -73,7 +73,7 @@
                     <input type="hidden" name="promote_session" value="{{ $request->promote_session }}">
                     <input type="hidden" name="promote_class" value="{{ $request->promote_class }}">
                     <input type="hidden" name="promote_section" value="{{ $request->promote_section }}">
-                
+
                     <table id="datatable" class="table">
                         <thead class="thead">
                             <tr>

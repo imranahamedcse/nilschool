@@ -18,7 +18,7 @@
         <div class="input-field-group mb-20">
             <label for="username">{{ ___('common.name') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
-                <input type="text" name="name" id="username" class="ot-input @error('name') is-invalid @enderror" placeholder="{{ ___('common.enter_your_name') }}" value="{{ old('name') }}" />
+                <input type="text" name="name" id="username" class="@error('name') is-invalid @enderror" placeholder="{{ ___('common.enter_your_name') }}" value="{{ old('name') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
                 @error('name')
                         <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
@@ -28,7 +28,7 @@
         <div class="input-field-group mb-20">
             <label for="username">{{ ___('common.email') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
-                <input type="email" name="email" class="ot-input @error('email') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_email') }}" value="{{ old('email') }}" />
+                <input type="email" name="email" class="@error('email') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_email') }}" value="{{ old('email') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/email-cus.svg" alt="">
                 @error('email')
                 <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
@@ -39,7 +39,7 @@
         <div class="input-field-group mb-20">
             <label for="username">{{ ___('common.phone') }} </label><br />
             <div class="custom-input-field">
-                <input type="text" name="phone" class="ot-input @error('phone') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_phone') }}" value="{{ old('phone') }}" />
+                <input type="text" name="phone" class="@error('phone') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_phone') }}" value="{{ old('phone') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/phone.svg" alt="">
                 @error('phone')
                 <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
@@ -51,7 +51,7 @@
         <div class="input-field-group mb-20">
             <label for="username">{{ ___('common.date_of_birth') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
-                <input type="date" name="date_of_birth" class="ot-input @error('date_of_birth') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_date_of_birth') }}" value="{{ old('phone') }}" />
+                <input type="date" name="date_of_birth" class="@error('date_of_birth') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_date_of_birth') }}" value="{{ old('phone') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/calender.svg" alt="">
                 @error('date_of_birth')
                 <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
@@ -84,7 +84,7 @@
         <div class="input-field-group mb-20">
             <label for="password">{{ ___('common.password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
-                <input type="password" name="password" class="ot-input @error('password') is-invalid @enderror" id="password" placeholder="******************" />
+                <input type="password" name="password" class="@error('password') is-invalid @enderror" id="password" placeholder="******************" />
                 <i class="lar la-eye"></i>
                 <img src="{{ asset('backend') }}/assets/images/icons/lock-cus.svg" alt="">
                 @error('password')
@@ -96,7 +96,7 @@
         <div class="input-field-group mb-20">
             <label for="password">{{ ___('common.confirm_password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
-                <input type="password" name="confirm_password" id="confirm_password" class="ot-input @error('confirm_password') is-invalid @enderror" placeholder="******************" />
+                <input type="password" name="confirm_password" id="confirm_password" class="@error('confirm_password') is-invalid @enderror" placeholder="******************" />
                 <i class="lar la-eye"></i>
                 <img src="{{ asset('backend') }}/assets/images/icons/lock-cus.svg" alt="">
                 @error('confirm_password')

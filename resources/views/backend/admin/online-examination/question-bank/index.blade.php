@@ -23,7 +23,7 @@
                     @csrf
                 <div class="row justify-content-center align-items-center">
                     <div class="input-group">
-                        <input class="form-control" name="keyword" list="datalistOptions" id="exampleDataList"
+                        <input class="form-control" name="keyword"
                             placeholder="{{ ___('student_info.Search question') }}"
                             value="{{ old('keyword', @$data['request']->keyword) }}">
                         <button class="btn btn-primary" type="submit">

@@ -92,7 +92,7 @@
           color: #0f6aff;
       }
 
-      .email-template .template-body .ot-primary-text {
+      .email-template .template-body .primary-text {
           font-family: "Lexend", sans-serif;
           font-weight: 600;
           font-size: 16px;
@@ -266,7 +266,7 @@
           .email-template .template-body {
               font-size: 12px;
           }
-          .email-template .template-body .ot-primary-text {
+          .email-template .template-body .primary-text {
            margin-top: 26px;
           }
       }
@@ -287,7 +287,7 @@
         <!-- Start template body  -->
         <div class="template-body">
             <div class="content-part">
-                <p class="ot-primary-text">{{ ___('common.reset_password') }}</p>
+                <p class="primary-text">{{ ___('common.reset_password') }}</p>
                 <p>{{ ___('common.hello_user') }}</p>
                 <p>
                     {{ ___('common.you_are_receiving_this_email_because_a_request_has_been_received_to_change_the_password_for_your_larave_starter_kit_account') }}

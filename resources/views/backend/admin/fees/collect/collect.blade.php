@@ -11,7 +11,7 @@
 @section('content')
     @include('backend.admin.components.breadcrumb')
 
-    <div class="card ot-card">
+    <div class="card card">
         <div class="card-body">
 
 

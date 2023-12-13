@@ -26,23 +26,23 @@
                 <div class="col-md-12">
                     <div class="row mb-3">
                         <div class="col-md-6 mb-3">
-                            <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
+                            <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
                                     class="text-danger">*</span></label>
                             <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                list="datalistOptions" id="exampleDataList" placeholder="{{ ___('common.enter_name') }}">
+                                id="validationDefault01" placeholder="{{ ___('common.enter_name') }}">
                             @error('name')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <label for="exampleDataList" class="form-label ">{{ ___('language.code') }} <span
+                            <label for="validationDefault02" class="form-label ">{{ ___('language.code') }} <span
                                     class="text-danger">*</span></label>
                             <input class="form-control @error('code') is-invalid @enderror" name="code"
-                                list="datalistOptions" id="exampleDataList" placeholder="{{ ___('language.enter_code') }}">
+                                id="validationDefault02" placeholder="{{ ___('language.enter_code') }}">
                             @error('code')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -50,10 +50,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="validationServer04" class="form-label">{{ ___('language.flag_icon') }}
+                            <label for="validationDefault03" class="form-label">{{ ___('language.flag_icon') }}
                                 <span class="text-danger">*</span></label>
                             <select class="form-control @error('flagIcon') is-invalid @enderror"
-                                name="flagIcon" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                name="flagIcon" id="validationDefault03">
                                 <option value="">{{ ___('common.select') }}</option>
                                 @foreach ($data['flagIcons'] as $row)
                                     <option value="{{ $row->icon_class }}" data-icon="{{ $row->icon_class }}">
@@ -62,7 +62,7 @@
                                 @endforeach
                             </select>
                             @error('flagIcon')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -72,7 +72,7 @@
 
                         <div class="col-md-6 direction-button">
 
-                            <label for="validationServer04" class="form-label">{{ ___('language.direction') }}</label>
+                            <label class="form-label">{{ ___('language.direction') }}</label>
 
                             <div>
                                 <div class="form-check form-check-inline">

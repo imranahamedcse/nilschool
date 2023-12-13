@@ -12,7 +12,7 @@
          </div>
          <div class="modal-body p-5">
             <div class="table-responsive table_height_450 niceScroll">
-                <table class="table ot-table-bg">
+                <table class="table table-bg">
                     <thead class="thead">
                         <tr>
                             <th>{{ ___('student_info.Student Name') }}</th>
@@ -57,8 +57,6 @@
          <div class="modal-footer">
              <button type="button" class="btn btn-outline-secondary py-2 px-4"
                  data-bs-dismiss="modal">{{ ___('ui_element.cancel') }}</button>
-             {{-- <button type="button" class="btn ot-btn-primary"
-                 data-bs-dismiss="modal">{{ ___('ui_element.confirm') }}</button> --}}
          </div>
      </div>
 

@@ -86,7 +86,7 @@
           color: #0f6aff;
       }
 
-      .email-template .template-body .ot-primary-text {
+      .email-template .template-body .primary-text {
           font-family: "Lexend", sans-serif;
           font-weight: 600;
           font-size: 16px;
@@ -261,7 +261,7 @@
           .email-template .template-body {
               font-size: 12px;
           }
-          .email-template .template-body .ot-primary-text {
+          .email-template .template-body .primary-text {
            margin-top: 26px;
           }
       }
@@ -281,7 +281,7 @@
         <div class="template-body">
             <!-- template text  -->
             <div class="content-part">
-                <p class="ot-primary-text">{{ ___('common.confirm_your_e_mail_address') }}</p>
+                <p class="primary-text">{{ ___('common.confirm_your_e_mail_address') }}</p>
                 <p>{{ ___('common.hello_user') }}</p>
                 <p>{{ ___('common.welcome!') }}
                     <br> {{ ___('common.are_receiving_this_email_because_you_have_registered_on_our_site') }}

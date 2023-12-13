@@ -39,7 +39,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary py-2 px-4"
                     data-bs-dismiss="modal">{{ ___('ui_element.cancel') }}</button>
-                <button type="button" class="btn ot-btn-primary"
+                <button type="button" class="btn btn-primary"
                     data-bs-dismiss="modal">{{ ___('ui_element.confirm') }}</button>
             </div>
         </div>

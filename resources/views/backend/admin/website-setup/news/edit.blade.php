@@ -21,56 +21,56 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.title') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('common.title') }} <span
                                         class="text-danger">*</span></label>
-                                <input class="form-control ot-input @error('title') is-invalid @enderror" name="title"
-                                    value="{{ old('title', @$data['news']->title) }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('common.enter_title') }}">
+                                <input class="form-control @error('title') is-invalid @enderror" name="title"
+                                    value="{{ old('title', @$data['news']->title) }}"
+                                    id="validationDefault01" placeholder="{{ ___('common.enter_title') }}">
                                 @error('title')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.image') }}
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.image') }}
                                     {{ ___('common.(690 x 460 px)') }}</label>
-                                <input type="file" class="form-control" name="image" accept="image/*" id="fileBrouse">
+                                <input type="file" class="form-control" name="image" accept="image/*" id="validationDefault02">
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.Date') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.Date') }} <span
                                         class="text-danger">*</span></label>
-                                <input class="form-control ot-input @error('date') is-invalid @enderror" name="date"
-                                    value="{{ old('date', @$data['news']->date) }}" list="datalistOptions"
-                                    id="exampleDataList" type="date" placeholder="{{ ___('common.enter_date') }}">
+                                <input class="form-control @error('date') is-invalid @enderror" name="date"
+                                    value="{{ old('date', @$data['news']->date) }}"
+                                    id="validationDefault03" type="date" placeholder="{{ ___('common.enter_date') }}">
                                 @error('date')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.Publish date') }} <span
+                                <label for="validationDefault04" class="form-label ">{{ ___('common.Publish date') }} <span
                                         class="text-danger">*</span></label>
-                                <input class="form-control ot-input @error('publish_date') is-invalid @enderror"
+                                <input class="form-control @error('publish_date') is-invalid @enderror"
                                     name="publish_date" value="{{ old('publish_date', @$data['news']->publish_date) }}"
-                                    list="datalistOptions" id="exampleDataList" type="date"
+                                    id="validationDefault04" type="date"
                                     placeholder="{{ ___('common.enter_publish_date') }}">
                                 @error('publish_date')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault05" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault05">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['news']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
                                         {{ ___('common.active') }}</option>
@@ -80,18 +80,18 @@
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="exampleDataList" class="form-label">{{ ___('common.Description') }}</label>
-                                <textarea id="summernote" class="form-control ot-textarea @error('description') is-invalid @enderror" name="description"
-                                    list="datalistOptions" id="exampleDataList" placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['news']->description) }}</textarea>
+                                <label for="validationDefault06" class="form-label">{{ ___('common.Description') }}</label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                                    id="validationDefault06" placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['news']->description) }}</textarea>
                                 @error('description')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

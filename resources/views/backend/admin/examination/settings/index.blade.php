@@ -29,12 +29,12 @@
                                     class="form-label">{{ ___('settings.Average Pass marks(Percentage)') }} <span
                                         class="text-danger">*</span></label>
                                 <input type="number" name="values[]"
-                                    class="form-control ot-input @error('average_pass_marks') is-invalid @enderror"
+                                    class="form-control @error('average_pass_marks') is-invalid @enderror"
                                     value="{{ examSetting('average_pass_marks') }}"
                                     placeholder="{{ ___('settings.Enter Average Pass marks(Percentage)') }}" />
                                 <input type="hidden" name="fields[]" value="average_pass_marks" />
                                 @error('average_pass_marks')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

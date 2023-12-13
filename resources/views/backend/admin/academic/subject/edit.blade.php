@@ -17,54 +17,53 @@
                         <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
+                                    <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
                                             class="text-danger">*</span></label>
-                                    <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name',@$data['subject']->name) }}" list="datalistOptions" id="exampleDataList"
+                                    <input class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name',@$data['subject']->name) }}" id="validationDefault01"
                                         placeholder="{{ ___('common.enter_name') }}">
                                     @error('name')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="exampleDataList" class="form-label ">{{ ___('academic.code') }} <span
+                                    <label for="validationDefault02" class="form-label ">{{ ___('academic.code') }} <span
                                             class="text-danger">*</span></label>
                                     <input class="form-control @error('code') is-invalid @enderror" name="code"
-                                        list="datalistOptions" id="exampleDataList" type="number"
+                                        id="validationDefault02" type="number"
                                         placeholder="{{ ___('academic.enter_code') }}" value="{{ old('code',@$data['subject']->code) }}">
                                     @error('code')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
 
-                                    <label for="validationServer04" class="form-label">{{ ___('academic.type') }} <span class="text-danger">*</span></label>
+                                    <label for="validationDefault03" class="form-label">{{ ___('academic.type') }} <span class="text-danger">*</span></label>
                                     <select class="form-control @error('type') is-invalid @enderror"
-                                    name="type" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                    name="type" id="validationDefault03"
+                                   >
                                         <option value="{{ old('type',App\Enums\SubjectType::THEORY) }}" {{ old('type',@$data['subject']->type == App\Enums\SubjectType::THEORY ? 'selected' : '') }}>{{ ___('academic.theory') }}</option>
                                         <option value="{{ old('type',App\Enums\SubjectType::PRACTICAL) }}" {{ old('type',@$data['subject']->type == App\Enums\SubjectType::PRACTICAL ? 'selected' : '') }}>{{ ___('academic.practical') }}
                                         </option>
                                     </select>
 
                                     @error('type')
-                                        <div id="validationServer04Feedback" class="invalid-feedback">
+                                        <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
 
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    {{-- Status  --}}
-                                    <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span class="text-danger">*</span></label>
+                                    <label for="validationDefault04" class="form-label">{{ ___('common.status') }} <span class="text-danger">*</span></label>
 
                                     <select class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04"
-                                    aria-describedby="validationServer04Feedback">
+                                    name="status" id="validationDefault04"
+                                   >
 
                                         <option value="{{ old('status',App\Enums\Status::ACTIVE) }}"
                                             {{ old('status',@$data['subject']->status == App\Enums\Status::ACTIVE ? 'selected' : '') }}>
@@ -76,7 +75,7 @@
                                     </select>
                                 </div>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

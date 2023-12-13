@@ -22,11 +22,11 @@
 
                             {{-- second row --}}
                             <div class="col-md-3 mb-3">
-                                <label for="validationServer04"
+                                <label for="validationDefault01"
                                     class="form-label">{{ ___('online-examination.question_type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="question_type @error('type') is-invalid @enderror" name="type"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault01">
                                     <option value="">{{ ___('online-examination.select_type') }}</option>
                                     @foreach (\Config::get('site.question_types') as $key => $type)
                                         <option {{ old('type') == $key ? 'selected' : '' }} value="{{ $key }}">
@@ -35,18 +35,18 @@
                                 </select>
 
                                 @error('type')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-3 question_group mb-3">
-                                <label for="validationServer04"
+                                <label for="validationDefault02"
                                     class="form-label">{{ ___('online-examination.question_group') }}
                                     <span class="text-danger">*</span></label>
                                 <select class="question_group @error('question_group') is-invalid @enderror"
-                                    name="question_group" id="a-select" aria-describedby="validationServer04Feedback">
+                                    name="question_group" id="validationDefault02">
                                     <option data-display="Select">{{ ___('online-examination.select_question_group') }}
                                     </option>
                                     @if (old('question_group'))
@@ -58,38 +58,38 @@
                                     @endif
                                 </select>
                                 @error('question_group')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="@error('status') is-invalid @enderror" name="status"
-                                    aria-describedby="validationServer04Feedback">
+                                <select id="validationDefault03" class="@error('status') is-invalid @enderror"
+                                    name="status">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
                                     </option>
                                 </select>
 
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('online-examination.Mark') }} <span
-                                        class="text-danger">*</span></label>
+                                <label for="validationDefault04" class="form-label ">{{ ___('online-examination.Mark') }}
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('mark') is-invalid @enderror" name="mark"
-                                    list="datalistOptions" id="exampleDataList" type="number"
+                                    id="validationDefault04" type="number"
                                     placeholder="{{ ___('online-examination.Enter mark') }}" value="{{ old('mark') }}"
                                     required>
                                 @error('mark')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -101,14 +101,13 @@
 
                             {{-- question --}}
                             <div class="col-12 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('online-examination.question') }}
+                                <label for="validationDefault05" class="form-label ">{{ ___('online-examination.question') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('question') is-invalid @enderror" name="question"
-                                    list="datalistOptions" id="exampleDataList"
-                                    placeholder="{{ ___('online-examination.enter_question') }}"
+                                    id="validationDefault05" placeholder="{{ ___('online-examination.enter_question') }}"
                                     value="{{ old('question') }}" required>
                                 @error('question')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -131,7 +130,7 @@
                                     @endfor
                                 </select>
                                 @error('total_option')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -183,7 +182,7 @@
                                     @endif
                                 </select>
                                 @error('single_choice_ans')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -196,9 +195,8 @@
                                     @if (old('option'))
                                         @foreach (old('option') as $oldMultipleChoiceAns)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox"
-                                                    name="multiple_choice_ans[]" value="{{ $loop->iteration }}"
-                                                    id="option{{ $loop->iteration }}"
+                                                <input class="form-check-input" type="checkbox" name="multiple_choice_ans[]"
+                                                    value="{{ $loop->iteration }}" id="option{{ $loop->iteration }}"
                                                     {{ in_array($loop->iteration, old('multiple_choice_ans') ?? []) ? 'checked' : '' }}>
                                                 <label class="form-check-label ps-2 pe-5"
                                                     for="option{{ $loop->iteration }}">{{ ___('online-examination.option') }}
@@ -223,7 +221,7 @@
                                         {{ ___('online-examination.False') }}</option>
                                 </select>
                                 @error('true_false_ans')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -313,7 +311,7 @@
                     options += `
                 <div class="col-md-3 mb-3">
                     <label class="form-label">Option ${i} <span class="text-danger">*</span></label>
-                    <input class="form-control ot-input" name="option[${i}]" value="" placeholder="Enter option" required>
+                    <input class="form-control" name="option[${i}]" value="" placeholder="Enter option" required>
                 </div>
             `;
 

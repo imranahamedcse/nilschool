@@ -20,11 +20,11 @@
                         <div class="row">
 
                             <div class="col-md-4">
-                                <label for="validationServer04" class="form-label">{{ ___('settings.Book category') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('settings.Book category') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('category') is-invalid @enderror"
-                                    name="category" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="category" id="validationDefault01">
                                     <option value="">{{ ___('library.Select category') }}</option>
                                     @foreach ($data['categories'] as $item)
                                         <option value="{{ $item->id }}"
@@ -33,115 +33,115 @@
                                     @endforeach
                                 </select>
                                 @error('category')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    value="{{ old('name') }}" list="datalistOptions" id="exampleDataList"
+                                    value="{{ old('name') }}" id="validationDefault02"
                                     placeholder="{{ ___('common.enter_name') }}">
                                 @error('name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('library.code') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('library.code') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('code') is-invalid @enderror" name="code"
-                                    value="{{ old('code') }}" list="datalistOptions" id="exampleDataList"
+                                    value="{{ old('code') }}" id="validationDefault03"
                                     placeholder="{{ ___('library.enter_code') }}">
                                 @error('code')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('library.publisher_name') }} <span
+                                <label for="validationDefault04" class="form-label ">{{ ___('library.publisher_name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('publisher_name') is-invalid @enderror"
-                                    name="publisher_name" value="{{ old('publisher_name') }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('library.enter_publisher_name') }}">
+                                    name="publisher_name" value="{{ old('publisher_name') }}"
+                                    id="validationDefault04" placeholder="{{ ___('library.enter_publisher_name') }}">
                                 @error('publisher_name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('library.author_name') }} <span
+                                <label for="validationDefault05" class="form-label ">{{ ___('library.author_name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('author_name') is-invalid @enderror"
-                                    name="author_name" value="{{ old('author_name') }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('library.enter_author_name') }}">
+                                    name="author_name" value="{{ old('author_name') }}"
+                                    id="validationDefault05" placeholder="{{ ___('library.enter_author_name') }}">
                                 @error('author_name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('library.rack_no') }} <span
+                                <label for="validationDefault06" class="form-label ">{{ ___('library.rack_no') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('rack_no') is-invalid @enderror" name="rack_no"
-                                    value="{{ old('rack_no') }}" list="datalistOptions" id="exampleDataList" type="number"
+                                    value="{{ old('rack_no') }}" id="validationDefault06" type="number"
                                     placeholder="{{ ___('library.enter_rack_no') }}">
                                 @error('rack_no')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('library.price') }} <span
+                                <label for="validationDefault07" class="form-label ">{{ ___('library.price') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('price') is-invalid @enderror" name="price"
-                                    type="number" value="{{ old('price') }}" list="datalistOptions" id="exampleDataList"
+                                    type="number" value="{{ old('price') }}" id="validationDefault07"
                                     placeholder="{{ ___('library.enter_price') }}">
                                 @error('price')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('library.quantity') }} <span
+                                <label for="validationDefault08" class="form-label ">{{ ___('library.quantity') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('quantity') is-invalid @enderror"
-                                    name="quantity" type="number" value="{{ old('quantity') }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('library.enter_quantity') }}">
+                                    name="quantity" type="number" value="{{ old('quantity') }}"
+                                    id="validationDefault08" placeholder="{{ ___('library.enter_quantity') }}">
                                 @error('quantity')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault09" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="status" id="validationDefault09">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="exampleDataList" class="form-label">{{ ___('library.description') }}</label>
-                                <textarea class="form-control" name="description" id="exampleDataList">{{ old('description') }}</textarea>
+                                <label for="validationDefault10" class="form-label">{{ ___('library.description') }}</label>
+                                <textarea class="form-control" name="description" id="validationDefault10">{{ old('description') }}</textarea>
                             </div>
 
                             <div class="col-md-12 mt-24">

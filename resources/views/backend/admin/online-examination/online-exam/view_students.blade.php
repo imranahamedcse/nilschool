@@ -12,7 +12,7 @@
          </div>
          <div class="modal-body p-5">
             <div class="table-responsive table_height_450 niceScroll">
-                <table class="table ot-table-bg">
+                <table class="table table-bg">
                     <thead class="thead">
                         <tr>
                             <th class="serial">{{ ___('common.sr_no') }}</th>
@@ -34,13 +34,13 @@
                             <td>{{ $item->student->mobile }}</td>
                             <td>
                                 @if (in_array($item->student->id, $data->studentAnswer->pluck('student_id')->toArray()))
-                                    <a target="_blank" href="{{ route('online-exam.answer',[$data->id, $item->student->id]) }}" class="btn btn-sm ot-btn-primary">
+                                    <a target="_blank" href="{{ route('online-exam.answer',[$data->id, $item->student->id]) }}" class="btn btn-sm btn-primary">
                                         <span><i class="fa-solid fa-eye"></i></span>
                                     </a>
-                                @endif    
+                                @endif
                             </td>
                             <td>
-                                {{ $data->studentAnswer->where('student_id', $item->student->id)->first()->result ?? '' }}   
+                                {{ $data->studentAnswer->where('student_id', $item->student->id)->first()->result ?? '' }}
                             </td>
                         </tr>
                         @endforeach

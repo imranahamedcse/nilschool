@@ -21,25 +21,24 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
                                         class="text-danger">*</span></label>
-                                <input class="form-control ot-input @error('name') is-invalid @enderror" name="name"
-                                    value="{{ old('name', @$data['session']->name) }}" list="datalistOptions"
-                                    id="exampleDataList" placeholder="{{ ___('common.enter_name') }}">
+                                <input class="form-control @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name', @$data['session']->name) }}"
+                                    id="validationDefault01" placeholder="{{ ___('common.enter_name') }}">
                                 @error('name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6">
-                                {{-- Status  --}}
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
 
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault02">
 
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['session']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
@@ -51,34 +50,34 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.start_date') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.start_date') }} <span
                                         class="text-danger">*</span></label>
                                 <input type="date"
-                                    class="form-control ot-input @error('start_date') is-invalid @enderror"
-                                    name="start_date" list="datalistOptions" id="exampleDataList"
+                                    class="form-control @error('start_date') is-invalid @enderror"
+                                    name="start_date" id="validationDefault03"
                                     placeholder="{{ ___('common.enter_start_date') }}"
                                     value="{{ old('start_date', @$data['session']->start_date) }}">
                                 @error('start_date')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('common.end_date') }} <span
+                                <label for="validationDefault04" class="form-label ">{{ ___('common.end_date') }} <span
                                         class="text-danger">*</span></label>
-                                <input type="date" class="form-control ot-input @error('end_date') is-invalid @enderror"
-                                    name="end_date" list="datalistOptions" id="exampleDataList"
+                                <input type="date" class="form-control @error('end_date') is-invalid @enderror"
+                                    name="end_date" id="validationDefault04"
                                     placeholder="{{ ___('common.enter_end_date') }}"
                                     value="{{ old('end_date', @$data['session']->end_date) }}">
                                 @error('end_date')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             @error('status')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror

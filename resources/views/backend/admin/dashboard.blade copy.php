@@ -7,7 +7,7 @@
 @section('content')
 <div class="page-content">
     <div class="row ">
-        
+
         {{-- Counter --}}
         @if (hasPermission('counter_read'))
             <div class="col-xl-3 col-lg-3 col-md-6">
@@ -59,7 +59,7 @@
         {{-- Fees collesction --}}
         @if (hasPermission('fees_collesction_read'))
             <div class="col-xxl-8 col-xl-12 ">
-                <div class="ot-card chart-card2 ot_heightFull mb-24">
+                <div class="card chart-card2 ot_heightFull mb-24">
 
                     {{-- Tittle --}}
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap_20">
@@ -74,11 +74,11 @@
                 </div>
             </div>
         @endif
-        
+
         {{-- Revenue --}}
         @if (hasPermission('revenue_read'))
             <div class="col-12 col-lg-12 col-xl-6 col-xxl-4">
-                <div class="ot-card ot_heightFull mb-24">
+                <div class="card ot_heightFull mb-24">
                     <div class="card-header d-flex justify-content-between">
                         <div class="card-title">
                             <h4>{{ ___('dashboard.Revenue') }} ({{ date('Y') }})</h4>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="d-flex flex-column align-items-center w-100">
                         <div class="d-flex justify-content-between align-items-center w-100">
-                            <div id="ot-line-chart-income"></div>
+                            <div id="line-chart-income"></div>
                             <div class="chart-custom-content gap-0 flex-column align-items-start">
                                 <h3>{{ ___('dashboard.Total Income') }}</h3>
                                 <div class="d-flex align-items-baseline gap-2">
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center w-100">
-                            <div id="ot-line-chart-expense"></div>
+                            <div id="line-chart-expense"></div>
                             <div class="chart-custom-content gap-0 flex-column align-items-start">
                                 <h3>{{ ___('dashboard.Total Expense') }}</h3>
                                 <div class="d-flex align-items-baseline gap-2">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center w-100">
-                            <div id="ot-line-chart-revenue"></div>
+                            <div id="line-chart-revenue"></div>
                             <div class="chart-custom-content gap-0 flex-column align-items-start">
                                 <h3>{{ ___('dashboard.Total Balance') }}</h3>
                                 <div class="d-flex align-items-baseline gap-2">
@@ -120,7 +120,7 @@
         {{-- Fees collection this month --}}
         @if (hasPermission('fees_collection_this_month_read'))
             <div class="col-12 col-lg-12 col-xl-6 col-xxl-6">
-                <div class="ot-card mb-24 ot_heightFull">
+                <div class="card mb-24 ot_heightFull">
                     <div class="card-header d-flex justify-content-between">
                         <div class="card-title">
                             <h4>{{ ___("dashboard.Fees Collection") }} ({{ date('M Y') }})</h4>
@@ -130,11 +130,11 @@
                 </div>
             </div>
         @endif
-        
+
         {{-- Income & Expense This Month --}}
         @if (hasPermission('income_expense_read'))
             <div class="col-12 col-lg-12 col-xl-6 col-xxl-6">
-                <div class="ot-card mb-24 ot_heightFull">
+                <div class="card mb-24 ot_heightFull">
                     <div class="card-header d-flex justify-content-between">
                         <div class="card-title">
                             <h4>{{ ___("dashboard.Income & Expense") }} ({{ date('M Y') }})</h4>
@@ -148,7 +148,7 @@
         <!-- Upcoming Events -->
         @if (hasPermission('upcoming_events_read'))
             <div class="col-xxl-4 col-xl-6">
-                <div class="ot-card chart-card2 ot_heightFull mb-24">
+                <div class="card chart-card2 ot_heightFull mb-24">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap_10 card_header_border">
                         <div class="card-title">
                             <h4>{{___('dashboard.Upcoming Events')}}</h4>
@@ -156,8 +156,8 @@
                     </div>
                     <div class="card-body">
                         <div class="event_upcoming_list">
-                            
-                            
+
+
                             @foreach ($data['events'] as $item)
                                 <!-- event_upcoming_single  -->
                                 <div class="event_upcoming_single d-flex align-items-center gap_20 flex-wrap">
@@ -175,7 +175,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            
+
 
 
                         </div>
@@ -183,11 +183,11 @@
                 </div>
             </div>
         @endif
-        
+
         {{-- Attendance --}}
         @if (hasPermission('attendance_chart_read'))
             <div class="col-12 col-lg-12 col-xl-12 col-xxl-8">
-                <div class="ot-card mb-24 ot_heightFull">
+                <div class="card mb-24 ot_heightFull">
                     <div class="card-header d-flex justify-content-between">
                         <div class="card-title">
                             <h4>{{ ___("dashboard.Today's Attendance") }} ({{ date('d M Y') }})</h4>
@@ -197,17 +197,17 @@
                 </div>
             </div>
         @endif
-        
+
         {{-- Calendar --}}
         @if (hasPermission('calendar_read'))
             <div class="col-12">
-                <div class="ot-card mb-24">
+                <div class="card mb-24">
                     <div id='calendar'></div>
                 </div>
             </div>
         @endif
 
-        
+
     </div>
 </div>
 @endsection

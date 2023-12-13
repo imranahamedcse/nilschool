@@ -38,9 +38,9 @@
                                 <span class="text-danger">*</span></label>
                             <input type="password" name="current_password"
                                 placeholder="{{ ___('common.current_password') }}"
-                                class="form-control ot-input @error('current_password') is-invalid @enderror">
+                                class="form-control @error('current_password') is-invalid @enderror">
                             @error('current_password')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -50,9 +50,9 @@
                                 <span class="text-danger">*</span></label>
                             <input type="password" name="password_confirmation"
                                 placeholder="{{ ___('common.confirm_password') }}"
-                                class="form-control ot-input @error('password_confirmation') is-invalid @enderror">
+                                class="form-control @error('password_confirmation') is-invalid @enderror">
                             @error('password_confirmation')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
@@ -61,9 +61,9 @@
                             <label for="inputname" class="form-label">{{ ___('common.new_password') }}
                                 <span class="text-danger">*</span></label>
                             <input type="password" name="password" placeholder="{{ ___('common.new_password') }}"
-                                class="form-control ot-input @error('password') is-invalid @enderror">
+                                class="form-control @error('password') is-invalid @enderror">
                             @error('password')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror

@@ -20,9 +20,9 @@
                         <div class="row">
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.Class') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="class form-control @error('class') is-invalid @enderror" name="class">
+                                <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror" name="class">
                                     <option value="">{{ ___('student_info.select_class') }} </option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class', @$data['request']->class) == $item->id ? 'selected' : '' }}
@@ -30,16 +30,16 @@
                                     @endforeach
                                 </select>
                                 @error('class')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Section') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.Section') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="section form-control @error('section') is-invalid @enderror" name="section">
+                                <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror" name="section">
                                     <option value="">{{ ___('student_info.select_section') }} </option>
                                     @foreach ($data['sections'] as $item)
                                         <option
@@ -48,16 +48,16 @@
                                     @endforeach
                                 </select>
                                 @error('section')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Student') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.Student') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="student form-control @error('student') is-invalid @enderror" name="student">
+                                <select id="validationDefault03" class="student form-control @error('student') is-invalid @enderror" name="student">
                                     <option value="">{{ ___('student_info.Select student') }} *</option>
                                     @foreach ($data['students'] as $item)
                                         <option
@@ -67,16 +67,16 @@
                                     @endforeach
                                 </select>
                                 @error('student')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Dormitory') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('common.Dormitory') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="dormitory form-control @error('dormitory') is-invalid @enderror" name="dormitory">
+                                <select id="validationDefault04" class="dormitory form-control @error('dormitory') is-invalid @enderror" name="dormitory">
                                     <option value="">{{ ___('student_info.Select dormitory') }} </option>
                                     @foreach ($data['dormitories'] as $item)
                                         <option {{ old('dormitory', @$data['request']->dormitory) == $item->id ? 'selected' : '' }}
@@ -84,16 +84,16 @@
                                     @endforeach
                                 </select>
                                 @error('dormitory')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Room No') }} <span
+                                <label for="validationDefault05" class="form-label">{{ ___('common.Room No') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="room form-control @error('room') is-invalid @enderror" name="room">
+                                <select id="validationDefault05" class="room form-control @error('room') is-invalid @enderror" name="room">
                                     <option value="">{{ ___('student_info.Select room no') }} </option>
                                     @foreach ($data['rooms'] as $item)
                                         <option
@@ -102,16 +102,16 @@
                                     @endforeach
                                 </select>
                                 @error('room')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Seat No') }} <span
+                                <label for="validationDefault06" class="form-label">{{ ___('common.Seat No') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="seat form-control @error('seat') is-invalid @enderror" name="seat">
+                                <select id="validationDefault06" class="seat form-control @error('seat') is-invalid @enderror" name="seat">
                                     <option value="">{{ ___('student_info.Select seat no') }} *</option>
                                     @foreach ($data['seats'] as $item)
                                         <option
@@ -120,24 +120,24 @@
                                     @endforeach
                                 </select>
                                 @error('seat')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationServer04" class="form-label">{{ ___('common.Status') }} <span
+                                <label for="validationDefault07" class="form-label">{{ ___('common.Status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    name="status" id="validationDefault07">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.Active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.Inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror

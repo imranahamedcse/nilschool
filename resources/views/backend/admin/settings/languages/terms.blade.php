@@ -27,9 +27,9 @@
             <input type="hidden" name="code" id="code" value="{{ @$data['language']->code }}">
             <div class="row mb-3">
                 <div class="col-md-12 mb-3">
-                    <label for="validationServer04" class="form-label">{{ ___('language.module') }}</label>
-                    <select class="form-select ot-input @error('lang_module') is-invalid @enderror change-module"
-                        name="lang_module" id="validationServer04" aria-describedby="validationServer04Feedback">
+                    <label for="validationDefault01" class="form-label">{{ ___('language.module') }}</label>
+                    <select class="form-select @error('lang_module') is-invalid @enderror change-module"
+                        name="lang_module" id="validationDefault01">
 
                         @foreach (config('site.language_modules') as $key => $item)
                             <option value="{{ $key }}">{{ ___($item) }}</option>
@@ -38,7 +38,7 @@
 
                     </select>
                     @error('lang_module')
-                        <div id="validationServer04Feedback" class="invalid-feedback">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -47,11 +47,10 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="exampleDataList" class="form-label ">{{ ___('language.term') }}</label>
+                            <label class="form-label ">{{ ___('language.term') }}</label>
                         </div>
                         <div class="col-md-6">
-                            <label for="exampleDataList"
-                                class="form-label ">{{ ___('language.translated_language') }}</label>
+                            <label class="form-label ">{{ ___('language.translated_language') }}</label>
                         </div>
                     </div>
                 </div>
@@ -60,12 +59,11 @@
                     @foreach ($data['terms'] as $key => $row)
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <input class="form-control ot-input" name="name" list="datalistOptions"
-                                    id="exampleDataList" value="{{ $key }}" disabled>
+                                <input class="form-control" name="name" value="{{ $key }}" disabled>
 
                             </div>
                             <div class="col-md-6 translated_language">
-                                <input class="form-control ot-input" list="datalistOptions" id="exampleDataList"
+                                <input class="form-control"
                                     placeholder="{{ ___('language.translated_language') }}" name="{{ $key }}"
                                     value="{{ $row }}">
                             </div>

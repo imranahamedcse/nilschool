@@ -11,7 +11,7 @@
             <div class="border-bottom pb-3 mb-4">
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
-            
+
             <form action="{{ route('fees-group.update', @$data['fees_group']->id) }}" enctype="multipart/form-data"
                 method="post" id="visitForm">
                 @csrf
@@ -20,25 +20,24 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="exampleDataList" class="form-label ">{{ ___('fees.name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('fees.name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    value="{{ old('name', @$data['fees_group']->name) }}" list="datalistOptions"
-                                    id="exampleDataList" type="text" placeholder="{{ ___('fees.enter_name') }}">
+                                    value="{{ old('name', @$data['fees_group']->name) }}"
+                                    id="validationDefault01" type="text" placeholder="{{ ___('fees.enter_name') }}">
                                 @error('name')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6">
-                                {{-- Status  --}}
-                                <label for="validationServer04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.status') }} <span
                                         class="text-danger">*</span></label>
 
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
-                                    id="validationServer04" aria-describedby="validationServer04Feedback">
+                                    id="validationDefault02">
 
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['fees_group']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
@@ -50,17 +49,17 @@
                                 </select>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="exampleDataList" class="form-label">{{ ___('fees.description') }} </label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" list="datalistOptions"
-                                    id="exampleDataList" type="text" placeholder="{{ ___('fees.enter_description') }}">{{ old('description', @$data['fees_group']->description) }}</textarea>
+                                <label for="validationDefault03" class="form-label">{{ ___('fees.description') }} </label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                                    id="validationDefault03" type="text" placeholder="{{ ___('fees.enter_description') }}">{{ old('description', @$data['fees_group']->description) }}</textarea>
                                 @error('description')
-                                    <div id="validationServer04Feedback" class="invalid-feedback">
+                                    <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             @error('status')
-                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror

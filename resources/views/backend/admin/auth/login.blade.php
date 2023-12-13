@@ -19,7 +19,7 @@
         <div class="input-field-group mb-20">
             <label for="username">{{ ___('common.Mobile or Email') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
-                <input type="text" name="email" class="ot-input @error('email') is-invalid @enderror" id="username"
+                <input type="text" name="email" class="@error('email') is-invalid @enderror" id="username"
                     placeholder="{{ ___('common.Enter mobile or email') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
                 @error('email')
@@ -32,7 +32,7 @@
         <div class="input-field-group mb-20">
             <label for="password">{{ ___('common.password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
-                <input type="password" name="password" class="ot-input @error('password') is-invalid @enderror"
+                <input type="password" name="password" class="@error('password') is-invalid @enderror"
                     id="password" placeholder="******************" />
                 <i class="lar la-eye"></i>
                 <img src="{{ asset('backend') }}/assets/images/icons/lock-cus.svg" alt="">

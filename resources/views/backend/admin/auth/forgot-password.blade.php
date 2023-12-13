@@ -18,7 +18,7 @@
         <div class="input-field-group mb-20">
             <label for="username">{{ ___('common.email') }} <sup class="fillable text-danger">*</sup></label><br />
             <div class="custom-input-field">
-                <input type="email" name="email" id="username" class="ot-input @error('email') is-invalid @enderror" placeholder="{{ ___('common.enter_your_email') }}"
+                <input type="email" name="email" id="username" class="@error('email') is-invalid @enderror" placeholder="{{ ___('common.enter_your_email') }}"
                 value="{{old('email')}}"/>
                 <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
                 @error('email')
