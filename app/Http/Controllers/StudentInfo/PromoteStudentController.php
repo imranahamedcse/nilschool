@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentInfo\PromoteStudent\PromoteStudentSearchRequest;
 use App\Http\Requests\StudentInfo\PromoteStudent\PromoteStudentStoreRequest;
 use App\Http\Requests\StudentInfo\PromoteStudent\PromoteStudentUpdateRequest;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\SessionRepository;
-use App\Repositories\StudentInfo\PromoteStudentRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\SessionRepository;
+use App\Http\Repositories\StudentInfo\PromoteStudentRepository;
 use Illuminate\Http\Request;
 
 class PromoteStudentController extends Controller

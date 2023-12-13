@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Interfaces\SettingInterface;
+use App\Http\Interfaces\SettingInterface;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\SettingStoreRequest;

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Academic\Subject\SubjectStoreRequest;
 use App\Http\Requests\Academic\Subject\SubjectUpdateRequest;
-use App\Interfaces\Academic\SubjectInterface;
+use App\Http\Interfaces\Academic\SubjectInterface;
 use Illuminate\Support\Facades\Schema;
 
 class SubjectController extends Controller

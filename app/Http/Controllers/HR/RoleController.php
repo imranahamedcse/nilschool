@@ -4,10 +4,10 @@ namespace App\Http\Controllers\HR;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Interfaces\RoleInterface;
+use App\Http\Interfaces\RoleInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Interfaces\PermissionInterface;
+use App\Http\Interfaces\PermissionInterface;
 use App\Http\Requests\Role\RoleStoreRequest;
 use App\Http\Requests\Role\RoleUpdateRequest;
 

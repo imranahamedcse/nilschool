@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Transport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Transport\Route\StoreRequest;
 use App\Http\Requests\Transport\Route\UpdateRequest;
-use App\Interfaces\Transport\RouteInterface;
+use App\Http\Interfaces\Transport\RouteInterface;
 use Illuminate\Support\Facades\Schema;
 
 class RouteController extends Controller

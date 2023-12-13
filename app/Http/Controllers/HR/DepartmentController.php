@@ -5,7 +5,7 @@ namespace App\Http\Controllers\HR;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Staff\Department\DepartmentStoreRequest;
 use App\Http\Requests\Staff\Department\DepartmentUpdateRequest;
-use App\Interfaces\Staff\DepartmentInterface;
+use App\Http\Interfaces\Staff\DepartmentInterface;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller

@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\HR;
 
 use Illuminate\Http\Request;
-use App\Interfaces\RoleInterface;
-use App\Interfaces\UserInterface;
+use App\Http\Interfaces\RoleInterface;
+use App\Http\Interfaces\UserInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Interfaces\PermissionInterface;
+use App\Http\Interfaces\PermissionInterface;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Interfaces\GenderInterface;
-use App\Interfaces\Staff\DepartmentInterface;
-use App\Interfaces\Staff\DesignationInterface;
+use App\Http\Interfaces\GenderInterface;
+use App\Http\Interfaces\Staff\DepartmentInterface;
+use App\Http\Interfaces\Staff\DesignationInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller

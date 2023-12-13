@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WebsiteSetup\Gallery\GalleryStoreRequest;
 use App\Http\Requests\WebsiteSetup\Gallery\GalleryUpdateRequest;
-use App\Repositories\WebsiteSetup\GalleryCategoryRepository;
-use App\Repositories\WebsiteSetup\GalleryRepository;
+use App\Http\Repositories\WebsiteSetup\GalleryCategoryRepository;
+use App\Http\Repositories\WebsiteSetup\GalleryRepository;
 use Illuminate\Support\Facades\Schema;
 
 class GalleryController extends Controller

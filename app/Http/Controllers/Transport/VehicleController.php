@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Transport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Transport\Vehicle\StoreRequest;
 use App\Http\Requests\Transport\Vehicle\UpdateRequest;
-use App\Interfaces\Transport\VehicleInterface;
+use App\Http\Interfaces\Transport\VehicleInterface;
 use Illuminate\Support\Facades\Schema;
 
 class VehicleController extends Controller

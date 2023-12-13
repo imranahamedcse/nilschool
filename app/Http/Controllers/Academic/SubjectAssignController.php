@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
-use App\Interfaces\UserInterface;
+use App\Http\Interfaces\UserInterface;
 use App\Http\Controllers\Controller;
-use App\Interfaces\SessionInterface;
+use App\Http\Interfaces\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
-use App\Interfaces\Academic\ShiftInterface;
-use App\Interfaces\Academic\ClassesInterface;
-use App\Interfaces\Academic\SectionInterface;
-use App\Interfaces\Academic\SubjectInterface;
+use App\Http\Interfaces\Academic\ShiftInterface;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectInterface;
 use App\Models\Academic\SubjectAssignChildren;
-use App\Interfaces\Academic\SubjectAssignInterface;
-use App\Repositories\Academic\ClassSetupRepository;
+use App\Http\Interfaces\Academic\SubjectAssignInterface;
+use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Requests\Academic\SubjectAssign\SubjectAssignStoreRequest;
 use App\Http\Requests\Academic\SubjectAssign\SubjectAssignUpdateRequest;
 

@@ -5,11 +5,11 @@ namespace App\Http\Controllers\OnlineExamination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\Academic\ClassesRepository;
-use App\Interfaces\OnlineExamination\QuestionBankInterface;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Interfaces\OnlineExamination\QuestionBankInterface;
 use App\Http\Requests\OnlineExamination\QuestionBank\StoreRequest;
 use App\Http\Requests\OnlineExamination\QuestionBank\UpdateRequest;
-use App\Interfaces\OnlineExamination\QuestionGroupInterface;
+use App\Http\Interfaces\OnlineExamination\QuestionGroupInterface;
 
 class QuestionBankController extends Controller
 {

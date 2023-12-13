@@ -9,15 +9,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Examination\ExamType;
 use App\Models\Academic\SubjectAssign;
 use App\Models\Academic\SubjectAssignChildren;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\Academic\SubjectRepository;
-use App\Interfaces\Academic\SubjectAssignInterface;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Examination\ExamTypeRepository;
-use App\Repositories\Examination\ExamAssignRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\Academic\SubjectRepository;
+use App\Http\Interfaces\Academic\SubjectAssignInterface;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Examination\ExamTypeRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Requests\Examination\Assign\ExamAssignStoreRequest;
 use App\Http\Requests\Examination\Assign\ExamAssignUpdateRequest;
-use App\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
 
 class ExamAssignController extends Controller
 {

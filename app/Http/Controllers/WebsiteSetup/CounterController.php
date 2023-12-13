@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\WebsiteSetup\CounterRepository;
+use App\Http\Repositories\WebsiteSetup\CounterRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\Counter\CounterStoreRequest;
 use App\Http\Requests\WebsiteSetup\Counter\CounterUpdateRequest;

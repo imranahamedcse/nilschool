@@ -5,7 +5,7 @@ namespace App\Http\Controllers\HR;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Staff\Designation\DesignationStoreRequest;
 use App\Http\Requests\Staff\Designation\DesignationUpdateRequest;
-use App\Interfaces\Staff\DesignationInterface;
+use App\Http\Interfaces\Staff\DesignationInterface;
 use Illuminate\Http\Request;
 
 class DesignationController extends Controller

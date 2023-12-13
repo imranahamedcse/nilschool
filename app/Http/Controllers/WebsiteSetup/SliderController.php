@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\WebsiteSetup\SliderRepository;
+use App\Http\Repositories\WebsiteSetup\SliderRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\Slider\SliderStoreRequest;
 use App\Http\Requests\WebsiteSetup\Slider\SliderUpdateRequest;

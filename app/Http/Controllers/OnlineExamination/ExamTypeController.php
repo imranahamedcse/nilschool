@@ -5,7 +5,7 @@ namespace App\Http\Controllers\OnlineExamination;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Examination\Type\ExamTypeStoreRequest;
 use App\Http\Requests\Examination\Type\ExamTypeUpdateRequest;
-use App\Interfaces\Examination\ExamTypeInterface;
+use App\Http\Interfaces\Examination\ExamTypeInterface;
 use Illuminate\Http\Request;
 
 class ExamTypeController extends Controller

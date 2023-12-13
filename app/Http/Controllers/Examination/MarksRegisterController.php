@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Examination;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Examination\ExamTypeRepository;
-use App\Repositories\Examination\MarksRegisterRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Examination\ExamTypeRepository;
+use App\Http\Repositories\Examination\MarksRegisterRepository;
 use App\Http\Requests\Examination\MarksRegister\MarksRegisterStoreRequest;
 use App\Http\Requests\Examination\MarksRegister\MarksRegisterUpdateRequest;
 use App\Models\Examination\ExamAssign;
 use App\Models\Examination\MarksRegisterChildren;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\Academic\SubjectRepository;
-use App\Repositories\Examination\ExamAssignRepository;
-use App\Repositories\StudentInfo\StudentRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\Academic\SubjectRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 
 class MarksRegisterController extends Controller
 {

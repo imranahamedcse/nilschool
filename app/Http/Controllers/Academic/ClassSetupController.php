@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Academic\ClassSetup\ClassSetupStoreRequest;
 use App\Http\Requests\Academic\ClassSetup\ClassSetupUpdateRequest;
-use App\Interfaces\Academic\ClassesInterface;
-use App\Interfaces\Academic\ClassSetupInterface;
-use App\Interfaces\Academic\SectionInterface;
-use App\Interfaces\SessionInterface;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\SessionInterface;
 
 class ClassSetupController extends Controller
 {

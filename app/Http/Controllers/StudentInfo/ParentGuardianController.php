@@ -4,7 +4,7 @@ namespace App\Http\Controllers\StudentInfo;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\StudentInfo\ParentGuardianRepository;
+use App\Http\Repositories\StudentInfo\ParentGuardianRepository;
 use App\Http\Requests\StudentInfo\ParentGuardian\ParentGuardianStoreRequest;
 use App\Http\Requests\StudentInfo\ParentGuardian\ParentGuardianUpdateRequest;
 

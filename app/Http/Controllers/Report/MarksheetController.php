@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Report;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Report\MarksheetRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\StudentInfo\StudentRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Report\MarksheetRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Requests\Report\Marksheet\SearchRequest;
-use App\Repositories\Examination\ExamTypeRepository;
+use App\Http\Repositories\Examination\ExamTypeRepository;
 use PDF;
 
 class MarksheetController extends Controller

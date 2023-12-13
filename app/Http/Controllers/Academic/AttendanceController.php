@@ -7,9 +7,9 @@ use App\Http\Requests\Attendance\AttendanceReportRequest;
 use App\Http\Requests\Attendance\AttendanceSearchRequest;
 use App\Http\Requests\Attendance\AttendanceStoreRequest;
 use App\Http\Requests\Report\AttendanceRequest;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Attendance\AttendanceRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Attendance\AttendanceRepository;
 use Illuminate\Http\Request;
 use PDF;
 

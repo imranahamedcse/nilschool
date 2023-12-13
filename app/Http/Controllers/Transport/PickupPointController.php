@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Transport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Transport\PickupPoint\StoreRequest;
 use App\Http\Requests\Transport\PickupPoint\UpdateRequest;
-use App\Interfaces\Transport\PickupPointInterface;
+use App\Http\Interfaces\Transport\PickupPointInterface;
 use Illuminate\Support\Facades\Schema;
 
 class PickupPointController extends Controller

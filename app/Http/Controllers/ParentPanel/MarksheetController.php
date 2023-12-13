@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Models\StudentInfo\Student;
-use App\Repositories\Report\ExamRoutineRepository;
-use App\Repositories\ParentPanel\MarksheetRepository;
-use App\Repositories\Report\MarksheetRepository as ReportMarksheetRepository;
+use App\Http\Repositories\Report\ExamRoutineRepository;
+use App\Http\Repositories\ParentPanel\MarksheetRepository;
+use App\Http\Repositories\Report\MarksheetRepository as ReportMarksheetRepository;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\Examination\ExamAssignRepository;
-use App\Repositories\StudentInfo\StudentRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 use Illuminate\Support\Facades\Session;
 use PDF;
 

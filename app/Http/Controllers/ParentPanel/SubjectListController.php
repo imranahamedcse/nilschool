@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\ParentPanel;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\ParentPanel\SubjectListRepository;
+use App\Http\Repositories\ParentPanel\SubjectListRepository;
 use Illuminate\Http\Request;
 
 class SubjectListController extends Controller

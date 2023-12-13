@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Academic\Classes\ClassesStoreRequest;
 use App\Http\Requests\Academic\Classes\ClassesUpdateRequest;
-use App\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassesInterface;
 use Illuminate\Support\Facades\Schema;
 
 class ClassesController extends Controller

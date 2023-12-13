@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Report;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Report\DueFeesRequest;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\StudentInfo\StudentRepository;
-use App\Repositories\Examination\ExamAssignRepository;
-use App\Repositories\Report\DueFeesRepository;
-use App\Repositories\Report\MeritListRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Repositories\Report\DueFeesRepository;
+use App\Http\Repositories\Report\MeritListRepository;
 use PDF;
 
 class DueFeesController extends Controller

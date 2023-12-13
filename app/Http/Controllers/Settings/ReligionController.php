@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Models\Religion;
 use Illuminate\Http\Request;
-use App\Interfaces\ReligionInterface;
+use App\Http\Interfaces\ReligionInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\Religion\ReligionStoreRequest;

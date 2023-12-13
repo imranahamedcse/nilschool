@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Academic\TimeSchedule\TimeScheduleStoreRequest;
 use App\Http\Requests\Academic\TimeSchedule\TimeScheduleUpdateRequest;
-use App\Interfaces\Academic\TimeScheduleInterface;
+use App\Http\Interfaces\Academic\TimeScheduleInterface;
 use Illuminate\Support\Facades\Schema;
 
 class TimeScheduleController extends Controller

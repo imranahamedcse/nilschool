@@ -4,7 +4,7 @@ namespace App\Http\Controllers\StudentPanel;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Interfaces\UserInterface;
+use App\Http\Interfaces\UserInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;

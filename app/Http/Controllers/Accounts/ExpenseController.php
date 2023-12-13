@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Accounts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Accounts\Expense\ExpenseStoreRequest;
 use App\Http\Requests\Accounts\Expense\ExpenseUpdateRequest;
-use App\Repositories\Accounts\AccountHeadRepository;
-use App\Repositories\Accounts\ExpenseRepository;
+use App\Http\Repositories\Accounts\AccountHeadRepository;
+use App\Http\Repositories\Accounts\ExpenseRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

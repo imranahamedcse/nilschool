@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\WebsiteSetup\SubscribeRepository;
+use App\Http\Repositories\WebsiteSetup\SubscribeRepository;
 
 class SubscribeController extends Controller
 {

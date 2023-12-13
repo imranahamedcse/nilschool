@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\StudentPanel;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\StudentPanel\OnlineExaminationRepository;
+use App\Http\Repositories\StudentPanel\OnlineExaminationRepository;
 use Illuminate\Http\Request;
 
 class OnlineExamController extends Controller

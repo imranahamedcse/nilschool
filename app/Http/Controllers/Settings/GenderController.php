@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Models\Gender;
 use Illuminate\Http\Request;
-use App\Interfaces\GenderInterface;
+use App\Http\Interfaces\GenderInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\Gender\GenderStoreRequest;

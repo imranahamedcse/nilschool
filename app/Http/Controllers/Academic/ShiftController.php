@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Academic\Shift\ShiftStoreRequest;
 use App\Http\Requests\Academic\Shift\ShiftUpdateRequest;
-use App\Interfaces\Academic\ShiftInterface;
+use App\Http\Interfaces\Academic\ShiftInterface;
 use Illuminate\Support\Facades\Schema;
 
 class ShiftController extends Controller

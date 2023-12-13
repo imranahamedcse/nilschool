@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Library;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Library\BookCategory\BookCategoryStoreRequest;
 use App\Http\Requests\Library\BookCategory\BookCategoryUpdateRequest;
-use App\Repositories\Library\BookCategoryRepository;
+use App\Http\Repositories\Library\BookCategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

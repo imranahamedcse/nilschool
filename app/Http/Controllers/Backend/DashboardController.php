@@ -9,11 +9,11 @@ use App\Models\Language;
 use App\Models\Permission;
 use App\Models\Staff\Designation;
 use Illuminate\Http\Request;
-use App\Interfaces\UserInterface;
+use App\Http\Interfaces\UserInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Accounts\Expense;
 use App\Models\Accounts\Income;
-use App\Repositories\DashboardRepository;
+use App\Http\Repositories\DashboardRepository;
 use Illuminate\Support\Facades\Schema;
 
 class DashboardController extends Controller

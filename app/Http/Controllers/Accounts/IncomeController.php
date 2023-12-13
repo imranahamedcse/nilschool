@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Accounts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Accounts\Income\IncomeStoreRequest;
 use App\Http\Requests\Accounts\Income\IncomeUpdateRequest;
-use App\Repositories\Accounts\AccountHeadRepository;
-use App\Repositories\Accounts\IncomeRepository;
+use App\Http\Repositories\Accounts\AccountHeadRepository;
+use App\Http\Repositories\Accounts\IncomeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

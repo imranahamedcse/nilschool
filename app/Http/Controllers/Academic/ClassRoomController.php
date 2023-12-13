@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Academic\ClassRoom\ClassRoomStoreRequest;
 use App\Http\Requests\Academic\ClassRoom\ClassRoomUpdateRequest;
-use App\Interfaces\Academic\ClassRoomInterface;
+use App\Http\Interfaces\Academic\ClassRoomInterface;
 
 class ClassRoomController extends Controller
 {

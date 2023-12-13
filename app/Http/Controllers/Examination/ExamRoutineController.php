@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Examination;
 
 use Illuminate\Http\Request;
-use App\Interfaces\UserInterface;
+use App\Http\Interfaces\UserInterface;
 use App\Http\Controllers\Controller;
-use App\Interfaces\SessionInterface;
+use App\Http\Interfaces\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
-use App\Interfaces\Academic\ShiftInterface;
-use App\Interfaces\Academic\ClassesInterface;
-use App\Interfaces\Academic\SectionInterface;
-use App\Interfaces\Academic\SubjectInterface;
-use App\Repositories\Academic\ClassRoomRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Academic\ExamRoutineRepository;
-use App\Repositories\Examination\ExamTypeRepository;
-use App\Repositories\Academic\TimeScheduleRepository;
-use App\Repositories\Academic\SubjectAssignRepository;
-use App\Repositories\Examination\ExamAssignRepository;
+use App\Http\Interfaces\Academic\ShiftInterface;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectInterface;
+use App\Http\Repositories\Academic\ClassRoomRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Academic\ExamRoutineRepository;
+use App\Http\Repositories\Examination\ExamTypeRepository;
+use App\Http\Repositories\Academic\TimeScheduleRepository;
+use App\Http\Repositories\Academic\SubjectAssignRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Requests\Academic\ExamRoutine\ExamRoutineStoreRequest;
 use App\Http\Requests\Academic\ExamRoutine\ExamRoutineUpdateRequest;
 

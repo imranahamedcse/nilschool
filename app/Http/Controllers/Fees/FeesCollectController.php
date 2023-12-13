@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Fees;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Fees\Collect\FeesCollectStoreRequest;
 use App\Http\Requests\Fees\Collect\FeesCollectUpdateRequest;
-use App\Interfaces\Fees\FeesCollectInterface;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\Fees\FeesMasterRepository;
-use App\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\Fees\FeesCollectInterface;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\Fees\FeesMasterRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 use Illuminate\Http\Request;
-use App\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
 
 class FeesCollectController extends Controller
 {

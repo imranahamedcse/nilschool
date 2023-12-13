@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\WebsiteSetup\ContactInfoRepository;
+use App\Http\Repositories\WebsiteSetup\ContactInfoRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\ContactInfo\ContactInfoStoreRequest;
 use App\Http\Requests\WebsiteSetup\ContactInfo\ContactInfoUpdateRequest;

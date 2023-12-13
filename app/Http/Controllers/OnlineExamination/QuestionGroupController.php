@@ -5,7 +5,7 @@ namespace App\Http\Controllers\OnlineExamination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Interfaces\OnlineExamination\QuestionGroupInterface;
+use App\Http\Interfaces\OnlineExamination\QuestionGroupInterface;
 use App\Http\Requests\OnlineExamination\QuestionGroup\StoreRequest;
 use App\Http\Requests\OnlineExamination\QuestionGroup\UpdateRequest;
 

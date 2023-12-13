@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Models\BloodGroup;
 use Illuminate\Http\Request;
-use App\Interfaces\BloodGroupInterface;
+use App\Http\Interfaces\BloodGroupInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BloodGroup\BloodGroupStoreRequest;
 use App\Http\Requests\BloodGroup\BloodGroupUpdateRequest;

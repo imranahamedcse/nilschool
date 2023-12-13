@@ -7,7 +7,7 @@ use App\Models\Search;
 use App\Models\StudentInfo\ParentGuardian;
 use Illuminate\Http\Request;
 use App\Models\StudentInfo\Student;
-use App\Repositories\ParentPanel\DashboardRepository;
+use App\Http\Repositories\ParentPanel\DashboardRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 

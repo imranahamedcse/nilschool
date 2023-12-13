@@ -4,13 +4,13 @@ namespace App\Http\Controllers\ClassRoom;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\ClassRoom\PostRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\ClassRoom\PostRepository;
 use App\Http\Requests\ClassRoom\Post\PostStoreRequest;
 use App\Http\Requests\ClassRoom\Post\PostUpdateRequest;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\Academic\SubjectRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\Academic\SubjectRepository;
 
 class PostController extends Controller
 {

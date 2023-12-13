@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Examination;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Examination\MarksGradeRepository;
+use App\Http\Repositories\Examination\MarksGradeRepository;
 use App\Http\Requests\Examination\MarksGrade\MarksGradeStoreRequest;
 use App\Http\Requests\Examination\MarksGrade\MarksGradeUpdateRequest;
 

@@ -5,10 +5,10 @@ namespace App\Http\Controllers\WebsiteSetup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\WebsiteSetup\SliderRepository;
+use App\Http\Repositories\WebsiteSetup\SliderRepository;
 use App\Http\Requests\WebsiteSetup\Slider\SliderStoreRequest;
 use App\Http\Requests\WebsiteSetup\Slider\SliderUpdateRequest;
-use App\Repositories\WebsiteSetup\SectionsRepository;
+use App\Http\Repositories\WebsiteSetup\SectionsRepository;
 
 class SectionsController extends Controller
 {

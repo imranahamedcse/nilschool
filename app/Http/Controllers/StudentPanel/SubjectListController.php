@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\StudentPanel;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\StudentPanel\SubjectListRepository;
+use App\Http\Repositories\StudentPanel\SubjectListRepository;
 
 class SubjectListController extends Controller
 {

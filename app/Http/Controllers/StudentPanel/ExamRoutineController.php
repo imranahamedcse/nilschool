@@ -8,9 +8,9 @@ use App\Models\Examination\ExamAssign;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Models\StudentInfo\Student;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\Examination\ExamAssignRepository;
-use App\Repositories\Report\ExamRoutineRepository as ReportExamRoutineRepository;
-use App\Repositories\StudentPanel\ExamRoutineRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Repositories\Report\ExamRoutineRepository as ReportExamRoutineRepository;
+use App\Http\Repositories\StudentPanel\ExamRoutineRepository;
 use PDF;
 
 class ExamRoutineController extends Controller

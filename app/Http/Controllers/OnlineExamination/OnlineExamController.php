@@ -4,19 +4,19 @@ namespace App\Http\Controllers\OnlineExamination;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\GenderRepository;
+use App\Http\Repositories\GenderRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Examination\ExamTypeRepository;
-use App\Interfaces\OnlineExamination\OnlineExamInterface;
-use App\Repositories\StudentInfo\StudentCategoryRepository;
-use App\Interfaces\OnlineExamination\QuestionGroupInterface;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Examination\ExamTypeRepository;
+use App\Http\Interfaces\OnlineExamination\OnlineExamInterface;
+use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
+use App\Http\Interfaces\OnlineExamination\QuestionGroupInterface;
 use App\Http\Requests\OnlineExamination\OnlineExam\StoreRequest;
 use App\Http\Requests\OnlineExamination\OnlineExam\UpdateRequest;
-use App\Repositories\Academic\SubjectAssignRepository;
-use App\Repositories\StudentInfo\StudentRepository;
+use App\Http\Repositories\Academic\SubjectAssignRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 use PDF;
 
 class OnlineExamController extends Controller

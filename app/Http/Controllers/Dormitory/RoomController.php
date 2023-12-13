@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Dormitory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dormitory\Room\StoreRequest;
 use App\Http\Requests\Dormitory\Room\UpdateRequest;
-use App\Interfaces\Dormitory\DormitoryInterface;
-use App\Interfaces\Dormitory\RoomInterface;
-use App\Interfaces\Dormitory\RoomTypeInterface;
+use App\Http\Interfaces\Dormitory\DormitoryInterface;
+use App\Http\Interfaces\Dormitory\RoomInterface;
+use App\Http\Interfaces\Dormitory\RoomTypeInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

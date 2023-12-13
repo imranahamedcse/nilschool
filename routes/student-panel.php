@@ -10,7 +10,7 @@ use App\Http\Controllers\StudentPanel\ProfileController;
 use App\Http\Controllers\StudentPanel\SubjectListController;
 use App\Http\Controllers\StudentPanel\FeesController;
 use App\Http\Controllers\StudentPanel\OnlineExamController;
-use App\Repositories\StudentPanel\AttendanceRepository;
+use App\Http\Repositories\StudentPanel\AttendanceRepository;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {

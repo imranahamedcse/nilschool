@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Attendance\Attendance;
 use App\Models\StudentInfo\SessionClassStudent;
-use App\Repositories\StudentPanel\AttendanceRepository;
+use App\Http\Repositories\StudentPanel\AttendanceRepository;
 
 class AttendanceController extends Controller
 {

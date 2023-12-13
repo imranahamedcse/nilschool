@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Fees;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Fees\Group\FeesGroupStoreRequest;
 use App\Http\Requests\Fees\Group\FeesGroupUpdateRequest;
-use App\Interfaces\Fees\FeesGroupInterface;
+use App\Http\Interfaces\Fees\FeesGroupInterface;
 use Illuminate\Http\Request;
 
 class FeesGroupController extends Controller

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Academic\Section\SectionStoreRequest;
 use App\Http\Requests\Academic\Section\SectionUpdateRequest;
-use App\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
 use Illuminate\Support\Facades\Schema;
 
 class SectionController extends Controller

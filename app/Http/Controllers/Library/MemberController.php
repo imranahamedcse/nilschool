@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Library;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Library\Member\MemberStoreRequest;
 use App\Http\Requests\Library\Member\MemberUpdateRequest;
-use App\Repositories\Library\MemberCategoryRepository;
-use App\Repositories\Library\MemberRepository;
+use App\Http\Repositories\Library\MemberCategoryRepository;
+use App\Http\Repositories\Library\MemberRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

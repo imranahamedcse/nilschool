@@ -6,7 +6,7 @@ use App\Models\Session;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Interfaces\SessionInterface;
+use App\Http\Interfaces\SessionInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\Session\SessionStoreRequest;
 use App\Http\Requests\Session\SessionUpdateRequest;

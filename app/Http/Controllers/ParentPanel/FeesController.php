@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Fees\FeesAssignChildren;
 use Illuminate\Support\Facades\Session;
 use Srmklive\PayPal\Services\ExpressCheckout;
-use App\Repositories\Fees\FeesCollectRepository;
-use App\Repositories\ParentPanel\FeesRepository;
+use App\Http\Repositories\Fees\FeesCollectRepository;
+use App\Http\Repositories\ParentPanel\FeesRepository;
 
 class FeesController extends Controller
 {

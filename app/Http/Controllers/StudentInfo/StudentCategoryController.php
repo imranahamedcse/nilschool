@@ -4,7 +4,7 @@ namespace App\Http\Controllers\StudentInfo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Repositories\StudentInfo\StudentCategoryRepository;
+use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
 use App\Http\Requests\StudentInfo\StudentCategory\StudentCategoryStoreRequest;
 use App\Http\Requests\StudentInfo\StudentCategory\StudentCategoryUpdateRequest;
 

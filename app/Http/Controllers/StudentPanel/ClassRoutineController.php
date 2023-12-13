@@ -5,8 +5,8 @@ namespace App\Http\Controllers\StudentPanel;
 use App\Http\Controllers\Controller;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Models\StudentInfo\Student;
-use App\Repositories\Report\ClassRoutineRepository as ReportClassRoutineRepository;
-use App\Repositories\StudentPanel\ClassRoutineRepository;
+use App\Http\Repositories\Report\ClassRoutineRepository as ReportClassRoutineRepository;
+use App\Http\Repositories\StudentPanel\ClassRoutineRepository;
 use Illuminate\Http\Request;
 use PDF;
 

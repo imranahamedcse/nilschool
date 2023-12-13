@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\WebsiteSetup\AboutRepository;
+use App\Http\Repositories\WebsiteSetup\AboutRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\About\AboutStoreRequest;
 use App\Http\Requests\WebsiteSetup\About\AboutUpdateRequest;

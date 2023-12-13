@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Library;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Library\IssueBook\IssueBookStoreRequest;
 use App\Http\Requests\Library\IssueBook\IssueBookUpdateRequest;
-use App\Repositories\Library\IssueBookRepository;
+use App\Http\Repositories\Library\IssueBookRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

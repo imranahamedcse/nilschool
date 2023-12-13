@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Library;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Library\MemberCategory\MemberCategoryStoreRequest;
 use App\Http\Requests\Library\MemberCategory\MemberCategoryUpdateRequest;
-use App\Repositories\Library\MemberCategoryRepository;
+use App\Http\Repositories\Library\MemberCategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

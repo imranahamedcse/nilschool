@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Transport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Transport\TransportSetup\StoreRequest;
 use App\Http\Requests\Transport\TransportSetup\UpdateRequest;
-use App\Interfaces\Transport\TransportSetupInterface;
-use App\Interfaces\Transport\PickupPointInterface;
-use App\Interfaces\Transport\RouteInterface;
-use App\Interfaces\Transport\VehicleInterface;
+use App\Http\Interfaces\Transport\TransportSetupInterface;
+use App\Http\Interfaces\Transport\PickupPointInterface;
+use App\Http\Interfaces\Transport\RouteInterface;
+use App\Http\Interfaces\Transport\VehicleInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

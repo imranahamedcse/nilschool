@@ -4,10 +4,10 @@ namespace App\Http\Controllers\StudentInfo;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentInfo\DisabledStudent\DisabledStudentRequest;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\StudentInfo\DisabledStudentRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\StudentInfo\DisabledStudentRepository;
 use Illuminate\Http\Request;
 
 class DisabledStudentController extends Controller

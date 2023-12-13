@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\WebsiteSetup\EventRepository;
+use App\Http\Repositories\WebsiteSetup\EventRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\Event\EventStoreRequest;
 use App\Http\Requests\WebsiteSetup\Event\EventUpdateRequest;

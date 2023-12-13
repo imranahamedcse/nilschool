@@ -5,15 +5,15 @@ namespace App\Http\Controllers\StudentInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudentInfo\OnlineAdmission\OnlineAdmissionRequest;
-use App\Repositories\GenderRepository;
-use App\Repositories\ReligionRepository;
-use App\Repositories\BloodGroupRepository;
-use App\Repositories\Academic\ShiftRepository;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\StudentInfo\OnlineAdmissionRepository;
-use App\Repositories\StudentInfo\StudentCategoryRepository;
+use App\Http\Repositories\GenderRepository;
+use App\Http\Repositories\ReligionRepository;
+use App\Http\Repositories\BloodGroupRepository;
+use App\Http\Repositories\Academic\ShiftRepository;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\StudentInfo\OnlineAdmissionRepository;
+use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
 
 class OnlineAdmissionController extends Controller
 {

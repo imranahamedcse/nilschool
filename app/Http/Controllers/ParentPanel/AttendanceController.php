@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\ParentPanel;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\ParentPanel\AttendanceRepository;
+use App\Http\Repositories\ParentPanel\AttendanceRepository;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller

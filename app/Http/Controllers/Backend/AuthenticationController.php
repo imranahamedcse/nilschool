@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\ForgotPasswordRequest;
-use App\Interfaces\AuthenticationRepositoryInterface;
+use App\Http\Interfaces\AuthenticationRepositoryInterface;
 
 class AuthenticationController extends Controller
 {

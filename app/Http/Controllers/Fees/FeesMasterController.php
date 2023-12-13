@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Fees;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Fees\Master\FeesMasterStoreRequest;
 use App\Http\Requests\Fees\Master\FeesMasterUpdateRequest;
-use App\Interfaces\Fees\FeesGroupInterface;
-use App\Interfaces\Fees\FeesMasterInterface;
-use App\Interfaces\Fees\FeesTypeInterface;
-use App\Repositories\Academic\ClassesRepository;
+use App\Http\Interfaces\Fees\FeesGroupInterface;
+use App\Http\Interfaces\Fees\FeesMasterInterface;
+use App\Http\Interfaces\Fees\FeesTypeInterface;
+use App\Http\Repositories\Academic\ClassesRepository;
 use Illuminate\Http\Request;
 
 class FeesMasterController extends Controller

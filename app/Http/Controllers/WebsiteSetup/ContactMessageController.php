@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\WebsiteSetup\Contact;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\WebsiteSetup\ContactMessageRepository;
+use App\Http\Repositories\WebsiteSetup\ContactMessageRepository;
 
 class ContactMessageController extends Controller
 {

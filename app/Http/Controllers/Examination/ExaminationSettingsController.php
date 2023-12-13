@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Examination;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Examination\ExaminationSettingsRepository;
+use App\Http\Repositories\Examination\ExaminationSettingsRepository;
 
 class ExaminationSettingsController extends Controller
 {

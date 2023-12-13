@@ -4,7 +4,7 @@ namespace App\Http\Controllers\StudentPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Search;
-use App\Repositories\StudentPanel\DashboardRepository;
+use App\Http\Repositories\StudentPanel\DashboardRepository;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\WebsiteSetup\DepartmentContactRepository;
+use App\Http\Repositories\WebsiteSetup\DepartmentContactRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\DepartmentContact\DepartmentContactStoreRequest;
 use App\Http\Requests\WebsiteSetup\DepartmentContact\DepartmentContactUpdateRequest;

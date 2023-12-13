@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Repositories\GenderRepository;
+use App\Http\Repositories\GenderRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Repositories\ReligionRepository;
-use App\Repositories\Frontend\FrontendRepository;
+use App\Http\Repositories\ReligionRepository;
+use App\Http\Repositories\Frontend\FrontendRepository;
 use App\Http\Requests\Frontend\SearchResultRequest;
-use App\Repositories\Report\MarksheetRepository;
-use App\Repositories\StudentInfo\StudentRepository;
+use App\Http\Repositories\Report\MarksheetRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 use PDF;
 
 class FrontendController extends Controller

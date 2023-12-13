@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Accounts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Accounts\Head\AccountHeadStoreRequest;
 use App\Http\Requests\Accounts\Head\AccountHeadUpdateRequest;
-use App\Repositories\Accounts\AccountHeadRepository;
+use App\Http\Repositories\Accounts\AccountHeadRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 

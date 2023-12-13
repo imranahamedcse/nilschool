@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Models\StudentInfo\Student;
-use App\Repositories\Examination\ExamAssignRepository;
-use App\Repositories\Report\MarksheetRepository as ReportMarksheetRepository;
-use App\Repositories\StudentInfo\StudentRepository;
-use App\Repositories\StudentPanel\MarksheetRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Repositories\Report\MarksheetRepository as ReportMarksheetRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Repositories\StudentPanel\MarksheetRepository;
 use PDF;
 
 class MarksheetController extends Controller

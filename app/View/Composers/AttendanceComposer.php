@@ -2,7 +2,7 @@
 
 namespace App\View\Composers;
 
-use App\Repositories\Attendance\AttendanceRepository;
+use App\Http\Repositories\Attendance\AttendanceRepository;
 use Illuminate\View\View;
 
 class AttendanceComposer
@@ -10,14 +10,14 @@ class AttendanceComposer
     /**
      * The user Interface implementation.
      *
-     * @var \App\Interfaces\AttendanceRepository
+     * @var \App\Http\Interfaces\AttendanceRepository
      */
     protected $attendance;
 
     /**
      * Create a new profile composer.
      *
-     * @param  \App\Repositories\AttendanceRepository  $language
+     * @param  \App\Http\Repositories\AttendanceRepository  $language
      * @return void
      */
     public function __construct(AttendanceRepository $attendance)

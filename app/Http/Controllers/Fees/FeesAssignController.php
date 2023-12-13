@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Fees\Assign\FeesAssignStoreRequest;
 use App\Http\Requests\Fees\Assign\FeesAssignUpdateRequest;
-use App\Interfaces\Fees\FeesTypeInterface;
-use App\Interfaces\Fees\FeesGroupInterface;
-use App\Interfaces\Fees\FeesAssignInterface;
-use App\Repositories\Academic\ClassesRepository;
-use App\Repositories\Academic\ClassSetupRepository;
-use App\Repositories\Academic\SectionRepository;
-use App\Repositories\Fees\FeesMasterRepository;
-use App\Repositories\GenderRepository;
-use App\Repositories\StudentInfo\StudentCategoryRepository;
-use App\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\Fees\FeesTypeInterface;
+use App\Http\Interfaces\Fees\FeesGroupInterface;
+use App\Http\Interfaces\Fees\FeesAssignInterface;
+use App\Http\Repositories\Academic\ClassesRepository;
+use App\Http\Repositories\Academic\ClassSetupRepository;
+use App\Http\Repositories\Academic\SectionRepository;
+use App\Http\Repositories\Fees\FeesMasterRepository;
+use App\Http\Repositories\GenderRepository;
+use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 
 class FeesAssignController extends Controller
 {

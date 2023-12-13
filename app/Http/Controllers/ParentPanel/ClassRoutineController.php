@@ -5,8 +5,8 @@ namespace App\Http\Controllers\ParentPanel;
 use App\Http\Controllers\Controller;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Models\StudentInfo\Student;
-use App\Repositories\ParentPanel\ClassRoutineRepository;
-use App\Repositories\Report\ClassRoutineRepository as ReportClassRoutineRepository;
+use App\Http\Repositories\ParentPanel\ClassRoutineRepository;
+use App\Http\Repositories\Report\ClassRoutineRepository as ReportClassRoutineRepository;
 use Illuminate\Http\Request;
 use PDF;
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Fees;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Fees\Type\FeesTypeStoreRequest;
 use App\Http\Requests\Fees\Type\FeesTypeUpdateRequest;
-use App\Interfaces\Fees\FeesTypeInterface;
+use App\Http\Interfaces\Fees\FeesTypeInterface;
 use Illuminate\Http\Request;
 
 class FeesTypeController extends Controller

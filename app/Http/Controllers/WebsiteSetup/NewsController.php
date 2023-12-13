@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\WebsiteSetup\NewsRepository;
+use App\Http\Repositories\WebsiteSetup\NewsRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\News\NewsStoreRequest;
 use App\Http\Requests\WebsiteSetup\News\NewsUpdateRequest;
