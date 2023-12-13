@@ -262,7 +262,7 @@
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('backend/js/sweetalert2.js') }}"></script>
     <script>
         // Class routine start
         function addClassRoutine() {

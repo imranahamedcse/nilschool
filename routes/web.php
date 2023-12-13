@@ -21,10 +21,6 @@ use Illuminate\Support\Facades\Config;
 |
 */
 
-Route::get('/datatable', function () {
-    return view('backend.admin.datatable');
-});
-
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 // Auth::routes();

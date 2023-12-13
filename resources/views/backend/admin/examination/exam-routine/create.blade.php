@@ -240,7 +240,7 @@
         });
         // End get exam_types
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('backend/js/sweetalert2.js') }}"></script>
     <script>
         // Exam routine start
         function addExamRoutine() {
