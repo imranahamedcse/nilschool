@@ -83,8 +83,7 @@ class ProgressCardController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['students']     = $this->studentRepo->getStudents($request);
-
-        // dd($data);
+        
         return view('backend.admin.report.progress-card', compact('data'));
     }
 

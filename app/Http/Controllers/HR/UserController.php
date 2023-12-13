@@ -108,7 +108,7 @@ class UserController extends Controller
         $data['designations']  = $this->designation->all();
         $data['departments']   = $this->department->all();
         $data['genders']       = $this->gender->all();
-        // dd($data);
+        
         return view('backend.admin.hr.users.edit', compact('data'));
     }
 

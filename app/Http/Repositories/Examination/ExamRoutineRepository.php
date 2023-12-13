@@ -84,7 +84,6 @@ class ExamRoutineRepository implements ExamRoutineInterface
 
     public function update($request, $id)
     {
-        // dd($request->all());
         DB::beginTransaction();
         try {
 

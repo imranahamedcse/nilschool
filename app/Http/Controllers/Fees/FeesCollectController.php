@@ -69,7 +69,7 @@ class FeesCollectController extends Controller
     }
 
     public function collect($id)
-    { // student id
+    {
         $data['title']          = ___('fees.Collect');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -81,7 +81,6 @@ class FeesCollectController extends Controller
         $data['student']        = $this->studentRepo->show($id);
         $data['fees_assigned']  = $this->repo->feesAssigned($id);
 
-        // dd($data);
         return view('backend.admin.fees.collect.collect', compact('data'));
     }
 

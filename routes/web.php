@@ -1,18 +1,13 @@
 <?php
 
-use App\Http\Controllers\Academic\ClassesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagerController;
-use App\Http\Controllers\Backend\RoleController;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\SettingController;
-use App\Http\Controllers\Backend\LanguageController;
 use App\Http\Controllers\Backend\MyProfileController;
 use App\Http\Controllers\Backend\AuthenticationController;
-use App\Http\Controllers\Backend\CounterController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\PDFController;
-use App\Http\Controllers\WebsiteSetup\AboutController;
+use App\Http\Controllers\Settings\LanguageController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 
 /*
@@ -45,14 +40,13 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
 
         Route::get('/migrate-seed', function () {
-            \Artisan::call('migrate:fresh --seed');
-            dd('success');
+            Artisan::call('migrate:fresh --seed');
         });
 
         Route::controller(LanguageController::class)->prefix('languages')->group(function () {
             Route::get('/change',                   'changeLanguage')->name('languages.change');
         });
-        
+
         //landing page
         Route::get('/landing', function () {
             return view('frontend-landing.school_landing');
@@ -91,7 +85,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
 
         // auth routes
         Route::group(['middleware' => ['auth.routes']], function () {
-            
+
             Route::post('logout',         [AuthenticationController::class, 'logout'])->name('logout');
 
             Route::group(['middleware' => 'AdminPanel'], function () {
@@ -110,7 +104,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::get('dashboard/crm',   [DashboardController::class, 'crmDashboard'])->name('crm_dashboard');
                 Route::post('searchMenuData', [DashboardController::class, 'searchMenuData'])->name('searchMenuData');
 
-                
+
 
                 Route::controller(MyProfileController::class)->prefix('my')->group(function () {
                     Route::get('/profile',              'profile')->name('my.profile');
@@ -121,7 +115,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                     Route::put('/password/update/store', 'passwordUpdateStore')->name('passwordUpdateStore')->middleware('DemoCheck');
                 });
 
-                
+
             });
         });
     });

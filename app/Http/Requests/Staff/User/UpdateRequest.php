@@ -24,7 +24,6 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        // dd(Request()->user_id);
         return [
             'staff_id'     => 'required|unique:staff,staff_id,'.$this->id,
             'role'         => 'required',

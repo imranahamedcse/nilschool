@@ -66,8 +66,6 @@ class ExamAssignRepository implements ExamAssignInterface
 
     public function searchExamAssign($request)
     {
-        // dd($request->all());
-        // return $this->model::latest()->where('session_id', setting('session'))->paginate(10);
         $rows = $this->model::query();
         $rows = $rows->where('session_id', setting('session'));
         if($request->class != "") {
@@ -126,7 +124,6 @@ class ExamAssignRepository implements ExamAssignInterface
             DB::commit();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
-            dd($th);
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
         }

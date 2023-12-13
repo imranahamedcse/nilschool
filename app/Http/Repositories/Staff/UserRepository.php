@@ -175,8 +175,6 @@ class UserRepository implements UserInterface
             DB::commit();
             return true;
         } catch (\Throwable $th) {
-
-            dd($th);
             DB::rollback();
             return false;
         }

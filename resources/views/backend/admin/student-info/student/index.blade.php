@@ -35,7 +35,6 @@
                 </tr>
             </thead>
             <tbody class="tbody">
-                {{-- @dd($data['students']) --}}
                 @forelse ($data['students'] as $key => $row)
                     <tr id="row_{{ @$row->student->id }}">
                         <td>{{ ++$key }}</td>

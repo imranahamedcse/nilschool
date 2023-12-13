@@ -47,7 +47,7 @@ class FrontendController extends Controller
         $data['gallery']          = $this->repo->gallery();
         $data['latestNews']       = $this->repo->latestNews();
         $data['comingEvents']     = $this->repo->comingEvents();
-        // dd($data);
+        
         return view('frontend.home', compact('data'));
     }
 

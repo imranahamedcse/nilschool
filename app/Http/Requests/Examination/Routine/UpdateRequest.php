@@ -23,7 +23,6 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        // dd($this->all());
         return [
             'class'         => 'required',
             'section'       => 'required',

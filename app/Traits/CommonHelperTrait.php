@@ -95,7 +95,7 @@ trait CommonHelperTrait
         $endOfLinePosition = strpos($str, PHP_EOL, $keyPosition);
         $oldLine           = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
         $envValue          = '"'.$envValue.'"';
-        // dd($envValue);
+        
         $str = str_replace($oldLine, "{$envKey}={$envValue}", $str);
         $str = substr($str, 0, -1);
 
@@ -111,7 +111,7 @@ trait CommonHelperTrait
 
         $previous_keys = [];
         if (count($previous_documents)) {  // when update documents
-            
+
             foreach($previous_documents as $key=>$document) {
                 if ( !in_array($key, $request->document_rows ?? [])) {
                     $this->UploadImageDelete(data_get($previous_documents, "$key.file"));
@@ -131,14 +131,14 @@ trait CommonHelperTrait
 
                     $upload_documents[$row]['title'] = $request->document_names[$row];
                     $upload_documents[$row]['file']  = $this->UploadImageUpdate($request->document_files[$row] ?? '', 'backend/uploads/uploadDocuments', data_get($previous_documents, "$row.file"));
-     
+
                 } else {
 
                     $upload_documents[$row]['title'] = $request->document_names[$row];
                     $upload_documents[$row]['file']  = $this->UploadImageCreate($request->document_files[$row] ?? '', 'backend/uploads/uploadDocuments');
-                    
+
                 }
-                
+
             }
         }
 

@@ -88,8 +88,6 @@ class AttendanceRepository implements AttendanceInterface
             ->get();
 
         $data['students'] = $students->concat($students2);
-
-        // dd($data);
         return $data;
     }
 
@@ -134,7 +132,6 @@ class AttendanceRepository implements AttendanceInterface
             $data['attendances'] = $students->get();
             $students->select('student_id', 'roll')->distinct('student_id');
             $data['students']    = $students->paginate(10);
-            // dd($data);
             return $data;
         } else {
             $data['students']    = $students->paginate(10);
@@ -187,7 +184,6 @@ class AttendanceRepository implements AttendanceInterface
             $data['attendances'] = $students->get();
             $students->select('student_id', 'roll')->distinct('student_id');
             $data['students']    = $students->paginate(10);
-            // dd($data);
             return $data;
         } else {
             $data['students']    = $students->get();

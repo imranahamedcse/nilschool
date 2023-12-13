@@ -15,7 +15,6 @@ class FeesCollectionRepository implements FeesCollectionInterface
 
     public function search($request)
     {
-        // dd($request->all());
         $groups = FeesAssignChildren::withCount('feesCollect')->with('feesCollect')->having('fees_collect_count', '=', 1);
 
         $groups = $groups->whereHas('feesAssign', function ($query) use ($request) {
@@ -52,7 +51,6 @@ class FeesCollectionRepository implements FeesCollectionInterface
 
     public function searchPDF($request)
     {
-        // dd($request->all());
         $groups = FeesAssignChildren::withCount('feesCollect')->with('feesCollect')->having('fees_collect_count', '=', 1);
 
         $groups = $groups->whereHas('feesAssign', function ($query) use ($request) {

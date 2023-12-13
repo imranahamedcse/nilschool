@@ -36,7 +36,6 @@ class SubjectAssignRepository implements SubjectAssignInterface
 
     public function store($request)
     {
-        // dd($request->all());
         DB::beginTransaction();
         try {
 
@@ -99,7 +98,6 @@ class SubjectAssignRepository implements SubjectAssignInterface
 
     public function update($request, $id)
     {
-        // dd($request->all());
         DB::beginTransaction();
         try {
 

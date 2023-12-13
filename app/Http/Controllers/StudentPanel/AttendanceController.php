@@ -15,8 +15,8 @@ class AttendanceController extends Controller
 {
     private $repo;
 
-    function __construct(AttendanceRepository $repo) 
-    { 
+    function __construct(AttendanceRepository $repo)
+    {
         $this->repo = $repo;
     }
 
@@ -34,15 +34,12 @@ class AttendanceController extends Controller
         $results              = $this->repo->search($request);
         $data['results']      = $results['results'];
         $data['days']         = $results['days'];
-
-
-
-        // dd($data['results']);
+        
         return view('student-panel.attendance', compact('data'));
     }
 
 
-    
+
     public function attendance(Request $request){
         try {
             $student        = Student::where('user_id', Auth::user()->id)->first();
@@ -51,8 +48,8 @@ class AttendanceController extends Controller
             $row = Attendance::where('session_id', setting('session'))->where('student_id', $student->id)->where('date', date('Y-m-d'))->first();
             if ($row){
                 return response()->json([
-                    'status' => 'success', 
-                    'data' =>[], 
+                    'status' => 'success',
+                    'data' =>[],
                     'message' => 'Already submitted'
                 ], 200);
             }
@@ -67,20 +64,20 @@ class AttendanceController extends Controller
                 $row->date                      = date('Y-m-d');
                 $row->attendance                = AttendanceType::PRESENT;
                 $row->save();
-    
+
                 return response()->json([
-                    'status' => 'success', 
-                    'data' =>[], 
+                    'status' => 'success',
+                    'data' =>[],
                     'message' => 'Attendance successfully submitted'
                 ], 200);
             }
         } catch (\Throwable $th) {
             return response()->json([
-                'status' => 'error', 
-                'data' =>[], 
+                'status' => 'error',
+                'data' =>[],
                 'message' => 'Something went wrong'
             ], 500);
         }
-        
+
     }
 }

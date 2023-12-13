@@ -102,7 +102,6 @@ class AuthenticationRepository implements AuthenticationRepositoryInterface
             Mail::to($user->email)->send(new ResetPassword($user));
             return 'success';
         } catch (\Throwable $th) {
-            dd($th);
             return false;
         }
     }

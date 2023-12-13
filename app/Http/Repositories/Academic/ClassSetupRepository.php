@@ -47,7 +47,6 @@ class ClassSetupRepository implements ClassSetupInterface
 
     public function store($request)
     {
-        // dd('sfdsf');
         DB::beginTransaction();
         try {
 

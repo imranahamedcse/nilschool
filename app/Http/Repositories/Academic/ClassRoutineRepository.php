@@ -80,7 +80,6 @@ class ClassRoutineRepository implements ClassRoutineInterface
 
     public function update($request, $id)
     {
-        // dd($request->all());
         DB::beginTransaction();
         try {
             $class_routine             = $this->model::find($id);

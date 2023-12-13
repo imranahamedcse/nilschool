@@ -64,7 +64,6 @@
                                 @enderror
 
                             </div>
-                            {{-- {{dd($data['exam_assign'])}} --}}
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">{{ ___('academic.section') }} <span
                                         class="text-danger">*</span></label>

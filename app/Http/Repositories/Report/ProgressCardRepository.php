@@ -67,8 +67,6 @@ class ProgressCardRepository implements ProgressCardInterface
             $data['avg_marks'][]       = $total_marks / count($marks_registers);
 
         }
-
-        // dd($data);
         return $data;
     }
 }
