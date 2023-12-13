@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Academic\ClassRoom\ClassRoomStoreRequest;
-use App\Http\Requests\Academic\ClassRoom\ClassRoomUpdateRequest;
 use App\Http\Interfaces\Academic\ClassRoomInterface;
+use App\Http\Requests\Academic\Room\StoreRequest;
+use App\Http\Requests\Academic\Room\UpdateRequest;
 
 class ClassRoomController extends Controller
 {
@@ -47,7 +47,7 @@ class ClassRoomController extends Controller
         return view('backend.admin.academic.class-room.create', compact('data'));
     }
 
-    public function store(ClassRoomStoreRequest $request)
+    public function store(StoreRequest $request)
     {
 
         $result = $this->repo->store($request);
@@ -70,7 +70,7 @@ class ClassRoomController extends Controller
         return view('backend.admin.academic.class-room.edit', compact('data'));
     }
 
-    public function update(ClassRoomUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if ($result['status']) {

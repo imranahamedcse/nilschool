@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Library\Member\MemberStoreRequest;
-use App\Http\Requests\Library\Member\MemberUpdateRequest;
+use App\Http\Requests\Library\Member\StoreRequest;
+use App\Http\Requests\Library\Member\UpdateRequest;
 use App\Http\Repositories\Library\MemberCategoryRepository;
 use App\Http\Repositories\Library\MemberRepository;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class MemberController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
-        } 
+        }
         $this->Repo = $Repo;
         $this->categoryRepo  = $categoryRepo;
     }
@@ -55,7 +55,7 @@ class MemberController extends Controller
         return view('backend.admin.library.member.create', compact('data'));
     }
 
-    public function store(MemberStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
         if($result['status']){
@@ -80,7 +80,7 @@ class MemberController extends Controller
         return view('backend.admin.library.member.edit', compact('data'));
     }
 
-    public function update(MemberUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
         if($result['status']){
@@ -103,7 +103,7 @@ class MemberController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 
     public function getMember(Request $request)

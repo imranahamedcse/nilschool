@@ -10,7 +10,6 @@ use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\Report\FeesCollectionRepository;
-use App\Http\Repositories\Report\MeritListRepository;
 use Illuminate\Support\Facades\Crypt;
 use PDF;
 
@@ -28,7 +27,7 @@ class FeesCollectionController extends Controller
         ClassesRepository      $classRepo,
         ClassSetupRepository   $classSetupRepo,
         StudentRepository      $studentRepo,
-    ) 
+    )
     {
         $this->repo               = $repo;
         $this->examAssignRepo     = $examAssignRepo;
@@ -51,7 +50,7 @@ class FeesCollectionController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         return view('backend.admin.report.fees-collection', compact('data'));
@@ -71,14 +70,14 @@ class FeesCollectionController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['result']       = $this->repo->search($request);
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         return view('backend.admin.report.fees-collection', compact('data'));
     }
-    
+
     public function generatePDF($class, $section, $dates)
     {
         $request = new Request([
@@ -88,7 +87,7 @@ class FeesCollectionController extends Controller
         ]);
 
         $data['result']       = $this->repo->searchPDF($request);
-        
+
         $pdf = PDF::loadView('backend.admin.report.fees-collectionPDF', compact('data'));
         return $pdf->download('fees_collection'.'_'.date('d_m_Y').'.pdf');
     }

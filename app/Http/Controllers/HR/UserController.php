@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\HR;
 
 use Illuminate\Http\Request;
-use App\Http\Interfaces\RoleInterface;
-use App\Http\Interfaces\UserInterface;
+use App\Http\Interfaces\Staff\UserInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Interfaces\PermissionInterface;
-use App\Http\Requests\User\UserStoreRequest;
-use App\Http\Requests\User\UserUpdateRequest;
-use App\Http\Interfaces\GenderInterface;
+use App\Http\Interfaces\Settings\PermissionInterface;
+use App\Http\Requests\User\StoreRequest;
+use App\Http\Requests\User\UpdateRequest;
+use App\Http\Interfaces\Settings\GenderInterface;
 use App\Http\Interfaces\Staff\DepartmentInterface;
 use App\Http\Interfaces\Staff\DesignationInterface;
+use App\Http\Interfaces\Staff\RoleInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -26,19 +26,19 @@ class UserController extends Controller
     private $gender;
 
     function __construct(
-        UserInterface $user, 
-        PermissionInterface $permission, 
+        UserInterface $user,
+        PermissionInterface $permission,
         RoleInterface $role,
         DesignationInterface $designation,
         DepartmentInterface $department,
         GenderInterface $gender,
-        
+
         )
     {
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->user         = $user;
         $this->permission   = $permission;
         $this->role         = $role;
@@ -83,7 +83,7 @@ class UserController extends Controller
         return view('backend.admin.hr.users.create', compact('data'));
     }
 
-    public function store(UserStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->user->store( $request);
         if ($result) {
@@ -101,7 +101,7 @@ class UserController extends Controller
             ["title" => ___("common.Staff"), "route" => "users.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['user']          = $this->user->show($id);
         $data['permissions']   = $this->permission->all();
         $data['roles']         = $this->role->all();
@@ -118,7 +118,7 @@ class UserController extends Controller
         return view('backend.admin.hr.users.show', compact('data'));
     }
 
-    public function update(UserUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->user->update($request, $id);
         if ($result) {

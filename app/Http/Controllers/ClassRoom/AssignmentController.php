@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\ClassRoom\AssignmentRepository;
-use App\Http\Requests\ClassRoom\Assignment\AssignmentStoreRequest;
-use App\Http\Requests\ClassRoom\Assignment\AssignmentUpdateRequest;
+use App\Http\Requests\ClassRoom\Assignment\StoreRequest;
+use App\Http\Requests\ClassRoom\Assignment\UpdateRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\SectionRepository;
 use App\Http\Repositories\Academic\SubjectRepository;
@@ -21,18 +21,18 @@ class AssignmentController extends Controller
     private $subjectRepo;
 
     function __construct(
-        AssignmentRepository $repo, 
-        ClassSetupRepository $classSetupRepo, 
-        ClassesRepository $classRepo, 
-        SectionRepository $sectionRepo, 
+        AssignmentRepository $repo,
+        ClassSetupRepository $classSetupRepo,
+        ClassesRepository $classRepo,
+        SectionRepository $sectionRepo,
         SubjectRepository $subjectRepo,
         )
     {
         $this->repo               = $repo;
-        $this->classRepo          = $classRepo;  
-        $this->classSetupRepo     = $classSetupRepo;  
-        $this->sectionRepo        = $sectionRepo;  
-        $this->subjectRepo        = $subjectRepo; 
+        $this->classRepo          = $classRepo;
+        $this->classSetupRepo     = $classSetupRepo;
+        $this->sectionRepo        = $sectionRepo;
+        $this->subjectRepo        = $subjectRepo;
     }
 
     public function index()
@@ -76,12 +76,12 @@ class AssignmentController extends Controller
         return view('backend.admin.class_room.assignment.index', compact('data'));
     }
 
-    
+
     public function show(Request $request)
     {
         $data['assignment']        = $this->repo->show($request->id);
 
-        
+
         $request = new Request([
             'class'     => $data['assignment']->classes_id,
             'section'   => $data['assignment']->section_id,
@@ -106,7 +106,7 @@ class AssignmentController extends Controller
         return view('backend.admin.class_room.assignment.create', compact('data'));
     }
 
-    public function store(AssignmentStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -145,7 +145,7 @@ class AssignmentController extends Controller
         return view('backend.admin.class_room.assignment.edit', compact('data'));
     }
 
-    public function update(AssignmentUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){

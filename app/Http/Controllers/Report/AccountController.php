@@ -5,15 +5,8 @@ namespace App\Http\Controllers\Report;
 use App\Enums\AccountHeadType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Accounts\AccountHeadRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\Report\AccountRepository;
-use App\Http\Repositories\Report\FeesCollectionRepository;
-use App\Http\Repositories\Report\MeritListRepository;
-use Illuminate\Support\Facades\Crypt;
 use PDF;
 
 class AccountController extends Controller
@@ -24,7 +17,7 @@ class AccountController extends Controller
     function __construct(
         AccountRepository      $repo,
         AccountHeadRepository  $accountHeadRepo,
-    ) 
+    )
     {
         $this->repo              = $repo;
         $this->accountHeadRepo   = $accountHeadRepo;
@@ -44,7 +37,7 @@ class AccountController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['account_head'] = $this->accountHeadRepo->getIncomeHeads();
         return view('backend.admin.report.account', compact('data'));
     }
@@ -64,7 +57,7 @@ class AccountController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['request']      = $request;
 
         if($data['request']->type == AccountHeadType::INCOME)
@@ -72,7 +65,6 @@ class AccountController extends Controller
         else
             $data['account_head'] = $this->accountHeadRepo->getExpenseHeads();
 
-        // dd($data);
         return view('backend.admin.report.account', compact('data'));
     }
 
@@ -82,7 +74,7 @@ class AccountController extends Controller
         else
             return $this->accountHeadRepo->getExpenseHeads();
     }
-    
+
     public function generatePDF(Request $request)
     {
         $request = new Request([
@@ -92,7 +84,7 @@ class AccountController extends Controller
         ]);
 
         $data                 = $this->repo->searchPDF($request);
-        
+
         $pdf = PDF::loadView('backend.admin.report.accountPDF', compact('data'));
         return $pdf->download('transaction'.'_'.date('d_m_Y').'.pdf');
     }

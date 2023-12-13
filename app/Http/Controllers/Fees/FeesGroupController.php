@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Fees;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Fees\Group\FeesGroupStoreRequest;
-use App\Http\Requests\Fees\Group\FeesGroupUpdateRequest;
+use App\Http\Requests\Fees\Group\StoreRequest;
+use App\Http\Requests\Fees\Group\UpdateRequest;
 use App\Http\Interfaces\Fees\FeesGroupInterface;
 use Illuminate\Http\Request;
 
@@ -14,13 +14,13 @@ class FeesGroupController extends Controller
 
     function __construct(FeesGroupInterface $repo)
     {
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
-    
+
     public function index()
     {
         $data['fees_groups'] = $this->repo->getPaginateAll();
-        
+
         $title             = ___('fees.fees_group');
         $data['headers']   = [
             "title"        => $title,
@@ -34,7 +34,7 @@ class FeesGroupController extends Controller
         ];
 
         return view('backend.admin.fees.group.index', compact('data'));
-        
+
     }
 
     public function create()
@@ -47,10 +47,10 @@ class FeesGroupController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.group.create', compact('data'));
-        
+
     }
 
-    public function store(FeesGroupStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -72,7 +72,7 @@ class FeesGroupController extends Controller
         return view('backend.admin.fees.group.edit', compact('data'));
     }
 
-    public function update(FeesGroupUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){
@@ -83,7 +83,7 @@ class FeesGroupController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
@@ -96,6 +96,6 @@ class FeesGroupController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

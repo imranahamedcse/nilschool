@@ -9,7 +9,7 @@ use App\Models\Language;
 use App\Models\Permission;
 use App\Models\Staff\Designation;
 use Illuminate\Http\Request;
-use App\Http\Interfaces\UserInterface;
+use App\Http\Interfaces\Staff\UserInterface;
 use App\Http\Controllers\Controller;
 use App\Models\Accounts\Expense;
 use App\Models\Accounts\Income;
@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->repo       = $repo;
     }
 
@@ -81,5 +81,5 @@ class DashboardController extends Controller
             return response()->json(['error' => $th->getMessage()], 500);
         }
     }
-    
+
 }

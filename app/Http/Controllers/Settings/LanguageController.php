@@ -6,12 +6,12 @@ use App;
 use Config;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\FlagIconInterface;
-use App\Http\Interfaces\LanguageInterface;
+use App\Http\Interfaces\Settings\FlagIconInterface;
+use App\Http\Interfaces\Settings\LanguageInterface;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Interfaces\PermissionInterface;
-use App\Http\Requests\Language\LanguageStoreRequest;
-use App\Http\Requests\Language\LanguageUpdateRequest;
+use App\Http\Interfaces\Settings\PermissionInterface;
+use App\Http\Requests\Language\StoreRequest;
+use App\Http\Requests\Language\UpdateRequest;
 use Illuminate\Support\Facades\Session;
 
 class LanguageController extends Controller
@@ -55,7 +55,7 @@ class LanguageController extends Controller
         return view('backend.admin.settings.languages.create', compact('data'));
     }
 
-    public function store(LanguageStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->language->store($request);
         if ($result) {
@@ -73,7 +73,7 @@ class LanguageController extends Controller
         return view('backend.admin.settings.languages.edit', compact('data'));
     }
 
-    public function update(LanguageUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->language->update($request, $id);
         if ($result) {

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Report;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Report\MarksheetRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Requests\Report\ProgressCard\SearchRequest;
@@ -27,7 +26,7 @@ class ProgressCardController extends Controller
         ClassesRepository      $classRepo,
         ClassSetupRepository   $classSetupRepo,
         StudentRepository      $studentRepo,
-    ) 
+    )
     {
         $this->repo               = $repo;
         $this->examAssignRepo     = $examAssignRepo;
@@ -64,7 +63,7 @@ class ProgressCardController extends Controller
     public function search(SearchRequest $request)
     {
         $data                 = $this->repo->search($request);
-        
+
         $title             = ___('student_info.Progress Card');
         $data['headers']   = [
             "title"        => $title,
@@ -84,11 +83,11 @@ class ProgressCardController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['students']     = $this->studentRepo->getStudents($request);
-        
+
         // dd($data);
         return view('backend.admin.report.progress-card', compact('data'));
     }
-    
+
     public function generatePDF($class, $section, $student)
     {
         $request = new Request([
@@ -99,7 +98,7 @@ class ProgressCardController extends Controller
 
         $data                 = $this->repo->search($request);
         $data['student']      = $this->studentRepo->show($request->student);
-        
+
         $pdf = PDF::loadView('backend.admin.report.progress-cardPDF', compact('data'));
         return $pdf->download('progress_card'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
     }

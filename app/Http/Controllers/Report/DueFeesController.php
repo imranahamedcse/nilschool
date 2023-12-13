@@ -10,7 +10,6 @@ use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\Report\DueFeesRepository;
-use App\Http\Repositories\Report\MeritListRepository;
 use PDF;
 
 class DueFeesController extends Controller
@@ -27,7 +26,7 @@ class DueFeesController extends Controller
         ClassesRepository      $classRepo,
         ClassSetupRepository   $classSetupRepo,
         StudentRepository      $studentRepo,
-    ) 
+    )
     {
         $this->repo               = $repo;
         $this->examAssignRepo     = $examAssignRepo;
@@ -54,7 +53,7 @@ class DueFeesController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['fees_masters']       = $this->repo->assignedFeesTypes();
-        
+
         return view('backend.admin.report.due-fees', compact('data'));
     }
 
@@ -72,7 +71,7 @@ class DueFeesController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['result']       = $this->repo->search($request);
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();
@@ -80,7 +79,7 @@ class DueFeesController extends Controller
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         return view('backend.admin.report.due-fees', compact('data'));
     }
-    
+
     public function generatePDF(Request $request)
     {
         $request = new Request([
@@ -90,7 +89,7 @@ class DueFeesController extends Controller
         ]);
 
         $data['result']       = $this->repo->searchPDF($request);
-        
+
         $pdf = PDF::loadView('backend.admin.report.due-feesPDF', compact('data'));
         return $pdf->download('due_fees'.'_'.date('d_m_Y').'.pdf');
     }

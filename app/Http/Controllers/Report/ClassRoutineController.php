@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Report\ClassRoutineRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Requests\Report\ClassRoutine\SearchRequest;
 use App\Http\Repositories\Academic\TimeScheduleRepository;
@@ -27,7 +26,7 @@ class ClassRoutineController extends Controller
         ClassesRepository      $classRepo,
         ClassSetupRepository   $classSetupRepo,
         TimeScheduleRepository      $timeScheduleRepo,
-    ) 
+    )
     {
         $this->repo               = $repo;
         $this->examAssignRepo     = $examAssignRepo;
@@ -50,7 +49,7 @@ class ClassRoutineController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         return view('backend.admin.report.class-routine', compact('data'));
@@ -70,14 +69,13 @@ class ClassRoutineController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
-        // $data['time']         = $this->timeScheduleRepo->all();
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
-        // dd($data['time']);
+
         return view('backend.admin.report.class-routine', compact('data'));
     }
 
@@ -90,7 +88,7 @@ class ClassRoutineController extends Controller
 
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
-        
+
         $pdf = PDF::loadView('backend.admin.report.class-routinePDF', compact('data'));
         return $pdf->download('class_routine'.'_'.date('d_m_Y').'.pdf');
     }

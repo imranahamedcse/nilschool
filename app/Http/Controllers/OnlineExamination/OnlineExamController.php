@@ -4,7 +4,7 @@ namespace App\Http\Controllers\OnlineExamination;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\GenderRepository;
+use App\Http\Repositories\Settings\GenderRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\SectionRepository;
@@ -48,8 +48,8 @@ class OnlineExamController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->repo              = $repo; 
+        }
+        $this->repo              = $repo;
         $this->groupRepo         = $groupRepo;
         $this->genderRepo        = $genderRepo;
         $this->categoryRepo      = $categoryRepo;
@@ -67,7 +67,7 @@ class OnlineExamController extends Controller
         $data['classes']     = $this->classRepo->assignedAll();
         $data['sections']    = [];
         $data['subjects']    = [];
-        
+
         $title             = ___('online-examination.online_exam');
         $data['headers']   = [
             "title"        => $title,
@@ -82,12 +82,12 @@ class OnlineExamController extends Controller
         ];
         return view('backend.admin.online-examination.online-exam.index', compact('data'));
     }
-    
+
     public function search(Request $request)
     {
         $data['classes']     = $this->classRepo->assignedAll();
         $data['sections']    = $this->classSetupRepo->getSections($request->class);
-        
+
         $searchRequest = new Request([
             'classes_id' => $request->class,
             'section_id' => $request->section,
@@ -96,7 +96,7 @@ class OnlineExamController extends Controller
 
         $data['request']     = $request;
         $data['online_exam'] = $this->repo->search($request);
-        
+
         $title             = ___('online-examination.online_exam');
         $data['headers']   = [
             "title"        => $title,
@@ -108,7 +108,7 @@ class OnlineExamController extends Controller
             ["title" => ___("common.Online Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         return view('backend.admin.online-examination.online-exam.index', compact('data'));
     }
 
@@ -152,7 +152,7 @@ class OnlineExamController extends Controller
         $data['genders']          = $this->genderRepo->all();
         $data['categories']       = $this->categoryRepo->all();
         $data['types']            = $this->typeRepo->all();
-        
+
         $request = new Request([
             'classes_id' => $data['online_exam']->classes_id,
             'section_id' => $data['online_exam']->section_id,
@@ -164,7 +164,7 @@ class OnlineExamController extends Controller
         $request = new Request();
         $request->replace(['class' => $data['online_exam']->classes_id, 'section' => $data['online_exam']->section_id]);
         $data['students']     = $this->studentRepo->getStudents($request);
-        
+
         $data['title']            = ___('online-examination.Edit online exam');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -199,7 +199,7 @@ class OnlineExamController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;    
+        endif;
     }
 
     public function getAllQuestions(Request $request)
@@ -241,5 +241,5 @@ class OnlineExamController extends Controller
         $pdf = PDF::loadView('backend.admin.online-examination.online-exam.download_questions', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'.pdf');
     }
-    
+
 }

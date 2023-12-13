@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Academic\Shift\ShiftStoreRequest;
-use App\Http\Requests\Academic\Shift\ShiftUpdateRequest;
+use App\Http\Requests\Academic\Shift\StoreRequest;
+use App\Http\Requests\Academic\Shift\UpdateRequest;
 use App\Http\Interfaces\Academic\ShiftInterface;
 use Illuminate\Support\Facades\Schema;
 
@@ -43,7 +43,7 @@ class ShiftController extends Controller
     public function create()
     {
         $data['title']       = ___('academic.Add shift');
-        
+
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
@@ -53,7 +53,7 @@ class ShiftController extends Controller
         return view('backend.admin.academic.shift.create', compact('data'));
     }
 
-    public function store(ShiftStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->shift->store($request);
         if ($result['status']) {
@@ -66,7 +66,7 @@ class ShiftController extends Controller
     {
         $data['shift']        = $this->shift->show($id);
         $data['title']        = ___('academic.Edit shift');
-        
+
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
@@ -76,7 +76,7 @@ class ShiftController extends Controller
         return view('backend.admin.academic.shift.edit', compact('data'));
     }
 
-    public function update(ShiftUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->shift->update($request, $id);
         if ($result['status']) {

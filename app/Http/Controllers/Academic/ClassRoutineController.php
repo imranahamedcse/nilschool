@@ -3,25 +3,21 @@
 namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
-use App\Http\Interfaces\UserInterface;
+use App\Http\Interfaces\Staff\UserInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\SessionInterface;
+use App\Http\Interfaces\Settings\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
-use App\Models\Academic\TimeSchedule;
 use App\Http\Interfaces\Academic\ShiftInterface;
 use App\Http\Interfaces\Academic\ClassesInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
 use App\Http\Interfaces\Academic\SubjectInterface;
-use App\Models\Academic\SubjectAssignChildren;
 use App\Http\Repositories\Academic\ClassRoomRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Academic\ClassRoutineRepository;
 use App\Http\Repositories\Academic\TimeScheduleRepository;
 use App\Http\Repositories\Academic\SubjectAssignRepository;
-use App\Http\Requests\Academic\ClassRoutine\ClassRoutineStoreRequest;
-use App\Http\Requests\Academic\ClassRoutine\ClassRoutineUpdateRequest;
-use App\Http\Requests\Academic\SubjectAssign\SubjectAssignStoreRequest;
-use App\Http\Requests\Academic\SubjectAssign\SubjectAssignUpdateRequest;
+use App\Http\Requests\Academic\Routine\StoreRequest;
+use App\Http\Requests\Academic\Routine\UpdateRequest;
 
 class ClassRoutineController extends Controller
 {
@@ -113,7 +109,7 @@ class ClassRoutineController extends Controller
         return view('backend.admin.academic.class-routine.add-class-routine', compact('counter', 'data'))->render();
     }
 
-    public function store(ClassRoutineStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if ($result['status']) {
@@ -147,9 +143,8 @@ class ClassRoutineController extends Controller
         return view('backend.admin.academic.class-routine.edit', compact('data'));
     }
 
-    public function update(ClassRoutineUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        // dd($request->all());
         $result = $this->repo->update($request, $id);
         if ($result['status']) {
             return redirect()->route('class-routine.index')->with('success', $result['message']);

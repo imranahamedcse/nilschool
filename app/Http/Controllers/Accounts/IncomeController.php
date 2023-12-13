@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Accounts\Income\IncomeStoreRequest;
-use App\Http\Requests\Accounts\Income\IncomeUpdateRequest;
+use App\Http\Requests\Accounts\Income\StoreRequest;
+use App\Http\Requests\Accounts\Income\UpdateRequest;
 use App\Http\Repositories\Accounts\AccountHeadRepository;
 use App\Http\Repositories\Accounts\IncomeRepository;
 use Illuminate\Http\Request;
@@ -19,9 +19,9 @@ class IncomeController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->incomeRepo                  = $incomeRepo; 
-        $this->accountHeadRepository       = $accountHeadRepository; 
+        }
+        $this->incomeRepo                  = $incomeRepo;
+        $this->accountHeadRepository       = $accountHeadRepository;
     }
 
     public function index()
@@ -56,7 +56,7 @@ class IncomeController extends Controller
         return view('backend.admin.accounts.income.create', compact('data'));
     }
 
-    public function store(IncomeStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->incomeRepo->store($request);
         if($result['status']){
@@ -80,7 +80,7 @@ class IncomeController extends Controller
         return view('backend.admin.accounts.income.edit', compact('data'));
     }
 
-    public function update(IncomeUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->incomeRepo->update($request, $id);
         if($result['status']){
@@ -103,6 +103,6 @@ class IncomeController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

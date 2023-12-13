@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\WebsiteSetup\DepartmentContactRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\WebsiteSetup\DepartmentContact\DepartmentContactStoreRequest;
-use App\Http\Requests\WebsiteSetup\DepartmentContact\DepartmentContactUpdateRequest;
+use App\Http\Requests\WebsiteSetup\DepartmentContact\StoreRequest;
+use App\Http\Requests\WebsiteSetup\DepartmentContact\UpdateRequest;
 
 class DepartmentContactController extends Controller
 {
@@ -17,14 +17,14 @@ class DepartmentContactController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->depContactRepo                  = $depContactRepo;
     }
 
     public function index()
     {
         $data['dep_contact'] = $this->depContactRepo->getAll();
-        
+
         $title             = ___('settings.Department Contact');
         $data['headers']   = [
             "title"        => $title,
@@ -52,7 +52,7 @@ class DepartmentContactController extends Controller
         return view('backend.admin.website-setup.department-contact.create', compact('data'));
     }
 
-    public function store(DepartmentContactStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->depContactRepo->store($request);
         if($result['status']){
@@ -75,7 +75,7 @@ class DepartmentContactController extends Controller
         return view('backend.admin.website-setup.department-contact.edit', compact('data'));
     }
 
-    public function update(DepartmentContactUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->depContactRepo->update($request, $id);
         if($result['status']){
@@ -98,6 +98,6 @@ class DepartmentContactController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

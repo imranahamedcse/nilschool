@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dormitory;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dormitory\DormitoryStudent\StoreRequest;
-use App\Http\Requests\Dormitory\DormitoryStudent\UpdateRequest;
+use App\Http\Requests\Dormitory\Student\StoreRequest;
+use App\Http\Requests\Dormitory\Student\UpdateRequest;
 use App\Http\Interfaces\Academic\ClassesInterface;
 use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Interfaces\Dormitory\DormitoryInterface;

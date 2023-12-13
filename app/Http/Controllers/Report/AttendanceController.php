@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Report;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Attendance\AttendanceReportRequest;
-use App\Http\Requests\Attendance\AttendanceSearchRequest;
-use App\Http\Requests\Attendance\AttendanceStoreRequest;
 use App\Http\Requests\Report\AttendanceRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Attendance\AttendanceRepository;
+use App\Http\Repositories\Academic\AttendanceRepository;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -21,15 +18,15 @@ class AttendanceController extends Controller
 
     function __construct(
         AttendanceRepository   $repo,
-        ClassesRepository      $classRepo, 
-        ClassSetupRepository   $classSetupRepo, 
+        ClassesRepository      $classRepo,
+        ClassSetupRepository   $classSetupRepo,
     )
     {
-        $this->repo              = $repo;  
-        $this->classRepo         = $classRepo; 
-        $this->classSetupRepo    = $classSetupRepo; 
+        $this->repo              = $repo;
+        $this->classRepo         = $classRepo;
+        $this->classSetupRepo    = $classSetupRepo;
     }
-    
+
     public function report()
     {
         $data['title']              = ___('attendance.Attendance');
@@ -53,7 +50,7 @@ class AttendanceController extends Controller
         return view('backend.admin.report.attendance', compact('data'));
     }
 
-    
+
     public function reportSearch(AttendanceRequest $request)
     {
         $data['title']        = ___('attendance.Attendance');
@@ -68,7 +65,7 @@ class AttendanceController extends Controller
             "create-permission" => '',
             "create-route"      => '',
         ];
-        
+
         $data['request']      = $request;
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
@@ -86,12 +83,12 @@ class AttendanceController extends Controller
         $data['days']         = $results['days'];
         $data['attendances']  = $results['attendances'];
         $data['request']      = $request;
-        
+
         $pdf = PDF::loadView('backend.admin.report.attendancePDF', compact('data'));
 
         if($request->view == '0')
             $pdf->setPaper('A4', 'landscape');
-            
+
         return $pdf->download('attendance'.'_'.date('d_m_Y').'.pdf');
     }
 

@@ -3,23 +3,21 @@
 namespace App\Http\Controllers\Examination;
 
 use Illuminate\Http\Request;
-use App\Http\Interfaces\UserInterface;
+use App\Http\Interfaces\Staff\UserInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\SessionInterface;
+use App\Http\Interfaces\Settings\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
-use App\Http\Interfaces\Academic\ShiftInterface;
 use App\Http\Interfaces\Academic\ClassesInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
 use App\Http\Interfaces\Academic\SubjectInterface;
 use App\Http\Repositories\Academic\ClassRoomRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Academic\ExamRoutineRepository;
-use App\Http\Repositories\Examination\ExamTypeRepository;
+use App\Http\Repositories\Examination\ExamRoutineRepository;
 use App\Http\Repositories\Academic\TimeScheduleRepository;
 use App\Http\Repositories\Academic\SubjectAssignRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
-use App\Http\Requests\Academic\ExamRoutine\ExamRoutineStoreRequest;
-use App\Http\Requests\Academic\ExamRoutine\ExamRoutineUpdateRequest;
+use App\Http\Requests\Academic\Routine\StoreRequest;
+use App\Http\Requests\Academic\Routine\UpdateRequest;
 
 class ExamRoutineController extends Controller
 {
@@ -93,8 +91,7 @@ class ExamRoutineController extends Controller
 
         $data['classes']            = $this->classesRepo->assignedAll();
         $data['sections']           = $this->sectionRepo->all();
-        // dd($data['types']);
-        // $data['subjects']           = $this->subjectRepo->all();
+
         return view('backend.admin.examination.exam-routine.create', compact('data'));
     }
 
@@ -104,14 +101,13 @@ class ExamRoutineController extends Controller
 
 
         $data['subjects']        = $this->subjectAssignRepo->getSubjects($request);
-        // $data['subjects']        = $this->subjectRepo->all();
-        // $data['teachers']        = $this->staffRepo->all();
+
         $data['class_rooms']     = $this->classRoomRepo->all();
         $data['time_schedules']  = $this->timeScheduleRepo->allExamSchedule();
         return view('backend.admin.examination.exam-routine.add-exam-routine', compact('counter', 'data'))->render();
     }
 
-    public function store(ExamRoutineStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if ($result['status']) {
@@ -150,9 +146,8 @@ class ExamRoutineController extends Controller
         return view('backend.admin.examination.exam-routine.edit', compact('data'));
     }
 
-    public function update(ExamRoutineUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        // dd($request->all());
         $result = $this->repo->update($request, $id);
         if ($result['status']) {
             return redirect()->route('exam-routine.index')->with('success', $result['message']);

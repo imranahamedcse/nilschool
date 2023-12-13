@@ -4,17 +4,15 @@ namespace App\Http\Controllers\StudentInfo;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\GenderRepository;
-use App\Http\Repositories\ReligionRepository;
-use App\Http\Repositories\BloodGroupRepository;
+use App\Http\Repositories\Settings\GenderRepository;
+use App\Http\Repositories\Settings\ReligionRepository;
+use App\Http\Repositories\Settings\BloodGroupRepository;
 use App\Http\Repositories\Academic\ShiftRepository;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\SectionRepository;
 use App\Http\Repositories\StudentInfo\StudentRepository;
-use App\Http\Repositories\StudentInfo\ParentGuardianRepository;
-use App\Http\Requests\StudentInfo\Student\StudentStoreRequest;
-use App\Http\Requests\StudentInfo\Student\StudentUpdateRequest;
-use App\Http\Interfaces\StudentInfo\StudentCategoryInterface;
+use App\Http\Requests\StudentInfo\Student\StoreRequest;
+use App\Http\Requests\StudentInfo\Student\UpdateRequest;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
@@ -131,7 +129,6 @@ class StudentController extends Controller
     public function getStudents(Request $request)
     {
         $examAssign = $this->examAssignRepo->getExamAssign($request);
-        // dd($examAssign->mark_distribution);
         $students = $this->repo->getStudents($request);
         return view('backend.admin.student-info.student.students-list', compact('students','examAssign'))->render();
     }
@@ -140,7 +137,7 @@ class StudentController extends Controller
         return $this->repo->getStudents($request);
     }
 
-    public function store(StudentStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
 
@@ -182,7 +179,7 @@ class StudentController extends Controller
     }
 
 
-    public function update(StudentUpdateRequest $request)
+    public function update(UpdateRequest $request)
     {
         $result = $this->repo->update($request, $request->id);
 

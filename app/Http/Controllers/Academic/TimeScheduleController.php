@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Academic\TimeSchedule\TimeScheduleStoreRequest;
-use App\Http\Requests\Academic\TimeSchedule\TimeScheduleUpdateRequest;
+use App\Http\Requests\Academic\TimeSchedule\StoreRequest;
+use App\Http\Requests\Academic\TimeSchedule\UpdateRequest;
 use App\Http\Interfaces\Academic\TimeScheduleInterface;
 use Illuminate\Support\Facades\Schema;
 
@@ -50,11 +50,11 @@ class TimeScheduleController extends Controller
             ["title" => ___("common.Time schedule"), "route" => "time_schedule.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         return view('backend.admin.academic.time-schedule.create', compact('data'));
     }
 
-    public function store(TimeScheduleStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->timeRepo->store($request);
         if ($result['status']) {
@@ -77,7 +77,7 @@ class TimeScheduleController extends Controller
         return view('backend.admin.academic.time-schedule.edit', compact('data'));
     }
 
-    public function update(TimeScheduleUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->timeRepo->update($request, $id);
         if ($result['status']) {

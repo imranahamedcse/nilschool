@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\HR;
 
-use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Http\Interfaces\RoleInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Interfaces\PermissionInterface;
-use App\Http\Requests\Role\RoleStoreRequest;
-use App\Http\Requests\Role\RoleUpdateRequest;
+use App\Http\Interfaces\Settings\PermissionInterface;
+use App\Http\Interfaces\Staff\RoleInterface;
+use App\Http\Requests\Role\StoreRequest;
+use App\Http\Requests\Role\UpdateRequest;
 
 class RoleController extends Controller
 {
@@ -21,9 +20,9 @@ class RoleController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->role       = $role; 
-        $this->permission = $permission; 
+        }
+        $this->role       = $role;
+        $this->permission = $permission;
     }
 
     public function index()
@@ -58,7 +57,7 @@ class RoleController extends Controller
         return view('backend.admin.hr.roles.create', compact('data'));
     }
 
-    public function store(RoleStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->role->store($request);
         if($result){
@@ -76,13 +75,13 @@ class RoleController extends Controller
             ["title" => ___("common.Roles"), "route" => "roles.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['role']        = $this->role->show($id);
         $data['permissions'] = $this->permission->all();
         return view('backend.admin.hr.roles.edit', compact('data'));
     }
 
-    public function update(RoleUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->role->update($request, $id);
         if($result){
@@ -104,6 +103,6 @@ class RoleController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

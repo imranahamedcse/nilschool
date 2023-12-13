@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Models\BloodGroup;
 use Illuminate\Http\Request;
-use App\Http\Interfaces\BloodGroupInterface;
+use App\Http\Interfaces\Settings\BloodGroupInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BloodGroup\BloodGroupStoreRequest;
-use App\Http\Requests\BloodGroup\BloodGroupUpdateRequest;
+use App\Http\Requests\BloodGroup\StoreRequest;
+use App\Http\Requests\BloodGroup\UpdateRequest;
 use Illuminate\Support\Facades\Schema;
 
 class BloodGroupController extends Controller
@@ -19,8 +18,8 @@ class BloodGroupController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->bloodGroup       = $bloodGroup; 
+        }
+        $this->bloodGroup       = $bloodGroup;
     }
 
     public function index()
@@ -54,7 +53,7 @@ class BloodGroupController extends Controller
         return view('backend.admin.settings.blood_group.create', compact('data'));
     }
 
-    public function store(BloodGroupStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->bloodGroup->store($request);
         if($result['status']){
@@ -77,7 +76,7 @@ class BloodGroupController extends Controller
         return view('backend.admin.settings.blood_group.edit', compact('data'));
     }
 
-    public function update(BloodGroupUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->bloodGroup->update($request, $id);
         if($result['status']){
@@ -100,6 +99,6 @@ class BloodGroupController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;    
+        endif;
     }
 }

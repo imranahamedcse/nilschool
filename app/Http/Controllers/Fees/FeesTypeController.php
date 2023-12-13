@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Fees;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Fees\Type\FeesTypeStoreRequest;
-use App\Http\Requests\Fees\Type\FeesTypeUpdateRequest;
+use App\Http\Requests\Fees\Type\StoreRequest;
+use App\Http\Requests\Fees\Type\UpdateRequest;
 use App\Http\Interfaces\Fees\FeesTypeInterface;
 use Illuminate\Http\Request;
 
@@ -14,13 +14,13 @@ class FeesTypeController extends Controller
 
     function __construct(FeesTypeInterface $repo)
     {
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
-    
+
     public function index()
     {
         $data['fees_types'] = $this->repo->getPaginateAll();
-        
+
         $title             = ___('fees.fees_type');
         $data['headers']   = [
             "title"        => $title,
@@ -33,7 +33,7 @@ class FeesTypeController extends Controller
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.fees.type.index', compact('data'));
-        
+
     }
 
     public function create()
@@ -46,10 +46,10 @@ class FeesTypeController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.type.create', compact('data'));
-        
+
     }
 
-    public function store(FeesTypeStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -71,7 +71,7 @@ class FeesTypeController extends Controller
         return view('backend.admin.fees.type.edit', compact('data'));
     }
 
-    public function update(FeesTypeUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){
@@ -82,7 +82,7 @@ class FeesTypeController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
@@ -95,6 +95,6 @@ class FeesTypeController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

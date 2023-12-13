@@ -5,8 +5,8 @@ namespace App\Http\Controllers\StudentInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\StudentInfo\ParentGuardianRepository;
-use App\Http\Requests\StudentInfo\ParentGuardian\ParentGuardianStoreRequest;
-use App\Http\Requests\StudentInfo\ParentGuardian\ParentGuardianUpdateRequest;
+use App\Http\Requests\StudentInfo\ParentGuardian\StoreRequest;
+use App\Http\Requests\StudentInfo\ParentGuardian\UpdateRequest;
 
 class ParentGuardianController extends Controller
 {
@@ -14,9 +14,9 @@ class ParentGuardianController extends Controller
 
     function __construct(ParentGuardianRepository $repo)
     {
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
-    
+
     public function index()
     {
         $title             = ___('student_info.parent_list');
@@ -69,7 +69,7 @@ class ParentGuardianController extends Controller
         return response()->json($result);
     }
 
-    public function store(ParentGuardianStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -90,7 +90,7 @@ class ParentGuardianController extends Controller
         return view('backend.admin.student-info.parent.edit', compact('data'));
     }
 
-    public function update(ParentGuardianUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result){
@@ -113,6 +113,6 @@ class ParentGuardianController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

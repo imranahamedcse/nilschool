@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Settings;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\SettingInterface;
+use App\Http\Interfaces\Settings\SettingInterface;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\SettingStoreRequest;
-use App\Http\Requests\Settings\EmailSettingStoreRequest;
-use App\Http\Requests\GeneralSetting\StorageUpdateRequest;
-use App\Http\Requests\GeneralSetting\GeneralSettingStoreRequest;
+use App\Http\Requests\Setting\General\StoreRequest;
 use Illuminate\Support\Facades\Artisan;
 use PhpParser\Node\Stmt\TryCatch;
 
@@ -44,7 +41,7 @@ class SettingController extends Controller
         return view('backend.admin.settings.general-settings', compact('data'));
     }
 
-    public function updateGeneralSetting(GeneralSettingStoreRequest $request)
+    public function updateGeneralSetting(StoreRequest $request)
     {
         $result = $this->setting->updateGeneralSetting($request);
         if ($result) {
@@ -63,12 +60,12 @@ class SettingController extends Controller
             ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['data']  = $this->setting->getAll();
         return view('backend.admin.settings.mail-settings', compact('data'));
     }
 
-    public function updateMailSetting(EmailSettingStoreRequest $request)
+    public function updateMailSetting(StoreRequest $request)
     {
         $result = $this->setting->updateMailSetting($request);
 
@@ -94,7 +91,7 @@ class SettingController extends Controller
             ["title" => ___("common.Settings"), "route" => ""],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         return view('backend.admin.settings.task-schedulers', compact('data'));
     }
     public function resultGenerate()

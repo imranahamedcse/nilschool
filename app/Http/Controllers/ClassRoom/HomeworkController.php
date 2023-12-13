@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\ClassRoom\HomeworkRepository;
-use App\Http\Requests\ClassRoom\Homework\HomeworkStoreRequest;
-use App\Http\Requests\ClassRoom\Homework\HomeworkUpdateRequest;
+use App\Http\Requests\ClassRoom\Homework\StoreRequest;
+use App\Http\Requests\ClassRoom\Homework\UpdateRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\SectionRepository;
 use App\Http\Repositories\Academic\SubjectRepository;
@@ -21,18 +21,18 @@ class HomeworkController extends Controller
     private $subjectRepo;
 
     function __construct(
-        HomeworkRepository $repo, 
-        ClassSetupRepository $classSetupRepo, 
-        ClassesRepository $classRepo, 
-        SectionRepository $sectionRepo, 
+        HomeworkRepository $repo,
+        ClassSetupRepository $classSetupRepo,
+        ClassesRepository $classRepo,
+        SectionRepository $sectionRepo,
         SubjectRepository $subjectRepo,
         )
     {
         $this->repo               = $repo;
-        $this->classRepo          = $classRepo;  
-        $this->classSetupRepo     = $classSetupRepo;  
-        $this->sectionRepo        = $sectionRepo;  
-        $this->subjectRepo        = $subjectRepo; 
+        $this->classRepo          = $classRepo;
+        $this->classSetupRepo     = $classSetupRepo;
+        $this->sectionRepo        = $sectionRepo;
+        $this->subjectRepo        = $subjectRepo;
     }
 
     public function index()
@@ -76,12 +76,12 @@ class HomeworkController extends Controller
         return view('backend.admin.class_room.homework.index', compact('data'));
     }
 
-    
+
     public function show(Request $request)
     {
         $data['homework']        = $this->repo->show($request->id);
 
-        
+
         $request = new Request([
             'class'     => $data['homework']->classes_id,
             'section'   => $data['homework']->section_id,
@@ -106,7 +106,7 @@ class HomeworkController extends Controller
         return view('backend.admin.class_room.homework.create', compact('data'));
     }
 
-    public function store(HomeworkStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -145,7 +145,7 @@ class HomeworkController extends Controller
         return view('backend.admin.class_room.homework.edit', compact('data'));
     }
 
-    public function update(HomeworkUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Staff\Designation\DesignationStoreRequest;
-use App\Http\Requests\Staff\Designation\DesignationUpdateRequest;
+use App\Http\Requests\Staff\Designation\StoreRequest;
+use App\Http\Requests\Staff\Designation\UpdateRequest;
 use App\Http\Interfaces\Staff\DesignationInterface;
 use Illuminate\Http\Request;
 
@@ -14,13 +14,13 @@ class DesignationController extends Controller
 
     function __construct(DesignationInterface $repo)
     {
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
-    
+
     public function index()
     {
         $data['designations'] = $this->repo->getPaginateAll();
-        
+
         $title             = ___('staff.designation');
         $data['headers']   = [
             "title"        => $title,
@@ -33,7 +33,7 @@ class DesignationController extends Controller
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.hr.designation.index', compact('data'));
-        
+
     }
 
     public function create()
@@ -47,10 +47,10 @@ class DesignationController extends Controller
         ];
 
         return view('backend.admin.hr.designation.create', compact('data'));
-        
+
     }
 
-    public function store(DesignationStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -73,7 +73,7 @@ class DesignationController extends Controller
         return view('backend.admin.hr.designation.edit', compact('data'));
     }
 
-    public function update(DesignationUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result){
@@ -84,7 +84,7 @@ class DesignationController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
@@ -97,6 +97,6 @@ class DesignationController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

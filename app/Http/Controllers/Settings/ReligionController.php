@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Settings;
 
 use App\Models\Religion;
 use Illuminate\Http\Request;
-use App\Http\Interfaces\ReligionInterface;
+use App\Http\Interfaces\Settings\ReligionInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\Religion\ReligionStoreRequest;
-use App\Http\Requests\Religion\ReligionUpdateRequest;
+use App\Http\Requests\Religion\StoreRequest;
+use App\Http\Requests\Religion\UpdateRequest;
 
 class ReligionController extends Controller
 {
@@ -19,8 +19,8 @@ class ReligionController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->religion       = $religion; 
+        }
+        $this->religion       = $religion;
     }
 
     public function index()
@@ -54,7 +54,7 @@ class ReligionController extends Controller
         return view('backend.admin.settings.religion.create', compact('data'));
     }
 
-    public function store(ReligionStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->religion->store($request);
         if($result['status']){
@@ -77,7 +77,7 @@ class ReligionController extends Controller
         return view('backend.admin.settings.religion.edit', compact('data'));
     }
 
-    public function update(ReligionUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->religion->update($request, $id);
         if($result['status']){
@@ -100,6 +100,6 @@ class ReligionController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

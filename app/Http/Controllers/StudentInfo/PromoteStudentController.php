@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\StudentInfo;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StudentInfo\PromoteStudent\PromoteStudentSearchRequest;
-use App\Http\Requests\StudentInfo\PromoteStudent\PromoteStudentStoreRequest;
-use App\Http\Requests\StudentInfo\PromoteStudent\PromoteStudentUpdateRequest;
+use App\Http\Requests\StudentInfo\PromoteStudent\SearchRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\SessionRepository;
+use App\Http\Repositories\Settings\SessionRepository;
 use App\Http\Repositories\StudentInfo\PromoteStudentRepository;
 use Illuminate\Http\Request;
 
@@ -58,7 +56,7 @@ class PromoteStudentController extends Controller
 
     }
 
-    public function search(PromoteStudentSearchRequest $request)
+    public function search(SearchRequest $request)
     {
         $data['title']              = ___('student_info.Promote');
         $data['breadcrumbs']  = [
@@ -78,8 +76,7 @@ class PromoteStudentController extends Controller
         $students                   = $items['data']['students'];
         $results                    = $items['data']['results'];
 
-        // dd($data);
-
+        
         return view('backend.admin.student-info.promote-student.index', compact('data','students','results','request'));
     }
 
@@ -94,14 +91,7 @@ class PromoteStudentController extends Controller
             $data['sessions']           = $this->sessionRepo->all();
             $data['promoteClasses']     = $this->classSetupRepo->promoteClasses($request->promote_session);
             $data['promoteSections']    = $this->classSetupRepo->promoteSections($request->promote_session, $request->promote_class);
-            $items                   = $this->repo->search($request);
-            // return view('backend.admin.student-info.promote-student.index', [
-            //     'data'     => $data,
-            //     'students' => $items['data']['students'],
-            //     'results'  => $items['data']['results'],
-            //     'request'  => $request,
-            //     'message'  => $result['message']
-            // ])->with('success', $result['message']);
+
             return redirect()->route('promote_students.index')->with('success', $result['message']);
         }
         return redirect()->route('promote_students.index')->with('danger', $result['message'])->withInput();

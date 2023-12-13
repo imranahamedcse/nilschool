@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\ClassRoom\PostRepository;
-use App\Http\Requests\ClassRoom\Post\PostStoreRequest;
-use App\Http\Requests\ClassRoom\Post\PostUpdateRequest;
+use App\Http\Requests\ClassRoom\Post\StoreRequest;
+use App\Http\Requests\ClassRoom\Post\UpdateRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\SectionRepository;
 use App\Http\Repositories\Academic\SubjectRepository;
@@ -21,18 +21,18 @@ class PostController extends Controller
     private $subjectRepo;
 
     function __construct(
-        PostRepository $repo, 
-        ClassSetupRepository $classSetupRepo, 
-        ClassesRepository $classRepo, 
-        SectionRepository $sectionRepo, 
+        PostRepository $repo,
+        ClassSetupRepository $classSetupRepo,
+        ClassesRepository $classRepo,
+        SectionRepository $sectionRepo,
         SubjectRepository $subjectRepo,
         )
     {
         $this->repo               = $repo;
-        $this->classRepo          = $classRepo;  
-        $this->classSetupRepo     = $classSetupRepo;  
-        $this->sectionRepo        = $sectionRepo;  
-        $this->subjectRepo        = $subjectRepo; 
+        $this->classRepo          = $classRepo;
+        $this->classSetupRepo     = $classSetupRepo;
+        $this->sectionRepo        = $sectionRepo;
+        $this->subjectRepo        = $subjectRepo;
     }
 
     public function index()
@@ -76,12 +76,12 @@ class PostController extends Controller
         return view('backend.admin.class_room.post.index', compact('data'));
     }
 
-    
+
     public function show(Request $request)
     {
         $data['post']        = $this->repo->show($request->id);
 
-        
+
         $request = new Request([
             'class'     => $data['post']->classes_id,
             'section'   => $data['post']->section_id,
@@ -106,7 +106,7 @@ class PostController extends Controller
         return view('backend.admin.class_room.post.create', compact('data'));
     }
 
-    public function store(postStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -145,7 +145,7 @@ class PostController extends Controller
         return view('backend.admin.class_room.post.edit', compact('data'));
     }
 
-    public function update(postUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){

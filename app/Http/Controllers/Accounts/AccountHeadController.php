@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Accounts\Head\AccountHeadStoreRequest;
-use App\Http\Requests\Accounts\Head\AccountHeadUpdateRequest;
+use App\Http\Requests\Accounts\Head\StoreRequest;
+use App\Http\Requests\Accounts\Head\UpdateRequest;
 use App\Http\Repositories\Accounts\AccountHeadRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -18,8 +18,8 @@ class AccountHeadController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->headRepo       = $headRepo; 
+        }
+        $this->headRepo       = $headRepo;
     }
 
     public function index()
@@ -52,7 +52,7 @@ class AccountHeadController extends Controller
         return view('backend.admin.accounts.head.create', compact('data'));
     }
 
-    public function store(AccountHeadStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->headRepo->store($request);
         if($result['status']){
@@ -70,12 +70,12 @@ class AccountHeadController extends Controller
             ["title" => ___('account.Head'), "route" => "account_head.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['account_head']        = $this->headRepo->show($id);
         return view('backend.admin.accounts.head.edit', compact('data'));
     }
 
-    public function update(AccountHeadUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->headRepo->update($request, $id);
         if($result['status']){
@@ -98,6 +98,6 @@ class AccountHeadController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

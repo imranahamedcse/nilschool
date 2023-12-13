@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\WebsiteSetup\CounterRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\WebsiteSetup\Counter\CounterStoreRequest;
-use App\Http\Requests\WebsiteSetup\Counter\CounterUpdateRequest;
+use App\Http\Requests\WebsiteSetup\Counter\StoreRequest;
+use App\Http\Requests\WebsiteSetup\Counter\UpdateRequest;
 
 class CounterController extends Controller
 {
@@ -17,7 +17,7 @@ class CounterController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->counterRepo                  = $counterRepo;
     }
 
@@ -51,7 +51,7 @@ class CounterController extends Controller
         return view('backend.admin.website-setup.counter.create', compact('data'));
     }
 
-    public function store(CounterStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->counterRepo->store($request);
         if($result['status']){
@@ -74,7 +74,7 @@ class CounterController extends Controller
         return view('backend.admin.website-setup.counter.edit', compact('data'));
     }
 
-    public function update(CounterUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->counterRepo->update($request, $id);
         if($result['status']){
@@ -97,6 +97,6 @@ class CounterController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

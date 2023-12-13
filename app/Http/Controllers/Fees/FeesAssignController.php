@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Fees;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Fees\Assign\FeesAssignStoreRequest;
-use App\Http\Requests\Fees\Assign\FeesAssignUpdateRequest;
+use App\Http\Requests\Fees\Assign\StoreRequest;
+use App\Http\Requests\Fees\Assign\UpdateRequest;
 use App\Http\Interfaces\Fees\FeesTypeInterface;
 use App\Http\Interfaces\Fees\FeesGroupInterface;
 use App\Http\Interfaces\Fees\FeesAssignInterface;
@@ -13,7 +13,7 @@ use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Academic\SectionRepository;
 use App\Http\Repositories\Fees\FeesMasterRepository;
-use App\Http\Repositories\GenderRepository;
+use App\Http\Repositories\Settings\GenderRepository;
 use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
 use App\Http\Repositories\StudentInfo\StudentRepository;
 
@@ -90,7 +90,6 @@ class FeesAssignController extends Controller
         ];
 
         $data['classes']      = $this->classRepo->assignedAll();
-        // $data['sections']     = $this->sectionRepo->all();
         $data['sections']     = [];
         $data['fees_groups']  = $this->feesMasterRepo->allGroups();
         $data['genders']      = $this->genderRepo->all();
@@ -98,7 +97,7 @@ class FeesAssignController extends Controller
         return view('backend.admin.fees.assign.create', compact('data'));
     }
 
-    public function store(FeesAssignStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -116,10 +115,9 @@ class FeesAssignController extends Controller
             ["title" => ___("common.Fees assign"), "route" => "fees-assign.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['fees_assign']  = $this->repo->show($id);
         $data['classes']      = $this->classRepo->assignedAll();
-        // $data['sections']     = $this->sectionRepo->all();
         $data['sections']     = $this->classSetupRepo->getSections($data['fees_assign']->classes_id);
         $data['fees_groups']  = $this->feesMasterRepo->allGroups();
 
@@ -138,9 +136,8 @@ class FeesAssignController extends Controller
         return view('backend.admin.fees.assign.edit', compact('data'));
     }
 
-    public function update(FeesAssignUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        // dd($request->all());
         $result = $this->repo->update($request, $id);
         if($result['status']){
             return redirect()->route('fees-assign.index')->with('success', $result['message']);

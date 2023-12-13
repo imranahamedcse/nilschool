@@ -2,7 +2,7 @@
 
 namespace App\View\Composers;
 
-use App\Http\Repositories\Attendance\AttendanceRepository;
+use App\Http\Repositories\Academic\AttendanceRepository;
 use Illuminate\View\View;
 
 class AttendanceComposer

@@ -2,7 +2,7 @@
 
 namespace App\View\Composers;
 
-use App\Http\Interfaces\SessionInterface;
+use App\Http\Interfaces\Settings\SessionInterface;
 use Illuminate\View\View;
 use App\Models\Language;
 
@@ -11,7 +11,7 @@ class SessionComposer
     /**
      * The user Interface implementation.
      *
-     * @var \App\Http\Interfaces\SessionInterface
+     * @var \App\Http\Interfaces\Settings\SessionInterface
      */
     protected $session;
 

@@ -9,7 +9,6 @@ use App\Http\Interfaces\Academic\ShiftInterface;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\StudentInfo\StudentRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\Examination\ExamTypeRepository;
 use App\Http\Repositories\Report\MeritListRepository;
 use PDF;
@@ -30,14 +29,14 @@ class MeritListController extends Controller
         StudentRepository      $studentRepo,
         ExamTypeRepository     $examTypeRepo,
         ShiftInterface         $shiftRepo,
-    ) 
+    )
     {
         $this->repo               = $repo;
         $this->classRepo          = $classRepo;
         $this->classSetupRepo     = $classSetupRepo;
         $this->studentRepo        = $studentRepo;
         $this->examTypeRepo       = $examTypeRepo;
-        $this->shiftRepo          = $shiftRepo; 
+        $this->shiftRepo          = $shiftRepo;
     }
 
     public function index()
@@ -47,7 +46,7 @@ class MeritListController extends Controller
         $data['sections']           = [];
         $data['exam_types']         = [];
         $data['shifts']             = $this->shiftRepo->all();
-        
+
         $title             = ___('student_info.Merit List');
         $data['headers']   = [
             "title"        => $title,
@@ -72,7 +71,7 @@ class MeritListController extends Controller
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['exam_types']   = $this->examTypeRepo->all();
         $data['shifts']       = $this->shiftRepo->all();
-        
+
         $title             = ___('student_info.Merit List');
         $data['headers']   = [
             "title"        => $title,
@@ -85,12 +84,12 @@ class MeritListController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         return view('backend.admin.report.merit-list', compact('data'));
     }
 
 
-    
+
     public function generatePDF($type, $class, $section)
     {
         $request = new Request([
@@ -100,7 +99,7 @@ class MeritListController extends Controller
         ]);
 
         $data['resultData']   = $this->repo->searchPDF($request);
-        
+
         $pdf = PDF::loadView('backend.admin.report.merit-listPDF', compact('data'));
         return $pdf->download('merit_list'.'_'.date('d_m_Y').'.pdf');
     }

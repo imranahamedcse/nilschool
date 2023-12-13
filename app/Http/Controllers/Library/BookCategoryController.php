@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Library\BookCategory\BookCategoryStoreRequest;
-use App\Http\Requests\Library\BookCategory\BookCategoryUpdateRequest;
+use App\Http\Requests\Library\BookCategory\StoreRequest;
+use App\Http\Requests\Library\BookCategory\UpdateRequest;
 use App\Http\Repositories\Library\BookCategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -50,7 +50,7 @@ class BookCategoryController extends Controller
         return view('backend.admin.library.book-category.create', compact('data'));
     }
 
-    public function store(BookCategoryStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
         if ($result['status']) {
@@ -72,7 +72,7 @@ class BookCategoryController extends Controller
         return view('backend.admin.library.book-category.edit', compact('data'));
     }
 
-    public function update(BookCategoryUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
         if ($result['status']) {

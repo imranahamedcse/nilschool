@@ -15,8 +15,8 @@ use App\Http\Interfaces\Academic\SubjectAssignInterface;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Examination\ExamTypeRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
-use App\Http\Requests\Examination\Assign\ExamAssignStoreRequest;
-use App\Http\Requests\Examination\Assign\ExamAssignUpdateRequest;
+use App\Http\Requests\Examination\Assign\StoreRequest;
+use App\Http\Requests\Examination\Assign\UpdateRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 
 class ExamAssignController extends Controller
@@ -112,20 +112,17 @@ class ExamAssignController extends Controller
 
     public function marksDistribution(Request $request)
     {
-        // $subjectArr   = Subject::pluck('name','id')->toArray();
         return view('backend.admin.examination.exam-assign.marks_distribute', compact('request'))->render();
     }
 
     public function subjectMarksDistribution(Request $request)
     {
-        // return $request->all();
         $subjectArr   = Subject::pluck('name', 'id')->toArray();
         return view('backend.admin.examination.exam-assign.subject_marks_distribute', compact('subjectArr', 'request'))->render();
     }
 
-    public function store(ExamAssignStoreRequest $request)
+    public function store(StoreRequest $request)
     {
-        // dd($request->all());
         $result = $this->repo->store($request);
         if ($result['status']) {
             return redirect()->route('exam-assign.index')->with('success', $result['message']);
@@ -160,7 +157,7 @@ class ExamAssignController extends Controller
         return view('backend.admin.examination.exam-assign.edit', compact('data'));
     }
 
-    public function update(ExamAssignUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if ($result['status']) {

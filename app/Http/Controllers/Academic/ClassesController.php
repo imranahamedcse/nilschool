@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Academic\Classes\ClassesStoreRequest;
-use App\Http\Requests\Academic\Classes\ClassesUpdateRequest;
 use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Requests\Academic\Classes\StoreRequest;
+use App\Http\Requests\Academic\Classes\UpdateRequest;
 use Illuminate\Support\Facades\Schema;
 
 class ClassesController extends Controller
@@ -18,8 +18,8 @@ class ClassesController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->classes       = $classes; 
+        }
+        $this->classes       = $classes;
     }
 
     public function index()
@@ -51,7 +51,7 @@ class ClassesController extends Controller
         return view('backend.admin.academic.class.create', compact('data'));
     }
 
-    public function store(ClassesStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->classes->store($request);
         if($result['status']){
@@ -73,7 +73,7 @@ class ClassesController extends Controller
         return view('backend.admin.academic.class.edit', compact('data'));
     }
 
-    public function update(ClassesUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->classes->update($request, $id);
         if($result['status']){
@@ -96,6 +96,6 @@ class ClassesController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;   
+        endif;
     }
 }

@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Attendance\AttendanceReportRequest;
 use App\Http\Requests\Attendance\AttendanceSearchRequest;
-use App\Http\Requests\Attendance\AttendanceStoreRequest;
-use App\Http\Requests\Report\AttendanceRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Attendance\AttendanceRepository;
+use App\Http\Repositories\Academic\AttendanceRepository;
+use App\Http\Requests\Academic\Attendance\SearchRequest;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -21,15 +19,15 @@ class AttendanceController extends Controller
 
     function __construct(
         AttendanceRepository   $repo,
-        ClassesRepository      $classRepo, 
-        ClassSetupRepository   $classSetupRepo, 
+        ClassesRepository      $classRepo,
+        ClassSetupRepository   $classSetupRepo,
     )
     {
-        $this->repo              = $repo;  
-        $this->classRepo         = $classRepo; 
-        $this->classSetupRepo    = $classSetupRepo; 
+        $this->repo              = $repo;
+        $this->classRepo         = $classRepo;
+        $this->classSetupRepo    = $classSetupRepo;
     }
-    
+
     public function index()
     {
         $data['title']              = ___('attendance.Attendance');
@@ -59,7 +57,7 @@ class AttendanceController extends Controller
         return back()->with('danger', $result['message']);
     }
 
-    public function searchStudents(AttendanceSearchRequest $request)
+    public function searchStudents(SearchRequest $request)
     {
         $data = $this->repo->searchStudents($request);
 

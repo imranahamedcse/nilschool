@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Report\ExamRoutineRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Requests\Report\ExamRoutine\SearchRequest;
 use App\Http\Repositories\Academic\TimeScheduleRepository;
@@ -30,7 +29,7 @@ class ExamRoutineController extends Controller
         ClassSetupRepository   $classSetupRepo,
         TimeScheduleRepository $timeScheduleRepo,
         ExamTypeRepository     $typeRepo,
-    ) 
+    )
     {
         $this->repo               = $repo;
         $this->examAssignRepo     = $examAssignRepo;
@@ -54,7 +53,7 @@ class ExamRoutineController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['exam_types']         = [];
@@ -76,7 +75,7 @@ class ExamRoutineController extends Controller
             ["title" => ___("common.Report"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
         $data['request']      = $request;
@@ -97,7 +96,7 @@ class ExamRoutineController extends Controller
 
         $data['result']       = $this->repo->search($request);
         $data['time']         = $this->repo->time($request);
-        
+
         $pdf = PDF::loadView('backend.admin.report.exam-routinePDF', compact('data'));
         return $pdf->download('exam_routine'.'_'.date('d_m_Y').'.pdf');
     }

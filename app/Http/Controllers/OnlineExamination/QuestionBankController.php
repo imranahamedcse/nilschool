@@ -5,7 +5,6 @@ namespace App\Http\Controllers\OnlineExamination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Interfaces\OnlineExamination\QuestionBankInterface;
 use App\Http\Requests\OnlineExamination\QuestionBank\StoreRequest;
 use App\Http\Requests\OnlineExamination\QuestionBank\UpdateRequest;
@@ -24,9 +23,9 @@ class QuestionBankController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->groupRepo  = $groupRepo;
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
 
     public function index()
@@ -47,7 +46,7 @@ class QuestionBankController extends Controller
         return view('backend.admin.online-examination.question-bank.index', compact('data'));
     }
 
-    
+
     public function search(Request $request)
     {
         $title         = ___('online-examination.question_bank');
@@ -82,7 +81,6 @@ class QuestionBankController extends Controller
 
     public function store(StoreRequest $request)
     {
-        // dd($request->all());
         $result = $this->repo->store($request);
         if($result['status']){
             return redirect()->route('question-bank.index')->with('success', $result['message']);
@@ -107,7 +105,6 @@ class QuestionBankController extends Controller
 
     public function update(UpdateRequest $request, $id)
     {
-        // dd($request->all());
         $result = $this->repo->update($request, $id);
         if($result['status']){
             return redirect()->route('question-bank.index')->with('success', $result['message']);
@@ -129,7 +126,7 @@ class QuestionBankController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;    
+        endif;
     }
 
     public function getQuestionGroup(Request $request)

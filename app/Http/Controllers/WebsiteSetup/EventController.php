@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\WebsiteSetup\EventRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\WebsiteSetup\Event\EventStoreRequest;
-use App\Http\Requests\WebsiteSetup\Event\EventUpdateRequest;
+use App\Http\Requests\WebsiteSetup\Event\StoreRequest;
+use App\Http\Requests\WebsiteSetup\Event\UpdateRequest;
 
 class EventController extends Controller
 {
@@ -52,7 +52,7 @@ class EventController extends Controller
         return view('backend.admin.website-setup.event.create', compact('data'));
     }
 
-    public function store(EventStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->eventRepo->store($request);
         if ($result['status']) {
@@ -75,7 +75,7 @@ class EventController extends Controller
         return view('backend.admin.website-setup.event.edit', compact('data'));
     }
 
-    public function update(EventUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->eventRepo->update($request, $id);
         if ($result['status']) {

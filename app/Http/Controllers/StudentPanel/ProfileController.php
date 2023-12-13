@@ -4,7 +4,7 @@ namespace App\Http\Controllers\StudentPanel;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Interfaces\UserInterface;
+use App\Http\Interfaces\Staff\UserInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +20,7 @@ class ProfileController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->user       = $userInterface;
     }
 

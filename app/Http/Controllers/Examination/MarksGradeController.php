@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Examination;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Examination\MarksGradeRepository;
-use App\Http\Requests\Examination\MarksGrade\MarksGradeStoreRequest;
-use App\Http\Requests\Examination\MarksGrade\MarksGradeUpdateRequest;
+use App\Http\Requests\Examination\MarksGrade\StoreRequest;
+use App\Http\Requests\Examination\MarksGrade\UpdateRequest;
 
 class MarksGradeController extends Controller
 {
@@ -20,7 +20,7 @@ class MarksGradeController extends Controller
     public function index()
     {
         $data['marks_grades'] = $this->repo->getPaginateAll();
-        
+
         $title             = ___('examination.marks_grade');
         $data['headers']   = [
             "title"        => $title,
@@ -49,7 +49,7 @@ class MarksGradeController extends Controller
 
     }
 
-    public function store(MarksGradeStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -72,7 +72,7 @@ class MarksGradeController extends Controller
         return view('backend.admin.examination.marks-grade.edit', compact('data'));
     }
 
-    public function update(MarksGradeUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){

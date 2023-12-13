@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Library\MemberCategory\MemberCategoryStoreRequest;
-use App\Http\Requests\Library\MemberCategory\MemberCategoryUpdateRequest;
+use App\Http\Requests\Library\MemberCategory\StoreRequest;
+use App\Http\Requests\Library\MemberCategory\UpdateRequest;
 use App\Http\Repositories\Library\MemberCategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ class MemberCategoryController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->Repo                  = $Repo;
     }
 
@@ -52,7 +52,7 @@ class MemberCategoryController extends Controller
         return view('backend.admin.library.member-category.create', compact('data'));
     }
 
-    public function store(MemberCategoryStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
         if($result['status']){
@@ -75,7 +75,7 @@ class MemberCategoryController extends Controller
         return view('backend.admin.library.member-category.edit', compact('data'));
     }
 
-    public function update(MemberCategoryUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
         if($result['status']){
@@ -98,6 +98,6 @@ class MemberCategoryController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

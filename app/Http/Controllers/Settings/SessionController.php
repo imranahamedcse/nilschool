@@ -6,10 +6,10 @@ use App\Models\Session;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\SessionInterface;
+use App\Http\Interfaces\Settings\SessionInterface;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\Session\SessionStoreRequest;
-use App\Http\Requests\Session\SessionUpdateRequest;
+use App\Http\Requests\Session\StoreRequest;
+use App\Http\Requests\Session\UpdateRequest;
 
 class SessionController extends Controller
 {
@@ -55,7 +55,7 @@ class SessionController extends Controller
         return view('backend.admin.settings.session.create', compact('data'));
     }
 
-    public function store(SessionStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->session->store($request);
         if($result['status']){
@@ -78,7 +78,7 @@ class SessionController extends Controller
         return view('backend.admin.settings.session.edit', compact('data'));
     }
 
-    public function update(SessionUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->session->update($request, $id);
         if($result['status']){

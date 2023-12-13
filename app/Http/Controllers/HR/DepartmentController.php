@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Staff\Department\DepartmentStoreRequest;
-use App\Http\Requests\Staff\Department\DepartmentUpdateRequest;
+use App\Http\Requests\Staff\Department\StoreRequest;
+use App\Http\Requests\Staff\Department\UpdateRequest;
 use App\Http\Interfaces\Staff\DepartmentInterface;
 use Illuminate\Http\Request;
 
@@ -14,13 +14,13 @@ class DepartmentController extends Controller
 
     function __construct(DepartmentInterface $repo)
     {
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
-    
+
     public function index()
     {
         $data['departments'] = $this->repo->getPaginateAll();
-        
+
         $title             = ___('staff.department');
         $data['headers']   = [
             "title"        => $title,
@@ -46,10 +46,10 @@ class DepartmentController extends Controller
         ];
 
         return view('backend.admin.hr.department.create', compact('data'));
-        
+
     }
 
-    public function store(DepartmentStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -67,12 +67,12 @@ class DepartmentController extends Controller
             ["title" => ___("common.Department"), "route" => "department.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['department']        = $this->repo->show($id);
         return view('backend.admin.hr.department.edit', compact('data'));
     }
 
-    public function update(DepartmentUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result){
@@ -83,7 +83,7 @@ class DepartmentController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
@@ -96,6 +96,6 @@ class DepartmentController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 }

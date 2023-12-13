@@ -4,8 +4,8 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\WebsiteSetup\Gallery\GalleryStoreRequest;
-use App\Http\Requests\WebsiteSetup\Gallery\GalleryUpdateRequest;
+use App\Http\Requests\WebsiteSetup\Gallery\StoreRequest;
+use App\Http\Requests\WebsiteSetup\Gallery\UpdateRequest;
 use App\Http\Repositories\WebsiteSetup\GalleryCategoryRepository;
 use App\Http\Repositories\WebsiteSetup\GalleryRepository;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +18,7 @@ class GalleryController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->Repo  = $Repo;
         $this->categoryRepo  = $categoryRepo;
     }
@@ -50,12 +50,12 @@ class GalleryController extends Controller
             ["title" => ___("common.Images"), "route" => "gallery.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.website-setup.gallery.create', compact('data'));
     }
 
-    public function store(GalleryStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
         if($result['status']){
@@ -73,13 +73,13 @@ class GalleryController extends Controller
             ["title" => ___("common.Images"), "route" => "gallery.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['gallery']     = $this->Repo->show($id);
         $data['categories']  = $this->categoryRepo->all();
         return view('backend.admin.website-setup.gallery.edit', compact('data'));
     }
 
-    public function update(GalleryUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
         if($result['status']){
@@ -102,6 +102,6 @@ class GalleryController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

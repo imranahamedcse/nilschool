@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
-use App\Http\Interfaces\UserInterface;
+use App\Http\Interfaces\Staff\UserInterface;
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\SessionInterface;
+use App\Http\Interfaces\Settings\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
 use App\Http\Interfaces\Academic\ShiftInterface;
 use App\Http\Interfaces\Academic\ClassesInterface;
@@ -14,8 +14,8 @@ use App\Http\Interfaces\Academic\SubjectInterface;
 use App\Models\Academic\SubjectAssignChildren;
 use App\Http\Interfaces\Academic\SubjectAssignInterface;
 use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Requests\Academic\SubjectAssign\SubjectAssignStoreRequest;
-use App\Http\Requests\Academic\SubjectAssign\SubjectAssignUpdateRequest;
+use App\Http\Requests\Academic\SubjectAssign\StoreRequest;
+use App\Http\Requests\Academic\SubjectAssign\UpdateRequest;
 
 class SubjectAssignController extends Controller
 {
@@ -82,7 +82,6 @@ class SubjectAssignController extends Controller
         $data['classes']            = $this->classesRepo->assignedAll();
         $data['sections']           = [];
         $data['shifts']             = $this->shiftRepo->all();
-        // $data['subjects']           = $this->subjectRepo->all();
         return view('backend.admin.academic.assign-subject.create', compact('data'));
     }
 
@@ -94,7 +93,7 @@ class SubjectAssignController extends Controller
         return view('backend.admin.academic.assign-subject.add-subject-teacher', compact('counter', 'data'))->render();
     }
 
-    public function store(SubjectAssignStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if ($result['status']) {
@@ -119,7 +118,7 @@ class SubjectAssignController extends Controller
 
     public function edit($id)
     {
-        
+
         $data                       = $this->repo->show($id);
         $data['title']              = ___('academic.Edit subject assign');
         $data['breadcrumbs']  = [
@@ -139,16 +138,11 @@ class SubjectAssignController extends Controller
         $data['teachers']           = $this->staffRepo->all();
         $data['all_subject_assign'] = $data['subject_assign']->subjectTeacher->pluck('subject_id')->toArray();
 
-        // dd($data['redirect']);
-        // if ($data['redirect'])
-        //     return redirect()->route('assign-subject.index')->with('danger', ___('academic.You cannot edit this'));
-
         return view('backend.admin.academic.assign-subject.edit', compact('data'));
     }
 
-    public function update(SubjectAssignUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
-        // dd($request->all());
         $result = $this->repo->update($request, $id);
         if ($result['status']) {
             return redirect()->route('assign-subject.index')->with('success', $result['message']);

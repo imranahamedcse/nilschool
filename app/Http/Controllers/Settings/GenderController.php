@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Settings;
 
 use App\Models\Gender;
 use Illuminate\Http\Request;
-use App\Http\Interfaces\GenderInterface;
+use App\Http\Interfaces\Settings\GenderInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\Gender\GenderStoreRequest;
-use App\Http\Requests\Gender\GenderUpdateRequest;
+use App\Http\Requests\Gender\StoreRequest;
+use App\Http\Requests\Gender\UpdateRequest;
 
 class GenderController extends Controller
 {
@@ -19,8 +19,8 @@ class GenderController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->gender       = $gender; 
+        }
+        $this->gender       = $gender;
     }
 
     public function index()
@@ -54,7 +54,7 @@ class GenderController extends Controller
         return view('backend.admin.settings.gender.create', compact('data'));
     }
 
-    public function store(GenderStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->gender->store($request);
         if($result['status']){
@@ -77,7 +77,7 @@ class GenderController extends Controller
         return view('backend.admin.settings.gender.edit', compact('data'));
     }
 
-    public function update(GenderUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->gender->update($request, $id);
         if($result['status']){
@@ -100,6 +100,6 @@ class GenderController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;    
+        endif;
     }
 }

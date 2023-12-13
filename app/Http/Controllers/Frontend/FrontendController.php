@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\GenderRepository;
+use App\Http\Repositories\Settings\GenderRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Repositories\ReligionRepository;
+use App\Http\Repositories\Settings\ReligionRepository;
 use App\Http\Repositories\Frontend\FrontendRepository;
 use App\Http\Requests\Frontend\SearchResultRequest;
 use App\Http\Repositories\Report\MarksheetRepository;
@@ -30,9 +30,9 @@ class FrontendController extends Controller
         StudentRepository      $studentRepo,
     )
     {
-        if (!Schema::hasTable('settings') && !Schema::hasTable('users')) 
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users'))
             abort(400);
-        $this->repo         = $repo; 
+        $this->repo         = $repo;
         $this->religionRepo = $religionRepo;
         $this->genderRepo   = $genderRepo;
         $this->marksheetRepo      = $marksheetRepo;
@@ -71,7 +71,7 @@ class FrontendController extends Controller
         $data['result'] = null;
         return view('frontend.result', compact('data'));
     }
-    
+
     public function searchResult(SearchResultRequest $request){
         $data = $this->repo->searchResult($request);
         if(!$data)
@@ -95,7 +95,7 @@ class FrontendController extends Controller
 
         $data['student']      = $this->studentRepo->show($request->student);
         $data['resultData']   = $this->marksheetRepo->search($request);
-        
+
         $pdf = PDF::loadView('backend.report.marksheetPDF', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
     }
@@ -152,12 +152,12 @@ class FrontendController extends Controller
     public function storeOnlineAdmission(Request $request) {
         return $this->repo->onlineAdmission($request);
     }
-    
+
     public function storeContact(Request $request)
     {
         return $this->repo->contact($request);
     }
-    
+
     public function storeSubscribe(Request $request)
     {
         return $this->repo->subscribe($request);

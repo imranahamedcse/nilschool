@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Accounts\Expense\ExpenseStoreRequest;
-use App\Http\Requests\Accounts\Expense\ExpenseUpdateRequest;
+use App\Http\Requests\Accounts\Expense\StoreRequest;
+use App\Http\Requests\Accounts\Expense\UpdateRequest;
 use App\Http\Repositories\Accounts\AccountHeadRepository;
 use App\Http\Repositories\Accounts\ExpenseRepository;
 use Illuminate\Http\Request;
@@ -19,9 +19,9 @@ class ExpenseController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->expenseRepo                 = $expenseRepo; 
-        $this->accountHeadRepository       = $accountHeadRepository; 
+        }
+        $this->expenseRepo                 = $expenseRepo;
+        $this->accountHeadRepository       = $accountHeadRepository;
     }
 
     public function index()
@@ -56,7 +56,7 @@ class ExpenseController extends Controller
         return view('backend.admin.accounts.expense.create', compact('data'));
     }
 
-    public function store(ExpenseStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->expenseRepo->store($request);
         if($result['status']){
@@ -80,7 +80,7 @@ class ExpenseController extends Controller
         return view('backend.admin.accounts.expense.edit', compact('data'));
     }
 
-    public function update(ExpenseUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->expenseRepo->update($request, $id);
         if($result['status']){
@@ -103,6 +103,6 @@ class ExpenseController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

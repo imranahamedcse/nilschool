@@ -4,8 +4,8 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\WebsiteSetup\GalleryCategory\GalleryCategoryStoreRequest;
-use App\Http\Requests\WebsiteSetup\GalleryCategory\GalleryCategoryUpdateRequest;
+use App\Http\Requests\WebsiteSetup\GalleryCategory\StoreRequest;
+use App\Http\Requests\WebsiteSetup\GalleryCategory\UpdateRequest;
 use App\Http\Repositories\WebsiteSetup\GalleryCategoryRepository;
 use Illuminate\Support\Facades\Schema;
 
@@ -52,7 +52,7 @@ class GalleryCategoryController extends Controller
         return view('backend.admin.website-setup.gallery-category.create', compact('data'));
     }
 
-    public function store(GalleryCategoryStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
         if($result['status']){
@@ -75,7 +75,7 @@ class GalleryCategoryController extends Controller
         return view('backend.admin.website-setup.gallery-category.edit', compact('data'));
     }
 
-    public function update(GalleryCategoryUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
         if($result['status']){

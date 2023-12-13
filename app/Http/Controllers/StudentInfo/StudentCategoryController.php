@@ -5,8 +5,8 @@ namespace App\Http\Controllers\StudentInfo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
-use App\Http\Requests\StudentInfo\StudentCategory\StudentCategoryStoreRequest;
-use App\Http\Requests\StudentInfo\StudentCategory\StudentCategoryUpdateRequest;
+use App\Http\Requests\StudentInfo\Category\StoreRequest;
+use App\Http\Requests\StudentInfo\Category\UpdateRequest;
 
 class StudentCategoryController extends Controller
 {
@@ -14,9 +14,9 @@ class StudentCategoryController extends Controller
 
     function __construct(StudentCategoryRepository $repo)
     {
-        $this->repo       = $repo; 
+        $this->repo       = $repo;
     }
-    
+
     public function index()
     {
         $title             = ___('student_info.Categories');
@@ -32,7 +32,7 @@ class StudentCategoryController extends Controller
         ];
         $data['student_categories'] = $this->repo->getPaginateAll();
         return view('backend.admin.student-info.student-category.index', compact('data'));
-        
+
     }
 
     public function create()
@@ -47,7 +47,7 @@ class StudentCategoryController extends Controller
         return view('backend.admin.student-info.student-category.create', compact('data'));
     }
 
-    public function store(StudentCategoryStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -59,7 +59,7 @@ class StudentCategoryController extends Controller
     public function edit($id)
     {
         $data['student_category']        = $this->repo->show($id);
-        
+
         $data['title']       = ___('student_info.Edit category');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -70,7 +70,7 @@ class StudentCategoryController extends Controller
         return view('backend.admin.student-info.student-category.edit', compact('data'));
     }
 
-    public function update(StudentCategoryUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result){
@@ -81,7 +81,7 @@ class StudentCategoryController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
@@ -94,7 +94,7 @@ class StudentCategoryController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 
 

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\WebsiteSetup\NewsRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\WebsiteSetup\News\NewsStoreRequest;
-use App\Http\Requests\WebsiteSetup\News\NewsUpdateRequest;
+use App\Http\Requests\WebsiteSetup\News\StoreRequest;
+use App\Http\Requests\WebsiteSetup\News\UpdateRequest;
 
 class NewsController extends Controller
 {
@@ -17,8 +17,8 @@ class NewsController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->newsRepo                  = $newsRepo;
+        }
+        $this->newsRepo = $newsRepo;
     }
 
     public function index()
@@ -52,7 +52,7 @@ class NewsController extends Controller
         return view('backend.admin.website-setup.news.create', compact('data'));
     }
 
-    public function store(NewsStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->newsRepo->store($request);
         if($result['status']){
@@ -75,7 +75,7 @@ class NewsController extends Controller
         return view('backend.admin.website-setup.news.edit', compact('data'));
     }
 
-    public function update(NewsUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->newsRepo->update($request, $id);
         if($result['status']){
@@ -98,6 +98,6 @@ class NewsController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

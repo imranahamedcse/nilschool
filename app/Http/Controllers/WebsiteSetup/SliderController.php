@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\WebsiteSetup\SliderRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\WebsiteSetup\Slider\SliderStoreRequest;
-use App\Http\Requests\WebsiteSetup\Slider\SliderUpdateRequest;
+use App\Http\Requests\WebsiteSetup\Slider\StoreRequest;
+use App\Http\Requests\WebsiteSetup\Slider\UpdateRequest;
 
 class SliderController extends Controller
 {
@@ -17,7 +17,7 @@ class SliderController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->sliderRepo                  = $sliderRepo;
     }
 
@@ -52,7 +52,7 @@ class SliderController extends Controller
         return view('backend.admin.website-setup.slider.create', compact('data'));
     }
 
-    public function store(SliderStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->sliderRepo->store($request);
         if($result['status']){
@@ -75,7 +75,7 @@ class SliderController extends Controller
         return view('backend.admin.website-setup.slider.edit', compact('data'));
     }
 
-    public function update(SliderUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->sliderRepo->update($request, $id);
         if($result['status']){
@@ -98,6 +98,6 @@ class SliderController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

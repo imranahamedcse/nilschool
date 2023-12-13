@@ -5,9 +5,6 @@ namespace App\Http\Controllers\WebsiteSetup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Repositories\WebsiteSetup\SliderRepository;
-use App\Http\Requests\WebsiteSetup\Slider\SliderStoreRequest;
-use App\Http\Requests\WebsiteSetup\Slider\SliderUpdateRequest;
 use App\Http\Repositories\WebsiteSetup\SectionsRepository;
 
 class SectionsController extends Controller
@@ -18,7 +15,7 @@ class SectionsController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->sectionsRepo                  = $sectionsRepo;
     }
 

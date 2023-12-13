@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Fees;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Fees\Master\FeesMasterStoreRequest;
-use App\Http\Requests\Fees\Master\FeesMasterUpdateRequest;
+use App\Http\Requests\Fees\Master\StoreRequest;
+use App\Http\Requests\Fees\Master\UpdateRequest;
 use App\Http\Interfaces\Fees\FeesGroupInterface;
 use App\Http\Interfaces\Fees\FeesMasterInterface;
 use App\Http\Interfaces\Fees\FeesTypeInterface;
@@ -65,9 +65,8 @@ class FeesMasterController extends Controller
         return view('backend.admin.fees.master.create', compact('data'));
     }
 
-    public function store(FeesMasterStoreRequest $request)
+    public function store(StoreRequest $request)
     {
-        // dd($request->all());
         $result = $this->repo->store($request);
         if ($result['status']) {
             return redirect()->route('fees-master.index')->with('success', $result['message']);
@@ -84,15 +83,15 @@ class FeesMasterController extends Controller
             ["title" => ___("common.Fees master"), "route" => "fees-master.index"],
             ["title" => $data['title'], "route" => ""]
         ];
-        
+
         $data['fees_master']  = $this->repo->show($id);
         $data['fees_types']   = $this->type->all();
         $data['fees_groups']  = $this->group->all();
-        // dd($data);
+
         return view('backend.admin.fees.master.edit', compact('data'));
     }
 
-    public function update(FeesMasterUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if ($result['status']) {

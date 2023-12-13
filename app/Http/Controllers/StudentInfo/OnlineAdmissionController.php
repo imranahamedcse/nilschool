@@ -4,10 +4,10 @@ namespace App\Http\Controllers\StudentInfo;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StudentInfo\OnlineAdmission\OnlineAdmissionRequest;
-use App\Http\Repositories\GenderRepository;
-use App\Http\Repositories\ReligionRepository;
-use App\Http\Repositories\BloodGroupRepository;
+use App\Http\Requests\StudentInfo\OnlineAdmission\StoreRequest;
+use App\Http\Repositories\Settings\GenderRepository;
+use App\Http\Repositories\Settings\ReligionRepository;
+use App\Http\Repositories\Settings\BloodGroupRepository;
 use App\Http\Repositories\Academic\ShiftRepository;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\SectionRepository;
@@ -115,7 +115,7 @@ class OnlineAdmissionController extends Controller
         return view('backend.admin.student-info.online-admission.edit', compact('data'));
     }
 
-    public function store(OnlineAdmissionRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
 

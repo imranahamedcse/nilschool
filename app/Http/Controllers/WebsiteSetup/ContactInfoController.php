@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\WebsiteSetup\ContactInfoRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\WebsiteSetup\ContactInfo\ContactInfoStoreRequest;
-use App\Http\Requests\WebsiteSetup\ContactInfo\ContactInfoUpdateRequest;
+use App\Http\Requests\WebsiteSetup\ContactInfo\StoreRequest;
+use App\Http\Requests\WebsiteSetup\ContactInfo\UpdateRequest;
 
 class ContactInfoController extends Controller
 {
@@ -17,7 +17,7 @@ class ContactInfoController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->contactInfoRepo                  = $contactInfoRepo;
     }
 
@@ -52,7 +52,7 @@ class ContactInfoController extends Controller
         return view('backend.admin.website-setup.contact-info.create', compact('data'));
     }
 
-    public function store(ContactInfoStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->contactInfoRepo->store($request);
         if($result['status']){
@@ -75,7 +75,7 @@ class ContactInfoController extends Controller
         return view('backend.admin.website-setup.contact-info.edit', compact('data'));
     }
 
-    public function update(ContactInfoUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->contactInfoRepo->update($request, $id);
         if($result['status']){
@@ -98,6 +98,6 @@ class ContactInfoController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

@@ -9,7 +9,7 @@ use App\Http\Requests\Academic\ClassSetup\ClassSetupUpdateRequest;
 use App\Http\Interfaces\Academic\ClassesInterface;
 use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
-use App\Http\Interfaces\SessionInterface;
+use App\Http\Interfaces\Settings\SessionInterface;
 
 class ClassSetupController extends Controller
 {
@@ -25,17 +25,17 @@ class ClassSetupController extends Controller
         SectionInterface $section
         )
     {
-        $this->repo          = $repo; 
-        $this->session       = $session; 
-        $this->classes       = $classes; 
-        $this->section       = $section; 
+        $this->repo          = $repo;
+        $this->session       = $session;
+        $this->classes       = $classes;
+        $this->section       = $section;
     }
 
     public function getSections(Request $request){
         $data = $this->repo->getSections($request->id);
         return response()->json($data);
     }
-    
+
     public function index()
     {
         $data['class_setups']       = $this->repo->getPaginateAll();
@@ -54,7 +54,7 @@ class ClassSetupController extends Controller
 
 
         return view('backend.admin.academic.class_setup.index', compact('data'));
-        
+
     }
 
     public function create()
@@ -70,7 +70,7 @@ class ClassSetupController extends Controller
         $data['classes']            = $this->classes->all();
         $data['section']            = $this->section->all();
         return view('backend.admin.academic.class_setup.create', compact('data'));
-        
+
     }
 
     public function store(ClassSetupStoreRequest $request)
@@ -112,7 +112,7 @@ class ClassSetupController extends Controller
 
     public function delete($id)
     {
-        
+
         $result = $this->repo->destroy($id);
         if($result['status']):
             $success[0] = $result['message'];
@@ -125,7 +125,7 @@ class ClassSetupController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;      
+        endif;
     }
 
 

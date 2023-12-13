@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Academic\Section\SectionStoreRequest;
-use App\Http\Requests\Academic\Section\SectionUpdateRequest;
+use App\Http\Requests\Academic\Section\StoreRequest;
+use App\Http\Requests\Academic\Section\UpdateRequest;
 use App\Http\Interfaces\Academic\SectionInterface;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,8 +18,8 @@ class SectionController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->section       = $section; 
+        }
+        $this->section       = $section;
     }
 
     public function index()
@@ -51,7 +51,7 @@ class SectionController extends Controller
         return view('backend.admin.academic.section.create', compact('data'));
     }
 
-    public function store(SectionStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->section->store($request);
         if($result['status']){
@@ -73,7 +73,7 @@ class SectionController extends Controller
         return view('backend.admin.academic.section.edit', compact('data'));
     }
 
-    public function update(SectionUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->section->update($request, $id);
         if($result['status']){
@@ -96,6 +96,6 @@ class SectionController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

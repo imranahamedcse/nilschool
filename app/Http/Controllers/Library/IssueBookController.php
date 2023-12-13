@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Library\IssueBook\IssueBookStoreRequest;
-use App\Http\Requests\Library\IssueBook\IssueBookUpdateRequest;
+use App\Http\Requests\Library\IssueBook\StoreRequest;
+use App\Http\Requests\Library\IssueBook\UpdateRequest;
 use App\Http\Repositories\Library\IssueBookRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ class IssueBookController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->Repo                  = $Repo;
     }
 
@@ -52,7 +52,7 @@ class IssueBookController extends Controller
         return view('backend.admin.library.issue-book.create', compact('data'));
     }
 
-    public function store(IssueBookStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
         if($result['status']){
@@ -77,7 +77,7 @@ class IssueBookController extends Controller
         return view('backend.admin.library.issue-book.edit', compact('data'));
     }
 
-    public function update(IssueBookUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
         if($result['status']){
@@ -100,7 +100,7 @@ class IssueBookController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 
     public function getMember(Request $request)
@@ -136,10 +136,10 @@ class IssueBookController extends Controller
             ["title" => ___("common.Library"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['issue_book'] = $this->Repo->searchResult($request);
         $data['request']    = $request;
-        
+
         return view('backend.admin.library.issue-book.index', compact('data'));
     }
 }

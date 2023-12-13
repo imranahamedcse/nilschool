@@ -7,10 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Repositories\Examination\ExamTypeRepository;
 use App\Http\Repositories\Examination\MarksRegisterRepository;
-use App\Http\Requests\Examination\MarksRegister\MarksRegisterStoreRequest;
-use App\Http\Requests\Examination\MarksRegister\MarksRegisterUpdateRequest;
-use App\Models\Examination\ExamAssign;
-use App\Models\Examination\MarksRegisterChildren;
+use App\Http\Requests\Examination\MarksRegister\StoreRequest;
+use App\Http\Requests\Examination\MarksRegister\UpdateRequest;
 use App\Http\Repositories\Academic\ClassesRepository;
 use App\Http\Repositories\Academic\SectionRepository;
 use App\Http\Repositories\Academic\SubjectRepository;
@@ -127,7 +125,7 @@ class MarksRegisterController extends Controller
         return view('backend.admin.examination.marks-register.create', compact('data'));
     }
 
-    public function store(MarksRegisterStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if($result['status']){
@@ -170,7 +168,7 @@ class MarksRegisterController extends Controller
         return view('backend.admin.examination.marks-register.edit', compact('data'));
     }
 
-    public function update(MarksRegisterUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if($result['status']){

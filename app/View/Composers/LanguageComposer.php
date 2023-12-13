@@ -2,7 +2,7 @@
 
 namespace App\View\Composers;
 
-use App\Http\Interfaces\LanguageInterface;
+use App\Http\Interfaces\Settings\LanguageInterface;
 use Illuminate\View\View;
 use App\Models\Language;
 
@@ -11,7 +11,7 @@ class LanguageComposer
     /**
      * The user Interface implementation.
      *
-     * @var \App\Http\Interfaces\LanguageInterface
+     * @var \App\Http\Interfaces\Settings\LanguageInterface
      */
     protected $language;
 

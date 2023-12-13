@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\WebsiteSetup\AboutRepository;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\WebsiteSetup\About\AboutStoreRequest;
-use App\Http\Requests\WebsiteSetup\About\AboutUpdateRequest;
+use App\Http\Requests\WebsiteSetup\About\StoreRequest;
+use App\Http\Requests\WebsiteSetup\About\UpdateRequest;
 
 class AboutController extends Controller
 {
@@ -17,7 +17,7 @@ class AboutController extends Controller
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->aboutRepo                  = $aboutRepo;
     }
 
@@ -52,7 +52,7 @@ class AboutController extends Controller
         return view('backend.admin.website-setup.about.create', compact('data'));
     }
 
-    public function store(AboutStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->aboutRepo->store($request);
         if($result['status']){
@@ -75,7 +75,7 @@ class AboutController extends Controller
         return view('backend.admin.website-setup.about.edit', compact('data'));
     }
 
-    public function update(AboutUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->aboutRepo->update($request, $id);
         if($result['status']){
@@ -98,6 +98,6 @@ class AboutController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Academic;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Academic\Subject\SubjectStoreRequest;
-use App\Http\Requests\Academic\Subject\SubjectUpdateRequest;
+use App\Http\Requests\Academic\Subject\StoreRequest;
+use App\Http\Requests\Academic\Subject\UpdateRequest;
 use App\Http\Interfaces\Academic\SubjectInterface;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,8 +18,8 @@ class SubjectController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->subject       = $subject; 
+        }
+        $this->subject       = $subject;
     }
 
     public function index()
@@ -42,7 +42,7 @@ class SubjectController extends Controller
     public function create()
     {
         $data['title']       = ___('academic.create_subject');
-        
+
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => $data['title'], "route" => ""]
@@ -50,7 +50,7 @@ class SubjectController extends Controller
         return view('backend.admin.academic.subject.create', compact('data'));
     }
 
-    public function store(SubjectStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->subject->store($request);
         if($result['status']){
@@ -63,7 +63,7 @@ class SubjectController extends Controller
     {
         $data['subject']        = $this->subject->show($id);
         $data['title']       = ___('academic.edit_subject');
-        
+
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => $data['title'], "route" => ""]
@@ -71,7 +71,7 @@ class SubjectController extends Controller
         return view('backend.admin.academic.subject.edit', compact('data'));
     }
 
-    public function update(SubjectUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->subject->update($request, $id);
         if($result['status']){
@@ -94,6 +94,6 @@ class SubjectController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;     
+        endif;
     }
 }

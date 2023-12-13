@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\OnlineExamination;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Examination\Type\ExamTypeStoreRequest;
-use App\Http\Requests\Examination\Type\ExamTypeUpdateRequest;
+use App\Http\Requests\Examination\Type\StoreRequest;
+use App\Http\Requests\Examination\Type\UpdateRequest;
 use App\Http\Interfaces\Examination\ExamTypeInterface;
 use Illuminate\Http\Request;
 
@@ -47,7 +47,7 @@ class ExamTypeController extends Controller
         return view('backend.admin.online-examination.type.create', compact('data'));
     }
 
-    public function store(ExamTypeStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
         if ($result['status']) {
@@ -70,7 +70,7 @@ class ExamTypeController extends Controller
         return view('backend.admin.online-examination.type.edit', compact('data'));
     }
 
-    public function update(ExamTypeUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
         if ($result['status']) {
