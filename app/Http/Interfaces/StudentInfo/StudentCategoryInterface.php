@@ -4,10 +4,9 @@ namespace App\Http\Interfaces\StudentInfo;
 
 interface StudentCategoryInterface
 {
+    public function allActive();
 
     public function all();
-
-    public function getPaginateAll();
 
     public function store($request);
 

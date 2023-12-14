@@ -29,7 +29,7 @@ class OnlineAdmissionRepository implements OnlineAdmissionInterface
 
     public function all()
     {
-        return $this->model->orderBy('id','desc')->paginate(Settings::PAGINATE);
+        return $this->model->orderBy('id','desc')->get();
     }
 
     public function searchStudents($request)

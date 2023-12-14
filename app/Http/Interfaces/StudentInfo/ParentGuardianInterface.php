@@ -7,8 +7,8 @@ interface ParentGuardianInterface
 
     public function all();
 
-    public function getPaginateAll();
-    
+    public function allActive();
+
     public function searchParent($request);
 
     public function getParent($request);

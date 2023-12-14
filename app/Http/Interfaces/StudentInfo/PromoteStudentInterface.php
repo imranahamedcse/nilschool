@@ -5,9 +5,9 @@ namespace App\Http\Interfaces\StudentInfo;
 interface PromoteStudentInterface
 {
 
-    public function all();
+    public function allActive();
 
-    public function getPaginateAll();
+    public function all();
 
     public function search($request);
 

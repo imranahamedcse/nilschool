@@ -4,12 +4,12 @@ namespace App\Http\Interfaces\StudentInfo;
 
 interface StudentInterface
 {
-
     public function all();
 
     public function getStudents($request);
 
-    public function getPaginateAll();
+    public function allActive();
+
     public function searchStudents($request);
 
     public function store($request);

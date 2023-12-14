@@ -2,6 +2,7 @@
 
 namespace App\Models\StudentInfo;
 
+use App\Enums\Status;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,6 @@ class ParentGuardian extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', \App\Enums\Status::ACTIVE);
+        return $query->where('status', Status::ACTIVE);
     }
 }

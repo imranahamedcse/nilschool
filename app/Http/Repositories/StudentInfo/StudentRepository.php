@@ -28,7 +28,7 @@ class StudentRepository implements StudentInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->get();
     }
@@ -46,16 +46,15 @@ class StudentRepository implements StudentInterface
             ->get();
     }
 
-
-    public function getPaginateAll()
+    public function all()
     {
         return SessionClassStudent::where('session_id', setting('session'))->latest()->get();
     }
+
     public function getSessionStudent($id)
     {
         return SessionClassStudent::where('id', $id)->first();
     }
-
 
     public function searchStudents($request)
     {

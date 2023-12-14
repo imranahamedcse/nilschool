@@ -2,13 +2,13 @@
 
 namespace App\Models\StudentInfo;
 
+use App\Enums\Status;
 use App\Models\Academic\Shift;
 use App\Models\BloodGroup;
 use App\Models\Gender;
 use App\Models\Religion;
 use App\Models\Upload;
 use App\Models\User;
-use Faker\Core\Blood;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,7 +27,7 @@ class Student extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', \App\Enums\Status::ACTIVE);
+        return $query->where('status', Status::ACTIVE);
     }
 
     public function session_class_student()

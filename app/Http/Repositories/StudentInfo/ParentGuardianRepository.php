@@ -27,14 +27,14 @@ class ParentGuardianRepository implements ParentGuardianInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->pluck('guardian_name', 'id')->toArray();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->paginate(Settings::PAGINATE);
+        return $this->model::latest()->get();
     }
 
     public function searchParent($request)

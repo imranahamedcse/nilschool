@@ -43,7 +43,7 @@ class PromoteStudentController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['student_categories'] = $this->repo->getPaginateAll();
+        $data['student_categories'] = $this->repo->allActive();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
         $data['sessions']           = $this->sessionRepo->all();
@@ -65,7 +65,7 @@ class PromoteStudentController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['student_categories'] = $this->repo->getPaginateAll();
+        $data['student_categories'] = $this->repo->allActive();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = $this->classSetupRepo->getSections($request->class);
         $data['sessions']           = $this->sessionRepo->all();
@@ -76,7 +76,7 @@ class PromoteStudentController extends Controller
         $students                   = $items['data']['students'];
         $results                    = $items['data']['results'];
 
-        
+
         return view('backend.admin.student-info.promote-student.index', compact('data','students','results','request'));
     }
 
@@ -85,7 +85,7 @@ class PromoteStudentController extends Controller
         $result = $this->repo->store($request);
         if($result['status']){
             $data['title']              = ___('student_info.Promote');
-            $data['student_categories'] = $this->repo->getPaginateAll();
+            $data['student_categories'] = $this->repo->allActive();
             $data['classes']            = $this->classRepo->assignedAll();
             $data['sections']           = $this->classSetupRepo->getSections($request->class);
             $data['sessions']           = $this->sessionRepo->all();
