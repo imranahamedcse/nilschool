@@ -24,7 +24,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
 
                 Route::get('/add-new-document', 'addNewDocument');
                 Route::get('/get-students',     'getStudents');
-                Route::get('/get-class-section-students',     'getClassSectionStudents');
+                Route::get('/get-class-section-students', 'getClassSectionStudents');
             });
 
             Route::controller(StudentCategoryController::class)->prefix('category')->group(function () {
@@ -53,12 +53,14 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
             Route::controller(ParentGuardianController::class)->prefix('parent')->group(function () {
                 Route::get('/',                 'index')->name('parent.index')->middleware('PermissionCheck:parent_read');
                 Route::any('/search',           'search')->name('parent.search')->middleware('PermissionCheck:parent_read');
-                Route::get('/create',           'create')->name('parent.create')->middleware('PermissionCheck:parent_create');
+                // Route::get('/create',           'create')->name('parent.create')->middleware('PermissionCheck:parent_create');
                 Route::post('/store',           'store')->name('parent.store')->middleware('PermissionCheck:parent_create', 'DemoCheck');
                 Route::get('edit/{id}',         'edit')->name('parent.edit')->middleware('PermissionCheck:parent_update');
                 Route::PUT('update/{id}',       'update')->name('parent.update')->middleware('PermissionCheck:parent_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('parent.delete')->middleware('PermissionCheck:parent_delete', 'DemoCheck');
+                Route::get('add-student/{id}',  'addStudent')->name('parent.add-student');
                 Route::get('/get-parent',       'getParent');
+                Route::post('/student-store',   'studentStore')->name('parent.student-store');
             });
 
             Route::controller(OnlineAdmissionController::class)->prefix('online-admissions')->group(function () {

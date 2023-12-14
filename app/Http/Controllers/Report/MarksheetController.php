@@ -26,7 +26,7 @@ class MarksheetController extends Controller
         ClassSetupRepository   $classSetupRepo,
         StudentRepository      $studentRepo,
         ExamTypeRepository     $examTypeRepo,
-    ) 
+    )
     {
         $this->repo               = $repo;
         $this->classRepo          = $classRepo;
@@ -54,7 +54,7 @@ class MarksheetController extends Controller
         $data['sections']           = [];
         $data['students']           = [];
         $data['exam_types']         = [];
-        
+
         return view('backend.admin.report.marksheet', compact('data'));
     }
 
@@ -84,7 +84,7 @@ class MarksheetController extends Controller
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['students']     = $this->studentRepo->getStudents($request);
         $data['exam_types']   = $this->examTypeRepo->all();
-        
+
         return view('backend.admin.report.marksheet', compact('data'));
     }
 
@@ -99,7 +99,7 @@ class MarksheetController extends Controller
 
         $data['student']      = $this->studentRepo->show($request->student);
         $data['resultData']   = $this->repo->search($request);
-        
+
         $pdf = PDF::loadView('backend.admin.report.marksheetPDF', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
     }

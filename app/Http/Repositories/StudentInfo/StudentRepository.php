@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Http\Interfaces\StudentInfo\StudentInterface;
+use App\Models\StudentInfo\ParentGuardian;
 
 class StudentRepository implements StudentInterface
 {
@@ -35,14 +36,14 @@ class StudentRepository implements StudentInterface
     public function getStudents($request)
     {
         return  SessionClassStudent::query()
-                ->where('session_id', setting('session'))
-                ->where('classes_id', $request->class)
-                ->where('section_id', $request->section)
-                ->when(request()->filled('gender'), function ($q) use ($request) {
-                    $q->whereHas('student', fn ($q) => $q->where('gender_id', $request->gender));
-                })
-                ->with('student')
-                ->get();
+            ->where('session_id', setting('session'))
+            ->where('classes_id', $request->class)
+            ->where('section_id', $request->section)
+            ->when(request()->filled('gender'), function ($q) use ($request) {
+                $q->whereHas('student', fn ($q) => $q->where('gender_id', $request->gender));
+            })
+            ->with('student')
+            ->get();
     }
 
 
@@ -61,10 +62,10 @@ class StudentRepository implements StudentInterface
         $students = SessionClassStudent::query();
         $students = $students->where('session_id', setting('session'));
 
-        if($request->class != "") {
+        if ($request->class != "") {
             $students = $students->where('classes_id', $request->class);
         }
-        if($request->section != "") {
+        if ($request->section != "") {
             $students = $students->where('section_id', $request->section);
         }
 
@@ -75,12 +76,50 @@ class StudentRepository implements StudentInterface
     {
         DB::beginTransaction();
         try {
-            $role                     = Role::find(6);// student role id 6
+            // Guardian start
+            $role                     = Role::find(5); // Guardian role id 5
 
             $user                     = new User();
-            $user->name               = $request->first_name.' '.$request->last_name;
-            $user->email              = $request->email != ""? $request->email :  NULL;
-            $user->phone              = $request->mobile != ""? $request->mobile :  NULL;
+            $user->name               = $request->guardian_name;
+            $user->email              = $request->guardian_email;
+            $user->phone              = $request->guardian_mobile;
+            $user->password           = Hash::make('123456');
+            $user->email_verified_at  = now();
+            $user->role_id            = $role->id;
+            $user->permissions        = $role->permissions;
+            $user->upload_id          = $this->UploadImageCreate($request->guardian_image, 'backend/uploads/users');
+            $user->save();
+
+            $parent                      = new ParentGuardian();
+            $parent->user_id             = $user->id;
+            $parent->father_name         = $request->father_name;
+            $parent->father_mobile       = $request->father_mobile;
+            $parent->father_profession   = $request->father_profession;
+            $parent->mother_name         = $request->mother_name;
+            $parent->mother_mobile       = $request->mother_mobile;
+            $parent->mother_profession   = $request->mother_profession;
+            $parent->guardian_profession = $request->guardian_profession;
+            $parent->guardian_address    = $request->guardian_address;
+            $parent->guardian_relation   = $request->guardian_relation;
+            $parent->guardian_name       = $request->guardian_name;
+            $parent->guardian_email      = $request->guardian_email;
+            $parent->guardian_mobile     = $request->guardian_mobile;
+            $parent->guardian_image      = $user->upload_id;
+            $parent->father_image        = $this->UploadImageCreate($request->father_image, 'backend/uploads/users');
+            $parent->mother_image        = $this->UploadImageCreate($request->mother_image, 'backend/uploads/users');
+            $parent->status              = $request->status;
+            $parent->save();
+            // Guardian end
+
+
+
+
+            $role                     = Role::find(6); // student role id 6
+
+            $user                     = new User();
+            $user->name               = $request->first_name . ' ' . $request->last_name;
+            $user->email              = $request->email != "" ? $request->email :  NULL;
+            $user->phone              = $request->mobile != "" ? $request->mobile :  NULL;
             $user->admission_no       = $request->admission_no;
             $user->password           = Hash::make('123456');
             $user->email_verified_at  = now();
@@ -100,12 +139,12 @@ class StudentRepository implements StudentInterface
             $row->image_id             = $user->upload_id;
             $row->email                = $request->email;
             $row->dob                  = $request->date_of_birth;
-            $row->religion_id          = $request->religion != ""? $request->religion :  NULL;
-            $row->gender_id            = $request->gender != ""? $request->gender :  NULL;
-            $row->blood_group_id       = $request->blood != ""? $request->blood :  NULL;
+            $row->religion_id          = $request->religion != "" ? $request->religion :  NULL;
+            $row->gender_id            = $request->gender != "" ? $request->gender :  NULL;
+            $row->blood_group_id       = $request->blood != "" ? $request->blood :  NULL;
             $row->admission_date       = $request->admission_date;
-            $row->parent_guardian_id   = $request->parent != ""? $request->parent :  NULL;
-            $row->student_category_id  = $request->category != ""? $request->category :  NULL;
+            $row->parent_guardian_id   = $parent->id;
+            $row->student_category_id  = $request->category != "" ? $request->category :  NULL;
             $row->status               = $request->status;
             $row->upload_documents     = $this->uploadDocuments($request);
             $row->save();
@@ -113,8 +152,8 @@ class StudentRepository implements StudentInterface
             $session_class                      = new SessionClassStudent();
             $session_class->session_id          = setting('session');
             $session_class->classes_id          = $request->class;
-            $session_class->section_id          = $request->section != ""? $request->section :  NULL;
-            $session_class->shift_id            = $request->shift != ""? $request->shift :  NULL;
+            $session_class->section_id          = $request->section != "" ? $request->section :  NULL;
+            $session_class->shift_id            = $request->shift != "" ? $request->shift :  NULL;
             $session_class->student_id          = $row->id;
             $session_class->roll                = $request->roll_no;
             $session_class->save();
@@ -141,13 +180,13 @@ class StudentRepository implements StudentInterface
         try {
             $row                      = $this->model->find($id);
 
-            $user                     = User::where('id',$row->user_id)->first();
+            $user                     = User::where('id', $row->user_id)->first();
 
             $role                     = Role::find($user->role_id);
 
-            $user->name               = $request->first_name.' '.$request->last_name;
-            $user->email              = $request->email != ""? $request->email :  NULL;
-            $user->phone              = $request->mobile != ""? $request->mobile :  NULL;
+            $user->name               = $request->first_name . ' ' . $request->last_name;
+            $user->email              = $request->email != "" ? $request->email :  NULL;
+            $user->phone              = $request->mobile != "" ? $request->mobile :  NULL;
             $user->date_of_birth      = $request->date_of_birth;
             $user->admission_no       = $request->admission_no;
             $user->upload_id          = $this->UploadImageUpdate($request->image, 'backend/uploads/students', $user->upload_id);
@@ -162,20 +201,20 @@ class StudentRepository implements StudentInterface
             $row->image_id             = $user->upload_id;
             $row->email                = $request->email;
             $row->dob                  = $request->date_of_birth;
-            $row->religion_id          = $request->religion != ""? $request->religion :  NULL;
-            $row->gender_id            = $request->gender != ""? $request->gender :  NULL;
-            $row->blood_group_id       = $request->blood != ""? $request->blood :  NULL;
+            $row->religion_id          = $request->religion != "" ? $request->religion :  NULL;
+            $row->gender_id            = $request->gender != "" ? $request->gender :  NULL;
+            $row->blood_group_id       = $request->blood != "" ? $request->blood :  NULL;
             $row->admission_date       = $request->admission_date;
-            $row->parent_guardian_id   = $request->parent != ""? $request->parent :  NULL;
-            $row->student_category_id  = $request->category != ""? $request->category :  NULL;
+            $row->parent_guardian_id   = $request->parent != "" ? $request->parent :  NULL;
+            $row->student_category_id  = $request->category != "" ? $request->category :  NULL;
             $row->status               = $request->status;
             $row->upload_documents     = $this->uploadDocuments($request, $row->upload_documents);
             $row->save();
 
             $session_class                      = SessionClassStudent::where('session_id', setting('session'))->where('student_id', $row->id)->first();
             $session_class->classes_id          = $request->class;
-            $session_class->section_id          = $request->section != ""? $request->section :  NULL;
-            $session_class->shift_id            = $request->shift != ""? $request->shift :  NULL;
+            $session_class->section_id          = $request->section != "" ? $request->section :  NULL;
+            $session_class->shift_id            = $request->shift != "" ? $request->shift :  NULL;
             $session_class->student_id          = $row->id;
             $session_class->roll                = $request->roll_no;
             $session_class->save();

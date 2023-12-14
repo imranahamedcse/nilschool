@@ -24,8 +24,7 @@
 
                     @if (in_array('class', @$data['headers']['filter']))
                         <div class="px-1">
-                            <select class="class form-control @error('class') is-invalid @enderror"
-                                name="class">
+                            <select class="class form-control @error('class') is-invalid @enderror" name="class">
                                 <option value="">{{ ___('student_info.select_class') }} </option>
                                 @foreach ($data['classes'] as $item)
                                     <option {{ old('class', @$data['request']->class) == $item->id ? 'selected' : '' }}
@@ -60,8 +59,7 @@
 
                     @if (in_array('shift', @$data['headers']['filter']))
                         <div class="px-1">
-                            <select class="shift form-control" name="shift" id="validationServer04"
-                               >
+                            <select class="shift form-control" name="shift" id="validationServer04">
                                 <option value="">{{ ___('student_info.select_shift') }}</option>
                                 @foreach ($data['shifts'] as $item)
                                     <option {{ old('shift', @$data['request']->shift) == $item->id ? 'selected' : '' }}
@@ -212,6 +210,13 @@
                             @enderror
                         </div>
                     @endif
+
+                    @if (in_array('keyword', @$data['headers']['filter']))
+                        <input class="form-control" name="keyword"
+                            placeholder="{{ ___('student_info.Enter keyword') }}"
+                            value="{{ old('keyword', @$data['request']->keyword) }}">
+                    @endif
+                    
                     <div class="px-1">
                         <button class="btn btn-primary" type="submit">
                             {{ ___('common.Search') }}

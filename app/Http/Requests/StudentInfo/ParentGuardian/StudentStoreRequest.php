@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\StudentInfo\Student;
+namespace App\Http\Requests\StudentInfo\ParentGuardian;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class StudentStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,7 +35,6 @@ class StoreRequest extends FormRequest
         }
 
         return [
-            // student
             'mobile'                    => $mobile,
             'email'                     => $email,
             'admission_no'              => 'required|max:255|unique:students,admission_no',
@@ -46,22 +45,8 @@ class StoreRequest extends FormRequest
             'section'                   => 'required|max:255',
             'date_of_birth'             => 'required|max:255',
             'admission_date'            => 'required|max:255',
+            'parent'                    => 'required|max:255',
             'status'                    => 'required|max:255',
-
-            // guardian
-            'guardian_mobile'        => 'required|max:255|unique:users,phone',
-            'guardian_name'          => 'required|max:255',
-            'status'                 => 'required|max:255',
-            'father_name'            => 'max:255',
-            'father_mobile'          => 'max:255',
-            'father_profession'      => 'max:255',
-            'mother_name'            => 'max:255',
-            'mother_mobile'          => 'max:255',
-            'mother_profession'      => 'max:255',
-            'guardian_profession'    => 'max:255',
-            'guardian_email'         => 'max:255',
-            'guardian_address'       => 'max:255',
-            'guardian_relation'      => 'max:255'
         ];
 
 

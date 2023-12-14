@@ -41,8 +41,7 @@ class StudentController extends Controller
         GenderRepository             $genderRepo,
         StudentCategoryRepository    $categoryRepo,
         ExamAssignRepository         $examAssignRepo,
-        )
-    {
+    ) {
         $this->repo         = $repo;
         $this->classRepo    = $classRepo;
         $this->sectionRepo  = $sectionRepo;
@@ -59,9 +58,10 @@ class StudentController extends Controller
     {
         $data['classes']  = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['students'] = $this->repo->getPaginateAll();
+        $data['students'] = [];
+        // $data['students'] = $this->repo->getPaginateAll();
 
-        $title             = ___('student_info.Students');
+        $title             = ___('student_info.List');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['student.search', 'class', 'section'],
@@ -70,7 +70,7 @@ class StudentController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Student Info"), "route" => ""],
+            ["title" => ___("common.Student"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -84,7 +84,7 @@ class StudentController extends Controller
         $data['request']  = $request;
         $data['students'] = $this->repo->searchStudents($request);
 
-        $title             = ___('student_info.Students');
+        $title             = ___('student_info.List');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['student.search', 'class', 'section'],
@@ -93,7 +93,7 @@ class StudentController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Student Info"), "route" => ""],
+            ["title" => ___("common.Student"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.student-info.student.index', compact('data'));
@@ -101,7 +101,7 @@ class StudentController extends Controller
 
     public function create()
     {
-        $data['title']     = ___('student_info.Add student');
+        $data['title']     = ___('student_info.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
@@ -130,10 +130,11 @@ class StudentController extends Controller
     {
         $examAssign = $this->examAssignRepo->getExamAssign($request);
         $students = $this->repo->getStudents($request);
-        return view('backend.admin.student-info.student.students-list', compact('students','examAssign'))->render();
+        return view('backend.admin.student-info.student.students-list', compact('students', 'examAssign'))->render();
     }
 
-    public function getClassSectionStudents(Request $request){
+    public function getClassSectionStudents(Request $request)
+    {
         return $this->repo->getStudents($request);
     }
 
@@ -141,7 +142,7 @@ class StudentController extends Controller
     {
         $result = $this->repo->store($request);
 
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('student.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -149,7 +150,7 @@ class StudentController extends Controller
 
     public function edit($id)
     {
-        $data['title']     = ___('student_info.Edit student');
+        $data['title']     = ___('student_info.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
@@ -183,7 +184,7 @@ class StudentController extends Controller
     {
         $result = $this->repo->update($request, $request->id);
 
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('student.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -193,13 +194,13 @@ class StudentController extends Controller
     {
 
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
