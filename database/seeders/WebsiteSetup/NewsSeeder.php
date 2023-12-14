@@ -39,7 +39,7 @@ class NewsSeeder extends Seeder
 
             $row = new News();
             $row->title = '20+ Academic Curriculum We Done!'.$key;
-            $row->description = 'Onsest Schooled Is Home To More Than 20,000 Students And 230,000 Alumni With A Wide Variety Of Interests, Ages And Backgrounds, The University Reflects The City’s Dynamic Mix Of Populations.';
+            $row->description = 'Onsest Schooled Is Home To More Than 20,000 Students And 230,000 Alumni With A Variety Of Interests, Ages And Backgrounds, The University Reflects The City’s Dynamic Mix Of Populations.';
             $row->date = date("Y-m-d", strtotime("- ".++$key." day"));
             $row->publish_date = date('Y-m-d');
             $row->upload_id = $upload->id;

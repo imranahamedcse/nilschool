@@ -22,9 +22,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections"
-                                    class="form-control class @error('class') is-invalid @enderror"
-                                    name="class" id="validationDefault01">
+                                <select class="form-control class @error('class') is-invalid @enderror" name="class"
+                                    id="validationDefault01">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class') == $item->id ? 'selected' : '' }}
@@ -42,9 +41,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSubjects"
-                                    class="nice-select niceSelect sections bordered_style wide section @error('section') is-invalid @enderror"
-                                    name="section" id="validationDefault02">
+                                <select class="form-control section @error('section') is-invalid @enderror" name="section"
+                                    id="validationDefault02">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     </option>
                                 </select>
@@ -73,9 +71,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault04" class="form-label">{{ ___('academic.subject') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="subject"
-                                    class="nice-select niceSelect subjects bordered_style wide @error('subject') is-invalid @enderror"
-                                    name="subject" id="validationDefault04">
+                                <select class="subject form-control @error('subject') is-invalid @enderror" name="subject"
+                                    id="validationDefault04">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
                                 </select>
 
@@ -115,3 +112,11 @@
         </div>
     </div>
 @endsection
+
+
+@
+@push('script')
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-subject.js') }}"></script>
+    <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>
+@endpush

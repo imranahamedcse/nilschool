@@ -22,9 +22,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections"
-                                    class="form-control @error('class') is-invalid @enderror"
-                                    name="class" id="validationDefault01">
+                                <select class="form-control class @error('class') is-invalid @enderror" name="class"
+                                    id="validationDefault01">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
@@ -43,9 +42,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSubjects"
-                                    class="nice-select niceSelect sections bordered_style wide @error('section') is-invalid @enderror"
-                                    name="section" id="validationDefault02">
+                                <select class="section form-control @error('section') is-invalid @enderror" name="section"
+                                    id="validationDefault02">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
                                         @if ($data['marks_register']->section_id == $item->id)
@@ -67,7 +65,7 @@
                                 <label for="validationDefault03" class="form-label">{{ ___('examination.exam_type') }}
                                     <span class="text-danger">*</span></label>
                                 <select id="validationDefault03"
-                                    class="form-control @error('exam_type') is-invalid @enderror"
+                                    class="form-control exam_type @error('exam_type') is-invalid @enderror"
                                     name="exam_type">
                                     <option value="">{{ ___('examination.select_exam_type') }}</option>
                                     @foreach ($data['exam_types'] as $item)
@@ -85,8 +83,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault04" class="form-label">{{ ___('academic.subject') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="subject" id="validationDefault04"
-                                    class="form-control subjects wide nice-select bordered_style  @error('subject') is-invalid @enderror"
+                                <select id="validationDefault04"
+                                    class="form-control subjects nice-select @error('subject') is-invalid @enderror"
                                     name="subject">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $item)
@@ -169,3 +167,9 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-subject.js') }}"></script>
+    <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>
+@endpush

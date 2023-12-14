@@ -46,7 +46,7 @@
                                 <label for="validationDefault02" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select onchange="changeExamAssignClass(this)"
-                                    class="nice-select niceSelect bordered_style class wide @error('class') is-invalid @enderror"
+                                    class="nice-select class @error('class') is-invalid @enderror"
                                     name="class" id="validationDefault02">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)

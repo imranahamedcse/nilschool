@@ -117,7 +117,7 @@
                                     <label for="Encryption" class="form-label">{{ ___('settings.encryption') }} <span
                                             class="text-danger">*</span></label>
                                     <select name="encryption" id="encryptionId"
-                                        class="@error('encryption') is-invalid @enderror niceSelect bordered_style wide">
+                                        class="@error('encryption') is-invalid @enderror">
                                         <option value="">{{ ___('settings.select_encryption') }}</option>
                                         <option value="{{ App\Enums\Encryption::null }}"
                                             {{ setting('encryption') == App\Enums\Encryption::null ? 'selected' : '' }}>

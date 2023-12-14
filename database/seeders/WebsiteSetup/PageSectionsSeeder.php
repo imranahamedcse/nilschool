@@ -147,7 +147,7 @@ class PageSectionsSeeder extends Seeder
             [
                 'key'         => 'academic_curriculum',
                 'name'        => '20+ Academic Curriculum',
-                'description' => 'Onsest Schooled is home to more than 20,000 students and 230,000 alumni with a wide variety of interests, ages and backgrounds, the University reflects the city’s dynamic mix of populations.',
+                'description' => 'Onsest Schooled is home to more than 20,000 students and 230,000 alumni with a variety of interests, ages and backgrounds, the University reflects the city’s dynamic mix of populations.',
                 'upload_id'   => null,
                 'data'        => [
                     'Bangal Medium',

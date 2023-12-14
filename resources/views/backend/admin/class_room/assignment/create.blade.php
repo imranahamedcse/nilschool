@@ -21,8 +21,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections" class="form-control class @error('class') is-invalid @enderror"
-                                    name="class" id="validationDefault01">
+                                <select class="form-control class @error('class') is-invalid @enderror" name="class"
+                                    id="validationDefault01">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class') == $item->id ? 'selected' : '' }}
@@ -40,8 +40,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSubjects"
-                                    class="sections form-control section @error('section') is-invalid @enderror"
+                                <select id="getSubjects" class="form-control section @error('section') is-invalid @enderror"
                                     name="section" id="validationDefault02">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     </option>
@@ -98,7 +97,8 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault06" class="form-label ">{{ ___('fees.Assigned date') }} </label>
+                                <label for="validationDefault06" class="form-label ">{{ ___('fees.Assigned date') }}
+                                </label>
                                 <input class="form-control @error('assigned_date') is-invalid @enderror"
                                     name="assigned_date" value="{{ old('assigned_date') }}" id="validationDefault06"
                                     type="date" placeholder="{{ ___('fees.enter_assigned_date') }}">
@@ -110,7 +110,8 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault07" class="form-label ">{{ ___('fees.Submission date') }} </label>
+                                <label for="validationDefault07" class="form-label ">{{ ___('fees.Submission date') }}
+                                </label>
                                 <input class="form-control @error('submission_date') is-invalid @enderror"
                                     name="submission_date" value="{{ old('submission_date') }}" id="validationDefault07"
                                     type="date" placeholder="{{ ___('fees.enter_submission_date') }}">
@@ -160,58 +161,20 @@
 
 
 @push('script')
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
 
     <script>
         // Start examination filter get subjects
-        $("#getSections").on('change', function(e) {
+        $(".class").on('change', function(e) {
             getExaminationFilterSubject();
         });
-        $(".sections").on('change', function(e) {
+        $(".section").on('change', function(e) {
             getExaminationFilterSubject();
         });
 
         function getExaminationFilterSubject() {
-            var classId = $("#getSections").val();
-            var sectionId = $(".sections").val();
+            var classId = $(".class").val();
+            var sectionId = $(".section").val();
 
             if (classId && sectionId) {
                 var url = $('#url').val();

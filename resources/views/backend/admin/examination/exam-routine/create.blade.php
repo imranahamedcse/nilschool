@@ -21,8 +21,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
-                                    name="class" id="validationDefault01">
+                                <select class="class form-control @error('class') is-invalid @enderror" name="class"
+                                    id="validationDefault01">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
@@ -39,9 +39,8 @@
                                 <div id="show_sections">
                                     <label for="validationDefault02" class="form-label">{{ ___('academic.section') }}
                                         <span class="text-danger">*</span></label>
-                                    <select class="sections form-control @error('section') is-invalid @enderror"
-                                        name="section" id="validationDefault02"
-                                       >
+                                    <select class="section form-control @error('section') is-invalid @enderror"
+                                        name="section" id="validationDefault02">
                                         <option value="">{{ ___('student_info.select_section') }}</option>
                                     </select>
                                     @error('section')
@@ -70,8 +69,8 @@
                                 <label for="validationDefault04" class="form-label ">{{ ___('common.date') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control date @error('date') is-invalid @enderror" name="date"
-                                    id="validationDefault04" type="date"
-                                    placeholder="{{ ___('common.enter_date') }}" value="{{ old('date') }}">
+                                    id="validationDefault04" type="date" placeholder="{{ ___('common.enter_date') }}"
+                                    value="{{ old('date') }}">
                                 @error('date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -150,96 +149,8 @@
 @endsection
 
 @push('script')
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
-    <script>
-        // Start get exam_types
-        function getExamtype() {
-            var classId = $("#getSections").val();
-            var sectionId = $(".sections").val();
-            var url = $('#url').val();
-            var formData = {
-                class: classId,
-                section: sectionId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/exam-assign/get-exam-type',
-                success: function(data) {
-
-                    var exam_type_options = '';
-                    var exam_type_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        exam_type_options += "<option value=" + item.exam_type.id + ">" + item.exam_type
-                            .name + "</option>";
-                        exam_type_li += "<li data-value=" + item.exam_type.id + " class='option'>" +
-                            item.exam_type.name + "</li>";
-                    });
-
-                    $("select.exam_types option").not(':first').remove();
-                    $("select.exam_types").append(exam_type_options);
-
-
-                    $("div .exam_types .current").html($("div .exam_types .list li:first").html());
-                    $("div .exam_types .list li").not(':first').remove();
-                    $("div .exam_types .list").append(exam_type_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-        $("#getSections").on('change', function(e) {
-            getExamtype();
-        });
-        $(".sections").on('change', function(e) {
-            getExamtype();
-        });
-        // End get exam_types
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalert2.js') }}"></script>
     <script>
         // Exam routine start

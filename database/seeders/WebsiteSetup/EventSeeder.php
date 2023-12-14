@@ -47,9 +47,9 @@ class EventSeeder extends Seeder
 
             'Elementary and Middle Schools arrange with their affiliate or nearby high school an event where soon-to-be graduates visit the school and take part in a parade. The graduates wear their gowns or college apparel and stroll through the music-filled hallways to be celebrated as well as get younger students thinking and excited about their own futures. Students lining the hallways are encouraged to wear apparel from their favorite university and cheer as the graduates parade through.',
 
-            'This event is the perfect class or school wide incentive, especially if they have a favorite teacher they would like to surprise with a splat! Once classes or grade levels reach their predetermined goal, a teacher is selected to get pied in the face in front of the whole student body. Maybe not the most fun for the targeted teacher, but a memorable experience for everyone else! '
+            'This event is the perfect class or school incentive, especially if they have a favorite teacher they would like to surprise with a splat! Once classes or grade levels reach their predetermined goal, a teacher is selected to get pied in the face in front of the whole student body. Maybe not the most fun for the targeted teacher, but a memorable experience for everyone else! '
         ];
-        
+
         foreach ($titels as $key => $value) {
             $upload       = new Upload();
             $upload->path = 'frontend/img/event/'.$key.'.webp';

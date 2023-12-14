@@ -22,7 +22,7 @@
                               <div class="col-md-3 mb-3">
                                   <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
                                           class="text-danger">*</span></label>
-                                  <select id="getSections" class="form-control @error('class') is-invalid @enderror"
+                                  <select class="class form-control @error('class') is-invalid @enderror"
                                       name="class" id="validationDefault01">
                                       <option value="">{{ ___('student_info.select_class') }}</option>
                                       @foreach ($data['classes'] as $item)
@@ -40,9 +40,8 @@
                                   <div id="show_sections">
                                       <label for="validationDefault02" class="form-label">{{ ___('academic.section') }}
                                           <span class="text-danger">*</span></label>
-                                      <select class="sections form-control @error('section') is-invalid @enderror"
-                                          name="section" id="validationDefault02"
-                                         >
+                                      <select class="section form-control @error('section') is-invalid @enderror"
+                                          name="section" id="validationDefault02">
                                           <option value="">{{ ___('student_info.select_section') }}</option>
                                       </select>
                                       @error('section')
@@ -163,45 +162,7 @@
 
 
   @push('script')
-      <script>
-          $("#getSections").on('change', function(e) {
-              var classId = $("#getSections").val();
-              var url = $('#url').val();
-              var formData = {
-                  id: classId,
-              }
-              $.ajax({
-                  type: "GET",
-                  dataType: 'html',
-                  data: formData,
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  },
-                  url: url + '/class-setup/get-sections',
-                  success: function(data) {
-                      var section_options = '';
-                      var section_li = '';
-
-                      $.each(JSON.parse(data), function(i, item) {
-                          section_options += "<option value=" + item.section.id + ">" + item
-                              .section.name + "</option>";
-                          section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                              item.section.name + "</li>";
-                      });
-
-                      $("select.sections option").not(':first').remove();
-                      $("select.sections").append(section_options);
-
-                      $("div .sections .current").html($("div .sections .list li:first").html());
-                      $("div .sections .list li").not(':first').remove();
-                      $("div .sections .list").append(section_li);
-                  },
-                  error: function(data) {
-                      console.log(data);
-                  }
-              });
-          });
-      </script>
+      <script src="{{ asset('backend/js/get-section.js') }}"></script>
       <script src="{{ asset('backend/js/sweetalert2.js') }}"></script>
       <script>
           // Class routine start

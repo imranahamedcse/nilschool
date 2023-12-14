@@ -24,7 +24,7 @@
                     <div class="col-md-4 mb-3">
                         <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
                                 class="text-danger">*</span></label>
-                        <select id="getSections" class="form-control @error('class') is-invalid @enderror" name="class"
+                        <select class="class form-control @error('class') is-invalid @enderror" name="class"
                             id="validationDefault01">
                             <option {{ @$data['disabled'] ? 'disabled' : '' }} value="">
                                 {{ ___('student_info.select_class') }}</option>
@@ -46,7 +46,7 @@
                             <label for="validationDefault02" class="form-label">{{ ___('academic.section') }} <span
                                     class="text-danger">*</span></label>
                             <select onchange="return changeSection(this)"
-                                class="form-control @error('section') is-invalid @enderror" name="section"
+                                class="section form-control @error('section') is-invalid @enderror" name="section"
                                 id="validationDefault02">
                                 <option {{ @$data['disabled'] ? 'disabled' : '' }} value="">
                                     {{ ___('student_info.select_section') }}</option>
@@ -128,10 +128,10 @@
                         @foreach ($data['all_subject_assign'] as $key => $item)
                             <tr>
                                 <td>
-                                    <select class="form-control @error('subjects') is-invalid @enderror"
-                                        name="subjects[]" id="subject{{ $key }}">
-                                        <option {{ @$data['assignSubjects'][$key] == 1 ? 'disabled' : '' }}
-                                            value="">{{ ___('academic.Select subject') }}
+                                    <select class="form-control @error('subjects') is-invalid @enderror" name="subjects[]"
+                                        id="subject{{ $key }}">
+                                        <option {{ @$data['assignSubjects'][$key] == 1 ? 'disabled' : '' }} value="">
+                                            {{ ___('academic.Select subject') }}
                                         </option>
                                         @foreach ($data['subjects'] as $item)
                                             <option
@@ -142,10 +142,10 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control @error('teachers') is-invalid @enderror"
-                                        name="teachers[]" id="teacher{{ $key }}">
-                                        <option {{ @$data['assignSubjects'][$key] == 1 ? 'disabled' : '' }}
-                                            value="">{{ ___('academic.Select teacher') }}
+                                    <select class="form-control @error('teachers') is-invalid @enderror" name="teachers[]"
+                                        id="teacher{{ $key }}">
+                                        <option {{ @$data['assignSubjects'][$key] == 1 ? 'disabled' : '' }} value="">
+                                            {{ ___('academic.Select teacher') }}
                                         </option>
                                         @foreach ($data['teachers'] as $item)
                                             <option
@@ -180,45 +180,7 @@
 @endsection
 
 @push('script')
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script>
         function addSubjectTeacher() {
             var url = $('#url').val();

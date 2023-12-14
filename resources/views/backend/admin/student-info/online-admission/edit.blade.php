@@ -48,8 +48,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('student_info.first_name') }} <span
-                                        class="text-danger">*</span></label>
+                                <label for="validationDefault03" class="form-label ">{{ ___('student_info.first_name') }}
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('first_first_name') is-invalid @enderror"
                                     name="first_name" id="validationDefault03"
                                     placeholder="{{ ___('student_info.enter_first_name') }}"
@@ -61,11 +61,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('student_info.last_name') }} <span
-                                        class="text-danger">*</span></label>
+                                <label for="validationDefault04" class="form-label ">{{ ___('student_info.last_name') }}
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('last_name') is-invalid @enderror" name="last_name"
-                                    id="validationDefault04"
-                                    placeholder="{{ ___('student_info.enter_last_name') }}"
+                                    id="validationDefault04" placeholder="{{ ___('student_info.enter_last_name') }}"
                                     value="{{ old('last_name', @$data['student']->last_name) }}">
                                 @error('last_name')
                                     <div class="invalid-feedback">
@@ -104,8 +103,8 @@
 
                                 <label for="validationDefault07" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
-                                    name="class" id="validationDefault07">
+                                <select class="class form-control @error('class') is-invalid @enderror" name="class"
+                                    id="validationDefault07">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ @$data['student']->class->id == $item->class->id ? 'selected' : '' }}
@@ -123,8 +122,7 @@
                             <div class="col-md-3">
                                 <label for="validationDefault08" class="form-label">{{ ___('student_info.section') }}
                                     <span class="text-danger">*</span></label>
-                                <select id="getSections"
-                                    class="sections form-control @error('section') is-invalid @enderror" name="section"
+                                <select class="section form-control @error('section') is-invalid @enderror" name="section"
                                     id="validationDefault08">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
@@ -257,7 +255,8 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault15" class="form-label ">{{ ___('student_info.admission_date') }}
+                                <label for="validationDefault15"
+                                    class="form-label ">{{ ___('student_info.admission_date') }}
                                     <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('admission_date') is-invalid @enderror"
                                     name="admission_date" id="validationDefault15"
@@ -272,7 +271,8 @@
                             <div class="col-md-3">
                                 <label for="validationDefault16" class="form-label ">{{ ___('common.image') }}
                                     {{ ___('common.(100 x 100 px)') }}<span class="text-danger"></span></label>
-                                <input id="validationDefault16" type="file" class="form-control" name="image" accept="image/*">
+                                <input id="validationDefault16" type="file" class="form-control" name="image"
+                                    accept="image/*">
 
                             </div>
 
@@ -383,12 +383,12 @@
                         {{-- father --}}
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault18" class="form-label ">{{ ___('student_info.father_name') }}
+                                <label for="validationDefault18"
+                                    class="form-label ">{{ ___('student_info.father_name') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_name') is-invalid @enderror" name="father_name"
-                                    id="validationDefault18"
-                                    placeholder="{{ ___('student_info.enter_father_name') }}" type="text"
-                                    value="{{ old('father_name') }}">
+                                    id="validationDefault18" placeholder="{{ ___('student_info.enter_father_name') }}"
+                                    type="text" value="{{ old('father_name') }}">
                                 @error('father_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -396,7 +396,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault19" class="form-label ">{{ ___('student_info.father_mobile') }}
+                                <label for="validationDefault19"
+                                    class="form-label ">{{ ___('student_info.father_mobile') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_mobile') is-invalid @enderror"
                                     name="father_mobile" id="validationDefault19"
@@ -434,12 +435,12 @@
                         {{-- mother --}}
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault21" class="form-label ">{{ ___('student_info.mother_name') }}
+                                <label for="validationDefault21"
+                                    class="form-label ">{{ ___('student_info.mother_name') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('mother_name') is-invalid @enderror" name="mother_name"
-                                    id="validationDefault21"
-                                    placeholder="{{ ___('student_info.enter_mother_name') }}" type="text"
-                                    value="{{ old('mother_name') }}">
+                                    id="validationDefault21" placeholder="{{ ___('student_info.enter_mother_name') }}"
+                                    type="text" value="{{ old('mother_name') }}">
                                 @error('mother_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -447,7 +448,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault22" class="form-label ">{{ ___('student_info.mother_mobile') }}
+                                <label for="validationDefault22"
+                                    class="form-label ">{{ ___('student_info.mother_mobile') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('mother_mobile') is-invalid @enderror"
                                     name="mother_mobile" id="validationDefault22"
@@ -475,9 +477,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
 
-                                <label class="form-label" for="validationDefault24">{{ ___('student_info.mother_image') }}
+                                <label class="form-label"
+                                    for="validationDefault24">{{ ___('student_info.mother_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
-                                <input id="validationDefault24" type="file" class="form-control" name="mother_image" accept="image/*">
+                                <input id="validationDefault24" type="file" class="form-control" name="mother_image"
+                                    accept="image/*">
 
                             </div>
                         </div>
@@ -485,7 +489,8 @@
                         {{-- guardian --}}
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault25" class="form-label ">{{ ___('student_info.guardian_name') }}
+                                <label for="validationDefault25"
+                                    class="form-label ">{{ ___('student_info.guardian_name') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_name') is-invalid @enderror"
                                     name="guardian_name" id="validationDefault25"
@@ -527,9 +532,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
 
-                                <label class="form-label" for="validationDefault28">{{ ___('student_info.guardian_image') }}
+                                <label class="form-label"
+                                    for="validationDefault28">{{ ___('student_info.guardian_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
-                                <input id="validationDefault28" type="file" class="form-control" name="guardian_image" accept="image/*">
+                                <input id="validationDefault28" type="file" class="form-control"
+                                    name="guardian_image" accept="image/*">
 
                             </div>
                             <div class="col-md-3 mb-3">
@@ -614,45 +621,7 @@
 
 
 @push('script')
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script>
         function addNewDocument() {
 

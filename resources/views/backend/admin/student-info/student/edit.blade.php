@@ -50,8 +50,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('student_info.first_name') }} <span
-                                        class="text-danger">*</span></label>
+                                <label for="validationDefault03" class="form-label ">{{ ___('student_info.first_name') }}
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('first_first_name') is-invalid @enderror"
                                     name="first_name" id="validationDefault03"
                                     placeholder="{{ ___('student_info.enter_first_name') }}"
@@ -63,11 +63,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('student_info.last_name') }} <span
-                                        class="text-danger">*</span></label>
+                                <label for="validationDefault04" class="form-label ">{{ ___('student_info.last_name') }}
+                                    <span class="text-danger">*</span></label>
                                 <input class="form-control @error('last_name') is-invalid @enderror" name="last_name"
-                                    id="validationDefault04"
-                                    placeholder="{{ ___('student_info.enter_last_name') }}"
+                                    id="validationDefault04" placeholder="{{ ___('student_info.enter_last_name') }}"
                                     value="{{ old('last_name', @$data['student']->last_name) }}">
                                 @error('last_name')
                                     <div class="invalid-feedback">
@@ -106,8 +105,8 @@
 
                                 <label for="validationDefault07" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections" class="form-control @error('class') is-invalid @enderror"
-                                    name="class" id="validationDefault07">
+                                <select class="class form-control @error('class') is-invalid @enderror" name="class"
+                                    id="validationDefault07">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
@@ -126,8 +125,8 @@
                             <div class="col-md-3">
                                 <label for="validationDefault08" class="form-label">{{ ___('student_info.section') }}
                                     <span class="text-danger">*</span></label>
-                                <select id="getSections" class="form-control @error('section') is-invalid @enderror"
-                                    name="section" id="validationDefault08">
+                                <select class="section form-control @error('section') is-invalid @enderror" name="section"
+                                    id="validationDefault08">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
                                         <option
@@ -260,7 +259,8 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault15" class="form-label ">{{ ___('student_info.admission_date') }}
+                                <label for="validationDefault15"
+                                    class="form-label ">{{ ___('student_info.admission_date') }}
                                     <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('admission_date') is-invalid @enderror"
                                     name="admission_date" id="validationDefault15"
@@ -449,43 +449,5 @@
             element.closest('tr').remove();
         }
     </script>
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
 @endpush

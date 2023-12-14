@@ -21,8 +21,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSections" class="form-control class @error('class') is-invalid @enderror"
-                                    name="class" id="validationDefault01">
+                                <select class="form-control class @error('class') is-invalid @enderror" name="class"
+                                    id="validationDefault01">
                                     <option value="">{{ ___('student_info.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class') == $item->id ? 'selected' : '' }}
@@ -40,9 +40,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="getSubjects"
-                                    class="sections form-control section @error('section') is-invalid @enderror"
-                                    name="section" id="validationDefault02">
+                                <select class="form-control section @error('section') is-invalid @enderror" name="section"
+                                    id="validationDefault02">
                                     <option value="">{{ ___('student_info.select_section') }}</option>
                                     </option>
                                 </select>
@@ -57,9 +56,8 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault03" class="form-label">{{ ___('academic.subject') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="subject"
-                                    class="subjects form-control @error('subject') is-invalid @enderror"
-                                    name="subject" id="validationDefault03">
+                                <select class="subject form-control @error('subject') is-invalid @enderror" name="subject"
+                                    id="validationDefault03">
                                     <option value="">{{ ___('examination.select_subject') }}</option>
                                 </select>
 
@@ -89,8 +87,8 @@
                             <div class="col-md-12 mb-3">
                                 <label for="validationDefault05" class="form-label ">{{ ___('fees.Document') }} </label>
                                 <input class="form-control @error('document') is-invalid @enderror" name="document"
-                                    id="validationDefault05" type="file"
-                                    placeholder="{{ ___('fees.enter_document') }}" value="{{ old('document') }}">
+                                    id="validationDefault05" type="file" placeholder="{{ ___('fees.enter_document') }}"
+                                    value="{{ old('document') }}">
                                 @error('document')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -100,8 +98,8 @@
 
                             <div class="col-md-12 mb-3">
                                 <label for="validationDefault06" class="form-label ">{{ ___('fees.description') }}</label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                    id="validationDefault06" placeholder="{{ ___('fees.enter_description') }}">{{ old('description') }}</textarea>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="validationDefault06"
+                                    placeholder="{{ ___('fees.enter_description') }}">{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -125,98 +123,6 @@
 
 
 @push('script')
-    <script>
-        $("#getSections").on('change', function(e) {
-            var classId = $("#getSections").val();
-            var url = $('#url').val();
-            var formData = {
-                id: classId,
-            }
-            $.ajax({
-                type: "GET",
-                dataType: 'html',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: url + '/class-setup/get-sections',
-                success: function(data) {
-                    var section_options = '';
-                    var section_li = '';
-
-                    $.each(JSON.parse(data), function(i, item) {
-                        section_options += "<option value=" + item.section.id + ">" + item
-                            .section.name + "</option>";
-                        section_li += "<li data-value=" + item.section.id + " class='option'>" +
-                            item.section.name + "</li>";
-                    });
-
-                    $("select.sections option").not(':first').remove();
-                    $("select.sections").append(section_options);
-
-                    $("div .sections .current").html($("div .sections .list li:first").html());
-                    $("div .sections .list li").not(':first').remove();
-                    $("div .sections .list").append(section_li);
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        });
-    </script>
-
-    <script>
-        // Start examination filter get subjects
-        $("#getSections").on('change', function(e) {
-            getExaminationFilterSubject();
-        });
-        $(".sections").on('change', function(e) {
-            getExaminationFilterSubject();
-        });
-
-        function getExaminationFilterSubject() {
-            var classId = $("#getSections").val();
-            var sectionId = $(".sections").val();
-
-            if (classId && sectionId) {
-                var url = $('#url').val();
-                var formData = {
-                    classes_id: classId,
-                    section_id: sectionId,
-                }
-                $.ajax({
-                    type: "GET",
-                    dataType: 'html',
-                    data: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: url + '/assign-subject/get-subjects',
-                    success: function(data) {
-                        var subject_options = '';
-                        var subject_li = '';
-
-                        $.each(JSON.parse(data), function(i, item) {
-                            subject_options += "<option value=" + item.subject.id + ">" + item.subject
-                                .name + "</option>";
-                            subject_li += "<li data-value=" + item.subject.id + " class='option'>" +
-                                item.subject.name + "</li>";
-                        });
-
-                        $("select.subjects option").not(':first').remove();
-                        $("select.subjects").append(subject_options);
-
-
-                        $("div .subjects .current").html($("div .subjects .list li:first").html());
-                        $("div .subjects .list li").not(':first').remove();
-                        $("div .subjects .list").append(subject_li);
-                    },
-                    error: function(data) {
-                        console.log(data);
-                    }
-                });
-            }
-        }
-        // End examination filter get subjects
-    </script>
+    <script src="{{ asset('backend/js/get-section.js') }}"></script>
+    <script src="{{ asset('backend/js/get-subject.js') }}"></script>
 @endpush
