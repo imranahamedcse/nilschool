@@ -9,13 +9,13 @@ use App\Http\Interfaces\Settings\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
 use App\Http\Interfaces\Academic\ShiftInterface;
 use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassRoomInterface;
+use App\Http\Interfaces\Academic\ClassRoutineInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectAssignInterface;
 use App\Http\Interfaces\Academic\SubjectInterface;
-use App\Http\Repositories\Academic\ClassRoomRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Academic\ClassRoutineRepository;
-use App\Http\Repositories\Academic\TimeScheduleRepository;
-use App\Http\Repositories\Academic\SubjectAssignRepository;
+use App\Http\Interfaces\Academic\TimeScheduleInterface;
 use App\Http\Requests\Academic\Routine\StoreRequest;
 use App\Http\Requests\Academic\Routine\UpdateRequest;
 
@@ -23,30 +23,20 @@ class ClassRoutineController extends Controller
 {
     use ApiReturnFormatTrait;
 
-    private $repo;
-    private $sessionRepo;
-    private $classesRepo;
-    private $sectionRepo;
-    private $shiftRepo;
-    private $subjectRepo;
-    private $staffRepo;
-    private $classRoomRepo;
-    private $subjectAssignRepo;
-    private $timeScheduleRepo;
-    private $classSetupRepo;
+    private $repo, $sessionRepo, $classesRepo, $sectionRepo, $shiftRepo, $subjectRepo, $staffRepo, $classRoomRepo, $subjectAssignRepo, $timeScheduleRepo, $classSetupRepo;
 
     function __construct(
-        ClassRoutineRepository    $repo,
+        ClassRoutineInterface    $repo,
         SessionInterface          $sessionRepo,
         ClassesInterface          $classesRepo,
         SectionInterface          $sectionRepo,
         ShiftInterface            $shiftRepo,
         SubjectInterface          $subjectRepo,
         UserInterface             $staffRepo,
-        ClassRoomRepository       $classRoomRepo,
-        SubjectAssignRepository   $subjectAssignRepo,
-        TimeScheduleRepository    $timeScheduleRepo,
-        ClassSetupRepository      $classSetupRepo,
+        ClassRoomInterface       $classRoomRepo,
+        SubjectAssignInterface   $subjectAssignRepo,
+        TimeScheduleInterface    $timeScheduleRepo,
+        ClassSetupInterface      $classSetupRepo,
     ) {
         $this->repo                 = $repo;
         $this->sessionRepo          = $sessionRepo;
@@ -63,7 +53,7 @@ class ClassRoutineController extends Controller
 
     public function index()
     {
-        $data['class_routines']    = $this->repo->getPaginateAll();
+        $data['class_routines']    = $this->repo->all();
 
         $title             = ___('academic.class_routine');
         $data['headers']   = [

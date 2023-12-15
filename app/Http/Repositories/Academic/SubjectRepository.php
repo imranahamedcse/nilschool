@@ -17,25 +17,25 @@ class SubjectRepository implements SubjectInterface
         $this->subject = $subject;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->subject->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->subject->latest()->paginate(Settings::PAGINATE);
+        return $this->subject->latest()->get();
     }
 
     public function store($request)
     {
         try {
-            $subjectStore              = new $this->subject;
-            $subjectStore->name        = $request->name;
-            $subjectStore->code        = $request->code;
-            $subjectStore->type        = $request->type;
-            $subjectStore->status      = $request->status;
-            $subjectStore->save();
+            $row              = new $this->subject;
+            $row->name        = $request->name;
+            $row->code        = $request->code;
+            $row->type        = $request->type;
+            $row->status      = $request->status;
+            $row->save();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -50,12 +50,12 @@ class SubjectRepository implements SubjectInterface
     public function update($request, $id)
     {
         try {
-            $subjectUpdate              = $this->subject->findOrfail($id);
-            $subjectUpdate->name        = $request->name;
-            $subjectUpdate->code        = $request->code;
-            $subjectUpdate->type        = $request->type;
-            $subjectUpdate->status      = $request->status;
-            $subjectUpdate->save();
+            $row              = $this->subject->findOrfail($id);
+            $row->name        = $request->name;
+            $row->code        = $request->code;
+            $row->type        = $request->type;
+            $row->status      = $request->status;
+            $row->save();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -65,8 +65,8 @@ class SubjectRepository implements SubjectInterface
     public function destroy($id)
     {
         try {
-            $subjectDestroy = $this->subject->find($id);
-            $subjectDestroy->delete();
+            $row = $this->subject->find($id);
+            $row->delete();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);

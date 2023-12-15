@@ -7,7 +7,9 @@ interface TimeScheduleInterface
 
     public function all();
 
-    public function getAll();
+    public function allActive();
+
+    public function allClassSchedule();
 
     public function store($request);
 

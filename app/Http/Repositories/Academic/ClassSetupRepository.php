@@ -35,14 +35,14 @@ class ClassSetupRepository implements ClassSetupInterface
         return ClassSetupChildren::with('section')->where('class_setup_id', @$result->id)->select('section_id')->get();
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->where('session_id', setting('session'))->active()->get();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->where('session_id', setting('session'))->paginate(10);
+        return $this->model::latest()->where('session_id', setting('session'))->get();
     }
 
     public function store($request)

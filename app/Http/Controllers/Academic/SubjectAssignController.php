@@ -9,11 +9,11 @@ use App\Http\Interfaces\Settings\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
 use App\Http\Interfaces\Academic\ShiftInterface;
 use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
 use App\Http\Interfaces\Academic\SubjectInterface;
 use App\Models\Academic\SubjectAssignChildren;
 use App\Http\Interfaces\Academic\SubjectAssignInterface;
-use App\Http\Repositories\Academic\ClassSetupRepository;
 use App\Http\Requests\Academic\SubjectAssign\StoreRequest;
 use App\Http\Requests\Academic\SubjectAssign\UpdateRequest;
 
@@ -21,14 +21,7 @@ class SubjectAssignController extends Controller
 {
     use ApiReturnFormatTrait;
 
-    private $repo;
-    private $sessionRepo;
-    private $classesRepo;
-    private $sectionRepo;
-    private $shiftRepo;
-    private $subjectRepo;
-    private $staffRepo;
-    private $classSetupRepo;
+    private $repo, $sessionRepo, $classesRepo, $sectionRepo, $shiftRepo, $subjectRepo, $staffRepo, $classSetupRepo;
 
     function __construct(
         SubjectAssignInterface $repo,
@@ -38,7 +31,7 @@ class SubjectAssignController extends Controller
         ShiftInterface         $shiftRepo,
         SubjectInterface       $subjectRepo,
         UserInterface          $staffRepo,
-        ClassSetupRepository   $classSetupRepo,
+        ClassSetupInterface    $classSetupRepo,
     ) {
         $this->repo              = $repo;
         $this->sessionRepo       = $sessionRepo;
@@ -52,7 +45,7 @@ class SubjectAssignController extends Controller
 
     public function index()
     {
-        $data['subject_assigns']    = $this->repo->getPaginateAll();
+        $data['subject_assigns']    = $this->repo->all();
 
 
         $title             = ___('academic.subject_assign');
@@ -81,15 +74,15 @@ class SubjectAssignController extends Controller
 
         $data['classes']            = $this->classesRepo->assignedAll();
         $data['sections']           = [];
-        $data['shifts']             = $this->shiftRepo->all();
+        $data['shifts']             = $this->shiftRepo->allActive();
         return view('backend.admin.academic.assign-subject.create', compact('data'));
     }
 
     public function addSubjectTeacher(Request $request)
     {
         $counter          = $request->counter;
-        $data['subjects'] = $this->subjectRepo->all();
-        $data['teachers'] = $this->staffRepo->all();
+        $data['subjects'] = $this->subjectRepo->allActive();
+        $data['teachers'] = $this->staffRepo->allActive();
         return view('backend.admin.academic.assign-subject.add-subject-teacher', compact('counter', 'data'))->render();
     }
 
@@ -133,9 +126,9 @@ class SubjectAssignController extends Controller
         $data['redirect']           = $data['redirect'];
         $data['classes']            = $this->classesRepo->assignedAll();
         $data['sections']           = $this->classSetupRepo->getSections($data['subject_assign']->classes_id);
-        $data['shifts']             = $this->shiftRepo->all();
-        $data['subjects']           = $this->subjectRepo->all();
-        $data['teachers']           = $this->staffRepo->all();
+        $data['shifts']             = $this->shiftRepo->allActive();
+        $data['subjects']           = $this->subjectRepo->allActive();
+        $data['teachers']           = $this->staffRepo->allActive();
         $data['all_subject_assign'] = $data['subject_assign']->subjectTeacher->pluck('subject_id')->toArray();
 
         return view('backend.admin.academic.assign-subject.edit', compact('data'));

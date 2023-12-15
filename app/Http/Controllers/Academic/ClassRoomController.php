@@ -19,7 +19,7 @@ class ClassRoomController extends Controller
 
     public function index()
     {
-        $data['class_rooms'] = $this->repo->getPaginateAll();
+        $data['class_rooms'] = $this->repo->all();
 
         $title             = ___('academic.class_room');
         $data['headers']   = [

@@ -24,7 +24,7 @@ class TimeScheduleController extends Controller
 
     public function index()
     {
-        $data['time_schedule'] = $this->timeRepo->getAll();
+        $data['time_schedule'] = $this->timeRepo->all();
 
         $title = ___('academic.time_schedule');
         $data['headers']   = [

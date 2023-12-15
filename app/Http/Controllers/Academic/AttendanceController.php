@@ -3,26 +3,22 @@
 namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Attendance\AttendanceSearchRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Academic\AttendanceRepository;
+use App\Http\Interfaces\Academic\AttendanceInterface;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Requests\Academic\Attendance\SearchRequest;
 use Illuminate\Http\Request;
 use PDF;
 
 class AttendanceController extends Controller
 {
-    private $repo;
-    private $classRepo;
-    private $classSetupRepo;
+    private $repo, $classRepo, $classSetupRepo;
 
     function __construct(
-        AttendanceRepository   $repo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
-    )
-    {
+        AttendanceInterface   $repo,
+        ClassesInterface      $classRepo,
+        ClassSetupInterface   $classSetupRepo,
+    ) {
         $this->repo              = $repo;
         $this->classRepo         = $classRepo;
         $this->classSetupRepo    = $classSetupRepo;
@@ -40,7 +36,7 @@ class AttendanceController extends Controller
         ];
         $data['headers']  = [
             "title"             => $data['title'],
-            "filter"            => ['attendance.search', 'class', 'section','date'],
+            "filter"            => ['attendance.search', 'class', 'section', 'date'],
             "create-permission" => '',
             "create-route"      => '',
         ];
@@ -51,7 +47,7 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect(route('attendance.index'))->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -69,7 +65,7 @@ class AttendanceController extends Controller
         ];
         $data['headers']  = [
             "title"             => $data['title'],
-            "filter"            => ['attendance.search', 'class', 'section','date'],
+            "filter"            => ['attendance.search', 'class', 'section', 'date'],
             "create-permission" => '',
             "create-route"      => '',
         ];

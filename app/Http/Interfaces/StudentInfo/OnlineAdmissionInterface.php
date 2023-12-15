@@ -11,5 +11,7 @@ interface OnlineAdmissionInterface
 
     public function store($request);
 
+    public function searchStudents($request);
+
     public function destroy($id);
 }

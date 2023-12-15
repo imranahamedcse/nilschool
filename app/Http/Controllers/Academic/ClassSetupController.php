@@ -4,41 +4,35 @@ namespace App\Http\Controllers\Academic;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Academic\ClassSetup\ClassSetupStoreRequest;
-use App\Http\Requests\Academic\ClassSetup\ClassSetupUpdateRequest;
+use App\Http\Requests\Academic\ClassSetup\StoreRequest;
+use App\Http\Requests\Academic\ClassSetup\UpdateRequest;
 use App\Http\Interfaces\Academic\ClassesInterface;
 use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
-use App\Http\Interfaces\Settings\SessionInterface;
 
 class ClassSetupController extends Controller
 {
-    private $repo;
-    private $session;
-    private $classes;
-    private $section;
+    private $repo, $classes, $section;
 
     function __construct(
         ClassSetupInterface $repo,
-        SessionInterface $session,
         ClassesInterface $classes,
         SectionInterface $section
-        )
-    {
+    ) {
         $this->repo          = $repo;
-        $this->session       = $session;
         $this->classes       = $classes;
         $this->section       = $section;
     }
 
-    public function getSections(Request $request){
+    public function getSections(Request $request)
+    {
         $data = $this->repo->getSections($request->id);
         return response()->json($data);
     }
 
     public function index()
     {
-        $data['class_setups']       = $this->repo->getPaginateAll();
+        $data['class_setups']       = $this->repo->all();
 
         $title             = ___('academic.class_setup');
         $data['headers']   = [
@@ -54,7 +48,6 @@ class ClassSetupController extends Controller
 
 
         return view('backend.admin.academic.class_setup.index', compact('data'));
-
     }
 
     public function create()
@@ -67,16 +60,15 @@ class ClassSetupController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['classes']            = $this->classes->all();
-        $data['section']            = $this->section->all();
+        $data['classes']            = $this->classes->allActive();
+        $data['section']            = $this->section->allActive();
         return view('backend.admin.academic.class_setup.create', compact('data'));
-
     }
 
-    public function store(ClassSetupStoreRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('class-setup.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -93,18 +85,18 @@ class ClassSetupController extends Controller
         ];
 
         $data['class_setup']        = $this->repo->show($id);
-        $data['classes']            = $this->classes->all();
-        $data['section']            = $this->section->all();
+        $data['classes']            = $this->classes->allActive();
+        $data['section']            = $this->section->allActive();
 
         $data['class_setup_sections']  = $data['class_setup']->classSetupChildrenAll->pluck('section_id')->toArray();
 
         return view('backend.admin.academic.class_setup.edit', compact('data'));
     }
 
-    public function update(ClassSetupUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('class-setup.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -114,21 +106,17 @@ class ClassSetupController extends Controller
     {
 
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
         endif;
     }
-
-
-
-
 }

@@ -9,7 +9,7 @@ interface ClassSetupInterface
 
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function store($request);
 
@@ -18,4 +18,8 @@ interface ClassSetupInterface
     public function update($request, $id);
 
     public function destroy($id);
+
+    public function promoteClasses($id);
+    
+    public function promoteSections($session_id, $classes_id);
 }

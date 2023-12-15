@@ -16,7 +16,7 @@ class SectionController extends Controller
     function __construct(SectionInterface $section)
     {
 
-        if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
         }
         $this->section       = $section;
@@ -24,7 +24,7 @@ class SectionController extends Controller
 
     public function index()
     {
-        $data['section'] = $this->section->getAll();
+        $data['section'] = $this->section->all();
         $title = ___('academic.section');
         $data['headers']   = [
             "title"        => $title,
@@ -54,7 +54,7 @@ class SectionController extends Controller
     public function store(StoreRequest $request)
     {
         $result = $this->section->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('section.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -76,7 +76,7 @@ class SectionController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->section->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('section.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -85,13 +85,13 @@ class SectionController extends Controller
     public function delete($id)
     {
         $result = $this->section->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');

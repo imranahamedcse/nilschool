@@ -4,54 +4,42 @@ namespace App\Http\Controllers\StudentInfo;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Settings\GenderRepository;
-use App\Http\Repositories\Settings\ReligionRepository;
-use App\Http\Repositories\Settings\BloodGroupRepository;
-use App\Http\Repositories\Academic\ShiftRepository;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\ShiftInterface;
+use App\Http\Interfaces\Examination\ExamAssignInterface;
+use App\Http\Interfaces\Settings\BloodGroupInterface;
+use App\Http\Interfaces\Settings\GenderInterface;
+use App\Http\Interfaces\Settings\ReligionInterface;
+use App\Http\Interfaces\StudentInfo\StudentCategoryInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Http\Requests\StudentInfo\Student\StoreRequest;
 use App\Http\Requests\StudentInfo\Student\UpdateRequest;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
-use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
 
 class StudentController extends Controller
 {
-    private $repo;
-    private $classRepo;
-    private $sectionRepo;
-    private $classSetupRepo;
-    private $shiftRepo;
-    private $bloodRepo;
-    private $religionRepo;
-    private $genderRepo;
-    private $categoryRepo;
-    private $examAssignRepo;
+    private $repo, $classRepo, $classSetupRepo, $shiftRepo, $bloodRepo, $religionRepo, $genderRepo, $categoryRepo, $examAssignRepo;
 
     function __construct(
-        StudentRepository $repo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        ClassSetupRepository $classSetupRepo,
-        ShiftRepository   $shiftRepo,
-        BloodGroupRepository         $bloodRepo,
-        ReligionRepository           $religionRepo,
-        GenderRepository             $genderRepo,
-        StudentCategoryRepository    $categoryRepo,
-        ExamAssignRepository         $examAssignRepo,
+        StudentInterface            $repo,
+        ClassesInterface            $classRepo,
+        ClassSetupInterface         $classSetupRepo,
+        ShiftInterface              $shiftRepo,
+        BloodGroupInterface         $bloodRepo,
+        ReligionInterface           $religionRepo,
+        GenderInterface             $genderRepo,
+        StudentCategoryInterface    $categoryRepo,
+        ExamAssignInterface         $examAssignRepo,
     ) {
-        $this->repo         = $repo;
-        $this->classRepo    = $classRepo;
-        $this->sectionRepo  = $sectionRepo;
+        $this->repo            = $repo;
+        $this->classRepo       = $classRepo;
         $this->classSetupRepo  = $classSetupRepo;
-        $this->shiftRepo    = $shiftRepo;
-        $this->bloodRepo    = $bloodRepo;
-        $this->religionRepo = $religionRepo;
-        $this->genderRepo   = $genderRepo;
-        $this->categoryRepo = $categoryRepo;
-        $this->examAssignRepo = $examAssignRepo;
+        $this->shiftRepo       = $shiftRepo;
+        $this->bloodRepo       = $bloodRepo;
+        $this->religionRepo    = $religionRepo;
+        $this->genderRepo      = $genderRepo;
+        $this->categoryRepo    = $categoryRepo;
+        $this->examAssignRepo  = $examAssignRepo;
     }
 
     public function index()

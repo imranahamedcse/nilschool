@@ -10,36 +10,36 @@ use App\Traits\ReturnFormatTrait;
 class TimeScheduleRepository implements TimeScheduleInterface
 {
     use ReturnFormatTrait;
-    private $time;
+    private $time, $model;
 
-    public function __construct(TimeSchedule $time)
+    public function __construct(TimeSchedule $model)
     {
-        $this->time = $time;
+        $this->model = $model;
+    }
+
+    public function allActive()
+    {
+        return $this->model->active()->get();
     }
 
     public function all()
     {
-        return $this->time->active()->get();
+        return $this->model->latest()->get();
     }
 
     public function allClassSchedule()
     {
-        return $this->time->active()->where('type', 1)->get();
+        return $this->model->active()->where('type', 1)->get();
     }
     public function allExamSchedule()
     {
-        return $this->time->active()->where('type', 2)->get();
-    }
-
-    public function getAll()
-    {
-        return $this->time->latest()->paginate(Settings::PAGINATE);
+        return $this->model->active()->where('type', 2)->get();
     }
 
     public function store($request)
     {
         try {
-            $result = $this->time->where('type', $request->type)->get();
+            $result = $this->model->where('type', $request->type)->get();
 
             foreach ($result as $key => $value) {
                 if($value->start_time <= $request->start_time && $request->start_time <= $value->end_time || $value->start_time <= $request->end_time && $request->end_time <= $value->end_time) {
@@ -47,12 +47,12 @@ class TimeScheduleRepository implements TimeScheduleInterface
                 }
             }
 
-            $timeStore              = new $this->time;
-            $timeStore->type        = $request->type;
-            $timeStore->status      = $request->status;
-            $timeStore->start_time  = $request->start_time;
-            $timeStore->end_time    = $request->end_time;
-            $timeStore->save();
+            $row              = new $this->model;
+            $row->type        = $request->type;
+            $row->status      = $request->status;
+            $row->start_time  = $request->start_time;
+            $row->end_time    = $request->end_time;
+            $row->save();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -61,13 +61,13 @@ class TimeScheduleRepository implements TimeScheduleInterface
 
     public function show($id)
     {
-        return $this->time->find($id);
+        return $this->model->find($id);
     }
 
     public function update($request, $id)
     {
         try {
-            $result = $this->time->where('type', $request->type)->get();
+            $result = $this->model->where('type', $request->type)->get();
 
             foreach ($result as $key => $value) {
                 if($value->start_time <= $request->start_time && $request->start_time <= $value->end_time && $value->id != $id || $value->start_time <= $request->end_time && $request->end_time <= $value->end_time && $value->id != $id) {
@@ -75,12 +75,12 @@ class TimeScheduleRepository implements TimeScheduleInterface
                 }
             }
 
-            $timeUpdate              = $this->time->findOrfail($id);
-            $timeUpdate->type        = $request->type;
-            $timeUpdate->status      = $request->status;
-            $timeUpdate->start_time  = $request->start_time;
-            $timeUpdate->end_time    = $request->end_time;
-            $timeUpdate->save();
+            $row              = $this->model->findOrfail($id);
+            $row->type        = $request->type;
+            $row->status      = $request->status;
+            $row->start_time  = $request->start_time;
+            $row->end_time    = $request->end_time;
+            $row->save();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -90,8 +90,8 @@ class TimeScheduleRepository implements TimeScheduleInterface
     public function destroy($id)
     {
         try {
-            $timeDestroy = $this->time->find($id);
-            $timeDestroy->delete();
+            $row = $this->model->find($id);
+            $row->delete();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);

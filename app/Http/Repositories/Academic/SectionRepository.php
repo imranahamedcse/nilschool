@@ -10,30 +10,30 @@ use App\Traits\ReturnFormatTrait;
 class SectionRepository implements SectionInterface
 {
     use ReturnFormatTrait;
-    private $section;
+    private $model;
 
-    public function __construct(Section $section)
+    public function __construct(Section $model)
     {
-        $this->section = $section;
+        $this->model = $model;
+    }
+
+    public function allActive()
+    {
+        return $this->model->active()->get();
     }
 
     public function all()
     {
-        return $this->section->active()->get();
-    }
-
-    public function getAll()
-    {
-        return $this->section->latest()->paginate(Settings::PAGINATE);
+        return $this->model->latest()->get();
     }
 
     public function store($request)
     {
         try {
-            $sectionStore              = new $this->section;
-            $sectionStore->name        = $request->name;
-            $sectionStore->status      = $request->status;
-            $sectionStore->save();
+            $row              = new $this->model;
+            $row->name        = $request->name;
+            $row->status      = $request->status;
+            $row->save();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -42,16 +42,16 @@ class SectionRepository implements SectionInterface
 
     public function show($id)
     {
-        return $this->section->find($id);
+        return $this->model->find($id);
     }
 
     public function update($request, $id)
     {
         try {
-            $sectionUpdate              = $this->section->findOrfail($id);
-            $sectionUpdate->name        = $request->name;
-            $sectionUpdate->status      = $request->status;
-            $sectionUpdate->save();
+            $row              = $this->model->findOrfail($id);
+            $row->name        = $request->name;
+            $row->status      = $request->status;
+            $row->save();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -61,8 +61,8 @@ class SectionRepository implements SectionInterface
     public function destroy($id)
     {
         try {
-            $sectionDestroy = $this->section->find($id);
-            $sectionDestroy->delete();
+            $row = $this->model->find($id);
+            $row->delete();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);

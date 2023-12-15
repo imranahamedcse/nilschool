@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Interfaces\Academic\AttendanceInterface;
 use App\Http\Interfaces\Academic\ClassesInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
 use App\Http\Interfaces\Academic\ShiftInterface;
@@ -38,6 +39,7 @@ use App\Http\Interfaces\Dormitory\DormitorySetupInterface;
 use App\Http\Interfaces\Dormitory\DormitoryStudentInterface;
 use App\Http\Interfaces\Dormitory\RoomInterface;
 use App\Http\Interfaces\Dormitory\RoomTypeInterface;
+use App\Http\Interfaces\Examination\ExamAssignInterface;
 use App\Http\Interfaces\WebsiteSetup\CounterInterface;
 use App\Http\Interfaces\Examination\ExamTypeInterface;
 use App\Http\Interfaces\Report\MarksheetInterface;
@@ -59,7 +61,12 @@ use App\Http\Interfaces\WebsiteSetup\SliderInterface;
 use App\Http\Interfaces\Staff\DepartmentInterface;
 use App\Http\Interfaces\Staff\DesignationInterface;
 use App\Http\Interfaces\Staff\RoleInterface;
+use App\Http\Interfaces\StudentInfo\DisabledStudentInterface;
+use App\Http\Interfaces\StudentInfo\OnlineAdmissionInterface;
+use App\Http\Interfaces\StudentInfo\ParentGuardianInterface;
 use App\Http\Interfaces\StudentInfo\PromoteStudentInterface;
+use App\Http\Interfaces\StudentInfo\StudentCategoryInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Http\Interfaces\StudentPanel\ClassRoutineInterface as StudentPanelClassRoutineInterface;
 use App\Http\Interfaces\StudentPanel\DashboardInterface;
 use App\Http\Interfaces\StudentPanel\ExamRoutineInterface as StudentPanelExamRoutineInterface;
@@ -69,6 +76,7 @@ use App\Http\Interfaces\Transport\PickupPointInterface;
 use App\Http\Interfaces\Transport\RouteInterface;
 use App\Http\Interfaces\Transport\TransportStudentInterface;
 use App\Http\Interfaces\Transport\VehicleInterface;
+use App\Http\Repositories\Academic\AttendanceRepository;
 use App\Http\Repositories\Academic\ClassRoomRepository;
 use App\Http\Repositories\Academic\ClassRoutineRepository;
 use App\Http\Repositories\Academic\ClassSetupRepository;
@@ -83,6 +91,7 @@ use App\Http\Repositories\Dormitory\DormitorySetupRepository;
 use App\Http\Repositories\Dormitory\DormitoryStudentRepository;
 use App\Http\Repositories\Dormitory\RoomRepository;
 use App\Http\Repositories\Dormitory\RoomTypeRepository;
+use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\WebsiteSetup\CounterRepository;
 use App\Http\Repositories\Examination\ExamTypeRepository;
 use App\Http\Repositories\Report\MarksheetRepository;
@@ -107,7 +116,12 @@ use App\Http\Repositories\WebsiteSetup\SliderRepository;
 use App\Http\Repositories\Staff\DepartmentRepository;
 use App\Http\Repositories\Staff\DesignationRepository;
 use App\Http\Repositories\Staff\FlagIconRepository;
+use App\Http\Repositories\StudentInfo\DisabledStudentRepository;
+use App\Http\Repositories\StudentInfo\OnlineAdmissionRepository;
+use App\Http\Repositories\StudentInfo\ParentGuardianRepository;
 use App\Http\Repositories\StudentInfo\PromoteStudentRepository;
+use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
+use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Repositories\StudentPanel\ClassRoutineRepository as StudentPanelClassRoutineRepository;
 use App\Http\Repositories\StudentPanel\DashboardRepository;
 use App\Http\Repositories\StudentPanel\ExamRoutineRepository as StudentPanelExamRoutineRepository;
@@ -155,6 +169,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SubjectAssignInterface::class,            SubjectAssignRepository::class);
         $this->app->bind(ClassRoutineInterface::class,             ClassRoutineRepository::class);
         $this->app->bind(TimeScheduleInterface::class,             TimeScheduleRepository::class);
+        $this->app->bind(AttendanceInterface::class,               AttendanceRepository::class);
+        
         // Fess
         $this->app->bind(FeesGroupInterface::class,                FeesGroupRepository::class);
         $this->app->bind(FeesTypeInterface::class,                 FeesTypeRepository::class);
@@ -166,6 +182,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(DesignationInterface::class,              DesignationRepository::class);
 
         // Examination
+        $this->app->bind(ExamAssignInterface::class,               ExamAssignRepository::class);
         $this->app->bind(ExamTypeInterface::class,                 ExamTypeRepository::class);
         $this->app->bind(MarksRegisterInterface::class,            MarksRegisterRepository::class);
         // Report
@@ -176,8 +193,14 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(AccountHeadInterface::class,              AccountHeadRepository::class);
         $this->app->bind(IncomeInterface::class,                   IncomeRepository::class);
         $this->app->bind(ExpenseInterface::class,                  ExpenseRepository::class);
+
         // Students
-        $this->app->bind(PromoteStudentInterface::class,           PromoteStudentRepository::class);
+        $this->app->bind(DisabledStudentInterface::class,           DisabledStudentRepository::class);
+        $this->app->bind(OnlineAdmissionInterface::class,           OnlineAdmissionRepository::class);
+        $this->app->bind(ParentGuardianInterface::class,            ParentGuardianRepository::class);
+        $this->app->bind(PromoteStudentInterface::class,            PromoteStudentRepository::class);
+        $this->app->bind(StudentCategoryInterface::class,           StudentCategoryRepository::class);
+        $this->app->bind(StudentInterface::class,                   StudentRepository::class);
 
 
         // Student panel

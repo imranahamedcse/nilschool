@@ -3,33 +3,25 @@
 namespace App\Http\Controllers\StudentInfo;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Settings\SessionInterface;
+use App\Http\Interfaces\StudentInfo\PromoteStudentInterface;
 use App\Http\Requests\StudentInfo\PromoteStudent\SearchRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Settings\SessionRepository;
-use App\Http\Repositories\StudentInfo\PromoteStudentRepository;
 use Illuminate\Http\Request;
 
 class PromoteStudentController extends Controller
 {
-    private $repo;
-    private $classRepo;
-    private $sectionRepo;
-    private $sessionRepo;
-    private $classSetupRepo;
+    private $repo, $classRepo, $sessionRepo, $classSetupRepo;
 
     function __construct(
-        PromoteStudentRepository $repo,
-        ClassesRepository        $classRepo,
-        SectionRepository        $sectionRepo,
-        SessionRepository        $sessionRepo,
-        ClassSetupRepository     $classSetupRepo,
-        )
-    {
+        PromoteStudentInterface $repo,
+        ClassesInterface        $classRepo,
+        SessionInterface        $sessionRepo,
+        ClassSetupInterface     $classSetupRepo,
+    ) {
         $this->repo              = $repo;
         $this->classRepo         = $classRepo;
-        $this->sectionRepo       = $sectionRepo;
         $this->sessionRepo       = $sessionRepo;
         $this->classSetupRepo    = $classSetupRepo;
     }
@@ -52,8 +44,7 @@ class PromoteStudentController extends Controller
         $students                   = [];
         $request                    = [];
         $results                    = [''];
-        return view('backend.admin.student-info.promote-student.index', compact('data','students','results','request'));
-
+        return view('backend.admin.student-info.promote-student.index', compact('data', 'students', 'results', 'request'));
     }
 
     public function search(SearchRequest $request)
@@ -77,13 +68,13 @@ class PromoteStudentController extends Controller
         $results                    = $items['data']['results'];
 
 
-        return view('backend.admin.student-info.promote-student.index', compact('data','students','results','request'));
+        return view('backend.admin.student-info.promote-student.index', compact('data', 'students', 'results', 'request'));
     }
 
     public function store(Request $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             $data['title']              = ___('student_info.Promote');
             $data['student_categories'] = $this->repo->allActive();
             $data['classes']            = $this->classRepo->assignedAll();
@@ -97,12 +88,13 @@ class PromoteStudentController extends Controller
         return redirect()->route('promote_students.index')->with('danger', $result['message'])->withInput();
     }
 
-    public function getClass(Request $request){
+    public function getClass(Request $request)
+    {
         return $this->repo->getClass($request);
     }
 
-    public function getSections(Request $request){
+    public function getSections(Request $request)
+    {
         return $this->repo->getSections($request);
     }
-
 }

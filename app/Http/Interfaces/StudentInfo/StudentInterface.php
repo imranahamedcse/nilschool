@@ -19,4 +19,6 @@ interface StudentInterface
     public function update($request, $id);
 
     public function destroy($id);
+
+    public function getSessionStudent($id);
 }

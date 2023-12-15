@@ -12,11 +12,11 @@ class ClassesRepository implements ClassesInterface
 {
     use ReturnFormatTrait;
 
-    private $classes;
+    private $model;
 
-    public function __construct(Classes $classes)
+    public function __construct(Classes $model)
     {
-        $this->classes = $classes;
+        $this->model = $model;
     }
 
     public function assignedAll()
@@ -24,23 +24,23 @@ class ClassesRepository implements ClassesInterface
         return ClassSetup::active()->where('session_id', setting('session'))->get();
     }
 
-    public function all()
+    public function allActive()
     {
-        return $this->classes->active()->get();
+        return $this->model->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->classes->latest()->paginate(Settings::PAGINATE);
+        return $this->model->latest()->get();
     }
 
     public function store($request)
     {
         try {
-            $classesStore              = new $this->classes;
-            $classesStore->name        = $request->name;
-            $classesStore->status      = $request->status;
-            $classesStore->save();
+            $row              = new $this->model;
+            $row->name        = $request->name;
+            $row->status      = $request->status;
+            $row->save();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -49,16 +49,16 @@ class ClassesRepository implements ClassesInterface
 
     public function show($id)
     {
-        return $this->classes->find($id);
+        return $this->model->find($id);
     }
 
     public function update($request, $id)
     {
         try {
-            $classesUpdate              = $this->classes->findOrfail($id);
-            $classesUpdate->name        = $request->name;
-            $classesUpdate->status      = $request->status;
-            $classesUpdate->save();
+            $row              = $this->model->findOrfail($id);
+            $row->name        = $request->name;
+            $row->status      = $request->status;
+            $row->save();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
@@ -68,8 +68,8 @@ class ClassesRepository implements ClassesInterface
     public function destroy($id)
     {
         try {
-            $classesDestroy = $this->classes->find($id);
-            $classesDestroy->delete();
+            $row = $this->model->find($id);
+            $row->delete();
             return $this->responseWithSuccess(___('alert.deleted_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);

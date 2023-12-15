@@ -117,8 +117,7 @@
 
                                     </td>
                                     <td>
-                                        <input class="form-control" name="note[]"
-                                            placeholder="{{ ___('attendance.Note') }}"
+                                        <input class="form-control" name="note[]" placeholder="{{ ___('attendance.Note') }}"
                                             value="{{ old('note', @$item->note) }}">
                                     </td>
                                 </tr>
@@ -138,7 +137,10 @@
                     @endif
                 </form>
             </div>
-
+            @else
+            <div class="text-center">
+                @include('backend.admin.components.table.empty')
+            </div>
             @endif
         </div>
     @endsection

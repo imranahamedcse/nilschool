@@ -12,4 +12,8 @@ interface PromoteStudentInterface
     public function search($request);
 
     public function store($request);
+
+    public function getClass($request);
+
+    public function getSections($request);
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\StudentInfo;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\StudentInfo\StudentCategoryInterface;
 use Illuminate\Http\Request;
-use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
 use App\Http\Requests\StudentInfo\Category\StoreRequest;
 use App\Http\Requests\StudentInfo\Category\UpdateRequest;
 
@@ -12,7 +12,7 @@ class StudentCategoryController extends Controller
 {
     private $repo;
 
-    function __construct(StudentCategoryRepository $repo)
+    function __construct(StudentCategoryInterface $repo)
     {
         $this->repo       = $repo;
     }
@@ -32,7 +32,6 @@ class StudentCategoryController extends Controller
         ];
         $data['student_categories'] = $this->repo->all();
         return view('backend.admin.student-info.student-category.index', compact('data'));
-
     }
 
     public function create()
@@ -50,7 +49,7 @@ class StudentCategoryController extends Controller
     public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('student_category.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -73,7 +72,7 @@ class StudentCategoryController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result){
+        if ($result) {
             return redirect()->route('student_category.index')->with('success', ___('alert.updated_successfully'));
         }
         return back()->with('danger', ___('alert.something_went_wrong_please_try_again'));
@@ -83,21 +82,17 @@ class StudentCategoryController extends Controller
     {
 
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
         endif;
     }
-
-
-
-
 }

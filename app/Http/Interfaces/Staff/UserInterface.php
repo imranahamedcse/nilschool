@@ -13,7 +13,7 @@ interface UserInterface
 
     public function deletes(Request $request);
 
-    public function getAll();
+    public function allActive();
 
     public function all();
 

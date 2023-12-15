@@ -24,7 +24,7 @@ class ShiftController extends Controller
 
     public function index()
     {
-        $data['shift'] = $this->shift->getAll();
+        $data['shift'] = $this->shift->all();
         $title             = ___('academic.shift');
         $data['headers']   = [
             "title"        => $title,

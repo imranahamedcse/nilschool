@@ -22,4 +22,6 @@ interface ExamAssignInterface
     public function getSubjects($request);
 
     public function checkSubmit($request);
+
+    public function getExamAssign($request);
 }

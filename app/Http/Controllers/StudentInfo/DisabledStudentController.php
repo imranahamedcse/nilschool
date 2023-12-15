@@ -3,30 +3,23 @@
 namespace App\Http\Controllers\StudentInfo;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\StudentInfo\DisabledStudentInterface;
 use App\Http\Requests\StudentInfo\Inactive\SearchRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\StudentInfo\DisabledStudentRepository;
 use Illuminate\Http\Request;
 
 class DisabledStudentController extends Controller
 {
-    private $repo;
-    private $classRepo;
-    private $sectionRepo;
-    private $classSetupRepo;
+    private $repo, $classRepo, $classSetupRepo;
 
     function __construct(
-        DisabledStudentRepository $repo,
-        ClassesRepository         $classRepo,
-        SectionRepository         $sectionRepo,
-        ClassSetupRepository      $classSetupRepo
-        )
-    {
+        DisabledStudentInterface $repo,
+        ClassesInterface         $classRepo,
+        ClassSetupInterface      $classSetupRepo
+    ) {
         $this->repo              = $repo;
         $this->classRepo         = $classRepo;
-        $this->sectionRepo       = $sectionRepo;
         $this->classSetupRepo    = $classSetupRepo;
     }
 
@@ -43,8 +36,7 @@ class DisabledStudentController extends Controller
         $data['sections']           = [];
         $students                   = [];
         $request                    = [];
-        return view('backend.admin.student-info.disabled-student.index', compact('data','students','request'));
-
+        return view('backend.admin.student-info.disabled-student.index', compact('data', 'students', 'request'));
     }
 
     public function search(SearchRequest $request)
@@ -59,6 +51,6 @@ class DisabledStudentController extends Controller
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = $this->classSetupRepo->getSections($request->class);
         $students                   = $this->repo->search($request);
-        return view('backend.admin.student-info.disabled-student.index', compact('data','students','request'));
+        return view('backend.admin.student-info.disabled-student.index', compact('data', 'students', 'request'));
     }
 }

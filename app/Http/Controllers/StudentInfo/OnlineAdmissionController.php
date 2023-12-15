@@ -4,49 +4,38 @@ namespace App\Http\Controllers\StudentInfo;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\ShiftInterface;
+use App\Http\Interfaces\Settings\BloodGroupInterface;
+use App\Http\Interfaces\Settings\GenderInterface;
+use App\Http\Interfaces\Settings\ReligionInterface;
+use App\Http\Interfaces\StudentInfo\OnlineAdmissionInterface;
+use App\Http\Interfaces\StudentInfo\StudentCategoryInterface;
 use App\Http\Requests\StudentInfo\OnlineAdmission\StoreRequest;
-use App\Http\Repositories\Settings\GenderRepository;
-use App\Http\Repositories\Settings\ReligionRepository;
-use App\Http\Repositories\Settings\BloodGroupRepository;
-use App\Http\Repositories\Academic\ShiftRepository;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\StudentInfo\OnlineAdmissionRepository;
-use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
 
 class OnlineAdmissionController extends Controller
 {
-    private $repo;
-    private $classRepo;
-    private $sectionRepo;
-    private $classSetupRepo;
-    private $shiftRepo;
-    private $bloodRepo;
-    private $religionRepo;
-    private $genderRepo;
-    private $categoryRepo;
+    private $repo, $classRepo, $classSetupRepo, $shiftRepo, $bloodRepo, $religionRepo, $genderRepo, $categoryRepo;
 
     function __construct(
-        OnlineAdmissionRepository    $repo,
-        ClassesRepository            $classRepo,
-        SectionRepository            $sectionRepo,
-        ClassSetupRepository         $classSetupRepo,
-        ShiftRepository              $shiftRepo,
-        BloodGroupRepository         $bloodRepo,
-        ReligionRepository           $religionRepo,
-        GenderRepository             $genderRepo,
-        StudentCategoryRepository    $categoryRepo,
+        OnlineAdmissionInterface    $repo,
+        ClassesInterface            $classRepo,
+        ClassSetupInterface         $classSetupRepo,
+        ShiftInterface              $shiftRepo,
+        BloodGroupInterface         $bloodRepo,
+        ReligionInterface           $religionRepo,
+        GenderInterface             $genderRepo,
+        StudentCategoryInterface    $categoryRepo,
     ) {
-        $this->repo         = $repo;
-        $this->classRepo    = $classRepo;
-        $this->sectionRepo  = $sectionRepo;
+        $this->repo            = $repo;
+        $this->classRepo       = $classRepo;
         $this->classSetupRepo  = $classSetupRepo;
-        $this->shiftRepo    = $shiftRepo;
-        $this->bloodRepo    = $bloodRepo;
-        $this->religionRepo = $religionRepo;
-        $this->genderRepo   = $genderRepo;
-        $this->categoryRepo = $categoryRepo;
+        $this->shiftRepo       = $shiftRepo;
+        $this->bloodRepo       = $bloodRepo;
+        $this->religionRepo    = $religionRepo;
+        $this->genderRepo      = $genderRepo;
+        $this->categoryRepo    = $categoryRepo;
     }
 
     public function index()

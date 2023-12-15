@@ -58,14 +58,14 @@ class UserRepository implements UserInterface
         return $this->model->destroy((array)$request->ids);
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->where('role_id', 5)->get(); // Teacher role id 5
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->model->query()->orderBy('id', 'DESC')->paginate(10);
+        return $this->model->query()->orderBy('id', 'DESC')->get();
     }
 
     public function store($request)
