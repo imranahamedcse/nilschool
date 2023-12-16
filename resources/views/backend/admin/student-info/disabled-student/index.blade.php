@@ -122,9 +122,9 @@
                                     <td>{{ @$item->student->mobile }}</td>
                                     <td>
                                         @if (@$item->student->status == App\Enums\Status::ACTIVE)
-                                            <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
+                                            <span class="btn btn-sm btn-success">{{ ___('common.active') }}</span>
                                         @else
-                                            <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
+                                            <span class="btn btn-sm btn-danger">{{ ___('common.inactive') }}</span>
                                         @endif
                                     </td>
                                     @if (hasPermission('disabled_students_update'))

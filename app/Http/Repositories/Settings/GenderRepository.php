@@ -17,14 +17,14 @@ class GenderRepository implements GenderInterface
         $this->gender = $gender;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->gender->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->gender->latest()->paginate(Settings::PAGINATE);
+        return $this->gender->latest()->get();
     }
 
     public function store($request)

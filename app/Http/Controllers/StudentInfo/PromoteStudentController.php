@@ -38,7 +38,7 @@ class PromoteStudentController extends Controller
         $data['student_categories'] = $this->repo->allActive();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
-        $data['sessions']           = $this->sessionRepo->all();
+        $data['sessions']           = $this->sessionRepo->allActive();
         $data['promoteClasses']     = [];
         $data['promoteSections']    = [];
         $students                   = [];
@@ -59,7 +59,7 @@ class PromoteStudentController extends Controller
         $data['student_categories'] = $this->repo->allActive();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = $this->classSetupRepo->getSections($request->class);
-        $data['sessions']           = $this->sessionRepo->all();
+        $data['sessions']           = $this->sessionRepo->allActive();
         $data['promoteClasses']     = $this->classSetupRepo->promoteClasses($request->promote_session);
         $data['promoteSections']    = $this->classSetupRepo->promoteSections($request->promote_session, $request->promote_class);
 
@@ -79,7 +79,7 @@ class PromoteStudentController extends Controller
             $data['student_categories'] = $this->repo->allActive();
             $data['classes']            = $this->classRepo->assignedAll();
             $data['sections']           = $this->classSetupRepo->getSections($request->class);
-            $data['sessions']           = $this->sessionRepo->all();
+            $data['sessions']           = $this->sessionRepo->allActive();
             $data['promoteClasses']     = $this->classSetupRepo->promoteClasses($request->promote_session);
             $data['promoteSections']    = $this->classSetupRepo->promoteSections($request->promote_session, $request->promote_class);
 

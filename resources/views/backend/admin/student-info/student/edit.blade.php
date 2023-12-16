@@ -434,7 +434,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: url + '/student/add-new-document',
+                url: url + '/students/list/add-new-document',
                 success: function(data) {
                     $("#student-document tbody").append(data);
                     $("#counter").val(counter);

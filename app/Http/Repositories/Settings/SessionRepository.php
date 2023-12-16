@@ -18,14 +18,14 @@ class SessionRepository implements SessionInterface
         $this->session = $session;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->session->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return Session::latest()->paginate(10);
+        return Session::latest()->get();
     }
 
     public function store($request)

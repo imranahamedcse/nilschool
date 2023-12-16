@@ -17,14 +17,14 @@ class ReligionRepository implements ReligionInterface
         $this->religion = $religion;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->religion->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->religion->latest()->paginate(Settings::PAGINATE);
+        return $this->religion->latest()->get();
     }
 
     public function store($request)

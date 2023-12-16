@@ -95,12 +95,12 @@ class OnlineAdmissionController extends Controller
         $data['student']      = $this->repo->show($id);
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($data['student']->class->id);
-        $data['shifts']       = $this->shiftRepo->all();
+        $data['shifts']       = $this->shiftRepo->allActive();
 
-        $data['bloods']       = $this->bloodRepo->all();
-        $data['religions']    = $this->religionRepo->all();
-        $data['genders']      = $this->genderRepo->all();
-        $data['categories']   = $this->categoryRepo->all();
+        $data['bloods']       = $this->bloodRepo->allActive();
+        $data['religions']    = $this->religionRepo->allActive();
+        $data['genders']      = $this->genderRepo->allActive();
+        $data['categories']   = $this->categoryRepo->allActive();
         return view('backend.admin.student-info.online-admission.edit', compact('data'));
     }
 

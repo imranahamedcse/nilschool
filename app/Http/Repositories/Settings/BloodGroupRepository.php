@@ -17,14 +17,14 @@ class BloodGroupRepository implements BloodGroupInterface
         $this->bloodGroup = $bloodGroup;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->bloodGroup->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->bloodGroup->latest()->paginate(Settings::PAGINATE);
+        return $this->bloodGroup->latest()->get();
     }
 
     public function store($request)

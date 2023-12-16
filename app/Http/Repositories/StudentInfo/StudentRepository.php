@@ -4,14 +4,11 @@ namespace App\Http\Repositories\StudentInfo;
 
 use App\Models\Role;
 use App\Models\User;
-use App\Enums\Settings;
-use App\Enums\ApiStatus;
 use App\Traits\CommonHelperTrait;
 use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 use App\Models\StudentInfo\Student;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Models\StudentInfo\ParentGuardian;
@@ -68,7 +65,7 @@ class StudentRepository implements StudentInterface
             $students = $students->where('section_id', $request->section);
         }
 
-        return $students->paginate(Settings::PAGINATE);
+        return $students->get();
     }
 
     public function store($request)
