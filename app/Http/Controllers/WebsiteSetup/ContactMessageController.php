@@ -4,14 +4,14 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\WebsiteSetup\ContactMessageInterface;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Repositories\WebsiteSetup\ContactMessageRepository;
 
 class ContactMessageController extends Controller
 {
     private $repo;
 
-    function __construct(ContactMessageRepository $repo)
+    function __construct(ContactMessageInterface $repo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\WebsiteSetup\AboutRepository;
+use App\Http\Interfaces\WebsiteSetup\AboutInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\About\StoreRequest;
 use App\Http\Requests\WebsiteSetup\About\UpdateRequest;
@@ -13,7 +13,7 @@ class AboutController extends Controller
 {
     private $aboutRepo;
 
-    function __construct(AboutRepository $aboutRepo)
+    function __construct(AboutInterface $aboutRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -23,7 +23,7 @@ class AboutController extends Controller
 
     public function index()
     {
-        $data['about'] = $this->aboutRepo->getAll();
+        $data['about'] = $this->aboutRepo->all();
 
         $title             = ___('settings.About');
         $data['headers']   = [

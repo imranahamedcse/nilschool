@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\WebsiteSetup\ContactInfoRepository;
+use App\Http\Interfaces\WebsiteSetup\ContactInfoInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\ContactInfo\StoreRequest;
 use App\Http\Requests\WebsiteSetup\ContactInfo\UpdateRequest;
@@ -13,7 +13,7 @@ class ContactInfoController extends Controller
 {
     private $contactInfoRepo;
 
-    function __construct(ContactInfoRepository $contactInfoRepo)
+    function __construct(ContactInfoInterface $contactInfoRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -23,7 +23,7 @@ class ContactInfoController extends Controller
 
     public function index()
     {
-        $data['contact_info'] = $this->contactInfoRepo->getAll();
+        $data['contact_info'] = $this->contactInfoRepo->all();
 
         $title             = ___('settings.Contact information');
         $data['headers']   = [

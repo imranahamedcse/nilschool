@@ -20,14 +20,14 @@ class NewsRepository implements NewsInterface{
         $this->news = $news;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->news->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->news->orderBy('id', 'desc')->paginate(Settings::PAGINATE);
+        return $this->news->orderBy('id', 'desc')->get();
     }
 
     public function store($request)

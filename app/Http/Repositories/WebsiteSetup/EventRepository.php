@@ -20,14 +20,14 @@ class EventRepository implements EventInterface{
         $this->event = $event;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->event->where('session_id', setting('session'))->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->event->where('session_id', setting('session'))->orderBy('id', 'desc')->paginate(Settings::PAGINATE);
+        return $this->event->where('session_id', setting('session'))->orderBy('id', 'desc')->get();
     }
 
     public function store($request)

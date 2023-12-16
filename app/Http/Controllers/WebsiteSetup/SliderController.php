@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\WebsiteSetup\SliderRepository;
+use App\Http\Interfaces\WebsiteSetup\SliderInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\Slider\StoreRequest;
 use App\Http\Requests\WebsiteSetup\Slider\UpdateRequest;
@@ -13,7 +13,7 @@ class SliderController extends Controller
 {
     private $sliderRepo;
 
-    function __construct(SliderRepository $sliderRepo)
+    function __construct(SliderInterface $sliderRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -23,7 +23,7 @@ class SliderController extends Controller
 
     public function index()
     {
-        $data['slider'] = $this->sliderRepo->getAll();
+        $data['slider'] = $this->sliderRepo->all();
 
         $title             = ___('settings.Slider');
         $data['headers']   = [

@@ -4,14 +4,14 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\WebsiteSetup\SectionsInterface;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Repositories\WebsiteSetup\SectionsRepository;
 
 class SectionsController extends Controller
 {
     private $sectionsRepo;
 
-    function __construct(SectionsRepository $sectionsRepo)
+    function __construct(SectionsInterface $sectionsRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -21,7 +21,7 @@ class SectionsController extends Controller
 
     public function index()
     {
-        $data['sections'] = $this->sectionsRepo->getAll();
+        $data['sections'] = $this->sectionsRepo->all();
 
         $title             = ___('settings.Sections');
         $data['headers']   = [

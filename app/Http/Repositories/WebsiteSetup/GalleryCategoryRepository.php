@@ -22,14 +22,14 @@ class GalleryCategoryRepository implements GalleryCategoryInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->model->orderBy('id', 'desc')->paginate(Settings::PAGINATE);
+        return $this->model->orderBy('id', 'desc')->get();
     }
 
     public function store($request)

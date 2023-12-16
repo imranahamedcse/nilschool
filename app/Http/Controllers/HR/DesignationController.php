@@ -19,7 +19,7 @@ class DesignationController extends Controller
 
     public function index()
     {
-        $data['designations'] = $this->repo->getPaginateAll();
+        $data['designations'] = $this->repo->all();
 
         $title             = ___('staff.designation');
         $data['headers']   = [

@@ -20,14 +20,14 @@ class DepartmentContactRepository implements DepartmentContactInterface{
         $this->depContact = $depContact;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->depContact->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->depContact->orderBy('id', 'desc')->paginate(Settings::PAGINATE);
+        return $this->depContact->orderBy('id', 'desc')->get();
     }
 
     public function store($request)

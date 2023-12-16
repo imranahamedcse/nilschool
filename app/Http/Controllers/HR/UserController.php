@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $data['users'] = $this->user->getAll();
+        $data['users'] = $this->user->all();
 
         $title             = ___('staff.staff');
         $data['headers']   = [
@@ -108,7 +108,7 @@ class UserController extends Controller
         $data['designations']  = $this->designation->all();
         $data['departments']   = $this->department->all();
         $data['genders']       = $this->gender->all();
-        
+
         return view('backend.admin.hr.users.edit', compact('data'));
     }
 

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\WebsiteSetup\GalleryCategoryInterface;
 use App\Http\Requests\WebsiteSetup\GalleryCategory\StoreRequest;
 use App\Http\Requests\WebsiteSetup\GalleryCategory\UpdateRequest;
-use App\Http\Repositories\WebsiteSetup\GalleryCategoryRepository;
 use Illuminate\Support\Facades\Schema;
 
 class GalleryCategoryController extends Controller
@@ -14,7 +14,7 @@ class GalleryCategoryController extends Controller
     private $Repo;
 
 
-    function __construct(GalleryCategoryRepository $Repo)
+    function __construct(GalleryCategoryInterface $Repo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -24,7 +24,7 @@ class GalleryCategoryController extends Controller
 
     public function index()
     {
-        $data['gallery_category'] = $this->Repo->getAll();
+        $data['gallery_category'] = $this->Repo->all();
 
         $title             = ___('settings.Gallery category');
         $data['headers']   = [

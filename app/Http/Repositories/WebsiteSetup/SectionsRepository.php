@@ -22,14 +22,14 @@ class SectionsRepository implements SectionsInterface{
         $this->sections = $sections;
     }
 
+    public function allActive()
+    {
+        return $this->sections->active()->get();
+    }
+
     public function all()
     {
         return $this->sections->get();
-    }
-
-    public function getAll()
-    {
-        return $this->sections->paginate(Settings::PAGINATE);
     }
 
     public function store($request)

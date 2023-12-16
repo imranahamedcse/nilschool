@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Fees;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
 use App\Http\Requests\Fees\Master\StoreRequest;
 use App\Http\Requests\Fees\Master\UpdateRequest;
 use App\Http\Interfaces\Fees\FeesGroupInterface;
 use App\Http\Interfaces\Fees\FeesMasterInterface;
 use App\Http\Interfaces\Fees\FeesTypeInterface;
-use App\Http\Repositories\Academic\ClassesRepository;
 use Illuminate\Http\Request;
 
 class FeesMasterController extends Controller
@@ -18,7 +18,7 @@ class FeesMasterController extends Controller
     private $group;
     private $classRepo;
 
-    function __construct(FeesMasterInterface $repo, FeesTypeInterface $type, FeesGroupInterface $group, ClassesRepository $classRepo)
+    function __construct(FeesMasterInterface $repo, FeesTypeInterface $type, FeesGroupInterface $group, ClassesInterface $classRepo)
     {
         $this->repo       = $repo;
         $this->type       = $type;

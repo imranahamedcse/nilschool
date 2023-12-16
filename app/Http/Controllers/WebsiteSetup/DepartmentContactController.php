@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\WebsiteSetup\DepartmentContactRepository;
+use App\Http\Interfaces\WebsiteSetup\DepartmentContactInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\DepartmentContact\StoreRequest;
 use App\Http\Requests\WebsiteSetup\DepartmentContact\UpdateRequest;
@@ -13,7 +13,7 @@ class DepartmentContactController extends Controller
 {
     private $depContactRepo;
 
-    function __construct(DepartmentContactRepository $depContactRepo)
+    function __construct(DepartmentContactInterface $depContactRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -23,7 +23,7 @@ class DepartmentContactController extends Controller
 
     public function index()
     {
-        $data['dep_contact'] = $this->depContactRepo->getAll();
+        $data['dep_contact'] = $this->depContactRepo->all();
 
         $title             = ___('settings.Department Contact');
         $data['headers']   = [

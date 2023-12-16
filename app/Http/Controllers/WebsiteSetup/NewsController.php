@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\WebsiteSetup\NewsRepository;
+use App\Http\Interfaces\WebsiteSetup\NewsInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\News\StoreRequest;
 use App\Http\Requests\WebsiteSetup\News\UpdateRequest;
@@ -13,7 +13,7 @@ class NewsController extends Controller
 {
     private $newsRepo;
 
-    function __construct(NewsRepository $newsRepo)
+    function __construct(NewsInterface $newsRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -23,7 +23,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $data['news'] = $this->newsRepo->getAll();
+        $data['news'] = $this->newsRepo->all();
 
         $title             = ___('settings.News');
         $data['headers']   = [

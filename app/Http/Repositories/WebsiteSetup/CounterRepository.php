@@ -20,14 +20,14 @@ class CounterRepository implements CounterInterface{
         $this->counter = $counter;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->counter->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->counter->orderBy('serial')->paginate(Settings::PAGINATE);
+        return $this->counter->orderBy('serial')->get();
     }
 
     public function store($request)

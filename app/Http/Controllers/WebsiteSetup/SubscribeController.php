@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\WebsiteSetup;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\WebsiteSetup\SubscribeInterface;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Repositories\WebsiteSetup\SubscribeRepository;
 
 class SubscribeController extends Controller
 {
     private $repo;
 
-    function __construct(SubscribeRepository $repo)
+    function __construct(SubscribeInterface $repo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
+        }
         $this->repo                  = $repo;
     }
 

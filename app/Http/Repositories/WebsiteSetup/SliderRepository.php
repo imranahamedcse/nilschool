@@ -20,14 +20,14 @@ class SliderRepository implements SliderInterface{
         $this->slider = $slider;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->slider->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->slider->orderBy('serial')->paginate(Settings::PAGINATE);
+        return $this->slider->orderBy('serial')->get();
     }
 
     public function store($request)

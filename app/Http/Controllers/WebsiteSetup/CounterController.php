@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\WebsiteSetup\CounterRepository;
+use App\Http\Interfaces\WebsiteSetup\CounterInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\Counter\StoreRequest;
 use App\Http\Requests\WebsiteSetup\Counter\UpdateRequest;
@@ -13,7 +13,7 @@ class CounterController extends Controller
 {
     private $counterRepo;
 
-    function __construct(CounterRepository $counterRepo)
+    function __construct(CounterInterface $counterRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -23,7 +23,7 @@ class CounterController extends Controller
 
     public function index()
     {
-        $data['counter'] = $this->counterRepo->getAll();
+        $data['counter'] = $this->counterRepo->all();
 
         $title             = ___('settings.Counter');
         $data['headers']   = [

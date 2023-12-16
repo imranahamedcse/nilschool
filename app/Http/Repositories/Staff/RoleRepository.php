@@ -15,14 +15,14 @@ class RoleRepository implements RoleInterface
         $this->model = $roleModel;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return Role::latest()->paginate(10);
+        return Role::latest()->get();
     }
 
     public function store($request)

@@ -19,7 +19,7 @@ class DepartmentController extends Controller
 
     public function index()
     {
-        $data['departments'] = $this->repo->getPaginateAll();
+        $data['departments'] = $this->repo->all();
 
         $title             = ___('staff.department');
         $data['headers']   = [

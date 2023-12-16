@@ -20,14 +20,14 @@ class ContactInfoRepository implements ContactInfoInterface{
         $this->contactInfo = $contactInfo;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->contactInfo->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->contactInfo->orderBy('id', 'desc')->paginate(Settings::PAGINATE);
+        return $this->contactInfo->orderBy('id', 'desc')->get();
     }
 
     public function store($request)

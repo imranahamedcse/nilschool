@@ -20,14 +20,14 @@ class AboutRepository implements AboutInterface{
         $this->about = $about;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->about->active()->get();
     }
 
-    public function getAll()
+    public function all()
     {
-        return $this->about->orderBy('serial')->paginate(Settings::PAGINATE);
+        return $this->about->orderBy('serial')->get();
     }
 
     public function store($request)

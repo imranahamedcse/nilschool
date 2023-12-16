@@ -7,7 +7,7 @@ interface RoleInterface
 
     public function all();
 
-    public function getAll();
+    public function allActive();
 
     public function store($request);
 

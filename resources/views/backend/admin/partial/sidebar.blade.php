@@ -674,7 +674,7 @@
                         </li>
                     @endif
                     @if (hasPermission('news_read'))
-                        <li class="{{ set_menu(['website-setup/admin-news*']) }}">
+                        <li class="{{ set_menu(['website-setup/news*']) }}">
                             <a href="{{ route('news.index') }}">{{ ___('menu.News') }}</a>
                         </li>
                     @endif

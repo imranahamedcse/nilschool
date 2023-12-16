@@ -17,7 +17,7 @@ class ContactMessageRepository implements ContactMessageInterface{
 
     public function all()
     {
-        return $this->model->orderBy('id','desc')->paginate(Settings::PAGINATE);
+        return $this->model->orderBy('id','desc')->get();
     }
 
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\WebsiteSetup\EventRepository;
+use App\Http\Interfaces\WebsiteSetup\EventInterface;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\WebsiteSetup\Event\StoreRequest;
 use App\Http\Requests\WebsiteSetup\Event\UpdateRequest;
@@ -13,7 +13,7 @@ class EventController extends Controller
 {
     private $eventRepo;
 
-    function __construct(EventRepository $eventRepo)
+    function __construct(EventInterface $eventRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
@@ -23,7 +23,7 @@ class EventController extends Controller
 
     public function index()
     {
-        $data['event'] = $this->eventRepo->getAll();
+        $data['event'] = $this->eventRepo->all();
 
         $title             = ___('settings.Event');
         $data['headers']   = [

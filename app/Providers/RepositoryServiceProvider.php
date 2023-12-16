@@ -94,6 +94,15 @@ use App\Http\Interfaces\Transport\PickupPointInterface;
 use App\Http\Interfaces\Transport\RouteInterface;
 use App\Http\Interfaces\Transport\TransportStudentInterface;
 use App\Http\Interfaces\Transport\VehicleInterface;
+use App\Http\Interfaces\WebsiteSetup\AboutInterface;
+use App\Http\Interfaces\WebsiteSetup\ContactInfoInterface;
+use App\Http\Interfaces\WebsiteSetup\ContactMessageInterface;
+use App\Http\Interfaces\WebsiteSetup\DepartmentContactInterface;
+use App\Http\Interfaces\WebsiteSetup\EventInterface;
+use App\Http\Interfaces\WebsiteSetup\GalleryCategoryInterface;
+use App\Http\Interfaces\WebsiteSetup\GalleryInterface;
+use App\Http\Interfaces\WebsiteSetup\SectionsInterface;
+use App\Http\Interfaces\WebsiteSetup\SubscribeInterface;
 use App\Http\Repositories\Academic\AttendanceRepository;
 use App\Http\Repositories\Academic\ClassRoomRepository;
 use App\Http\Repositories\Academic\ClassRoutineRepository;
@@ -167,6 +176,15 @@ use App\Http\Repositories\Transport\PickupPointRepository;
 use App\Http\Repositories\Transport\RouteRepository;
 use App\Http\Repositories\Transport\TransportStudentRepository;
 use App\Http\Repositories\Transport\VehicleRepository;
+use App\Http\Repositories\WebsiteSetup\AboutRepository;
+use App\Http\Repositories\WebsiteSetup\ContactInfoRepository;
+use App\Http\Repositories\WebsiteSetup\ContactMessageRepository;
+use App\Http\Repositories\WebsiteSetup\DepartmentContactRepository;
+use App\Http\Repositories\WebsiteSetup\EventRepository;
+use App\Http\Repositories\WebsiteSetup\GalleryCategoryRepository;
+use App\Http\Repositories\WebsiteSetup\GalleryRepository;
+use App\Http\Repositories\WebsiteSetup\SectionsRepository;
+use App\Http\Repositories\WebsiteSetup\SubscribeRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -190,10 +208,21 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(GenderInterface::class,                   GenderRepository::class);
         $this->app->bind(ReligionInterface::class,                 ReligionRepository::class);
         $this->app->bind(BloodGroupInterface::class,               BloodGroupRepository::class);
+
         // website setup
-        $this->app->bind(SliderInterface::class,                   SliderRepository::class);
+        $this->app->bind(AboutInterface::class,                    AboutRepository::class);
+        $this->app->bind(ContactInfoInterface::class,              ContactInfoRepository::class);
+        $this->app->bind(ContactMessageInterface::class,           ContactMessageRepository::class);
         $this->app->bind(CounterInterface::class,                  CounterRepository::class);
+        $this->app->bind(DepartmentContactInterface::class,        DepartmentContactRepository::class);
+        $this->app->bind(EventInterface::class,                    EventRepository::class);
+        $this->app->bind(GalleryCategoryInterface::class,          GalleryCategoryRepository::class);
+        $this->app->bind(GalleryInterface::class,                  GalleryRepository::class);
         $this->app->bind(NewsInterface::class,                     NewsRepository::class);
+        $this->app->bind(SectionsInterface::class,                 SectionsRepository::class);
+        $this->app->bind(SliderInterface::class,                   SliderRepository::class);
+        $this->app->bind(SubscribeInterface::class,                SubscribeRepository::class);
+
         // Academic
         $this->app->bind(SessionInterface::class,                  SessionRepository::class);
         $this->app->bind(ClassesInterface::class,                  ClassesRepository::class);

@@ -27,7 +27,7 @@ class RoleController extends Controller
 
     public function index()
     {
-        $data['roles'] = $this->role->getAll();
+        $data['roles'] = $this->role->all();
 
         $title             = ___('common.roles');
         $data['headers']   = [

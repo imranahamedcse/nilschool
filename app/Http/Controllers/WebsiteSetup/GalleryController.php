@@ -4,17 +4,17 @@ namespace App\Http\Controllers\WebsiteSetup;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\WebsiteSetup\GalleryCategoryInterface;
+use App\Http\Interfaces\WebsiteSetup\GalleryInterface;
 use App\Http\Requests\WebsiteSetup\Gallery\StoreRequest;
 use App\Http\Requests\WebsiteSetup\Gallery\UpdateRequest;
-use App\Http\Repositories\WebsiteSetup\GalleryCategoryRepository;
-use App\Http\Repositories\WebsiteSetup\GalleryRepository;
 use Illuminate\Support\Facades\Schema;
 
 class GalleryController extends Controller
 {
     private $Repo, $categoryRepo;
 
-    function __construct(GalleryRepository $Repo, GalleryCategoryRepository $categoryRepo)
+    function __construct(GalleryInterface $Repo, GalleryCategoryInterface $categoryRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
@@ -25,7 +25,7 @@ class GalleryController extends Controller
 
     public function index()
     {
-        $data['gallery'] = $this->Repo->getAll();
+        $data['gallery'] = $this->Repo->all();
 
         $title             = ___('settings.Images');
         $data['headers']   = [
@@ -51,7 +51,7 @@ class GalleryController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['categories']  = $this->categoryRepo->all();
+        $data['categories']  = $this->categoryRepo->allActive();
         return view('backend.admin.website-setup.gallery.create', compact('data'));
     }
 
@@ -75,7 +75,7 @@ class GalleryController extends Controller
         ];
 
         $data['gallery']     = $this->Repo->show($id);
-        $data['categories']  = $this->categoryRepo->all();
+        $data['categories']  = $this->categoryRepo->allActive();
         return view('backend.admin.website-setup.gallery.edit', compact('data'));
     }
 
