@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix'=>'report'], function () {
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix' => 'report'], function () {
 
             Route::controller(MarksheetController::class)->prefix('marksheet')->group(function () {
                 Route::get('/', 'index')->name('report-marksheet.index')->middleware('PermissionCheck:report_marksheet_read');
@@ -55,7 +55,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
             });
 
             Route::controller(AttendanceController::class)->prefix('attendance')->group(function () {
-                Route::get('/report', 'report')->name('report-attendance.report')->middleware('PermissionCheck:report_attendance_read');
+                Route::get('/', 'index')->name('report-attendance.index')->middleware('PermissionCheck:report_attendance_read');
                 Route::any('/report-search', 'reportSearch')->name('report-attendance.report-search')->middleware('PermissionCheck:report_attendance_read');
                 Route::post('/pdf-generate', 'generatePDF')->name('report-attendance.pdf-generate');
             });
@@ -71,7 +71,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::post('/search', 'search')->name('report-exam-routine.search')->middleware('PermissionCheck:report_exam_routine_read');
                 Route::get('/pdf-generate/{class}/{section}/{type}', 'generatePDF')->name('report-exam-routine.pdf-generate');
             });
-
         });
     });
 });

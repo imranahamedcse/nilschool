@@ -65,9 +65,15 @@ use App\Http\Interfaces\OnlineExamination\ExamTypeInterface as OnlineExamination
 use App\Http\Interfaces\OnlineExamination\OnlineExamInterface;
 use App\Http\Interfaces\OnlineExamination\QuestionBankInterface;
 use App\Http\Interfaces\OnlineExamination\QuestionGroupInterface;
+use App\Http\Interfaces\Report\AccountInterface;
+use App\Http\Interfaces\Report\AttendanceInterface as ReportAttendanceInterface;
 use App\Http\Interfaces\WebsiteSetup\NewsInterface;
 use App\Http\Interfaces\Report\ClassRoutineInterface as ReportClassRoutineInterface;
+use App\Http\Interfaces\Report\DueFeesInterface;
 use App\Http\Interfaces\Report\ExamRoutineInterface;
+use App\Http\Interfaces\Report\FeesCollectionInterface;
+use App\Http\Interfaces\Report\MeritListInterface;
+use App\Http\Interfaces\Report\ProgressCardInterface;
 use App\Http\Interfaces\Settings\SettingInterface;
 use App\Http\Interfaces\WebsiteSetup\SliderInterface;
 use App\Http\Interfaces\Staff\DepartmentInterface;
@@ -130,10 +136,16 @@ use App\Http\Repositories\Settings\GenderRepository;
 use App\Http\Repositories\OnlineExamination\OnlineExamRepository;
 use App\Http\Repositories\OnlineExamination\QuestionBankRepository;
 use App\Http\Repositories\OnlineExamination\QuestionGroupRepository;
+use App\Http\Repositories\Report\AccountRepository;
+use App\Http\Repositories\Report\AttendanceRepository as ReportAttendanceRepository;
 use App\Http\Repositories\WebsiteSetup\NewsRepository;
 use App\Http\Repositories\Settings\ReligionRepository;
 use App\Http\Repositories\Report\ClassRoutineRepository as ReportClassRoutineRepository;
+use App\Http\Repositories\Report\DueFeesRepository;
 use App\Http\Repositories\Report\ExamRoutineRepository;
+use App\Http\Repositories\Report\FeesCollectionRepository;
+use App\Http\Repositories\Report\MeritListRepository;
+use App\Http\Repositories\Report\ProgressCardRepository;
 use App\Http\Repositories\Settings\SessionRepository;
 use App\Http\Repositories\Settings\SettingRepository;
 use App\Http\Repositories\WebsiteSetup\SliderRepository;
@@ -220,8 +232,15 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // Report
         $this->app->bind(MarksheetInterface::class,                MarksheetRepository::class);
+        $this->app->bind(MeritListInterface::class,                MeritListRepository::class);
+        $this->app->bind(ProgressCardInterface::class,             ProgressCardRepository::class);
+        $this->app->bind(DueFeesInterface::class,                  DueFeesRepository::class);
+        $this->app->bind(FeesCollectionInterface::class,           FeesCollectionRepository::class);
+        $this->app->bind(AccountInterface::class,                  AccountRepository::class);
+        $this->app->bind(ReportAttendanceInterface::class,         ReportAttendanceRepository::class);
         $this->app->bind(ReportClassRoutineInterface::class,       ReportClassRoutineRepository::class);
         $this->app->bind(ExamRoutineInterface::class,              ExamRoutineRepository::class);
+
         // Accounts
         $this->app->bind(AccountHeadInterface::class,              AccountHeadRepository::class);
         $this->app->bind(IncomeInterface::class,                   IncomeRepository::class);

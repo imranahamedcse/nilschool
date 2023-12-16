@@ -27,7 +27,7 @@ class AttendanceController extends Controller
         $this->classSetupRepo    = $classSetupRepo;
     }
 
-    public function report()
+    public function index()
     {
         $data['title']              = ___('attendance.Attendance');
         $data['breadcrumbs']  = [

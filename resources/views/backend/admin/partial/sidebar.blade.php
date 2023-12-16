@@ -412,7 +412,11 @@
         <!-- End Canteen -->
 
         <!-- Start Dormitory -->
-        @if (hasPermission('dormitory_read') || hasPermission('room_type_read') || hasPermission('room_read') || hasPermission('dormitory_setup_read') || hasPermission('dormitory_student_read'))
+        @if (hasPermission('dormitory_read') ||
+                hasPermission('room_type_read') ||
+                hasPermission('room_read') ||
+                hasPermission('dormitory_setup_read') ||
+                hasPermission('dormitory_student_read'))
             <li class="{{ set_menu(['dormitory*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
@@ -489,8 +493,7 @@
                     @endif
                     @if (hasPermission('transport_student_read'))
                         <li class="{{ set_menu(['transport/transport-student*']) }}">
-                            <a
-                                href="{{ route('transport-student.index') }}">{{ ___('menu.Student') }}</a>
+                            <a href="{{ route('transport-student.index') }}">{{ ___('menu.Student') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -548,7 +551,7 @@
                     @endif
                     @if (hasPermission('report_attendance_read'))
                         <li class="{{ set_menu(['report/attendance*']) }}">
-                            <a href="{{ route('report-attendance.report') }}">{{ ___('menu.Attendance') }}</a>
+                            <a href="{{ route('report-attendance.index') }}">{{ ___('menu.Attendance') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('report_class_routine_read'))
