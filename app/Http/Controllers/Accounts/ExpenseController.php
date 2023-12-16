@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Accounts\AccountHeadInterface;
+use App\Http\Interfaces\Accounts\ExpenseInterface;
 use App\Http\Requests\Accounts\Expense\StoreRequest;
 use App\Http\Requests\Accounts\Expense\UpdateRequest;
-use App\Http\Repositories\Accounts\AccountHeadRepository;
-use App\Http\Repositories\Accounts\ExpenseRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
 class ExpenseController extends Controller
 {
-    private $expenseRepo, $accountHeadRepository;
+    private $expenseRepo, $accountHeadRepo;
 
-    function __construct(ExpenseRepository $expenseRepo, AccountHeadRepository $accountHeadRepository)
+    function __construct(ExpenseInterface $expenseRepo, AccountHeadInterface $accountHeadRepo)
     {
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
         }
         $this->expenseRepo                 = $expenseRepo;
-        $this->accountHeadRepository       = $accountHeadRepository;
+        $this->accountHeadRepo       = $accountHeadRepo;
     }
 
     public function index()
@@ -52,7 +52,7 @@ class ExpenseController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['heads']       = $this->accountHeadRepository->getExpenseHeads();
+        $data['heads']       = $this->accountHeadRepo->getExpenseHeads();
         return view('backend.admin.accounts.expense.create', compact('data'));
     }
 
@@ -75,7 +75,7 @@ class ExpenseController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['heads']       = $this->accountHeadRepository->getExpenseHeads();
+        $data['heads']       = $this->accountHeadRepo->getExpenseHeads();
         $data['expense']     = $this->expenseRepo->show($id);
         return view('backend.admin.accounts.expense.edit', compact('data'));
     }

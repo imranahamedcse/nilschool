@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Accounts\AccountHeadInterface;
+use App\Http\Interfaces\Accounts\IncomeInterface;
 use App\Http\Requests\Accounts\Income\StoreRequest;
 use App\Http\Requests\Accounts\Income\UpdateRequest;
-use App\Http\Repositories\Accounts\AccountHeadRepository;
-use App\Http\Repositories\Accounts\IncomeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
 class IncomeController extends Controller
 {
-    private $incomeRepo, $accountHeadRepository;
+    private $incomeRepo, $accountHeadRepo;
 
-    function __construct(IncomeRepository $incomeRepo, AccountHeadRepository $accountHeadRepository)
+    function __construct(IncomeInterface $incomeRepo, AccountHeadInterface $accountHeadRepo)
     {
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
         }
         $this->incomeRepo                  = $incomeRepo;
-        $this->accountHeadRepository       = $accountHeadRepository;
+        $this->accountHeadRepo       = $accountHeadRepo;
     }
 
     public function index()
@@ -52,7 +52,7 @@ class IncomeController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['heads']       = $this->accountHeadRepository->getIncomeHeads();
+        $data['heads']       = $this->accountHeadRepo->getIncomeHeads();
         return view('backend.admin.accounts.income.create', compact('data'));
     }
 
@@ -75,7 +75,7 @@ class IncomeController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['heads']       = $this->accountHeadRepository->getIncomeHeads();
+        $data['heads']       = $this->accountHeadRepo->getIncomeHeads();
         $data['income']      = $this->incomeRepo->show($id);
         return view('backend.admin.accounts.income.edit', compact('data'));
     }

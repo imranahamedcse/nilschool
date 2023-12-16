@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Accounts;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Accounts\AccountHeadInterface;
 use App\Http\Requests\Accounts\Head\StoreRequest;
 use App\Http\Requests\Accounts\Head\UpdateRequest;
-use App\Http\Repositories\Accounts\AccountHeadRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -13,7 +13,7 @@ class AccountHeadController extends Controller
 {
     private $headRepo;
 
-    function __construct(AccountHeadRepository $headRepo)
+    function __construct(AccountHeadInterface $headRepo)
     {
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
