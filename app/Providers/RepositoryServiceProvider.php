@@ -34,6 +34,9 @@ use App\Http\Interfaces\Academic\TimeScheduleInterface;
 use App\Http\Interfaces\Accounts\AccountHeadInterface;
 use App\Http\Interfaces\Accounts\ExpenseInterface;
 use App\Http\Interfaces\Accounts\IncomeInterface;
+use App\Http\Interfaces\ClassRoom\AssignmentInterface;
+use App\Http\Interfaces\ClassRoom\HomeworkInterface;
+use App\Http\Interfaces\ClassRoom\PostInterface;
 use App\Http\Interfaces\Dormitory\DormitoryInterface;
 use App\Http\Interfaces\Dormitory\DormitorySetupInterface;
 use App\Http\Interfaces\Dormitory\DormitoryStudentInterface;
@@ -85,6 +88,9 @@ use App\Http\Repositories\Academic\TimeScheduleRepository;
 use App\Http\Repositories\Accounts\AccountHeadRepository;
 use App\Http\Repositories\Accounts\ExpenseRepository;
 use App\Http\Repositories\Accounts\IncomeRepository;
+use App\Http\Repositories\ClassRoom\AssignmentRepository;
+use App\Http\Repositories\ClassRoom\HomeworkRepository;
+use App\Http\Repositories\ClassRoom\PostRepository;
 use App\Http\Repositories\Settings\BloodGroupRepository;
 use App\Http\Repositories\Dormitory\DormitoryRepository;
 use App\Http\Repositories\Dormitory\DormitorySetupRepository;
@@ -170,7 +176,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ClassRoutineInterface::class,             ClassRoutineRepository::class);
         $this->app->bind(TimeScheduleInterface::class,             TimeScheduleRepository::class);
         $this->app->bind(AttendanceInterface::class,               AttendanceRepository::class);
-        
+
+        // Class Room
+        $this->app->bind(AssignmentInterface::class,               AssignmentRepository::class);
+        $this->app->bind(HomeworkInterface::class,                 HomeworkRepository::class);
+        $this->app->bind(PostInterface::class,                     PostRepository::class);
+
         // Fess
         $this->app->bind(FeesGroupInterface::class,                FeesGroupRepository::class);
         $this->app->bind(FeesTypeInterface::class,                 FeesTypeRepository::class);

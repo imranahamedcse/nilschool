@@ -20,17 +20,17 @@ class HomeworkRepository implements HomeworkInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->where('session_id', setting('session'))->get();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->where('session_id', setting('session'))->paginate(10);
+        return $this->model::latest()->where('session_id', setting('session'))->all();
     }
 
-    public function searchMarkRegister($request)
+    public function search($request)
     {
         $rows = $this->model::query();
         $rows = $rows->where('session_id', setting('session'));
@@ -39,9 +39,6 @@ class HomeworkRepository implements HomeworkInterface
         }
         if($request->section != "") {
             $rows = $rows->where('section_id', $request->section);
-        }
-        if($request->exam_type != "") {
-            $rows = $rows->where('exam_type_id', $request->exam_type);
         }
         if($request->subject != "") {
             $rows = $rows->where('subject_id', $request->subject);

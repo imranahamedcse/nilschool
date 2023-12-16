@@ -7,9 +7,11 @@ interface HomeworkInterface
 
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function store($request);
+
+    public function search($request);
 
     public function show($id);
 

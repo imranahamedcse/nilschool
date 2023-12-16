@@ -4,13 +4,13 @@ namespace App\Http\Controllers\ClassRoom;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\ClassRoom\AssignmentRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectInterface;
+use App\Http\Interfaces\ClassRoom\AssignmentInterface;
 use App\Http\Requests\ClassRoom\Assignment\StoreRequest;
 use App\Http\Requests\ClassRoom\Assignment\UpdateRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Academic\SubjectRepository;
 
 class AssignmentController extends Controller
 {
@@ -21,11 +21,11 @@ class AssignmentController extends Controller
     private $subjectRepo;
 
     function __construct(
-        AssignmentRepository $repo,
-        ClassSetupRepository $classSetupRepo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        SubjectRepository $subjectRepo,
+        AssignmentInterface $repo,
+        ClassSetupInterface $classSetupRepo,
+        ClassesInterface    $classRepo,
+        SectionInterface    $sectionRepo,
+        SubjectInterface    $subjectRepo,
         )
     {
         $this->repo               = $repo;
@@ -52,7 +52,7 @@ class AssignmentController extends Controller
 
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['assignments']    = $this->repo->getPaginateAll();
+        $data['assignments']    = $this->repo->all();
         return view('backend.admin.class_room.assignment.index', compact('data'));
     }
 
@@ -72,7 +72,7 @@ class AssignmentController extends Controller
         ];
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['assignments']    = $this->repo->searchMarkRegister($request);
+        $data['assignments']    = $this->repo->search($request);
         return view('backend.admin.class_room.assignment.index', compact('data'));
     }
 

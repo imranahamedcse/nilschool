@@ -4,13 +4,13 @@ namespace App\Http\Controllers\ClassRoom;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\ClassRoom\PostRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectInterface;
+use App\Http\Interfaces\ClassRoom\PostInterface;
 use App\Http\Requests\ClassRoom\Post\StoreRequest;
 use App\Http\Requests\ClassRoom\Post\UpdateRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Academic\SubjectRepository;
 
 class PostController extends Controller
 {
@@ -21,11 +21,11 @@ class PostController extends Controller
     private $subjectRepo;
 
     function __construct(
-        PostRepository $repo,
-        ClassSetupRepository $classSetupRepo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        SubjectRepository $subjectRepo,
+        PostInterface       $repo,
+        ClassSetupInterface $classSetupRepo,
+        ClassesInterface    $classRepo,
+        SectionInterface    $sectionRepo,
+        SubjectInterface    $subjectRepo,
         )
     {
         $this->repo               = $repo;
@@ -52,7 +52,7 @@ class PostController extends Controller
 
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['posts']    = $this->repo->getPaginateAll();
+        $data['posts']    = $this->repo->all();
         return view('backend.admin.class_room.post.index', compact('data'));
     }
 
@@ -72,7 +72,7 @@ class PostController extends Controller
         ];
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['posts']    = $this->repo->searchMarkRegister($request);
+        $data['posts']    = $this->repo->search($request);
         return view('backend.admin.class_room.post.index', compact('data'));
     }
 

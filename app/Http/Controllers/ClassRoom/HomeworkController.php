@@ -4,13 +4,13 @@ namespace App\Http\Controllers\ClassRoom;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\ClassRoom\HomeworkRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectInterface;
+use App\Http\Interfaces\ClassRoom\HomeworkInterface;
 use App\Http\Requests\ClassRoom\Homework\StoreRequest;
 use App\Http\Requests\ClassRoom\Homework\UpdateRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Academic\SubjectRepository;
 
 class HomeworkController extends Controller
 {
@@ -21,11 +21,11 @@ class HomeworkController extends Controller
     private $subjectRepo;
 
     function __construct(
-        HomeworkRepository $repo,
-        ClassSetupRepository $classSetupRepo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        SubjectRepository $subjectRepo,
+        HomeworkInterface   $repo,
+        ClassSetupInterface $classSetupRepo,
+        ClassesInterface    $classRepo,
+        SectionInterface    $sectionRepo,
+        SubjectInterface    $subjectRepo,
         )
     {
         $this->repo               = $repo;
@@ -52,7 +52,7 @@ class HomeworkController extends Controller
 
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['homeworks']    = $this->repo->getPaginateAll();
+        $data['homeworks']    = $this->repo->all();
         return view('backend.admin.class_room.homework.index', compact('data'));
     }
 
@@ -72,7 +72,7 @@ class HomeworkController extends Controller
         ];
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections'] = [];
-        $data['homeworks']    = $this->repo->searchMarkRegister($request);
+        $data['homeworks']    = $this->repo->search($request);
         return view('backend.admin.class_room.homework.index', compact('data'));
     }
 
