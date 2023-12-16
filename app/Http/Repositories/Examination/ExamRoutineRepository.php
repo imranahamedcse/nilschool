@@ -22,9 +22,14 @@ class ExamRoutineRepository implements ExamRoutineInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->where('session_id', setting('session'))->get();
+    }
+
+    public function all()
+    {
+        return $this->model::latest()->orderBy('id', 'desc')->where('session_id', setting('session'))->get();
     }
 
     public function assignedExamType()
@@ -32,16 +37,11 @@ class ExamRoutineRepository implements ExamRoutineInterface
         return $this->model->select('type_id')->where('session_id', setting('session'))->distinct()->get();
     }
 
-    public function getPaginateAll()
-    {
-        return $this->model::latest()->orderBy('id','desc')->where('session_id', setting('session'))->paginate(10);
-    }
-
     public function store($request)
     {
         DB::beginTransaction();
         try {
-            if($this->model::where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('date', $request->date)->where('type_id', $request->type)->first()) {
+            if ($this->model::where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('date', $request->date)->where('type_id', $request->type)->first()) {
                 return $this->responseWithError(___('alert.There is already assigned.'), []);
             }
 
@@ -130,12 +130,12 @@ class ExamRoutineRepository implements ExamRoutineInterface
         $data = [];
         $exam_routine = $this->model->where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('date', $request->date)->where('type_id', $request->type);
 
-        if($request->id != '') {
+        if ($request->id != '') {
             $exam_routine->where('id', '!=', $request->id);
         }
         $exam_routine = $exam_routine->first();
 
-        if($exam_routine) {
+        if ($exam_routine) {
             $data['message'] = ___('academic.already_created_exam_routine');
             $data['status']  = false;
 
@@ -143,31 +143,31 @@ class ExamRoutineRepository implements ExamRoutineInterface
         }
 
 
-        if(array_diff_assoc($request->time_schedules, array_unique($request->time_schedules))) {
+        if (array_diff_assoc($request->time_schedules, array_unique($request->time_schedules))) {
             $data['message'] = ___('academic.you_cant_select_duplicate_time_schedule');
             $data['status']  = false;
 
             return $data;
         }
 
-        foreach($request->time_schedules as $key=>$time) {
+        foreach ($request->time_schedules as $key => $time) {
             $exam_routine = $this->model->where('session_id', setting('session'))
-                                        ->where('date', $request->date)
-                                        ->join('exam_routine_childrens', 'exam_routines.id', '=', 'exam_routine_childrens.exam_routine_id')
-                                        ->where('exam_routine_childrens.time_schedule_id', $time)->where('exam_routine_childrens.class_room_id', $request->class_rooms[$key]);
+                ->where('date', $request->date)
+                ->join('exam_routine_childrens', 'exam_routines.id', '=', 'exam_routine_childrens.exam_routine_id')
+                ->where('exam_routine_childrens.time_schedule_id', $time)->where('exam_routine_childrens.class_room_id', $request->class_rooms[$key]);
 
 
-            if($request->id != '') {
+            if ($request->id != '') {
                 $exam_routine->where('id', '!=', $request->id);
             }
 
             $exam_routine = $exam_routine->first();
 
 
-            if($exam_routine) {
+            if ($exam_routine) {
                 $schedule = TimeSchedule::find($time);
                 $room     = ClassRoom::find($request->class_rooms[$key]);
-                $data['message'] = ___('academic.already_assigned_to_exam_routine_for_this_schedule_room').'. Schedule:'.$schedule->start_time.'-'.$schedule->end_time.' Room:'.$room->room_no;
+                $data['message'] = ___('academic.already_assigned_to_exam_routine_for_this_schedule_room') . '. Schedule:' . $schedule->start_time . '-' . $schedule->end_time . ' Room:' . $room->room_no;
                 $data['status']  = false;
 
                 return $data;
@@ -175,8 +175,5 @@ class ExamRoutineRepository implements ExamRoutineInterface
         }
 
         return $data;
-
-
-
     }
 }

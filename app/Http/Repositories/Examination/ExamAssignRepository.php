@@ -26,9 +26,14 @@ class ExamAssignRepository implements ExamAssignInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->where('session_id', setting('session'))->get();
+    }
+
+    public function all()
+    {
+        return $this->model::latest()->where('session_id', setting('session'))->get();
     }
 
     public function assignedExamType()
@@ -39,45 +44,40 @@ class ExamAssignRepository implements ExamAssignInterface
     public function getExamType($request)
     {
         return $this->model
-        ->where('session_id', setting('session'))
-        ->where('classes_id',$request->class)
-        ->where('section_id',$request->section)
-        ->select('exam_type_id')
-        ->distinct()
-        ->with('exam_type')
-        ->get();
+            ->where('session_id', setting('session'))
+            ->where('classes_id', $request->class)
+            ->where('section_id', $request->section)
+            ->select('exam_type_id')
+            ->distinct()
+            ->with('exam_type')
+            ->get();
     }
 
     public function getExamAssign($request)
     {
         return $this->model
-        ->where('session_id',setting('session'))
-        ->where('classes_id',$request->class)
-        ->where('section_id',$request->section)
-        ->where('exam_type_id',$request->exam_type)
-        ->where('subject_id',$request->subject)
-        ->first();
-    }
-
-    public function getPaginateAll()
-    {
-        return $this->model::latest()->where('session_id', setting('session'))->paginate(10);
+            ->where('session_id', setting('session'))
+            ->where('classes_id', $request->class)
+            ->where('section_id', $request->section)
+            ->where('exam_type_id', $request->exam_type)
+            ->where('subject_id', $request->subject)
+            ->first();
     }
 
     public function searchExamAssign($request)
     {
         $rows = $this->model::query();
         $rows = $rows->where('session_id', setting('session'));
-        if($request->class != "") {
+        if ($request->class != "") {
             $rows = $rows->where('classes_id', $request->class);
         }
-        if($request->section != "") {
+        if ($request->section != "") {
             $rows = $rows->where('section_id', $request->section);
         }
-        if($request->exam_type != "") {
+        if ($request->exam_type != "") {
             $rows = $rows->where('exam_type_id', $request->exam_type);
         }
-        if($request->subject != "") {
+        if ($request->subject != "") {
             $rows = $rows->where('subject_id', $request->subject);
         }
         return $rows->paginate(10);
@@ -90,7 +90,7 @@ class ExamAssignRepository implements ExamAssignInterface
 
             foreach ($request->exam_types as $exam_type) {
                 foreach ($request->sections as $section) {
-                    foreach ($request->subjects as $key=>$subject) {
+                    foreach ($request->subjects as $key => $subject) {
 
                         // if($this->model->where('session_id',setting('session'))->where('classes_id',$request->class)->where('section_id',$section)->where('exam_type_id',$exam_type)->where('subject_id',$subject)->first())
                         //     return $this->responseWithError(___('alert.There is already assign for this session.'), []);
@@ -105,7 +105,7 @@ class ExamAssignRepository implements ExamAssignInterface
                         $row->save();
 
                         $total_mark                  = 0;
-                        foreach ($request->marks_distribution[$subject]['titles'] as $itemKey=>$title) { // 2+1
+                        foreach ($request->marks_distribution[$subject]['titles'] as $itemKey => $title) { // 2+1
                             $examAssign                 = new ExamAssignChildren();
                             $examAssign->exam_assign_id = $row->id;
                             $examAssign->title          = $title;
@@ -117,7 +117,6 @@ class ExamAssignRepository implements ExamAssignInterface
 
                         $row->total_mark             = $total_mark;
                         $row->save();
-
                     }
                 }
             }
@@ -133,14 +132,14 @@ class ExamAssignRepository implements ExamAssignInterface
     {
         $row = $this->model->find($id);
 
-        $result = MarksRegister::where('session_id',$row->session_id)
-        ->where('classes_id',$row->classes_id)
-        ->where('section_id',$row->section_id)
-        ->where('exam_type_id',$row->exam_type_id)
-        ->where('subject_id',$row->subject_id)
-        ->first();
+        $result = MarksRegister::where('session_id', $row->session_id)
+            ->where('classes_id', $row->classes_id)
+            ->where('section_id', $row->section_id)
+            ->where('exam_type_id', $row->exam_type_id)
+            ->where('subject_id', $row->subject_id)
+            ->first();
 
-        if(@$result)
+        if (@$result)
             return null;
         else
             return @$row;
@@ -151,7 +150,7 @@ class ExamAssignRepository implements ExamAssignInterface
         DB::beginTransaction();
         try {
 
-            if($this->model->where('session_id', setting('session'))->where('classes_id',$request->class)->where('section_id',$request->sections)->where('exam_type_id',$request->exam_types)->where('subject_id',$request->subjects)->where('id', '!=', $id)->first())
+            if ($this->model->where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->sections)->where('exam_type_id', $request->exam_types)->where('subject_id', $request->subjects)->where('id', '!=', $id)->first())
                 return $this->responseWithError(___('alert.There is already assign for this session.'), []);
 
             $row                         = $this->model->find($id);
@@ -165,7 +164,7 @@ class ExamAssignRepository implements ExamAssignInterface
 
             ExamAssignChildren::where('exam_assign_id', $row->id)->delete();
             $total_mark                  = 0;
-            foreach ($request->marks_distribution[$request->subjects]['titles'] as $itemKey=>$title) {
+            foreach ($request->marks_distribution[$request->subjects]['titles'] as $itemKey => $title) {
                 $examAssign                 = new ExamAssignChildren();
                 $examAssign->exam_assign_id = $row->id;
                 $examAssign->title          = $title;
@@ -186,16 +185,17 @@ class ExamAssignRepository implements ExamAssignInterface
         }
     }
 
-    public function checkMarkRegister($id){
+    public function checkMarkRegister($id)
+    {
         $row = $this->model->find($id);
 
-        $result = MarksRegister::where('session_id',$row->session_id)
-            ->where('classes_id',$row->classes_id)
-            ->where('section_id',$row->section_id)
-            ->where('exam_type_id',$row->exam_type_id)
-            ->where('subject_id',$row->subject_id)
+        $result = MarksRegister::where('session_id', $row->session_id)
+            ->where('classes_id', $row->classes_id)
+            ->where('section_id', $row->section_id)
+            ->where('exam_type_id', $row->exam_type_id)
+            ->where('subject_id', $row->subject_id)
             ->first();
-        if($result)
+        if ($result)
             return true;
         else
             return false;
@@ -207,12 +207,12 @@ class ExamAssignRepository implements ExamAssignInterface
         try {
             $row = $this->model->find($id);
 
-            MarksRegister::where('session_id',$row->session_id)
-            ->where('classes_id',$row->classes_id)
-            ->where('section_id',$row->section_id)
-            ->where('exam_type_id',$row->exam_type_id)
-            ->where('subject_id',$row->subject_id)
-            ->delete();
+            MarksRegister::where('session_id', $row->session_id)
+                ->where('classes_id', $row->classes_id)
+                ->where('section_id', $row->section_id)
+                ->where('exam_type_id', $row->exam_type_id)
+                ->where('subject_id', $row->subject_id)
+                ->delete();
 
             ExamAssignChildren::where('exam_assign_id', $row->id)->delete();
             $row->delete();
@@ -236,7 +236,7 @@ class ExamAssignRepository implements ExamAssignInterface
         $data = [];
 
 
-        if($request->form_type == "update") {
+        if ($request->form_type == "update") {
             $result = SubjectAssign::active()->where('session_id', setting('session'))->where('classes_id', $request->classes_id)->where('section_id', $request->section_id)->first();
 
             $current_subjects = SubjectAssignChildren::with('subject')->where('subject_assign_id', @$result->id)->select('subject_id')->get();
@@ -248,19 +248,17 @@ class ExamAssignRepository implements ExamAssignInterface
             return $data;
         }
         // if very first checked then works it.
-        if($request->section_id != "" && count($sections) == 1) {
+        if ($request->section_id != "" && count($sections) == 1) {
 
             $result           = SubjectAssign::active()->where('session_id', setting('session'))->where('classes_id', $request->classes_id)->where('section_id', $request->section_id)->first();
             $current_subjects = SubjectAssignChildren::with('subject')->where('subject_assign_id', @$result->id)->select('subject_id')->get();
 
-            if(count($current_subjects) == 0) {
+            if (count($current_subjects) == 0) {
 
                 $data['subjects']         = $current_subjects;
                 $data['loop_status']      = false;
                 $data['section_status']   = false;
                 $data['message']          = ___('alert.there_are_no_subjects_assigned_to_this_section');
-
-
             } else {
 
                 $data['subjects']         = $current_subjects;
@@ -270,7 +268,7 @@ class ExamAssignRepository implements ExamAssignInterface
             }
 
 
-        // 2nd section select then works it
+            // 2nd section select then works it
         } elseif ($request->section_id != "" && count($sections) > 1) {
 
             foreach ($sections as $section) {
@@ -290,14 +288,12 @@ class ExamAssignRepository implements ExamAssignInterface
             array_multisort($current_subjects);
 
 
-            if(count($current_subjects) == 0) {
+            if (count($current_subjects) == 0) {
 
                 $data['subjects']         = $current_subjects;
                 $data['loop_status']      = false;
                 $data['section_status']   = false;
                 $data['message']          = ___('alert.there_are_no_subjects_assigned_to_this_section');
-
-
             } elseif (serialize($old_subjects) === serialize($current_subjects)) {
                 $data['subjects']         = $current_subjects;
                 $data['loop_status']      = false;
@@ -310,16 +306,13 @@ class ExamAssignRepository implements ExamAssignInterface
                 $data['section_status']   = false;
 
                 $data['message']          = ___('alert.checked_section_needs_the_same_subject');
-
             }
-
         } elseif ($request->section_id == "" && count($sections) > 0) {
             $data['subjects']         = [];
             $data['loop_status']      = false;
             $data['section_status']   = true;
             $data['message']          = '';
-
-        } elseif($request->section_id == "" && count($sections) == 0) {
+        } elseif ($request->section_id == "" && count($sections) == 0) {
             $data['subjects']         = [];
             $data['loop_status']      = true;
             $data['section_status']   = true;
@@ -333,23 +326,20 @@ class ExamAssignRepository implements ExamAssignInterface
     {
         foreach ($request->exam_types as $exam_type) {
             foreach ($request->sections as $section) {
-                foreach ($request->subjects as $key=>$subject) {
+                foreach ($request->subjects as $key => $subject) {
 
                     $subject_name   = Subject::find($subject)->name;
                     $exam_type_name = ExamType::find($exam_type)->name;
                     $section_name   = Section::find($section)->name;
                     $class_name     = Classes::find($request->class)->name;
 
-                    if($this->model->where('session_id',setting('session'))->where('classes_id',$request->class)->where('section_id',$section)->where('exam_type_id',$exam_type)->where('subject_id',$subject)->first()) {
-                        return $this->responseWithError(___('alert.There is already assign for this session, the subject is: '). $exam_type_name.'->'.$class_name.'->'.$section_name.'->'.$subject_name, []);
+                    if ($this->model->where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $section)->where('exam_type_id', $exam_type)->where('subject_id', $subject)->first()) {
+                        return $this->responseWithError(___('alert.There is already assign for this session, the subject is: ') . $exam_type_name . '->' . $class_name . '->' . $section_name . '->' . $subject_name, []);
                     }
                 }
             }
         }
 
         return $this->responseWithSuccess(___('alert.no assigned data found.'), []);
-
-
-
     }
 }

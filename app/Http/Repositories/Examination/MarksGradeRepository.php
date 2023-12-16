@@ -3,6 +3,7 @@
 namespace App\Http\Repositories\Examination;
 
 use App\Http\Interfaces\Examination\MarksGradeInterface;;
+
 use App\Models\Examination\MarksGrade;
 use App\Traits\ReturnFormatTrait;
 
@@ -17,21 +18,21 @@ class MarksGradeRepository implements MarksGradeInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->where('session_id', setting('session'))->get();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->where('session_id', setting('session'))->paginate(10);
+        return $this->model::latest()->where('session_id', setting('session'))->get();
     }
 
     public function store($request)
     {
         try {
 
-            if($this->model::where('session_id', setting('session'))->where('name', $request->name)->first()) {
+            if ($this->model::where('session_id', setting('session'))->where('name', $request->name)->first()) {
                 return $this->responseWithError(___('alert.There is already a grade for this session.'), []);
             }
 
@@ -47,7 +48,6 @@ class MarksGradeRepository implements MarksGradeInterface
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-
         }
     }
 
@@ -60,7 +60,7 @@ class MarksGradeRepository implements MarksGradeInterface
     {
         try {
 
-            if($this->model::where('session_id', setting('session'))->where('name', $request->name)->where('id', '!=', $id)->first()) {
+            if ($this->model::where('session_id', setting('session'))->where('name', $request->name)->where('id', '!=', $id)->first()) {
                 return $this->responseWithError(___('alert.There is already a grade for this session.'), []);
             }
             $row                   = $this->model->findOrfail($id);

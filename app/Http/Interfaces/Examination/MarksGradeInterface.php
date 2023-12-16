@@ -7,7 +7,7 @@ interface MarksGradeInterface
 
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function store($request);
 

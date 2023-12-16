@@ -4,10 +4,9 @@ namespace App\Http\Interfaces\Examination;
 
 interface ExamAssignInterface
 {
-
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function getExamType($request);
 
@@ -24,4 +23,10 @@ interface ExamAssignInterface
     public function checkSubmit($request);
 
     public function getExamAssign($request);
+
+    public function searchExamAssign($request);
+
+    public function checkMarkRegister($id);
+
+    public function assignedExamType();
 }

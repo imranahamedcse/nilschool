@@ -6,41 +6,31 @@ use Illuminate\Http\Request;
 use App\Models\Academic\Section;
 use App\Models\Academic\Subject;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Examination\ExamAssignInterface;
+use App\Http\Interfaces\Examination\ExamTypeInterface;
 use App\Models\Examination\ExamType;
 use App\Models\Academic\SubjectAssign;
 use App\Models\Academic\SubjectAssignChildren;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Academic\SubjectRepository;
-use App\Http\Interfaces\Academic\SubjectAssignInterface;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Examination\ExamTypeRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Requests\Examination\Assign\StoreRequest;
 use App\Http\Requests\Examination\Assign\UpdateRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
 
 class ExamAssignController extends Controller
 {
     private $repo;
     private $classRepo;
-    private $sectionRepo;
-    private $subjectRepo;
     private $examTypeRepo;
     private $classSetupRepo;
 
     function __construct(
-        ExamAssignRepository $repo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        SubjectRepository $subjectRepo,
-        ExamTypeRepository $examTypeRepo,
-        ClassSetupRepository $classSetupRepo,
-        SubjectAssignInterface $subjectAssignRepo,
+        ExamAssignInterface $repo,
+        ClassesInterface    $classRepo,
+        ExamTypeInterface   $examTypeRepo,
+        ClassSetupInterface $classSetupRepo,
     ) {
         $this->repo               = $repo;
         $this->classRepo          = $classRepo;
-        $this->sectionRepo        = $sectionRepo;
-        $this->subjectRepo        = $subjectRepo;
         $this->examTypeRepo       = $examTypeRepo;
         $this->classSetupRepo     = $classSetupRepo;
     }
@@ -50,7 +40,7 @@ class ExamAssignController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
 
         $data['sections'] = [];
-        $data['exam_assigns'] = $this->repo->getPaginateAll();
+        $data['exam_assigns'] = $this->repo->all();
         $data['exam_types'] = [];
 
         $title             = ___('examination.exam_assign');
@@ -105,8 +95,8 @@ class ExamAssignController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['classes']                = $this->classSetupRepo->all();
-        $data['exam_types']             = $this->examTypeRepo->all();
+        $data['classes']                = $this->classSetupRepo->allActive();
+        $data['exam_types']             = $this->examTypeRepo->allActive();
         return view('backend.admin.examination.exam-assign.create', compact('data'));
     }
 
@@ -145,14 +135,14 @@ class ExamAssignController extends Controller
         ];
 
         $data['exam_assign']        = $result;
-        $data['classes']            = $this->classRepo->all();
+        $data['classes']            = $this->classRepo->allActive();
         $data['sections']           = $this->classSetupRepo->getSections($data['exam_assign']->classes_id);
 
 
         $result                   = SubjectAssign::active()->where('session_id', setting('session'))->where('classes_id', $data['exam_assign']->classes_id)->where('section_id', $data['exam_assign']->section_id)->first();
         $data['subjects']         = SubjectAssignChildren::with('subject')->where('subject_assign_id', @$result->id)->select('subject_id')->get();
 
-        $data['exam_types']         = $this->examTypeRepo->all();
+        $data['exam_types']         = $this->examTypeRepo->allActive();
 
         return view('backend.admin.examination.exam-assign.edit', compact('data'));
     }

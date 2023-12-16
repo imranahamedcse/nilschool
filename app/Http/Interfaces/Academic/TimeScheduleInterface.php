@@ -18,4 +18,6 @@ interface TimeScheduleInterface
     public function update($request, $id);
 
     public function destroy($id);
+
+    public function allExamSchedule();
 }

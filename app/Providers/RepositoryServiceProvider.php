@@ -43,8 +43,11 @@ use App\Http\Interfaces\Dormitory\DormitoryStudentInterface;
 use App\Http\Interfaces\Dormitory\RoomInterface;
 use App\Http\Interfaces\Dormitory\RoomTypeInterface;
 use App\Http\Interfaces\Examination\ExamAssignInterface;
+use App\Http\Interfaces\Examination\ExaminationSettingsInterface;
+use App\Http\Interfaces\Examination\ExamRoutineInterface as ExaminationExamRoutineInterface;
 use App\Http\Interfaces\WebsiteSetup\CounterInterface;
 use App\Http\Interfaces\Examination\ExamTypeInterface;
+use App\Http\Interfaces\Examination\MarksGradeInterface;
 use App\Http\Interfaces\Report\MarksheetInterface;
 use App\Http\Interfaces\Examination\MarksRegisterInterface;
 use App\Http\Interfaces\Fees\FeesAssignInterface;
@@ -98,8 +101,11 @@ use App\Http\Repositories\Dormitory\DormitoryStudentRepository;
 use App\Http\Repositories\Dormitory\RoomRepository;
 use App\Http\Repositories\Dormitory\RoomTypeRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Repositories\Examination\ExaminationSettingsRepository;
+use App\Http\Repositories\Examination\ExamRoutineRepository as ExaminationExamRoutineRepository;
 use App\Http\Repositories\WebsiteSetup\CounterRepository;
 use App\Http\Repositories\Examination\ExamTypeRepository;
+use App\Http\Repositories\Examination\MarksGradeRepository;
 use App\Http\Repositories\Report\MarksheetRepository;
 use App\Http\Repositories\Examination\MarksRegisterRepository;
 use App\Http\Repositories\Fees\FeesAssignRepository;
@@ -194,8 +200,12 @@ class RepositoryServiceProvider extends ServiceProvider
 
         // Examination
         $this->app->bind(ExamAssignInterface::class,               ExamAssignRepository::class);
+        $this->app->bind(ExaminationSettingsInterface::class,      ExaminationSettingsRepository::class);
+        $this->app->bind(ExaminationExamRoutineInterface::class,   ExaminationExamRoutineRepository::class);
         $this->app->bind(ExamTypeInterface::class,                 ExamTypeRepository::class);
+        $this->app->bind(MarksGradeInterface::class,               MarksGradeRepository::class);
         $this->app->bind(MarksRegisterInterface::class,            MarksRegisterRepository::class);
+
         // Report
         $this->app->bind(MarksheetInterface::class,                MarksheetRepository::class);
         $this->app->bind(ReportClassRoutineInterface::class,       ReportClassRoutineRepository::class);

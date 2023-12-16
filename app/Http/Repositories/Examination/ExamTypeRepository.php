@@ -3,6 +3,7 @@
 namespace App\Http\Repositories\Examination;
 
 use App\Http\Interfaces\Examination\ExamTypeInterface;;
+
 use App\Models\Examination\ExamType;
 use App\Traits\ReturnFormatTrait;
 
@@ -17,14 +18,14 @@ class ExamTypeRepository implements ExamTypeInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->get();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->paginate(10);
+        return $this->model::latest()->get();
     }
 
     public function store($request)
@@ -37,7 +38,6 @@ class ExamTypeRepository implements ExamTypeInterface
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-
         }
     }
 

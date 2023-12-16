@@ -8,14 +8,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Interfaces\Settings\SessionInterface;
 use App\Traits\ApiReturnFormatTrait;
 use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassRoomInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectAssignInterface;
 use App\Http\Interfaces\Academic\SubjectInterface;
-use App\Http\Repositories\Academic\ClassRoomRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Examination\ExamRoutineRepository;
-use App\Http\Repositories\Academic\TimeScheduleRepository;
-use App\Http\Repositories\Academic\SubjectAssignRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Interfaces\Academic\TimeScheduleInterface;
+use App\Http\Interfaces\Examination\ExamAssignInterface;
+use App\Http\Interfaces\Examination\ExamRoutineInterface;
 use App\Http\Requests\Academic\Routine\StoreRequest;
 use App\Http\Requests\Academic\Routine\UpdateRequest;
 
@@ -36,17 +36,17 @@ class ExamRoutineController extends Controller
     private $typeRepo;
 
     function __construct(
-        ExamRoutineRepository     $repo,
+        ExamRoutineInterface      $repo,
         SessionInterface          $sessionRepo,
         ClassesInterface          $classesRepo,
         SectionInterface          $sectionRepo,
         SubjectInterface          $subjectRepo,
         UserInterface             $staffRepo,
-        ClassRoomRepository       $classRoomRepo,
-        SubjectAssignRepository   $subjectAssignRepo,
-        TimeScheduleRepository    $timeScheduleRepo,
-        ClassSetupRepository      $classSetupRepo,
-        ExamAssignRepository        $typeRepo,
+        ClassRoomInterface        $classRoomRepo,
+        SubjectAssignInterface    $subjectAssignRepo,
+        TimeScheduleInterface     $timeScheduleRepo,
+        ClassSetupInterface       $classSetupRepo,
+        ExamAssignInterface       $typeRepo,
     ) {
         $this->repo                 = $repo;
         $this->sessionRepo          = $sessionRepo;
@@ -63,7 +63,7 @@ class ExamRoutineController extends Controller
 
     public function index()
     {
-        $data['exam_routines']    = $this->repo->getPaginateAll();
+        $data['exam_routines']    = $this->repo->all();
 
         $title             = ___('academic.exam_routine');
         $data['headers']   = [
@@ -90,7 +90,7 @@ class ExamRoutineController extends Controller
         ];
 
         $data['classes']            = $this->classesRepo->assignedAll();
-        $data['sections']           = $this->sectionRepo->all();
+        $data['sections']           = [];
 
         return view('backend.admin.examination.exam-routine.create', compact('data'));
     }
@@ -102,7 +102,7 @@ class ExamRoutineController extends Controller
 
         $data['subjects']        = $this->subjectAssignRepo->getSubjects($request);
 
-        $data['class_rooms']     = $this->classRoomRepo->all();
+        $data['class_rooms']     = $this->classRoomRepo->allActive();
         $data['time_schedules']  = $this->timeScheduleRepo->allExamSchedule();
         return view('backend.admin.examination.exam-routine.add-exam-routine', compact('counter', 'data'))->render();
     }
@@ -140,7 +140,7 @@ class ExamRoutineController extends Controller
 
         $data['subjects']           = $this->subjectAssignRepo->getSubjects($data['exam_routine']);
 
-        $data['class_rooms']        = $this->classRoomRepo->all();
+        $data['class_rooms']        = $this->classRoomRepo->allActive();
         $data['time_schedules']     = $this->timeScheduleRepo->allExamSchedule();
 
         return view('backend.admin.examination.exam-routine.edit', compact('data'));

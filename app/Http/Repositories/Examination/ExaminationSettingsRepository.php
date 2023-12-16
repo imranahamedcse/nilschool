@@ -21,24 +21,22 @@ class ExaminationSettingsRepository implements ExaminationSettingsInterface
     public function updateSetting($request)
     {
         try {
-            foreach($request->fields as $key=>$field) {
+            foreach ($request->fields as $key => $field) {
 
                 $setting            = $this->model::where('name', $field)->where('session_id', setting('session'))->first();
-                if($setting){
+                if ($setting) {
                     $setting->value = $request->values[$key];
-                }else{
+                } else {
                     $setting              = new $this->model;
                     $setting->name        = $field;
                     $setting->session_id  = setting('session');
                     $setting->value       = $request->values[$key];
                 }
                 $setting->save();
-
             }
             return true;
         } catch (\Throwable $th) {
             return false;
         }
     }
-
 }

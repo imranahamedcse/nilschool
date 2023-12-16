@@ -19,7 +19,7 @@ class ExamTypeController extends Controller
 
     public function index()
     {
-        $data['exam_types'] = $this->repo->getPaginateAll();
+        $data['exam_types'] = $this->repo->all();
 
         $title             = ___('examination.exam_type');
         $data['headers']   = [

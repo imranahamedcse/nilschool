@@ -7,7 +7,7 @@ interface MarksRegisterInterface
 
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function store($request);
 
@@ -16,4 +16,6 @@ interface MarksRegisterInterface
     public function update($request, $id);
 
     public function destroy($id);
+
+    public function searchMarkRegister($request);
 }

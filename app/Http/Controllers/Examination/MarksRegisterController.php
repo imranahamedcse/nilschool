@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Examination;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Examination\ExamTypeRepository;
-use App\Http\Repositories\Examination\MarksRegisterRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
+use App\Http\Interfaces\Academic\SubjectInterface;
+use App\Http\Interfaces\Examination\ExamAssignInterface;
+use App\Http\Interfaces\Examination\MarksRegisterInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Http\Requests\Examination\MarksRegister\StoreRequest;
 use App\Http\Requests\Examination\MarksRegister\UpdateRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Academic\SubjectRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
 
 class MarksRegisterController extends Controller
 {
@@ -21,27 +20,23 @@ class MarksRegisterController extends Controller
     private $classRepo;
     private $classSetupRepo;
     private $sectionRepo;
-    private $examTypeRepo;
     private $subjectRepo;
     private $examAssignRepo;
     private $studentRepo;
 
     function __construct(
-        MarksRegisterRepository $repo,
-        ClassSetupRepository $classSetupRepo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        ExamTypeRepository $examTypeRepo,
-        SubjectRepository $subjectRepo,
-        ExamAssignRepository $examAssignRepo,
-        StudentRepository $studentRepo,
-        )
-    {
+        MarksRegisterInterface $repo,
+        ClassSetupInterface $classSetupRepo,
+        ClassesInterface $classRepo,
+        SectionInterface $sectionRepo,
+        SubjectInterface $subjectRepo,
+        ExamAssignInterface $examAssignRepo,
+        StudentInterface $studentRepo,
+    ) {
         $this->repo               = $repo;
         $this->classRepo          = $classRepo;
         $this->classSetupRepo     = $classSetupRepo;
         $this->sectionRepo        = $sectionRepo;
-        $this->examTypeRepo       = $examTypeRepo;
         $this->subjectRepo        = $subjectRepo;
         $this->examAssignRepo     = $examAssignRepo;
         $this->studentRepo        = $studentRepo;
@@ -50,7 +45,7 @@ class MarksRegisterController extends Controller
     public function index()
     {
         $data['classes']            = $this->classRepo->assignedAll();
-        $data['marks_registers']    = $this->repo->getPaginateAll();
+        $data['marks_registers']    = $this->repo->all();
         $data['sections'] = [];
         $data['exam_types'] = [];
 
@@ -120,7 +115,7 @@ class MarksRegisterController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['classes']                = $this->classSetupRepo->all();
+        $data['classes']                = $this->classSetupRepo->allActive();
         $data['exam_types']             = $this->examAssignRepo->assignedExamType();
         return view('backend.admin.examination.marks-register.create', compact('data'));
     }
@@ -128,7 +123,7 @@ class MarksRegisterController extends Controller
     public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('marks-register.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -136,10 +131,10 @@ class MarksRegisterController extends Controller
 
     public function edit($id)
     {
-        $data['classes']               = $this->classSetupRepo->all();
-        $data['sections']              = $this->sectionRepo->all();
+        $data['classes']               = $this->classSetupRepo->allActive();
+        $data['sections']              = $this->sectionRepo->allActive();
 
-        $data['subjects']              = $this->subjectRepo->all();
+        $data['subjects']              = $this->subjectRepo->allActive();
         $data['marks_register']        = $this->repo->show($id);
 
         $data['title']                 = ___('examination.marks_register');
@@ -171,7 +166,7 @@ class MarksRegisterController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('marks-register.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -181,13 +176,13 @@ class MarksRegisterController extends Controller
     {
 
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');

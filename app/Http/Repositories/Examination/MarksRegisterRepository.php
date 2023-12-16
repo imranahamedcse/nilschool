@@ -19,30 +19,30 @@ class MarksRegisterRepository implements MarksRegisterInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->where('session_id', setting('session'))->get();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->where('session_id', setting('session'))->paginate(10);
+        return $this->model::latest()->where('session_id', setting('session'))->get();
     }
 
     public function searchMarkRegister($request)
     {
         $rows = $this->model::query();
         $rows = $rows->where('session_id', setting('session'));
-        if($request->class != "") {
+        if ($request->class != "") {
             $rows = $rows->where('classes_id', $request->class);
         }
-        if($request->section != "") {
+        if ($request->section != "") {
             $rows = $rows->where('section_id', $request->section);
         }
-        if($request->exam_type != "") {
+        if ($request->exam_type != "") {
             $rows = $rows->where('exam_type_id', $request->exam_type);
         }
-        if($request->subject != "") {
+        if ($request->subject != "") {
             $rows = $rows->where('subject_id', $request->subject);
         }
         return $rows->paginate(10);
@@ -53,7 +53,7 @@ class MarksRegisterRepository implements MarksRegisterInterface
         DB::beginTransaction();
         try {
 
-            if($this->model::where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('exam_type_id', $request->exam_type)->where('subject_id', $request->subject)->first()) {
+            if ($this->model::where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('exam_type_id', $request->exam_type)->where('subject_id', $request->subject)->first()) {
                 return $this->responseWithError(___('alert.There is already a register for this session.'), []);
             }
 
@@ -81,7 +81,6 @@ class MarksRegisterRepository implements MarksRegisterInterface
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-
         }
     }
 
@@ -95,7 +94,7 @@ class MarksRegisterRepository implements MarksRegisterInterface
         DB::beginTransaction();
         try {
 
-            if($this->model::where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('exam_type_id', $request->exam_type)->where('subject_id', $request->subject)->where('id', '!=', $id)->first()) {
+            if ($this->model::where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('exam_type_id', $request->exam_type)->where('subject_id', $request->subject)->where('id', '!=', $id)->first()) {
                 return $this->responseWithError(___('alert.There is already a register for this session.'), []);
             }
 
