@@ -30,7 +30,7 @@ class QuestionBankController extends Controller
 
     public function index()
     {
-        $data['question_bank'] = $this->repo->getAll();
+        $data['question_bank'] = $this->repo->all();
 
         $title         = ___('online-examination.Question bank');
         $data['headers']   = [

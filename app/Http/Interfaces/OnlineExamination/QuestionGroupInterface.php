@@ -7,10 +7,10 @@ interface QuestionGroupInterface
 
     public function all();
 
-    public function getAll();
+    public function allActive();
 
     public function search($request);
-    
+
     public function store($request);
 
     public function show($id);

@@ -20,13 +20,13 @@ class QuestionGroupController extends Controller
 
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
             abort(400);
-        } 
-        $this->repo           = $repo; 
+        }
+        $this->repo           = $repo;
     }
 
     public function index()
     {
-        $data['question_group'] = $this->repo->getAll();
+        $data['question_group'] = $this->repo->all();
 
         $title             = ___('online-examination.Question group');
         $data['headers']   = [
@@ -55,7 +55,7 @@ class QuestionGroupController extends Controller
             ["title" => ___("common.Online Examination"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        
+
         $data['request']        = $request;
         $data['question_group'] = $this->repo->search($request);
         return view('backend.admin.online-examination.question-group.index', compact('data'));
@@ -120,6 +120,6 @@ class QuestionGroupController extends Controller
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
             return response()->json($success);
-        endif;    
+        endif;
     }
 }

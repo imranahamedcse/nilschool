@@ -56,6 +56,7 @@ use App\Http\Interfaces\Fees\FeesGroupInterface;
 use App\Http\Interfaces\Fees\FeesMasterInterface;
 use App\Http\Interfaces\Fees\FeesTypeInterface;
 use App\Http\Interfaces\Frontend\FrontendInterface;
+use App\Http\Interfaces\OnlineExamination\ExamTypeInterface as OnlineExaminationExamTypeInterface;
 use App\Http\Interfaces\OnlineExamination\OnlineExamInterface;
 use App\Http\Interfaces\OnlineExamination\QuestionBankInterface;
 use App\Http\Interfaces\OnlineExamination\QuestionGroupInterface;
@@ -114,6 +115,7 @@ use App\Http\Repositories\Fees\FeesGroupRepository;
 use App\Http\Repositories\Fees\FeesMasterRepository;
 use App\Http\Repositories\Fees\FeesTypeRepository;
 use App\Http\Repositories\Frontend\FrontendRepository;
+use App\Http\Repositories\OnlineExamination\ExamTypeRepository as OnlineExaminationExamTypeRepository;
 use App\Http\Repositories\Settings\GenderRepository;
 use App\Http\Repositories\OnlineExamination\OnlineExamRepository;
 use App\Http\Repositories\OnlineExamination\QuestionBankRepository;
@@ -231,9 +233,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(StudentPanelMarksheetInterface::class,              StudentPanelMarksheetRepository::class);
 
         // Online examination
-        $this->app->bind(QuestionGroupInterface::class,           QuestionGroupRepository::class);
-        $this->app->bind(QuestionBankInterface::class,            QuestionBankRepository::class);
-        $this->app->bind(OnlineExamInterface::class,              OnlineExamRepository::class);
+        $this->app->bind(OnlineExaminationExamTypeInterface::class, OnlineExaminationExamTypeRepository::class);
+        $this->app->bind(QuestionGroupInterface::class,             QuestionGroupRepository::class);
+        $this->app->bind(QuestionBankInterface::class,              QuestionBankRepository::class);
+        $this->app->bind(OnlineExamInterface::class,                OnlineExamRepository::class);
 
         // Transport
         $this->app->bind(RouteInterface::class,              RouteRepository::class);

@@ -4,19 +4,18 @@ namespace App\Http\Controllers\OnlineExamination;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Settings\GenderRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SubjectAssignInterface;
+use App\Http\Interfaces\OnlineExamination\ExamTypeInterface;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Examination\ExamTypeRepository;
 use App\Http\Interfaces\OnlineExamination\OnlineExamInterface;
-use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
 use App\Http\Interfaces\OnlineExamination\QuestionGroupInterface;
+use App\Http\Interfaces\Settings\GenderInterface;
+use App\Http\Interfaces\StudentInfo\StudentCategoryInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Http\Requests\OnlineExamination\OnlineExam\StoreRequest;
 use App\Http\Requests\OnlineExamination\OnlineExam\UpdateRequest;
-use App\Http\Repositories\Academic\SubjectAssignRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
 use PDF;
 
 class OnlineExamController extends Controller
@@ -26,7 +25,6 @@ class OnlineExamController extends Controller
     private $genderRepo;
     private $categoryRepo;
     private $classRepo;
-    private $sectionRepo;
     private $typeRepo;
     private $classSetupRepo;
     private $subjectAssingRepo;
@@ -35,14 +33,13 @@ class OnlineExamController extends Controller
     function __construct(
         OnlineExamInterface $repo,
         QuestionGroupInterface $groupRepo,
-        GenderRepository $genderRepo,
-        StudentCategoryRepository $categoryRepo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        ExamTypeRepository $typeRepo,
-        ClassSetupRepository $classSetupRepo,
-        SubjectAssignRepository $subjectAssingRepo,
-        StudentRepository $studentRepo
+        GenderInterface $genderRepo,
+        StudentCategoryInterface $categoryRepo,
+        ClassesInterface $classRepo,
+        ExamTypeInterface $typeRepo,
+        ClassSetupInterface $classSetupRepo,
+        SubjectAssignInterface $subjectAssingRepo,
+        StudentInterface $studentRepo
     )
     {
 
@@ -54,7 +51,6 @@ class OnlineExamController extends Controller
         $this->genderRepo        = $genderRepo;
         $this->categoryRepo      = $categoryRepo;
         $this->classRepo         = $classRepo;
-        $this->sectionRepo       = $sectionRepo;
         $this->typeRepo          = $typeRepo;
         $this->classSetupRepo    = $classSetupRepo;
         $this->subjectAssingRepo = $subjectAssingRepo;
@@ -63,7 +59,7 @@ class OnlineExamController extends Controller
 
     public function index()
     {
-        $data['online_exam'] = $this->repo->getAll();
+        $data['online_exam'] = $this->repo->all();
         $data['classes']     = $this->classRepo->assignedAll();
         $data['sections']    = [];
         $data['subjects']    = [];

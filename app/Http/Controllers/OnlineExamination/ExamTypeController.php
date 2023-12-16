@@ -12,14 +12,14 @@ class ExamTypeController extends Controller
 {
     private $repo;
 
-    function __construct(ExamTypeInterface $repo)
+    public function __construct(ExamTypeInterface $repo)
     {
         $this->repo       = $repo;
     }
 
     public function index()
     {
-        $data['exam_types'] = $this->repo->getPaginateAll();
+        $data['exam_types'] = $this->repo->all();
 
         $title             = ___('examination.exam_type');
         $data['headers']   = [
