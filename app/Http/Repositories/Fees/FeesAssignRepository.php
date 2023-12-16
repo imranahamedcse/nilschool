@@ -21,14 +21,14 @@ class FeesAssignRepository implements FeesAssignInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->get();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->where('session_id', setting('session'))->paginate(10);
+        return $this->model::latest()->where('session_id', setting('session'))->get();
     }
 
     public function store($request)
@@ -36,38 +36,37 @@ class FeesAssignRepository implements FeesAssignInterface
         DB::beginTransaction();
         try {
 
-            if($request->student_ids == null)
+            if ($request->student_ids == null)
                 return $this->responseWithError(___('alert.Please select student.'), []);
 
             // if($this->model->where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('fees_group_id', $request->fees_group)->first())
             //     return $this->responseWithError(___('alert.There is already assigned.'), []);
 
-                $row                = new $this->model;
-                $row->session_id    = setting('session');
-                $row->classes_id      = $request->class;
-                $row->section_id    = $request->section;
-                $row->fees_group_id = $request->fees_group;
-                $row->category_id   = $request->student_category == "" ? null : $request->student_category;
-                $row->gender_id     = $request->gender == "" ? null : $request->gender;
-                $row->save();
+            $row                = new $this->model;
+            $row->session_id    = setting('session');
+            $row->classes_id      = $request->class;
+            $row->section_id    = $request->section;
+            $row->fees_group_id = $request->fees_group;
+            $row->category_id   = $request->student_category == "" ? null : $request->student_category;
+            $row->gender_id     = $request->gender == "" ? null : $request->gender;
+            $row->save();
 
-                foreach ($request->fees_master_ids as $fees_master) {
+            foreach ($request->fees_master_ids as $fees_master) {
 
-                    foreach ($request->student_ids as $item) {
-                        $feesChield                 = new FeesAssignChildren();
-                        $feesChield->fees_assign_id = $row->id;
-                        $feesChield->fees_master_id = $fees_master;
-                        $feesChield->student_id     = $item;
-                        $feesChield->save();
-                    }
+                foreach ($request->student_ids as $item) {
+                    $feesChield                 = new FeesAssignChildren();
+                    $feesChield->fees_assign_id = $row->id;
+                    $feesChield->fees_master_id = $fees_master;
+                    $feesChield->student_id     = $item;
+                    $feesChield->save();
                 }
+            }
 
             DB::commit();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-
         }
     }
 
@@ -82,7 +81,7 @@ class FeesAssignRepository implements FeesAssignInterface
         DB::beginTransaction();
         try {
 
-            if($request->student_ids == null)
+            if ($request->student_ids == null)
                 return $this->responseWithError(___('alert.Please select student.'), []);
 
             // if($this->model->where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section)->where('fees_group_id', $request->fees_group)->where('id', '!=', $id)->first())
@@ -106,7 +105,7 @@ class FeesAssignRepository implements FeesAssignInterface
                 foreach ($request->student_ids as $item) {
 
                     $feesChield = FeesAssignChildren::where('fees_master_id', $fees_master)->where('student_id', $item)->first();
-                    if(!$feesChield) {
+                    if (!$feesChield) {
                         $feesChield                 = new FeesAssignChildren();
                     }
 
@@ -114,7 +113,6 @@ class FeesAssignRepository implements FeesAssignInterface
                     $feesChield->fees_master_id = $fees_master;
                     $feesChield->student_id     = $item;
                     $feesChield->save();
-
                 }
             }
 
@@ -146,13 +144,13 @@ class FeesAssignRepository implements FeesAssignInterface
         $students = SessionClassStudent::query();
         $students = $students->where('session_id', setting('session'))->where('classes_id', $request->class)->where('section_id', $request->section);
 
-        if($request->gender != "") {
+        if ($request->gender != "") {
             $students = $students->whereHas('student', function ($query) use ($request) {
                 return $query->where('gender_id', $request->gender);
             });
         }
 
-        if($request->category != "") {
+        if ($request->category != "") {
             $students = $students->whereHas('student', function ($query) use ($request) {
                 return $query->where('student_category_id', $request->category);
             });
@@ -165,6 +163,4 @@ class FeesAssignRepository implements FeesAssignInterface
     {
         return FeesMaster::active()->where('fees_group_id', $request->id)->get();
     }
-
-
 }

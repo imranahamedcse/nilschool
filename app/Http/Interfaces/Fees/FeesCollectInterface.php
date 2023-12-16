@@ -4,10 +4,9 @@ namespace App\Http\Interfaces\Fees;
 
 interface FeesCollectInterface
 {
-
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function store($request);
 
@@ -20,7 +19,7 @@ interface FeesCollectInterface
     public function destroy($id);
 
     public function getFeesAssignStudents($request);
-    
+
     public function feesShow($request);
 
 }

@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Fees;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Fees\Collect\FeesCollectStoreRequest;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
 use App\Http\Requests\Fees\Collect\UpdateRequest;
 use App\Http\Interfaces\Fees\FeesCollectInterface;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Fees\FeesMasterRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\Fees\FeesMasterInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use Illuminate\Http\Request;
-use App\Http\Repositories\Academic\ClassSetupRepository;
 
 class FeesCollectController extends Controller
 {
@@ -23,14 +22,13 @@ class FeesCollectController extends Controller
     private $classSetupRepo;
 
     function __construct(
-        FeesCollectInterface   $repo,
-        ClassesRepository      $classRepo,
-        SectionRepository      $sectionRepo,
-        ClassSetupRepository   $classSetupRepo,
-        StudentRepository      $studentRepo,
-        FeesMasterRepository   $feesMasterRepo,
-        )
-    {
+        FeesCollectInterface  $repo,
+        ClassesInterface      $classRepo,
+        SectionInterface      $sectionRepo,
+        ClassSetupInterface   $classSetupRepo,
+        StudentInterface      $studentRepo,
+        FeesMasterInterface   $feesMasterRepo,
+    ) {
         $this->repo              = $repo;
         $this->classRepo         = $classRepo;
         $this->sectionRepo       = $sectionRepo;
@@ -54,7 +52,7 @@ class FeesCollectController extends Controller
             "create-route"      => '',
         ];
 
-        $data['fees_collects']      = $this->repo->getPaginateAll();
+        $data['fees_collects']      = $this->repo->all();
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = [];
 
@@ -65,7 +63,6 @@ class FeesCollectController extends Controller
     {
         $data['title']        = ___('fees.fees_collect');
         return view('backend.admin.fees.collect.create', compact('data'));
-
     }
 
     public function collect($id)
@@ -87,7 +84,7 @@ class FeesCollectController extends Controller
     public function store(Request $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return back()->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -103,7 +100,7 @@ class FeesCollectController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-collect.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -113,13 +110,13 @@ class FeesCollectController extends Controller
     {
 
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
@@ -156,7 +153,4 @@ class FeesCollectController extends Controller
 
         return view('backend.admin.fees.collect.fees-show', compact('data'));
     }
-
-
-
 }

@@ -19,7 +19,7 @@ class FeesTypeController extends Controller
 
     public function index()
     {
-        $data['fees_types'] = $this->repo->getPaginateAll();
+        $data['fees_types'] = $this->repo->all();
 
         $title             = ___('fees.fees_type');
         $data['headers']   = [
@@ -33,7 +33,6 @@ class FeesTypeController extends Controller
             ["title" => $title, "route" => ""]
         ];
         return view('backend.admin.fees.type.index', compact('data'));
-
     }
 
     public function create()
@@ -46,13 +45,12 @@ class FeesTypeController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.type.create', compact('data'));
-
     }
 
     public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-type.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -74,7 +72,7 @@ class FeesTypeController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-type.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -84,13 +82,13 @@ class FeesTypeController extends Controller
     {
 
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');

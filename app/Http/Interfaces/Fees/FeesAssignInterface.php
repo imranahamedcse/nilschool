@@ -4,10 +4,9 @@ namespace App\Http\Interfaces\Fees;
 
 interface FeesAssignInterface
 {
-
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function store($request);
 
@@ -18,4 +17,6 @@ interface FeesAssignInterface
     public function destroy($id);
 
     public function groupTypes($request);
+
+    public function getFeesAssignStudents($request);
 }

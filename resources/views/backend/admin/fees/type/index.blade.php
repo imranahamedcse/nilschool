@@ -37,11 +37,7 @@
                         {{-- <td>{{ wordLimit(@$row->description, 20) }}</td> --}}
                         <td>{{ @$row->description }}</td>
                         <td>
-                            @if (@$row->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
-                            @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
-                            @endif
+                            @include('backend.admin.components.table.status')
                         </td>
                         @if (hasPermission('fees_type_update') || hasPermission('fees_type_delete'))
                             <td>

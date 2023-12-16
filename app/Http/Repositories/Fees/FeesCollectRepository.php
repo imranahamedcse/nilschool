@@ -27,21 +27,21 @@ class FeesCollectRepository implements FeesCollectInterface
         $this->feesMasterRepo = $feesMasterRepo;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->get();
     }
 
-    public function getPaginateAll()
+    public function all()
     {
-        return $this->model::latest()->paginate(10);
+        return $this->model::latest()->get();
     }
 
     public function store($request)
     {
         DB::beginTransaction();
         try {
-            foreach ($request->fees_assign_childrens as $key=>$item) {
+            foreach ($request->fees_assign_childrens as $key => $item) {
 
 
                 $row                   = new $this->model;
@@ -63,14 +63,12 @@ class FeesCollectRepository implements FeesCollectInterface
                 $incomeStore->date             = $request->date;
                 $incomeStore->amount           = $row->amount;
                 $incomeStore->save();
-
             }
             DB::commit();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-
         }
     }
 
@@ -120,12 +118,12 @@ class FeesCollectRepository implements FeesCollectInterface
     {
         $students = SessionClassStudent::query();
         $students = $students->where('session_id', setting('session'));
-        if($request->class != "") {
+        if ($request->class != "") {
 
             $students = $students->where('classes_id', $request->class);
         }
 
-        if($request->section != "") {
+        if ($request->section != "") {
 
             $students = $students->where('section_id', $request->section);
         }
@@ -153,7 +151,7 @@ class FeesCollectRepository implements FeesCollectInterface
             $feesAssignChildren = optional(FeesAssignChildren::with('feesMaster')->where('id', $request->fees_assign_children_id)->first());
             $description = 'Pay ' . ($request->amount + $request->fine_amount) . ' for ' . $feesAssignChildren->feesMaster?->type?->name . ' fee by ' . auth()->user()->name;
 
-            $charge = Charge::create ([
+            $charge = Charge::create([
                 "amount"        => ($request->amount + $request->fine_amount) * 100,
                 "currency"      => "usd",
                 "source"        => $request->stripeToken,

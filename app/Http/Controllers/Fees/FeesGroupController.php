@@ -19,7 +19,7 @@ class FeesGroupController extends Controller
 
     public function index()
     {
-        $data['fees_groups'] = $this->repo->getPaginateAll();
+        $data['fees_groups'] = $this->repo->all();
 
         $title             = ___('fees.fees_group');
         $data['headers']   = [
@@ -34,7 +34,6 @@ class FeesGroupController extends Controller
         ];
 
         return view('backend.admin.fees.group.index', compact('data'));
-
     }
 
     public function create()
@@ -47,13 +46,12 @@ class FeesGroupController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.fees.group.create', compact('data'));
-
     }
 
     public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-group.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -75,7 +73,7 @@ class FeesGroupController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-group.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -85,13 +83,13 @@ class FeesGroupController extends Controller
     {
 
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');

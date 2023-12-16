@@ -19,9 +19,14 @@ class FeesMasterRepository implements FeesMasterInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function allActive()
     {
         return $this->model->active()->get();
+    }
+
+    public function all()
+    {
+        return $this->model::latest()->where('session_id', setting('session'))->get();
     }
 
     public function allGroups()
@@ -34,17 +39,12 @@ class FeesMasterRepository implements FeesMasterInterface
         return $this->model->active()->where('fees_group_id', $request->id)->get();
     }
 
-    public function getPaginateAll()
-    {
-        return $this->model::latest()->where('session_id',setting('session'))->paginate(10);
-    }
-
     public function store($request)
     {
         DB::beginTransaction();
         try {
 
-            if ($this->model->where('session_id',setting('session'))->where('fees_group_id', $request->fees_group_id)->where('fees_type_id', $request->fees_type_id)->first())
+            if ($this->model->where('session_id', setting('session'))->where('fees_group_id', $request->fees_group_id)->where('fees_type_id', $request->fees_type_id)->first())
                 return $this->responseWithError(___('alert.There is already assigned.'), []);
 
             $row                = new $this->model;
@@ -70,7 +70,6 @@ class FeesMasterRepository implements FeesMasterInterface
         } catch (\Throwable $th) {
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-
         }
     }
 
@@ -84,7 +83,7 @@ class FeesMasterRepository implements FeesMasterInterface
         DB::beginTransaction();
         try {
 
-            if($this->model->where('session_id',setting('session'))->where('fees_group_id', $request->fees_group_id)->where('fees_type_id', $request->fees_type_id)->where('id', '!=', $id)->first())
+            if ($this->model->where('session_id', setting('session'))->where('fees_group_id', $request->fees_group_id)->where('fees_type_id', $request->fees_type_id)->where('id', '!=', $id)->first())
                 return $this->responseWithError(___('alert.There is already assigned.'), []);
 
             $row                = $this->model->findOrfail($id);

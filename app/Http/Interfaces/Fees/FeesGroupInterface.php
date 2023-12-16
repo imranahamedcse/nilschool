@@ -4,10 +4,9 @@ namespace App\Http\Interfaces\Fees;
 
 interface FeesGroupInterface
 {
-
     public function all();
 
-    public function getPaginateAll();
+    public function allActive();
 
     public function store($request);
 

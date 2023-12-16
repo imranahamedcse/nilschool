@@ -28,7 +28,7 @@ class FeesMasterController extends Controller
 
     public function index()
     {
-        $data['fees_masters'] = $this->repo->getPaginateAll();
+        $data['fees_masters'] = $this->repo->all();
 
         $title             = ___('fees.fees_master');
         $data['headers']   = [
@@ -60,8 +60,8 @@ class FeesMasterController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
-        $data['fees_types']   = $this->type->all();
-        $data['fees_groups']  = $this->group->all();
+        $data['fees_types']   = $this->type->allActive();
+        $data['fees_groups']  = $this->group->allActive();
         return view('backend.admin.fees.master.create', compact('data'));
     }
 
@@ -85,8 +85,8 @@ class FeesMasterController extends Controller
         ];
 
         $data['fees_master']  = $this->repo->show($id);
-        $data['fees_types']   = $this->type->all();
-        $data['fees_groups']  = $this->group->all();
+        $data['fees_types']   = $this->type->allActive();
+        $data['fees_groups']  = $this->group->allActive();
 
         return view('backend.admin.fees.master.edit', compact('data'));
     }

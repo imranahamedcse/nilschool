@@ -4,13 +4,13 @@ namespace App\Http\Interfaces\Fees;
 
 interface FeesMasterInterface
 {
-
     public function all();
+
+    public function allActive();
+
     public function allGroups();
 
     public function groupTypes($request);
-
-    public function getPaginateAll();
 
     public function store($request);
 

@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Fees;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Academic\SectionInterface;
 use App\Http\Requests\Fees\Assign\StoreRequest;
 use App\Http\Requests\Fees\Assign\UpdateRequest;
 use App\Http\Interfaces\Fees\FeesTypeInterface;
 use App\Http\Interfaces\Fees\FeesGroupInterface;
 use App\Http\Interfaces\Fees\FeesAssignInterface;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Academic\SectionRepository;
-use App\Http\Repositories\Fees\FeesMasterRepository;
-use App\Http\Repositories\Settings\GenderRepository;
-use App\Http\Repositories\StudentInfo\StudentCategoryRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\Fees\FeesMasterInterface;
+use App\Http\Interfaces\Settings\GenderInterface;
+use App\Http\Interfaces\StudentInfo\StudentCategoryInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 
 class FeesAssignController extends Controller
 {
@@ -34,15 +34,14 @@ class FeesAssignController extends Controller
         FeesAssignInterface $repo,
         FeesTypeInterface $typeRepo,
         FeesGroupInterface $groupRepo,
-        FeesMasterRepository $feesMasterRepo,
-        GenderRepository $genderRepo,
-        StudentCategoryRepository $categoryRepo,
-        ClassesRepository $classRepo,
-        SectionRepository $sectionRepo,
-        ClassSetupRepository $classSetupRepo,
-        StudentRepository $studentRepo
-        )
-    {
+        FeesMasterInterface $feesMasterRepo,
+        GenderInterface $genderRepo,
+        StudentCategoryInterface $categoryRepo,
+        ClassesInterface $classRepo,
+        SectionInterface $sectionRepo,
+        ClassSetupInterface $classSetupRepo,
+        StudentInterface $studentRepo
+    ) {
         $this->repo              = $repo;
         $this->typeRepo          = $typeRepo;
         $this->groupRepo         = $groupRepo;
@@ -57,7 +56,7 @@ class FeesAssignController extends Controller
 
     public function index()
     {
-        $data['fees_assigns'] = $this->repo->getPaginateAll();
+        $data['fees_assigns'] = $this->repo->all();
 
         $title             = ___('fees.fees_assign');
         $data['headers']   = [
@@ -73,7 +72,8 @@ class FeesAssignController extends Controller
         return view('backend.admin.fees.assign.index', compact('data'));
     }
 
-    public function show(Request $request){
+    public function show(Request $request)
+    {
 
         $data['fees_assign']  = $this->repo->show($request->id);
         return view('backend.admin.fees.assign.view', compact('data'))->render();
@@ -92,15 +92,15 @@ class FeesAssignController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = [];
         $data['fees_groups']  = $this->feesMasterRepo->allGroups();
-        $data['genders']      = $this->genderRepo->all();
-        $data['categories']   = $this->categoryRepo->all();
+        $data['genders']      = $this->genderRepo->allActive();
+        $data['categories']   = $this->categoryRepo->allActive();
         return view('backend.admin.fees.assign.create', compact('data'));
     }
 
     public function store(StoreRequest $request)
     {
         $result = $this->repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-assign.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message'])->withInput();
@@ -125,8 +125,8 @@ class FeesAssignController extends Controller
 
         $data['fees_masters']  = $this->feesMasterRepo->all()->where('fees_group_id', $data['fees_assign']->fees_group_id);
 
-        $data['genders']      = $this->genderRepo->all();
-        $data['categories']   = $this->categoryRepo->all();
+        $data['genders']      = $this->genderRepo->allActive();
+        $data['categories']   = $this->categoryRepo->allActive();
 
         $request = new Request();
         $request->replace(['class' => $data['fees_assign']->classes_id, 'section' => $data['fees_assign']->section_id, 'gender' => $data['fees_assign']->gender_id]);
@@ -139,7 +139,7 @@ class FeesAssignController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('fees-assign.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -148,13 +148,13 @@ class FeesAssignController extends Controller
     public function delete($id)
     {
         $result = $this->repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
@@ -173,5 +173,4 @@ class FeesAssignController extends Controller
         $types = $this->repo->groupTypes($request);
         return view('backend.admin.fees.assign.fees-types', compact('types'))->render();
     }
-
 }
