@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Library\MemberCategoryInterface;
+use App\Http\Interfaces\Library\MemberInterface;
 use App\Http\Requests\Library\Member\StoreRequest;
 use App\Http\Requests\Library\Member\UpdateRequest;
-use App\Http\Repositories\Library\MemberCategoryRepository;
-use App\Http\Repositories\Library\MemberRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -14,7 +14,7 @@ class MemberController extends Controller
 {
     private $Repo, $categoryRepo;
 
-    function __construct(MemberRepository $Repo, MemberCategoryRepository $categoryRepo)
+    function __construct(MemberInterface $Repo, MemberCategoryInterface $categoryRepo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
@@ -58,7 +58,7 @@ class MemberController extends Controller
     public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('member.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -83,7 +83,7 @@ class MemberController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('member.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -92,13 +92,13 @@ class MemberController extends Controller
     public function delete($id)
     {
         $result = $this->Repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');

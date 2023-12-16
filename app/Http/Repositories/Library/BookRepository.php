@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Traits\CommonHelperTrait;
 use App\Traits\ReturnFormatTrait;
 
-class BookRepository implements BookInterface{
+class BookRepository implements BookInterface
+{
 
     use ReturnFormatTrait;
     use CommonHelperTrait;

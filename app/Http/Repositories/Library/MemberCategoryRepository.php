@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Traits\CommonHelperTrait;
 use App\Traits\ReturnFormatTrait;
 
-class MemberCategoryRepository implements MemberCategoryInterface{
+class MemberCategoryRepository implements MemberCategoryInterface
+{
 
     use ReturnFormatTrait;
     use CommonHelperTrait;

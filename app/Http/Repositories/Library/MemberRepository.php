@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Traits\CommonHelperTrait;
 use App\Traits\ReturnFormatTrait;
 
-class MemberRepository implements MemberInterface{
+class MemberRepository implements MemberInterface
+{
 
     use ReturnFormatTrait;
     use CommonHelperTrait;
@@ -89,7 +90,7 @@ class MemberRepository implements MemberInterface{
 
     public function getMember($request)
     {
-        return User::where('name', 'like', '%' . $request->text . '%')->pluck('name','id')->take(10)->toArray();
+        return User::where('name', 'like', '%' . $request->text . '%')->pluck('name', 'id')->take(10)->toArray();
     }
 
     public function getUser($id)

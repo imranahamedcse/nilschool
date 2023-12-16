@@ -15,4 +15,16 @@ interface IssueBookInterface
     public function update($request, $id);
 
     public function destroy($id);
+
+    public function getMember($request);
+
+    public function getBooks($request);
+
+    public function return($id);
+
+    public function searchResult($request);
+
+    public function getUser($id);
+
+    public function getBook($id);
 }

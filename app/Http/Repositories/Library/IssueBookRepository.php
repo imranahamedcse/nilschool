@@ -14,7 +14,8 @@ use App\Traits\CommonHelperTrait;
 use App\Traits\ReturnFormatTrait;
 use Carbon\Carbon;
 
-class IssueBookRepository implements IssueBookInterface{
+class IssueBookRepository implements IssueBookInterface
+{
 
     use ReturnFormatTrait;
     use CommonHelperTrait;
@@ -125,7 +126,7 @@ class IssueBookRepository implements IssueBookInterface{
     }
     public function getBooks($request)
     {
-        return Book::where('name', 'like', '%' . $request->text . '%')->pluck('name','id')->take(10)->toArray();
+        return Book::where('name', 'like', '%' . $request->text . '%')->pluck('name', 'id')->take(10)->toArray();
     }
 
 
@@ -157,29 +158,29 @@ class IssueBookRepository implements IssueBookInterface{
     public function searchResult($request)
     {
         return  $this->model::query()
-                ->where(function ($query) use ($request) {
-                    $query->where(function ($query) use ($request) {
-                        $query->whereHas('user', function ($query) use ($request) {
-                            $query->where('name', 'like', '%' . $request->keyword . '%');
-                        })->orWhereHas('book', function ($query) use ($request) {
-                            $query->where('name', 'like', '%' . $request->keyword . '%');
-                        });
-                    })
+            ->where(function ($query) use ($request) {
+                $query->where(function ($query) use ($request) {
+                    $query->whereHas('user', function ($query) use ($request) {
+                        $query->where('name', 'like', '%' . $request->keyword . '%');
+                    })->orWhereHas('book', function ($query) use ($request) {
+                        $query->where('name', 'like', '%' . $request->keyword . '%');
+                    });
+                })
                     ->orWhere('phone', 'like', '%' . $request->keyword . '%');
 
-                    if (strtotime($request->keyword)) {
-                        $query->orWhere('issue_date', Carbon::parse($request->keyword)->format('Y-m-d'))
+                if (strtotime($request->keyword)) {
+                    $query->orWhere('issue_date', Carbon::parse($request->keyword)->format('Y-m-d'))
                         ->orWhere('return_date', Carbon::parse($request->keyword)->format('Y-m-d'));
-                    }
+                }
 
-                    if (strtolower($request->keyword) == 'return') {
-                        $query->orWhere('status', EnumsIssueBook::RETURN);
-                    }
+                if (strtolower($request->keyword) == 'return') {
+                    $query->orWhere('status', EnumsIssueBook::RETURN);
+                }
 
-                    if (strtolower($request->keyword) == 'issued') {
-                        $query->orWhere('status', EnumsIssueBook::ISSUED);
-                    }
-                })
-                ->paginate(Settings::PAGINATE);
+                if (strtolower($request->keyword) == 'issued') {
+                    $query->orWhere('status', EnumsIssueBook::ISSUED);
+                }
+            })
+            ->paginate(Settings::PAGINATE);
     }
 }

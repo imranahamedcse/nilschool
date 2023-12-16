@@ -56,6 +56,11 @@ use App\Http\Interfaces\Fees\FeesGroupInterface;
 use App\Http\Interfaces\Fees\FeesMasterInterface;
 use App\Http\Interfaces\Fees\FeesTypeInterface;
 use App\Http\Interfaces\Frontend\FrontendInterface;
+use App\Http\Interfaces\Library\BookCategoryInterface;
+use App\Http\Interfaces\Library\BookInterface;
+use App\Http\Interfaces\Library\IssueBookInterface;
+use App\Http\Interfaces\Library\MemberCategoryInterface;
+use App\Http\Interfaces\Library\MemberInterface;
 use App\Http\Interfaces\OnlineExamination\ExamTypeInterface as OnlineExaminationExamTypeInterface;
 use App\Http\Interfaces\OnlineExamination\OnlineExamInterface;
 use App\Http\Interfaces\OnlineExamination\QuestionBankInterface;
@@ -115,6 +120,11 @@ use App\Http\Repositories\Fees\FeesGroupRepository;
 use App\Http\Repositories\Fees\FeesMasterRepository;
 use App\Http\Repositories\Fees\FeesTypeRepository;
 use App\Http\Repositories\Frontend\FrontendRepository;
+use App\Http\Repositories\Library\BookCategoryRepository;
+use App\Http\Repositories\Library\BookRepository;
+use App\Http\Repositories\Library\IssueBookRepository;
+use App\Http\Repositories\Library\MemberCategoryRepository;
+use App\Http\Repositories\Library\MemberRepository;
 use App\Http\Repositories\OnlineExamination\ExamTypeRepository as OnlineExaminationExamTypeRepository;
 use App\Http\Repositories\Settings\GenderRepository;
 use App\Http\Repositories\OnlineExamination\OnlineExamRepository;
@@ -251,6 +261,13 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(RoomInterface::class,               RoomRepository::class);
         $this->app->bind(DormitorySetupInterface::class,     DormitorySetupRepository::class);
         $this->app->bind(DormitoryStudentInterface::class,   DormitoryStudentRepository::class);
+
+        // Library
+        $this->app->bind(BookCategoryInterface::class,   BookCategoryRepository::class);
+        $this->app->bind(BookInterface::class,           BookRepository::class);
+        $this->app->bind(IssueBookInterface::class,      IssueBookRepository::class);
+        $this->app->bind(MemberCategoryInterface::class, MemberCategoryRepository::class);
+        $this->app->bind(MemberInterface::class,         MemberRepository::class);
 
 
     }

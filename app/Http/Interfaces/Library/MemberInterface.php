@@ -9,12 +9,14 @@ interface MemberInterface
     public function getAll();
 
     public function store($request);
-    
+
     public function show($id);
-    
+
     public function update($request, $id);
-    
+
     public function destroy($id);
-    
+
     public function getMember($request);
+
+    public function getUser($id);
 }

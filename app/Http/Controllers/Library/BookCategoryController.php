@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Library\BookCategoryInterface;
 use App\Http\Requests\Library\BookCategory\StoreRequest;
 use App\Http\Requests\Library\BookCategory\UpdateRequest;
-use App\Http\Repositories\Library\BookCategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -13,7 +13,7 @@ class BookCategoryController extends Controller
 {
     private $Repo;
 
-    function __construct(BookCategoryRepository $Repo)
+    function __construct(BookCategoryInterface $Repo)
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);

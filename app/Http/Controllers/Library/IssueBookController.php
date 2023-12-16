@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Library\IssueBookInterface;
 use App\Http\Requests\Library\IssueBook\StoreRequest;
 use App\Http\Requests\Library\IssueBook\UpdateRequest;
-use App\Http\Repositories\Library\IssueBookRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -13,9 +13,9 @@ class IssueBookController extends Controller
 {
     private $Repo;
 
-    function __construct(IssueBookRepository $Repo)
+    function __construct(IssueBookInterface $Repo)
     {
-        if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {
+        if (!Schema::hasTable('settings') && !Schema::hasTable('users')) {
             abort(400);
         }
         $this->Repo                  = $Repo;
@@ -55,7 +55,7 @@ class IssueBookController extends Controller
     public function store(StoreRequest $request)
     {
         $result = $this->Repo->store($request);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('issue-book.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -80,7 +80,7 @@ class IssueBookController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $result = $this->Repo->update($request, $id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('issue-book.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
@@ -89,13 +89,13 @@ class IssueBookController extends Controller
     public function delete($id)
     {
         $result = $this->Repo->destroy($id);
-        if($result['status']):
+        if ($result['status']) :
             $success[0] = $result['message'];
             $success[1] = 'success';
             $success[2] = ___('alert.deleted');
             $success[3] = ___('alert.OK');
             return response()->json($success);
-        else:
+        else :
             $success[0] = $result['message'];
             $success[1] = 'error';
             $success[2] = ___('alert.oops');
@@ -117,7 +117,7 @@ class IssueBookController extends Controller
     public function return($id)
     {
         $result = $this->Repo->return($id);
-        if($result['status']){
+        if ($result['status']) {
             return redirect()->route('issue-book.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
