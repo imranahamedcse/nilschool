@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Transport;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Http\Requests\Transport\TransportStudent\StoreRequest;
 use App\Http\Requests\Transport\TransportStudent\UpdateRequest;
 use App\Http\Interfaces\Transport\TransportStudentInterface;
 use App\Http\Interfaces\Transport\PickupPointInterface;
 use App\Http\Interfaces\Transport\RouteInterface;
 use App\Http\Interfaces\Transport\VehicleInterface;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,9 +24,9 @@ class TransportStudentController extends Controller
         PickupPointInterface $pickupPointRepo,
         RouteInterface $routeRepo,
         VehicleInterface $vehicleRepo,
-        ClassesRepository $classRepo,
-        ClassSetupRepository $classSetupRepo,
-        StudentRepository $studentRepo,
+        ClassesInterface $classRepo,
+        ClassSetupInterface $classSetupRepo,
+        StudentInterface $studentRepo,
     )
     {
         if (!Schema::hasTable('settings') && !Schema::hasTable('users')  ) {

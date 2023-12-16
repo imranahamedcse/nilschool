@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Report;
 use App\Enums\AccountHeadType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Accounts\AccountHeadRepository;
-use App\Http\Repositories\Report\AccountRepository;
+use App\Http\Interfaces\Accounts\AccountHeadInterface;
+use App\Http\Interfaces\Report\AccountInterface;
 use PDF;
 
 class AccountController extends Controller
@@ -15,8 +15,8 @@ class AccountController extends Controller
     private $accountHeadRepo;
 
     function __construct(
-        AccountRepository      $repo,
-        AccountHeadRepository  $accountHeadRepo,
+        AccountInterface      $repo,
+        AccountHeadInterface  $accountHeadRepo,
     )
     {
         $this->repo              = $repo;
@@ -83,7 +83,7 @@ class AccountController extends Controller
             'dates'        => $request->dates,
         ]);
 
-        $data                 = $this->repo->searchPDF($request);
+        $data              = $this->repo->searchPDF($request);
 
         $pdf = PDF::loadView('backend.admin.report.accountPDF', compact('data'));
         return $pdf->download('transaction'.'_'.date('d_m_Y').'.pdf');

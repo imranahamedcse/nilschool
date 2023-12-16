@@ -5,5 +5,8 @@ namespace App\Http\Interfaces\Report;
 interface DueFeesInterface
 {
     public function search($request);
+
     public function assignedFeesTypes();
+
+    public function searchPDF($request);
 }

@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Report;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Report\MarksheetRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Examination\ExamTypeInterface;
+use App\Http\Interfaces\Report\MarksheetInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Http\Requests\Report\Marksheet\SearchRequest;
-use App\Http\Repositories\Examination\ExamTypeRepository;
 use PDF;
 
 class MarksheetController extends Controller
@@ -21,11 +21,11 @@ class MarksheetController extends Controller
     private $examTypeRepo;
 
     function __construct(
-        MarksheetRepository    $repo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
-        StudentRepository      $studentRepo,
-        ExamTypeRepository     $examTypeRepo,
+        MarksheetInterface    $repo,
+        ClassesInterface      $classRepo,
+        ClassSetupInterface   $classSetupRepo,
+        StudentInterface      $studentRepo,
+        ExamTypeInterface     $examTypeRepo,
     )
     {
         $this->repo               = $repo;

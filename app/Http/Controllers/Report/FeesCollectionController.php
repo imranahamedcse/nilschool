@@ -4,36 +4,28 @@ namespace App\Http\Controllers\Report;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Report\FeesCollectionInterface;
 use App\Http\Requests\Report\FeesCollectionRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
-use App\Http\Repositories\Report\FeesCollectionRepository;
 use Illuminate\Support\Facades\Crypt;
 use PDF;
 
 class FeesCollectionController extends Controller
 {
     private $repo;
-    private $examAssignRepo;
     private $classRepo;
     private $classSetupRepo;
-    private $studentRepo;
 
     function __construct(
-        FeesCollectionRepository    $repo,
-        ExamAssignRepository   $examAssignRepo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
-        StudentRepository      $studentRepo,
+        FeesCollectionInterface $repo,
+        ClassesInterface        $classRepo,
+        ClassSetupInterface     $classSetupRepo,
     )
     {
         $this->repo               = $repo;
-        $this->examAssignRepo     = $examAssignRepo;
         $this->classRepo          = $classRepo;
         $this->classSetupRepo     = $classSetupRepo;
-        $this->studentRepo        = $studentRepo;
     }
 
     public function index()
@@ -86,7 +78,7 @@ class FeesCollectionController extends Controller
             'dates'        => Crypt::decryptString($dates),
         ]);
 
-        $data['result']       = $this->repo->searchPDF($request);
+        $data['result']    = $this->repo->searchPDF($request);
 
         $pdf = PDF::loadView('backend.admin.report.fees-collectionPDF', compact('data'));
         return $pdf->download('fees_collection'.'_'.date('d_m_Y').'.pdf');

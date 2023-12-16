@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Report;
 
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Report\AttendanceInterface;
 use App\Http\Requests\Report\AttendanceRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Academic\AttendanceRepository;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -17,9 +17,9 @@ class AttendanceController extends Controller
     private $classSetupRepo;
 
     function __construct(
-        AttendanceRepository   $repo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
+        AttendanceInterface   $repo,
+        ClassesInterface      $classRepo,
+        ClassSetupInterface   $classSetupRepo,
     )
     {
         $this->repo              = $repo;

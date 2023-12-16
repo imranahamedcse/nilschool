@@ -11,7 +11,7 @@ use App\Http\Interfaces\Dormitory\DormitoryInterface;
 use App\Http\Interfaces\Dormitory\DormitorySetupInterface;
 use App\Http\Interfaces\Dormitory\DormitoryStudentInterface;
 use App\Http\Interfaces\Dormitory\RoomInterface;
-use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -23,7 +23,7 @@ class DormitoryStudentController extends Controller
         DormitoryStudentInterface $repo,
         ClassesInterface $classRepo,
         ClassSetupInterface $classSetupRepo,
-        StudentRepository $studentRepo,
+        StudentInterface $studentRepo,
         DormitoryInterface $dormitoryRepo,
         DormitorySetupInterface $setupRepo,
         RoomInterface $roomRepo,

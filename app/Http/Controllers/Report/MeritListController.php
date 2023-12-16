@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Report;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
 use App\Http\Requests\Report\MeritListRequest;
 use App\Http\Interfaces\Academic\ShiftInterface;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
-use App\Http\Repositories\Examination\ExamTypeRepository;
-use App\Http\Repositories\Report\MeritListRepository;
+use App\Http\Interfaces\Examination\ExamTypeInterface;
+use App\Http\Interfaces\Report\MeritListInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use PDF;
 
 class MeritListController extends Controller
@@ -23,12 +23,12 @@ class MeritListController extends Controller
     private $shiftRepo;
 
     function __construct(
-        MeritListRepository    $repo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
-        StudentRepository      $studentRepo,
-        ExamTypeRepository     $examTypeRepo,
-        ShiftInterface         $shiftRepo,
+        MeritListInterface    $repo,
+        ClassesInterface      $classRepo,
+        ClassSetupInterface   $classSetupRepo,
+        StudentInterface      $studentRepo,
+        ExamTypeInterface     $examTypeRepo,
+        ShiftInterface        $shiftRepo,
     )
     {
         $this->repo               = $repo;

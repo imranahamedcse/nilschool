@@ -11,4 +11,8 @@ interface AttendanceInterface
 
     public function searchStudents($request);
 
+    public function searchReport($request);
+
+    public function searchReportPDF($request);
+
 }

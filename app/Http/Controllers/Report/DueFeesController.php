@@ -4,35 +4,27 @@ namespace App\Http\Controllers\Report;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Report\DueFeesInterface;
 use App\Http\Requests\Report\DueFeesRequest;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
-use App\Http\Repositories\Report\DueFeesRepository;
 use PDF;
 
 class DueFeesController extends Controller
 {
     private $repo;
-    private $examAssignRepo;
     private $classRepo;
     private $classSetupRepo;
-    private $studentRepo;
 
     function __construct(
-        DueFeesRepository    $repo,
-        ExamAssignRepository   $examAssignRepo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
-        StudentRepository      $studentRepo,
+        DueFeesInterface    $repo,
+        ClassesInterface      $classRepo,
+        ClassSetupInterface   $classSetupRepo,
     )
     {
         $this->repo               = $repo;
-        $this->examAssignRepo     = $examAssignRepo;
         $this->classRepo          = $classRepo;
         $this->classSetupRepo     = $classSetupRepo;
-        $this->studentRepo        = $studentRepo;
     }
 
     public function index()

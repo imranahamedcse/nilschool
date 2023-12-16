@@ -4,38 +4,30 @@ namespace App\Http\Controllers\Report;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\Report\ExamRoutineRepository;
-use App\Http\Repositories\Examination\ExamAssignRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Examination\ExamTypeInterface;
+use App\Http\Interfaces\Report\ExamRoutineInterface;
 use App\Http\Requests\Report\ExamRoutine\SearchRequest;
-use App\Http\Repositories\Academic\TimeScheduleRepository;
-use App\Http\Repositories\Examination\ExamTypeRepository;
 use PDF;
 
 class ExamRoutineController extends Controller
 {
     private $repo;
-    private $examAssignRepo;
     private $classRepo;
     private $classSetupRepo;
-    private $timeScheduleRepo;
     private $typeRepo;
 
     function __construct(
-        ExamRoutineRepository  $repo,
-        ExamAssignRepository   $examAssignRepo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
-        TimeScheduleRepository $timeScheduleRepo,
-        ExamTypeRepository     $typeRepo,
+        ExamRoutineInterface  $repo,
+        ClassesInterface      $classRepo,
+        ClassSetupInterface   $classSetupRepo,
+        ExamTypeInterface     $typeRepo,
     )
     {
         $this->repo               = $repo;
-        $this->examAssignRepo     = $examAssignRepo;
         $this->classRepo          = $classRepo;
         $this->classSetupRepo     = $classSetupRepo;
-        $this->timeScheduleRepo   = $timeScheduleRepo;
         $this->typeRepo           = $typeRepo;
     }
 

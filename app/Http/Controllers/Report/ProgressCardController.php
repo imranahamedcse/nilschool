@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Report;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Academic\ClassesRepository;
-use App\Http\Repositories\Academic\ClassSetupRepository;
-use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Http\Interfaces\Academic\ClassesInterface;
+use App\Http\Interfaces\Academic\ClassSetupInterface;
+use App\Http\Interfaces\Examination\ExamAssignInterface;
+use App\Http\Interfaces\Report\ProgressCardInterface;
+use App\Http\Interfaces\StudentInfo\StudentInterface;
 use App\Http\Requests\Report\ProgressCard\SearchRequest;
-use App\Http\Repositories\Examination\ExamAssignRepository;
-use App\Http\Repositories\Report\ProgressCardRepository;
 use PDF;
 
 class ProgressCardController extends Controller
@@ -21,11 +21,11 @@ class ProgressCardController extends Controller
     private $studentRepo;
 
     function __construct(
-        ProgressCardRepository    $repo,
-        ExamAssignRepository   $examAssignRepo,
-        ClassesRepository      $classRepo,
-        ClassSetupRepository   $classSetupRepo,
-        StudentRepository      $studentRepo,
+        ProgressCardInterface $repo,
+        ExamAssignInterface   $examAssignRepo,
+        ClassesInterface      $classRepo,
+        ClassSetupInterface   $classSetupRepo,
+        StudentInterface      $studentRepo,
     )
     {
         $this->repo               = $repo;
@@ -83,7 +83,7 @@ class ProgressCardController extends Controller
         $data['classes']      = $this->classRepo->assignedAll();
         $data['sections']     = $this->classSetupRepo->getSections($request->class);
         $data['students']     = $this->studentRepo->getStudents($request);
-        
+
         return view('backend.admin.report.progress-card', compact('data'));
     }
 
