@@ -21,7 +21,7 @@ class FeesTypeController extends Controller
     {
         $data['fees_types'] = $this->repo->all();
 
-        $title             = ___('fees.fees_type');
+        $title             = ___('common.fees_type');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'fees_type_create',
@@ -37,7 +37,7 @@ class FeesTypeController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('fees.Add fees type');
+        $data['title']              = ___('common.Add fees type');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],
@@ -59,7 +59,7 @@ class FeesTypeController extends Controller
     public function edit($id)
     {
         $data['fees_type']        = $this->repo->show($id);
-        $data['title']       = ___('fees.Edit fees type');
+        $data['title']       = ___('common.Edit fees type');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],

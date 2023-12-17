@@ -25,7 +25,7 @@ class ShiftController extends Controller
     public function index()
     {
         $data['shift'] = $this->shift->all();
-        $title             = ___('academic.shift');
+        $title             = ___('common.shift');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'shift_create',
@@ -42,7 +42,7 @@ class ShiftController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.Add shift');
+        $data['title']       = ___('common.Add shift');
 
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -65,7 +65,7 @@ class ShiftController extends Controller
     public function edit($id)
     {
         $data['shift']        = $this->shift->show($id);
-        $data['title']        = ___('academic.Edit shift');
+        $data['title']        = ___('common.Edit shift');
 
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],

@@ -34,7 +34,7 @@ class ClassSetupController extends Controller
     {
         $data['class_setups']       = $this->repo->all();
 
-        $title             = ___('academic.class_setup');
+        $title             = ___('common.class_setup');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'class_setup_create',
@@ -52,7 +52,7 @@ class ClassSetupController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.Add class setup');
+        $data['title']              = ___('common.Add class setup');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
@@ -76,7 +76,7 @@ class ClassSetupController extends Controller
 
     public function edit($id)
     {
-        $data['title']              = ___('academic.Edit class setup');
+        $data['title']              = ___('common.Edit class setup');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],

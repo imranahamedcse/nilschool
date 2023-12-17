@@ -21,7 +21,7 @@ class DesignationController extends Controller
     {
         $data['designations'] = $this->repo->all();
 
-        $title             = ___('staff.designation');
+        $title             = ___('common.designation');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'designation_create',
@@ -38,7 +38,7 @@ class DesignationController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('staff.designation');
+        $data['title']              = ___('common.designation');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],
@@ -61,7 +61,7 @@ class DesignationController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('staff.designation');
+        $data['title']       = ___('common.designation');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],

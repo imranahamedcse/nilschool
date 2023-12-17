@@ -25,7 +25,7 @@
                                 <label for="validationDefault01" class="form-label">{{ ___('common.Class') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror" name="class">
-                                    <option value="">{{ ___('student_info.select_class') }} </option>
+                                    <option value="">{{ ___('common.select_class') }} </option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class', $data['dormitory_student']->class_id) == $item->id ? 'selected' : '' }}
                                             value="{{ $item->class->id }}">{{ $item->class->name }}</option>
@@ -42,7 +42,7 @@
                                 <label for="validationDefault02" class="form-label">{{ ___('common.Section') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror" name="section">
-                                    <option value="">{{ ___('student_info.select_section') }} </option>
+                                    <option value="">{{ ___('common.select_section') }} </option>
                                     @foreach ($data['sections'] as $item)
                                         <option
                                             {{ old('section', $data['dormitory_student']->section_id) == $item->section->id ? 'selected' : '' }}
@@ -60,7 +60,7 @@
                                 <label for="validationDefault03" class="form-label">{{ ___('common.Student') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault03" class="student form-control @error('student') is-invalid @enderror" name="student">
-                                    <option value="">{{ ___('student_info.Select student') }} *</option>
+                                    <option value="">{{ ___('common.Select student') }} *</option>
                                     @foreach ($data['students'] as $item)
                                         <option
                                             {{ old('student', $data['dormitory_student']->student_id) == $item->student_id ? 'selected' : '' }}
@@ -80,7 +80,7 @@
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault04" class="dormitory form-control @error('dormitory') is-invalid @enderror"
                                     name="dormitory">
-                                    <option value="">{{ ___('student_info.Select dormitory') }} </option>
+                                    <option value="">{{ ___('common.Select dormitory') }} </option>
                                     @foreach ($data['dormitories'] as $item)
                                         <option
                                             {{ old('dormitory', $data['dormitory_student']->dormitory_id) == $item->id ? 'selected' : '' }}
@@ -98,7 +98,7 @@
                                 <label for="validationDefault05" class="form-label">{{ ___('common.Room No') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault05" class="room form-control @error('room') is-invalid @enderror" name="room">
-                                    <option value="">{{ ___('student_info.Select room no') }} </option>
+                                    <option value="">{{ ___('common.Select room no') }} </option>
                                     @foreach ($data['rooms'] as $item)
                                         <option
                                             {{ old('room', $data['dormitory_student']->room_id) == $item->room->id ? 'selected' : '' }}
@@ -116,7 +116,7 @@
                                 <label for="validationDefault06" class="form-label">{{ ___('common.Seat No') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault06" class="seat form-control @error('seat') is-invalid @enderror" name="seat">
-                                    <option value="">{{ ___('student_info.Select seat no') }} *</option>
+                                    <option value="">{{ ___('common.Select seat no') }} *</option>
 
                                     @for ($i = 1; $i <= $data['seats']->type->total_seat; $i++)
                                         <option {{ old('seat', $data['dormitory_student']->seat_no) == $i ? 'selected' : '' }}

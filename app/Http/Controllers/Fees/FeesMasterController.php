@@ -30,7 +30,7 @@ class FeesMasterController extends Controller
     {
         $data['fees_masters'] = $this->repo->all();
 
-        $title             = ___('fees.fees_master');
+        $title             = ___('common.fees_master');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'fees_master_create',
@@ -52,7 +52,7 @@ class FeesMasterController extends Controller
 
     public function create()
     {
-        $data['title']        = ___('fees.Add fees master');
+        $data['title']        = ___('common.Add fees master');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],
@@ -76,7 +76,7 @@ class FeesMasterController extends Controller
 
     public function edit($id)
     {
-        $data['title']        = ___('fees.Edit fees master');
+        $data['title']        = ___('common.Edit fees master');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],

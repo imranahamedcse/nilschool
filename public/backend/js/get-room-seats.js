@@ -14,7 +14,7 @@ $(".room").on('change', function (e) {
         },
         url: url + '/dormitory/room/get-room-seat',
         success: function (data) {
-            
+
             var seat_options = '';
             var seat_li = '';
 

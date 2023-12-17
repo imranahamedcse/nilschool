@@ -51,13 +51,13 @@
                                 <table style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse;">
                                     <tr>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('report.Subject Code') }}</th>
+                                            {{ ___('common.Subject Code') }}</th>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('report.Subject Name') }}</th>
+                                            {{ ___('common.Subject Name') }}</th>
                                         @foreach (@$data['exams'] as $item)
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: right;">
                                                 {{ $item->exam_type->name }}
-                                                <small>{{ ___('report.Mark') }}</small>
+                                                <small>{{ ___('common.Mark') }}</small>
                                             </th>
                                         @endforeach
                                     </tr>
@@ -100,17 +100,17 @@
                                     <thead>
                                         <tr>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.Exam Name') }}</th>
+                                                {{ ___('common.Exam Name') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.Total Marks') }}</th>
+                                                {{ ___('common.Total Marks') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.Avg Marks') }}</th>
+                                                {{ ___('common.Avg Marks') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.Avg Grade') }}</th>
+                                                {{ ___('common.Avg Grade') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.GPA') }}</th>
+                                                {{ ___('common.GPA') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('report.Result') }}</th>
+                                                {{ ___('common.Result') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

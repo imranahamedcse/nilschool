@@ -64,7 +64,7 @@
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-outline-secondary py-2 px-4"
-                 data-bs-dismiss="modal">{{ ___('ui_element.cancel') }}</button>
+                 data-bs-dismiss="modal">{{ ___('common.cancel') }}</button>
          </div>
      </div>
 

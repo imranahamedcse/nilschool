@@ -33,7 +33,7 @@ class ExamRoutineController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Exam routine');
+        $title             = ___('common.Exam routine');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['report-exam-routine.search', 'class', 'section', 'exam_type'],
@@ -55,7 +55,7 @@ class ExamRoutineController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $title             = ___('student_info.Exam routine');
+        $title             = ___('common.Exam routine');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['report-exam-routine.search', 'class', 'section', 'exam_type'],

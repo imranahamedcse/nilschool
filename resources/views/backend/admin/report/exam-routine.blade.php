@@ -37,7 +37,7 @@
                                     style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse; text-align: center;">
                                     <tr>
                                         <th style="border: 1px solid #dee2e6; padding: 4px;">
-                                            {{ ___('report.Day/Time') }}</th>
+                                            {{ ___('common.Day/Time') }}</th>
                                         @foreach ($data['time'] as $item)
                                             <th style="border: 1px solid #dee2e6; padding: 4px;">
                                                 {{ $item->timeSchedule->start_time }} -
@@ -53,7 +53,7 @@
                                                     @foreach ($item->examRoutineChildren as $item3)
                                                         @if ($item3->time_schedule_id == $item2->time_schedule_id)
                                                             {{ @$item3->subject->name }} <br>
-                                                            <small>{{ ___('report.Room No') }}:
+                                                            <small>{{ ___('common.Room No') }}:
                                                                 {{ @$item3->classRoom->room_no }}</small>
                                                         @else
                                                             -

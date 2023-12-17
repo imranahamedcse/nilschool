@@ -20,7 +20,7 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('library.category') }}</th>
+                    <th class="purchase">{{ ___('common.category') }}</th>
                     <th class="purchase">{{ ___('common.phone') }}</th>
                     <th class="purchase">{{ ___('common.email') }}</th>
                     <th class="purchase">{{ ___('common.gender') }}</th>

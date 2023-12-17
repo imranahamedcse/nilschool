@@ -70,7 +70,7 @@ class ExamResultGenerate extends Command
 
                             if(!$examinationResult) { // if aready registerd then ignore for this student-exam-wise-for-session
 
-                                $result      = ___('examination.Passed');
+                                $result      = ___('common.Passed');
                                 $total_marks = 0;
 
                                 foreach ($assigned_subjects->subjectTeacher as $assigned_subject) {
@@ -88,7 +88,7 @@ class ExamResultGenerate extends Command
 
                                     $total_marks += $marks_register->marksRegisterChilds->sum('mark');
                                     if($marks_register->marksRegisterChilds->sum('mark') < examSetting('average_pass_marks')) {
-                                        $result = ___('examination.Failed');
+                                        $result = ___('common.Failed');
                                     }
 
                                 }

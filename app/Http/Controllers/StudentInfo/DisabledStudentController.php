@@ -25,7 +25,7 @@ class DisabledStudentController extends Controller
 
     public function index()
     {
-        $data['title']       = ___('student_info.disabled_list');
+        $data['title']       = ___('common.disabled_list');
         $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
@@ -41,7 +41,7 @@ class DisabledStudentController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $data['title']              = ___('student_info.disabled_list');
+        $data['title']              = ___('common.disabled_list');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],

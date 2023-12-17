@@ -14,10 +14,10 @@
                             <select class="form-control" name="view">
                                 <option {{ old('view', @$data['request']->view) == '0' ? 'selected' : '' }}
                                     value="0">
-                                    {{ ___('report.Short view') }}</option>
+                                    {{ ___('common.Short view') }}</option>
                                 <option {{ old('view', @$data['request']->view) == '1' ? 'selected' : '' }}
                                     value="1">
-                                    {{ ___('report.Details view') }}</option>
+                                    {{ ___('common.Details view') }}</option>
                             </select>
                         </div>
                     @endif
@@ -25,7 +25,7 @@
                     @if (in_array('class', @$data['headers']['filter']))
                         <div class="px-1">
                             <select class="class form-control @error('class') is-invalid @enderror" name="class">
-                                <option value="">{{ ___('student_info.select_class') }} </option>
+                                <option value="">{{ ___('common.select_class') }} </option>
                                 @foreach ($data['classes'] as $item)
                                     <option {{ old('class', @$data['request']->class) == $item->id ? 'selected' : '' }}
                                         value="{{ $item->class->id }}">{{ $item->class->name }}</option>
@@ -42,7 +42,7 @@
                     @if (in_array('section', @$data['headers']['filter']))
                         <div class="px-1">
                             <select class="section form-control @error('section') is-invalid @enderror" name="section">
-                                <option value="">{{ ___('student_info.select_section') }} </option>
+                                <option value="">{{ ___('common.select_section') }} </option>
                                 @foreach ($data['sections'] as $item)
                                     <option
                                         {{ old('section', @$data['request']->section) == $item->section->id ? 'selected' : '' }}
@@ -60,7 +60,7 @@
                     @if (in_array('shift', @$data['headers']['filter']))
                         <div class="px-1">
                             <select class="shift form-control" name="shift" id="validationServer04">
-                                <option value="">{{ ___('student_info.select_shift') }}</option>
+                                <option value="">{{ ___('common.select_shift') }}</option>
                                 @foreach ($data['shifts'] as $item)
                                     <option {{ old('shift', @$data['request']->shift) == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}</option>
@@ -75,10 +75,10 @@
                                 name="type">
                                 <option value="{{ App\Enums\AccountHeadType::INCOME }}"
                                     {{ @$data['request']->type == App\Enums\AccountHeadType::INCOME ? 'selected' : '' }}>
-                                    {{ ___('account.income') }}</option>
+                                    {{ ___('common.income') }}</option>
                                 <option value="{{ App\Enums\AccountHeadType::EXPENSE }}"
                                     {{ @$data['request']->type == App\Enums\AccountHeadType::EXPENSE ? 'selected' : '' }}>
-                                    {{ ___('account.expense') }}</option>
+                                    {{ ___('common.expense') }}</option>
                             </select>
                             @error('type')
                                 <div class="invalid-feedback">
@@ -92,7 +92,7 @@
                         <div class="px-1">
                             <select class="form-control account_types @error('head') is-invalid @enderror"
                                 name="head">
-                                <option value="">{{ ___('student_info.select head') }}</option>
+                                <option value="">{{ ___('common.select head') }}</option>
                                 @foreach ($data['account_head'] as $item)
                                     <option {{ old('head', @$data['request']->head) == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}</option>
@@ -145,7 +145,7 @@
                         <div class="px-1">
                             <select class="exam_type form-control @error('exam_type') is-invalid @enderror"
                                 name="exam_type">
-                                <option value="">{{ ___('examination.select_exam_type') }} </option>
+                                <option value="">{{ ___('common.select_exam_type') }} </option>
                                 @foreach ($data['exam_types'] as $item)
                                     <option
                                         {{ old('exam_type', @$data['request']->exam_type) == $item->id ? 'selected' : '' }}
@@ -163,7 +163,7 @@
                     @if (in_array('subject', @$data['headers']['filter']))
                         <div class="px-1">
                             <select class="subject form-control @error('subject') is-invalid @enderror" name="subject">
-                                <option value="">{{ ___('academic.Select subject') }} </option>
+                                <option value="">{{ ___('common.Select subject') }} </option>
                             </select>
                             @error('subject')
                                 <div class="invalid-feedback">
@@ -176,7 +176,7 @@
                     @if (in_array('student', @$data['headers']['filter']))
                         <div class="px-1">
                             <select class="student form-control @error('student') is-invalid @enderror" name="student">
-                                <option value="">{{ ___('student_info.Select student') }} *</option>
+                                <option value="">{{ ___('common.Select student') }} *</option>
                                 @foreach ($data['students'] as $item)
                                     <option
                                         {{ old('student', @$data['student']->id) == $item->student_id ? 'selected' : '' }}
@@ -196,7 +196,7 @@
                         <div class="px-1">
                             <select class="fees-masters form-control @error('fees_master') is-invalid @enderror"
                                 name="fees_master">
-                                <option value="">{{ ___('fees.select_fees_type') }} *</option>
+                                <option value="">{{ ___('common.select_fees_type') }} *</option>
                                 @foreach ($data['fees_masters'] as $item)
                                     <option value="{{ $item->id }}"
                                         {{ @$data['request']->fees_master == $item->id ? 'selected' : '' }}>
@@ -213,7 +213,7 @@
 
                     @if (in_array('keyword', @$data['headers']['filter']))
                         <input class="form-control" name="keyword"
-                            placeholder="{{ ___('student_info.Enter keyword') }}"
+                            placeholder="{{ ___('common.Enter keyword') }}"
                             value="{{ old('keyword', @$data['request']->keyword) }}">
                     @endif
                     

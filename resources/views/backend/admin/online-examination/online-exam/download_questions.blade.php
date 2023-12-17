@@ -106,7 +106,7 @@ body {
                     @if (@$data->type)
                         {{ ___('online-examination.Type') }}: {{ @$data->type->name }}<br>
                     @endif
-                    {{ ___('examination.class') }}: {{ @$data->class->name }}, {{ ___('examination.section') }}: {{ @$data->section->name }}<br>
+                    {{ ___('common.class') }}: {{ @$data->class->name }}, {{ ___('common.section') }}: {{ @$data->section->name }}<br>
                     @if (@$data->subject)
                         {{ ___('online-examination.Subject') }}: {{ @$data->subject->name }}, {{ ___('online-examination.Code') }}: {{ @$data->subject->code }} <br>
                     @endif

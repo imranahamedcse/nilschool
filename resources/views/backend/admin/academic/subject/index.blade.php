@@ -20,8 +20,8 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('academic.code') }}</th>
-                    <th class="purchase">{{ ___('academic.type') }}</th>
+                    <th class="purchase">{{ ___('common.code') }}</th>
+                    <th class="purchase">{{ ___('common.type') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('subject_update') || hasPermission('subject_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
@@ -36,9 +36,9 @@
                         <td>{{ $row->code }}</td>
                         <td>
                             @if ($row->type == App\Enums\SubjectType::THEORY)
-                                {{ ___('academic.theory') }}
+                                {{ ___('common.theory') }}
                             @elseif ($row->type == App\Enums\SubjectType::PRACTICAL)
-                                {{ ___('academic.practical') }}
+                                {{ ___('common.practical') }}
                             @endif
                         </td>
                         <td>

@@ -19,8 +19,8 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                    <th class="purchase">{{ ___('academic.type') }}</th>
+                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                    <th class="purchase">{{ ___('common.type') }}</th>
                     <th class="purchase">{{ ___('common.date') }}</th>
                     @if (hasPermission('exam_routine_update') || hasPermission('exam_routine_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

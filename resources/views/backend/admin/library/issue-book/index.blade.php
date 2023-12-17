@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col">
                             <input class="form-control" name="keyword"
-                                placeholder="{{ ___('student_info.Enter keyword') }}"
+                                placeholder="{{ ___('common.Enter keyword') }}"
                                 value="{{ @$data['request']->keyword }}">
                         </div>
                         <div class="col">
@@ -51,11 +51,11 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('library.Book') }}</th>
-                    <th class="purchase">{{ ___('library.Member') }}</th>
+                    <th class="purchase">{{ ___('common.Book') }}</th>
+                    <th class="purchase">{{ ___('common.Member') }}</th>
                     <th class="purchase">{{ ___('common.Phone') }}</th>
-                    <th class="purchase">{{ ___('library.Issue Date') }}</th>
-                    <th class="purchase">{{ ___('library.Return Date') }}</th>
+                    <th class="purchase">{{ ___('common.Issue Date') }}</th>
+                    <th class="purchase">{{ ___('common.Return Date') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('issue_book_update') || hasPermission('issue_book_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

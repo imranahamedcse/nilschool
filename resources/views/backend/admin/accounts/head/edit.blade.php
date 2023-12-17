@@ -13,7 +13,7 @@
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
 
-            <form action="{{ route('account_head.update', @$data['account_head']->id) }}" enctype="multipart/form-data"
+            <form action="{{ route('account-head.update', @$data['account_head']->id) }}" enctype="multipart/form-data"
                 method="post" id="visitForm">
                 @csrf
                 @method('PUT')
@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validationDefault02" class="form-label">{{ ___('account.type') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.type') }} <span
                                         class="text-danger">*</span></label>
 
                                 <select
@@ -43,10 +43,10 @@
 
                                     <option value="{{ App\Enums\AccountHeadType::INCOME }}"
                                         {{ @$data['account_head']->type == App\Enums\AccountHeadType::INCOME ? 'selected' : '' }}>
-                                        {{ ___('account.income') }}</option>
+                                        {{ ___('common.income') }}</option>
                                     <option value="{{ App\Enums\AccountHeadType::EXPENSE }}"
                                         {{ @$data['account_head']->type == App\Enums\AccountHeadType::EXPENSE ? 'selected' : '' }}>
-                                        {{ ___('account.expense') }}
+                                        {{ ___('common.expense') }}
                                     </option>
                                 </select>
                                 @error('type')

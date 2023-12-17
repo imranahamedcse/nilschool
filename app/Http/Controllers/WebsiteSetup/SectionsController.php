@@ -23,7 +23,7 @@ class SectionsController extends Controller
     {
         $data['sections'] = $this->sectionsRepo->all();
 
-        $title             = ___('settings.Sections');
+        $title             = ___('common.Sections');
         $data['headers']   = [
             "title"        => $title
         ];
@@ -37,7 +37,7 @@ class SectionsController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit sections');
+        $data['title']       = ___('common.Edit sections');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

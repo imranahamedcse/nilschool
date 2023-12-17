@@ -25,7 +25,7 @@ class ClassesController extends Controller
     public function index()
     {
         $data['class']     = $this->classes->all();
-        $title             = ___('academic.class');
+        $title             = ___('common.class');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'classes_create',
@@ -41,7 +41,7 @@ class ClassesController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.create_class');
+        $data['title']       = ___('common.create_class');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
@@ -63,7 +63,7 @@ class ClassesController extends Controller
     public function edit($id)
     {
         $data['class']       = $this->classes->show($id);
-        $data['title']       = ___('academic.edit_class');
+        $data['title']       = ___('common.edit_class');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],

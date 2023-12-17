@@ -19,14 +19,14 @@
                 <thead>
                     <tr>
                         <th>{{ ___('common.#') }}</th>
-                        <th>{{ ___('student_info.Student Name') }}</th>
-                        <th>{{ ___('student_info.admission_no') }}</th>
-                        <th>{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                        <th>{{ ___('report.Position') }}</th>
-                        <th>{{ ___('report.Result') }}</th>
-                        <th>{{ ___('report.Point') }}</th>
-                        <th>{{ ___('report.Grade') }}</th>
-                        <th>{{ ___('report.Total Mark') }}</th>
+                        <th>{{ ___('common.Student Name') }}</th>
+                        <th>{{ ___('common.admission_no') }}</th>
+                        <th>{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                        <th>{{ ___('common.Position') }}</th>
+                        <th>{{ ___('common.Result') }}</th>
+                        <th>{{ ___('common.Point') }}</th>
+                        <th>{{ ___('common.Grade') }}</th>
+                        <th>{{ ___('common.Total Mark') }}</th>
                     </tr>
                 </thead>
                 <tbody>

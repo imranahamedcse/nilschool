@@ -20,10 +20,10 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('library.category') }}</th>
-                    <th class="purchase">{{ ___('library.code') }}</th>
-                    <th class="purchase">{{ ___('library.author_name') }}</th>
-                    <th class="purchase">{{ ___('library.rack_no') }}</th>
+                    <th class="purchase">{{ ___('common.category') }}</th>
+                    <th class="purchase">{{ ___('common.code') }}</th>
+                    <th class="purchase">{{ ___('common.author_name') }}</th>
+                    <th class="purchase">{{ ___('common.rack_no') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('book_update') || hasPermission('book_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

@@ -17,7 +17,7 @@ $(".route").on('change', function (e) {
             var vehicle_options = '';
             var vehicle_li = '';
 
-            $.each(data.vehicles, function(i, item) {
+            $.each(data.vehicles, function (i, item) {
                 vehicle_options += "<option value=" + item.vehicle.id + ">" + item
                     .vehicle.name + "</option>";
                 vehicle_li += "<li data-value=" + item.vehicle.id + " class='option'>" +
@@ -34,7 +34,7 @@ $(".route").on('change', function (e) {
             var pickup_point_options = '';
             var pickup_point_li = '';
 
-            $.each(data.pickup_points, function(i, item) {
+            $.each(data.pickup_points, function (i, item) {
                 pickup_point_options += "<option value=" + item.pickup_point.id + ">" + item
                     .pickup_point.name + "</option>";
                 pickup_point_li += "<li data-value=" + item.pickup_point.id + " class='option'>" +

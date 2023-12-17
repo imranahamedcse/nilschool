@@ -57,7 +57,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.staff_id') }}</h2>
+                                    <h2 class="title">{{ ___('common.staff_id') }}</h2>
                                     <p class="paragraph">{{ @$data->staff_id }}</p>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.select_designation') }}</h2>
+                                    <h2 class="title">{{ ___('common.select_designation') }}</h2>
                                     <p class="paragraph">{{ @$data->designation->name }}</p>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.departments') }}</h2>
+                                    <h2 class="title">{{ ___('common.departments') }}</h2>
                                     <p class="paragraph">{{ @$data->department->name }}</p>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.first_name') }}</h2>
+                                    <h2 class="title">{{ ___('common.first_name') }}</h2>
                                     <p class="paragraph">{{ @$data->first_name }}</p>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.last_name') }}</h2>
+                                    <h2 class="title">{{ ___('common.last_name') }}</h2>
                                     <p class="paragraph">{{ @$data->last_name }}</p>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.father_name') }}</h2>
+                                    <h2 class="title">{{ ___('common.father_name') }}</h2>
                                     <p class="paragraph">{{ @$data->father_name }}</p>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.mother_name') }}</h2>
+                                    <h2 class="title">{{ ___('common.mother_name') }}</h2>
                                     <p class="paragraph">{{ @$data->mother_name }}</p>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.genders') }}</h2>
+                                    <h2 class="title">{{ ___('common.genders') }}</h2>
                                     <p class="paragraph">{{ @$data->gender->name }}</p>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.date_of_birth') }}</h2>
+                                    <h2 class="title">{{ ___('common.date_of_birth') }}</h2>
                                     <p class="paragraph">{{ dateFormat(@$data->dob) }}</p>
                                 </div>
                             </div>
@@ -145,7 +145,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.joining_date') }}</h2>
+                                    <h2 class="title">{{ ___('common.joining_date') }}</h2>
                                     <p class="paragraph">{{ dateFormat(@$data->joining_date) }}</p>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.phone') }}</h2>
+                                    <h2 class="title">{{ ___('common.phone') }}</h2>
                                     <p class="paragraph">{{ @$data->phone }}</p>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.emergency_contact') }}</h2>
+                                    <h2 class="title">{{ ___('common.emergency_contact') }}</h2>
                                     <p class="paragraph">{{ @$data->emergency_contact }}</p>
                                 </div>
                             </div>
@@ -169,12 +169,12 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.marital_status') }}</h2>
+                                    <h2 class="title">{{ ___('common.marital_status') }}</h2>
                                     <p class="paragraph">
                                         @if (@$data->marital_status == App\Enums\MaritalStatus::MARRIED)
-                                            {{ ___('staff.married') }}
+                                            {{ ___('common.married') }}
                                         @else
-                                            {{ ___('staff.unmarried') }}
+                                            {{ ___('common.unmarried') }}
                                         @endif  
                                     </p>
                                 </div>
@@ -197,7 +197,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.current_address') }}</h2>
+                                    <h2 class="title">{{ ___('common.current_address') }}</h2>
                                     <p class="paragraph">{{ @$data->current_address }}</p>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.permanent_address') }}</h2>
+                                    <h2 class="title">{{ ___('common.permanent_address') }}</h2>
                                     <p class="paragraph">{{ @$data->permanent_address }}</p>
                                 </div>
                             </div>
@@ -213,13 +213,13 @@
                         <div class="form-item">
                             <div class="d-flex justify-content-between align-content-center">
                                 <div class="align-self-center">
-                                    <h2 class="title">{{ ___('staff.basic_salary') }}</h2>
+                                    <h2 class="title">{{ ___('common.basic_salary') }}</h2>
                                     <p class="paragraph">{{ @$data->basic_salary }}</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <h3>{{ ___('staff.Documents') }}</h3>
+                        <h3>{{ ___('common.Documents') }}</h3>
                         @if (@$data->upload_documents)
                             @foreach (@$data->upload_documents as $key=>$item)
                                 <div class="form-item">

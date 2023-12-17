@@ -20,12 +20,12 @@
                         <div class="row mb-3">
                             <!--Application Name Start -->
                             <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3 ">
-                                <label for="inputname" class="form-label">{{ ___('settings.application_name') }} <span
+                                <label for="inputname" class="form-label">{{ ___('common.application_name') }} <span
                                         class="text-danger">*</span></label>
                                 <input type="text" name="application_name"
                                     class="form-control @error('application_name') is-invalid @enderror"
                                     value="{{ Setting('application_name') }}"
-                                    placeholder="{{ ___('settings.enter_you_application_name') }}">
+                                    placeholder="{{ ___('common.enter_you_application_name') }}">
                                 @error('application_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -35,12 +35,12 @@
                             <!--Application Name End -->
                             <!--Footer Text Start -->
                             <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3 ">
-                                <label for="inputname" class="form-label">{{ ___('settings.footer_text') }} <span
+                                <label for="inputname" class="form-label">{{ ___('common.footer_text') }} <span
                                         class="text-danger">*</span></label>
                                 <input type="text" name="footer_text"
                                     class="form-control @error('footer_text') is-invalid @enderror"
                                     value="{{ Setting('footer_text') }}"
-                                    placeholder="{{ ___('settings.enter_your_footer_text') }}">
+                                    placeholder="{{ ___('common.enter_your_footer_text') }}">
                                 @error('footer_text')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -57,7 +57,7 @@
                                         alt="{{ __('light logo') }}">
                                 </div>
 
-                                <label class="form-label" for="light_logo">{{ ___('settings.light_logo') }}
+                                <label class="form-label" for="light_logo">{{ ___('common.light_logo') }}
                                     {{ ___('common.(155 x 40 px)') }}</label>
                                 <input type="file" class="form-control" name="light_logo" accept="image/*">
                             </div>
@@ -71,7 +71,7 @@
                                         alt="{{ __('dark logo') }}">
                                 </div>
 
-                                <label class="form-label" for="dark_logo">{{ ___('settings.dark_logo') }}
+                                <label class="form-label" for="dark_logo">{{ ___('common.dark_logo') }}
                                     {{ ___('common.(155 x 40 px)') }}</label>
                                 <input type="file" class="form-control" name="dark_logo" accept="image/*">
                             </div>
@@ -89,7 +89,7 @@
                                                         alt="{{ __('favicon') }}">
                                                 </div>
 
-                                                <label class="form-label" for="favicon">{{ ___('settings.favicon') }}
+                                                <label class="form-label" for="favicon">{{ ___('common.favicon') }}
                                                     {{ ___('common.(40 x 40 px)') }}</label>
                                                 <input type="file" class="form-control" name="favicon" accept="image/*">
                                             </div>
@@ -99,7 +99,7 @@
                                         <div class="col-md-6 default-langauge mb-3">
                                             <div class="d-flex flex-column">
                                                 <label for="default langauge"
-                                                    class="form-label">{{ ___('settings.default_langauge') }} <span
+                                                    class="form-label">{{ ___('common.default_langauge') }} <span
                                                         class="text-danger">*</span></label>
                                                 <select name="default_langauge" id="defaultlangaugeId"
                                                     class="form-select flag_icon_list @error('default_langauge') is-invalid @enderror">
@@ -121,7 +121,7 @@
                                         <div class="col-md-6 default-langauge mb-3">
                                             <div class="d-flex flex-column">
                                                 <label for="currency_code" class="form-label">
-                                                    {{ ___('settings.Currency') }}
+                                                    {{ ___('common.Currency') }}
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <select name="currency_code" id="currency_code"
@@ -140,7 +140,7 @@
                                         <!-- Session Start-->
                                         <div class="col-md-6 default-langauge mb-3">
                                             <div class="d-flex flex-column">
-                                                <label for="session" class="form-label">{{ ___('settings.Session') }}
+                                                <label for="session" class="form-label">{{ ___('common.Session') }}
                                                     <span class="text-danger">*</span></label>
                                                 <select name="session" id="session"
                                                     class="form-select flag_icon_list @error('session') is-invalid @enderror">
@@ -160,7 +160,7 @@
                                             <input type="text" name="address"
                                                 class="form-control @error('address') is-invalid @enderror"
                                                 value="{{ Setting('address') }}"
-                                                placeholder="{{ ___('settings.enter_you_address') }}">
+                                                placeholder="{{ ___('common.enter_you_address') }}">
                                             @error('address')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -176,7 +176,7 @@
                                             <input type="text" name="phone"
                                                 class="form-control @error('phone') is-invalid @enderror"
                                                 value="{{ Setting('phone') }}"
-                                                placeholder="{{ ___('settings.enter_you_phone') }}">
+                                                placeholder="{{ ___('common.enter_you_phone') }}">
                                             @error('phone')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -192,7 +192,7 @@
                                             <input type="email" name="email"
                                                 class="form-control @error('email') is-invalid @enderror"
                                                 value="{{ Setting('email') }}"
-                                                placeholder="{{ ___('settings.enter_you_email') }}">
+                                                placeholder="{{ ___('common.enter_you_email') }}">
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -203,7 +203,7 @@
 
                                         <!--School about Start -->
                                         <div class="col-12 mb-3">
-                                            <label for="inputname" class="form-label">{{ ___('settings.School about') }}
+                                            <label for="inputname" class="form-label">{{ ___('common.School about') }}
                                                 <span class="text-danger">*</span></label>
                                             <textarea name="school_about" class="m-0 form-control @error('school_about') is-invalid @enderror"
                                                 cols="30" rows="3">{{ Setting('school_about') }}"</textarea>

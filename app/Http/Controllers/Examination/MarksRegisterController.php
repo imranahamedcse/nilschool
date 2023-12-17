@@ -49,7 +49,7 @@ class MarksRegisterController extends Controller
         $data['sections'] = [];
         $data['exam_types'] = [];
 
-        $title             = ___('examination.Marks register');
+        $title             = ___('common.Marks register');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['marks-register.search', 'class', 'section', 'exam_type', 'subject'],
@@ -66,7 +66,7 @@ class MarksRegisterController extends Controller
 
     public function search(Request $request)
     {
-        $title             = ___('examination.Marks register');
+        $title             = ___('common.Marks register');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['marks-register.search', 'class', 'section', 'exam_type', 'subject'],
@@ -107,7 +107,7 @@ class MarksRegisterController extends Controller
 
     public function create()
     {
-        $data['title']                  = ___('examination.marks_register');
+        $data['title']                  = ___('common.marks_register');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -137,7 +137,7 @@ class MarksRegisterController extends Controller
         $data['subjects']              = $this->subjectRepo->allActive();
         $data['marks_register']        = $this->repo->show($id);
 
-        $data['title']                 = ___('examination.marks_register');
+        $data['title']                 = ___('common.marks_register');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],

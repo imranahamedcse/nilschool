@@ -20,10 +20,10 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('account.expense_head') }}</th>
-                    <th class="purchase">{{ ___('account.date') }}</th>
-                    <th class="purchase">{{ ___('account.invoice_number') }}</th>
-                    <th class="purchase">{{ ___('account.amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('common.expense_head') }}</th>
+                    <th class="purchase">{{ ___('common.date') }}</th>
+                    <th class="purchase">{{ ___('common.invoice_number') }}</th>
+                    <th class="purchase">{{ ___('common.amount') }} ({{ Setting('currency_symbol') }})</th>
                     <th class="purchase">{{ ___('common.document') }}</th>
                     @if (hasPermission('expense_update') || hasPermission('expense_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

@@ -16,10 +16,10 @@
                     <thead class="thead">
                         <tr>
                             <th class="serial">{{ ___('common.sr_no') }}</th>
-                            <th class="purchase">{{ ___('student_info.admission_no') }}</th>
+                            <th class="purchase">{{ ___('common.admission_no') }}</th>
                             <th class="purchase">{{___('student_info.Student Name') }}</th>
-                            <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
-                            <th class="purchase">{{ ___('student_info.Mobile Number') }}</th>
+                            <th class="purchase">{{ ___('common.guardian_name') }}</th>
+                            <th class="purchase">{{ ___('common.Mobile Number') }}</th>
                             <th class="purchase">{{ ___('online-examination.Answer') }}</th>
                             <th class="purchase">{{ ___('online-examination.Result') }}</th>
                         </tr>
@@ -50,7 +50,7 @@
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-outline-secondary py-2 px-4"
-                 data-bs-dismiss="modal">{{ ___('ui_element.cancel') }}</button>
+                 data-bs-dismiss="modal">{{ ___('common.cancel') }}</button>
          </div>
      </div>
 

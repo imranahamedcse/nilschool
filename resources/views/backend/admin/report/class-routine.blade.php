@@ -33,7 +33,7 @@
                                     style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse; text-align: center;">
                                     <tr>
                                         <th style="border: 1px solid #dee2e6; padding: 4px;">
-                                            {{ ___('report.Day/Time') }}</th>
+                                            {{ ___('common.Day/Time') }}</th>
                                         @foreach ($data['time'] as $item)
                                             <th style="border: 1px solid #dee2e6; padding: 4px;">
                                                 {{ $item->timeSchedule->start_time }} - {{ $item->timeSchedule->end_time }}
@@ -61,7 +61,7 @@
                                                                         @endif
                                                                     @endforeach --}}
                                                                     <small>
-                                                                        {{ ___('report.Room No') }}:
+                                                                        {{ ___('common.Room No') }}:
                                                                         {{ $item->classRoom->room_no }}
                                                                     </small>
                                                                 @endif

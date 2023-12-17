@@ -29,7 +29,7 @@ class DueFeesController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Due fees');
+        $title             = ___('common.Due fees');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['due-fees.search', 'class', 'section', 'fees'],
@@ -51,7 +51,7 @@ class DueFeesController extends Controller
 
     public function search(DueFeesRequest $request)
     {
-        $title             = ___('student_info.Due fees');
+        $title             = ___('common.Due fees');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['due-fees.search', 'class', 'section', 'fees'],

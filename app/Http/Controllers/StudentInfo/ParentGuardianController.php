@@ -42,14 +42,14 @@ class ParentGuardianController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.List');
+        $title             = ___('common.List');
         $data['headers']   = [
             "title"        => $title,
             "filter"       => ['parent.search', 'class', 'section'],
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___('student_info.Parent'), "route" => "parent.index"],
+            ["title" => ___('common.Parent'), "route" => "parent.index"],
             ["title" => $title, "route" => ""]
         ];
 
@@ -62,14 +62,14 @@ class ParentGuardianController extends Controller
 
     public function search(Request $request)
     {
-        $title             = ___('student_info.List');
+        $title             = ___('common.List');
         $data['headers']   = [
             "title"        => $title,
             "filter"       => ['parent.search', 'class', 'section'],
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___('student_info.Parent'), "route" => "parent.index"],
+            ["title" => ___('common.Parent'), "route" => "parent.index"],
             ["title" => $title, "route" => ""]
         ];
 
@@ -83,10 +83,10 @@ class ParentGuardianController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('student_info.Add');
+        $data['title']              = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___('student_info.Parent'), "route" => "parent.index"],
+            ["title" => ___('common.Parent'), "route" => "parent.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -111,10 +111,10 @@ class ParentGuardianController extends Controller
     public function edit($id)
     {
         $data['parent']      = $this->repo->show($id);
-        $data['title']       = ___('student_info.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___('student_info.Parent'), "route" => "parent.index"],
+            ["title" => ___('common.Parent'), "route" => "parent.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -149,10 +149,10 @@ class ParentGuardianController extends Controller
 
     public function addStudent($id)
     {
-        $data['title']     = ___('student_info.Add student');
+        $data['title']     = ___('common.Add student');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___('student_info.Parent'), "route" => "parent.index"],
+            ["title" => ___('common.Parent'), "route" => "parent.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

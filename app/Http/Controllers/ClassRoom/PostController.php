@@ -37,7 +37,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $title              = ___('examination.Post');
+        $title              = ___('common.Post');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['post.search', 'class', 'section', 'subject'],
@@ -58,7 +58,7 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $title              = ___('examination.Post');
+        $title              = ___('common.Post');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['post.search', 'class', 'section', 'subject'],
@@ -94,7 +94,7 @@ class PostController extends Controller
 
     public function create()
     {
-        $data['title']                  = ___('examination.Post');
+        $data['title']                  = ___('common.Post');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -123,7 +123,7 @@ class PostController extends Controller
         $data['subjects']              = $this->subjectRepo->all();
         $data['post']                  = $this->repo->show($id);
 
-        $data['title']                 = ___('examination.Post');
+        $data['title']                 = ___('common.Post');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -173,7 +173,7 @@ class PostController extends Controller
     }
 
     public function view($id) {
-        $title              = ___('examination.View Post');
+        $title              = ___('common.View Post');
         $data['headers']   = [
             "title"        => $title,
         ];

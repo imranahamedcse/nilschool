@@ -21,7 +21,7 @@ class MarksGradeController extends Controller
     {
         $data['marks_grades'] = $this->repo->all();
 
-        $title             = ___('examination.marks_grade');
+        $title             = ___('common.marks_grade');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'marks_grade_create',
@@ -37,7 +37,7 @@ class MarksGradeController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('examination.Add marks rade');
+        $data['title']              = ___('common.Add marks rade');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -58,7 +58,7 @@ class MarksGradeController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('examination.Edit marks grade');
+        $data['title']       = ___('common.Edit marks grade');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],

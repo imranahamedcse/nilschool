@@ -19,7 +19,7 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('account.Route') }}</th>
+                    <th class="purchase">{{ ___('common.Route') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('transport_setup_update') || hasPermission('transport_setup_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

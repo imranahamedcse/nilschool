@@ -8,7 +8,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ ___('common.home') }}</a></li>
             <li class="breadcrumb-item" aria-current="page"><a
-                    href="{{ route('languages.index') }}">{{ ___('language.languages') }}</a></li>
+                    href="{{ route('languages.index') }}">{{ ___('common.languages') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ ___('common.add_new') }}</li>
         </ol>
     </nav>
@@ -17,7 +17,7 @@
 
         <div class="row justify-content-between mb-4">
             <div class="col-6 align-self-center">
-                <h4 class="m-0">{{ ___('language.languages') }}</h4>
+                <h4 class="m-0">{{ ___('common.languages') }}</h4>
             </div>
         </div>
         <form action="{{ route('languages.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
@@ -37,10 +37,10 @@
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <label for="validationDefault02" class="form-label ">{{ ___('language.code') }} <span
+                            <label for="validationDefault02" class="form-label ">{{ ___('common.code') }} <span
                                     class="text-danger">*</span></label>
                             <input class="form-control @error('code') is-invalid @enderror" name="code"
-                                id="validationDefault02" placeholder="{{ ___('language.enter_code') }}">
+                                id="validationDefault02" placeholder="{{ ___('common.enter_code') }}">
                             @error('code')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -50,7 +50,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="validationDefault03" class="form-label">{{ ___('language.flag_icon') }}
+                            <label for="validationDefault03" class="form-label">{{ ___('common.flag_icon') }}
                                 <span class="text-danger">*</span></label>
                             <select class="form-control @error('flagIcon') is-invalid @enderror"
                                 name="flagIcon" id="validationDefault03">
@@ -72,21 +72,21 @@
 
                         <div class="col-md-6 direction-button">
 
-                            <label class="form-label">{{ ___('language.direction') }}</label>
+                            <label class="form-label">{{ ___('common.direction') }}</label>
 
                             <div>
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input mt-0 mr-4 read common-key"
                                         name="direction" value="{{ App\Enums\Direction::RTL }}" id="rtl_direction">
                                     <label class="custom-control-label"
-                                        for="rtl_direction">{{ ___('language.rtl') }}</label>
+                                        for="rtl_direction">{{ ___('common.rtl') }}</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
                                     <input type="radio" class="form-check-input mt-0 mr-4 read common-key"
                                         name="direction" value="{{ App\Enums\Direction::LTR }}" id="ltr_direction">
                                     <label class="custom-control-label"
-                                        for="ltr_direction">{{ ___('language.ltr') }}</label>
+                                        for="ltr_direction">{{ ___('common.ltr') }}</label>
                                 </div>
                             </div>
 

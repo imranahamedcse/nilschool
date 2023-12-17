@@ -27,11 +27,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('academic.code') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.code') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('code') is-invalid @enderror" name="code"
                                     id="validationDefault02" type="number"
-                                    placeholder="{{ ___('academic.enter_code') }}" value="{{ old('code') }}">
+                                    placeholder="{{ ___('common.enter_code') }}" value="{{ old('code') }}">
                                 @error('code')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -40,13 +40,13 @@
                             </div>
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault03" class="form-label">{{ ___('academic.type') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('type') is-invalid @enderror" name="type"
                                     id="validationDefault03">
-                                    <option value="{{ App\Enums\SubjectType::THEORY }}">{{ ___('academic.theory') }}
+                                    <option value="{{ App\Enums\SubjectType::THEORY }}">{{ ___('common.theory') }}
                                     </option>
-                                    <option value="{{ App\Enums\SubjectType::PRACTICAL }}">{{ ___('academic.practical') }}
+                                    <option value="{{ App\Enums\SubjectType::PRACTICAL }}">{{ ___('common.practical') }}
                                     </option>
                                 </select>
 

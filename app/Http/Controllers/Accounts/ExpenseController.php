@@ -28,7 +28,7 @@ class ExpenseController extends Controller
     {
         $data['expense'] = $this->expenseRepo->getAll();
 
-        $title             = ___('account.Expense');
+        $title             = ___('common.Expense');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'expense_create',
@@ -44,11 +44,11 @@ class ExpenseController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Account"), "route" => ""],
-            ["title" => ___('account.Expense'), "route" => "expense.index"],
+            ["title" => ___('common.Expense'), "route" => "expense.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -67,11 +67,11 @@ class ExpenseController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Account"), "route" => ""],
-            ["title" => ___('account.Expense'), "route" => "expense.index"],
+            ["title" => ___('common.Expense'), "route" => "expense.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

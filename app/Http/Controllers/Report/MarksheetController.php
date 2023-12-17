@@ -37,7 +37,7 @@ class MarksheetController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Marksheet');
+        $title             = ___('common.Marksheet');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['marksheet.search', 'class', 'section', 'exam_type', 'student'],
@@ -64,7 +64,7 @@ class MarksheetController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $title             = ___('student_info.Marksheet');
+        $title             = ___('common.Marksheet');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['marksheet.search', 'class', 'section', 'exam_type', 'student'],

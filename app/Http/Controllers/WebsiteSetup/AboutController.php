@@ -25,7 +25,7 @@ class AboutController extends Controller
     {
         $data['about'] = $this->aboutRepo->all();
 
-        $title             = ___('settings.About');
+        $title             = ___('common.About');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'about_create',
@@ -41,7 +41,7 @@ class AboutController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Add about');
+        $data['title']       = ___('common.Add about');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -63,7 +63,7 @@ class AboutController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit about');
+        $data['title']       = ___('common.Edit about');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

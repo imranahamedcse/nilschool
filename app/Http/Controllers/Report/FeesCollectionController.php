@@ -30,7 +30,7 @@ class FeesCollectionController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Fees collection');
+        $title             = ___('common.Fees collection');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['fees-collection.search', 'class', 'section', 'date_range'],
@@ -50,7 +50,7 @@ class FeesCollectionController extends Controller
 
     public function search(FeesCollectionRequest $request)
     {
-        $title             = ___('student_info.Fees collection');
+        $title             = ___('common.Fees collection');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['fees-collection.search', 'class', 'section', 'date_range'],

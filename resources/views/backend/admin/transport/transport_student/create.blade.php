@@ -23,7 +23,7 @@
                                 <label for="validationDefault01" class="form-label">{{ ___('common.Class') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror" name="class">
-                                    <option value="">{{ ___('student_info.select_class') }} </option>
+                                    <option value="">{{ ___('common.select_class') }} </option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class', @$data['request']->class) == $item->id ? 'selected' : '' }}
                                             value="{{ $item->class->id }}">{{ $item->class->name }}</option>
@@ -40,7 +40,7 @@
                                 <label for="validationDefault02" class="form-label">{{ ___('common.Section') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror" name="section">
-                                    <option value="">{{ ___('student_info.select_section') }} </option>
+                                    <option value="">{{ ___('common.select_section') }} </option>
                                     @foreach ($data['sections'] as $item)
                                         <option
                                             {{ old('section', @$data['request']->section) == $item->section->id ? 'selected' : '' }}
@@ -58,7 +58,7 @@
                                 <label for="validationDefault03" class="form-label">{{ ___('common.Student') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault03" class="student form-control @error('student') is-invalid @enderror" name="student">
-                                    <option value="">{{ ___('student_info.Select student') }} *</option>
+                                    <option value="">{{ ___('common.Select student') }} *</option>
                                     @foreach ($data['students'] as $item)
                                         <option
                                             {{ old('student', @$data['student']->id) == $item->student_id ? 'selected' : '' }}
@@ -96,7 +96,7 @@
                                 <label for="validationDefault05" class="form-label">{{ ___('common.Vehicle') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault05" class="vehicle form-control @error('vehicle') is-invalid @enderror" name="vehicle">
-                                    <option value="">{{ ___('student_info.Select vehicle') }} </option>
+                                    <option value="">{{ ___('common.Select vehicle') }} </option>
                                     @foreach ($data['vehicles'] as $item)
                                         <option
                                             {{ old('vehicle', @$data['request']->vehicle) == $item->vehicle->id ? 'selected' : '' }}
@@ -115,7 +115,7 @@
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault06" class="pickup_point form-control @error('pickup_point') is-invalid @enderror"
                                     name="pickup_point">
-                                    <option value="">{{ ___('student_info.Select pickup point') }} </option>
+                                    <option value="">{{ ___('common.Select pickup point') }} </option>
                                     @foreach ($data['pickup_points'] as $item)
                                         <option
                                             {{ old('pickup_point', @$data['request']->pickup_point) == $item->pickup_point->id ? 'selected' : '' }}
@@ -130,9 +130,9 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault07" class="form-label ">{{ ___('account.Note') }}</label>
+                                <label for="validationDefault07" class="form-label ">{{ ___('common.Note') }}</label>
                                 <input class="form-control" name="note" id="validationDefault07"
-                                    placeholder="{{ ___('account.Enter note') }}" value="{{ old('note') }}">
+                                    placeholder="{{ ___('common.Enter note') }}" value="{{ old('note') }}">
                             </div>
 
                             <div class="col-md-4 mb-3">

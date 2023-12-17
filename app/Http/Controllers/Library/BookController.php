@@ -26,7 +26,7 @@ class BookController extends Controller
     public function index()
     {
         $data['book'] = $this->Repo->getAll();
-        $title              = ___('settings.Book');
+        $title              = ___('common.Book');
 
         $data['headers']   = [
             "title"        => $title,
@@ -43,7 +43,7 @@ class BookController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create book');
+        $data['title']       = ___('common.Create book');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],
@@ -66,7 +66,7 @@ class BookController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit book');
+        $data['title']       = ___('common.Edit book');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],

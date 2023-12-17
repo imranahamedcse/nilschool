@@ -25,7 +25,7 @@ class IssueBookController extends Controller
     {
         $data['issue_book'] = $this->Repo->getAll();
 
-        $title = ___('settings.Issue book');
+        $title = ___('common.Issue book');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'issue_book_create',
@@ -41,7 +41,7 @@ class IssueBookController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Add issue book');
+        $data['title']       = ___('common.Add issue book');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],
@@ -63,7 +63,7 @@ class IssueBookController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit issue book');
+        $data['title']       = ___('common.Edit issue book');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],
@@ -125,7 +125,7 @@ class IssueBookController extends Controller
 
     public function search(Request $request)
     {
-        $title = ___('settings.Issue book');
+        $title = ___('common.Issue book');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'issue_book_create',

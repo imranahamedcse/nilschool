@@ -26,7 +26,7 @@ class BloodGroupController extends Controller
     {
         $data['bloodGroup'] = $this->bloodGroup->getAll();
 
-        $title             = ___('settings.Blood groups');
+        $title             = ___('common.Blood groups');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'blood_group_create',
@@ -42,7 +42,7 @@ class BloodGroupController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.Add blood group');
+        $data['title']       = ___('common.Add blood group');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],
@@ -64,7 +64,7 @@ class BloodGroupController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('settings.Edit blood group');
+        $data['title']       = ___('common.Edit blood group');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],

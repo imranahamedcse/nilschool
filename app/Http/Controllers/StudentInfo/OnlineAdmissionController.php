@@ -44,7 +44,7 @@ class OnlineAdmissionController extends Controller
         $data['sections'] = [];
         $data['students'] = $this->repo->all();
 
-        $data['title']    = ___('student_info.Online Admission');
+        $data['title']    = ___('common.Online Admission');
         $data['headers']  = [
             "title"             => $data['title'],
             "filter"            => ['online-admissions.search', 'class', 'section'],
@@ -67,7 +67,7 @@ class OnlineAdmissionController extends Controller
         $data['request']  = $request;
         $data['students'] = $this->repo->searchStudents($request);
 
-        $data['title']    = ___('student_info.Online Admission');
+        $data['title']    = ___('common.Online Admission');
         $data['headers']  = [
             "title"             => $data['title'],
             "filter"            => ['online-admissions.search', 'class', 'section'],
@@ -85,7 +85,7 @@ class OnlineAdmissionController extends Controller
 
     public function edit($id)
     {
-        $data['title']        = ___('student_info.Admission approval');
+        $data['title']        = ___('common.Admission approval');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],

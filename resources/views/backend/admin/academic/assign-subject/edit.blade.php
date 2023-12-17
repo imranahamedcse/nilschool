@@ -22,12 +22,12 @@
                 <input type="hidden" name="id" id="id" value="{{ $data['subject_assign']->id }}" />
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                 class="text-danger">*</span></label>
                         <select class="class form-control @error('class') is-invalid @enderror" name="class"
                             id="validationDefault01">
                             <option {{ @$data['disabled'] ? 'disabled' : '' }} value="">
-                                {{ ___('student_info.select_class') }}</option>
+                                {{ ___('common.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option
                                     {{ @$data['subject_assign']->classes_id == $item->id ? 'selected' : (@$data['disabled'] ? 'disabled' : '') }}
@@ -43,13 +43,13 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <div id="show_sections">
-                            <label for="validationDefault02" class="form-label">{{ ___('academic.section') }} <span
+                            <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
                                     class="text-danger">*</span></label>
                             <select onchange="return changeSection(this)"
                                 class="section form-control @error('section') is-invalid @enderror" name="section"
                                 id="validationDefault02">
                                 <option {{ @$data['disabled'] ? 'disabled' : '' }} value="">
-                                    {{ ___('student_info.select_section') }}</option>
+                                    {{ ___('common.select_section') }}</option>
                                 @foreach ($data['sections'] as $item)
                                     <option
                                         {{ @$data['subject_assign']->section_id == $item->section_id ? 'selected' : (@$data['disabled'] ? 'disabled' : '') }}
@@ -90,11 +90,11 @@
                     <div class="col-md-12">
                         <div class="d-flex align-items-center gap-4 flex-wrap">
                             <h5 class="m-0 flex-fill text-info">
-                                {{ ___('common.add') }} {{ ___('academic.Subject & Teacher') }}
+                                {{ ___('common.add') }} {{ ___('common.Subject & Teacher') }}
                             </h5>
                             <button type="button" class="btn btn-sm btn-info" onclick="addSubjectTeacher()">
                                 <span><i class="fa-solid fa-plus"></i> </span>
-                                {{ ___('academic.add') }}</button>
+                                {{ ___('common.add') }}</button>
                             <input type="hidden" name="counter" id="counter" value="1">
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                 <table class="table" id="subject-teacher">
                     <thead>
                         <tr>
-                            <td scope="col">{{ ___('academic.subject') }} <span class="text-danger"></span>
+                            <td scope="col">{{ ___('common.subject') }} <span class="text-danger"></span>
                                 @if ($errors->any())
                                     @if ($errors->has('subjects.*'))
                                         <span class="text-danger">{{ 'The fields are required' }}
@@ -111,7 +111,7 @@
                                 @endif
                             </td>
                             <td scope="col">
-                                {{ ___('academic.teacher') }}
+                                {{ ___('common.teacher') }}
                                 <span class="text-danger"></span>
                                 @if ($errors->any())
                                     @if ($errors->has('teachers.*'))
@@ -131,7 +131,7 @@
                                     <select class="form-control @error('subjects') is-invalid @enderror" name="subjects[]"
                                         id="subject{{ $key }}">
                                         <option {{ @$data['assignSubjects'][$key] == 1 ? 'disabled' : '' }} value="">
-                                            {{ ___('academic.Select subject') }}
+                                            {{ ___('common.Select subject') }}
                                         </option>
                                         @foreach ($data['subjects'] as $item)
                                             <option
@@ -145,7 +145,7 @@
                                     <select class="form-control @error('teachers') is-invalid @enderror" name="teachers[]"
                                         id="teacher{{ $key }}">
                                         <option {{ @$data['assignSubjects'][$key] == 1 ? 'disabled' : '' }} value="">
-                                            {{ ___('academic.Select teacher') }}
+                                            {{ ___('common.Select teacher') }}
                                         </option>
                                         @foreach ($data['teachers'] as $item)
                                             <option

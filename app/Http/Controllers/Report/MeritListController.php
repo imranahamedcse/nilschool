@@ -47,7 +47,7 @@ class MeritListController extends Controller
         $data['exam_types']         = [];
         $data['shifts']             = $this->shiftRepo->all();
 
-        $title             = ___('student_info.Merit List');
+        $title             = ___('common.Merit List');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['merit-list.search', 'class', 'section', 'exam_type', 'shift'],
@@ -72,7 +72,7 @@ class MeritListController extends Controller
         $data['exam_types']   = $this->examTypeRepo->all();
         $data['shifts']       = $this->shiftRepo->all();
 
-        $title             = ___('student_info.Merit List');
+        $title             = ___('common.Merit List');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['merit-list.search', 'class', 'section', 'exam_type', 'shift'],

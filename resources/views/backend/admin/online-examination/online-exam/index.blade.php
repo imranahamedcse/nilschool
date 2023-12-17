@@ -20,8 +20,8 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
 
-                    <th class="purchase">{{ ___('examination.class') }} ({{ ___('examination.section') }})</th>
-                    <th class="purchase">{{ ___('examination.subject') }}</th>
+                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                    <th class="purchase">{{ ___('common.subject') }}</th>
 
                     <th class="purchase">{{ ___('common.name') }}</th>
                     <th class="purchase">{{ ___('online-examination.Type') }}</th>

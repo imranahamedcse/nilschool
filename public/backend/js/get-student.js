@@ -1,7 +1,7 @@
-$(".class").on('change', function(e) {
+$(".class").on('change', function (e) {
     getStudents();
 });
-$(".section").on('change', function(e) {
+$(".section").on('change', function (e) {
     getStudents();
 });
 
@@ -14,7 +14,7 @@ function getStudents() {
         class: classId,
         section: sectionId,
     }
-    
+
     if (classId && sectionId) {
         $.ajax({
             type: "GET",
@@ -26,12 +26,12 @@ function getStudents() {
             // url: url + '/report/marksheet/get-students',
             url: url + '/students/list/get-class-section-students',
 
-            success: function(data) {
+            success: function (data) {
                 console.log(data);
 
                 var student_options = '';
                 var student_li = '';
-                $.each(data, function(i, item) {
+                $.each(data, function (i, item) {
                     student_options += "<option value=" + item.student_id + ">" + item.student
                         .first_name + ' ' + item.student.last_name + "</option>";
                     student_li += "<li data-value=" + item.student_id + " class='option'>" +
@@ -45,7 +45,7 @@ function getStudents() {
                 $("div .student .list li").not(':first').remove();
                 $("div .student .list").append(student_li);
             },
-            error: function(data) {
+            error: function (data) {
                 console.log(data);
             }
         });

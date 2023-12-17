@@ -19,11 +19,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="class form-control @error('class') is-invalid @enderror" name="class"
                                     id="validationDefault01">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
+                                    <option value="">{{ ___('common.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
                                     @endforeach
@@ -37,11 +37,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <div id="show_sections">
-                                    <label for="validationDefault02" class="form-label">{{ ___('academic.section') }}
+                                    <label for="validationDefault02" class="form-label">{{ ___('common.section') }}
                                         <span class="text-danger">*</span></label>
                                     <select class="section form-control @error('section') is-invalid @enderror"
                                         name="section" id="validationDefault02">
-                                        <option value="">{{ ___('student_info.select_section') }}</option>
+                                        <option value="">{{ ___('common.select_section') }}</option>
                                     </select>
                                     @error('section')
                                         <div class="invalid-feedback">
@@ -52,11 +52,11 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('academic.type') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control exam_types @error('type') is-invalid @enderror" name="type"
                                     id="validationDefault03">
-                                    <option value="">{{ ___('student_info.select_type') }}</option>
+                                    <option value="">{{ ___('common.select_type') }}</option>
                                 </select>
 
                                 @error('type')
@@ -81,7 +81,7 @@
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
                                     <h5 class="m-0 flex-fill text-info">
-                                        {{ ___('academic.Add Subject, Time & Room') }}
+                                        {{ ___('common.Add Subject, Time & Room') }}
                                     </h5>
                                     <button type="button" class="btn btn-sm btn-primary" onclick="addExamRoutine()">
                                         <span><i class="fa-solid fa-plus"></i> </span>
@@ -96,7 +96,7 @@
                                     <table class="table school_borderLess_table table_border_hide2" id="exam-routines">
                                         <thead>
                                             <tr>
-                                                <th scope="col">{{ ___('academic.subject') }} <span
+                                                <th scope="col">{{ ___('common.subject') }} <span
                                                         class="text-danger"></span>
                                                     @if ($errors->any())
                                                         @if ($errors->has('subjects.*'))
@@ -105,7 +105,7 @@
                                                     @endif
                                                 </th>
                                                 <th scope="col">
-                                                    {{ ___('academic.time_schedules.*') }}
+                                                    {{ ___('common.time_schedules.*') }}
                                                     <span class="text-danger"></span>
                                                     @if ($errors->any())
                                                         @if ($errors->has('time_schedules.*'))
@@ -114,7 +114,7 @@
                                                     @endif
                                                 </th>
                                                 <th scope="col">
-                                                    {{ ___('academic.class_room') }}
+                                                    {{ ___('common.class_room') }}
                                                     <span class="text-danger"></span>
                                                     @if ($errors->any())
                                                         @if ($errors->has('class_rooms.*'))

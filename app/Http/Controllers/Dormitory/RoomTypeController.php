@@ -25,7 +25,7 @@ class RoomTypeController extends Controller
     {
         $data['room_type'] = $this->repo->getAll();
 
-        $title             = ___('account.Room Type');
+        $title             = ___('common.Room Type');
         $data['headers']   = [
             "title"        => $title,
             "create-permission" => 'room_type_create',
@@ -41,7 +41,7 @@ class RoomTypeController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Dormitory"), "route" => ""],
@@ -62,7 +62,7 @@ class RoomTypeController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Dormitory"), "route" => ""],

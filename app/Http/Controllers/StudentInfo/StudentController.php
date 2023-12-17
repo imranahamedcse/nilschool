@@ -49,7 +49,7 @@ class StudentController extends Controller
         $data['students'] = [];
         // $data['students'] = $this->repo->getPaginateAll();
 
-        $title             = ___('student_info.List');
+        $title             = ___('common.List');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['student.search', 'class', 'section'],
@@ -72,7 +72,7 @@ class StudentController extends Controller
         $data['request']  = $request;
         $data['students'] = $this->repo->searchStudents($request);
 
-        $title             = ___('student_info.List');
+        $title             = ___('common.List');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['student.search', 'class', 'section'],
@@ -89,11 +89,11 @@ class StudentController extends Controller
 
     public function create()
     {
-        $data['title']     = ___('student_info.Add');
+        $data['title']     = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
-            ["title" => ___('student_info.Students'), "route" => "student.index"],
+            ["title" => ___('common.Students'), "route" => "student.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -138,11 +138,11 @@ class StudentController extends Controller
 
     public function edit($id)
     {
-        $data['title']     = ___('student_info.Edit');
+        $data['title']     = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
-            ["title" => ___('student_info.Students'), "route" => "student.index"],
+            ["title" => ___('common.Students'), "route" => "student.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

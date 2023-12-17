@@ -44,11 +44,11 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault02" class="form-label ">{{ ___('fees.code') }}<span
+                                    <label for="validationDefault02" class="form-label ">{{ ___('common.code') }}<span
                                         class="text-danger">*</span></label>
                                     <input class="form-control @error('code') is-invalid @enderror" name="code"
                                         value="{{ old('code',@$data['fees_collect']->code) }}" id="validationDefault02" type="text"
-                                        placeholder="{{ ___('fees.enter_code') }}">
+                                        placeholder="{{ ___('common.enter_code') }}">
                                     @error('code')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -56,10 +56,10 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03" class="form-label ">{{ ___('fees.description') }}</label>
+                                    <label for="validationDefault03" class="form-label ">{{ ___('common.description') }}</label>
                                     <textarea class="form-control mt-0 @error('description') is-invalid @enderror" name="description"
                                     id="validationDefault03" type="text"
-                                    placeholder="{{ ___('fees.enter_description') }}">{{ old('description',@$data['fees_collect']->description) }}</textarea>
+                                    placeholder="{{ ___('common.enter_description') }}">{{ old('description',@$data['fees_collect']->description) }}</textarea>
                                     @error('description')
                                         <div class="invalid-feedback">
                                             {{ $message }}

@@ -19,11 +19,11 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('fees.group') }}</th>
-                    <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                    <th class="purchase">{{ ___('fees.Category') }}</th>
+                    <th class="purchase">{{ ___('common.group') }}</th>
+                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                    <th class="purchase">{{ ___('common.Category') }}</th>
                     <th class="purchase">{{ ___('common.gender') }}</th>
-                    <th class="purchase">{{ ___('fees.Students List') }}</th>
+                    <th class="purchase">{{ ___('common.Students List') }}</th>
                     @if (hasPermission('fees_assign_update') || hasPermission('fees_assign_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif

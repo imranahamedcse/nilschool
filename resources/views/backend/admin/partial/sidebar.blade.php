@@ -36,7 +36,7 @@
                 <ul class="sub-menu">
                     @if (hasPermission('student_category_read'))
                         <li class="{{ set_menu(['students/category*']) }}">
-                            <a href="{{ route('student_category.index') }}">{{ ___('menu.Categories') }}</a>
+                            <a href="{{ route('student-category.index') }}">{{ ___('menu.Categories') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('student_read'))
@@ -46,7 +46,7 @@
                     @endif
                     @if (hasPermission('disabled_students_read'))
                         <li class="{{ set_menu(['students/disabled*']) }}">
-                            <a href="{{ route('disabled_students.index') }}">{{ ___('menu.Inactive') }}</a>
+                            <a href="{{ route('disabled-students.index') }}">{{ ___('menu.Inactive') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('parent_read'))
@@ -62,7 +62,7 @@
                     @endif
                     @if (hasPermission('promote_students_read'))
                         <li class="{{ set_menu(['students/promote*']) }}">
-                            <a href="{{ route('promote_students.index') }}">{{ ___('menu.Promote') }}</a>
+                            <a href="{{ route('promote-students.index') }}">{{ ___('menu.Promote') }}</a>
                         </li>
                     @endif
                 </ul>
@@ -93,7 +93,7 @@
 
                     @if (hasPermission('time_schedule_read'))
                         <li class="{{ set_menu(['academic/time/schedule*']) }}">
-                            <a href="{{ route('time_schedule.index') }}">{{ ___('menu.Time schedule') }}</a>
+                            <a href="{{ route('time-schedule.index') }}">{{ ___('menu.Time schedule') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('class_room_read'))
@@ -372,7 +372,7 @@
                 <ul class="sub-menu">
                     @if (hasPermission('account_head_read'))
                         <li class="{{ set_menu(['account/head*']) }}">
-                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
+                            <a href="{{ route('account-head.index') }}">{{ ___('menu.Head') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('income_read'))
@@ -403,7 +403,7 @@
                 <ul class="sub-menu">
                     @if (hasPermission('account_head_read'))
                         <li class="{{ set_menu(['account/head*']) }}">
-                            <a href="{{ route('account_head.index') }}">{{ ___('menu.Head') }}</a>
+                            <a href="{{ route('account-head.index') }}">{{ ___('menu.Head') }}</a>
                         </li>
                     @endif
                 </ul>

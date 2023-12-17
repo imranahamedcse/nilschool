@@ -37,7 +37,7 @@ class HomeworkController extends Controller
 
     public function index()
     {
-        $title              = ___('examination.Homework');
+        $title              = ___('common.Homework');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['homework.search', 'class', 'section', 'subject'],
@@ -58,7 +58,7 @@ class HomeworkController extends Controller
 
     public function search(Request $request)
     {
-        $title              = ___('examination.Homework');
+        $title              = ___('common.Homework');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['homework.search', 'class', 'section', 'subject'],
@@ -94,7 +94,7 @@ class HomeworkController extends Controller
 
     public function create()
     {
-        $data['title']                  = ___('examination.Add homework');
+        $data['title']                  = ___('common.Add homework');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -123,7 +123,7 @@ class HomeworkController extends Controller
         $data['subjects']              = $this->subjectRepo->all();
         $data['homework']        = $this->repo->show($id);
 
-        $data['title']                 = ___('examination.Edit homework');
+        $data['title']                 = ___('common.Edit homework');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],

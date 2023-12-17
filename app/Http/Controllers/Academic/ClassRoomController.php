@@ -21,7 +21,7 @@ class ClassRoomController extends Controller
     {
         $data['class_rooms'] = $this->repo->all();
 
-        $title             = ___('academic.class_room');
+        $title             = ___('common.class_room');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'class_room_create',
@@ -37,7 +37,7 @@ class ClassRoomController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.Add class room');
+        $data['title']              = ___('common.Add class room');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
@@ -59,7 +59,7 @@ class ClassRoomController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('academic.Edit class room');
+        $data['title']       = ___('common.Edit class room');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],

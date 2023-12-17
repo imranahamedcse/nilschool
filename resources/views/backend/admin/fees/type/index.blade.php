@@ -20,8 +20,8 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('fees.code') }}</th>
-                    <th class="purchase">{{ ___('fees.description') }}</th>
+                    <th class="purchase">{{ ___('common.code') }}</th>
+                    <th class="purchase">{{ ___('common.description') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('fees_type_update') || hasPermission('fees_type_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

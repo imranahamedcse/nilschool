@@ -10,7 +10,7 @@
     <div class="card bg-white">
         <div class="card-body">
             <div class="border-bottom pb-3 mb-4">
-                <h4 class="m-0">{{ ___('website.Key') }}: {{ @$data['sections']->key }}</h4>
+                <h4 class="m-0">{{ ___('common.Key') }}: {{ @$data['sections']->key }}</h4>
             </div>
 
             <form action="{{ route('sections.update', @$data['sections']->id) }}" enctype="multipart/form-data" method="post"

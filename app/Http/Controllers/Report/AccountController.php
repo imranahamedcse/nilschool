@@ -25,7 +25,7 @@ class AccountController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Transactions');
+        $title             = ___('common.Transactions');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['account.search', 'transaction', 'account_head', 'date_range'],
@@ -45,7 +45,7 @@ class AccountController extends Controller
     public function search(Request $request)
     {
         $data                 = $this->repo->search($request);
-        $title             = ___('student_info.Transactions');
+        $title             = ___('common.Transactions');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['account.search', 'transaction', 'account_head', 'date_range'],

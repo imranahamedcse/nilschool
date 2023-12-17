@@ -17,7 +17,7 @@ $(".dormitory").on('change', function (e) {
             var room_options = '';
             var room_li = '';
 
-            $.each(data.rooms, function(i, item) {
+            $.each(data.rooms, function (i, item) {
                 room_options += "<option value=" + item.room.id + ">" + item
                     .room.room_no + "</option>";
                 room_li += "<li data-value=" + item.room.id + " class='option'>" +

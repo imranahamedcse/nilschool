@@ -19,8 +19,8 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('academic.room_no') }}</th>
-                    <th class="purchase">{{ ___('academic.capacity') }}</th>
+                    <th class="purchase">{{ ___('common.room_no') }}</th>
+                    <th class="purchase">{{ ___('common.capacity') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('class_room_update') || hasPermission('class_room_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

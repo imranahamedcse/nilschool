@@ -20,7 +20,7 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('users_roles.permissions') }}</th>
+                    <th class="purchase">{{ ___('common.permissions') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('role_update') || hasPermission('role_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

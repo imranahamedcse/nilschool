@@ -1,7 +1,7 @@
-$(".class").on('change', function(e) {
+$(".class").on('change', function (e) {
     getSubject();
 });
-$(".section").on('change', function(e) {
+$(".section").on('change', function (e) {
     getSubject();
 });
 
@@ -23,11 +23,11 @@ function getSubject() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: url + '/academic/assign-subject/get-subjects',
-            success: function(data) {
+            success: function (data) {
                 var subject_options = '';
                 var subject_li = '';
 
-                $.each(JSON.parse(data), function(i, item) {
+                $.each(JSON.parse(data), function (i, item) {
                     subject_options += "<option value=" + item.subject.id + ">" + item.subject
                         .name + "</option>";
                     subject_li += "<li data-value=" + item.subject.id + " class='option'>" +
@@ -42,7 +42,7 @@ function getSubject() {
                 $("div .subject .list li").not(':first').remove();
                 $("div .subject .list").append(subject_li);
             },
-            error: function(data) {
+            error: function (data) {
                 console.log(data);
             }
         });

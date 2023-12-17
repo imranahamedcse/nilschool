@@ -27,7 +27,7 @@ class MemberController extends Controller
     {
         $data['member'] = $this->Repo->getAll();
 
-        $title             = ___('settings.Member');
+        $title             = ___('common.Member');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'member_create',
@@ -43,7 +43,7 @@ class MemberController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create member');
+        $data['title']       = ___('common.Create member');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],
@@ -66,7 +66,7 @@ class MemberController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit member');
+        $data['title']       = ___('common.Edit member');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],

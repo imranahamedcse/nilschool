@@ -21,11 +21,11 @@
                 <table id="datatable" class="table">
                     <thead class="thead">
                         <tr>
-                            <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                            <th class="purchase">{{ ___('student_info.admission_no') }}</th>
-                            <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                            <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
-                            <th class="purchase">{{ ___('student_info.Mobile Number') }}</th>
+                            <th class="purchase">{{ ___('common.Student Name') }}</th>
+                            <th class="purchase">{{ ___('common.admission_no') }}</th>
+                            <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                            <th class="purchase">{{ ___('common.guardian_name') }}</th>
+                            <th class="purchase">{{ ___('common.Mobile Number') }}</th>
                             @if (hasPermission('fees_collect_create'))
                                 <th class="purchase">{{ ___('common.action') }}</th>
                             @endif
@@ -42,7 +42,7 @@
                                 @if (hasPermission('fees_collect_create'))
                                     <td>
                                         <a href="{{ route('fees-collect.collect', $item) }}" target="_blank"
-                                            class="btn btn-sm btn-info">{{ ___('fees.Details') }}
+                                            class="btn btn-sm btn-info">{{ ___('common.Details') }}
                                         </a>
                                     </td>
                                 @endif

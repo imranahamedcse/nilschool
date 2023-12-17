@@ -19,8 +19,8 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('account.Type') }}</th>
-                    <th class="purchase">{{ ___('account.Room no') }}</th>
+                    <th class="purchase">{{ ___('common.Type') }}</th>
+                    <th class="purchase">{{ ___('common.Room no') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('room_update') || hasPermission('room_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

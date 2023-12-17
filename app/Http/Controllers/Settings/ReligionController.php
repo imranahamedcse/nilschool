@@ -27,7 +27,7 @@ class ReligionController extends Controller
     {
         $data['religions'] = $this->religion->getAll();
 
-        $title             = ___('settings.Religions');
+        $title             = ___('common.Religions');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'religion_create',
@@ -43,7 +43,7 @@ class ReligionController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.Add religion');
+        $data['title']       = ___('common.Add religion');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],
@@ -65,7 +65,7 @@ class ReligionController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('settings.Edit religion');
+        $data['title']       = ___('common.Edit religion');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],

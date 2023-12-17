@@ -95,9 +95,9 @@
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault06" class="form-label ">{{ ___('account.Description') }}</label>
+                                <label for="validationDefault06" class="form-label ">{{ ___('common.Description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                    id="validationDefault06" placeholder="{{ ___('account.Enter description') }}">{{ old('description', @$data['vehicle']->description) }}</textarea>
+                                    id="validationDefault06" placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['vehicle']->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}

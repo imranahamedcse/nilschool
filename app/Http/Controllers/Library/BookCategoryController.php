@@ -25,7 +25,7 @@ class BookCategoryController extends Controller
     {
         $data['book_category'] = $this->Repo->getAll();
 
-        $title = ___('settings.Book category');
+        $title = ___('common.Book category');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'book_category_create',
@@ -40,7 +40,7 @@ class BookCategoryController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Add book category');
+        $data['title']       = ___('common.Add book category');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],
@@ -61,7 +61,7 @@ class BookCategoryController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit book Category');
+        $data['title']       = ___('common.Edit book Category');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Library"), "route" => ""],

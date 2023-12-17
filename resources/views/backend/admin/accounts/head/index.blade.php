@@ -20,7 +20,7 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('account.type') }}</th>
+                    <th class="purchase">{{ ___('common.type') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('account_head_update') || hasPermission('account_head_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
@@ -34,9 +34,9 @@
                         <td>{{ $row->name }}</td>
                         <td>
                             @if ($row->type == App\Enums\AccountHeadType::INCOME)
-                                <span class="badge-basic-info-text">{{ ___('account.income') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('common.income') }}</span>
                             @else
-                                <span class="badge-basic-warning-text">{{ ___('account.expense') }}</span>
+                                <span class="badge-basic-warning-text">{{ ___('common.expense') }}</span>
                             @endif
                         </td>
                         <td>
@@ -47,7 +47,7 @@
                                 @if (hasPermission('account_head_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.edit') }}"
-                                        href="{{ route('account_head.edit', $row->id) }}"><i
+                                        href="{{ route('account-head.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('account_head_delete') && $row->id != 1)

@@ -60,11 +60,11 @@
                                 <table style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse;">
                                     <tr>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('report.Subject Code') }}</th>
+                                            {{ ___('common.Subject Code') }}</th>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('report.Subject Name') }}</th>
+                                            {{ ___('common.Subject Name') }}</th>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: right;">
-                                            {{ ___('report.Grade') }}</th>
+                                            {{ ___('common.Grade') }}</th>
                                     </tr>
                                     @php
                                         $totalMark = 0;

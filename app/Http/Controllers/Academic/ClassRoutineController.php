@@ -55,7 +55,7 @@ class ClassRoutineController extends Controller
     {
         $data['class_routines']    = $this->repo->all();
 
-        $title             = ___('academic.class_routine');
+        $title             = ___('common.class_routine');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'class_routine_create',
@@ -71,7 +71,7 @@ class ClassRoutineController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.Add class routine');
+        $data['title']              = ___('common.Add class routine');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Routine"), "route" => ""],
@@ -110,7 +110,7 @@ class ClassRoutineController extends Controller
 
     public function edit($id)
     {
-        $data['title']              = ___('academic.Edit class routine');
+        $data['title']              = ___('common.Edit class routine');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Routine"), "route" => ""],

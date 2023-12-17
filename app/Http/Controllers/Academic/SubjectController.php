@@ -26,7 +26,7 @@ class SubjectController extends Controller
     {
         $data['subject'] = $this->subject->all();
 
-        $title = ___('academic.subject');
+        $title = ___('common.subject');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'subject_create',
@@ -41,7 +41,7 @@ class SubjectController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.create_subject');
+        $data['title']       = ___('common.create_subject');
 
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -62,7 +62,7 @@ class SubjectController extends Controller
     public function edit($id)
     {
         $data['subject']        = $this->subject->show($id);
-        $data['title']       = ___('academic.edit_subject');
+        $data['title']       = ___('common.edit_subject');
 
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],

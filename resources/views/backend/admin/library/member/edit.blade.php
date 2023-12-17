@@ -22,12 +22,12 @@
                         <div class="row">
 
                             <div class="col-md-4 member">
-                                <label for="validationDefault01" class="form-label">{{ ___('library.select_member') }}
+                                <label for="validationDefault01" class="form-label">{{ ___('common.select_member') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('member') is-invalid @enderror"
                                     name="member" id="validationDefault01">
-                                    <option value="">{{ ___('library.select_member') }}</option>
+                                    <option value="">{{ ___('common.select_member') }}</option>
                                     <option selected value="{{ @$data['member']->user_id }}">{{ $data['user'] }}</option>
                                 </select>
                                 @error('member')
@@ -38,12 +38,12 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="validationDefault02" class="form-label">{{ ___('settings.Member category') }}
+                                <label for="validationDefault02" class="form-label">{{ ___('common.Member category') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('category') is-invalid @enderror"
                                     name="category" id="validationDefault02">
-                                    <option value="">{{ ___('library.Select category') }}</option>
+                                    <option value="">{{ ___('common.Select category') }}</option>
                                     @foreach ($data['categories'] as $item)
                                         <option value="{{ $item->id }}"
                                             {{ old('category', @$data['member']->category_id) == $item->id ? 'selected' : '' }}>

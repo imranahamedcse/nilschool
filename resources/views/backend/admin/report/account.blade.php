@@ -21,8 +21,8 @@
                         <th>#</th>
                         <th>{{ ___('common.date') }}</th>
                         <th>{{ ___('common.name') }}</th>
-                        <th>{{ ___('account.Head') }}</th>
-                        <th>{{ ___('report.Amount') }} ({{ Setting('currency_symbol') }})</th>
+                        <th>{{ ___('common.Head') }}</th>
+                        <th>{{ ___('common.Amount') }} ({{ Setting('currency_symbol') }})</th>
                     </tr>
                 </thead>
                 <tbody>

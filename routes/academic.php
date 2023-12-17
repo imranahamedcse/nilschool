@@ -18,12 +18,12 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
         Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix'=>'academic'], function () {
 
             Route::controller(TimeScheduleController::class)->prefix('time/schedule')->group(function () {
-                Route::get('/',                 'index')->name('time_schedule.index')->middleware('PermissionCheck:time_schedule_read');
-                Route::get('/create',           'create')->name('time_schedule.create')->middleware('PermissionCheck:time_schedule_create');
-                Route::post('/store',           'store')->name('time_schedule.store')->middleware('PermissionCheck:time_schedule_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('time_schedule.edit')->middleware('PermissionCheck:time_schedule_update');
-                Route::put('/update/{id}',      'update')->name('time_schedule.update')->middleware('PermissionCheck:time_schedule_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('time_schedule.delete')->middleware('PermissionCheck:time_schedule_delete', 'DemoCheck');
+                Route::get('/',                 'index')->name('time-schedule.index')->middleware('PermissionCheck:time_schedule_read');
+                Route::get('/create',           'create')->name('time-schedule.create')->middleware('PermissionCheck:time_schedule_create');
+                Route::post('/store',           'store')->name('time-schedule.store')->middleware('PermissionCheck:time_schedule_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('time-schedule.edit')->middleware('PermissionCheck:time_schedule_update');
+                Route::put('/update/{id}',      'update')->name('time-schedule.update')->middleware('PermissionCheck:time_schedule_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('time-schedule.delete')->middleware('PermissionCheck:time_schedule_delete', 'DemoCheck');
             });
 
             Route::controller(ClassRoomController::class)->prefix('class-room')->group(function () {

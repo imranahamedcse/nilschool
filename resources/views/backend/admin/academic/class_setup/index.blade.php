@@ -19,8 +19,8 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('academic.class') }}</th>
-                    <th class="purchase">{{ ___('academic.sections') }}</th>
+                    <th class="purchase">{{ ___('common.class') }}</th>
+                    <th class="purchase">{{ ___('common.sections') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('class_setup_update') || hasPermission('class_setup_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

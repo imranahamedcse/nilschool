@@ -39,7 +39,7 @@
                                 @if (hasPermission('student_category_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.edit') }}"
-                                        href="{{ route('student_category.edit', $row->id) }}"><i
+                                        href="{{ route('student-category.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('student_category_delete') && $row->code != 'en')

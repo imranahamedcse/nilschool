@@ -24,7 +24,7 @@ class RouteController extends Controller
     {
         $data['route'] = $this->repo->getAll();
 
-        $title             = ___('account.Route');
+        $title             = ___('common.Route');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'route_create',
@@ -40,7 +40,7 @@ class RouteController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
@@ -61,7 +61,7 @@ class RouteController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],

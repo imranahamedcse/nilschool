@@ -21,7 +21,7 @@ class FeesGroupController extends Controller
     {
         $data['fees_groups'] = $this->repo->all();
 
-        $title             = ___('fees.fees_group');
+        $title             = ___('common.fees_group');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'fees_group_create',
@@ -38,7 +38,7 @@ class FeesGroupController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('fees.Add fees group');
+        $data['title']              = ___('common.Add fees group');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],
@@ -60,7 +60,7 @@ class FeesGroupController extends Controller
     public function edit($id)
     {
         $data['fees_group']        = $this->repo->show($id);
-        $data['title']       = ___('fees.Edit fees group');
+        $data['title']       = ___('common.Edit fees group');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],

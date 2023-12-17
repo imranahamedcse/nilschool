@@ -25,7 +25,7 @@ class SliderController extends Controller
     {
         $data['slider'] = $this->sliderRepo->all();
 
-        $title             = ___('settings.Slider');
+        $title             = ___('common.Slider');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'slider_create',
@@ -41,7 +41,7 @@ class SliderController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Add slider');
+        $data['title']       = ___('common.Add slider');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -63,7 +63,7 @@ class SliderController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit slider');
+        $data['title']       = ___('common.Edit slider');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

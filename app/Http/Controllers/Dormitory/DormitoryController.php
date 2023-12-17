@@ -25,7 +25,7 @@ class DormitoryController extends Controller
     {
         $data['dormitory'] = $this->repo->getAll();
 
-        $title             = ___('account.Dormitory');
+        $title             = ___('common.Dormitory');
         $data['headers']   = [
             "title"        => $title,
             "create-permission" => 'dormitory_create',
@@ -41,7 +41,7 @@ class DormitoryController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Dormitory"), "route" => ""],
@@ -62,7 +62,7 @@ class DormitoryController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Dormitory"), "route" => ""],

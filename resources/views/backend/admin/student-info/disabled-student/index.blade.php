@@ -14,17 +14,17 @@
     <div class="card">
         <div class="card-body">
             <div class="border-bottom pb-2 mb-4">
-                <h4>{{ ___('student_info.disabled_students') }}</h4>
+                <h4>{{ ___('common.disabled_students') }}</h4>
             </div>
 
-            <form action="{{ route('disabled_students.search') }}" enctype="multipart/form-data" method="post" id="visitForm">
+            <form action="{{ route('disabled-students.search') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror" name="class">
-                            <option value="">{{ ___('student_info.select_class') }}</option>
+                            <option value="">{{ ___('common.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option {{ old('class', @$request->class) == $item->id ? 'selected' : '' }}
                                     value="{{ $item->class->id }}">{{ $item->class->name }}</option>
@@ -37,10 +37,10 @@
                         @enderror
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
+                        <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror" name="section">
-                            <option value="">{{ ___('student_info.select_section') }}</option>
+                            <option value="">{{ ___('common.select_section') }}</option>
                             @foreach (@$data['sections'] as $item)
                                 <option {{ old('section', @$request->section) == $item->section->id ? 'selected' : '' }}
                                     value="{{ $item->section->id }}">{{ $item->section->name }}</option>
@@ -64,7 +64,7 @@
             @if ($students)
                 <div class="border-bottom mb-3"></div>
 
-                <form action="{{ route('disabled_students.store') }}" enctype="multipart/form-data" method="post"
+                <form action="{{ route('disabled-students.store') }}" enctype="multipart/form-data" method="post"
                     id="visitForm">
                     @csrf
                     @method('POST')
@@ -78,13 +78,13 @@
                         <thead class="thead">
                             <tr>
                                 <th class="serial">{{ ___('common.sr_no') }}</th>
-                                <th class="purchase">{{ ___('student_info.admission_no') }}</th>
-                                <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                                <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                                <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
-                                <th class="purchase">{{ ___('student_info.Date Of Birth') }}</th>
+                                <th class="purchase">{{ ___('common.admission_no') }}</th>
+                                <th class="purchase">{{ ___('common.Student Name') }}</th>
+                                <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                                <th class="purchase">{{ ___('common.guardian_name') }}</th>
+                                <th class="purchase">{{ ___('common.Date Of Birth') }}</th>
                                 <th class="purchase">{{ ___('common.gender') }}</th>
-                                <th class="purchase">{{ ___('student_info.Mobile Number') }}</th>
+                                <th class="purchase">{{ ___('common.Mobile Number') }}</th>
                                 <th class="purchase">{{ ___('common.status') }}</th>
                                 @if (hasPermission('disabled_students_update') || hasPermission('disabled_students_delete'))
                                     <th class="action">{{ ___('common.action') }}</th>

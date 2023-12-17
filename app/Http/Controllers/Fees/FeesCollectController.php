@@ -39,7 +39,7 @@ class FeesCollectController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('fees.fees_collect');
+        $data['title']              = ___('common.fees_collect');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],
@@ -61,17 +61,17 @@ class FeesCollectController extends Controller
 
     public function create()
     {
-        $data['title']        = ___('fees.fees_collect');
+        $data['title']        = ___('common.fees_collect');
         return view('backend.admin.fees.collect.create', compact('data'));
     }
 
     public function collect($id)
     {
-        $data['title']          = ___('fees.Collect');
+        $data['title']          = ___('common.Collect');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],
-            ["title" => ___('fees.fees_collect'), "route" => "fees-collect.index"],
+            ["title" => ___('common.fees_collect'), "route" => "fees-collect.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -93,7 +93,7 @@ class FeesCollectController extends Controller
     public function edit($id)
     {
         $data['fees_collect']  = $this->repo->show($id);
-        $data['title']         = ___('fees.fees_collect');
+        $data['title']         = ___('common.fees_collect');
         return view('backend.admin.fees.collect.edit', compact('data'));
     }
 
@@ -126,7 +126,7 @@ class FeesCollectController extends Controller
 
     public function getFeesCollectStudents(Request $request)
     {
-        $data['title']    = ___('fees.fees_collect');
+        $data['title']    = ___('common.fees_collect');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],

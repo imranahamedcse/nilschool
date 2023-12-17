@@ -29,7 +29,7 @@ class ClassRoutineController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Class routine');
+        $title             = ___('common.Class routine');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['report-class-routine.search', 'class', 'section'],
@@ -49,7 +49,7 @@ class ClassRoutineController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $title             = ___('student_info.Class routine');
+        $title             = ___('common.Class routine');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['report-class-routine.search', 'class', 'section'],

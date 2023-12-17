@@ -25,7 +25,7 @@ class EventController extends Controller
     {
         $data['event'] = $this->eventRepo->all();
 
-        $title             = ___('settings.Event');
+        $title             = ___('common.Event');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'event_create',
@@ -41,7 +41,7 @@ class EventController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create event');
+        $data['title']       = ___('common.Create event');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -63,7 +63,7 @@ class EventController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit event');
+        $data['title']       = ___('common.Edit event');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

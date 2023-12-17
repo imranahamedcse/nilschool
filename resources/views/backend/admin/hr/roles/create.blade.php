@@ -58,13 +58,13 @@
                                 <!-- table start  -->
                                 <table class="table table-hover">
                                     <thead>
-                                        <th class="user_roles_border">{{ ___('users_roles.module_module_links') }}</th>
-                                        <th class="user_roles_permission">{{ ___('users_roles.Permissions') }}</th>
+                                        <th class="user_roles_border">{{ ___('common.module_module_links') }}</th>
+                                        <th class="user_roles_permission">{{ ___('common.Permissions') }}</th>
                                     </thead>
                                     <tbody>
                                         @foreach ($data['permissions'] as $permission)
                                             <tr>
-                                                <td>{{ ___('users_roles.' . $permission->attribute) }}</td>
+                                                <td>{{ ___('common.' . $permission->attribute) }}</td>
                                                 <td>
                                                     <div class="permission-list-td">
                                                         @foreach ($permission->keywords as $key => $keyword)
@@ -76,7 +76,7 @@
                                                                             value="{{ $keyword }}"
                                                                             id="{{ $keyword }}" />
                                                                         <label class="form-check-label"
-                                                                            for="{{ $keyword }}">{{ ___('users_roles.' . $key) }}</label>
+                                                                            for="{{ $keyword }}">{{ ___('common.' . $key) }}</label>
                                                                     @endif
                                                                 </div>
                                                             </div>

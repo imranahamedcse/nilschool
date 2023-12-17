@@ -25,7 +25,7 @@ class NewsController extends Controller
     {
         $data['news'] = $this->newsRepo->all();
 
-        $title             = ___('settings.News');
+        $title             = ___('common.News');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'news_create',
@@ -41,7 +41,7 @@ class NewsController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Add news');
+        $data['title']       = ___('common.Add news');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -63,7 +63,7 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit news');
+        $data['title']       = ___('common.Edit news');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

@@ -25,7 +25,7 @@ class CounterController extends Controller
     {
         $data['counter'] = $this->counterRepo->all();
 
-        $title             = ___('settings.Counter');
+        $title             = ___('common.Counter');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'counter_create',
@@ -40,7 +40,7 @@ class CounterController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create counter');
+        $data['title']       = ___('common.Create counter');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -62,7 +62,7 @@ class CounterController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit counter');
+        $data['title']       = ___('common.Edit counter');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

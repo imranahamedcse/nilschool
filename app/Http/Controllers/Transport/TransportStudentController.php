@@ -44,7 +44,7 @@ class TransportStudentController extends Controller
     public function index()
     {
         $data['transport_student'] = $this->repo->getAll();
-        $title             = ___('account.Transport setup');
+        $title             = ___('common.Transport setup');
         $data['headers']   = [
             "title"        => $title,
             "create-permission" => 'transport_student_create',
@@ -60,7 +60,7 @@ class TransportStudentController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],
@@ -90,7 +90,7 @@ class TransportStudentController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Transport"), "route" => ""],

@@ -20,8 +20,8 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('account.Type') }}</th>
-                    <th class="purchase">{{ ___('account.Address') }}</th>
+                    <th class="purchase">{{ ___('common.Type') }}</th>
+                    <th class="purchase">{{ ___('common.Address') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('dormitory_update') || hasPermission('dormitory_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

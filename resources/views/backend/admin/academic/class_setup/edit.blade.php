@@ -21,7 +21,7 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('classes') is-invalid @enderror" name="classes"
                                     id="validationDefault01">
@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">{{ ___('academic.section') }} <span
+                                <label class="form-label">{{ ___('common.section') }} <span
                                         class="text-danger">*</span></label>
                                 <div class="@error('sections') is-invalid @enderror">
                                     @foreach ($data['section'] as $item)

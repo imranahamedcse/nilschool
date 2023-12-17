@@ -27,7 +27,7 @@ class GenderController extends Controller
     {
         $data['genders'] = $this->gender->getAll();
 
-        $title             = ___('settings.Genders');
+        $title             = ___('common.Genders');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'gender_create',
@@ -43,7 +43,7 @@ class GenderController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.Add gender');
+        $data['title']       = ___('common.Add gender');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],
@@ -65,7 +65,7 @@ class GenderController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('settings.Edit gender');
+        $data['title']       = ___('common.Edit gender');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],

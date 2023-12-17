@@ -25,7 +25,7 @@ class SectionController extends Controller
     public function index()
     {
         $data['section'] = $this->section->all();
-        $title = ___('academic.section');
+        $title = ___('common.section');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'section_create',
@@ -41,7 +41,7 @@ class SectionController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.Add section');
+        $data['title']       = ___('common.Add section');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
@@ -63,7 +63,7 @@ class SectionController extends Controller
     public function edit($id)
     {
         $data['section']  = $this->section->show($id);
-        $data['title']    = ___('academic.Edit section');
+        $data['title']    = ___('common.Edit section');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],

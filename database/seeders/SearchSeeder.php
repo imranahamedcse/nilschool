@@ -29,9 +29,9 @@ class SearchSeeder extends Seeder
             ['route_name' => 'department.index',                    'title' => 'Department'],
             ['route_name' => 'designation.index',                   'title' => 'Designation'],
             ['route_name' => 'student.index',                       'title' => 'Student'],
-            ['route_name' => 'student_category.index',              'title' => 'Student Category'],
-            ['route_name' => 'promote_students.index',              'title' => 'Promote Students'],
-            ['route_name' => 'disabled_students.index',             'title' => 'Disabled Student'],
+            ['route_name' => 'student-category.index',              'title' => 'Student Category'],
+            ['route_name' => 'promote-students.index',              'title' => 'Promote Students'],
+            ['route_name' => 'disabled-students.index',             'title' => 'Disabled Student'],
             ['route_name' => 'parent.index',                        'title' =>  'Parent'],
             ['route_name' => 'online-admissions.index',             'title' => 'Online Admissions'],
             ['route_name' => 'book-category.index',                 'title' => 'Book Category'],
@@ -51,7 +51,7 @@ class SearchSeeder extends Seeder
             ['route_name' => 'exam-assign.index',                   'title' => 'Exam Assign'],
             ['route_name' => 'examination-settings.index',          'title' => 'Examination Settings'],
             ['route_name' => 'attendance.index',                    'title' => 'Attendance'],
-            ['route_name' => 'account_head.index',                  'title' => 'Account Head'],
+            ['route_name' => 'account-head.index',                  'title' => 'Account Head'],
             ['route_name' => 'income.index',                        'title' => 'Income'],
             ['route_name' => 'expense.index',                       'title' => 'Expense'],
             ['route_name' => 'classes.index',                       'title' => 'Classes'],
@@ -62,7 +62,7 @@ class SearchSeeder extends Seeder
             ['route_name' => 'class-setup.index',                   'title' => 'Class Setup'],
             ['route_name' => 'assign-subject.index',                'title' => 'Assign Subject'],
             ['route_name' => 'class-routine.index',                 'title' => 'Class Routine'],
-            ['route_name' => 'time_schedule.index',                 'title' => 'Time Schedule'],
+            ['route_name' => 'time-schedule.index',                 'title' => 'Time Schedule'],
             ['route_name' => 'report-marksheet.index',              'title' => 'Marksheet Report'],
             ['route_name' => 'report-merit-list.index',             'title' => 'Merit list Report'],
             ['route_name' => 'report-progress-card.index',          'title' => 'Progress Card Report'],
@@ -81,7 +81,7 @@ class SearchSeeder extends Seeder
                 'user_type'     => 'Admin'
             ]);
         }
-        
+
 
 
 
@@ -104,7 +104,7 @@ class SearchSeeder extends Seeder
                 'user_type'     => 'Student'
             ]);
         }
-        
+
 
 
 

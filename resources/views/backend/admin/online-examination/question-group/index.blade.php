@@ -22,7 +22,7 @@
                     <div class="row justify-content-center align-items-center">
                         <div class="input-group">
                             <input class="form-control" name="keyword"
-                                placeholder="{{ ___('student_info.Search name') }}"
+                                placeholder="{{ ___('common.Search name') }}"
                                 value="{{ old('keyword', @$data['request']->keyword) }}">
                             <button class="btn btn-primary" type="submit">
                                 {{ ___('common.Search') }}

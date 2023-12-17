@@ -20,11 +20,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="validationDefault01" class="form-label">{{ ___('examination.exam_type') }}
+                                <label for="validationDefault01" class="form-label">{{ ___('common.exam_type') }}
                                     <span class="text-danger">*</span></label>
                                 <select id="validationDefault01" class="form-control exam_types @error('exam_types') is-invalid @enderror"
                                     name="exam_types[]">
-                                    <option value="" disabled>{{ ___('examination.select_exam_type') }}</option>
+                                    <option value="" disabled>{{ ___('common.select_exam_type') }}</option>
                                     @foreach ($data['exam_types'] as $item)
                                         <option {{ old('class') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">{{ $item->name }}
@@ -38,12 +38,12 @@
                             </div>
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault02" class="form-label">{{ ___('student_info.class') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select onchange="changeExamAssignClass(this)"
                                     class="classes form-control class @error('class') is-invalid @enderror" name="class"
                                     id="validationDefault02">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
+                                    <option value="">{{ ___('common.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->class->id }}">{{ $item->class->name }}
@@ -61,7 +61,7 @@
 
 
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">{{ ___('academic.section') }} <span
+                                <label class="form-label">{{ ___('common.section') }} <span
                                         class="text-danger">*</span></label>
                                 <div class="input-check-radio academic-section exam-assign-section">
                                 </div>
@@ -71,12 +71,12 @@
 
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault03" class="form-label">{{ ___('examination.subjects') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.subjects') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="subjectMark"
                                     class="form-control subjects @error('subjects') is-invalid @enderror" name="subjects[]"
                                     id="validationDefault03">
-                                    <option value="" disabled>{{ ___('examination.select_subject') }}</option>
+                                    <option value="" disabled>{{ ___('common.select_subject') }}</option>
                                 </select>
 
                                 @error('subjects')
@@ -93,9 +93,9 @@
                                     <table class="table school_borderLess_table" id="subject_marks_distribute">
                                         <thead>
                                             <tr>
-                                                <td scope="col">{{ ___('examination.subject') }}<span
+                                                <td scope="col">{{ ___('common.subject') }}<span
                                                         class="text-danger"></span> </td>
-                                                <td scope="col"> {{ ___('examination.mark_distribution') }} <span
+                                                <td scope="col"> {{ ___('common.mark_distribution') }} <span
                                                         class="text-danger"></span> </td>
                                             </tr>
                                         </thead>

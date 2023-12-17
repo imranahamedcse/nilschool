@@ -1,7 +1,7 @@
 <div class="modal-content" id="modalWidth">
     <div class="modal-header modal-header-image">
         <h4 class="modal-title" id="modalLabel2">
-            {{ ___('fees.fees_collect') }}
+            {{ ___('common.fees_collect') }}
         </h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
@@ -14,11 +14,11 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="validationDefault01" class="form-label ">{{ ___('fees.due_date') }} <span
+                            <label for="validationDefault01" class="form-label ">{{ ___('common.due_date') }} <span
                                     class="text-danger">*</span></label>
                             <input class="form-control @error('date') is-invalid @enderror" name="date"
                                 id="validationDefault01" type="date"
-                                placeholder="{{ ___('fees.enter_date') }}" value="{{ old('date') }}" required>
+                                placeholder="{{ ___('common.enter_date') }}" value="{{ old('date') }}" required>
                             @error('date')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -26,7 +26,7 @@
                             @enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">{{ ___('fees.Payment Method') }} <span
+                            <label class="form-label">{{ ___('common.Payment Method') }} <span
                                     class="text-danger">*</span></label>
                             <div
                                 class="input-check-radio academic-section @error('payment_method') is-invalid @enderror">
@@ -48,10 +48,10 @@
                 <table class="table table-bordered role-table" id="students_table">
                     <thead class="thead">
                         <tr>
-                            <th class="purchase">{{ ___('fees.group') }}</th>
-                            <th class="purchase">{{ ___('fees.type') }}</th>
-                            <th class="purchase">{{ ___('fees.due_date') }}</th>
-                            <th class="purchase">{{ ___('fees.amount') }} ({{ Setting('currency_symbol') }})</th>
+                            <th class="purchase">{{ ___('common.group') }}</th>
+                            <th class="purchase">{{ ___('common.type') }}</th>
+                            <th class="purchase">{{ ___('common.due_date') }}</th>
+                            <th class="purchase">{{ ___('common.amount') }} ({{ Setting('currency_symbol') }})</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
@@ -102,7 +102,7 @@
             </div>
             <div class="text-end">
                 @if ($total != 0)
-                    <button type="submit" class="btn btn-primary">{{ ___('ui_element.confirm') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ ___('common.confirm') }}</button>
                 @endif
             </div>
         </div>

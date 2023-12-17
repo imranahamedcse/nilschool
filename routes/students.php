@@ -28,26 +28,26 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
             });
 
             Route::controller(StudentCategoryController::class)->prefix('category')->group(function () {
-                Route::get('/',                 'index')->name('student_category.index')->middleware('PermissionCheck:student_category_read');
-                Route::get('/create',           'create')->name('student_category.create')->middleware('PermissionCheck:student_category_create');
-                Route::post('/store',           'store')->name('student_category.store')->middleware('PermissionCheck:student_category_create', 'DemoCheck');
-                Route::get('edit/{id}',         'edit')->name('student_category.edit')->middleware('PermissionCheck:student_category_update');
-                Route::PUT('update/{id}',       'update')->name('student_category.update')->middleware('PermissionCheck:student_category_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('student_category.delete')->middleware('PermissionCheck:student_category_delete', 'DemoCheck');
+                Route::get('/',                 'index')->name('student-category.index')->middleware('PermissionCheck:student_category_read');
+                Route::get('/create',           'create')->name('student-category.create')->middleware('PermissionCheck:student_category_create');
+                Route::post('/store',           'store')->name('student-category.store')->middleware('PermissionCheck:student_category_create', 'DemoCheck');
+                Route::get('edit/{id}',         'edit')->name('student-category.edit')->middleware('PermissionCheck:student_category_update');
+                Route::PUT('update/{id}',       'update')->name('student-category.update')->middleware('PermissionCheck:student_category_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('student-category.delete')->middleware('PermissionCheck:student_category_delete', 'DemoCheck');
             });
 
             Route::controller(PromoteStudentController::class)->prefix('promote')->group(function () {
-                Route::get('/',                 'index')->name('promote_students.index')->middleware('PermissionCheck:promote_students_read');
-                Route::post('/search',          'search')->name('promote_students.search')->middleware('PermissionCheck:promote_students_read');
-                Route::post('/store',           'store')->name('promote_students.store')->middleware('PermissionCheck:promote_students_create', 'DemoCheck');
+                Route::get('/',                 'index')->name('promote-students.index')->middleware('PermissionCheck:promote_students_read');
+                Route::post('/search',          'search')->name('promote-students.search')->middleware('PermissionCheck:promote_students_read');
+                Route::post('/store',           'store')->name('promote-students.store')->middleware('PermissionCheck:promote_students_create', 'DemoCheck');
                 Route::get('/get-class',        'getClass');
                 Route::get('/get-sections',     'getSections');
             });
 
             Route::controller(DisabledStudentController::class)->prefix('disabled')->group(function () {
-                Route::get('/',                 'index')->name('disabled_students.index')->middleware('PermissionCheck:disabled_students_read');
-                Route::post('/search',          'search')->name('disabled_students.search')->middleware('PermissionCheck:disabled_students_read');
-                Route::post('/store',           'store')->name('disabled_students.store')->middleware('PermissionCheck:disabled_students_create', 'DemoCheck');
+                Route::get('/',                 'index')->name('disabled-students.index')->middleware('PermissionCheck:disabled_students_read');
+                Route::post('/search',          'search')->name('disabled-students.search')->middleware('PermissionCheck:disabled_students_read');
+                Route::post('/store',           'store')->name('disabled-students.store')->middleware('PermissionCheck:disabled_students_create', 'DemoCheck');
             });
 
             Route::controller(ParentGuardianController::class)->prefix('parent')->group(function () {

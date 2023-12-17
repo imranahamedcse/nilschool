@@ -19,11 +19,11 @@ class StudentCategoryController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Categories');
+        $title             = ___('common.Categories');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'student_category_create',
-            "create-route" => 'student_category.create',
+            "create-route" => 'student-category.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -36,11 +36,11 @@ class StudentCategoryController extends Controller
 
     public function create()
     {
-        $data['title']        = ___('student_info.Add category');
+        $data['title']        = ___('common.Add category');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
-            ["title" => ___('student_info.Categories'), "route" => "student_category.index"],
+            ["title" => ___('common.Categories'), "route" => "student-category.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.student-info.student-category.create', compact('data'));
@@ -50,7 +50,7 @@ class StudentCategoryController extends Controller
     {
         $result = $this->repo->store($request);
         if ($result['status']) {
-            return redirect()->route('student_category.index')->with('success', $result['message']);
+            return redirect()->route('student-category.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
@@ -59,11 +59,11 @@ class StudentCategoryController extends Controller
     {
         $data['student_category']        = $this->repo->show($id);
 
-        $data['title']       = ___('student_info.Edit category');
+        $data['title']       = ___('common.Edit category');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
-            ["title" => ___('student_info.Categories'), "route" => "student_category.index"],
+            ["title" => ___('common.Categories'), "route" => "student-category.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.student-info.student-category.edit', compact('data'));
@@ -73,7 +73,7 @@ class StudentCategoryController extends Controller
     {
         $result = $this->repo->update($request, $id);
         if ($result) {
-            return redirect()->route('student_category.index')->with('success', ___('alert.updated_successfully'));
+            return redirect()->route('student-category.index')->with('success', ___('alert.updated_successfully'));
         }
         return back()->with('danger', ___('alert.something_went_wrong_please_try_again'));
     }

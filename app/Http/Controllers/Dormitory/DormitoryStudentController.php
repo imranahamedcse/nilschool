@@ -45,7 +45,7 @@ class DormitoryStudentController extends Controller
     {
         $data['dormitory_student'] = $this->repo->getAll();
 
-        $title             = ___('account.Student');
+        $title             = ___('common.Student');
         $data['headers']   = [
             "title"        => $title,
             "create-permission" => 'dormitory_student_create',
@@ -61,7 +61,7 @@ class DormitoryStudentController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Dormitory"), "route" => ""],
@@ -91,7 +91,7 @@ class DormitoryStudentController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Dormitory"), "route" => ""],

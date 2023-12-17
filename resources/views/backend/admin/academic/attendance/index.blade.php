@@ -20,7 +20,7 @@
             @isset($data['students'])
                 @if (@$data['status'] == 1)
                     <div class="alert alert-warning text-center">
-                        {{ ___('attendance.Attendance already collected! You can edit record.') }}
+                        {{ ___('common.Attendance already collected! You can edit record.') }}
                     </div>
                 @endif
 
@@ -37,7 +37,7 @@
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" value="" id="holidayId" name="holiday">
                         <label class="form-check-label" for="holidayId">
-                            {{ ___('attendance.Holiday') }}
+                            {{ ___('common.Holiday') }}
                         </label>
                     </div>
 
@@ -45,13 +45,13 @@
                     <table id="datatable" class="table">
                         <thead class="thead">
                             <tr>
-                                <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                                <th class="purchase">{{ ___('student_info.roll_no') }}</th>
-                                <th class="purchase">{{ ___('student_info.admission_no') }}</th>
-                                <th class="purchase">{{ ___('student_info.class') }}
-                                    ({{ ___('student_info.section') }})</th>
-                                <th class="purchase">{{ ___('attendance.Attendance') }}</th>
-                                <th class="purchase">{{ ___('attendance.Note') }}</th>
+                                <th class="purchase">{{ ___('common.Student Name') }}</th>
+                                <th class="purchase">{{ ___('common.roll_no') }}</th>
+                                <th class="purchase">{{ ___('common.admission_no') }}</th>
+                                <th class="purchase">{{ ___('common.class') }}
+                                    ({{ ___('common.section') }})</th>
+                                <th class="purchase">{{ ___('common.Attendance') }}</th>
+                                <th class="purchase">{{ ___('common.Note') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,7 +81,7 @@
                                                     value="{{ App\Enums\AttendanceType::PRESENT }}"
                                                     {{ @$item->attendance == App\Enums\AttendanceType::PRESENT ? 'checked' : '' }} />
                                                 <label class="form-check-label"
-                                                    for="flexRadioDefault1">{{ ___('attendance.Present') }}</label>
+                                                    for="flexRadioDefault1">{{ ___('common.Present') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input
@@ -91,7 +91,7 @@
                                                     value="{{ App\Enums\AttendanceType::LATE }}"
                                                     {{ @$item->attendance == App\Enums\AttendanceType::LATE ? 'checked' : '' }} />
                                                 <label class="form-check-label"
-                                                    for="flexRadioDefault2">{{ ___('attendance.Late') }}</label>
+                                                    for="flexRadioDefault2">{{ ___('common.Late') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input
@@ -101,7 +101,7 @@
                                                     value="{{ App\Enums\AttendanceType::ABSENT }}"
                                                     {{ @$item->attendance == App\Enums\AttendanceType::ABSENT ? 'checked' : '' }}{{ @$data['status'] == 1 && @$item->attendance == null ? 'checked' : '' }}{{ @$data['status'] == 0 ? 'checked' : '' }} />
                                                 <label class="form-check-label"
-                                                    for="flexRadioDefault3">{{ ___('attendance.Absent') }}</label>
+                                                    for="flexRadioDefault3">{{ ___('common.Absent') }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input
@@ -111,13 +111,13 @@
                                                     value="{{ App\Enums\AttendanceType::HALFDAY }}"
                                                     {{ @$item->attendance == App\Enums\AttendanceType::HALFDAY ? 'checked' : '' }} />
                                                 <label class="form-check-label"
-                                                    for="flexRadioDefault4">{{ ___('attendance.Half Day') }}</label>
+                                                    for="flexRadioDefault4">{{ ___('common.Half Day') }}</label>
                                             </div>
                                         </div>
 
                                     </td>
                                     <td>
-                                        <input class="form-control" name="note[]" placeholder="{{ ___('attendance.Note') }}"
+                                        <input class="form-control" name="note[]" placeholder="{{ ___('common.Note') }}"
                                             value="{{ old('note', @$item->note) }}">
                                     </td>
                                 </tr>

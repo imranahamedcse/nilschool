@@ -27,7 +27,7 @@ class GalleryController extends Controller
     {
         $data['gallery'] = $this->Repo->all();
 
-        $title             = ___('settings.Images');
+        $title             = ___('common.Images');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'gallery_create',
@@ -43,7 +43,7 @@ class GalleryController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Create Image');
+        $data['title']       = ___('common.Create Image');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -66,7 +66,7 @@ class GalleryController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit Image');
+        $data['title']       = ___('common.Edit Image');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

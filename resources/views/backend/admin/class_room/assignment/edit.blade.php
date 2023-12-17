@@ -20,11 +20,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="class form-control @error('class') is-invalid @enderror" name="class"
                                     id="validationDefault01">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
+                                    <option value="">{{ ___('common.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
                                             {{ old('class', $data['assignment']->classes_id) == $item->class->id ? 'selected' : '' }}
@@ -40,11 +40,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="section form-control @error('section') is-invalid @enderror" name="section"
                                     id="validationDefault02">
-                                    <option value="">{{ ___('student_info.select_section') }}</option>
+                                    <option value="">{{ ___('common.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
                                         @if ($data['assignment']->section_id == $item->id)
                                             <option
@@ -62,11 +62,11 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('academic.subject') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.subject') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault03"
                                     class="form-control subject @error('subject') is-invalid @enderror" name="subject">
-                                    <option value="">{{ ___('examination.select_subject') }}</option>
+                                    <option value="">{{ ___('common.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $item)
                                         @if ($data['assignment']->subject_id == $item->id)
                                             <option
@@ -106,10 +106,10 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('fees.Mark') }} </label>
+                                <label for="validationDefault05" class="form-label ">{{ ___('common.Mark') }} </label>
                                 <input class="form-control @error('mark') is-invalid @enderror" name="mark"
                                     value="{{ old('mark', @$data['assignment']->mark) }}" id="validationDefault05"
-                                    type="number" placeholder="{{ ___('fees.Enter mark') }}">
+                                    type="number" placeholder="{{ ___('common.Enter mark') }}">
                                 @error('mark')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -118,13 +118,13 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault06" class="form-label ">{{ ___('fees.Assigned date') }}
+                                <label for="validationDefault06" class="form-label ">{{ ___('common.Assigned date') }}
                                 </label>
                                 <input class="form-control @error('assigned_date') is-invalid @enderror"
                                     name="assigned_date"
                                     value="{{ old('assigned_date', @$data['assignment']->assigned_date) }}"
                                     id="validationDefault06" type="date"
-                                    placeholder="{{ ___('fees.Enter assigned date') }}">
+                                    placeholder="{{ ___('common.Enter assigned date') }}">
                                 @error('assigned_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -133,13 +133,13 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault07" class="form-label ">{{ ___('fees.Submission date') }}
+                                <label for="validationDefault07" class="form-label ">{{ ___('common.Submission date') }}
                                 </label>
                                 <input class="form-control @error('submission_date') is-invalid @enderror"
                                     name="submission_date"
                                     value="{{ old('submission_date', @$data['assignment']->submission_date) }}"
                                     id="validationDefault07" type="date"
-                                    placeholder="{{ ___('fees.Enter submission date') }}">
+                                    placeholder="{{ ___('common.Enter submission date') }}">
                                 @error('submission_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -148,9 +148,9 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault08" class="form-label ">{{ ___('fees.Document') }} </label>
+                                <label for="validationDefault08" class="form-label ">{{ ___('common.Document') }} </label>
                                 <input class="form-control @error('document') is-invalid @enderror" name="document"
-                                    id="validationDefault08" type="file" placeholder="{{ ___('fees.enter_document') }}">
+                                    id="validationDefault08" type="file" placeholder="{{ ___('common.enter_document') }}">
                                 @error('document')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -159,9 +159,9 @@
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault09" class="form-label ">{{ ___('fees.Description') }}</label>
+                                <label for="validationDefault09" class="form-label ">{{ ___('common.Description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="validationDefault09"
-                                    type="text" placeholder="{{ ___('fees.Enter description') }}">{{ old('description', @$data['assignment']->description) }}</textarea>
+                                    type="text" placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['assignment']->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}

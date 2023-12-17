@@ -20,7 +20,7 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('account.Fee') }}</th>
+                    <th class="purchase">{{ ___('common.Fee') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('pickup_point_update') || hasPermission('pickup_point_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

@@ -140,7 +140,7 @@ class ClassRoutineRepository implements ClassRoutineInterface
         $class_routine = $class_routine->first();
 
         if($class_routine) {
-            $data['message'] = ___('academic.already_created_class_routine');
+            $data['message'] = ___('common.already_created_class_routine');
             $data['status']  = false;
 
             return $data;
@@ -148,7 +148,7 @@ class ClassRoutineRepository implements ClassRoutineInterface
 
 
         if(array_diff_assoc($request->time_schedules, array_unique($request->time_schedules))) {
-            $data['message'] = ___('academic.you_cant_select_duplicate_time_schedule');
+            $data['message'] = ___('common.you_cant_select_duplicate_time_schedule');
             $data['status']  = false;
 
             return $data;
@@ -171,7 +171,7 @@ class ClassRoutineRepository implements ClassRoutineInterface
             if($class_routine) {
                 $schedule = TimeSchedule::find($time);
                 $room     = ClassRoom::find($request->class_rooms[$key]);
-                $data['message'] = ___('academic.already_assigned_to_class_routine_for_this_schedule_room').'. Schedule:'.$schedule->start_time.'-'.$schedule->end_time.' Room:'.$room->room_no;
+                $data['message'] = ___('common.already_assigned_to_class_routine_for_this_schedule_room').'. Schedule:'.$schedule->start_time.'-'.$schedule->end_time.' Room:'.$room->room_no;
                 $data['status']  = false;
 
                 return $data;

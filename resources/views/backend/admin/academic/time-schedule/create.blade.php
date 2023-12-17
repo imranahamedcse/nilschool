@@ -13,19 +13,19 @@
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
 
-            <form action="{{ route('time_schedule.store') }}" method="post" id="visitForm">
+            <form action="{{ route('time-schedule.store') }}" method="post" id="visitForm">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault01" class="form-label">{{ ___('academic.type') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('type') is-invalid @enderror" name="type"
                                     id="validationDefault01">
-                                    <option value="1">{{ ___('academic.class') }}</option>
-                                    <option value="2">{{ ___('academic.exam') }}
+                                    <option value="1">{{ ___('common.class') }}</option>
+                                    <option value="2">{{ ___('common.exam') }}
                                     </option>
                                 </select>
 
@@ -55,11 +55,11 @@
 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('academic.start_time') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.start_time') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('start_time') is-invalid @enderror" name="start_time"
                                     id="validationDefault03" type="time"
-                                    placeholder="{{ ___('academic.enter_start_time') }}" value="{{ old('start_time') }}">
+                                    placeholder="{{ ___('common.enter_start_time') }}" value="{{ old('start_time') }}">
                                 @error('start_time')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -67,11 +67,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('academic.end_time') }} <span
+                                <label for="validationDefault04" class="form-label ">{{ ___('common.end_time') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('end_time') is-invalid @enderror" name="end_time"
                                     id="validationDefault04" type="time"
-                                    placeholder="{{ ___('academic.enter_end_time') }}" value="{{ old('end_time') }}">
+                                    placeholder="{{ ___('common.enter_end_time') }}" value="{{ old('end_time') }}">
                                 @error('end_time')
                                     <div class="invalid-feedback">
                                         {{ $message }}

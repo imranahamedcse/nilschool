@@ -20,10 +20,10 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('examination.point') }}</th>
-                    <th class="purchase">{{ ___('examination.percent_from') }}</th>
-                    <th class="purchase">{{ ___('examination.percent_upto') }}</th>
-                    <th class="purchase">{{ ___('examination.remarks') }}</th>
+                    <th class="purchase">{{ ___('common.point') }}</th>
+                    <th class="purchase">{{ ___('common.percent_from') }}</th>
+                    <th class="purchase">{{ ___('common.percent_upto') }}</th>
+                    <th class="purchase">{{ ___('common.remarks') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('marks_grade_update') || hasPermission('marks_grade_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

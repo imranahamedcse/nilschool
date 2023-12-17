@@ -19,13 +19,13 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('fees.group') }}</th>
-                    <th class="purchase">{{ ___('fees.type') }}</th>
-                    <th class="purchase">{{ ___('fees.due_date') }}</th>
-                    <th class="purchase">{{ ___('fees.amount') }} ({{ Setting('currency_symbol') }})</th>
-                    <th class="purchase">{{ ___('fees.fine_type') }}</th>
-                    <th class="purchase">{{ ___('fees.percentage') }}</th>
-                    <th class="purchase">{{ ___('fees.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('common.group') }}</th>
+                    <th class="purchase">{{ ___('common.type') }}</th>
+                    <th class="purchase">{{ ___('common.due_date') }}</th>
+                    <th class="purchase">{{ ___('common.amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('common.fine_type') }}</th>
+                    <th class="purchase">{{ ___('common.percentage') }}</th>
+                    <th class="purchase">{{ ___('common.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('fees_master_update') || hasPermission('fees_master_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
@@ -42,11 +42,11 @@
                         <td>{{ $row->amount }}</td>
                         <td>
                             @if ($row->fine_type == 0)
-                                <span class="badge-basic-info-text">{{ ___('fees.none') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('common.none') }}</span>
                             @elseif($row->fine_type == 1)
-                                <span class="badge-basic-info-text">{{ ___('fees.percentage') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('common.percentage') }}</span>
                             @elseif($row->fine_type == 2)
-                                <span class="badge-basic-info-text">{{ ___('fees.fixed') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('common.fixed') }}</span>
                             @endif
                         </td>
                         <td>{{ $row->percentage }}</td>

@@ -19,10 +19,10 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('account.Student') }}</th>
-                    <th class="purchase">{{ ___('account.Route') }}</th>
-                    <th class="purchase">{{ ___('account.Vehicle') }}</th>
-                    <th class="purchase">{{ ___('account.PickupPoint') }}</th>
+                    <th class="purchase">{{ ___('common.Student') }}</th>
+                    <th class="purchase">{{ ___('common.Route') }}</th>
+                    <th class="purchase">{{ ___('common.Vehicle') }}</th>
+                    <th class="purchase">{{ ___('common.PickupPoint') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('transport_student_update') || hasPermission('transport_student_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

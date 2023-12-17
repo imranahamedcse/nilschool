@@ -47,25 +47,25 @@ class AuthenticationController extends Controller
 
         if (!$user) {
             return back()->withErrors([
-                'email' =>  ___('users_roles.the_provided_email_do_not_match_our_records')
+                'email' =>  ___('common.the_provided_email_do_not_match_our_records')
             ]);
         }
 
         if (!Hash::check($password, $user->password)) {
             return back()->withErrors([
-                'password' => ___('users_roles.the_provided_password_does_not_match_our_records')
+                'password' => ___('common.the_provided_password_does_not_match_our_records')
             ]);
         }
 
         if($user->email_verified_at == null){
-            return back()->with('danger', ___('users_roles.account_not_verified_yet'));
+            return back()->with('danger', ___('common.account_not_verified_yet'));
         }
 
         if($user->status == 0){
-            return back()->with('danger', ___('users_roles.you_are_inactive'));
+            return back()->with('danger', ___('common.you_are_inactive'));
         }
         if($user->role->status == 0){
-            return back()->with('danger', ___('users_roles.this_user_role_is_inactive'));
+            return back()->with('danger', ___('common.this_user_role_is_inactive'));
         }
 
         if($this->loginRepository->login($request->all())) {
@@ -77,7 +77,7 @@ class AuthenticationController extends Controller
                 return redirect()->route('dashboard');
         }
 
-        return back()->with('danger', ___('users_roles.something_went_wrong_please_try_again'));
+        return back()->with('danger', ___('common.something_went_wrong_please_try_again'));
 
     }
 
@@ -92,10 +92,10 @@ class AuthenticationController extends Controller
         $user = $this->loginRepository->register($request);
 
         if ($user) {
-            return redirect()->route('login')->with('success',  ___('users_roles.we_have_send_you_an_email_please_verify_your_email_address'));
+            return redirect()->route('login')->with('success',  ___('common.we_have_send_you_an_email_please_verify_your_email_address'));
         }
 
-        return back()->with('danger',  ___('users_roles.something_went_wrong_please_try_again'));
+        return back()->with('danger',  ___('common.something_went_wrong_please_try_again'));
     }
 
     public function verifyEmail($email, $token)
@@ -103,15 +103,15 @@ class AuthenticationController extends Controller
         $result = $this->loginRepository->verifyEmail($email, $token);
 
         if($result == 'success') {
-            return redirect()->route('login')->with('success',  ___('users_roles.your_email_has_been_verified_please_login'));
+            return redirect()->route('login')->with('success',  ___('common.your_email_has_been_verified_please_login'));
         } elseif($result == 'already_verified') {
-            return redirect()->route('login')->with('success',  ___('users_roles.your_email_has_already_been_verified_please_login'));
+            return redirect()->route('login')->with('success',  ___('common.your_email_has_already_been_verified_please_login'));
         } elseif($result == 'invalid_email') {
-            return redirect()->route('login')->with('danger',  ___('users_roles.invalid_email_address'));
+            return redirect()->route('login')->with('danger',  ___('common.invalid_email_address'));
         } elseif($result == 'invalid_token') {
-            return redirect()->route('login')->with('danger',  ___('users_roles.invalid_token'));
+            return redirect()->route('login')->with('danger',  ___('common.invalid_token'));
         } else {
-            return redirect()->route('login')->with('danger',  ___('users_roles.something_went_wrong_please_try_again'));
+            return redirect()->route('login')->with('danger',  ___('common.something_went_wrong_please_try_again'));
         }
     }
 
@@ -133,11 +133,11 @@ class AuthenticationController extends Controller
         $result = $this->loginRepository->forgotPassword($request);
 
         if ($result == 'success') {
-            return back()->with('success',  ___('users_roles.we_have_sent_an_reset_password_link_to_your_email_address'));
+            return back()->with('success',  ___('common.we_have_sent_an_reset_password_link_to_your_email_address'));
         } elseif ($result == 'invalid_email') {
-            return back()->with('danger',  ___('users_roles.invalid_email_address'));
+            return back()->with('danger',  ___('common.invalid_email_address'));
         } else {
-            return back()->with('danger',  ___('users_roles.something_went_wrong_please_try_again'));
+            return back()->with('danger',  ___('common.something_went_wrong_please_try_again'));
         }
     }
 
@@ -154,11 +154,11 @@ class AuthenticationController extends Controller
             return view('backend.auth.reset-password', compact('data'));
 
         } elseif ($result == 'invalid_email') {
-            return redirect()->route('login')->with('danger',  ___('users_roles.invalid_email_address'));
+            return redirect()->route('login')->with('danger',  ___('common.invalid_email_address'));
         } elseif ($result == 'invalid_token') {
-            return redirect()->route('login')->with('danger',  ___('users_roles.invalid_token'));
+            return redirect()->route('login')->with('danger',  ___('common.invalid_token'));
         } else {
-            return redirect()->route('login')->with('danger',  ___('users_roles.something_went_wrong_please_try_again'));
+            return redirect()->route('login')->with('danger',  ___('common.something_went_wrong_please_try_again'));
         }
 
     }
@@ -168,13 +168,13 @@ class AuthenticationController extends Controller
         $result = $this->loginRepository->resetPassword($request);
 
         if ($result == 'success') {
-            return redirect()->route('login')->with('success', ___('users_roles.your_password_has_been_reset_please_login'));
+            return redirect()->route('login')->with('success', ___('common.your_password_has_been_reset_please_login'));
         } elseif ($result == 'invalid_email') {
-            return back()->with('danger',  ___('users_roles.invalid_email_address'));
+            return back()->with('danger',  ___('common.invalid_email_address'));
         } elseif ($result == 'invalid_token') {
-            return back()->with('danger',  ___('users_roles.invalid_token'));
+            return back()->with('danger',  ___('common.invalid_token'));
         } else {
-            return back()->with('danger',  ___('users_roles.something_went_wrong_please_try_again'));
+            return back()->with('danger',  ___('common.something_went_wrong_please_try_again'));
         }
     }
 

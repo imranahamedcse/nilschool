@@ -12,7 +12,7 @@
             <div class="border-bottom pb-4 mb-4">
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
-            <form action="{{ route('student_category.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
+            <form action="{{ route('student-category.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-lg-12">

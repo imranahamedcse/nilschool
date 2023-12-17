@@ -37,7 +37,7 @@ class ProgressCardController extends Controller
 
     public function index()
     {
-        $title             = ___('student_info.Progress Card');
+        $title             = ___('common.Progress Card');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['report-progress-card.search', 'class', 'section', 'student'],
@@ -64,7 +64,7 @@ class ProgressCardController extends Controller
     {
         $data                 = $this->repo->search($request);
 
-        $title             = ___('student_info.Progress Card');
+        $title             = ___('common.Progress Card');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['report-progress-card.search', 'class', 'section', 'student'],

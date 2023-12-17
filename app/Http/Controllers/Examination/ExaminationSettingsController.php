@@ -17,7 +17,7 @@ class ExaminationSettingsController extends Controller
 
     public function index()
     {
-        $data['title']      = ___('settings.Examination Settings');
+        $data['title']      = ___('common.Examination Settings');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],

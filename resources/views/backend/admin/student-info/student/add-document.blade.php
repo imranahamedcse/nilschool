@@ -1,7 +1,7 @@
 <tr id="document-file">
     <td>
         <input type="text" name="document_names[{{ $counter }}]" class="form-control"
-            placeholder="{{ ___('student_info.enter_name') }}" required>
+            placeholder="{{ ___('common.enter_name') }}" required>
         <input type="hidden" name="document_rows[]" value="{{ $counter }}">
     </td>
     <td>

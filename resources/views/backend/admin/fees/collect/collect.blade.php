@@ -16,13 +16,13 @@
 
 
             <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                <h4>{{ ___('fees.Fees Details') }}</h4>
+                <h4>{{ ___('common.Fees Details') }}</h4>
 
                 <div class="align-content-center mb-3">
-                    <strong>{{ ___('student_info.admission_no') }} :</strong>
+                    <strong>{{ ___('common.admission_no') }} :</strong>
                     <span>{{ @$data['student']->admission_no }},</span>
 
-                    <strong>{{ ___('student_info.Student Name') }} :</strong>
+                    <strong>{{ ___('common.Student Name') }} :</strong>
                     <span>{{ @$data['student']->first_name }} {{ @$data['student']->last_name }}</span>
 
                     <input type="hidden" name="student_id" id="student_id" value="{{ $data['student']->id }}" />
@@ -32,7 +32,7 @@
                     <a href="#" class="btn btn-info mb-3" data-bs-toggle="modal" data-bs-target="#modalCustomizeWidth"
                         onclick="feesCollect()">
                         <span><i class="fa-solid fa-plus"></i> </span>
-                        <span class="">{{ ___('fees.Collect') }}</span>
+                        <span class="">{{ ___('common.Collect') }}</span>
                     </a>
                 @endif
             </div>
@@ -42,14 +42,14 @@
                     <tr>
                         <th class="purchase mr-4">{{ ___('common.All') }} <input class="form-check-input all"
                                 type="checkbox"></th>
-                        <th class="purchase">{{ ___('fees.group') }}</th>
-                        <th class="purchase">{{ ___('fees.type') }}</th>
-                        <th class="purchase">{{ ___('fees.due_date') }}</th>
-                        <th class="purchase">{{ ___('fees.amount') }} ({{ Setting('currency_symbol') }})</th>
+                        <th class="purchase">{{ ___('common.group') }}</th>
+                        <th class="purchase">{{ ___('common.type') }}</th>
+                        <th class="purchase">{{ ___('common.due_date') }}</th>
+                        <th class="purchase">{{ ___('common.amount') }} ({{ Setting('currency_symbol') }})</th>
                         <th class="purchase">{{ ___('common.status') }}</th>
-                        <th class="purchase">{{ ___('fees.fine_type') }}</th>
-                        <th class="purchase">{{ ___('fees.percentage') }}</th>
-                        <th class="purchase">{{ ___('fees.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
+                        <th class="purchase">{{ ___('common.fine_type') }}</th>
+                        <th class="purchase">{{ ___('common.percentage') }}</th>
+                        <th class="purchase">{{ ___('common.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
                         @if (hasPermission('fees_collect_delete'))
                             <th class="purchase">{{ ___('common.action') }}</th>
                         @endif
@@ -75,18 +75,18 @@
                             </td>
                             <td>
                                 @if ($item->fees_collect_count)
-                                    <span class="badge-basic-success-text">{{ ___('fees.Paid') }}</span>
+                                    <span class="badge-basic-success-text">{{ ___('common.Paid') }}</span>
                                 @else
-                                    <span class="badge-basic-danger-text">{{ ___('fees.Unpaid') }}</span>
+                                    <span class="badge-basic-danger-text">{{ ___('common.Unpaid') }}</span>
                                 @endif
                             </td>
                             <td>
                                 @if (@$item->fine_type == 0)
-                                    <span class="badge-basic-info-text">{{ ___('fees.none') }}</span>
+                                    <span class="badge-basic-info-text">{{ ___('common.none') }}</span>
                                 @elseif(@$item->fine_type == 1)
-                                    <span class="badge-basic-info-text">{{ ___('fees.percentage') }}</span>
+                                    <span class="badge-basic-info-text">{{ ___('common.percentage') }}</span>
                                 @elseif(@$item->fine_type == 2)
-                                    <span class="badge-basic-info-text">{{ ___('fees.fixed') }}</span>
+                                    <span class="badge-basic-info-text">{{ ___('common.fixed') }}</span>
                                 @endif
                             </td>
                             <td>{{ @$item->feesMaster->percentage }}</td>

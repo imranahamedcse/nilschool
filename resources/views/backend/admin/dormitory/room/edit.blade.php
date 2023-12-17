@@ -25,7 +25,7 @@
                                 <label for="validationDefault01" class="form-label">{{ ___('common.Type') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault01" class="section form-control @error('type') is-invalid @enderror" name="type">
-                                    <option value="">{{ ___('student_info.Select type') }} </option>
+                                    <option value="">{{ ___('common.Select type') }} </option>
                                     @foreach ($data['types'] as $item)
                                         <option
                                             {{ old('type', @$data['room']->room_type_id) == $item->id ? 'selected' : '' }}

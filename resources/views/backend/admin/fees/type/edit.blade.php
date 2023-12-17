@@ -32,10 +32,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('fees.code') }} </label>
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.code') }} </label>
                                 <input class="form-control @error('code') is-invalid @enderror" name="code"
                                     value="{{ old('code', @$data['fees_type']->code) }}"
-                                    id="validationDefault02" type="text" placeholder="{{ ___('fees.enter_code') }}">
+                                    id="validationDefault02" type="text" placeholder="{{ ___('common.enter_code') }}">
                                 @error('code')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -43,9 +43,9 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('fees.description') }}</label>
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                    id="validationDefault03" type="text" placeholder="{{ ___('fees.enter_description') }}">{{ old('description', @$data['fees_type']->description) }}</textarea>
+                                    id="validationDefault03" type="text" placeholder="{{ ___('common.enter_description') }}">{{ old('description', @$data['fees_type']->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}

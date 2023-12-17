@@ -28,7 +28,7 @@ class SessionController extends Controller
     {
         $data['sessions'] = $this->session->getAll();
 
-        $title             = ___('settings.Sessions');
+        $title             = ___('common.Sessions');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'session_create',
@@ -44,7 +44,7 @@ class SessionController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('settings.Add session');
+        $data['title']       = ___('common.Add session');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],
@@ -66,7 +66,7 @@ class SessionController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('settings.Edit session');
+        $data['title']       = ___('common.Edit session');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],

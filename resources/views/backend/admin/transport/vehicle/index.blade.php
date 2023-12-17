@@ -20,7 +20,7 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('account.type') }}</th>
+                    <th class="purchase">{{ ___('common.type') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('vehicle_update') || hasPermission('vehicle_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
@@ -34,9 +34,9 @@
                         <td>{{ $row->name }}</td>
                         <td>
                             @if ($row->type == App\Enums\AccountHeadType::INCOME)
-                                <span class="badge-basic-info-text">{{ ___('account.income') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('common.income') }}</span>
                             @else
-                                <span class="badge-basic-warning-text">{{ ___('account.expense') }}</span>
+                                <span class="badge-basic-warning-text">{{ ___('common.expense') }}</span>
                             @endif
                         </td>
                         <td>

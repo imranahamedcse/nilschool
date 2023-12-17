@@ -18,11 +18,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('student_info.admission_no') }}
+                                <label for="validationDefault01" class="form-label ">{{ ___('common.admission_no') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('admission_no') is-invalid @enderror" type="number"
                                     name="admission_no" id="validationDefault01"
-                                    placeholder="{{ ___('student_info.enter_admission_no') }}"
+                                    placeholder="{{ ___('common.enter_admission_no') }}"
                                     value="{{ old('admission_no') }}">
                                 @error('admission_no')
                                     <div class="invalid-feedback">
@@ -31,11 +31,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('student_info.roll_no') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.roll_no') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('roll_no') is-invalid @enderror" name="roll_no"
                                     id="validationDefault02" type="number"
-                                    placeholder="{{ ___('student_info.enter_roll_no') }}" value="{{ old('roll_no') }}">
+                                    placeholder="{{ ___('common.enter_roll_no') }}" value="{{ old('roll_no') }}">
                                 @error('roll_no')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -43,10 +43,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('student_info.first_name') }}
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.first_name') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('first_name') is-invalid @enderror" name="first_name"
-                                    id="validationDefault03" placeholder="{{ ___('student_info.enter_first_name') }}"
+                                    id="validationDefault03" placeholder="{{ ___('common.enter_first_name') }}"
                                     value="{{ old('first_name') }}">
                                 @error('first_name')
                                     <div class="invalid-feedback">
@@ -55,10 +55,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('student_info.last_name') }}
+                                <label for="validationDefault04" class="form-label ">{{ ___('common.last_name') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('last_name') is-invalid @enderror" name="last_name"
-                                    id="validationDefault04" placeholder="{{ ___('student_info.enter_last_name') }}"
+                                    id="validationDefault04" placeholder="{{ ___('common.enter_last_name') }}"
                                     value="{{ old('last_name') }}">
                                 @error('last_name')
                                     <div class="invalid-feedback">
@@ -67,11 +67,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('student_info.mobile') }} <span
+                                <label for="validationDefault05" class="form-label ">{{ ___('common.mobile') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('mobile') is-invalid @enderror" name="mobile"
                                     id="validationDefault05" type="number"
-                                    placeholder="{{ ___('student_info.enter_mobile') }}" value="{{ old('mobile') }}">
+                                    placeholder="{{ ___('common.enter_mobile') }}" value="{{ old('mobile') }}">
                                 @error('mobile')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -83,7 +83,7 @@
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('email') is-invalid @enderror" name="email"
                                     id="validationDefault06" type="email"
-                                    placeholder="{{ ___('student_info.enter_email') }}" value="{{ old('email') }}">
+                                    placeholder="{{ ___('common.enter_email') }}" value="{{ old('email') }}">
                                 @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -92,11 +92,11 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationDefault07" class="form-label">{{ ___('student_info.class') }} <span
+                                <label for="validationDefault07" class="form-label">{{ ___('common.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="class form-control @error('class') is-invalid @enderror" name="class"
                                     id="validationDefault07">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
+                                    <option value="">{{ ___('common.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->class->id }}">{{ $item->class->name }}
@@ -113,11 +113,11 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label for="validationDefault08" class="form-label">{{ ___('student_info.section') }}
+                                <label for="validationDefault08" class="form-label">{{ ___('common.section') }}
                                     <span class="text-danger">*</span></label>
                                 <select class="section form-control @error('section') is-invalid @enderror" name="section"
                                     id="validationDefault08">
-                                    <option value="">{{ ___('student_info.select_section') }}</option>
+                                    <option value="">{{ ___('common.select_section') }}</option>
                                 </select>
                                 @error('section')
                                     <div class="invalid-feedback">
@@ -128,11 +128,11 @@
 
                             <div class="col-md-3">
 
-                                <label for="validationDefault09" class="form-label">{{ ___('student_info.shift') }} <span
+                                <label for="validationDefault09" class="form-label">{{ ___('common.shift') }} <span
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('shift') is-invalid @enderror" name="shift"
                                     id="validationDefault09">
-                                    <option value="">{{ ___('student_info.select_shift') }}</option>
+                                    <option value="">{{ ___('common.select_shift') }}</option>
                                     @foreach ($data['shifts'] as $item)
                                         <option {{ old('shift') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">{{ $item->name }}
@@ -160,11 +160,11 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationDefault11" class="form-label">{{ ___('student_info.religion') }}
+                                <label for="validationDefault11" class="form-label">{{ ___('common.religion') }}
                                     <span class="text-danger"></span></label>
                                 <select class="form-control @error('religion') is-invalid @enderror" name="religion"
                                     id="validationDefault11">
-                                    <option value="">{{ ___('student_info.select_religion') }}</option>
+                                    <option value="">{{ ___('common.select_religion') }}</option>
                                     @foreach ($data['religions'] as $item)
                                         <option {{ old('religion') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">{{ $item->name }}
@@ -184,7 +184,7 @@
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('gender') is-invalid @enderror" name="gender"
                                     id="validationDefault12">
-                                    <option value="">{{ ___('student_info.select_gender') }}</option>
+                                    <option value="">{{ ___('common.select_gender') }}</option>
                                     @foreach ($data['genders'] as $item)
                                         <option {{ old('gender') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">{{ $item->name }}
@@ -204,7 +204,7 @@
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('category') is-invalid @enderror" name="category"
                                     id="validationDefault13">
-                                    <option value="">{{ ___('student_info.select_category') }}</option>
+                                    <option value="">{{ ___('common.select_category') }}</option>
                                     @foreach ($data['categories'] as $item)
                                         <option {{ old('category') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">{{ $item->name }}
@@ -220,11 +220,11 @@
                             </div>
                             <div class="col-md-3">
 
-                                <label for="validationDefault14" class="form-label">{{ ___('student_info.blood') }} <span
+                                <label for="validationDefault14" class="form-label">{{ ___('common.blood') }} <span
                                         class="text-danger"></span></label>
                                 <select class="form-control @error('blood') is-invalid @enderror" name="blood"
                                     id="validationDefault14">
-                                    <option value="">{{ ___('student_info.select_blood') }}</option>
+                                    <option value="">{{ ___('common.select_blood') }}</option>
                                     @foreach ($data['bloods'] as $item)
                                         <option {{ old('blood') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">{{ $item->name }}
@@ -240,11 +240,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault15"
-                                    class="form-label ">{{ ___('student_info.admission_date') }}
+                                    class="form-label ">{{ ___('common.admission_date') }}
                                     <span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('admission_date') is-invalid @enderror"
                                     name="admission_date" id="validationDefault15"
-                                    placeholder="{{ ___('student_info.admission_date') }}"
+                                    placeholder="{{ ___('common.admission_date') }}"
                                     value="{{ old('admission_date') }}">
                                 @error('admission_date')
                                     <div class="invalid-feedback">
@@ -267,7 +267,7 @@
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
                                     <h5 class="m-0 flex-fill text-info">
-                                        {{ ___('student_info.Guardian Info') }}
+                                        {{ ___('common.Guardian Info') }}
                                     </h5>
                                 </div>
                             </div>
@@ -276,10 +276,10 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault01"
-                                    class="form-label ">{{ ___('student_info.father_name') }}
+                                    class="form-label ">{{ ___('common.father_name') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_name') is-invalid @enderror" name="father_name"
-                                    id="validationDefault01" placeholder="{{ ___('student_info.enter_father_name') }}"
+                                    id="validationDefault01" placeholder="{{ ___('common.enter_father_name') }}"
                                     type="text" value="{{ old('father_name') }}">
                                 @error('father_name')
                                     <div class="invalid-feedback">
@@ -289,11 +289,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault02"
-                                    class="form-label ">{{ ___('student_info.father_mobile') }}
+                                    class="form-label ">{{ ___('common.father_mobile') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('father_mobile') is-invalid @enderror"
                                     name="father_mobile" id="validationDefault02"
-                                    placeholder="{{ ___('student_info.enter_father_mobile') }}" type="text"
+                                    placeholder="{{ ___('common.enter_father_mobile') }}" type="text"
                                     value="{{ old('father_mobile') }}">
                                 @error('father_mobile')
                                     <div class="invalid-feedback">
@@ -303,11 +303,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault03"
-                                    class="form-label ">{{ ___('student_info.father_profession') }} <span
+                                    class="form-label ">{{ ___('common.father_profession') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('father_profession') is-invalid @enderror"
                                     name="father_profession" id="validationDefault03"
-                                    placeholder="{{ ___('student_info.enter_father_profession') }}" type="text"
+                                    placeholder="{{ ___('common.enter_father_profession') }}" type="text"
                                     value="{{ old('father_profession') }}">
                                 @error('father_profession')
                                     <div class="invalid-feedback">
@@ -318,7 +318,7 @@
                             <div class="col-md-3 mb-3">
 
                                 <label class="form-label"
-                                    for="validationDefault04">{{ ___('student_info.father_image') }}
+                                    for="validationDefault04">{{ ___('common.father_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
                                 <input type="file" class="form-control" name="father_image" id="validationDefault04"
                                     accept="image/*">
@@ -330,10 +330,10 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault05"
-                                    class="form-label ">{{ ___('student_info.mother_name') }}
+                                    class="form-label ">{{ ___('common.mother_name') }}
                                     <span class="text-danger"></span></label>
                                 <input class="form-control @error('mother_name') is-invalid @enderror" name="mother_name"
-                                    id="validationDefault05" placeholder="{{ ___('student_info.enter_mother_name') }}"
+                                    id="validationDefault05" placeholder="{{ ___('common.enter_mother_name') }}"
                                     type="text" value="{{ old('mother_name') }}">
                                 @error('mother_name')
                                     <div class="invalid-feedback">
@@ -343,11 +343,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault06"
-                                    class="form-label ">{{ ___('student_info.mother_mobile') }} <span
+                                    class="form-label ">{{ ___('common.mother_mobile') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('mother_mobile') is-invalid @enderror"
                                     name="mother_mobile" id="validationDefault06"
-                                    placeholder="{{ ___('student_info.enter_mother_mobile') }}" type="text"
+                                    placeholder="{{ ___('common.enter_mother_mobile') }}" type="text"
                                     value="{{ old('mother_mobile') }}">
                                 @error('mother_mobile')
                                     <div class="invalid-feedback">
@@ -357,11 +357,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault07"
-                                    class="form-label ">{{ ___('student_info.mother_profession') }} <span
+                                    class="form-label ">{{ ___('common.mother_profession') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('mother_profession') is-invalid @enderror"
                                     name="mother_profession" id="validationDefault07"
-                                    placeholder="{{ ___('student_info.enter_father_profession') }}" type="text"
+                                    placeholder="{{ ___('common.enter_father_profession') }}" type="text"
                                     value="{{ old('mother_profession') }}">
                                 @error('mother_profession')
                                     <div class="invalid-feedback">
@@ -372,7 +372,7 @@
                             <div class="col-md-3 mb-3">
 
                                 <label class="form-label"
-                                    for="validationDefault08">{{ ___('student_info.mother_image') }}
+                                    for="validationDefault08">{{ ___('common.mother_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
                                 <input type="file" class="form-control" name="mother_image" id="validationDefault08"
                                     accept="image/*">
@@ -384,11 +384,11 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault09"
-                                    class="form-label ">{{ ___('student_info.guardian_name') }} <span
+                                    class="form-label ">{{ ___('common.guardian_name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_name') is-invalid @enderror"
                                     name="guardian_name" id="validationDefault09"
-                                    placeholder="{{ ___('student_info.enter_guardian_name') }}" type="text"
+                                    placeholder="{{ ___('common.enter_guardian_name') }}" type="text"
                                     value="{{ old('guardian_name') }}">
                                 @error('guardian_name')
                                     <div class="invalid-feedback">
@@ -398,11 +398,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault10"
-                                    class="form-label ">{{ ___('student_info.guardian_mobile') }} <span
+                                    class="form-label ">{{ ___('common.guardian_mobile') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('guardian_mobile') is-invalid @enderror"
                                     name="guardian_mobile" id="validationDefault10"
-                                    placeholder="{{ ___('student_info.enter_guardian_mobile') }}" type="text"
+                                    placeholder="{{ ___('common.enter_guardian_mobile') }}" type="text"
                                     value="{{ old('guardian_mobile') }}">
                                 @error('guardian_mobile')
                                     <div class="invalid-feedback">
@@ -412,11 +412,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault11"
-                                    class="form-label ">{{ ___('student_info.guardian_profession') }} <span
+                                    class="form-label ">{{ ___('common.guardian_profession') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_profession') is-invalid @enderror"
                                     name="guardian_profession" id="validationDefault11"
-                                    placeholder="{{ ___('student_info.enter_guardian_profession') }}" type="text"
+                                    placeholder="{{ ___('common.enter_guardian_profession') }}" type="text"
                                     value="{{ old('guardian_profession') }}">
                                 @error('guardian_profession')
                                     <div class="invalid-feedback">
@@ -427,7 +427,7 @@
                             <div class="col-md-3 mb-3">
 
                                 <label class="form-label"
-                                    for="validationDefault12">{{ ___('student_info.guardian_image') }}
+                                    for="validationDefault12">{{ ___('common.guardian_image') }}
                                     {{ ___('common.(95 x 95 px)') }}</label>
                                 <input type="file" class="form-control" name="guardian_image"
                                     id="validationDefault12" accept="image/*">
@@ -435,10 +435,10 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault13"
-                                    class="form-label ">{{ ___('student_info.guardian_email') }}</label>
+                                    class="form-label ">{{ ___('common.guardian_email') }}</label>
                                 <input class="form-control @error('guardian_email') is-invalid @enderror"
                                     name="guardian_email" id="validationDefault13"
-                                    placeholder="{{ ___('student_info.enter_guardian_email') }}" type="email"
+                                    placeholder="{{ ___('common.enter_guardian_email') }}" type="email"
                                     value="{{ old('guardian_email') }}">
                                 @error('guardian_email')
                                     <div class="invalid-feedback">
@@ -448,11 +448,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault14"
-                                    class="form-label ">{{ ___('student_info.guardian_address') }} <span
+                                    class="form-label ">{{ ___('common.guardian_address') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_address') is-invalid @enderror"
                                     name="guardian_address" id="validationDefault14"
-                                    placeholder="{{ ___('student_info.enter_guardian_address') }}" type="text"
+                                    placeholder="{{ ___('common.enter_guardian_address') }}" type="text"
                                     value="{{ old('guardian_address') }}">
                                 @error('guardian_address')
                                     <div class="invalid-feedback">
@@ -462,11 +462,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault15"
-                                    class="form-label ">{{ ___('student_info.guardian_relation') }} <span
+                                    class="form-label ">{{ ___('common.guardian_relation') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('guardian_relation') is-invalid @enderror"
                                     name="guardian_relation" id="validationDefault15"
-                                    placeholder="{{ ___('student_info.enter_guardian_relation') }}" type="text"
+                                    placeholder="{{ ___('common.enter_guardian_relation') }}" type="text"
                                     value="{{ old('guardian_relation') }}">
                                 @error('guardian_relation')
                                     <div class="invalid-feedback">
@@ -476,7 +476,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
 
-                                <label class="form-label" for="validationDefault16">{{ ___('student_info.status') }}
+                                <label class="form-label" for="validationDefault16">{{ ___('common.status') }}
                                     <span class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationDefault16">
@@ -501,7 +501,7 @@
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
                                     <h5 class="m-0 flex-fill text-info">
-                                        {{ ___('student_info.Upload Documents') }}
+                                        {{ ___('common.Upload Documents') }}
                                     </h5>
                                     <button type="button" class="btn btn-sm btn-primary addNewDocument"
                                         onclick="addNewDocument()">

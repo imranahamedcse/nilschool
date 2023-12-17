@@ -48,7 +48,7 @@ class SubjectAssignController extends Controller
         $data['subject_assigns']    = $this->repo->all();
 
 
-        $title             = ___('academic.subject_assign');
+        $title             = ___('common.subject_assign');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'subject_assign_create',
@@ -64,7 +64,7 @@ class SubjectAssignController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('academic.Add subject assign');
+        $data['title']              = ___('common.Add subject assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
@@ -113,7 +113,7 @@ class SubjectAssignController extends Controller
     {
 
         $data                       = $this->repo->show($id);
-        $data['title']              = ___('academic.Edit subject assign');
+        $data['title']              = ___('common.Edit subject assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],

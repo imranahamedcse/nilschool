@@ -25,7 +25,7 @@ class DepartmentContactController extends Controller
     {
         $data['dep_contact'] = $this->depContactRepo->all();
 
-        $title             = ___('settings.Department Contact');
+        $title             = ___('common.Department Contact');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'dep_contact_create',
@@ -41,7 +41,7 @@ class DepartmentContactController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Add Department Contact');
+        $data['title']       = ___('common.Add Department Contact');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -63,7 +63,7 @@ class DepartmentContactController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit Department Contact');
+        $data['title']       = ___('common.Edit Department Contact');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

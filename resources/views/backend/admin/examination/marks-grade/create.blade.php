@@ -31,11 +31,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('examination.point') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.point') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('point') is-invalid @enderror" name="point"
                                     id="validationDefault02" type="number" step="any"
-                                    placeholder="{{ ___('examination.enter_point') }}" value="{{ old('point') }}">
+                                    placeholder="{{ ___('common.enter_point') }}" value="{{ old('point') }}">
                                 @error('point')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -43,11 +43,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('examination.percent_from') }}
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.percent_from') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('percent_from') is-invalid @enderror"
                                     name="percent_from" id="validationDefault03" type="number"
-                                    step="any" placeholder="{{ ___('examination.enter_percent_from') }}"
+                                    step="any" placeholder="{{ ___('common.enter_percent_from') }}"
                                     value="{{ old('percent_from') }}">
                                 @error('percent_from')
                                     <div class="invalid-feedback">
@@ -56,11 +56,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('examination.percent_upto') }}
+                                <label for="validationDefault04" class="form-label ">{{ ___('common.percent_upto') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('percent_upto') is-invalid @enderror"
                                     name="percent_upto" id="validationDefault04" type="number"
-                                    step="any" placeholder="{{ ___('examination.enter_percent_upto') }}"
+                                    step="any" placeholder="{{ ___('common.enter_percent_upto') }}"
                                     value="{{ old('percent_upto') }}">
                                 @error('percent_upto')
                                     <div class="invalid-feedback">
@@ -69,11 +69,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('examination.remarks') }} <span
+                                <label for="validationDefault05" class="form-label ">{{ ___('common.remarks') }} <span
                                         class="text-danger"></span></label>
                                 <input class="form-control @error('remarks') is-invalid @enderror" name="remarks"
                                     id="validationDefault05" type="text"
-                                    placeholder="{{ ___('examination.enter_remarks') }}" value="{{ old('remarks') }}">
+                                    placeholder="{{ ___('common.enter_remarks') }}" value="{{ old('remarks') }}">
                                 @error('remarks')
                                     <div class="invalid-feedback">
                                         {{ $message }}

@@ -20,8 +20,8 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('language.code') }}</th>
-                    <th class="purchase">{{ ___('language.icon') }}</th>
+                    <th class="purchase">{{ ___('common.code') }}</th>
+                    <th class="purchase">{{ ___('common.icon') }}</th>
                     @if (hasPermission('language_update') || hasPermission('language_delete') || hasPermission('language_update_terms'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif
@@ -40,7 +40,7 @@
                                     href="{{ route('languages.edit', $row->id) }}"><i class="fa-solid fa-pencil"></i></a>
                             @endif
                             @if (hasPermission('language_update_terms'))
-                                <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('language.edit_terms') }}"
+                                <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('common.edit_terms') }}"
                                     href="{{ route('languages.edit.terms', $row->id) }}"><i class="fa-solid fa-file-pen"></i></a>
                             @endif
                             @if (hasPermission('language_delete') && $row->code != 'en')

@@ -23,7 +23,7 @@ class ContactMessageController extends Controller
     {
         $data['contact'] = $this->repo->all();
 
-        $title             = ___('settings.Contact Message');
+        $title             = ___('common.Contact Message');
         $data['headers']   = [
             "title"        => $title
         ];

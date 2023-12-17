@@ -20,10 +20,10 @@
                     <tr>
                         <th>{{ ___('common.#') }}</th>
                         <th>{{ ___('common.name') }}</th>
-                        <th>{{ ___('student_info.admission_no') }}</th>
-                        <th>{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                        <th>{{ ___('report.Fees type') }}</th>
-                        <th>{{ ___('report.Amount') }} ({{ Setting('currency_symbol') }})</th>
+                        <th>{{ ___('common.admission_no') }}</th>
+                        <th>{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                        <th>{{ ___('common.Fees type') }}</th>
+                        <th>{{ ___('common.Amount') }} ({{ Setting('currency_symbol') }})</th>
                     </tr>
                 </thead>
                 <tbody>

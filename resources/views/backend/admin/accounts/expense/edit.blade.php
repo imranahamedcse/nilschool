@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validationDefault02" class="form-label">{{ ___('account.expense_head') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.expense_head') }} <span
                                         class="text-danger">*</span></label>
 
                                 <select class="form-control @error('expense_head') is-invalid @enderror" name="expense_head"
@@ -52,11 +52,11 @@
                                 </div>
                             @enderror
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('account.date') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('common.date') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('date') is-invalid @enderror" name="date"
                                     type="date" value="{{ old('date', @$data['expense']->date) }}"
-                                    id="validationDefault03" placeholder="{{ ___('account.enter_date') }}">
+                                    id="validationDefault03" placeholder="{{ ___('common.enter_date') }}">
                                 @error('date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -64,12 +64,12 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('account.invoice_number') }}
+                                <label for="validationDefault04" class="form-label ">{{ ___('common.invoice_number') }}
                                 </label>
                                 <input class="form-control @error('invoice_number') is-invalid @enderror"
                                     name="invoice_number"
                                     value="{{ old('invoice_number', @$data['expense']->invoice_number) }}"
-                                    id="validationDefault04" placeholder="{{ ___('account.enter_invoice_number') }}">
+                                    id="validationDefault04" placeholder="{{ ___('common.enter_invoice_number') }}">
                                 @error('invoice_number')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -77,11 +77,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('account.amount') }}
+                                <label for="validationDefault05" class="form-label ">{{ ___('common.amount') }}
                                     ({{ Setting('currency_symbol') }}) <span class="text-danger">*</span></label>
                                 <input class="form-control @error('amount') is-invalid @enderror" name="amount"
                                     type="number" value="{{ old('amount', @$data['expense']->amount) }}"
-                                    id="validationDefault05" placeholder="{{ ___('account.enter_amount') }}">
+                                    id="validationDefault05" placeholder="{{ ___('common.enter_amount') }}">
                                 @error('amount')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -94,9 +94,9 @@
                                 <input id="validationDefault06" type="file" class="form-control" name="document">
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault07" class="form-label ">{{ ___('account.description') }}</label>
+                                <label for="validationDefault07" class="form-label ">{{ ___('common.description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="validationDefault07"
-                                    placeholder="{{ ___('account.enter_description') }}">{{ old('description', @$data['expense']->description) }}</textarea>
+                                    placeholder="{{ ___('common.enter_description') }}">{{ old('description', @$data['expense']->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}

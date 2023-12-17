@@ -19,11 +19,11 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('examination.exam_title') }}</th>
-                    <th class="purchase">{{ ___('examination.class') }} ({{ ___('examination.section') }})</th>
-                    <th class="purchase">{{ ___('examination.subjects') }}</th>
-                    <th class="purchase">{{ ___('examination.total_mark') }}</th>
-                    <th class="purchase">{{ ___('examination.mark_distribution') }}</th>
+                    <th class="purchase">{{ ___('common.exam_title') }}</th>
+                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                    <th class="purchase">{{ ___('common.subjects') }}</th>
+                    <th class="purchase">{{ ___('common.total_mark') }}</th>
+                    <th class="purchase">{{ ___('common.mark_distribution') }}</th>
                     @if (hasPermission('exam_assign_update') || hasPermission('exam_assign_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
                     @endif

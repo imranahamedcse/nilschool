@@ -26,11 +26,11 @@ class AccountHeadController extends Controller
     {
         $data['account_head'] = $this->headRepo->getAll();
 
-        $title             = ___('account.Head');
+        $title             = ___('common.Head');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'account_head_create',
-            "create-route" => 'account_head.create',
+            "create-route" => 'account-head.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -42,11 +42,11 @@ class AccountHeadController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Account"), "route" => ""],
-            ["title" => ___('account.Head'), "route" => "account_head.index"],
+            ["title" => ___('common.Head'), "route" => "account-head.index"],
             ["title" => $data['title'], "route" => ""]
         ];
         return view('backend.admin.accounts.head.create', compact('data'));
@@ -56,18 +56,18 @@ class AccountHeadController extends Controller
     {
         $result = $this->headRepo->store($request);
         if($result['status']){
-            return redirect()->route('account_head.index')->with('success', $result['message']);
+            return redirect()->route('account-head.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Account"), "route" => ""],
-            ["title" => ___('account.Head'), "route" => "account_head.index"],
+            ["title" => ___('common.Head'), "route" => "account-head.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -79,7 +79,7 @@ class AccountHeadController extends Controller
     {
         $result = $this->headRepo->update($request, $id);
         if($result['status']){
-            return redirect()->route('account_head.index')->with('success', $result['message']);
+            return redirect()->route('account-head.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }

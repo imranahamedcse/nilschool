@@ -21,7 +21,7 @@ class DepartmentController extends Controller
     {
         $data['departments'] = $this->repo->all();
 
-        $title             = ___('staff.department');
+        $title             = ___('common.department');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'department_create',
@@ -37,7 +37,7 @@ class DepartmentController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('staff.department');
+        $data['title']              = ___('common.department');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],
@@ -60,7 +60,7 @@ class DepartmentController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('staff.department');
+        $data['title']       = ___('common.department');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],

@@ -133,7 +133,7 @@ class FrontendRepository implements FrontendInterface
                 $query->where('student_id', $classSection->student_id);
             })->get();
 
-        $result      = ___('examination.Passed');
+        $result      = ___('common.Passed');
         $total_marks = 0;
 
         if ($marks_registers->count() == 0)
@@ -142,7 +142,7 @@ class FrontendRepository implements FrontendInterface
         foreach ($marks_registers as $marks_register) {
             $total_marks += $marks_register->marksRegisterChilds->sum('mark');
             if ($marks_register->marksRegisterChilds->sum('mark') < examSetting('average_pass_marks')) {
-                $result = ___('examination.Failed');
+                $result = ___('common.Failed');
             }
         }
 

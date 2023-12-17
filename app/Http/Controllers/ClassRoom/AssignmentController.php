@@ -37,7 +37,7 @@ class AssignmentController extends Controller
 
     public function index()
     {
-        $title              = ___('examination.Assignment');
+        $title              = ___('common.Assignment');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['assignment.search', 'class', 'section', 'subject'],
@@ -58,7 +58,7 @@ class AssignmentController extends Controller
 
     public function search(Request $request)
     {
-        $title              = ___('examination.Assignment');
+        $title              = ___('common.Assignment');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['assignment.search', 'class', 'section', 'subject'],
@@ -94,7 +94,7 @@ class AssignmentController extends Controller
 
     public function create()
     {
-        $data['title']                  = ___('examination.Assignment');
+        $data['title']                  = ___('common.Assignment');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -123,7 +123,7 @@ class AssignmentController extends Controller
         $data['subjects']              = $this->subjectRepo->all();
         $data['assignment']        = $this->repo->show($id);
 
-        $data['title']                 = ___('examination.Assignment');
+        $data['title']                 = ___('common.Assignment');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],

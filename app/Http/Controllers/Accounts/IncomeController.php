@@ -28,7 +28,7 @@ class IncomeController extends Controller
     {
         $data['income'] = $this->incomeRepo->getAll();
 
-        $title             = ___('account.Income');
+        $title             = ___('common.Income');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'income_create',
@@ -44,11 +44,11 @@ class IncomeController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('account.Add');
+        $data['title']       = ___('common.Add');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Account"), "route" => ""],
-            ["title" => ___('account.Income'), "route" => "income.index"],
+            ["title" => ___('common.Income'), "route" => "income.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -67,11 +67,11 @@ class IncomeController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('account.Edit');
+        $data['title']       = ___('common.Edit');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Account"), "route" => ""],
-            ["title" => ___('account.Income'), "route" => "income.index"],
+            ["title" => ___('common.Income'), "route" => "income.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 

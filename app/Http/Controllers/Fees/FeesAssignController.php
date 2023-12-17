@@ -58,7 +58,7 @@ class FeesAssignController extends Controller
     {
         $data['fees_assigns'] = $this->repo->all();
 
-        $title             = ___('fees.fees_assign');
+        $title             = ___('common.fees_assign');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'fees_assign_create',
@@ -81,7 +81,7 @@ class FeesAssignController extends Controller
 
     public function create()
     {
-        $data['title']        = ___('fees.Add fees assign');
+        $data['title']        = ___('common.Add fees assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],
@@ -108,7 +108,7 @@ class FeesAssignController extends Controller
 
     public function edit($id)
     {
-        $data['title']        = ___('fees.Edit fees assign');
+        $data['title']        = ___('common.Edit fees assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Fees"), "route" => ""],

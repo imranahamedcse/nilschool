@@ -10,12 +10,12 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
         // auth routes
         Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix' => 'account'], function () {
             Route::controller(AccountHeadController::class)->prefix('head')->group(function () {
-                Route::get('/',                 'index')->name('account_head.index')->middleware('PermissionCheck:account_head_read');
-                Route::get('/create',           'create')->name('account_head.create')->middleware('PermissionCheck:account_head_create');
-                Route::post('/store',           'store')->name('account_head.store')->middleware('PermissionCheck:account_head_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('account_head.edit')->middleware('PermissionCheck:account_head_update');
-                Route::put('/update/{id}',      'update')->name('account_head.update')->middleware('PermissionCheck:account_head_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('account_head.delete')->middleware('PermissionCheck:account_head_delete', 'DemoCheck');
+                Route::get('/',                 'index')->name('account-head.index')->middleware('PermissionCheck:account_head_read');
+                Route::get('/create',           'create')->name('account-head.create')->middleware('PermissionCheck:account_head_create');
+                Route::post('/store',           'store')->name('account-head.store')->middleware('PermissionCheck:account_head_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('account-head.edit')->middleware('PermissionCheck:account_head_update');
+                Route::put('/update/{id}',      'update')->name('account-head.update')->middleware('PermissionCheck:account_head_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('account-head.delete')->middleware('PermissionCheck:account_head_delete', 'DemoCheck');
             });
 
             Route::controller(IncomeController::class)->prefix('income')->group(function () {

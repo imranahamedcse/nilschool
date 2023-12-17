@@ -29,7 +29,7 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('attendance.Attendance');
+        $data['title']              = ___('common.Attendance');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Attendance"), "route" => ""],
@@ -53,7 +53,7 @@ class AttendanceController extends Controller
 
     public function reportSearch(AttendanceRequest $request)
     {
-        $data['title']        = ___('attendance.Attendance');
+        $data['title']        = ___('common.Attendance');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Attendance"), "route" => ""],

@@ -22,7 +22,7 @@ class SubscribeController extends Controller
     {
         $data['subscribe'] = $this->repo->all();
 
-        $title             = ___('settings.Subscription');
+        $title             = ___('common.Subscription');
         $data['headers']   = [
             "title"        => $title,
         ];

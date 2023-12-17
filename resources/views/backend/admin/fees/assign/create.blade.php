@@ -17,11 +17,11 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault01" class="form-label">{{ ___('fees.fees_group') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('common.fees_group') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault01" class="fees_group form-control @error('fees_group') is-invalid @enderror" name="fees_group"
                            >
-                            <option value="">{{ ___('fees.select_fees_group') }}</option>
+                            <option value="">{{ ___('common.select_fees_group') }}</option>
                             @foreach ($data['fees_groups'] as $item)
                                 <option {{ old('fees_group') == $item->group->id ? 'selected' : '' }}
                                     value="{{ $item->group->id }}">{{ $item->group->name }}</option>
@@ -34,11 +34,11 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault02" class="form-label">{{ ___('student_info.class') }} <span
+                        <label for="validationDefault02" class="form-label">{{ ___('common.class') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault02" class="class form-control @error('class') is-invalid @enderror" name="class"
                            >
-                            <option value="">{{ ___('student_info.select_class') }}</option>
+                            <option value="">{{ ___('common.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option {{ old('class') == $item->class->id ? 'selected' : '' }}
                                     value="{{ $item->class->id }}">{{ $item->class->name }}
@@ -52,11 +52,11 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault03" class="form-label">{{ ___('student_info.section') }} <span
+                        <label for="validationDefault03" class="form-label">{{ ___('common.section') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault03" class="section form-control @error('section') is-invalid @enderror" name="section"
                            >
-                            <option value="">{{ ___('student_info.select_section') }}</option>
+                            <option value="">{{ ___('common.select_section') }}</option>
                             @foreach ($data['sections'] as $item)
                                 @if (old('section') == $item->id)
                                     <option {{ old('section') == $item->id ? 'selected' : '' }}
@@ -72,9 +72,9 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <div>
-                            <label for="validationDefault04" class="form-label">{{ ___('fees.gender') }}</label>
+                            <label for="validationDefault04" class="form-label">{{ ___('common.gender') }}</label>
                             <select id="validationDefault04" class="gender form-control @error('gender') is-invalid @enderror" name="gender">
-                                <option value="">{{ ___('student_info.select_gender') }}</option>
+                                <option value="">{{ ___('common.select_gender') }}</option>
                                 @foreach ($data['genders'] as $item)
                                     <option {{ old('gender') == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}
@@ -90,10 +90,10 @@
                     <div class="col-md-2 mb-3">
                         <div>
                             <label for="validationDefault05"
-                                class="form-label">{{ ___('student_info.student_category') }}</label>
+                                class="form-label">{{ ___('common.student_category') }}</label>
                             <select id="validationDefault05" class="student_category form-control @error('student_category') is-invalid @enderror"
                                 name="student_category">
-                                <option value="">{{ ___('fees.select_student_category') }}</option>
+                                <option value="">{{ ___('common.select_student_category') }}</option>
                                 @foreach ($data['categories'] as $item)
                                     <option {{ old('student_category') == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}
@@ -110,7 +110,7 @@
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <h5 class="text-info">{{ ___('student_info.Fees Types') }}</h5>
+                        <h5 class="text-info">{{ ___('common.Fees Types') }}</h5>
                         <div class="table-responsive">
                             <input type="hidden" id="page" value="create">
                             <table class="table table-bordered role-table" id="types_table">
@@ -119,7 +119,7 @@
                                         <th class="purchase mr-4">{{ ___('common.All') }} <input class="form-check-input"
                                                 type="checkbox" id="all_fees_masters"></th>
                                         <th class="purchase">{{ ___('common.name') }}</th>
-                                        <th class="purchase">{{ ___('fees.amount') }}
+                                        <th class="purchase">{{ ___('common.amount') }}
                                             ({{ Setting('currency_symbol') }})</th>
                                     </tr>
                                 </thead>
@@ -128,19 +128,19 @@
                         </div>
                     </div>
                     <div class="col-md-8 mb-3">
-                        <h5 class="text-info">{{ ___('student_info.Students List') }} </h5>
+                        <h5 class="text-info">{{ ___('common.Students List') }} </h5>
                         <div class="table-responsive">
                             <table class="table table-bordered role-table" id="students_table">
                                 <thead class="thead">
                                     <tr>
                                         <th class="purchase mr-4">{{ ___('common.All') }} <input class="form-check-input"
                                                 type="checkbox" id="all_students"></th>
-                                        <th class="purchase">{{ ___('student_info.admission_no') }}</th>
-                                        <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                                        <th class="purchase">{{ ___('academic.class') }}
-                                            ({{ ___('academic.section') }})</th>
-                                        <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
-                                        <th class="purchase">{{ ___('student_info.Mobile Number') }}</th>
+                                        <th class="purchase">{{ ___('common.admission_no') }}</th>
+                                        <th class="purchase">{{ ___('common.Student Name') }}</th>
+                                        <th class="purchase">{{ ___('common.class') }}
+                                            ({{ ___('common.section') }})</th>
+                                        <th class="purchase">{{ ___('common.guardian_name') }}</th>
+                                        <th class="purchase">{{ ___('common.Mobile Number') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="tbody"></tbody>

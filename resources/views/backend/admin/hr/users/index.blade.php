@@ -19,10 +19,10 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no.') }}</th>
-                    <th class="purchase">{{ ___('staff.staff_id') }}</th>
+                    <th class="purchase">{{ ___('common.staff_id') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
                     <th class="purchase">{{ ___('common.roles') }}</th>
-                    <th class="purchase">{{ ___('staff.departments') }}</th>
+                    <th class="purchase">{{ ___('common.departments') }}</th>
                     <th class="purchase">{{ ___('common.designation') }}</th>
                     <th class="purchase">{{ ___('common.email') }}</th>
                     <th class="purchase">{{ ___('common.phone') }}</th>

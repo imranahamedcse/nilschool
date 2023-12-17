@@ -1,22 +1,21 @@
-
 <tr id="document-file">
     <td>
-        <select class="form-control @error('subjects') is-invalid @enderror"
-            name="subjects[]" id="subject{{$counter}}" required>
-            <option value="">{{ ___('academic.Select subject') }}</option>
+        <select class="form-control @error('subjects') is-invalid @enderror" name="subjects[]"
+            id="subject{{ $counter }}" required>
+            <option value="">{{ ___('common.Select subject') }}</option>
             @foreach ($data['subjects'] as $item)
                 <option value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
-        </select> 
+        </select>
     </td>
     <td>
-        <select class="form-control @error('teachers') is-invalid @enderror"
-            name="teachers[]" id="teacher{{$counter}}" required>
-            <option value="">{{ ___('academic.Select teacher') }}</option>
+        <select class="form-control @error('teachers') is-invalid @enderror" name="teachers[]"
+            id="teacher{{ $counter }}" required>
+            <option value="">{{ ___('common.Select teacher') }}</option>
             @foreach ($data['teachers'] as $item)
                 <option value="{{ $item->id }}">{{ $item->first_name }} {{ $item->last_name }}</option>
             @endforeach
-        </select> 
+        </select>
     </td>
     <td>
         <button class="btn btn-danger" onclick="removeRow(this)">
@@ -24,5 +23,3 @@
         </button>
     </td>
 </tr>
-
-

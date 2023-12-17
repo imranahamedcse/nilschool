@@ -171,7 +171,7 @@ class SubjectAssignRepository implements SubjectAssignInterface
 
         $data   = [];
         if($result) {
-            $data['message']   = ___('academic.already_assigned_for_this_section');
+            $data['message']   = ___('common.already_assigned_for_this_section');
             $data['status']    = false;
             $data['sections']  = $this->classSetupRepo->getSections($request->class);
         } else {

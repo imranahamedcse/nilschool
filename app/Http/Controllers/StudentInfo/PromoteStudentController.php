@@ -28,7 +28,7 @@ class PromoteStudentController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('student_info.Promote');
+        $data['title']              = ___('common.Promote');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
@@ -49,7 +49,7 @@ class PromoteStudentController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $data['title']              = ___('student_info.Promote');
+        $data['title']              = ___('common.Promote');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
@@ -75,7 +75,7 @@ class PromoteStudentController extends Controller
     {
         $result = $this->repo->store($request);
         if ($result['status']) {
-            $data['title']              = ___('student_info.Promote');
+            $data['title']              = ___('common.Promote');
             $data['student_categories'] = $this->repo->allActive();
             $data['classes']            = $this->classRepo->assignedAll();
             $data['sections']           = $this->classSetupRepo->getSections($request->class);
@@ -83,9 +83,9 @@ class PromoteStudentController extends Controller
             $data['promoteClasses']     = $this->classSetupRepo->promoteClasses($request->promote_session);
             $data['promoteSections']    = $this->classSetupRepo->promoteSections($request->promote_session, $request->promote_class);
 
-            return redirect()->route('promote_students.index')->with('success', $result['message']);
+            return redirect()->route('promote-students.index')->with('success', $result['message']);
         }
-        return redirect()->route('promote_students.index')->with('danger', $result['message'])->withInput();
+        return redirect()->route('promote-students.index')->with('danger', $result['message'])->withInput();
     }
 
     public function getClass(Request $request)

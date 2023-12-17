@@ -54,7 +54,7 @@ class SettingController extends Controller
     // mail settings start
     public function mailSetting()
     {
-        $data['title'] = ___('settings.email_settings');
+        $data['title'] = ___('common.email_settings');
         $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],
@@ -85,7 +85,7 @@ class SettingController extends Controller
 
     public function taskSchedulers()
     {
-        $data['title']      = ___('settings.Task Schedules');
+        $data['title']      = ___('common.Task Schedules');
         $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],
@@ -109,7 +109,7 @@ class SettingController extends Controller
 
     public function softwareUpdate()
     {
-        $data['title']      = ___('settings.Software Update');
+        $data['title']      = ___('common.Software Update');
         $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Settings"), "route" => ""],

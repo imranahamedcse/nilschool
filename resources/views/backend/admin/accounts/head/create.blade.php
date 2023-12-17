@@ -13,7 +13,7 @@
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
 
-            <form action="{{ route('account_head.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
+            <form action="{{ route('account-head.store') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
                 <div class="row mb-3">
                     <div class="col-lg-12">
@@ -32,14 +32,14 @@
                             </div>
                             <div class="col-md-6">
 
-                                <label for="validationDefault02" class="form-label">{{ ___('account.type') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('type') is-invalid @enderror"
                                     name="type" id="validationDefault02">
-                                    <option value="{{ App\Enums\AccountHeadType::INCOME }}">{{ ___('account.income') }}
+                                    <option value="{{ App\Enums\AccountHeadType::INCOME }}">{{ ___('common.income') }}
                                     </option>
-                                    <option value="{{ App\Enums\AccountHeadType::EXPENSE }}">{{ ___('account.expense') }}
+                                    <option value="{{ App\Enums\AccountHeadType::EXPENSE }}">{{ ___('common.expense') }}
                                     </option>
                                 </select>
 

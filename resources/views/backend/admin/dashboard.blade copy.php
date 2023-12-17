@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('title')
-{{ ___('dashboard.Dashboard') }}
+{{ ___('common.Dashboard') }}
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
                     </div>
                     <div class="summeryContent">
                         <h4>{{ $data['student'] }}</h4>
-                        <h1>{{ ___('dashboard.Student') }}</h1>
+                        <h1>{{ ___('common.Student') }}</h1>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="summeryContent">
                         <h4>{{ $data['parent'] }}</h4>
-                        <h1>{{ ___('dashboard.Parent') }}</h1>
+                        <h1>{{ ___('common.Parent') }}</h1>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="summeryContent">
                         <h4>{{ $data['teacher'] }}</h4>
-                        <h1>{{ ___('academic.teacher') }}</h1>
+                        <h1>{{ ___('common.teacher') }}</h1>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="summeryContent">
                         <h4>{{ $data['session'] }}</h4>
-                        <h1>{{ ___('settings.Session') }}</h1>
+                        <h1>{{ ___('common.Session') }}</h1>
                     </div>
                 </div>
             </div>
@@ -81,14 +81,14 @@
                 <div class="card ot_heightFull mb-24">
                     <div class="card-header d-flex justify-content-between">
                         <div class="card-title">
-                            <h4>{{ ___('dashboard.Revenue') }} ({{ date('Y') }})</h4>
+                            <h4>{{ ___('common.Revenue') }} ({{ date('Y') }})</h4>
                         </div>
                     </div>
                     <div class="d-flex flex-column align-items-center w-100">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div id="line-chart-income"></div>
                             <div class="chart-custom-content gap-0 flex-column align-items-start">
-                                <h3>{{ ___('dashboard.Total Income') }}</h3>
+                                <h3>{{ ___('common.Total Income') }}</h3>
                                 <div class="d-flex align-items-baseline gap-2">
                                     <h2 class="counter">{{ $data['income'] }}</h2>
                                 </div>
@@ -97,7 +97,7 @@
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div id="line-chart-expense"></div>
                             <div class="chart-custom-content gap-0 flex-column align-items-start">
-                                <h3>{{ ___('dashboard.Total Expense') }}</h3>
+                                <h3>{{ ___('common.Total Expense') }}</h3>
                                 <div class="d-flex align-items-baseline gap-2">
                                     <h2 class="counter">{{ $data['expense'] }}</h2>
                                 </div>
@@ -106,7 +106,7 @@
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div id="line-chart-revenue"></div>
                             <div class="chart-custom-content gap-0 flex-column align-items-start">
-                                <h3>{{ ___('dashboard.Total Balance') }}</h3>
+                                <h3>{{ ___('common.Total Balance') }}</h3>
                                 <div class="d-flex align-items-baseline gap-2">
                                     <h2 class="counter">{{ $data['balance'] }}</h2>
                                 </div>

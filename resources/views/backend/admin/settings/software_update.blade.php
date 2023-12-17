@@ -14,9 +14,9 @@
             </div>
 
             <div class="card-body">
-                <h3 class="mb-5">{{ ___('settings.Are you sure, want to database update ?') }}</h3>
+                <h3 class="mb-5">{{ ___('common.Are you sure, want to database update ?') }}</h3>
                 <a class="btn btn-primary" href="{{ route('settings.install-update') }}">
-                    {{ ___('settings.Database Update') }}</a>
+                    {{ ___('common.Database Update') }}</a>
             </div>
         </div>
     </div>

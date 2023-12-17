@@ -19,11 +19,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('academic.room_no') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('common.room_no') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('room_no') is-invalid @enderror" name="room_no"
                                     id="validationDefault01" type="number"
-                                    placeholder="{{ ___('academic.enter_room_no') }}" value="{{ old('room_no') }}">
+                                    placeholder="{{ ___('common.enter_room_no') }}" value="{{ old('room_no') }}">
                                 @error('room_no')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -31,11 +31,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('academic.capacity') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('common.capacity') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('capacity') is-invalid @enderror" name="capacity"
                                     id="validationDefault02" type="number"
-                                    placeholder="{{ ___('academic.enter_capacity') }}" value="{{ old('capacity') }}">
+                                    placeholder="{{ ___('common.enter_capacity') }}" value="{{ old('capacity') }}">
                                 @error('capacity')
                                     <div class="invalid-feedback">
                                         {{ $message }}

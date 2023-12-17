@@ -20,14 +20,14 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('student_info.admission_no') }}</th>
-                    <th class="purchase">{{ ___('student_info.roll_no') }}</th>
-                    <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                    <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})</th>
-                    <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
-                    <th class="purchase">{{ ___('student_info.Date Of Birth') }}</th>
+                    <th class="purchase">{{ ___('common.admission_no') }}</th>
+                    <th class="purchase">{{ ___('common.roll_no') }}</th>
+                    <th class="purchase">{{ ___('common.Student Name') }}</th>
+                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
+                    <th class="purchase">{{ ___('common.guardian_name') }}</th>
+                    <th class="purchase">{{ ___('common.Date Of Birth') }}</th>
                     <th class="purchase">{{ ___('common.gender') }}</th>
-                    <th class="purchase">{{ ___('student_info.Mobile Number') }}</th>
+                    <th class="purchase">{{ ___('common.Mobile Number') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('student_update') || hasPermission('student_delete'))
                         <th class="action">{{ ___('common.action') }}</th>

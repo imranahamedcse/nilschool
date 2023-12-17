@@ -95,11 +95,11 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault06" class="form-label">{{ ___('student_info.class') }} <span
+                        <label for="validationDefault06" class="form-label">{{ ___('common.class') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault06" class="class form-control @error('class') is-invalid @enderror"
                             name="class">
-                            <option value="">{{ ___('student_info.select_class') }}</option>
+                            <option value="">{{ ___('common.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option
                                     {{ old('class', @$data['online_exam']->classes_id) == $item->class->id ? 'selected' : '' }}
@@ -114,11 +114,11 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault07" class="form-label">{{ ___('student_info.section') }} <span
+                        <label for="validationDefault07" class="form-label">{{ ___('common.section') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault07" class="section form-control @error('section') is-invalid @enderror"
                             name="section">
-                            <option value="">{{ ___('student_info.select_section') }}</option>
+                            <option value="">{{ ___('common.select_section') }}</option>
                             @foreach ($data['sections'] as $item)
                                 <option
                                     {{ old('section', @$data['online_exam']->section_id) == $item->section->id ? 'selected' : '' }}
@@ -187,11 +187,11 @@
                     <div class="col-md-2 mb-3">
                         <div>
                             <label for="validationDefault11"
-                                class="form-label">{{ ___('student_info.student_category') }}</label>
+                                class="form-label">{{ ___('common.student_category') }}</label>
                             <select id="student_category validationDefault11"
                                 class="nice-select student_category @error('student_category') is-invalid @enderror"
                                 name="student_category">
-                                <option value="">{{ ___('fees.select_student_category') }}</option>
+                                <option value="">{{ ___('common.select_student_category') }}</option>
                                 @foreach ($data['categories'] as $item)
                                     <option {{ old('student_category') == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}
@@ -206,11 +206,11 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <div>
-                            <label for="validationDefault12" class="form-label">{{ ___('fees.gender') }}</label>
+                            <label for="validationDefault12" class="form-label">{{ ___('common.gender') }}</label>
                             <select id="gender validationDefault12"
                                 class="nice-select gender @error('gender') is-invalid @enderror"
                                 name="gender">
-                                <option value="">{{ ___('student_info.select_gender') }}</option>
+                                <option value="">{{ ___('common.select_gender') }}</option>
                                 @foreach ($data['genders'] as $item)
                                     <option {{ old('gender') == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}
@@ -261,19 +261,19 @@
                         @endif
                     </div>
                     <div class="col-md-8 mb-3">
-                        <h5>{{ ___('student_info.Students List') }} </h5>
+                        <h5>{{ ___('common.Students List') }} </h5>
                         <div class="table-responsive">
                             <table class="table table-bordered role-table" id="students_table">
                                 <thead class="thead">
                                     <tr>
                                         <th class="purchase mr-4">{{ ___('common.All') }} <input class="form-check-input"
                                                 type="checkbox" id="all_students"></th>
-                                        <th class="purchase">{{ ___('student_info.admission_no') }}</th>
-                                        <th class="purchase">{{ ___('student_info.Student Name') }}</th>
-                                        <th class="purchase">{{ ___('academic.class') }} ({{ ___('academic.section') }})
+                                        <th class="purchase">{{ ___('common.admission_no') }}</th>
+                                        <th class="purchase">{{ ___('common.Student Name') }}</th>
+                                        <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})
                                         </th>
-                                        <th class="purchase">{{ ___('student_info.guardian_name') }}</th>
-                                        <th class="purchase">{{ ___('student_info.Mobile Number') }}</th>
+                                        <th class="purchase">{{ ___('common.guardian_name') }}</th>
+                                        <th class="purchase">{{ ___('common.Mobile Number') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="tbody">

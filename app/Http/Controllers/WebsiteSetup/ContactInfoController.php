@@ -25,7 +25,7 @@ class ContactInfoController extends Controller
     {
         $data['contact_info'] = $this->contactInfoRepo->all();
 
-        $title             = ___('settings.Contact information');
+        $title             = ___('common.Contact information');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'contact_info_create',
@@ -41,7 +41,7 @@ class ContactInfoController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('website.Add contact information');
+        $data['title']       = ___('common.Add contact information');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],
@@ -63,7 +63,7 @@ class ContactInfoController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('website.Edit contact information');
+        $data['title']       = ___('common.Edit contact information');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Website setup"), "route" => ""],

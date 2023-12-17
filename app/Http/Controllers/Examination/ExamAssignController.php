@@ -43,7 +43,7 @@ class ExamAssignController extends Controller
         $data['exam_assigns'] = $this->repo->all();
         $data['exam_types'] = [];
 
-        $title             = ___('examination.exam_assign');
+        $title             = ___('common.exam_assign');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['exam-assign.search', 'class', 'section', 'exam_type', 'subject'],
@@ -61,7 +61,7 @@ class ExamAssignController extends Controller
 
     public function search(Request $request)
     {
-        $title             = ___('examination.exam_assign');
+        $title             = ___('common.exam_assign');
         $data['headers']   = [
             "title"        => $title,
             "filter"            => ['exam-assign.search', 'class', 'section', 'exam_type', 'subject'],
@@ -87,7 +87,7 @@ class ExamAssignController extends Controller
 
     public function create()
     {
-        $data['title']                  = ___('examination.Add exam assign');
+        $data['title']                  = ___('common.Add exam assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -126,7 +126,7 @@ class ExamAssignController extends Controller
         if (!$result)
             return redirect()->route('exam-assign.index')->with('danger', 'You cannot edit this! because, already marks registred.');
 
-        $data['title']              = ___('examination.Edit exam assign');
+        $data['title']              = ___('common.Edit exam assign');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],

@@ -19,9 +19,9 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('academic.type') }}</th>
-                    <th class="purchase">{{ ___('academic.start_time') }}</th>
-                    <th class="purchase">{{ ___('academic.end_time') }}</th>
+                    <th class="purchase">{{ ___('common.type') }}</th>
+                    <th class="purchase">{{ ___('common.start_time') }}</th>
+                    <th class="purchase">{{ ___('common.end_time') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('time_schedule_update') || hasPermission('time_schedule_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
@@ -34,9 +34,9 @@
                         <td class="serial">{{ ++$key }}</td>
                         <td>
                             @if ($row->type == 1)
-                                <span class="badge-basic-success-text">{{ ___('academic.class') }}</span>
+                                <span class="badge-basic-success-text">{{ ___('common.class') }}</span>
                             @else
-                                <span class="badge-basic-primary-text">{{ ___('academic.exam') }}</span>
+                                <span class="badge-basic-primary-text">{{ ___('common.exam') }}</span>
                             @endif
                         </td>
                         {{-- <td>{{ formatTimeAMPM($row->start_time) }}</td>
@@ -51,7 +51,7 @@
                                 @if (hasPermission('time_schedule_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('common.edit') }}"
-                                        href="{{ route('time_schedule.edit', $row->id) }}"><i
+                                        href="{{ route('time-schedule.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('time_schedule_delete') && $row->code != 'en')

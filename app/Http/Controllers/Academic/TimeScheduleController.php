@@ -26,11 +26,11 @@ class TimeScheduleController extends Controller
     {
         $data['time_schedule'] = $this->timeRepo->all();
 
-        $title = ___('academic.time_schedule');
+        $title = ___('common.time_schedule');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'time_schedule_create',
-            "create-route" => 'time_schedule.create',
+            "create-route" => 'time-schedule.create',
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
@@ -43,11 +43,11 @@ class TimeScheduleController extends Controller
 
     public function create()
     {
-        $data['title']       = ___('academic.Add time schedule');
+        $data['title']       = ___('common.Add time schedule');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
-            ["title" => ___("common.Time schedule"), "route" => "time_schedule.index"],
+            ["title" => ___("common.Time schedule"), "route" => "time-schedule.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -58,18 +58,18 @@ class TimeScheduleController extends Controller
     {
         $result = $this->timeRepo->store($request);
         if ($result['status']) {
-            return redirect()->route('time_schedule.index')->with('success', $result['message']);
+            return redirect()->route('time-schedule.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }
 
     public function edit($id)
     {
-        $data['title']        = ___('academic.Edit time schedule');
+        $data['title']        = ___('common.Edit time schedule');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Academic"), "route" => ""],
-            ["title" => ___("common.Time schedule"), "route" => "time_schedule.index"],
+            ["title" => ___("common.Time schedule"), "route" => "time-schedule.index"],
             ["title" => $data['title'], "route" => ""]
         ];
 
@@ -81,7 +81,7 @@ class TimeScheduleController extends Controller
     {
         $result = $this->timeRepo->update($request, $id);
         if ($result['status']) {
-            return redirect()->route('time_schedule.index')->with('success', $result['message']);
+            return redirect()->route('time-schedule.index')->with('success', $result['message']);
         }
         return back()->with('danger', $result['message']);
     }

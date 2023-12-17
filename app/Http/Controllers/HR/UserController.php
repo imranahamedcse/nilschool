@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         $data['users'] = $this->user->all();
 
-        $title             = ___('staff.staff');
+        $title             = ___('common.staff');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'user_create',
@@ -67,7 +67,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $data['title']         = ___('staff.create_staff');
+        $data['title']         = ___('common.create_staff');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],
@@ -94,7 +94,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $data['title']         = ___('staff.update_staff');
+        $data['title']         = ___('common.update_staff');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Staff Manage"), "route" => ""],

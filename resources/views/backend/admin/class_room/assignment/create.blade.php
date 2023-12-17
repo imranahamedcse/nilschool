@@ -19,11 +19,11 @@
                         <div class="row">
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('student_info.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control class @error('class') is-invalid @enderror" name="class"
                                     id="validationDefault01">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
+                                    <option value="">{{ ___('common.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class') == $item->id ? 'selected' : '' }}
                                             value="{{ $item->class->id }}">{{ $item->class->name }}
@@ -38,11 +38,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('student_info.section') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="getSubjects" class="form-control section @error('section') is-invalid @enderror"
                                     name="section" id="validationDefault02">
-                                    <option value="">{{ ___('student_info.select_section') }}</option>
+                                    <option value="">{{ ___('common.select_section') }}</option>
                                     </option>
                                 </select>
 
@@ -54,11 +54,11 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('academic.subject') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('common.subject') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="subject" class="subjects form-control @error('subject') is-invalid @enderror"
                                     name="subject" id="validationDefault03">
-                                    <option value="">{{ ___('examination.select_subject') }}</option>
+                                    <option value="">{{ ___('common.select_subject') }}</option>
                                 </select>
 
                                 @error('subject')
@@ -85,10 +85,10 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('fees.Mark') }} </label>
+                                <label for="validationDefault05" class="form-label ">{{ ___('common.Mark') }} </label>
                                 <input class="form-control @error('mark') is-invalid @enderror" name="mark"
                                     value="{{ old('mark') }}" id="validationDefault05" type="number"
-                                    placeholder="{{ ___('fees.Enter mark') }}">
+                                    placeholder="{{ ___('common.Enter mark') }}">
                                 @error('mark')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -97,11 +97,11 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault06" class="form-label ">{{ ___('fees.Assigned date') }}
+                                <label for="validationDefault06" class="form-label ">{{ ___('common.Assigned date') }}
                                 </label>
                                 <input class="form-control @error('assigned_date') is-invalid @enderror"
                                     name="assigned_date" value="{{ old('assigned_date') }}" id="validationDefault06"
-                                    type="date" placeholder="{{ ___('fees.enter_assigned_date') }}">
+                                    type="date" placeholder="{{ ___('common.enter_assigned_date') }}">
                                 @error('assigned_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -110,11 +110,11 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault07" class="form-label ">{{ ___('fees.Submission date') }}
+                                <label for="validationDefault07" class="form-label ">{{ ___('common.Submission date') }}
                                 </label>
                                 <input class="form-control @error('submission_date') is-invalid @enderror"
                                     name="submission_date" value="{{ old('submission_date') }}" id="validationDefault07"
-                                    type="date" placeholder="{{ ___('fees.enter_submission_date') }}">
+                                    type="date" placeholder="{{ ___('common.enter_submission_date') }}">
                                 @error('submission_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -123,9 +123,9 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault08" class="form-label ">{{ ___('fees.Document') }} </label>
+                                <label for="validationDefault08" class="form-label ">{{ ___('common.Document') }} </label>
                                 <input class="form-control @error('document') is-invalid @enderror" name="document"
-                                    id="validationDefault08" type="file" placeholder="{{ ___('fees.enter_document') }}"
+                                    id="validationDefault08" type="file" placeholder="{{ ___('common.enter_document') }}"
                                     value="{{ old('document') }}">
                                 @error('document')
                                     <div class="invalid-feedback">
@@ -135,9 +135,9 @@
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault09" class="form-label ">{{ ___('fees.description') }}</label>
+                                <label for="validationDefault09" class="form-label ">{{ ___('common.description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="validationDefault09"
-                                    placeholder="{{ ___('fees.enter_description') }}">{{ old('description') }}</textarea>
+                                    placeholder="{{ ___('common.enter_description') }}">{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}

@@ -22,7 +22,7 @@
                     <th class="purchase">{{ ___('common.name') }}</th>
                     <th class="purchase">{{ ___('common.phone') }}</th>
                     <th class="purchase">{{ ___('common.email') }}</th>
-                    <th class="purchase">{{ ___('academic.subject') }}</th>
+                    <th class="purchase">{{ ___('common.subject') }}</th>
                     <th class="purchase">{{ ___('common.message') }}</th>
                 </tr>
             </thead>

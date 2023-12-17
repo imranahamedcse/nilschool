@@ -23,11 +23,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="class form-control @error('class') is-invalid @enderror"
                                     name="class" id="validationDefault01">
-                                    <option value="">{{ ___('student_info.select_class') }}</option>
+                                    <option value="">{{ ___('common.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option value="{{ $item->class->id }}"
                                             {{ $data['class_routine']->classes_id == $item->class->id ? 'selected' : '' }}>
@@ -43,11 +43,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <div id="show_sections">
-                                    <label for="validationDefault02" class="form-label">{{ ___('academic.section') }}
+                                    <label for="validationDefault02" class="form-label">{{ ___('common.section') }}
                                         <span class="text-danger">*</span></label>
                                     <select class="section form-control @error('section') is-invalid @enderror"
                                         name="section" id="validationDefault02">
-                                        <option value="">{{ ___('student_info.select_section') }}</option>
+                                        <option value="">{{ ___('common.select_section') }}</option>
                                         @foreach ($data['sections'] as $item)
                                             <option value="{{ $item->section_id }}"
                                                 {{ $data['class_routine']->section_id == $item->section_id ? 'selected' : '' }}>
@@ -62,10 +62,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('academic.shift') }} </label>
+                                <label for="validationDefault03" class="form-label">{{ ___('common.shift') }} </label>
                                 <select class="shift form-control @error('shift') is-invalid @enderror" name="shift"
                                     id="validationDefault03">
-                                    <option value="">{{ ___('student_info.select_shift') }}</option>
+                                    <option value="">{{ ___('common.select_shift') }}</option>
                                     @foreach ($data['shifts'] as $item)
                                         <option value="{{ $item->id }}"
                                             {{ $data['class_routine']->shift_id == $item->id ? 'selected' : '' }}>
@@ -80,11 +80,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault04" class="form-label">{{ ___('academic.day') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('common.day') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="day form-control @error('day') is-invalid @enderror" name="day"
                                     id="validationDefault04">
-                                    <option value="">{{ ___('student_info.select_day') }}</option>
+                                    <option value="">{{ ___('common.select_day') }}</option>
                                     @foreach (\Config::get('site.days') as $key => $day)
                                         <option {{ $data['class_routine']->day == $key ? 'selected' : '' }}
                                             value="{{ $key }}">
@@ -105,7 +105,7 @@
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
                                     <h5 class="m-0 flex-fill text-info">
-                                        {{ ___('academic.Add Subject, Teacher, Time & Room') }}
+                                        {{ ___('common.Add Subject, Teacher, Time & Room') }}
                                     </h5>
                                     <button type="button" class="btn btn-sm btn-info" onclick="addClassRoutine()">
                                         <span><i class="fa-solid fa-plus"></i> </span>
@@ -122,7 +122,7 @@
                                         <table class="table school_borderLess_table" id="class-routines">
                                             <thead>
                                                 <tr>
-                                                    <td scope="col">{{ ___('academic.subject') }} <span
+                                                    <td scope="col">{{ ___('common.subject') }} <span
                                                             class="text-danger"></span>
                                                         @if ($errors->any())
                                                             @if ($errors->has('subjects.*'))
@@ -131,7 +131,7 @@
                                                         @endif
                                                     </td>
                                                     <td scope="col">
-                                                        {{ ___('academic.time_schedules.*') }}
+                                                        {{ ___('common.time_schedules.*') }}
                                                         <span class="text-danger"></span>
                                                         @if ($errors->any())
                                                             @if ($errors->has('time_schedules.*'))
@@ -140,7 +140,7 @@
                                                         @endif
                                                     </td>
                                                     <td scope="col">
-                                                        {{ ___('academic.class_room') }}
+                                                        {{ ___('common.class_room') }}
                                                         <span class="text-danger"></span>
                                                         @if ($errors->any())
                                                             @if ($errors->has('class_rooms.*'))
@@ -160,7 +160,7 @@
                                                         <td>
                                                             <select class="form-control" name="subjects[]"
                                                                 id="subject{{ $counter }}" required>
-                                                                <option value="">{{ ___('academic.Select subject') }}
+                                                                <option value="">{{ ___('common.Select subject') }}
                                                                 </option>
                                                                 @foreach ($data['subjects'] as $item)
                                                                     <option value="{{ $item->subject->id }}"
@@ -173,7 +173,7 @@
                                                             <select class="form-control" name="time_schedules[]"
                                                                 id="teacher{{ $counter }}" required>
                                                                 <option value="">
-                                                                    {{ ___('academic.Select time schedule') }}</option>
+                                                                    {{ ___('common.Select time schedule') }}</option>
                                                                 @foreach ($data['time_schedules'] as $item)
                                                                     <option value="{{ $item->id }}"
                                                                         {{ $child->time_schedule_id == $item->id ? 'selected' : '' }}>
@@ -186,7 +186,7 @@
                                                             <select class="form-control" name="class_rooms[]"
                                                                 id="class_room{{ $counter }}" required>
                                                                 <option value="">
-                                                                    {{ ___('academic.Select class room') }}</option>
+                                                                    {{ ___('common.Select class room') }}</option>
                                                                 @foreach ($data['class_rooms'] as $item)
                                                                     <option value="{{ $item->id }}"
                                                                         {{ $child->class_room_id == $item->id ? 'selected' : '' }}>

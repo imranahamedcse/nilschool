@@ -18,11 +18,11 @@
                 <input type="hidden" name="form_type" id="form_type" value="create" />
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault01" class="form-label">{{ ___('academic.class') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
                                 class="text-danger">*</span></label>
-                        <select id="validationDefault01"
-                            class="class form-control @error('class') is-invalid @enderror" name="class">
-                            <option value="">{{ ___('student_info.select_class') }}</option>
+                        <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror"
+                            name="class">
+                            <option value="">{{ ___('common.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
                             @endforeach
@@ -36,11 +36,11 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <div id="show_sections">
-                            <label for="validationDefault02" class="form-label">{{ ___('academic.section') }} <span
+                            <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
                                     class="text-danger">*</span></label>
                             <select class="form-control section @error('section') is-invalid @enderror" name="section"
                                 id="validationDefault02">
-                                <option value="">{{ ___('student_info.select_section') }}</option>
+                                <option value="">{{ ___('common.select_section') }}</option>
                             </select>
                             @error('section')
                                 <div class="invalid-feedback">
@@ -68,7 +68,7 @@
                     <div class="col-md-12 mt-3">
                         <div class="d-flex align-items-center gap-4 flex-wrap">
                             <h5 class="m-0 flex-fill text-info">
-                                {{ ___('common.add') }} {{ ___('academic.Subject & Teacher') }}
+                                {{ ___('common.add') }} {{ ___('common.Subject & Teacher') }}
                             </h5>
                             <button type="button" class="btn btn-sm btn-info" onclick="addSubjectTeacher()">
                                 <span><i class="fa-solid fa-plus"></i> </span>
@@ -82,7 +82,7 @@
                                 <table class="table school_borderLess_table table_border_hide2" id="subject-teacher">
                                     <thead>
                                         <tr>
-                                            <td scope="col">{{ ___('academic.subject') }} <span
+                                            <td scope="col">{{ ___('common.subject') }} <span
                                                     class="text-danger"></span>
                                                 @if ($errors->any())
                                                     @if ($errors->has('subjects.*'))
@@ -91,7 +91,7 @@
                                                 @endif
                                             </td>
                                             <td scope="col">
-                                                {{ ___('academic.teacher') }}
+                                                {{ ___('common.teacher') }}
                                                 <span class="text-danger"></span>
                                                 @if ($errors->any())
                                                     @if ($errors->has('teachers.*'))

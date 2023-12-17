@@ -21,7 +21,7 @@ class ExamTypeController extends Controller
     {
         $data['exam_types'] = $this->repo->all();
 
-        $title             = ___('examination.exam_type');
+        $title             = ___('common.exam_type');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'exam_type_create',
@@ -37,7 +37,7 @@ class ExamTypeController extends Controller
 
     public function create()
     {
-        $data['title']              = ___('examination.Add exam type');
+        $data['title']              = ___('common.Add exam type');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
@@ -58,7 +58,7 @@ class ExamTypeController extends Controller
 
     public function edit($id)
     {
-        $data['title']       = ___('examination.Edit exam type');
+        $data['title']       = ___('common.Edit exam type');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Examination"), "route" => ""],
