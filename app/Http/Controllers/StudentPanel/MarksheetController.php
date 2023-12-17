@@ -20,22 +20,22 @@ class MarksheetController extends Controller
     private $studentRepo;
 
     function __construct(
-        MarksheetRepository $repo, 
+        MarksheetRepository $repo,
         ExamAssignRepository $typeRepo,
-        ReportMarksheetRepository $reportMarksheetRepo, 
+        ReportMarksheetRepository $reportMarksheetRepo,
         StudentRepository $studentRepo,
-    ) 
-    { 
-        $this->repo = $repo; 
+    )
+    {
+        $this->repo = $repo;
         $this->typeRepo = $typeRepo;
-        $this->reportMarksheetRepo = $reportMarksheetRepo; 
+        $this->reportMarksheetRepo = $reportMarksheetRepo;
         $this->studentRepo = $studentRepo;
     }
 
     public function index()
     {
         $data['exam_types']   = $this->typeRepo->getExamType($this->repo->index());
-        return view('student-panel.marksheet', compact('data'));
+        return view('backend.student.marksheet', compact('data'));
     }
 
     public function search(Request $request)
@@ -44,7 +44,7 @@ class MarksheetController extends Controller
         $data['exam_types']     = $this->typeRepo->assignedExamType();
         $data['request']        = $request;
 
-        return view('student-panel.marksheet', compact('data','request'));
+        return view('backend.student.marksheet', compact('data','request'));
     }
 
     public function generatePDF($type)
@@ -63,7 +63,7 @@ class MarksheetController extends Controller
 
         $data['student']      = $this->studentRepo->show(@$student->id);
         $data['resultData']   = $this->reportMarksheetRepo->search($request);
-        
+
         $pdf = PDF::loadView('backend.report.marksheetPDF', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
     }

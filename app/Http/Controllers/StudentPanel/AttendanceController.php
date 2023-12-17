@@ -24,7 +24,7 @@ class AttendanceController extends Controller
     {
         $data['title']              = ___('common.Attendance');
         $data['results']            = [];
-        return view('student-panel.attendance', compact('data'));
+        return view('backend.student.attendance', compact('data'));
     }
 
     public function search(Request $request)
@@ -34,8 +34,8 @@ class AttendanceController extends Controller
         $results              = $this->repo->search($request);
         $data['results']      = $results['results'];
         $data['days']         = $results['days'];
-        
-        return view('student-panel.attendance', compact('data'));
+
+        return view('backend.student.attendance', compact('data'));
     }
 
 

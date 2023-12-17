@@ -12,13 +12,13 @@ class DashboardController extends Controller
     private $repo;
 
     function __construct( DashboardRepository $repo)
-    { 
-        $this->repo = $repo; 
+    {
+        $this->repo = $repo;
     }
 
     public function index(){
         $data = $this->repo->index();
-        return view('student-panel.dashboard', compact('data'));
+        return view('backend.student.dashboard', compact('data'));
     }
 
     public function searchStudentMenuData(Request $request){

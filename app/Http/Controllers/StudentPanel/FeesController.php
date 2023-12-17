@@ -21,22 +21,22 @@ class FeesController extends Controller
     private $feesCollectRepository;
 
     function __construct(FeesRepository $repo, FeesCollectRepository $feesCollectRepository)
-    { 
-        $this->repo = $repo; 
-        $this->feesCollectRepository = $feesCollectRepository; 
+    {
+        $this->repo = $repo;
+        $this->feesCollectRepository = $feesCollectRepository;
     }
 
-    
+
     public function index()
     {
         $data = $this->repo->index();
-        return view('student-panel.fees', compact('data'));
+        return view('backend.student.fees', compact('data'));
     }
 
 
     public function payModal(Request $request)
     {
-        return view('student-panel.pay-modal', [
+        return view('backend.student.pay-modal', [
             'feeAssignChildren' => FeesAssignChildren::with('feesMaster')->where('id', $request->fees_assigned_children_id)->first()
         ]);
     }
@@ -46,7 +46,7 @@ class FeesController extends Controller
     {
         try {
             $this->feesCollectRepository->payWithStripeStore($request);
-        
+
             return back()->with('success', ___('alert.Fee has been paid successfully'));
 
         } catch (\Throwable $th) {
@@ -55,7 +55,7 @@ class FeesController extends Controller
     }
 
 
-    
+
 
 
     public function payWithPaypal(Request $request)

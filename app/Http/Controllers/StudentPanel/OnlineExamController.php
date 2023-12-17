@@ -11,26 +11,26 @@ class OnlineExamController extends Controller
     private $repo;
 
     function __construct(
-        OnlineExaminationRepository $repo, 
-    ) 
-    { 
+        OnlineExaminationRepository $repo,
+    )
+    {
         $this->repo = $repo;
     }
 
     public function index()
     {
         $data = $this->repo->index();
-        return view('student-panel.online-exam-list', compact('data'));
+        return view('backend.student.online-exam-list', compact('data'));
     }
     public function view($id)
     {
         $data = $this->repo->view($id);
-        return view('student-panel.online-exam-view', compact('data'));
+        return view('backend.student.online-exam-view', compact('data'));
     }
     public function resultView($id)
     {
         $data = $this->repo->resultView($id);
-        return view('student-panel.online-exam-result-view', compact('data'));
+        return view('backend.student.online-exam-result-view', compact('data'));
     }
     public function answerSubmit(Request $request)
     {
