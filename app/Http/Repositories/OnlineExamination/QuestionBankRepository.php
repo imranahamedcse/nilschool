@@ -38,7 +38,7 @@ class QuestionBankRepository implements QuestionBankInterface
             $result = $result->where('question', 'LIKE', "%{$request->keyword}%");
         }
 
-        return $result->latest()->paginate(Settings::PAGINATE);
+        return $result->latest()->get();
     }
 
     public function store($request)

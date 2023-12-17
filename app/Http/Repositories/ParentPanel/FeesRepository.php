@@ -24,7 +24,7 @@ class FeesRepository implements FeesInterface
                                         ->whereHas('feesAssign', function ($query) {
                                             return $query->where('session_id', setting('session'));
                                         })
-                                        ->paginate(Settings::PAGINATE);
+                                        ->get();
             }
 
             return $data;

@@ -43,7 +43,7 @@ class OnlineAdmissionRepository implements OnlineAdmissionInterface
             $result = $result->where('section_id', $request->section);
         }
 
-        return $result->paginate(Settings::PAGINATE);
+        return $result->get();
     }
 
     public function show($id)

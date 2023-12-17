@@ -42,7 +42,7 @@ class ParentGuardianRepository implements ParentGuardianInterface
         // return $this->model::where('guardian_name', 'LIKE', "%{$request->keyword}%")
         // ->orWhere('guardian_email', 'LIKE', "%{$request->keyword}%")
         // ->orWhere('guardian_mobile', 'LIKE', "%{$request->keyword}%")
-        // ->paginate(Settings::PAGINATE);
+        // ->get();
         $students = SessionClassStudent::query();
         $students = $students->where('session_id', setting('session'));
 
@@ -53,7 +53,7 @@ class ParentGuardianRepository implements ParentGuardianInterface
             $students = $students->where('section_id', $request->section);
         }
 
-        return $students->paginate(Settings::PAGINATE);
+        return $students->get();
     }
 
     public function getParent($request)

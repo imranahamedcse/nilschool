@@ -25,11 +25,15 @@ class DisabledStudentController extends Controller
 
     public function index()
     {
-        $data['title']       = ___('common.disabled_list');
+        $title             = ___('common.disabled_list');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"       => ['disabled-students.search', 'class', 'section'],
+        ];
         $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
-            ["title" => $data['title'], "route" => ""]
+            ["title" => $title, "route" => ""]
         ];
 
         $data['classes']            = $this->classRepo->assignedAll();
@@ -41,15 +45,20 @@ class DisabledStudentController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $data['title']              = ___('common.disabled_list');
+        $title             = ___('common.disabled_list');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"       => ['disabled-students.search', 'class', 'section'],
+        ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Student Info"), "route" => ""],
-            ["title" => $data['title'], "route" => ""]
+            ["title" => $title, "route" => ""]
         ];
 
         $data['classes']            = $this->classRepo->assignedAll();
         $data['sections']           = $this->classSetupRepo->getSections($request->class);
+        $data['request']  = $request;
         $students                   = $this->repo->search($request);
         return view('backend.admin.student-info.disabled-student.index', compact('data', 'students', 'request'));
     }

@@ -28,7 +28,7 @@ class BookRepository implements BookInterface
 
     public function getAll()
     {
-        return $this->model->orderBy('id', 'desc')->paginate(Settings::PAGINATE);
+        return $this->model->orderBy('id', 'desc')->get();
     }
 
     public function store($request)

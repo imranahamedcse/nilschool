@@ -24,7 +24,7 @@ class AccountHeadRepository implements AccountHeadInterface
     }
     public function getAll()
     {
-        return $this->head->latest()->paginate(Settings::PAGINATE);
+        return $this->head->latest()->get();
     }
 
     public function getIncomeHeads()

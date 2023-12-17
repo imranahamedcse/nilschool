@@ -27,7 +27,7 @@ class IncomeRepository implements IncomeInterface
 
     public function getAll()
     {
-        return $this->income->latest()->where('session_id', setting('session'))->paginate(Settings::PAGINATE);
+        return $this->income->latest()->where('session_id', setting('session'))->get();
     }
 
     public function store($request)

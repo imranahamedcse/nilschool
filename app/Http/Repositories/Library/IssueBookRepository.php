@@ -33,7 +33,7 @@ class IssueBookRepository implements IssueBookInterface
 
     public function getAll()
     {
-        return $this->model->orderBy('id', 'desc')->paginate(Settings::PAGINATE);
+        return $this->model->orderBy('id', 'desc')->get();
     }
 
     public function store($request)
@@ -181,6 +181,6 @@ class IssueBookRepository implements IssueBookInterface
                     $query->orWhere('status', EnumsIssueBook::ISSUED);
                 }
             })
-            ->paginate(Settings::PAGINATE);
+            ->get();
     }
 }

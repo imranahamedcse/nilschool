@@ -23,7 +23,7 @@ class RoomRepository implements RoomInterface
     }
     public function getAll()
     {
-        return $this->model->latest()->paginate(Settings::PAGINATE);
+        return $this->model->latest()->get();
     }
 
     public function store($request)

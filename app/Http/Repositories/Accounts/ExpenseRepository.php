@@ -27,7 +27,7 @@ class ExpenseRepository implements ExpenseInterface
 
     public function getAll()
     {
-        return $this->expense->latest()->where('session_id', setting('session'))->paginate(Settings::PAGINATE);
+        return $this->expense->latest()->where('session_id', setting('session'))->get();
     }
 
     public function store($request)
