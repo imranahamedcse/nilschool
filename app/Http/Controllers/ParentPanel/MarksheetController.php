@@ -23,15 +23,15 @@ class MarksheetController extends Controller
     private $studentRepo;
 
     function __construct(
-        MarksheetRepository $repo, 
+        MarksheetRepository $repo,
         ExamAssignRepository $typeRepo,
-        ReportMarksheetRepository $reportMarksheetRepo, 
+        ReportMarksheetRepository $reportMarksheetRepo,
         StudentRepository $studentRepo,
-    ) 
-    { 
-        $this->repo = $repo; 
+    )
+    {
+        $this->repo = $repo;
         $this->typeRepo = $typeRepo;
-        $this->reportMarksheetRepo = $reportMarksheetRepo; 
+        $this->reportMarksheetRepo = $reportMarksheetRepo;
         $this->studentRepo = $studentRepo;
     }
 
@@ -43,14 +43,14 @@ class MarksheetController extends Controller
     public function index()
     {
         $data                 = $this->repo->index();
-        return view('parent-panel.marksheet', compact('data'));
+        return view('backend.parent.marksheet', compact('data'));
     }
 
     public function search(Request $request)
     {
         $data               = $this->repo->search($request);
         $data['request']    = $request;
-        return view('parent-panel.marksheet', compact('data','request'));
+        return view('backend.parent.marksheet', compact('data','request'));
     }
 
     public function generatePDF($student, $type)
@@ -69,7 +69,7 @@ class MarksheetController extends Controller
 
         $data['student']      = $this->studentRepo->show(@$student->id);
         $data['resultData']   = $this->reportMarksheetRepo->search($request);
-        
+
         $pdf = PDF::loadView('backend.report.marksheetPDF', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
     }

@@ -24,7 +24,7 @@ class ExamAssign extends Model
         return $this->hasmany(ExamAssignChildren::class, 'exam_assign_id', 'id');
     }
 
-    public function exam_type()
+    public function type()
     {
         return $this->belongsTo(ExamType::class, 'exam_type_id', 'id');
     }

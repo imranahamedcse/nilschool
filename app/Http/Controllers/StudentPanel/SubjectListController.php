@@ -15,6 +15,16 @@ class SubjectListController extends Controller
     }
     public function index(){
         $subjectTeacher = $this->repo->index();
-        return view('backend.student.subject-list', compact('subjectTeacher'));
+
+        $title = ___('common.Subject List');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
+        return view('backend.student.subject-list', compact('data','subjectTeacher'));
     }
 }

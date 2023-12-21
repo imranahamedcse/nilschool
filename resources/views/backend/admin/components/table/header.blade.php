@@ -145,11 +145,11 @@
                         <div class="px-1">
                             <select class="exam_type form-control @error('exam_type') is-invalid @enderror"
                                 name="exam_type">
-                                <option value="">{{ ___('common.select_exam_type') }} </option>
+                                <option value="">{{ ___('common.Select exam type') }} </option>
                                 @foreach ($data['exam_types'] as $item)
                                     <option
-                                        {{ old('exam_type', @$data['request']->exam_type) == $item->id ? 'selected' : '' }}
-                                        value="{{ $item->id }}">{{ $item->name }}</option>
+                                        {{ old('exam_type', @$data['request']->exam_type) == $item->type->id ? 'selected' : '' }}
+                                        value="{{ $item->type->id }}">{{ $item->type->name }}</option>
                                 @endforeach
                             </select>
                             @error('exam_type')
@@ -216,7 +216,7 @@
                             placeholder="{{ ___('common.Enter keyword') }}"
                             value="{{ old('keyword', @$data['request']->keyword) }}">
                     @endif
-                    
+
                     <div class="px-1">
                         <button class="btn btn-primary" type="submit">
                             {{ ___('common.Search') }}

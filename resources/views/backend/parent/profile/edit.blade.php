@@ -92,11 +92,11 @@
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page"
-                                        href="{{ route('student-panel.profile') }}">{{ ___('common.profile') }}</a>
+                                        href="{{ route('parent-panel.profile') }}">{{ ___('common.profile') }}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="{{ route('student-panel.password-update') }}">{{ ___('common.update_password') }}</a>
+                                        href="{{ route('parent-panel.password-update') }}">{{ ___('common.update_password') }}</a>
                                 </li>
                             </ul>
                         </nav>
@@ -115,7 +115,7 @@
                     <!-- profile body form start -->
                     <div class="profile-body-form">
 
-                        <form action="{{ route('student-panel.profile.update') }}" enctype="multipart/form-data" method="post"
+                        <form action="{{ route('parent-panel.profile.update') }}" enctype="multipart/form-data" method="post"
                             id="visitForm">
                             @csrf
                             @method('PUT')
@@ -153,26 +153,13 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="inputname"
-                                            class="form-label">{{ ___('common.date_of_birth') }}</label>
-                                        <div class="col-sm-12">
-                                            <input name="date_of_birth" type="date"
-                                                class="form-control ot-input @error('date_of_birth') is-invalid @enderror"
-                                                value="{{ Auth::user()->date_of_birth }}" />
-                                            @error('date_of_birth')
-                                                <div id="validationServer04Feedback" class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
+
                                     <div class="row mb-3">
                                         <label for="inputname" class="form-label">{{ ___('common.phone') }} <span
                                                 class="text-danger">*</span></label>
                                         <div class="col-sm-12">
                                             <input name="phone" type="text"
-                                                class="form-control ot-input @error('phone') is-invalid @enderror"
+                                                class="form-control ot-input @error('phone') is-invalid @enderror""
                                                 placeholder="{{ ___('common.880_249_897632') }}" value="{{ Auth::user()->phone }}" />
                                             @error('phone')
                                                 <div id="validationServer04Feedback" class="invalid-feedback">

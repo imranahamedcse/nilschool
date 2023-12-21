@@ -24,8 +24,7 @@ class MarksheetController extends Controller
         ExamAssignRepository $typeRepo,
         ReportMarksheetRepository $reportMarksheetRepo,
         StudentRepository $studentRepo,
-    )
-    {
+    ) {
         $this->repo = $repo;
         $this->typeRepo = $typeRepo;
         $this->reportMarksheetRepo = $reportMarksheetRepo;
@@ -35,6 +34,17 @@ class MarksheetController extends Controller
     public function index()
     {
         $data['exam_types']   = $this->typeRepo->getExamType($this->repo->index());
+
+        $title             = ___('common.Marksheet');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['student-panel-marksheet.search', 'exam_type']
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.student.marksheet', compact('data'));
     }
 
@@ -44,15 +54,25 @@ class MarksheetController extends Controller
         $data['exam_types']     = $this->typeRepo->assignedExamType();
         $data['request']        = $request;
 
-        return view('backend.student.marksheet', compact('data','request'));
+        $title             = ___('common.Marksheet');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['student-panel-marksheet.search', 'exam_type']
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
+        return view('backend.student.marksheet', compact('data', 'request'));
     }
 
     public function generatePDF($type)
     {
         $student        = Student::where('user_id', auth()->id())->first();
         $classSection   = SessionClassStudent::where('session_id', setting('session'))
-                        ->where('student_id', @$student->id)
-                        ->first();
+            ->where('student_id', @$student->id)
+            ->first();
 
         $request = new Request([
             'student'   => @$student->id,
@@ -65,6 +85,6 @@ class MarksheetController extends Controller
         $data['resultData']   = $this->reportMarksheetRepo->search($request);
 
         $pdf = PDF::loadView('backend.report.marksheetPDF', compact('data'));
-        return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
+        return $pdf->download('marksheet' . '_' . date('d_m_Y') . '_' . @$data['student']->first_name . '_' . @$data['student']->last_name . '.pdf');
     }
 }

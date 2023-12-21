@@ -10,18 +10,18 @@ class AttendanceController extends Controller
 {
     private $repo;
 
-    function __construct(  AttendanceRepository $repo) 
-    { 
+    function __construct(  AttendanceRepository $repo)
+    {
         $this->repo = $repo;
     }
 
     public function index()
     {
         $data['title']              = ___('common.Attendance');
-        
+
         $data                       = $this->repo->index();
         $data['results']            = [];
-        return view('parent-panel.attendance', compact('data'));
+        return view('backend.parent.attendance', compact('data'));
     }
 
     public function search(Request $request)
@@ -29,6 +29,6 @@ class AttendanceController extends Controller
         $data                 = $this->repo->search($request);
         $data['title']        = ___('common.Attendance');
         $data['request']      = $request;
-        return view('parent-panel.attendance', compact('data'));
+        return view('backend.parent.attendance', compact('data'));
     }
 }

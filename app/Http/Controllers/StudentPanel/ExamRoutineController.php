@@ -29,6 +29,17 @@ class ExamRoutineController extends Controller
     public function index()
     {
         $data['exam_types']   = $this->typeRepo->getExamType($this->repo->index());
+
+        $title             = ___('common.Exam routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"       => ['student-panel-exam-routine.search', 'exam_type'],
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.student.exam-routine', compact('data'));
     }
 
@@ -36,6 +47,18 @@ class ExamRoutineController extends Controller
     {
         $data = $this->repo->search($request);
         $data['exam_types']   = $this->typeRepo->getExamType($this->repo->index());
+        $data['request']      = $request;
+
+        $title             = ___('common.Exam routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"       => ['student-panel-exam-routine.search', 'exam_type'],
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.student.exam-routine', compact('data','request'));
     }
 

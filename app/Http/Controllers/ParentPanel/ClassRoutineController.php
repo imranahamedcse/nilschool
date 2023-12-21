@@ -15,16 +15,16 @@ class ClassRoutineController extends Controller
     private $reportClassRoutineRepo;
     private $repo;
 
-    function __construct(ReportClassRoutineRepository $reportClassRoutineRepo, ClassRoutineRepository $repo) 
+    function __construct(ReportClassRoutineRepository $reportClassRoutineRepo, ClassRoutineRepository $repo)
     {
-        $this->reportClassRoutineRepo = $reportClassRoutineRepo; 
+        $this->reportClassRoutineRepo = $reportClassRoutineRepo;
         $this->repo               = $repo;
     }
 
     public function index()
     {
         $data = $this->repo->index();
-        return view('parent-panel.class-routine', compact('data'));
+        return view('backend.parent.class-routine', compact('data'));
     }
 
     public function search(Request $request)
@@ -32,7 +32,7 @@ class ClassRoutineController extends Controller
         $data = $this->repo->search($request);
         $data['request'] = $request;
 
-        return view('parent-panel.class-routine', compact('data'));
+        return view('backend.parent.class-routine', compact('data'));
     }
 
     public function generatePDF($student)
@@ -49,7 +49,7 @@ class ClassRoutineController extends Controller
 
         $data['result']       = $this->reportClassRoutineRepo->search($request);
         $data['time']         = $this->reportClassRoutineRepo->time($request);
-        
+
         $pdf = PDF::loadView('backend.report.class-routinePDF', compact('data'));
         return $pdf->download('class_routine'.'_'.date('d_m_Y').'.pdf');
     }

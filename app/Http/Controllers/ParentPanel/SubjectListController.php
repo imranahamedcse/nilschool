@@ -11,17 +11,17 @@ class SubjectListController extends Controller
     private $repo;
 
     function __construct( SubjectListRepository $repo)
-    { 
-        $this->repo = $repo; 
+    {
+        $this->repo = $repo;
     }
     public function index(){
         $data = $this->repo->index();
-        return view('parent-panel.subject-list', compact('data'));
+        return view('backend.parent.subject-list', compact('data'));
     }
 
     public function search(Request $request)
     {
         $data = $this->repo->search($request);
-        return view('parent-panel.subject-list', compact('data'));
+        return view('backend.parent.subject-list', compact('data'));
     }
 }

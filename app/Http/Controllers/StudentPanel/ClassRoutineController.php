@@ -24,6 +24,16 @@ class ClassRoutineController extends Controller
     public function index()
     {
         $data = $this->repo->index();
+
+        $title             = ___('common.Class routine');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.student.class-routine', compact('data'));
     }
 

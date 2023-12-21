@@ -15,7 +15,7 @@ class DashboardController extends Controller
 {
     private $repo;
 
-    function __construct(DashboardRepository $repo) 
+    function __construct(DashboardRepository $repo)
     {
         $this->repo               = $repo;
     }
@@ -23,13 +23,13 @@ class DashboardController extends Controller
     public function index()
     {
         $data = $this->repo->index();
-        return view('parent-panel.dashboard', compact('data'));
+        return view('backend.parent.dashboard', compact('data'));
     }
 
     public function search(Request $request)
     {
         $data = $this->repo->search($request);
-        return view('parent-panel.dashboard', compact('data'));
+        return view('backend.parent.dashboard', compact('data'));
     }
 
     public function searchParentMenuData(Request $request){

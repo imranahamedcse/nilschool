@@ -18,10 +18,10 @@ class ExamRoutineController extends Controller
     private $repo;
     private $typeRepo;
 
-    function __construct( ReportExamRoutineRepository $reportExamRoutineRepo, ExamRoutineRepository $repo, ExamAssignRepository $typeRepo) 
-    { 
-        $this->reportExamRoutineRepo = $reportExamRoutineRepo; 
-        $this->repo = $repo; 
+    function __construct( ReportExamRoutineRepository $reportExamRoutineRepo, ExamRoutineRepository $repo, ExamAssignRepository $typeRepo)
+    {
+        $this->reportExamRoutineRepo = $reportExamRoutineRepo;
+        $this->repo = $repo;
         $this->typeRepo = $typeRepo;
     }
 
@@ -34,14 +34,14 @@ class ExamRoutineController extends Controller
     public function index()
     {
         $data = $this->repo->index();
-        return view('parent-panel.exam-routine', compact('data'));
+        return view('backend.parent.exam-routine', compact('data'));
     }
 
     public function search(Request $request)
     {
         $data = $this->repo->search($request);
         $data['request'] = $request;
-        return view('parent-panel.exam-routine', compact('data','request'));
+        return view('backend.parent.exam-routine', compact('data','request'));
     }
 
     public function generatePDF($student, $type)
@@ -59,7 +59,7 @@ class ExamRoutineController extends Controller
 
         $data['result']       = $this->reportExamRoutineRepo->search($request);
         $data['time']         = $this->reportExamRoutineRepo->time($request);
-        
+
         $pdf = PDF::loadView('backend.report.exam-routinePDF', compact('data'));
         return $pdf->download('exam_routine'.'_'.date('d_m_Y').'.pdf');
     }

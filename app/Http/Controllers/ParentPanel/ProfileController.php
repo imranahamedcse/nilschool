@@ -27,14 +27,14 @@ class ProfileController extends Controller
     public function profile()
     {
         $data['title'] = 'Profile';
-        return view('parent-panel.profile.profile',compact('data'));
+        return view('backend.parent.profile.profile',compact('data'));
     }
 
     public function edit()
     {
         $data['user']        = $this->user->show(Auth::user()->id);
         $data['title']       = "Profile Edit";
-        return view('parent-panel.profile.edit',compact('data'));
+        return view('backend.parent.profile.edit',compact('data'));
     }
 
     public function update(ProfileUpdateRequest $request)
@@ -50,7 +50,7 @@ class ProfileController extends Controller
     public function passwordUpdate()
     {
         $data['title'] = 'Password Update';
-        return view('parent-panel.profile.update_password',compact('data'));
+        return view('backend.parent.profile.update_password',compact('data'));
     }
 
     public function passwordUpdateStore(PasswordUpdateRequest $request)

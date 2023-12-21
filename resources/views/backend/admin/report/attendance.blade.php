@@ -1,7 +1,7 @@
 @extends('backend.admin.partial.master')
 
 @section('title')
-    {{ ___('common.Online Class Routine 2023') }}
+    {{ $data['title'] }}
 @endsection
 
 @push('style')

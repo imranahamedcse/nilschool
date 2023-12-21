@@ -30,6 +30,16 @@ class FeesController extends Controller
     public function index()
     {
         $data = $this->repo->index();
+
+        $title = ___('common.Fees');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+        
         return view('backend.student.fees', compact('data'));
     }
 

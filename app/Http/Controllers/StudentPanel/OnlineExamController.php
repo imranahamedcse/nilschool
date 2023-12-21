@@ -20,6 +20,16 @@ class OnlineExamController extends Controller
     public function index()
     {
         $data = $this->repo->index();
+
+        $title             = ___('common.Online Examination');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.student.online-exam-list', compact('data'));
     }
     public function view($id)

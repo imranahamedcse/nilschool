@@ -36,8 +36,8 @@
                                         </div>
                                         <div class="flex-grow-1">
                                             <div class="body">
-                                                <h2 class="title">{{ __('Robert_Downey') }}</h2>
-                                                <p class="paragraph">{{ __('UI/UX_Designer') }}</p>
+                                                <h2 class="title">{{ ___('common.robert_downey') }}</h2>
+                                                <p class="paragraph">{{ ___('common.ui_ux_designer') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -45,20 +45,20 @@
                                 <!-- profile menu head end -->
 
                                 <!-- profile menu body start -->
-                                <!-- <div class="profile-menu-body">
+                                <div class="profile-menu-body">
                                     <nav>
                                         <ul class="nav flex-column">
                                             <li class="nav-item">
                                                 <a class="nav-link active" aria-current="page"
-                                                    href="./profile.html">{{ ___('common.my_profile') }}</a>
+                                                    href="{{ route('parent-panel.profile') }}">{{ ___('common.profile') }}</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link"
-                                                    href="./profile-attendance.html">{{ ___('common.update_password') }}</a>
+                                                    href="{{ route('parent-panel.password-update') }}">{{ ___('common.update_password') }}</a>
                                             </li>
                                         </ul>
                                     </nav>
-                                </div> -->
+                                </div>
                                 <!-- profile menu body end -->
                             </div>
                             <!-- profile menu end -->
@@ -91,12 +91,12 @@
                         <nav>
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page"
-                                        href="{{ route('student-panel.profile') }}">{{ ___('common.profile') }}</a>
+                                    <a class="nav-link " aria-current="page"
+                                        href="{{ route('parent-panel.profile') }}">{{ ___('common.profile') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="{{ route('student-panel.password-update') }}">{{ ___('common.update_password') }}</a>
+                                    <a class="nav-link active"
+                                        href="{{ route('parent-panel.password-update') }}">{{ ___('common.update_password') }}</a>
                                 </li>
                             </ul>
                         </nav>
@@ -109,44 +109,25 @@
                 <div class="profile-body">
 
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h2 class="title">{{ ___('common.edit_profile') }}</h2>
+                        <h2 class="title">{{ ___('common.update_password') }}</h2>
                     </div>
 
                     <!-- profile body form start -->
                     <div class="profile-body-form">
-
-                        <form action="{{ route('student-panel.profile.update') }}" enctype="multipart/form-data" method="post"
+                        <form action="{{ route('parent-panel.password-update-store') }}" enctype="multipart/form-data" method="post"
                             id="visitForm">
                             @csrf
                             @method('PUT')
-                            <div class="row mb-3 mt-3">
-                                <label class="form-label" for="image">{{ ___('common.image_') }} {{ ___('common.(95 x 95 px)') }}</label>
-                                <div class="col-md-12">
-                                    <div class="d-flex flex-column align-items-center justify-content-center">
-                                        <img class="img-thumbnail ot-input-image-preview mb-3"  src="{{ @globalAsset(Auth::user()->upload->path, '100X100.webp') }}" alt="{{ Auth::user()->name }}">
-                                    </div>
-                                    {{-- File Uplode --}}
-                                    <div class="ot_fileUploader left-side mb-3">
-                                        <input class="form-control" type="text" placeholder="{{ ___('common.image') }}" readonly="" id="placeholder">
-                                        <button class="primary-btn-small-input" type="button">
-                                            <label class="btn btn-lg ot-btn-primary" for="fileBrouse">{{ ___('common.browse') }}</label>
-                                            <input type="file" class="d-none form-control" name="image" id="fileBrouse" accept="image/*">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="row mb-3 mt-3">
                                 <div class="col-md-12">
                                     <div class="row mb-3">
-                                        <label for="inputname" class="form-label">{{ ___('common.name') }} <span
-                                                class="text-danger">*</span></label>
                                         <div class="col-sm-12">
-                                            <input name="name" type="text"
-                                                class="form-control ot-input @error('name') is-invalid @enderror"
-                                                value="{{ Auth::user()->name }}"
-                                                placeholder="{{ ___('common.name.') }}" />
-                                            @error('name')
+                                            <label for="inputname" class="form-label">{{ ___('common.current_password') }}
+                                                <span class="text-danger">*</span></label>
+                                            <input type="password" name="current_password" placeholder="{{ ___('common.current_password') }}"
+                                                class="form-control ot-input @error('current_password') is-invalid @enderror">
+                                            @error('current_password')
                                                 <div id="validationServer04Feedback" class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -154,13 +135,12 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="inputname"
-                                            class="form-label">{{ ___('common.date_of_birth') }}</label>
                                         <div class="col-sm-12">
-                                            <input name="date_of_birth" type="date"
-                                                class="form-control ot-input @error('date_of_birth') is-invalid @enderror"
-                                                value="{{ Auth::user()->date_of_birth }}" />
-                                            @error('date_of_birth')
+                                            <label for="inputname" class="form-label">{{ ___('common.new_password') }}
+                                                <span class="text-danger">*</span></label>
+                                            <input type="password" name="password" placeholder="{{ ___('common.new_password') }}"
+                                                class="form-control ot-input @error('password') is-invalid @enderror">
+                                            @error('password')
                                                 <div id="validationServer04Feedback" class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -168,13 +148,12 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="inputname" class="form-label">{{ ___('common.phone') }} <span
-                                                class="text-danger">*</span></label>
                                         <div class="col-sm-12">
-                                            <input name="phone" type="text"
-                                                class="form-control ot-input @error('phone') is-invalid @enderror"
-                                                placeholder="{{ ___('common.880_249_897632') }}" value="{{ Auth::user()->phone }}" />
-                                            @error('phone')
+                                            <label for="inputname" class="form-label">{{ ___('common.confirm_password') }}
+                                                <span class="text-danger">*</span></label>
+                                            <input type="password" name="password_confirmation" placeholder="{{ ___('common.confirm_password') }}"
+                                                class="form-control ot-input @error('password_confirmation') is-invalid @enderror">
+                                            @error('password_confirmation')
                                                 <div id="validationServer04Feedback" class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -186,7 +165,7 @@
                                 <div class="col-md-12 mt-3">
                                     <div class="text-end">
                                         <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
-                                            </span>{{ ___('common.update') }} </button>
+                                            </span>{{ ___('common.update') }}</button>
                                     </div>
                                 </div>
                             </div>
