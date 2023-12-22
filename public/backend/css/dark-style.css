@@ -1,209 +1,241 @@
 body {
-  background: #252729;
-  color: #BEBFBF;
+    background: #252729;
+    color: #BEBFBF;
 }
 
 .btn-primary {
-  background: #845ADF;
-  color: #F2EEFC;
-  border: 0;
+    background: #845ADF;
+    color: #F2EEFC;
+    border: 0;
 }
 
 .btn-primary:hover {
-  background: white;
-  color: #845ADF;
-  border: 0;
+    background: white;
+    color: #845ADF;
+    border: 0;
 }
 
 .btn-secondary {
-  background: #23B7E5;
-  color: #E9F8FC;
-  border: 0;
+    background: #23B7E5;
+    color: #E9F8FC;
+    border: 0;
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: #23B7E5;
-  border: 0;
+    background: white;
+    color: #23B7E5;
+    border: 0;
 }
 
 .btn-info {
-  background: #49B6F5;
-  color: #ECF8FE;
-  border: 0;
+    background: #49B6F5;
+    color: #ECF8FE;
+    border: 0;
 }
 
 .btn-info:hover {
-  background: white;
-  color: #49B6F5;
-  border: 0;
+    background: white;
+    color: #49B6F5;
+    border: 0;
 }
 
 .btn-success {
-  background: #26BF94;
-  color: #E9F8F4;
-  border: 0;
+    background: #26BF94;
+    color: #E9F8F4;
+    border: 0;
 }
 
 .btn-success:hover {
-  background: white;
-  color: #26BF94;
-  border: 0;
+    background: white;
+    color: #26BF94;
+    border: 0;
 }
 
 .btn-warning {
-  background: #F5B849;
-  color: #FEF8EC;
-  border: 0;
+    background: #F5B849;
+    color: #FEF8EC;
+    border: 0;
 }
 
 .btn-warning:hover {
-  background: white;
-  color: #F5B849;
-  border: 0;
+    background: white;
+    color: #F5B849;
+    border: 0;
 }
 
 .btn-danger {
-  background: #E6533C;
-  color: #FCEDEB;
-  border: 0;
+    background: #E6533C;
+    color: #FCEDEB;
+    border: 0;
 }
 
 .btn-danger:hover {
-  background: white;
-  color: #E6533C;
-  border: 0;
+    background: white;
+    color: #E6533C;
+    border: 0;
 }
 
 .text-primary {
-  color: #845ADF;
+    color: #845ADF !important;
+}
+
+.text-secondary {
+    color: #23B7E5 !important;
 }
 
 .text-info {
-  color: #23B7E5;
+    color: #49B6F5 !important;
 }
 
 .text-success {
-  color: #26BF94;
+    color: #26BF94 !important;
 }
 
 .text-warning {
-  color: #F5B849;
+    color: #F5B849 !important;
 }
 
 .text-danger {
-  color: #E6533C;
-}
-
-.bg-primary {
-  background: #1A1C1E;
-}
-
-.bg-info {
-  background: #1A1C1E;
-}
-
-.bg-success {
-  background: #1A1C1E;
-}
-
-.bg-warning {
-  background: #1A1C1E;
-}
-
-.bg-danger {
-  background: #1A1C1E;
+    color: #E6533C !important;
 }
 
 .bg-white {
-  background: #1A1C1E !important;
+    background: #1A1C1E !important;
+}
+
+.bg-primary {
+    background: #1A1C1E !important;
+}
+
+.bg-primary-light {
+    background: #F2EEFC;
+}
+
+.bg-secondary {
+    background: #1A1C1E !important;
+}
+
+.bg-secondary-light {
+    background: #E9F8FC;
+}
+
+.bg-info {
+    background: #1A1C1E !important;
+}
+
+.bg-info-light {
+    background: #ECF8FE;
+}
+
+.bg-success {
+    background: #1A1C1E !important;
+}
+
+.bg-success-light {
+    background: #E9F8F4;
+}
+
+.bg-warning {
+    background: #1A1C1E !important;
+}
+
+.bg-warning-light {
+    background: #FEF8EC;
+}
+
+.bg-danger {
+    background: #1A1C1E !important;
+}
+
+.bg-danger-light {
+    background: #FCEDEB;
 }
 
 /* datatable start */
 div.dt-buttons .dt-button {
-  margin-left: 0px !important;
-  margin-bottom: 18px !important;
-  padding: 3px 10px !important;
-  border: 0px !important;
-  border-radius: 3px !important;
-  background: #845ADF !important;
-  color: #F2EEFC !important;
+    margin-left: 0px !important;
+    margin-bottom: 18px !important;
+    padding: 3px 10px !important;
+    border: 0px !important;
+    border-radius: 3px !important;
+    background: #845ADF !important;
+    color: #F2EEFC !important;
 }
 
 div.dt-buttons>.dt-button:hover {
-  margin-left: 0px !important;
-  margin-bottom: 18px !important;
-  padding: 3px 10px !important;
-  border: 0px !important;
-  border-radius: 3px !important;
-  background: white !important;
-  color: #845ADF !important;
+    margin-left: 0px !important;
+    margin-bottom: 18px !important;
+    padding: 3px 10px !important;
+    border: 0px !important;
+    border-radius: 3px !important;
+    background: white !important;
+    color: #845ADF !important;
 }
 
 .page-item .page-link {
-  margin: 0 5px;
-  padding: 3px 10px;
-  border: 0px;
-  border-radius: 3px;
-  background: #845ADF;
-  color: #F2EEFC;
+    margin: 0 5px;
+    padding: 3px 10px;
+    border: 0px;
+    border-radius: 3px;
+    background: #845ADF;
+    color: #F2EEFC;
 }
 
 .page-item .page-link:hover {
-  background: #23B7E5;
-  color: #E9F8FC;
+    background: #23B7E5;
+    color: #E9F8FC;
 }
 
 li.paginate_button.page-item.active .page-link {
-  background: #23B7E5;
-  color: #E9F8FC;
+    background: #23B7E5;
+    color: #E9F8FC;
 }
 
 table.dataTable {
-  margin-bottom: 25px !important;
+    margin-bottom: 25px !important;
 }
 
 /* datatable end */
 
 /* sidebar start */
 .sidebar {
-  background-color: #1A1C1E !important;
+    background-color: #1A1C1E !important;
 }
 
 .sidebar .logo i {
-  color: #BEBFBF !important;
+    color: #BEBFBF !important;
 }
 
 .sidebar .logo .logo-name {
-  color: #BEBFBF !important;
+    color: #BEBFBF !important;
 }
 
 .sidebar .menu-group li i {
-  color: #BEBFBF !important;
+    color: #BEBFBF !important;
 }
 
 .sidebar .menu-group li a .link-name {
-  color: #BEBFBF !important;
+    color: #BEBFBF !important;
 }
 
 .sidebar .menu-group li:hover {
-  background: #212529 !important;
+    background: #212529 !important;
 }
 
 .sidebar .menu-group li .sub-menu {
-  background: #212529 !important;
+    background: #212529 !important;
 }
 
 table.dataTable th {
-  font-size: 15px;
-  color: #F3F3F4;
-  background-color: #1A1C1E;
+    font-size: 15px;
+    color: #F3F3F4;
+    background-color: #1A1C1E;
 }
 
 table.dataTable td {
-  font-size: 15px;
-  color: #F3F3F4;
-  background-color: #1A1C1E;
+    font-size: 15px;
+    color: #F3F3F4;
+    background-color: #1A1C1E;
 }
 
 /* sidebar end */
@@ -211,19 +243,19 @@ table.dataTable td {
 /* nice select start */
 
 .nice-select {
-  background: #212529 !important;
-  border: 1px solid #495057 !important;
+    background: #212529 !important;
+    border: 1px solid #495057 !important;
 }
 
 .nice-select.open .list {
-  background: #212529 !important;
+    background: #212529 !important;
 }
 
 .nice-select .option.focus,
 .nice-select .option.selected.focus,
 .nice-select .option:hover {
-  background-color: #99C8FF !important;
-  color: #3B3B3B !important;
+    background-color: #99C8FF !important;
+    color: #3B3B3B !important;
 }
 
 /* nice select end */

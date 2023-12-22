@@ -21,7 +21,7 @@
         <li>
             <a class="{{ set_menu(['student-panel-subject-list*']) }}"
                 href="{{ route('student-panel-subject-list.index') }}">
-                <i class="prepend-icon fa-solid fa-desktop"></i>
+                <i class="prepend-icon fa-solid fa-book"></i>
                 <span class="link-name">{{ ___('menu.Subject list') }}</span>
             </a>
             <ul class="sub-menu">
@@ -35,7 +35,7 @@
         <li>
             <a class="{{ set_menu(['student-panel-class-routine*']) }}"
                 href="{{ route('student-panel-class-routine.index') }}">
-                <i class="prepend-icon fa-solid fa-desktop"></i>
+                <i class="prepend-icon fa-solid fa-table"></i>
                 <span class="link-name">{{ ___('menu.Class routine') }}</span>
             </a>
             <ul class="sub-menu">
@@ -48,7 +48,7 @@
 
         <li>
             <a class="{{ set_menu(['student-panel-fees*']) }}" href="{{ route('student-panel-fees.index') }}">
-                <i class="prepend-icon fa-solid fa-desktop"></i>
+                <i class="prepend-icon fa-solid fa-money-bill"></i>
                 <span class="link-name">{{ ___('menu.Fees') }}</span>
             </a>
             <ul class="sub-menu">
@@ -61,7 +61,7 @@
         <li>
             <a class="{{ set_menu(['student-panel-exam-routine*']) }}"
                 href="{{ route('student-panel-exam-routine.index') }}">
-                <i class="prepend-icon fa-solid fa-desktop"></i>
+                <i class="prepend-icon fa-solid fa-graduation-cap"></i>
                 <span class="link-name">{{ ___('menu.Exam routine') }}</span>
             </a>
             <ul class="sub-menu">
@@ -75,7 +75,7 @@
         <li>
             <a class="{{ set_menu(['student-panel-online-examination*']) }}"
                 href="{{ route('student-panel-online-examination.index') }}">
-                <i class="prepend-icon fa-solid fa-desktop"></i>
+                <i class="prepend-icon fa-solid fa-chalkboard-user"></i>
                 <span class="link-name">{{ ___('menu.Online examination') }}</span>
             </a>
             <ul class="sub-menu">
@@ -89,7 +89,7 @@
         <li>
             <a class="{{ set_menu(['student-panel-marksheet*']) }}"
                 href="{{ route('student-panel-marksheet.index') }}">
-                <i class="prepend-icon fa-solid fa-desktop"></i>
+                <i class="prepend-icon fa-solid fa-clipboard"></i>
                 <span class="link-name">{{ ___('menu.Marksheet') }}</span>
             </a>
             <ul class="sub-menu">
@@ -103,7 +103,7 @@
         <li>
             <a class="{{ set_menu(['student-panel-attendance*']) }}"
                 href="{{ route('student-panel-attendance.index') }}">
-                <i class="prepend-icon fa-solid fa-desktop"></i>
+                <i class="prepend-icon fa-solid fa-file-circle-check"></i>
                 <span class="link-name">{{ ___('menu.Attendance') }}</span>
             </a>
             <ul class="sub-menu">
