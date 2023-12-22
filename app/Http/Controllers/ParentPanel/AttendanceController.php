@@ -17,18 +17,37 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        $data['title']              = ___('common.Attendance');
-
         $data                       = $this->repo->index();
         $data['results']            = [];
+
+        $data['title']              = ___('common.Attendance');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        $data['headers']  = [
+            "title"             => $data['title'],
+            "filter"            => ['parent-panel-attendance.search', 'view', 'month', 'date'],
+        ];
+
         return view('backend.parent.attendance', compact('data'));
     }
 
     public function search(Request $request)
     {
         $data                 = $this->repo->search($request);
-        $data['title']        = ___('common.Attendance');
         $data['request']      = $request;
+
+        $data['title']              = ___('common.Attendance');
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        $data['headers']  = [
+            "title"             => $data['title'],
+            "filter"            => ['parent-panel-attendance.search', 'view', 'month', 'date'],
+        ];
+
         return view('backend.parent.attendance', compact('data'));
     }
 }

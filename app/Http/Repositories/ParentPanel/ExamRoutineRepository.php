@@ -46,7 +46,6 @@ class ExamRoutineRepository implements ExamRoutineInterface
     public function search($request)
     {
         try {
-            Session::put('student_id', $request->student);
             $parent   = ParentGuardian::where('user_id', Auth::user()->id)->first();
             $data['students'] = Student::where('parent_guardian_id', $parent->id)->get();
             $data['student']  = Student::where('id', Session::get('student_id'))->first();

@@ -14,14 +14,19 @@ class SubjectListController extends Controller
     {
         $this->repo = $repo;
     }
+    
     public function index(){
         $data = $this->repo->index();
-        return view('backend.parent.subject-list', compact('data'));
-    }
 
-    public function search(Request $request)
-    {
-        $data = $this->repo->search($request);
+        $title = ___('common.Subject List');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.parent.subject-list', compact('data'));
     }
 }

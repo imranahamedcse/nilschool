@@ -39,8 +39,10 @@
                                     {{ ___('academic.practical') }}
                                 @endif
                             </td>
-                            <td><a href="">{{ $row->teacher->first_name }} {{ $row->teacher->last_name }}</a>
-                                <small>{{ $row->teacher->email }}</small></td>
+                            <td>
+                                <a href="">{{ $row->teacher->first_name }} {{ $row->teacher->last_name }}</a>
+                                <small>{{ $row->teacher->email }}</small>
+                            </td>
 
                         </tr>
                     @endforeach

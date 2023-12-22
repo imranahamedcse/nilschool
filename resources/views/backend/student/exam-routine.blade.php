@@ -54,11 +54,10 @@
                                                     <td style="border: 1px solid #dee2e6; padding: 3px;">
                                                         @foreach ($item->examRoutineChildren as $item3)
                                                             @if ($item3->time_schedule_id == $item2->time_schedule_id)
-                                                                <div class="classBox_wiz">
-                                                                    <strong>{{ @$item3->subject->name }}</strong> <br> Room No: {{ @$item3->classRoom->room_no }}
-                                                                </div>
+                                                                <strong>{{ @$item3->subject->name }}</strong> <br> Room No:
+                                                                {{ @$item3->classRoom->room_no }}
                                                             @else
-                                                            -
+                                                                -
                                                             @endif
                                                         @endforeach
                                                     </td>
@@ -70,13 +69,6 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td colspan="3" style="text-align: center;">
-                                <div style="margin-top: 50px;">
-                                    <small>Thank you.</small>
-                                </div>
-                            </td>
-                        </tr>
                     </table>
                 </div>
             </div>
@@ -87,7 +79,6 @@
                     <span><i class="fa-solid fa-print"></i></span>
                 </button>
             </div>
-
         @endif
     </div>
 @endsection

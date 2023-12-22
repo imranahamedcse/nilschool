@@ -21,8 +21,18 @@ class FeesController extends Controller
         $this->feesCollectRepository = $feesCollectRepository;
     }
 
-    public function index(Request $request){
-        $data = $this->repo->index($request);
+    public function index(){
+        $data = $this->repo->index();
+
+        $title = ___('common.Fees');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.parent.fees', compact('data'));
     }
 

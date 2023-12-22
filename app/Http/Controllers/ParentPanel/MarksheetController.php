@@ -35,21 +35,45 @@ class MarksheetController extends Controller
         $this->studentRepo = $studentRepo;
     }
 
-    public function getExamTypes(Request $request)
+    public function getExamTypes()
     {
-        return $this->typeRepo->getExamType($this->repo->studentInfo($request->id)); // student id
+        return $this->typeRepo->getExamType($this->repo->studentInfo(Session::get('student_id'))); // student id
     }
 
     public function index()
     {
         $data                 = $this->repo->index();
+        $data['exam_types'] = $this->getExamTypes();
+
+        $title             = ___('common.Marksheet');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['parent-panel-marksheet.search', 'exam_type']
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.parent.marksheet', compact('data'));
     }
 
     public function search(Request $request)
     {
         $data               = $this->repo->search($request);
+        $data['exam_types'] = $this->getExamTypes();
         $data['request']    = $request;
+
+        $title             = ___('common.Marksheet');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"            => ['parent-panel-marksheet.search', 'exam_type']
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.parent.marksheet', compact('data','request'));
     }
 

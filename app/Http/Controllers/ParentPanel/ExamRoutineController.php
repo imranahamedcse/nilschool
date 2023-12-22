@@ -10,6 +10,7 @@ use App\Http\Repositories\StudentInfo\StudentRepository;
 use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\ParentPanel\ExamRoutineRepository;
 use App\Http\Repositories\Report\ExamRoutineRepository as ReportExamRoutineRepository;
+use Illuminate\Support\Facades\Session;
 use PDF;
 
 class ExamRoutineController extends Controller
@@ -25,15 +26,27 @@ class ExamRoutineController extends Controller
         $this->typeRepo = $typeRepo;
     }
 
-    public function getExamTypes(Request $request)
+    public function getExamTypes()
     {
-        return $this->typeRepo->getExamType($this->repo->studentInfo($request->id)); // student id
+        return $this->typeRepo->getExamType($this->repo->studentInfo(Session::get('student_id'))); // student id
     }
 
 
     public function index()
     {
         $data = $this->repo->index();
+        $data['exam_types'] = $this->getExamTypes();
+
+        $title             = ___('common.Exam routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"       => ['parent-panel-exam-routine.search', 'exam_type'],
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.parent.exam-routine', compact('data'));
     }
 
@@ -41,6 +54,18 @@ class ExamRoutineController extends Controller
     {
         $data = $this->repo->search($request);
         $data['request'] = $request;
+        $data['exam_types'] = $this->getExamTypes();
+
+        $title             = ___('common.Exam routine');
+        $data['headers']   = [
+            "title"        => $title,
+            "filter"       => ['parent-panel-exam-routine.search', 'exam_type'],
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
+
         return view('backend.parent.exam-routine', compact('data','request'));
     }
 

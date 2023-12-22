@@ -68,13 +68,6 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td colspan="3" style="text-align: center;">
-                                <div style="margin-top: 50px;">
-                                    <small>Thank you.</small>
-                                </div>
-                            </td>
-                        </tr>
                     </table>
                 </div>
             </div>
@@ -93,7 +86,7 @@
 
 @push('script')
     @include('backend.admin.components.table.js')
-    
+
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>
 

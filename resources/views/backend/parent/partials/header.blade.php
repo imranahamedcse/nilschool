@@ -7,12 +7,41 @@
         </span>
 
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Search">
-            <button type="button" class="btn" data-bs-toggle="modal"
-                data-bs-target="#searchModal">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#searchModal">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </span>
     </div>
+
+    <div class="col p-0 d-flex justify-content-center">
+        <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="My Childs">
+            <form action="{{ route('parent-panel-student.search') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="input-group">
+                    <div class="px-1">
+                        <select class="form-control @error('student') is-invalid @enderror" name="student">
+                            <option value="">{{ ___('student_info.Select student') }}</option>
+                            @foreach ($data['students'] as $item)
+                                <option {{ old('student', Session::get('student_id')) == $item->id ? 'selected' : '' }}
+                                    value="{{ $item->id }}">{{ $item->first_name }} {{ $item->last_name }}
+                            @endforeach
+                        </select>
+                        @error('student')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="px-1">
+                        <button class="btn btn-primary" type="submit">
+                            {{ ___('common.Switch') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </span>
+    </div>
+
     <div class="col p-0 text-end">
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Full Screen">
             <button id="fullScreen" type="button" class="btn">
@@ -27,8 +56,7 @@
         </span>
 
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Notifications">
-            <button type="button" class="btn" data-bs-toggle="modal"
-                data-bs-target="#notificationModal">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#notificationModal">
                 <i class="fa-solid fa-bell"></i>
             </button>
         </span>
@@ -54,8 +82,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a class="dropdown-item {{ set_menu(['my.profile'], 'active') }}"
-                        href="{{ route('my.profile') }}">
+                    <a class="dropdown-item {{ set_menu(['my.profile'], 'active') }}" href="{{ route('my.profile') }}">
                         <span>{{ ___('common.my_profile') }}</span>
                     </a>
                 </li>

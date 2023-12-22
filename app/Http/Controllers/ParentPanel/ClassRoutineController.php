@@ -24,13 +24,15 @@ class ClassRoutineController extends Controller
     public function index()
     {
         $data = $this->repo->index();
-        return view('backend.parent.class-routine', compact('data'));
-    }
 
-    public function search(Request $request)
-    {
-        $data = $this->repo->search($request);
-        $data['request'] = $request;
+        $title             = ___('common.Class routine');
+        $data['headers']   = [
+            "title"        => $title,
+        ];
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $title, "route" => ""]
+        ];
 
         return view('backend.parent.class-routine', compact('data'));
     }
