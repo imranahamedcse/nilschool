@@ -137,7 +137,7 @@ class CurrencySeeder extends Seeder
         ];
 
 
-        foreach($currencies as $currency) {
+        foreach ($currencies as $currency) {
             Currency::firstOrCreate([
                 'currency'  => $currency['currency'],
                 'code'      => $currency['code'],

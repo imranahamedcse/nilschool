@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Staff;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -364,112 +364,112 @@ class UserSeeder extends Seeder
 
 
                 // Library start
-                    // book_category
-                    'book_category_read',
-                    'book_category_create',
-                    'book_category_update',
-                    'book_category_delete',
-                    // book
-                    'book_read',
-                    'book_create',
-                    'book_update',
-                    'book_delete',
-                    // member
-                    'member_read',
-                    'member_create',
-                    'member_update',
-                    'member_delete',
-                    // member_category
-                    'member_category_read',
-                    'member_category_create',
-                    'member_category_update',
-                    'member_category_delete',
-                    // issue_book
-                    'issue_book_read',
-                    'issue_book_create',
-                    'issue_book_update',
-                    'issue_book_delete',
+                // book_category
+                'book_category_read',
+                'book_category_create',
+                'book_category_update',
+                'book_category_delete',
+                // book
+                'book_read',
+                'book_create',
+                'book_update',
+                'book_delete',
+                // member
+                'member_read',
+                'member_create',
+                'member_update',
+                'member_delete',
+                // member_category
+                'member_category_read',
+                'member_category_create',
+                'member_category_update',
+                'member_category_delete',
+                // issue_book
+                'issue_book_read',
+                'issue_book_create',
+                'issue_book_update',
+                'issue_book_delete',
                 // Library end
 
 
                 // Online exam start
-                    // online_exam_type
-                    'online_exam_type_read',
-                    'online_exam_type_create',
-                    'online_exam_type_update',
-                    'online_exam_type_delete',
-                    // question_group
-                    'question_group_read',
-                    'question_group_create',
-                    'question_group_update',
-                    'question_group_delete',
-                    // question_bank
-                    'question_bank_read',
-                    'question_bank_create',
-                    'question_bank_update',
-                    'question_bank_delete',
-                    // online_exam
-                    'online_exam_read',
-                    'online_exam_create',
-                    'online_exam_update',
-                    'online_exam_delete',
+                // online_exam_type
+                'online_exam_type_read',
+                'online_exam_type_create',
+                'online_exam_type_update',
+                'online_exam_type_delete',
+                // question_group
+                'question_group_read',
+                'question_group_create',
+                'question_group_update',
+                'question_group_delete',
+                // question_bank
+                'question_bank_read',
+                'question_bank_create',
+                'question_bank_update',
+                'question_bank_delete',
+                // online_exam
+                'online_exam_read',
+                'online_exam_create',
+                'online_exam_update',
+                'online_exam_delete',
                 // Online exam end
 
                 // Transport start
-                    // route
-                    'route_read',
-                    'route_create',
-                    'route_update',
-                    'route_delete',
-                    // vehicle
-                    'vehicle_read',
-                    'vehicle_create',
-                    'vehicle_update',
-                    'vehicle_delete',
-                    // pickup_point
-                    'pickup_point_read',
-                    'pickup_point_create',
-                    'pickup_point_update',
-                    'pickup_point_delete',
-                    // transport_setup
-                    'transport_setup_read',
-                    'transport_setup_create',
-                    'transport_setup_update',
-                    'transport_setup_delete',
-                    // transport_student
-                    'transport_student_read',
-                    'transport_student_create',
-                    'transport_student_update',
-                    'transport_student_delete',
+                // route
+                'route_read',
+                'route_create',
+                'route_update',
+                'route_delete',
+                // vehicle
+                'vehicle_read',
+                'vehicle_create',
+                'vehicle_update',
+                'vehicle_delete',
+                // pickup_point
+                'pickup_point_read',
+                'pickup_point_create',
+                'pickup_point_update',
+                'pickup_point_delete',
+                // transport_setup
+                'transport_setup_read',
+                'transport_setup_create',
+                'transport_setup_update',
+                'transport_setup_delete',
+                // transport_student
+                'transport_student_read',
+                'transport_student_create',
+                'transport_student_update',
+                'transport_student_delete',
                 // Transport end
 
 
                 // Dormitory start
-                    // dormitory
-                    'dormitory_read',
-                    'dormitory_create',
-                    'dormitory_update',
-                    'dormitory_delete',
-                    // room_type
-                    'room_type_read',
-                    'room_type_create',
-                    'room_type_update',
-                    'room_type_delete',
-                    // room
-                    'room_read',
-                    'room_create',
-                    'room_update',
-                    'room_delete',
-                    // dormitory_student
-                    'dormitory_student_read',
-                    'dormitory_student_create',
-                    'dormitory_student_update',
-                    'dormitory_student_delete',
-                    // dormitory_setup
-                    'dormitory_setup_read',
-                    'dormitory_setup_create',
-                    'dormitory_setup_update',
-                    'dormitory_setup_delete',
+                // dormitory
+                'dormitory_read',
+                'dormitory_create',
+                'dormitory_update',
+                'dormitory_delete',
+                // room_type
+                'room_type_read',
+                'room_type_create',
+                'room_type_update',
+                'room_type_delete',
+                // room
+                'room_read',
+                'room_create',
+                'room_update',
+                'room_delete',
+                // dormitory_student
+                'dormitory_student_read',
+                'dormitory_student_create',
+                'dormitory_student_update',
+                'dormitory_student_delete',
+                // dormitory_setup
+                'dormitory_setup_read',
+                'dormitory_setup_create',
+                'dormitory_setup_update',
+                'dormitory_setup_delete',
                 // Dormitory end
             ],
         ]);
@@ -766,26 +766,26 @@ class UserSeeder extends Seeder
                     // Library end
 
                     // Online exam start
-                        // online_exam_type
-                        'online_exam_type_read',
-                        'online_exam_type_create',
-                        'online_exam_type_update',
-                        'online_exam_type_delete',
-                        // question_group
-                        'question_group_read',
-                        'question_group_create',
-                        'question_group_update',
-                        'question_group_delete',
-                        // question_bank
-                        'question_bank_read',
-                        'question_bank_create',
-                        'question_bank_update',
-                        'question_bank_delete',
-                        // online_exam
-                        'online_exam_read',
-                        'online_exam_create',
-                        'online_exam_update',
-                        'online_exam_delete',
+                    // online_exam_type
+                    'online_exam_type_read',
+                    'online_exam_type_create',
+                    'online_exam_type_update',
+                    'online_exam_type_delete',
+                    // question_group
+                    'question_group_read',
+                    'question_group_create',
+                    'question_group_update',
+                    'question_group_delete',
+                    // question_bank
+                    'question_bank_read',
+                    'question_bank_create',
+                    'question_bank_update',
+                    'question_bank_delete',
+                    // online_exam
+                    'online_exam_read',
+                    'online_exam_create',
+                    'online_exam_update',
+                    'online_exam_delete',
                     // Online exam end
 
                 ],
@@ -895,26 +895,26 @@ class UserSeeder extends Seeder
                     // End Report
 
                     // Online exam start
-                        // online_exam_type
-                        'online_exam_type_read',
-                        'online_exam_type_create',
-                        'online_exam_type_update',
-                        'online_exam_type_delete',
-                        // question_group
-                        'question_group_read',
-                        'question_group_create',
-                        'question_group_update',
-                        'question_group_delete',
-                        // question_bank
-                        'question_bank_read',
-                        'question_bank_create',
-                        'question_bank_update',
-                        'question_bank_delete',
-                        // online_exam
-                        'online_exam_read',
-                        'online_exam_create',
-                        'online_exam_update',
-                        'online_exam_delete',
+                    // online_exam_type
+                    'online_exam_type_read',
+                    'online_exam_type_create',
+                    'online_exam_type_update',
+                    'online_exam_type_delete',
+                    // question_group
+                    'question_group_read',
+                    'question_group_create',
+                    'question_group_update',
+                    'question_group_delete',
+                    // question_bank
+                    'question_bank_read',
+                    'question_bank_create',
+                    'question_bank_update',
+                    'question_bank_delete',
+                    // online_exam
+                    'online_exam_read',
+                    'online_exam_create',
+                    'online_exam_update',
+                    'online_exam_delete',
                     // Online exam end
                 ],
             ]);

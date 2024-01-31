@@ -15,14 +15,18 @@ class ClassesSeeder extends Seeder
      */
     public function run()
     {
-        Classes::create([
-            'name' => 'One'
-        ]);
-        Classes::create([
-            'name' => 'Two'
-        ]);
-        Classes::create([
-            'name' => 'Three'
-        ]);
+        $items = [
+            'One',
+            'Two',
+            'Three',
+            'Four',
+            'Five'
+        ];
+
+        foreach ($items as $item) {
+            $row = new Classes();
+            $row->name = $item;
+            $row->save();
+        }
     }
 }

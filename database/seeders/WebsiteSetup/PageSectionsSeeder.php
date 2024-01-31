@@ -203,7 +203,7 @@ class PageSectionsSeeder extends Seeder
         ];
 
 
-        foreach ($data as $key => $value){
+        foreach ($data as $key => $value) {
             $row              = new PageSections();
             $row->key         = $value['key'];
             $row->name        = $value['name'];

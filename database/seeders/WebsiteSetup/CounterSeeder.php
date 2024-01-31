@@ -30,14 +30,14 @@ class CounterSeeder extends Seeder
             'frontend/img/counters/04.webp',
             'frontend/img/counters/05.webp',
         ];
-        foreach ($names as $key=>$item) {
+        foreach ($names as $key => $item) {
             $upload = new Upload();
             $upload->path = $images[$key];
             $upload->save();
 
             $row = new Counter();
             $row->name = $item;
-            $row->total_count = 45*$key;
+            $row->total_count = 45 * $key;
             $row->upload_id = $upload->id;
             $row->serial = $key;
             $row->save();

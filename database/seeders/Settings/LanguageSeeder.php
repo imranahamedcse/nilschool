@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Settings;
 
 use App\Models\Language;
 use Illuminate\Database\Seeder;
@@ -12,17 +12,17 @@ class LanguageSeeder extends Seeder
     public function run()
     {
         Language::create([
-            'name' => 'English',
-            'code' => 'en',
+            'name'       => 'English',
+            'code'       => 'en',
             'icon_class' => 'flag-icon flag-icon-us',
-            'direction'=>'ltr'
+            'direction'  =>'ltr'
         ]);
 
         Language::create([
-            'name' => 'Bangla',
-            'code' => 'bn',
+            'name'       => 'Bangla',
+            'code'       => 'bn',
             'icon_class' => 'flag-icon flag-icon-bd',
-            'direction'=>'ltr'
+            'direction'  =>'ltr'
         ]);
     }
 }

@@ -15,57 +15,24 @@ class ClassRoomSeeder extends Seeder
      */
     public function run()
     {
-        ClassRoom::create([
-            'room_no'  => '101',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '102',
-            'capacity' => '60'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '103',
-            'capacity' => '40'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '104',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '105',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '106',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '107',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '108',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '109',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '110',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '111',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '112',
-            'capacity' => '50'
-        ]);
-        ClassRoom::create([
-            'room_no'  => '113',
-            'capacity' => '50'
-        ]);
+        $items = [
+            '101',
+            '102',
+            '103',
+            '104',
+            '105',
+            '201',
+            '202',
+            '203',
+            '204',
+            '205'
+        ];
+
+        foreach ($items as $item) {
+            $row = new ClassRoom();
+            $row->room_no = $item;
+            $row->capacity = 30;
+            $row->save();
+        }
     }
 }

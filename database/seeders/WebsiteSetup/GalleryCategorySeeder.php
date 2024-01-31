@@ -21,7 +21,7 @@ class GalleryCategorySeeder extends Seeder
             'Awards',
             'Curriculum'
         ];
-        foreach ($names as $key=>$item) {
+        foreach ($names as $key => $item) {
             $row = new GalleryCategory();
             $row->name = $item;
             $row->save();

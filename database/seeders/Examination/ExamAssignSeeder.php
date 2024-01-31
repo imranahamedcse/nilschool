@@ -30,7 +30,7 @@ class ExamAssignSeeder extends Seeder
                 foreach ($class->classSetup->classSetupChildrenAll as $setup_child) {
                     $assigned_subjects = SubjectAssign::with('subjectTeacher')->where('classes_id', $class->id)->where('section_id', $setup_child->section_id)->first();
 
-                    foreach($assigned_subjects->subjectTeacher as $subject) {
+                    foreach ($assigned_subjects->subjectTeacher as $subject) {
 
                         $exam_assign               = new ExamAssign();
                         $exam_assign->session_id   = setting('session');
@@ -46,13 +46,9 @@ class ExamAssignSeeder extends Seeder
                         $exam_assign_child->title             = 'Written';
                         $exam_assign_child->mark              = 100;
                         $exam_assign_child->save();
-
                     }
                 }
-
             }
-
         }
-
     }
 }

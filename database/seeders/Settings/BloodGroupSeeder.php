@@ -1,12 +1,12 @@
 <?php
 
-namespace Database\Seeders\Academic;
+namespace Database\Seeders\Settings;
 
-use App\Models\Academic\Shift;
+use App\Models\BloodGroup;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ShiftSeeder extends Seeder
+class BloodGroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,12 +16,18 @@ class ShiftSeeder extends Seeder
     public function run()
     {
         $items = [
-            'Day',
-            'Night'
+            'A+',
+            'A-',
+            'B+',
+            'B-',
+            'O+',
+            'O-',
+            'AB+',
+            'AB-',
         ];
 
         foreach ($items as $item) {
-            $row = new Shift();
+            $row = new BloodGroup();
             $row->name = $item;
             $row->save();
         }

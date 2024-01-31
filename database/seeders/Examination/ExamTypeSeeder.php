@@ -15,14 +15,16 @@ class ExamTypeSeeder extends Seeder
      */
     public function run()
     {
-        ExamType::create([
-            'name' => 'First'
-        ]);
-        ExamType::create([
-            'name' => 'Mid'
-        ]);
-        ExamType::create([
-            'name' => 'Final'
-        ]);
+        $items = [
+            'First',
+            'Mid',
+            'Final'
+        ];
+
+        foreach ($items as $item) {
+            $row = new ExamType();
+            $row->name = $item;
+            $row->save();
+        }
     }
 }

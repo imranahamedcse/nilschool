@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Settings;
 
 use App\Models\Gender;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,11 +15,16 @@ class GenderSeeder extends Seeder
      */
     public function run()
     {
-        Gender::create([
-            'name' => 'Male'
-        ]);
-        Gender::create([
-            'name' => 'Female'
-        ]);
+        $items = [
+            'Male',
+            'Female',
+            'Other',
+        ];
+
+        foreach ($items as $item) {
+            $row = new Gender();
+            $row->name = $item;
+            $row->save();
+        }
     }
 }

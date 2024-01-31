@@ -18,18 +18,18 @@ class TransportSetupSeeder extends Seeder
         $items = [
             [
                 'route_id' => 1,
-                'vehicle' => [1,2],
-                'pickup_point' => [1,2],
+                'vehicle' => [1, 2],
+                'pickup_point' => [1, 2],
             ],
             [
                 'route_id' => 2,
-                'vehicle' => [3,4],
-                'pickup_point' => [3,4],
+                'vehicle' => [3, 4],
+                'pickup_point' => [3, 4],
             ],
             [
                 'route_id' => 3,
-                'vehicle' => [5,6,7],
-                'pickup_point' => [5,6,7],
+                'vehicle' => [5, 6, 7],
+                'pickup_point' => [5, 6, 7],
             ],
         ];
 

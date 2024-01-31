@@ -16,13 +16,13 @@ class GallerySeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i < 25; $i++){
+        for ($i = 1; $i < 25; $i++) {
             $upload = new Upload();
-            $upload->path = 'frontend/img/gallery/'.$i.'.webp';
+            $upload->path = 'frontend/img/gallery/' . $i . '.webp';
             $upload->save();
 
             $row = new Gallery();
-            $row->gallery_category_id  = rand(1,4);
+            $row->gallery_category_id  = rand(1, 4);
             $row->upload_id = $upload->id;
             $row->save();
         }

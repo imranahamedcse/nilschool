@@ -15,125 +15,46 @@ class TimeScheduleSeeder extends Seeder
      */
     public function run()
     {
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '09:00',
-            'end_time'   => '09:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '10:00',
-            'end_time'   => '10:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '11:00',
-            'end_time'   => '11:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '12:00',
-            'end_time'   => '12:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '1:00',
-            'end_time'   => '1:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '2:00',
-            'end_time'   => '2:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '3:00',
-            'end_time'   => '3:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '4:00',
-            'end_time'   => '4:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '5:00',
-            'end_time'   => '5:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '6:00',
-            'end_time'   => '6:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '7:00',
-            'end_time'   => '7:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '1',
-            'start_time' => '8:00',
-            'end_time'   => '8:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '09:00',
-            'end_time'   => '09:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '10:00',
-            'end_time'   => '10:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '11:00',
-            'end_time'   => '11:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '12:00',
-            'end_time'   => '12:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '1:00',
-            'end_time'   => '1:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '2:00',
-            'end_time'   => '2:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '3:00',
-            'end_time'   => '3:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '4:00',
-            'end_time'   => '4:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '5:00',
-            'end_time'   => '5:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '6:00',
-            'end_time'   => '6:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '7:00',
-            'end_time'   => '7:59',
-        ]);
-        TimeSchedule::create([
-            'type'       => '2',
-            'start_time' => '8:00',
-            'end_time'   => '8:59',
-        ]);
+
+        $items = [
+            [
+                'type'       => '1',
+                'start_time' => '09:00',
+                'end_time'   => '09:59',
+            ],
+            [
+                'type'       => '1',
+                'start_time' => '10:00',
+                'end_time'   => '10:59',
+            ],
+            [
+                'type'       => '1',
+                'start_time' => '11:00',
+                'end_time'   => '11:59',
+            ],
+            [
+                'type'       => '1',
+                'start_time' => '12:00',
+                'end_time'   => '12:59',
+            ],
+            [
+                'type'       => '1',
+                'start_time' => '01:00',
+                'end_time'   => '01:59',
+            ],
+            [
+                'type'       => '2',
+                'start_time' => '10:00',
+                'end_time'   => '12:00',
+            ],
+        ];
+
+        foreach ($items as $item) {
+            $row = new TimeSchedule();
+            $row->type = $item['type'];
+            $row->start_time = $item['start_time'];
+            $row->end_time = $item['end_time'];
+            $row->save();
+        }
     }
 }

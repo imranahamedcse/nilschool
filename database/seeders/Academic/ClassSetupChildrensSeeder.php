@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Academic;
 
+use App\Models\Academic\ClassSetup;
 use App\Models\Academic\ClassSetupChildren;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,30 +16,19 @@ class ClassSetupChildrensSeeder extends Seeder
      */
     public function run()
     {
-        ClassSetupChildren::create([
-            'class_setup_id'   => 1,
-            'section_id'       => 1
-        ]);
-        ClassSetupChildren::create([
-            'class_setup_id'   => 1,
-            'section_id'       => 2
-        ]);
-        ClassSetupChildren::create([
-            'class_setup_id'   => 2,
-            'section_id'       => 1
-        ]);
-        ClassSetupChildren::create([
-            'class_setup_id'   => 2,
-            'section_id'       => 2
-        ]);
-        ClassSetupChildren::create([
-            'class_setup_id'   => 3,
-            'section_id'       => 1
-        ]);
-        ClassSetupChildren::create([
-            'class_setup_id'   => 3,
-            'section_id'       => 2
-        ]);
+        $classes = ClassSetup::all();
+        $sections = [
+            '1',
+            '2'
+        ];
 
+        foreach ($classes as $class) {
+            foreach ($sections as $section) {
+                $row = new ClassSetupChildren();
+                $row->class_setup_id = $class->id;
+                $row->section_id = $section;
+                $row->save();
+            }
+        }
     }
 }

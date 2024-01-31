@@ -36,7 +36,7 @@ class AboutSeeder extends Seeder
             'frontend/img/about-gallery/2.webp',
             'frontend/img/about-gallery/3.webp',
         ];
-        foreach ($names as $key=>$item) {
+        foreach ($names as $key => $item) {
             $upload       = new Upload();
             $upload->path = $images[$key];
             $upload->save();

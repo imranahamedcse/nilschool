@@ -15,13 +15,22 @@ class FeesGroupSeeder extends Seeder
      */
     public function run()
     {
-        FeesGroup::create([
-            'name'        => 'Monthly fees',
-            'description' => 'Fees Group Description. Lorem ipsum dolor sit amet et justo od 1',
-        ]);
-        FeesGroup::create([
-            'name'        => 'Exam fees',
-            'description' => 'Fees Group Description. Lorem ipsum dolor sit amet et justo od 2',
-        ]);
+        $items = [
+            [
+                'name'        => 'Monthly fees',
+                'description' => 'Fees Group Description. Lorem ipsum dolor sit amet et justo od 1',
+            ],
+            [
+                'name'        => 'Exam fees',
+                'description' => 'Fees Group Description. Lorem ipsum dolor sit amet et justo od 2',
+            ],
+        ];
+
+        foreach ($items as $item) {
+            $row               = new FeesGroup();
+            $row->name         = $item['name'];
+            $row->description  = $item['description'];
+            $row->save();
+        }
     }
 }

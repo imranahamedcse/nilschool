@@ -91,12 +91,12 @@ class PickupPointSeeder extends Seeder
             ],
         ];
 
-        foreach ($items as $item){
+        foreach ($items as $item) {
             $row = new PickupPoint();
             $row->name = $item['name'];
             $row->fee = $item['fee'];
             $row->description = $item['description'];
-            $row->save ();
+            $row->save();
         }
     }
 }

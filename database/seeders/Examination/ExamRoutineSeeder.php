@@ -22,7 +22,7 @@ class ExamRoutineSeeder extends Seeder
         // $classes  = Classes::all();
         // $subjects = Subject::all();
         // $types    = ExamType::all();
-         
+
         // foreach ($classes as $class) {
         //     foreach ($class->classSetup->classSetupChildrenAll as $setup_child) {
         //         foreach ($types as $type) {
@@ -34,7 +34,7 @@ class ExamRoutineSeeder extends Seeder
         //                 $exam_routine->type_id     = $type->id;
         //                 $exam_routine->date        = date("Y-m-d", strtotime("+ ".$subject->id." day"));
         //                 $exam_routine->save();
-                        
+
         //                 $row                      = new ExamRoutineChildren();
         //                 $row->exam_routine_id     = $exam_routine->id;
         //                 $row->subject_id          = $subject->id;
@@ -57,13 +57,13 @@ class ExamRoutineSeeder extends Seeder
                         $exam_routine->type_id     = $t;
                         $exam_routine->date        = date("Y-m-d", strtotime("+ ".$d." day"));
                         $exam_routine->save();
-                        
+
                         // class + date key wise subject id
                         $row                      = new ExamRoutineChildren();
                         $row->exam_routine_id     = $exam_routine->id;
-                        $row->subject_id          = $c + $d;
-                        $row->time_schedule_id    = $c + $d;
-                        $row->class_room_id       = $c + $d;
+                        $row->subject_id          = $d;
+                        $row->time_schedule_id    = $d;
+                        $row->class_room_id       = $d;
                         $row->save();
                     }
                 }

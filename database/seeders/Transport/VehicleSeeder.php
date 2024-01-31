@@ -79,14 +79,14 @@ class VehicleSeeder extends Seeder
             ]
         ];
 
-        foreach ($items as $item){
+        foreach ($items as $item) {
             $row = new Vehicle();
             $row->name = $item['name'];
             $row->license_no = $item['license_no'];
             $row->driver_name = $item['driver_name'];
             $row->driver_phone = $item['driver_phone'];
             $row->description = $item['description'];
-            $row->save ();
+            $row->save();
         }
     }
 }

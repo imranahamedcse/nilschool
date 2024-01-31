@@ -18,7 +18,7 @@ class QuestionBankSeeder extends Seeder
     {
         $questions = [
             [1, "What is your favorite subject?", '4', 2, 4],
-            [2, "What are your favorite foods?", ['3','4'], 2, 4],
+            [2, "What are your favorite foods?", ['3', '4'], 2, 4],
             [3, "Do you think another name for water is life.", '1', 1, null],
             [4, "What challenges have you faced in your academic journey, and how did you overcome them?", null, 5, null],
         ];
@@ -52,6 +52,5 @@ class QuestionBankSeeder extends Seeder
                 'option'           => $item[1],
             ]);
         }
-
     }
 }

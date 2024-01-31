@@ -25,7 +25,6 @@ class FeesTypeSeeder extends Seeder
                 'code'        => $exam_type,
                 'description' => "$exam_type Fees Type Description. Lorem ipsum dolor sit amet et justo od 1",
             ]);
-
         }
     }
 }

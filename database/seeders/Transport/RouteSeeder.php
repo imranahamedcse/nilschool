@@ -19,10 +19,10 @@ class RouteSeeder extends Seeder
             'Road Three'
         ];
 
-        foreach ($items as $item){
-            $row = new Route ();
+        foreach ($items as $item) {
+            $row = new Route();
             $row->name = $item;
-            $row->save ();
+            $row->save();
         }
     }
 }

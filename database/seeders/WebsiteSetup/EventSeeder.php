@@ -52,14 +52,14 @@ class EventSeeder extends Seeder
 
         foreach ($titels as $key => $value) {
             $upload       = new Upload();
-            $upload->path = 'frontend/img/event/'.$key.'.webp';
+            $upload->path = 'frontend/img/event/' . $key . '.webp';
             $upload->save();
 
             $row = new Event();
             $row->session_id  = setting('session');
             $row->title       = $value;
             $row->description = $descriptions[$key];
-            $row->date        = date("Y-m-d", strtotime("+ ".$key." day"));
+            $row->date        = date("Y-m-d", strtotime("+ " . $key . " day"));
             $row->start_time  = date('H:m:s');
             $row->end_time    = date('H:m:s');
             $row->upload_id   = $upload->id;

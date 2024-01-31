@@ -18,9 +18,9 @@ class OnlineExamSeeder extends Seeder
     public function run()
     {
         $exams = [
-            ["First term exam",null,10, date('Y-m-d H:i:s', strtotime("+0 day")), date('Y-m-d H:i:s', strtotime("+2 day")), date('Y-m-d H:i:s', strtotime("-2 day"))],
-            ["Second term exam",1,10, date('Y-m-d H:i:s', strtotime("+0 day")), date('Y-m-d H:i:s', strtotime("+2 day")), date('Y-m-d H:i:s', strtotime("-1 day"))],
-            ["Third term exam",1,10, date('Y-m-d H:i:s', strtotime("+1 day")), date('Y-m-d H:i:s', strtotime("+3 day")), date('Y-m-d H:i:s', strtotime("+1 day"))],
+            ["First term exam", null, 10, date('Y-m-d H:i:s', strtotime("+0 day")), date('Y-m-d H:i:s', strtotime("+2 day")), date('Y-m-d H:i:s', strtotime("-2 day"))],
+            ["Second term exam", 1, 10, date('Y-m-d H:i:s', strtotime("+0 day")), date('Y-m-d H:i:s', strtotime("+2 day")), date('Y-m-d H:i:s', strtotime("-1 day"))],
+            ["Third term exam", 1, 10, date('Y-m-d H:i:s', strtotime("+1 day")), date('Y-m-d H:i:s', strtotime("+3 day")), date('Y-m-d H:i:s', strtotime("+1 day"))],
         ];
 
         $questions = [

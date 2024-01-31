@@ -19,16 +19,16 @@ class StaffSeeder extends Seeder
     public function run()
     {
 
-        for ($i=1; $i < 14; $i++) { 
+        for ($i = 1; $i < 14; $i++) {
 
             $upload = new Upload();
-            $upload->path = 'frontend/img/instractors/'.$i.'.webp';
+            $upload->path = 'frontend/img/instractors/' . $i . '.webp';
             $upload->save();
 
             $user                     = new User();
-            $user->name               = 'Teacher '.$i;
-            $user->email              = 'teacher'.$i.'@gmail.com';
-            $user->phone              = '014789625'.$i;
+            $user->name               = 'Teacher ' . $i;
+            $user->email              = 'teacher' . $i . '@gmail.com';
+            $user->phone              = '014789625' . $i;
             $user->password           = Hash::make('123456');
             $user->email_verified_at  = now();
             $user->role_id            = 5;
@@ -74,31 +74,31 @@ class StaffSeeder extends Seeder
                 // End Report
             ];
             $user->save();
-            
+
             $staff                          = new Staff();
             $staff->upload_id               = $upload->id;
             $staff->user_id                 = $user->id;
-            $staff->staff_id                = '100'+$i;
+            $staff->staff_id                = '100' + $i;
             $staff->role_id                 = 5;
             $staff->designation_id          = 2;
             $staff->department_id           = 2;
             $staff->first_name              = 'Teacher';
             $staff->last_name               = $i;
-            $staff->father_name             = 'Teacher '.$i.' father';
-            $staff->mother_name             = 'Teacher '.$i.' mother';
-            $staff->email                   = 'teacher'.$i.'@gmail.com';
+            $staff->father_name             = 'Teacher ' . $i . ' father';
+            $staff->mother_name             = 'Teacher ' . $i . ' mother';
+            $staff->email                   = 'teacher' . $i . '@gmail.com';
             $staff->gender_id               = 1;
             $staff->dob                     = '1999-01-01';
             $staff->joining_date            = '2023-01-01';
-            $staff->phone                   = '014789625'.$i;
-            $staff->emergency_contact       = '014789625'.$i;
+            $staff->phone                   = '014789625' . $i;
+            $staff->emergency_contact       = '014789625' . $i;
             $staff->marital_status          = 1;
             $staff->status                  = 1;
             $staff->current_address         = 'Dhaka, Bangladesh';
             $staff->permanent_address       = 'Dhaka, Bangladesh';
             $staff->basic_salary            = '30000';
             $staff->upload_documents        = [];
-    
+
             $staff->save();
         }
     }

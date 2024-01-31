@@ -15,7 +15,7 @@ class DesignationSeeder extends Seeder
      */
     public function run()
     {
-        $designations = [
+        $items = [
             'HRM',
             'Admin',
             'Accounts',
@@ -23,10 +23,10 @@ class DesignationSeeder extends Seeder
             'Software'
         ];
 
-        foreach ($designations as $designation) {
-            Designation::create([
-                'name' => $designation
-            ]);
+        foreach ($items as $item) {
+            $row = new Designation();
+            $row->name = $item;
+            $row->save();
         }
     }
 }

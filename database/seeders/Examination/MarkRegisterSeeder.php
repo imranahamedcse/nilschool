@@ -35,7 +35,7 @@ class MarkRegisterSeeder extends Seeder
                     $assigned_subjects = SubjectAssign::with('subjectTeacher')->where('classes_id', $class->id)->where('section_id', $setup_child->section_id)->where('session_id', setting('session'))->first();
                     $students          = SessionClassStudent::where('classes_id', $class->id)->where('section_id', $setup_child->section_id)->where('session_id', setting('session'))->get();
 
-                    foreach($assigned_subjects->subjectTeacher as $subject) {
+                    foreach ($assigned_subjects->subjectTeacher as $subject) {
 
                         $mark_register               = new MarksRegister();
                         $mark_register->session_id   = setting('session');
@@ -45,23 +45,18 @@ class MarkRegisterSeeder extends Seeder
                         $mark_register->subject_id   = $subject->subject_id;
                         $mark_register->save();
 
-                        foreach($students as $student) {
+                        foreach ($students as $student) {
 
                             $mark_register_child                      = new MarksRegisterChildren();
                             $mark_register_child->marks_register_id   = $mark_register->id;
                             $mark_register_child->student_id          = $student->student_id;
                             $mark_register_child->title               = 'Written';
-                            $mark_register_child->mark                = rand(30,100);
+                            $mark_register_child->mark                = rand(30, 100);
                             $mark_register_child->save();
-
                         }
-
                     }
                 }
-
             }
-
         }
-
     }
 }

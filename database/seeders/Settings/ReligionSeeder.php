@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Settings;
 
 use App\Models\Religion;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,14 +15,16 @@ class ReligionSeeder extends Seeder
      */
     public function run()
     {
-        Religion::create([
-            'name' => 'Islam'
-        ]);
-        Religion::create([
-            'name' => 'Hindu'
-        ]);
-        Religion::create([
-            'name' => 'Christian'
-        ]);
+        $items = [
+            'Islam',
+            'Hindu',
+            'Christian',
+        ];
+
+        foreach ($items as $item) {
+            $row = new Religion();
+            $row->name = $item;
+            $row->save();
+        }
     }
 }

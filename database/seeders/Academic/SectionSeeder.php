@@ -15,11 +15,15 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        Section::create([
-            'name' => 'A'
-        ]);
-        Section::create([
-            'name' => 'B'
-        ]);
+        $items = [
+            'A',
+            'B'
+        ];
+
+        foreach ($items as $item) {
+            $row = new Section();
+            $row->name = $item;
+            $row->save();
+        }
     }
 }

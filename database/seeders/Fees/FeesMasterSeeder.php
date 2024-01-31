@@ -22,14 +22,12 @@ class FeesMasterSeeder extends Seeder
 
             FeesMaster::create([
                 'session_id'          => setting('session'),
-                'fees_group_id'       => $fees_type->id <=5 ? 1:2,
+                'fees_group_id'       => $fees_type->id <= 5 ? 1 : 2,
                 'fees_type_id'        => $fees_type->id,
                 'due_date'            => date('Y-m-d'),
                 'amount'              => 1000,
                 'fine_type'           => 0
             ]);
-
-            
         }
     }
 }

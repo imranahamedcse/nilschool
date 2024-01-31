@@ -15,14 +15,16 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        Department::create([
-            'name' => 'History'
-        ]);
-        Department::create([
-            'name' => 'Science'
-        ]);
-        Department::create([
-            'name' => 'Arch'
-        ]);
+        $items = [
+            'History',
+            'Science',
+            'Arch',
+        ];
+
+        foreach ($items as $item) {
+            $row = new Department();
+            $row->name = $item;
+            $row->save();
+        }
     }
 }

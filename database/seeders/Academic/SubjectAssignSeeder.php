@@ -28,28 +28,22 @@ class SubjectAssignSeeder extends Seeder
         foreach ($classes as $class) {
 
             foreach ($class->classSetup->classSetupChildrenAll as $setup_child) {
-                
+
                 $subject_assign = SubjectAssign::create([
                     'session_id'   => 1,
                     'classes_id'   => $class->id,
                     'section_id'   => $setup_child->section_id,
-                    'status'       => 1,
                 ]);
 
-                foreach($subjects as $subject) {
+                foreach ($subjects as $subject) {
 
                     SubjectAssignChildren::create([
                         'subject_assign_id'    => $subject_assign->id,
                         'subject_id'           => $subject->id,
-                        'staff_id'             => $teachers[rand(0,12)],
-                        'status'               => 1,
+                        'staff_id'             => $teachers[rand(0, 12)],
                     ]);
-
                 }
-
             }
-           
         }
-
     }
 }

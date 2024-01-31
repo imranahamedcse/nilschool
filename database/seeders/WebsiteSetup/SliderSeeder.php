@@ -31,7 +31,7 @@ class SliderSeeder extends Seeder
             'frontend/img/sliders/02.webp',
             'frontend/img/sliders/01.webp',
         ];
-        foreach ($names as $key=>$item) {
+        foreach ($names as $key => $item) {
             $upload = new Upload();
             $upload->path = $images[$key];
             $upload->save();

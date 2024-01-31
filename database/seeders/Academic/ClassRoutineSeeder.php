@@ -20,7 +20,7 @@ class ClassRoutineSeeder extends Seeder
     {
         // $classes  = Classes::all();
         // $subjects = Subject::all();
-        
+
         // for ($d=2; $d <= 6; $d++) {  // day = 5
 
         //     foreach ($classes as $class) {
@@ -58,7 +58,7 @@ class ClassRoutineSeeder extends Seeder
                     $class_routine->day        = $d;
                     $class_routine->save();
 
-                    for ($s= $c+1; $s <= $c+4; $s++) { // subjects = 4
+                    for ($s= 1; $s <= 4; $s++) { // subjects = 4
                         $row                      = new ClassRoutineChildren();
                         $row->class_routine_id    = $class_routine->id;
                         $row->subject_id          = $s;

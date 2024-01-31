@@ -15,11 +15,15 @@ class StudentCategorySeeder extends Seeder
      */
     public function run()
     {
-        StudentCategory::create([
-            'name' => 'Regular'
-        ]);
-        StudentCategory::create([
-            'name' => 'Eregular'
-        ]);
+        $items = [
+            'Regular',
+            'Eregular'
+        ];
+
+        foreach ($items as $item) {
+            $row = new StudentCategory();
+            $row->name = $item;
+            $row->save();
+        }
     }
 }

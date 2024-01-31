@@ -15,41 +15,42 @@ class AccountHeadSeeder extends Seeder
      */
     public function run()
     {
-        AccountHead::create([ // default row. don't remove this.
-            'name' => 'Fees',
-            'type' => 1,
-            'status' => 1
-        ]);
+        $items = [
+            [ // default row. don't remove this.
+                'name' => 'Fees',
+                'type' => 1
+            ],
+            [
+                'name' => 'Donation',
+                'type' => 1
+            ],
+            [
+                'name' => 'Rent',
+                'type' => 1
+            ],
+            [
+                'name' => 'Book Sale',
+                'type' => 1
+            ],
+            [
+                'name' => 'Stationery Purchase',
+                'type' => 2
+            ],
+            [
+                'name' => 'Electricity Bill',
+                'type' => 2
+            ],
+            [
+                'name' => 'Telephone Bill',
+                'type' => 2
+            ],
+        ];
 
-        AccountHead::create([
-            'name' => 'Donation',
-            'type' => 1,
-            'status' => 1
-        ]);
-        AccountHead::create([
-            'name' => 'Rent',
-            'type' => 1,
-            'status' => 1
-        ]);
-        AccountHead::create([
-            'name' => 'Book Sale',
-            'type' => 1,
-            'status' => 1
-        ]);
-        AccountHead::create([
-            'name' => 'Stationery Purchase',
-            'type' => 2,
-            'status' => 1
-        ]);
-        AccountHead::create([
-            'name' => 'Electricity Bill',
-            'type' => 2,
-            'status' => 1
-        ]);
-        AccountHead::create([
-            'name' => 'Telephone Bill',
-            'type' => 2,
-            'status' => 1
-        ]);
+        foreach ($items as $item) {
+            $row = new AccountHead();
+            $row->name = $item['name'];
+            $row->type = $item['type'];
+            $row->save();
+        }
     }
 }

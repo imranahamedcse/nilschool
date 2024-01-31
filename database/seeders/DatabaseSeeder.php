@@ -3,16 +3,16 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\RoleSeeder;
-use Database\Seeders\UserSeeder;
+use Database\Seeders\Staff\RoleSeeder;
+use Database\Seeders\Staff\UserSeeder;
 use Database\Seeders\SearchSeeder;
 use Database\Seeders\UploadSeeder;
-use Database\Seeders\SettingSeeder;
+use Database\Seeders\Settings\SettingSeeder;
 use Database\Seeders\FlagIconSeeder;
-use Database\Seeders\LanguageSeeder;
+use Database\Seeders\Settings\LanguageSeeder;
 use App\Models\Academic\TimeSchedule;
 use App\Models\Currency;
-use Database\Seeders\PermissionSeeder;
+use Database\Seeders\Staff\PermissionSeeder;
 use Database\Seeders\Staff\StaffSeeder;
 use Database\Seeders\Fees\FeesTypeSeeder;
 use Database\Seeders\Academic\ShiftSeeder;
@@ -54,6 +54,10 @@ use Database\Seeders\Library\BookCategorySeeder;
 use Database\Seeders\OnlineExamination\OnlineExamSeeder;
 use Database\Seeders\OnlineExamination\QuestionBankSeeder;
 use Database\Seeders\OnlineExamination\QuestionGroupSeeder;
+use Database\Seeders\Settings\BloodGroupSeeder;
+use Database\Seeders\Settings\GenderSeeder;
+use Database\Seeders\Settings\ReligionSeeder;
+use Database\Seeders\Settings\SessionSeeder;
 use Database\Seeders\Transport\TransportSetupSeeder;
 use Database\Seeders\Transport\PickupPointSeeder;
 use Database\Seeders\Transport\RouteSeeder;
@@ -80,24 +84,25 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UploadSeeder::class,
-            RoleSeeder::class,
-            DesignationSeeder::class,
-            UserSeeder::class,
-            PermissionSeeder::class,
-            FlagIconSeeder::class,
-            LanguageSeeder::class,
-            SettingSeeder::class,
-            SearchSeeder::class,
-            GenderSeeder::class,
-            ReligionSeeder::class,
+            // Settings
             BloodGroupSeeder::class,
+            GenderSeeder::class,
+            LanguageSeeder::class,
+            ReligionSeeder::class,
             SessionSeeder::class,
+            SettingSeeder::class,
+
+            UploadSeeder::class,
+            FlagIconSeeder::class,
+            SearchSeeder::class,
 
             // Staff
             DepartmentSeeder::class,
+            DesignationSeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
             StaffSeeder::class,
-
+            UserSeeder::class,
             // Academic
             ClassesSeeder::class,
             SectionSeeder::class,
@@ -109,31 +114,48 @@ class DatabaseSeeder extends Seeder
             SubjectAssignSeeder::class,
             TimeScheduleSeeder::class,
             ClassRoutineSeeder::class,
-
             // Student info
             ParentGuardianSeeder::class,
             StudentCategorySeeder::class,
             StudentSeeder::class,
-
-            // Fees
-            FeesGroupSeeder::class,
-            FeesTypeSeeder::class,
-            FeesMasterSeeder::class,
-
-            // Examication
-            ExamTypeSeeder::class,
-            MarkGradeSeeder::class,
-            ExamRoutineSeeder::class,
-
             // Accounts
             AccountHeadSeeder::class,
             IncomeSeeder::class,
             ExpenseSeeder::class,
-
+            // Class Room
+            AssignmentSeeder::class,
+            HomeworkSeeder::class,
+            Postseeder::class,
+            // Dormitory
+            DormitorySeeder::class,
+            RoomTypeSeeder::class,
+            RoomSeeder::class,
+            DormitorySetupSeeder::class,
+            DormitoryStudentSeeder::class,
+            // Examication
+            ExamTypeSeeder::class,
+            MarkGradeSeeder::class,
+            ExamRoutineSeeder::class,
             ExaminationSettingsSeeder::class,
             ExamAssignSeeder::class,
             MarkRegisterSeeder::class,
-
+            // Fees
+            FeesGroupSeeder::class,
+            FeesTypeSeeder::class,
+            FeesMasterSeeder::class,
+            // Library
+            BookCategorySeeder::class,
+            // Online Examination
+            QuestionGroupSeeder::class,
+            QuestionBankSeeder::class,
+            OnlineExamSeeder::class,
+            CurrencySeeder::class,
+            // Transport
+            RouteSeeder::class,
+            VehicleSeeder::class,
+            PickupPointSeeder::class,
+            TransportSetupSeeder::class,
+            // VehicleStudentSeeder::class,
             // Frontend
             PageSectionsSeeder::class,
             SliderSeeder::class,
@@ -145,34 +167,6 @@ class DatabaseSeeder extends Seeder
             ContactInfoSeeder::class,
             DepartmentContactSeeder::class,
             AboutSeeder::class,
-
-            // Library
-            BookCategorySeeder::class,
-
-            // Online Examination
-            QuestionGroupSeeder::class,
-            QuestionBankSeeder::class,
-            OnlineExamSeeder::class,
-            CurrencySeeder::class,
-
-            // Class Room
-            AssignmentSeeder::class,
-            HomeworkSeeder::class,
-            Postseeder::class,
-
-            // Transport
-            RouteSeeder::class,
-            VehicleSeeder::class,
-            PickupPointSeeder::class,
-            TransportSetupSeeder::class,
-            // VehicleStudentSeeder::class
-
-            // Dormitory
-            DormitorySeeder::class,
-            RoomTypeSeeder::class,
-            RoomSeeder::class,
-            DormitorySetupSeeder::class,
-            DormitoryStudentSeeder::class
         ]);
     }
 }
