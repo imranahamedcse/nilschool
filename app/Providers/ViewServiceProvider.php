@@ -32,7 +32,7 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('backend.partials.header', AttendanceComposer::class);
         View::composer('student-panel.partials.header', LanguageComposer::class);
         View::composer('parent-panel.partials.header', LanguageComposer::class);
-        View::composer('frontend.partials.menu', LanguageComposer::class);
+        View::composer('frontend.partials.navbar', LanguageComposer::class);
         View::composer('backend.partials.header', SessionComposer::class);
 
     }
