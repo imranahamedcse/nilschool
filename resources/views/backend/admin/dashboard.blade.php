@@ -42,9 +42,11 @@
                         @foreach ($data['events'] as $item)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div>
-                                    <small><strong>{{ $item->title }}</strong></small> <br>
-                                    <small class="text-body-secondary">{{ timeFormat(@$item->start_time) }} -
-                                        {{ timeFormat(@$item->end_time) }}</small>
+                                    <small>
+                                        <strong>{{ $item->title }}</strong><br>
+                                        <span class="text-body-secondary">{{ timeFormat(@$item->start_time) }} -
+                                            {{ timeFormat(@$item->end_time) }}</span>
+                                    </small>
                                 </div>
                                 <span class="badge bg-primary rounded-pill">{{ dateFormat(@$item->date) }}</span>
                             </li>
@@ -52,7 +54,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="card mb-4">
+            <div class="card">
                 <div class="card-header">
                     <strong>All Users</strong>
                 </div>
@@ -94,7 +96,7 @@
 @push('script')
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-        var classes, present, absent;
+        var title, classes, present, absent;
         $.ajax({
             type: "GET",
             dataType: 'json',
@@ -103,6 +105,7 @@
             },
             url: '/today-attendance',
             success: function(data) {
+                title = data.title;
                 classes = data.classes;
                 present = data.present;
                 absent = data.absent;
@@ -148,7 +151,7 @@
                     opacity: 1
                 },
                 title: {
-                    text: "Today's Attendance (01 Feb 2024)",
+                    text: title,
                     align: 'left'
                 },
                 tooltip: {
@@ -164,7 +167,7 @@
         };
     </script>
     <script>
-        var incomes, expenses, revenues;
+        var title, incomes, expenses, revenues;
         var url = $('#url').val();
         $.ajax({
             type: "GET",
@@ -174,7 +177,8 @@
             },
             url: url + '/fees-collection-monthly',
             success: function(data) {
-                incomes  = data.income;
+                title = data.title;
+                incomes = data.income;
                 expenses = data.expense;
                 revenues = data.revenue;
                 getSessionlyFeesCollection();
@@ -187,17 +191,18 @@
         function getSessionlyFeesCollection() {
             var options = {
                 series: [{
-                    name: 'Income',
-                    data: incomes
-                },
-                {
-                    name: 'Expense',
-                    data: expenses
-                },
-                {
-                    name: 'Revenue',
-                    data: revenues
-                }],
+                        name: 'Income',
+                        data: incomes
+                    },
+                    {
+                        name: 'Expense',
+                        data: expenses
+                    },
+                    {
+                        name: 'Revenue',
+                        data: revenues
+                    }
+                ],
                 chart: {
                     height: 400,
                     type: 'area'
@@ -225,7 +230,7 @@
                     ]
                 },
                 title: {
-                    text: 'Income & Expenses For Session 2023-24',
+                    text: title,
                     align: 'left'
                 },
                 tooltip: {
@@ -241,7 +246,7 @@
     </script>
 
     <script>
-        var dates, incomes, expenses;
+        var title, dates, incomes, expenses;
 
         $.ajax({
             type: "GET",
@@ -251,6 +256,7 @@
             },
             url: '/income-expense-current-month',
             success: function(data) {
+                title = data.title;
                 dates = data.dates;
                 incomes = data.incomes;
                 expenses = data.expenses;
@@ -291,7 +297,7 @@
                     categories: dates
                 },
                 title: {
-                    text: 'Income & Expenses For Feb-24',
+                    text: title,
                     align: 'left'
                 },
                 fill: {
@@ -315,7 +321,7 @@
     </script>
 
     <script>
-        var dates, collection;
+        var title, dates, collection;
         $.ajax({
             type: "GET",
             dataType: 'json',
@@ -324,6 +330,7 @@
             },
             url: '/fees-collection-current-month',
             success: function(data) {
+                title = data.title;
                 dates = data.dates;
                 collection = data.collection;
                 getFeesCollection();
@@ -351,7 +358,7 @@
                     categories: dates,
                 },
                 title: {
-                    text: 'Fees Collection For Feb-24',
+                    text: title,
                     align: 'left'
                 },
                 fill: {
