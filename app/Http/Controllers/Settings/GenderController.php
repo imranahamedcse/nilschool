@@ -25,7 +25,7 @@ class GenderController extends Controller
 
     public function index()
     {
-        $data['genders'] = $this->gender->getAll();
+        $data['genders'] = $this->gender->all();
 
         $title             = ___('common.Genders');
         $data['headers']   = [

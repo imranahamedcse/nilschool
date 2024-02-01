@@ -17,18 +17,30 @@ class FeesGroupSeeder extends Seeder
     {
         $items = [
             [
-                'name'        => 'Monthly fees',
-                'description' => 'Fees Group Description. Lorem ipsum dolor sit amet et justo od 1',
+                "title" => "Tuition Fee",
+                "description" => "Cost for academic instruction."
             ],
             [
-                'name'        => 'Exam fees',
-                'description' => 'Fees Group Description. Lorem ipsum dolor sit amet et justo od 2',
+                "title" => "Registration Fee",
+                "description" => "One-time fee for enrolling in the school."
             ],
+            [
+                "title" => "Book Fees",
+                "description" => "Cost for textbooks and learning materials."
+            ],
+            [
+                "title" => "Uniform Fee",
+                "description" => "Cost for school uniforms."
+            ],
+            [
+                "title" => "Extracurricular Activities Fee",
+                "description" => "Cost for participating in extracurricular activities."
+            ]
         ];
 
         foreach ($items as $item) {
             $row               = new FeesGroup();
-            $row->name         = $item['name'];
+            $row->name         = $item['title'];
             $row->description  = $item['description'];
             $row->save();
         }

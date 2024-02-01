@@ -24,7 +24,7 @@ class BloodGroupController extends Controller
 
     public function index()
     {
-        $data['bloodGroup'] = $this->bloodGroup->getAll();
+        $data['bloodGroup'] = $this->bloodGroup->all();
 
         $title             = ___('common.Blood groups');
         $data['headers']   = [

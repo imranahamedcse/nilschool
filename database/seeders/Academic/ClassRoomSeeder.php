@@ -21,11 +21,6 @@ class ClassRoomSeeder extends Seeder
             '103',
             '104',
             '105',
-            '201',
-            '202',
-            '203',
-            '204',
-            '205'
         ];
 
         foreach ($items as $item) {

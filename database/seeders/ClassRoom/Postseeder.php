@@ -13,14 +13,22 @@ class Postseeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 3; $i++) {
+        $items = [
+            "School Picnic",
+            "Parent-Teacher Meeting",
+            "Book Fair",
+            "Science Exhibition",
+            "Holiday Reminder"
+        ];
+
+        foreach ($items as $key => $item)  {
             $row = new Post();
             $row->session_id = 1;
-            $row->classes_id = $i;
+            $row->classes_id = $key+1;
             $row->section_id = 1;
-            $row->subject_id = $i;
-            $row->description = 'Test post description'. $i;
-            $row->assigned_by = $i+1;
+            $row->subject_id = $key+1;
+            $row->description = $item;
+            $row->assigned_by = $key+2;
             $row->save();
         }
     }

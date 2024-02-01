@@ -13,17 +13,25 @@ class AssignmentSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 3; $i++) {
+        $items = [
+            "Colorful Candy Collection",
+            "Zoo Adventure",
+            "Superhero Team-Up",
+            "Space Explorer's Log",
+            "Recipe Book Reimagined"
+        ];
+
+        foreach ($items as $key => $item)  {
             $row = new Assignment();
             $row->session_id = 1;
-            $row->classes_id = $i;
+            $row->classes_id = $key+1;
             $row->section_id = 1;
-            $row->subject_id = $i;
+            $row->subject_id = $key+1;
             $row->assigned_date = date('Y-m-d');
             $row->submission_date = date('Y-m-d');
             $row->mark = 10;
-            $row->description = 'Test assignment description'. $i;
-            $row->assigned_by = $i+1;
+            $row->description = $item;
+            $row->assigned_by = $key+2;
             $row->save();
         }
     }

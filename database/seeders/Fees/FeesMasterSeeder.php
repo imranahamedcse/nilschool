@@ -16,14 +16,14 @@ class FeesMasterSeeder extends Seeder
      */
     public function run()
     {
-        $fees_types = FeesType::all();
+        $items = FeesType::all();
 
-        foreach ($fees_types as $fees_type) {
+        foreach ($items as $item) {
 
             FeesMaster::create([
                 'session_id'          => setting('session'),
-                'fees_group_id'       => $fees_type->id <= 5 ? 1 : 2,
-                'fees_type_id'        => $fees_type->id,
+                'fees_group_id'       => $item->id <= 5 ? 1 : 2,
+                'fees_type_id'        => $item->id,
                 'due_date'            => date('Y-m-d'),
                 'amount'              => 1000,
                 'fine_type'           => 0

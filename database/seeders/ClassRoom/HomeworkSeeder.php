@@ -13,14 +13,23 @@ class HomeworkSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 3; $i++) {
+        $items = [
+            "Counting Critters",
+            "Storybook Adventure",
+            "Inventor's Challenge",
+            "Explorer's Logbook",
+            "Environmental Advocacy"
+        ];
+
+
+        foreach ($items as $key => $item)  {
             $row = new Homework();
             $row->session_id = 1;
-            $row->classes_id = $i;
+            $row->classes_id = $key+1;
             $row->section_id = 1;
-            $row->subject_id = $i;
-            $row->description = 'Test homework description'. $i;
-            $row->assigned_by = $i+1;
+            $row->subject_id = $key+1;
+            $row->description = $item;
+            $row->assigned_by = $key+2;
             $row->save();
         }
     }

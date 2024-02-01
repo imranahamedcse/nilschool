@@ -16,14 +16,40 @@ class FeesTypeSeeder extends Seeder
     public function run()
     {
 
-        $exam_types = ['january months fee', 'february month fee', 'march month fee', 'april month fee', 'may month fee', 'first term fee', '2nd term fee', 'last term fee'];
+        $items = [
+            [
+                "name" => "Tuition Fee",
+                "code" => "TF001",
+                "description" => "Cost for academic instruction."
+            ],
+            [
+                "name" => "Registration Fee",
+                "code" => "RF002",
+                "description" => "One-time fee for enrolling in the school."
+            ],
+            [
+                "name" => "Book Fees",
+                "code" => "BF003",
+                "description" => "Cost for textbooks and learning materials."
+            ],
+            [
+                "name" => "Uniform Fee",
+                "code" => "UF004",
+                "description" => "Cost for school uniforms."
+            ],
+            [
+                "name" => "Extracurricular Activities Fee",
+                "code" => "EAF005",
+                "description" => "Cost for participating in extracurricular activities."
+            ]
+        ];
 
-        foreach ($exam_types as $exam_type) {
+        foreach ($items as $item) {
 
             FeesType::create([
-                'name'        => $exam_type,
-                'code'        => $exam_type,
-                'description' => "$exam_type Fees Type Description. Lorem ipsum dolor sit amet et justo od 1",
+                'name'        => $item['name'],
+                'code'        => $item['code'],
+                'description' => $item['description'],
             ]);
         }
     }

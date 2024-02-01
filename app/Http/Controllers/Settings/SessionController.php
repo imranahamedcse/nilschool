@@ -26,7 +26,7 @@ class SessionController extends Controller
 
     public function index()
     {
-        $data['sessions'] = $this->session->getAll();
+        $data['sessions'] = $this->session->all();
 
         $title             = ___('common.Sessions');
         $data['headers']   = [

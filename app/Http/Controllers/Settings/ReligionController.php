@@ -25,7 +25,7 @@ class ReligionController extends Controller
 
     public function index()
     {
-        $data['religions'] = $this->religion->getAll();
+        $data['religions'] = $this->religion->all();
 
         $title             = ___('common.Religions');
         $data['headers']   = [

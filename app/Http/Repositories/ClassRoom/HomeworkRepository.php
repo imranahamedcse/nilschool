@@ -27,7 +27,7 @@ class HomeworkRepository implements HomeworkInterface
 
     public function all()
     {
-        return $this->model::latest()->where('session_id', setting('session'))->all();
+        return $this->model::latest()->where('session_id', setting('session'));
     }
 
     public function search($request)
