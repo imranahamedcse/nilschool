@@ -40,10 +40,6 @@ class DashboardController extends Controller
         return $this->repo->feesCollectionYearly();
     }
 
-    public function revenueYearly() {
-        return $this->repo->revenueYearly();
-    }
-
     public function feesCollectionCurrentMonth()
     {
         return $this->repo->feesCollection();

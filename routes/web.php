@@ -77,7 +77,6 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 // dashboard routes
                 Route::get('dashboard',                    [DashboardController::class, 'index'])->name('dashboard');
                 Route::get('fees-collection-monthly',      [DashboardController::class, 'feesCollectionMonthly']);
-                Route::get('revenue',                      [DashboardController::class, 'revenueYearly']);
                 Route::get('fees-collection-current-month',[DashboardController::class, 'feesCollectionCurrentMonth']);
                 Route::get('income-expense-current-month', [DashboardController::class, 'incomeExpenseCurrentMonth']);
                 Route::get('today-attendance',             [DashboardController::class, 'todayAttendance']);
