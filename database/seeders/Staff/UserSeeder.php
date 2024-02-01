@@ -14,14 +14,14 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name'              => 'Super Admin',
-            'phone'              => '01811000000',
+            'phone'             => '01811000000',
             'email'             => 'superadmin@onest.com',
             'email_verified_at' => now(),
             'password'          => Hash::make('123456'),
             'remember_token'    => Str::random(10),
             'role_id'           => 1,
             'date_of_birth'     => '2022-09-07',
-            'upload_id'          => 1,
+            'upload_id'         => 1,
             'designation_id'    => rand(1, 5),
             'permissions' => [
 

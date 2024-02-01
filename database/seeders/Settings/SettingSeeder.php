@@ -52,7 +52,7 @@ class SettingSeeder extends Seeder
         ]);
         Setting::create([
             'name' => 'mail_address',
-            'value' => 'sales@onesttech.com',
+            'value' => 'nilschool@info.com',
         ]);
         Setting::create([
             'name' => 'from_name',

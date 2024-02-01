@@ -52,6 +52,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                     Route::get('/', 'index')->name('student-panel-marksheet.index');
                     Route::post('/search', 'search')->name('student-panel-marksheet.search');
                     Route::get('/pdf-generate/{type}', 'generatePDF')->name('student-panel-marksheet.pdf-generate');
+                    Route::get('/result', 'result')->name('student-panel-marksheet.result');
                 });
                 Route::controller(AttendanceController::class)->prefix('attendance')->group(function () {
                     Route::get('/', 'index')->name('student-panel-attendance.index');
