@@ -101,7 +101,7 @@ class MarksheetController extends Controller
             $item = $this->repo->search($request);
 
             $data['titles'][] = $type->name;
-            $data['points'][] = $item['gpa'];
+            $data['points'][] = $item['gpa'] == "" ? "0" : $item['gpa'];
         }
         $data['title'] = "Results";
 

@@ -12,6 +12,7 @@ use App\Http\Repositories\Report\MarksheetRepository as ReportMarksheetRepositor
 use Illuminate\Support\Facades\Auth;
 use App\Http\Repositories\Examination\ExamAssignRepository;
 use App\Http\Repositories\StudentInfo\StudentRepository;
+use App\Models\Examination\ExamType;
 use Illuminate\Support\Facades\Session;
 use PDF;
 
@@ -96,5 +97,24 @@ class MarksheetController extends Controller
 
         $pdf = PDF::loadView('backend.report.marksheetPDF', compact('data'));
         return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
+    }
+
+    public function result(){
+        $data['titles'] = [];
+        $data['points'] = [];
+
+        $types = ExamType::all();
+        foreach ($types as $type) {
+            $request = new Request([
+                'exam_type' => $type->id,
+            ]);
+            $item = $this->repo->search($request);
+
+            $data['titles'][] = $type->name;
+            $data['points'][] = $item['gpa'] == "" ? "0" : $item['gpa'];
+        }
+        $data['title'] = "Results";
+
+        return $data;
     }
 }
