@@ -82,13 +82,13 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a class="dropdown-item {{ set_menu(['my.profile'], 'active') }}" href="{{ route('my.profile') }}">
+                    <a class="dropdown-item {{ set_menu(['parent-panel/profile'], 'active') }}" href="{{ route('parent-panel.profile') }}">
                         <span>{{ ___('common.my_profile') }}</span>
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item {{ set_menu(['passwordUpdate'], 'active') }}"
-                        href="{{ route('passwordUpdate') }}">
+                    <a class="dropdown-item {{ set_menu(['parent-panel/password/update'], 'active') }}"
+                        href="{{ route('parent-panel.password-update') }}">
                         <span>{{ ___('common.update_password') }}</span>
                     </a>
                 </li>

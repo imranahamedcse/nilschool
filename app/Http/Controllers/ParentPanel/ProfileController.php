@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\ParentPanel\Profile\ProfileUpdateRequest;
 use App\Http\Requests\ParentPanel\Profile\PasswordUpdateRequest;
+use App\Models\StudentInfo\ParentGuardian;
+use App\Models\StudentInfo\Student;
 
 class ProfileController extends Controller
 {
@@ -27,13 +29,25 @@ class ProfileController extends Controller
     public function profile()
     {
         $data['title'] = 'Profile';
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        $parent           = ParentGuardian::where('user_id', Auth::user()->id)->first();
+        $data['students'] = Student::where('parent_guardian_id', $parent->id)->get();
         return view('backend.parent.profile.profile',compact('data'));
     }
 
     public function edit()
     {
-        $data['user']        = $this->user->show(Auth::user()->id);
-        $data['title']       = "Profile Edit";
+        $data['title']        = "Profile Edit";
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        $parent           = ParentGuardian::where('user_id', Auth::user()->id)->first();
+        $data['students'] = Student::where('parent_guardian_id', $parent->id)->get();
+        $data['user']     = $this->user->show(Auth::user()->id);
         return view('backend.parent.profile.edit',compact('data'));
     }
 
@@ -50,6 +64,12 @@ class ProfileController extends Controller
     public function passwordUpdate()
     {
         $data['title'] = 'Password Update';
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        $parent           = ParentGuardian::where('user_id', Auth::user()->id)->first();
+        $data['students'] = Student::where('parent_guardian_id', $parent->id)->get();
         return view('backend.parent.profile.update_password',compact('data'));
     }
 
