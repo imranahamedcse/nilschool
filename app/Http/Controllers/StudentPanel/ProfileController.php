@@ -27,13 +27,21 @@ class ProfileController extends Controller
     public function profile()
     {
         $data['title'] = 'Profile';
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.student.profile.profile',compact('data'));
     }
 
     public function edit()
     {
+        $data['title']       = "Edit profile";
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         $data['user']        = $this->user->show(Auth::user()->id);
-        $data['title']       = "Profile Edit";
         return view('backend.student.profile.edit',compact('data'));
     }
 
@@ -50,6 +58,10 @@ class ProfileController extends Controller
     public function passwordUpdate()
     {
         $data['title'] = 'Password Update';
+        $data['breadcrumbs']  = [
+            ["title" => ___("common.home"), "route" => "dashboard"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('backend.student.profile.update_password',compact('data'));
     }
 

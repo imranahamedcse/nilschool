@@ -20,13 +20,13 @@ class ClassRoutineSeeder extends Seeder
     public function run()
     {
         $days = [
-            1, // Saturday
+            // 1, // Saturday
             2, // Sunday
             3, // Monday
-            4, // Tuesday
+            // 4, // Tuesday
             5, // Wednesday
             6, // Thursday
-            7, // Friday
+            // 7, // Friday
         ];
         $classes  = Classes::all();
         $sections = Section::all();
