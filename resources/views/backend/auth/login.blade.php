@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-center">
                     <h1>Logo</h1>
                 </div>
-                <h4 class="text-center mb-4">{{ ___('common.login_details') }}</h4>
+                <h4 class="text-center mb-4">{{ ___('auth.login_details') }}</h4>
 
 
                 <form action="{{ route('login.auth') }}" method="post">
@@ -22,7 +22,7 @@
                             <span class="input-group-text" for="email">
                                 <i class="fa-solid fa-envelope"></i>
                             </span>
-                            <input placeholder="{{ ___('common.phone_or_email') }}" type="email"
+                            <input placeholder="{{ ___('auth.phone_or_email') }}" type="email"
                                 class="form-control @error('email') is-invalid @enderror" name="email" id="email"
                                 aria-describedby="emailValidationMsg" required>
                             @error('email')
@@ -38,7 +38,7 @@
                             <span class="input-group-text" for="password">
                                 <i class="fa-solid fa-lock"></i>
                             </span>
-                            <input placeholder="{{ ___('common.password') }}" type="password"
+                            <input placeholder="{{ ___('auth.password') }}" type="password"
                                 class="form-control @error('password') is-invalid @enderror" name="password" id="password"
                                 aria-describedby="passwordValidationMsg" required>
                             <span class="input-group-text" id="passwordShow">
@@ -54,21 +54,21 @@
 
                     <div class="d-flex justify-content-end mb-4">
                         <a class="link-underline link-underline-opacity-0"
-                            href="{{ route('forgot-password') }}">{{ ___('common.forgot_password') }}</a>
+                            href="{{ route('forgot-password') }}">{{ ___('auth.forgot_password') }}</a>
                     </div>
 
                     <div class="d-grid mb-4">
                         <button type="submit" class="btn border rounded-5">
-                            {{ ___('common.login') }}
+                            {{ ___('auth.login') }}
                         </button>
                     </div>
                 </form>
 
-                
+
                 <div class="d-flex justify-content-center">
-                    {{ ___('common.dont_have_account') }}&nbsp
+                    {{ ___('auth.dont_have_account') }}&nbsp
                     <a class="link-underline link-underline-opacity-0"
-                        href="{{ route('register') }}">{{ ___('common.register') }}</a>
+                        href="{{ route('register') }}">{{ ___('auth.register') }}</a>
                 </div>
 
             </div>
@@ -84,7 +84,7 @@
                             <input name="g-recaptcha-response" type="hidden" value="123456">
                             <div class="d-grid mb-3">
                                 <button type="submit" class="btn border rounded-5"
-                                    value="Login">{{ ___('common.superadmin') }}
+                                    value="Login">{{ ___('auth.superadmin') }}
                                 </button>
                             </div>
                         </form>
@@ -97,7 +97,7 @@
                             <input name="g-recaptcha-response" type="hidden" value="123456">
                             <div class="d-grid mb-3">
                                 <button type="submit" class="btn border rounded-5"
-                                    value="Login">{{ ___('common.admin') }}
+                                    value="Login">{{ ___('auth.admin') }}
                                 </button>
                             </div>
                         </form>
@@ -110,7 +110,7 @@
                             <input name="g-recaptcha-response" type="hidden" value="123456">
                             <div class="d-grid mb-3">
                                 <button type="submit" class="btn border rounded-5"
-                                    value="Login">{{ ___('common.student') }}
+                                    value="Login">{{ ___('auth.student') }}
                                 </button>
                             </div>
                         </form>
@@ -123,7 +123,7 @@
                             <input name="g-recaptcha-response" type="hidden" value="123456">
                             <div class="d-grid mb-3">
                                 <button type="submit" class="btn border rounded-5"
-                                    value="Login">{{ ___('common.guardian') }}
+                                    value="Login">{{ ___('auth.guardian') }}
                                 </button>
                             </div>
                         </form>
@@ -136,7 +136,7 @@
                             <input name="g-recaptcha-response" type="hidden" value="123456">
                             <div class="d-grid mb-3">
                                 <button type="submit" class="btn border rounded-5"
-                                    value="Login">{{ ___('common.teacher') }}
+                                    value="Login">{{ ___('auth.teacher') }}
                                 </button>
                             </div>
                         </form>
@@ -149,14 +149,14 @@
                             <input name="g-recaptcha-response" type="hidden" value="123456">
                             <div class="d-grid mb-3">
                                 <button type="submit" class="btn border rounded-5"
-                                    value="Login">{{ ___('common.test') }}
+                                    value="Login">{{ ___('auth.test') }}
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
             @endif
-            
+
         </div>
 
 

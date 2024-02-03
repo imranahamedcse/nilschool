@@ -105,5 +105,6 @@
     "select_encryption": "Select encryption",
     "null": "Null",
     "tls": "Tls",
-    "ssl": "Ssl"
+    "ssl": "Ssl",
+    "enter_name": "Enter name"
 }

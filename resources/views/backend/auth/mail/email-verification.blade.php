@@ -281,32 +281,32 @@
         <div class="template-body">
             <!-- template text  -->
             <div class="content-part">
-                <p class="primary-text">{{ ___('common.confirm_your_e_mail_address') }}</p>
-                <p>{{ ___('common.hello_user') }}</p>
-                <p>{{ ___('common.welcome!') }}
-                    <br> {{ ___('common.are_receiving_this_email_because_you_have_registered_on_our_site') }}
+                <p class="primary-text">{{ ___('auth.confirm_your_e_mail_address') }}</p>
+                <p>{{ ___('auth.hello_user') }}</p>
+                <p>{{ ___('auth.welcome!') }}
+                    <br> {{ ___('auth.are_receiving_this_email_because_you_have_registered_on_our_site') }}
                 </p>
 
-                <p> {{ ___('common.click_the_link_below_to_active_your_laravel_starter_kit_account') }}
+                <p> {{ ___('auth.click_the_link_below_to_active_your_laravel_starter_kit_account') }}
                 </p>
                 <p>
-                    {{ ___('common.this_link_will_expire_in_15_minutes_and_can_only_be_used_once') }}
+                    {{ ___('auth.this_link_will_expire_in_15_minutes_and_can_only_be_used_once') }}
                 </p>
             </div>
             <!-- template button start -->
             <div class="template-btn-container">
                 <a href="{{ route('verify-email', [$data->email, $data->token]) }}" class="template-btn">
-                <span>{{ ___('common.verify_email') }}</span>
+                <span>{{ ___('auth.verify_email') }}</span>
             </a>
             </div>
             <!-- template button end -->
             <div class="content-part">
-                <h5>{{ ___('common.or') }}</h5>
-                <p>{{ ___('common.if_the_button_above_does_not_work_paste_this_link_into_your_web_browser') }}</p>
+                <h5>{{ ___('auth.or') }}</h5>
+                <p>{{ ___('auth.if_the_button_above_does_not_work_paste_this_link_into_your_web_browser') }}</p>
                 <p>
                     <a class="link" href="{{ route('verify-email', [$data->email, $data->token]) }}">{{ route('verify-email', [$data->email, $data->token]) }}</a>
                 </p>
-                <p>{{ ___('common.if_you_did_not_make_this_request_please_contact_us_or_ignore_this_message') }}</p>
+                <p>{{ ___('auth.if_you_did_not_make_this_request_please_contact_us_or_ignore_this_message') }}</p>
             </div>
         </div>
         <!-- End template body -->

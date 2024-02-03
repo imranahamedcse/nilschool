@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-center">
                     <h1>Logo</h1>
                 </div>
-                <h4 class="text-center mb-4">{{ ___('common.forgot_password') }}</h4>
+                <h4 class="text-center mb-4">{{ ___('auth.forgot_password') }}</h4>
 
                 <form action="{{ route('forgot.password') }}" method="post">
                     @csrf
@@ -21,7 +21,7 @@
                             <span class="input-group-text" for="email">
                                 <i class="fa-solid fa-envelope"></i>
                             </span>
-                            <input placeholder="{{ ___('common.phone_or_email') }}" type="text"
+                            <input placeholder="{{ ___('auth.phone_or_email') }}" type="text"
                                 class="form-control @error('email') is-invalid @enderror" name="email" id="email"
                                 aria-describedby="emailValidationMsg" required>
                             @error('email')
@@ -34,14 +34,14 @@
 
                     <div class="d-grid mb-4">
                         <button type="submit" class="btn border rounded-5">
-                            {{ ___('common.send') }}
+                            {{ ___('auth.send') }}
                         </button>
                     </div>
                 </form>
 
                 <div class="d-flex justify-content-center">
                     <a class="link-underline link-underline-opacity-0"
-                        href="{{ route('login') }}">{{ ___('common.back_to_login') }}</a>
+                        href="{{ route('login') }}">{{ ___('auth.back_to_login') }}</a>
                 </div>
             </div>
         </div>

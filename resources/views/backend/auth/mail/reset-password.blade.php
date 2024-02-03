@@ -287,33 +287,33 @@
         <!-- Start template body  -->
         <div class="template-body">
             <div class="content-part">
-                <p class="primary-text">{{ ___('common.reset_password') }}</p>
-                <p>{{ ___('common.hello_user') }}</p>
+                <p class="primary-text">{{ ___('auth.reset_password') }}</p>
+                <p>{{ ___('auth.hello_user') }}</p>
                 <p>
-                    {{ ___('common.you_are_receiving_this_email_because_a_request_has_been_received_to_change_the_password_for_your_larave_starter_kit_account') }}
+                    {{ ___('auth.you_are_receiving_this_email_because_a_request_has_been_received_to_change_the_password_for_your_larave_starter_kit_account') }}
                 </p>
 
 
-                <p> {{ ___('common.click_the_link_below_to_reset_your_laravel_starter_kit_password') }}
+                <p> {{ ___('auth.click_the_link_below_to_reset_your_laravel_starter_kit_password') }}
                 </p>
                 <p>
-                    {{ ___('common.this_link_will_expire_in_15_minutes_and_can_only_be_used_once') }}
+                    {{ ___('auth.this_link_will_expire_in_15_minutes_and_can_only_be_used_once') }}
                 </p>
             </div>
             <!-- template button start -->
             <div class="template-btn-container">
                 <a href="{{ route('reset-password', [$data->email, $data->token]) }}" class="template-btn">
-                    <span>{{ ___('common.reset_password') }}</span>
+                    <span>{{ ___('auth.reset_password') }}</span>
                 </a>
             </div>
             <!-- template button end -->
             <div class="content-part">
-                <h5>{{ ___('common.or') }}</h5>
-                <p>{{ ___('common.if_the_button_above_does_not_work_paste_this_link_into_your_web_browser') }}</p>
+                <h5>{{ ___('auth.or') }}</h5>
+                <p>{{ ___('auth.if_the_button_above_does_not_work_paste_this_link_into_your_web_browser') }}</p>
                 <p>
                     <a class="link" href="{{ route('reset-password', [$data->email, $data->token]) }}">{{ route('reset-password', [$data->email, $data->token]) }}</a>
                 </p>
-                <p>{{ ___('common.if_you_did_not_make_this_request_please_contact_us_or_ignore_this_message') }}</p>
+                <p>{{ ___('auth.if_you_did_not_make_this_request_please_contact_us_or_ignore_this_message') }}</p>
             </div>
         </div>
         <!-- end template body  -->

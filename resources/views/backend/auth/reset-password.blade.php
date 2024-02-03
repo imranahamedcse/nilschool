@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-center">
                     <h1>Logo</h1>
                 </div>
-                <h4 class="text-center mb-4">{{ ___('common.login_details') }}</h4>
+                <h4 class="text-center mb-4">{{ ___('auth.login_details') }}</h4>
 
                 <form action="{{ route('reset.password') }}" method="post">
                     @csrf
@@ -22,7 +22,7 @@
                             <span class="input-group-text" for="email">
                                 <i class="fa-solid fa-envelope"></i>
                             </span>
-                            <input placeholder="{{ ___('common.enter_your_email') }}" type="email"
+                            <input placeholder="{{ ___('auth.enter_your_email') }}" type="email"
                                 class="form-control @error('email') is-invalid @enderror" name="email" id="email"
                                 aria-describedby="emailValidationMsg" value="{{ $data['email'] }}" required>
                             @error('email')
@@ -38,7 +38,7 @@
                             <span class="input-group-text" for="password">
                                 <i class="fa-solid fa-lock"></i>
                             </span>
-                            <input placeholder="{{ ___('common.password') }}" type="password"
+                            <input placeholder="{{ ___('auth.password') }}" type="password"
                                 class="form-control @error('password') is-invalid @enderror" name="password" id="password"
                                 aria-describedby="passwordValidationMsg" required>
                             <span class="input-group-text" id="passwordShow">
@@ -57,7 +57,7 @@
                             <span class="input-group-text" for="confirm_password">
                                 <i class="fa-solid fa-lock"></i>
                             </span>
-                            <input placeholder="{{ ___('common.confirm_password') }}" type="password"
+                            <input placeholder="{{ ___('auth.confirm_password') }}" type="password"
                                 class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password"
                                 id="confirm_password" aria-describedby="confirm_passwordValidationMsg" required>
                             @error('confirm_password')
@@ -70,15 +70,15 @@
 
                     <div class="d-grid mb-4">
                         <button type="submit" class="btn border rounded-5">
-                            {{ ___('common.send') }}
+                            {{ ___('auth.send') }}
                         </button>
                     </div>
                 </form>
 
                 <div class="d-flex justify-content-center">
-                    {{ ___('common.already_have_an_account') }}&nbsp
+                    {{ ___('auth.already_have_an_account') }}&nbsp
                     <a class="link-underline link-underline-opacity-0"
-                        href="{{ route('login') }}">{{ ___('common.login') }}</a>
+                        href="{{ route('login') }}">{{ ___('auth.login') }}</a>
                 </div>
             </div>
         </div>
