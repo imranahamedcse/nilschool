@@ -4,7 +4,7 @@
      <div class="modal-content" id="modalWidth">
          <div class="modal-header modal-header-image">
              <h5 class="modal-title" id="modalLabel2">
-                 {{ ___('online-examination.Student List') }}
+                 {{ ___('common.Student List') }}
              </h5>
              <button type="button" onclick="dismissModal()" class="m-0 btn-close d-flex justify-content-center align-items-center"
                  data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white"
@@ -20,8 +20,8 @@
                             <th class="purchase">{{___('student_info.Student Name') }}</th>
                             <th class="purchase">{{ ___('common.guardian_name') }}</th>
                             <th class="purchase">{{ ___('common.Mobile Number') }}</th>
-                            <th class="purchase">{{ ___('online-examination.Answer') }}</th>
-                            <th class="purchase">{{ ___('online-examination.Result') }}</th>
+                            <th class="purchase">{{ ___('common.Answer') }}</th>
+                            <th class="purchase">{{ ___('common.Result') }}</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">

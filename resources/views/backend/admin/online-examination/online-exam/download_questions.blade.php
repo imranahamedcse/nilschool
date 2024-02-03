@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ ___('online-examination.Online Exam Question') }}</title>
+    <title>{{ ___('common.Online Exam Question') }}</title>
     <style>
 body {
         font-family: 'Poppins', sans-serif;
@@ -104,15 +104,15 @@ body {
                 <div class="markseet_text">
                     {{ @$data->name }}<br>
                     @if (@$data->type)
-                        {{ ___('online-examination.Type') }}: {{ @$data->type->name }}<br>
+                        {{ ___('common.Type') }}: {{ @$data->type->name }}<br>
                     @endif
                     {{ ___('common.class') }}: {{ @$data->class->name }}, {{ ___('common.section') }}: {{ @$data->section->name }}<br>
                     @if (@$data->subject)
-                        {{ ___('online-examination.Subject') }}: {{ @$data->subject->name }}, {{ ___('online-examination.Code') }}: {{ @$data->subject->code }} <br>
+                        {{ ___('common.Subject') }}: {{ @$data->subject->name }}, {{ ___('common.Code') }}: {{ @$data->subject->code }} <br>
                     @endif
                     <div class="justify-content-between">
-                        <span>{{ ___('online-examination.Mark') }}: {{@$data->total_mark}}</span>,
-                        <span>{{ ___('online-examination.Time') }}: 
+                        <span>{{ ___('common.Mark') }}: {{@$data->total_mark}}</span>,
+                        <span>{{ ___('common.Time') }}:
                         <small>
                             <?php
                                 $startDate = new DateTime(@$data->start);
@@ -124,7 +124,7 @@ body {
                     </div>
                 </div>
                 <div class="markseet_title">
-                    <h5>{{ ___('online-examination.Online Exam Question') }}</h5>
+                    <h5>{{ ___('common.Online Exam Question') }}</h5>
                 </div>
                 <div class="table-responsive">
                     <table>
@@ -136,22 +136,22 @@ body {
                             <tr>
                                 <td colspan="2">
                                     @if ($item->question->type == 1)
-            
+
                                         @for($i = 0; $i < $item->question->total_option; $i++)
                                             {{++$i}}. {{$item->question->questionOptions[--$i]->option}} <br>
                                         @endfor
-            
+
                                     @elseif ($item->question->type == 2)
-            
+
                                         @for($i = 0; $i < $item->question->total_option; $i++)
                                             {{++$i}}. {{$item->question->questionOptions[--$i]->option}} <br>
-                                        @endfor 
-            
+                                        @endfor
+
                                     @elseif($item->question->type == 3)
-            
-                                        {{ ___('online-examination.1') }}. {{ ___('online-examination.True') }} <br>
-                                        {{ ___('online-examination.2') }}. {{ ___('online-examination.False') }}
-            
+
+                                        {{ ___('common.1') }}. {{ ___('common.True') }} <br>
+                                        {{ ___('common.2') }}. {{ ___('common.False') }}
+
                                     @endif
                                 </td>
                             </tr>

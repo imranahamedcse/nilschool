@@ -23,9 +23,9 @@
                         <h3>{{ $item->name }}</span></h3>
                         <p>{{ $item->description }}</p>
                         <a href="{{ route('frontend.about') }}"
-                            class="theme_btn min_windth_200">{{ ___('frontend.Read more') }}</a>
+                            class="theme_btn min_windth_200">{{ ___('common.Read more') }}</a>
                         <a href="{{ route('frontend.contact') }}"
-                            class="theme_line_btn min_windth_200">{{ ___('frontend.Contact Us') }}</a>
+                            class="theme_line_btn min_windth_200">{{ ___('common.Contact Us') }}</a>
                     </div>
                 </div>
             @endforeach
@@ -70,7 +70,7 @@
                         <p>{{ $item['description'] }}</p>
                     @endforeach
 
-                    <a class="mt-3 btn btn-info" href="{{ route('frontend.about') }}">{{ ___('frontend.More...') }}</a>
+                    <a class="mt-3 btn btn-info" href="{{ route('frontend.about') }}">{{ ___('common.More...') }}</a>
                 </div>
             </div>
             <div class="col-xl-5 col-lg-5 col-md-6">
@@ -256,7 +256,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <a class="d-inline-flex align-items-center"
                                 href="{{ route('frontend.news-detail', $item->id) }}">
-                                <span>{{ ___('frontend.Read more') }} </span>
+                                <span>{{ ___('common.Read more') }} </span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
                             <span>{{ dateFormat($item->date) }}</span>
@@ -273,7 +273,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <a class="d-inline-flex align-items-center"
                                 href="{{ route('frontend.news-detail', $item->id) }}">
-                                <span>{{ ___('frontend.Read more') }} </span>
+                                <span>{{ ___('common.Read more') }} </span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
                             <span>{{ dateFormat($item->date) }}</span>

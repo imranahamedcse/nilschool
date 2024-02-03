@@ -23,11 +23,11 @@
                             {{-- second row --}}
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault01"
-                                    class="form-label">{{ ___('online-examination.question_type') }} <span
+                                    class="form-label">{{ ___('common.question_type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="question_type @error('type') is-invalid @enderror" name="type"
                                     id="validationDefault01">
-                                    <option value="">{{ ___('online-examination.select_type') }}</option>
+                                    <option value="">{{ ___('common.select_type') }}</option>
                                     @foreach (\Config::get('site.question_types') as $key => $type)
                                         <option {{ old('type') == $key ? 'selected' : '' }} value="{{ $key }}">
                                             {{ ___($type) }}</option>
@@ -43,11 +43,11 @@
 
                             <div class="col-md-3 question_group mb-3">
                                 <label for="validationDefault02"
-                                    class="form-label">{{ ___('online-examination.question_group') }}
+                                    class="form-label">{{ ___('common.question_group') }}
                                     <span class="text-danger">*</span></label>
                                 <select class="question_group @error('question_group') is-invalid @enderror"
                                     name="question_group" id="validationDefault02">
-                                    <option data-display="Select">{{ ___('online-examination.select_question_group') }}
+                                    <option data-display="Select">{{ ___('common.select_question_group') }}
                                     </option>
                                     @if (old('question_group'))
                                         @php
@@ -82,11 +82,11 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('online-examination.Mark') }}
+                                <label for="validationDefault04" class="form-label ">{{ ___('common.Mark') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('mark') is-invalid @enderror" name="mark"
                                     id="validationDefault04" type="number"
-                                    placeholder="{{ ___('online-examination.Enter mark') }}" value="{{ old('mark') }}"
+                                    placeholder="{{ ___('common.Enter mark') }}" value="{{ old('mark') }}"
                                     required>
                                 @error('mark')
                                     <div class="invalid-feedback">
@@ -101,10 +101,10 @@
 
                             {{-- question --}}
                             <div class="col-12 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('online-examination.question') }}
+                                <label for="validationDefault05" class="form-label ">{{ ___('common.question') }}
                                     <span class="text-danger">*</span></label>
                                 <input class="form-control @error('question') is-invalid @enderror" name="question"
-                                    id="validationDefault05" placeholder="{{ ___('online-examination.enter_question') }}"
+                                    id="validationDefault05" placeholder="{{ ___('common.enter_question') }}"
                                     value="{{ old('question') }}" required>
                                 @error('question')
                                     <div class="invalid-feedback">
@@ -119,11 +119,11 @@
 
                             {{-- total options --}}
                             <div class="col-md-12 mb-3 total_option">
-                                <label class="form-label">{{ ___('online-examination.Total option') }} <span
+                                <label class="form-label">{{ ___('common.Total option') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('total_option') is-invalid @enderror" name="total_option"
                                     id="total_option">
-                                    <option value="">{{ ___('online-examination.select_option') }}</option>
+                                    <option value="">{{ ___('common.select_option') }}</option>
                                     @for ($i = 1; $i <= 10; $i++)
                                         <option {{ old('total_option') == $i ? 'selected' : '' }}
                                             value="{{ $i }}">{{ $i }}</option>
@@ -155,7 +155,7 @@
                                 </div>
                                 @if ($errors->has('option.*'))
                                     <span
-                                        class="text-danger">{{ ___('online-examination.The options field is required.') }}</span>
+                                        class="text-danger">{{ ___('common.The options field is required.') }}</span>
                                 @endif
                             </div>
                             {{-- option --}}
@@ -166,17 +166,17 @@
 
                             {{-- Answer --}}
                             <div class="col-md-12 mb-3 single_choice_ans">
-                                <label class="form-label">{{ ___('online-examination.Answer') }} <span
+                                <label class="form-label">{{ ___('common.Answer') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('single_choice_ans') is-invalid @enderror"
                                     name="single_choice_ans" id="single_choice_ans">
-                                    <option value="">{{ ___('online-examination.select_option') }}</option>
+                                    <option value="">{{ ___('common.select_option') }}</option>
                                     {{-- options load in js --}}
                                     @if (old('option'))
                                         @foreach (old('option') as $oldMultipleChoiceAns)
                                             <option value="{{ $oldMultipleChoiceAns }}"
                                                 {{ old('single_choice_ans') == $loop->iteration ? 'selected' : '' }}>
-                                                {{ ___('online-examination.option') }} {{ $loop->iteration }}
+                                                {{ ___('common.option') }} {{ $loop->iteration }}
                                             </option>
                                         @endforeach
                                     @endif
@@ -188,7 +188,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-12 mb-3 multiple_choice_ans">
-                                <label class="form-label">{{ ___('online-examination.Answer') }} <span
+                                <label class="form-label">{{ ___('common.Answer') }} <span
                                         class="text-danger">*</span></label>
                                 <div class="input-check-radio academic-section" id="multiple_choice_ans">
                                     {{-- options load in js --}}
@@ -199,7 +199,7 @@
                                                     value="{{ $loop->iteration }}" id="option{{ $loop->iteration }}"
                                                     {{ in_array($loop->iteration, old('multiple_choice_ans') ?? []) ? 'checked' : '' }}>
                                                 <label class="form-check-label ps-2 pe-5"
-                                                    for="option{{ $loop->iteration }}">{{ ___('online-examination.option') }}
+                                                    for="option{{ $loop->iteration }}">{{ ___('common.option') }}
                                                     {{ $loop->iteration }}</label>
                                             </div>
                                         @endforeach
@@ -210,15 +210,15 @@
                                 @endif
                             </div>
                             <div class="col-md-12 mb-3 true_false_ans">
-                                <label class="form-label">{{ ___('online-examination.Answer') }} <span
+                                <label class="form-label">{{ ___('common.Answer') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('true_false_ans') is-invalid @enderror"
                                     name="true_false_ans">
-                                    <option value="">{{ ___('online-examination.select_option') }}</option>
+                                    <option value="">{{ ___('common.select_option') }}</option>
                                     <option {{ old('true_false_ans') == 1 ? 'selected' : '' }} value="1">
-                                        {{ ___('online-examination.True') }}</option>
+                                        {{ ___('common.True') }}</option>
                                     <option {{ old('true_false_ans') == 2 ? 'selected' : '' }} value="2">
-                                        {{ ___('online-examination.False') }}</option>
+                                        {{ ___('common.False') }}</option>
                                 </select>
                                 @error('true_false_ans')
                                     <div class="invalid-feedback">

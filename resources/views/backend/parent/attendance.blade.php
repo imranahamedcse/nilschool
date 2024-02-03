@@ -96,8 +96,8 @@
                             <thead class="thead">
                                 <tr>
                                     <th class="purchase">{{ ___('common.date') }}</th>
-                                    <th class="purchase">{{ ___('attendance.Attendance') }}</th>
-                                    <th class="purchase">{{ ___('attendance.Note') }}</th>
+                                    <th class="purchase">{{ ___('common.Attendance') }}</th>
+                                    <th class="purchase">{{ ___('common.Note') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

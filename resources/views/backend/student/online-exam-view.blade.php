@@ -681,11 +681,11 @@
 
                                             <div class="form-check py-1">
                                                 <input class="form-check-input" type="radio" name="answer[{{$item->question->id}}]" id="item{{$key.''.$item->question->id}}1" value="1">
-                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}1">{{ ___('online-examination.1') }}. {{ ___('online-examination.True') }}</label>
+                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}1">{{ ___('common.1') }}. {{ ___('common.True') }}</label>
                                             </div>
                                             <div class="form-check py-1">
                                                 <input class="form-check-input" type="radio" name="answer[{{$item->question->id}}]" id="item{{$key.''.$item->question->id}}0" value="0">
-                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}0">{{ ___('online-examination.2') }}. {{ ___('online-examination.False') }}</label>
+                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}0">{{ ___('common.2') }}. {{ ___('common.False') }}</label>
                                             </div>
 
                                         @else

@@ -18,14 +18,14 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('examination.subject') }}</th>
+                    <th class="purchase">{{ ___('common.subject') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Type') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Total Mark') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Result') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Exam Start') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Exam End') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Duration') }}</th>
+                    <th class="purchase">{{ ___('common.Type') }}</th>
+                    <th class="purchase">{{ ___('common.Total Mark') }}</th>
+                    <th class="purchase">{{ ___('common.Result') }}</th>
+                    <th class="purchase">{{ ___('common.Exam Start') }}</th>
+                    <th class="purchase">{{ ___('common.Exam End') }}</th>
+                    <th class="purchase">{{ ___('common.Duration') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     <th class="action">{{ ___('common.action') }}</th>
                 </tr>
@@ -52,9 +52,9 @@
                         </td>
                         <td>
                             @if (in_array($data['student'], @$row->onlineExam->studentAnswer->pluck('student_id')->toArray()))
-                                <span class="badge-basic-success-text">{{ ___('online-examination.Submitted') }}</span>
+                                <span class="badge-basic-success-text">{{ ___('common.Submitted') }}</span>
                             @else
-                                <span class="badge-basic-danger-text">{{ ___('online-examination.Pending') }}</span>
+                                <span class="badge-basic-danger-text">{{ ___('common.Pending') }}</span>
                             @endif
                         </td>
                         <td>
@@ -66,16 +66,16 @@
                                     <a class="dropdown-item"
                                         href="{{ route('student-panel-online-examination.view', @$row->onlineExam->id) }}"><span
                                             class="icon mr-8"><i
-                                                class="fa-solid fa-eye"></i></span>{{ ___('online-examination.view') }}</a>
+                                                class="fa-solid fa-eye"></i></span>{{ ___('common.view') }}</a>
                                 @else
-                                    {{ ___('online-examination.Coming soon...') }}
+                                    {{ ___('common.Coming soon...') }}
                                 @endif
                             @endif
                             @if (optional(@$row->onlineExam->studentAnswer->where('student_id', $data['student'])->first())->result !== null)
                                 <a class="dropdown-item"
                                     href="{{ route('student-panel-online-examination.result-view', @$row->onlineExam->id) }}"><span
                                         class="icon mr-8"><i
-                                            class="fa-solid fa-eye"></i></span>{{ ___('online-examination.view') }}</a>
+                                            class="fa-solid fa-eye"></i></span>{{ ___('common.view') }}</a>
                             @endif
                         </td>
                     </tr>

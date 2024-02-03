@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Examination\ExaminationSettings;
 
-function getPagination($ITEM){
+function getPagination($ITEM)
+{
     return view('common.pagination', compact('ITEM'));
 }
 
@@ -45,7 +46,8 @@ function examSetting($name)
 
 
 
-function findDirectionOfLang(){
+function findDirectionOfLang()
+{
     $data = Language::where('code', Session::get('locale'))->select('direction')->first();
     return @$data->direction != null ? strtolower(@$data->direction) : '';
 }
@@ -90,59 +92,62 @@ function ___($key = null, $replace = [], $locale = null)
     $term        = $input[1];
     $app_local   = Session::get('locale');
 
-    try { 
+    try {
 
-        if($app_local == "")
-        {
+        if ($app_local == "") {
             $app_local = 'en';
         }
 
         $jsonString  = file_get_contents(base_path('lang/' . $app_local . '/' . $file . '.json'));
 
         $data        = json_decode($jsonString, true);
-    
-    
+
         if (@$data[$term]) {
             return $data[$term];
+        } else {
+            $str          =  $term;
+            $firstChar    = strtoupper($str[0]);
+            $removechar   = substr($str, 1);
+            $newStr       = $firstChar . $removechar;
+            $resultStr    = str_replace('_', ' ', $newStr);
+
+            $newItem      = [$str => $resultStr];
+            $newData      = json_encode(array_merge($data, $newItem), JSON_PRETTY_PRINT);
+            file_put_contents(base_path('lang/' . $app_local . '/' . $file . '.json'), stripslashes($newData));
+
+            return $resultStr;
         }
 
         return $term;
-
-    } catch(\Exception $e) {
+    } catch (\Exception $e) {
         return $term;
-
     }
-
-
-    
 }
 
 // global thumbnails
 if (!function_exists('globalAsset')) {
-    function globalAsset($path,$default_image=null)
+    function globalAsset($path, $default_image = null)
     {
-        
+
         if ($path == "") {
             return url("backend/uploads/default-images/$default_image");
         } else {
-            try{
+            try {
 
                 if (setting('file_system') == "s3" && Storage::disk('s3')->exists($path) && $path != "") {
                     return Storage::disk('s3')->url($path);
                 } else if (setting('file_system') == "local" && file_exists(@$path)) {
                     return url($path);
                 } else {
-                    if ($default_image==null) {
+                    if ($default_image == null) {
                         return url('backend/uploads/default-images/user2.jpg');
                     } else {
                         return url("backend/uploads/default-images/$default_image");
                     }
                 }
-
-            } catch (\Exception $c){
+            } catch (\Exception $c) {
                 return url("backend/uploads/default-images/$default_image");
             }
-            
         }
     }
 }
@@ -177,7 +182,7 @@ if (!function_exists('markGrade')) {
     function markGrade($data)
     {
         $result = MarksGrade::where('session_id', setting('session'))->where('percent_upto', '>=', $data)->where('percent_from', '<=', $data)->first();
-        if ($result){
+        if ($result) {
             return $result->name;
         }
         return '...';
@@ -187,7 +192,7 @@ if (!function_exists('markGrade')) {
 if (!function_exists('userTheme')) {
     function userTheme()
     {
-        $session_theme=Session::get('user_theme');
+        $session_theme = Session::get('user_theme');
 
         if (isset($session_theme)) {
             return $session_theme;
@@ -230,21 +235,23 @@ if (!function_exists('setEnvironmentValue')) {
     }
 }
 
-if(!function_exists('s3Upload')){
-    function s3Upload($directory, $file){
-        $directory = 'public/'.$directory;
+if (!function_exists('s3Upload')) {
+    function s3Upload($directory, $file)
+    {
+        $directory = 'public/' . $directory;
         return Storage::disk('s3')->put($directory, $file, 'public');
     }
 }
 
-if(!function_exists('s3ObjectCheck')){
-    function s3ObjectCheck($path){
+if (!function_exists('s3ObjectCheck')) {
+    function s3ObjectCheck($path)
+    {
         return Storage::disk('s3')->exists($path);
     }
 }
 
 
-if (! function_exists('include_route_files')) {
+if (!function_exists('include_route_files')) {
     /**
      * Loops through a folder and requires all PHP files
      * Searches sub-directories as well.
@@ -258,7 +265,7 @@ if (! function_exists('include_route_files')) {
             $it = new RecursiveIteratorIterator($rdi);
 
             while ($it->valid()) {
-                if (! $it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php') {
+                if (!$it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php') {
                     require $it->key();
                 }
 

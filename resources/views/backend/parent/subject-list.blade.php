@@ -20,9 +20,9 @@
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('academic.code') }}</th>
-                    <th class="purchase">{{ ___('academic.type') }}</th>
-                    <th class="purchase">{{ ___('academic.teacher') }}</th>
+                    <th class="purchase">{{ ___('common.code') }}</th>
+                    <th class="purchase">{{ ___('common.type') }}</th>
+                    <th class="purchase">{{ ___('common.teacher') }}</th>
                 </tr>
             </thead>
             <tbody class="tbody">
@@ -34,9 +34,9 @@
                             <td>{{ $row->subject->code }}</td>
                             <td>
                                 @if ($row->subject->type == App\Enums\SubjectType::THEORY)
-                                    {{ ___('academic.theory') }}
+                                    {{ ___('common.theory') }}
                                 @elseif ($row->subject->type == App\Enums\SubjectType::PRACTICAL)
-                                    {{ ___('academic.practical') }}
+                                    {{ ___('common.practical') }}
                                 @endif
                             </td>
                             <td>

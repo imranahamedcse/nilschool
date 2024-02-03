@@ -4,7 +4,7 @@
      <div class="modal-content" id="modalWidth">
          <div class="modal-header modal-header-image">
              <h5 class="modal-title" id="modalLabel2">
-                 {{ ___('online-examination.Question List') }}
+                 {{ ___('common.Question List') }}
              </h5>
              <button type="button" onclick="dismissModal()" class="m-0 btn-close d-flex justify-content-center align-items-center"
                  data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white"
@@ -16,8 +16,8 @@
                     <thead class="thead">
                         <tr>
                             <th>{{ ___('common.sr_no') }}</th>
-                            <th class="purchase">{{ ___('online-examination.question') }}</th>
-                            <th class="purchase">{{ ___('online-examination.Mark') }}</th>
+                            <th class="purchase">{{ ___('common.question') }}</th>
+                            <th class="purchase">{{ ___('common.Mark') }}</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
@@ -33,24 +33,24 @@
                                     @for($i = 0; $i < $item->question->total_option; $i++)
                                         {{++$i}}. {{$item->question->questionOptions[--$i]->option}} <br>
                                     @endfor
-                                    {{ ___('online-examination.Answer') }}: {{$item->question->answer}}.
+                                    {{ ___('common.Answer') }}: {{$item->question->answer}}.
 
                                 @elseif ($item->question->type == 2)
 
                                     @for($i = 0; $i < $item->question->total_option; $i++)
                                         {{++$i}}. {{$item->question->questionOptions[--$i]->option}} <br>
                                     @endfor
-                                    {{ ___('online-examination.Answer') }}:
+                                    {{ ___('common.Answer') }}:
                                     @foreach ($item->question->answer as $ans)
                                         {{$ans}}.
                                     @endforeach
 
                                 @elseif($item->question->type == 3)
 
-                                    {{ ___('online-examination.1') }}. {{ ___('online-examination.True') }} <br>
-                                    {{ ___('online-examination.2') }}. {{ ___('online-examination.False') }} <br>
+                                    {{ ___('common.1') }}. {{ ___('common.True') }} <br>
+                                    {{ ___('common.2') }}. {{ ___('common.False') }} <br>
 
-                                    {{ ___('online-examination.Answer') }}: {{$item->question->answer}}.
+                                    {{ ___('common.Answer') }}: {{$item->question->answer}}.
 
                                 @endif
 

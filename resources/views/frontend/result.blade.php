@@ -1,6 +1,6 @@
 @extends('frontend.partials.master')
 @section('title')
-    {{ ___('frontend.Search Result') }}
+    {{ ___('common.Search Result') }}
 @endsection
 
 @section('main')
@@ -10,10 +10,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xl-5">
                 <div class="breadcam_wrap text-center">
-                    <h3>{{ ___('frontend.Search Result') }}</h3>
+                    <h3>{{ ___('common.Search Result') }}</h3>
                     <div class="custom_breadcam">
-                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('frontend.home') }}</a>
-                        <a href="#" class="breadcrumb-item">{{ ___('frontend.Search Result') }}</a>
+                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('common.home') }}</a>
+                        <a href="#" class="breadcrumb-item">{{ ___('common.Search Result') }}</a>
                     </div>
 
                 </div>
@@ -30,8 +30,8 @@
             <div class="col-xl-7">
                 <div class="search_result_box mb_30">
                     <div class="section__title text-center mb_45">
-                        <h3 class="theme_text4 mb-0">{{ ___('frontend.Check Results') }}</h3>
-                        <p class="mb_20 mt-2">{{ ___('frontend.Here Check Your Recent Result!') }}</p>
+                        <h3 class="theme_text4 mb-0">{{ ___('common.Check Results') }}</h3>
+                        <p class="mb_20 mt-2">{{ ___('common.Here Check Your Recent Result!') }}</p>
                         <div class="border_line d-block mx-auto"></div>
                     </div>
                     <form action="{{ route('frontend.result') }}" method="post" enctype="multipart/form-data" id="result">
@@ -47,9 +47,9 @@
                             <div class="row">
 
                                 <div class="col-xl-6 mb_24">
-                                    <label class="primary_label2" for="#">{{ ___('frontend.Academic Year/Session') }} <span class="fillable">*</span></label>
+                                    <label class="primary_label2" for="#">{{ ___('common.Academic Year/Session') }} <span class="fillable">*</span></label>
                                     <select class="theme_select wide session" name="session">
-                                        <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
+                                        <option value="" data-display="Select">{{ ___('common.Select') }}</option>
                                         @foreach ($data['sessions'] as $item)
                                             <option {{ old('session') == $item->id ? 'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
@@ -60,9 +60,9 @@
                                 </div>
 
                                 <div class="col-xl-6 mb_24">
-                                    <label class="primary_label2" for="#">{{ ___('frontend.Select class') }} <span class="fillable">*</span></label>
+                                    <label class="primary_label2" for="#">{{ ___('common.Select class') }} <span class="fillable">*</span></label>
                                     <select class="theme_select wide classes" name="class">
-                                        <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
+                                        <option value="" data-display="Select">{{ ___('common.Select') }}</option>
                                     </select>
                                     @if ($errors->has('class'))
                                         <small class="text-danger">{{ $errors->first('class') }}</small>
@@ -70,9 +70,9 @@
                                 </div>
 
                                 <div class="col-xl-6 mb_24">
-                                    <label class="primary_label2" for="#">{{ ___('frontend.Select section') }} <span class="fillable">*</span></label>
+                                    <label class="primary_label2" for="#">{{ ___('common.Select section') }} <span class="fillable">*</span></label>
                                     <select class="theme_select wide sections" name="section">
-                                        <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
+                                        <option value="" data-display="Select">{{ ___('common.Select') }}</option>
                                     </select>
                                     @if ($errors->has('section'))
                                         <small class="text-danger">{{ $errors->first('section') }}</small>
@@ -80,9 +80,9 @@
                                 </div>
 
                                 <div class="col-xl-6 mb_24">
-                                    <label class="primary_label2" for="#">{{ ___('frontend.Select Exam') }} <span class="fillable">*</span></label>
+                                    <label class="primary_label2" for="#">{{ ___('common.Select Exam') }} <span class="fillable">*</span></label>
                                     <select class="theme_select wide exam_types" name="exam">
-                                        <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
+                                        <option value="" data-display="Select">{{ ___('common.Select') }}</option>
                                     </select>
                                     @if ($errors->has('exam'))
                                         <small class="text-danger">{{ $errors->first('exam') }}</small>
@@ -90,15 +90,15 @@
                                 </div>
 
                                 <div class="col-xl-12 mb_24">
-                                    <label for="exampleDataList" class="primary_label2">{{ ___('frontend.Admission no') }} <span class="fillable">*</span></label>
-                                    <input class="form-control ot-input" type="number" value="{{ old('admission_no') }}" name="admission_no" id="exampleDataList" placeholder="{{ ___('frontend.Enter admission no') }}">
+                                    <label for="exampleDataList" class="primary_label2">{{ ___('common.Admission no') }} <span class="fillable">*</span></label>
+                                    <input class="form-control ot-input" type="number" value="{{ old('admission_no') }}" name="admission_no" id="exampleDataList" placeholder="{{ ___('common.Enter admission no') }}">
                                     @if ($errors->has('admission_no'))
                                         <small class="text-danger">{{ $errors->first('admission_no') }}</small>
                                     @endif
                                 </div>
 
                                 <div class="col-12 mt_10">
-                                    <button type="submit" class="theme_btn2  submit-btn text-center d-flex align-items-center m-0 w-100 justify-content-center text-uppercase large_btn">{{ ___('frontend.Search Result') }}</button>
+                                    <button type="submit" class="theme_btn2  submit-btn text-center d-flex align-items-center m-0 w-100 justify-content-center text-uppercase large_btn">{{ ___('common.Search Result') }}</button>
                                 </div>
                             </div>
                         </div>

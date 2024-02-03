@@ -1,6 +1,6 @@
 @extends('frontend.partials.master')
 @section('title')
-    {{ ___('frontend.About Us') }}
+    {{ ___('common.About Us') }}
 @endsection
 
 @section('main')
@@ -12,10 +12,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xl-5">
                 <div class="breadcam_wrap text-center">
-                    <h3>{{ ___('frontend.about US') }}</h3>
+                    <h3>{{ ___('common.about US') }}</h3>
                     <div class="custom_breadcam">
-                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('frontend.home') }}</a>
-                        <a href="#" class="breadcrumb-item">{{ ___('frontend.About Us') }}</a>
+                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('common.home') }}</a>
+                        <a href="#" class="breadcrumb-item">{{ ___('common.About Us') }}</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
 
 
                     </ul>
-                    {{-- <a href="{{ route('frontend.about') }}" class="theme_btn">{{ ___('frontend.Learn More') }}</a> --}}
+                    {{-- <a href="{{ route('frontend.about') }}" class="theme_btn">{{ ___('common.Learn More') }}</a> --}}
                 </div>
             </div>
             <div class="col-xl-5 col-lg-5 col-md-6">

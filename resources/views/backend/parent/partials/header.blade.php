@@ -20,7 +20,7 @@
                 <div class="input-group">
                     <div class="px-1">
                         <select class="form-control @error('student') is-invalid @enderror" name="student">
-                            <option value="">{{ ___('student_info.Select student') }}</option>
+                            <option value="">{{ ___('common.Select student') }}</option>
                             @foreach ($data['students'] as $item)
                                 <option {{ old('student', Session::get('student_id')) == $item->id ? 'selected' : '' }}
                                     value="{{ $item->id }}">{{ $item->first_name }} {{ $item->last_name }}

@@ -30,11 +30,11 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault02" class="form-label ">{{ ___('online-examination.Start') }} <span
+                        <label for="validationDefault02" class="form-label ">{{ ___('common.Start') }} <span
                                 class="text-danger">*</span></label>
                         <input class="form-control @error('start') is-invalid @enderror" name="start"
                             type="datetime-local" id="validationDefault02" type="text"
-                            placeholder="{{ ___('online-examination.Enter start') }}" value="{{ old('start') }}">
+                            placeholder="{{ ___('common.Enter start') }}" value="{{ old('start') }}">
                         @error('start')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -42,10 +42,10 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault03" class="form-label ">{{ ___('online-examination.End') }} <span
+                        <label for="validationDefault03" class="form-label ">{{ ___('common.End') }} <span
                                 class="text-danger">*</span></label>
                         <input class="form-control @error('end') is-invalid @enderror" name="end" type="datetime-local"
-                            id="validationDefault03" type="text" placeholder="{{ ___('online-examination.Enter end') }}"
+                            id="validationDefault03" type="text" placeholder="{{ ___('common.Enter end') }}"
                             value="{{ old('end') }}">
                         @error('end')
                             <div class="invalid-feedback">
@@ -54,11 +54,11 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault04" class="form-label ">{{ ___('online-examination.Published') }}
+                        <label for="validationDefault04" class="form-label ">{{ ___('common.Published') }}
                             <span class="text-danger">*</span></label>
                         <input class="form-control @error('published') is-invalid @enderror" name="published"
                             type="datetime-local" id="validationDefault04" type="text"
-                            placeholder="{{ ___('online-examination.Enter published') }}" value="{{ old('published') }}">
+                            placeholder="{{ ___('common.Enter published') }}" value="{{ old('published') }}">
                         @error('published')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -72,11 +72,11 @@
 
 
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault05" class="form-label">{{ ___('online-examination.Question group') }}
+                        <label for="validationDefault05" class="form-label">{{ ___('common.Question group') }}
                             <span class="text-danger">*</span></label>
                         <select id="question_group validationDefault05"
                             class="form-control @error('question_group') is-invalid @enderror" name="question_group">
-                            <option value="">{{ ___('online-examination.Select question group') }}</option>
+                            <option value="">{{ ___('common.Select question group') }}</option>
                             @foreach ($data['question_groups'] as $item)
                                 <option {{ old('question_group') == $item->id ? 'selected' : '' }}
                                     value="{{ $item->id }}">{{ $item->name }}</option>
@@ -126,10 +126,10 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault08" class="form-label">{{ ___('online-examination.Subject') }}</label>
+                        <label for="validationDefault08" class="form-label">{{ ___('common.Subject') }}</label>
                         <select id="validationDefault08" class="subject form-control @error('subject') is-invalid @enderror"
                             name="subject">
-                            <option value="">{{ ___('online-examination.Select subject') }}</option>
+                            <option value="">{{ ___('common.Select subject') }}</option>
                             @foreach ($data['sections'] as $item)
                                 @if (old('subject') == $item->id)
                                     <option {{ old('subject') == $item->id ? 'selected' : '' }}
@@ -150,11 +150,11 @@
 
 
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault09" class="form-label ">{{ ___('online-examination.Total Mark') }}
+                        <label for="validationDefault09" class="form-label ">{{ ___('common.Total Mark') }}
                             <span class="text-danger">*</span></label>
                         <input class="form-control @error('mark') is-invalid @enderror" name="mark"
                             id="validationDefault09" type="number"
-                            placeholder="{{ ___('online-examination.Enter total mark') }}" value="{{ old('mark') }}">
+                            placeholder="{{ ___('common.Enter total mark') }}" value="{{ old('mark') }}">
                         @error('mark')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -162,10 +162,10 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault10" class="form-label">{{ ___('online-examination.Type') }}</label>
+                        <label for="validationDefault10" class="form-label">{{ ___('common.Type') }}</label>
                         <select id="type validationDefault10" class="form-control @error('type') is-invalid @enderror"
                             name="type">
-                            <option value="">{{ ___('online-examination.Select Type') }}</option>
+                            <option value="">{{ ___('common.Select Type') }}</option>
                             @foreach ($data['types'] as $item)
                                 <option {{ old('type') == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
                                     {{ $item->name }}</option>
@@ -225,7 +225,7 @@
 
                     {{-- Second row --}}
                     <div class="col-md-4 mb-3">
-                        <h5>{{ ___('online-examination.Question list') }}</h5>
+                        <h5>{{ ___('common.Question list') }}</h5>
                         <div class="table-responsive">
                             <input type="hidden" id="page" value="create">
                             <table class="table table-bordered role-table" id="types_table">
@@ -233,15 +233,15 @@
                                     <tr>
                                         <th class="purchase mr-4">{{ ___('common.All') }} <input
                                                 class="form-check-input all" type="checkbox"></th>
-                                        <th class="purchase">{{ ___('online-examination.Question') }}</th>
-                                        <th class="purchase">{{ ___('online-examination.Type') }}</th>
+                                        <th class="purchase">{{ ___('common.Question') }}</th>
+                                        <th class="purchase">{{ ___('common.Type') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="tbody"></tbody>
                             </table>
                         </div>
                         @if ($errors->has('questions_ids'))
-                            <span class="text-danger">{{ ___('online-examination.At least select one.') }}</span>
+                            <span class="text-danger">{{ ___('common.At least select one.') }}</span>
                         @endif
                     </div>
                     <div class="col-md-8 mb-3">
@@ -264,7 +264,7 @@
                             </table>
                         </div>
                         @if ($errors->has('student_ids'))
-                            <span class="text-danger">{{ ___('online-examination.At least select one.') }}</span>
+                            <span class="text-danger">{{ ___('common.At least select one.') }}</span>
                         @endif
                     </div>
                     {{-- Second row end --}}

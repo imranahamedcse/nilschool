@@ -18,7 +18,7 @@
                                     </div>
                                 </div>
                                 <div class="px-3">
-                                    <span class="text-body-secondary">{{ ___('academic.Total class') }}</span>
+                                    <span class="text-body-secondary">{{ ___('common.Total class') }}</span>
                                     <p class="fw-bold fs-5 mb-0">{{ $data['totalClass'] }}</p>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                                 <div class="px-3">
-                                    <span class="text-body-secondary">{{ ___('academic.Total subject') }}</span>
+                                    <span class="text-body-secondary">{{ ___('common.Total subject') }}</span>
                                     <p class="fw-bold fs-5 mb-0">{{ $data['totalSubject'] }}</p>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class="px-3">
-                                    <span class="text-body-secondary">{{ ___('academic.Total teacher') }}</span>
+                                    <span class="text-body-secondary">{{ ___('common.Total teacher') }}</span>
                                     <p class="fw-bold fs-5 mb-0">{{ $data['totalTeacher'] }}</p>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="px-3">
-                                    <span class="text-body-secondary">{{ ___('academic.Total event') }}</span>
+                                    <span class="text-body-secondary">{{ ___('common.Total event') }}</span>
                                     <p class="fw-bold fs-5 mb-0">{{ $data['totalEvent'] }}</p>
                                 </div>
                             </div>

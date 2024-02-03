@@ -24,12 +24,12 @@
                     <th class="purchase">{{ ___('common.subject') }}</th>
 
                     <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Type') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Total Mark') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Exam Start') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Exam End') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Duration') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Exam Published') }}</th>
+                    <th class="purchase">{{ ___('common.Type') }}</th>
+                    <th class="purchase">{{ ___('common.Total Mark') }}</th>
+                    <th class="purchase">{{ ___('common.Exam Start') }}</th>
+                    <th class="purchase">{{ ___('common.Exam End') }}</th>
+                    <th class="purchase">{{ ___('common.Duration') }}</th>
+                    <th class="purchase">{{ ___('common.Exam Published') }}</th>
 
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('online_exam_update') || hasPermission('online_exam_delete'))
@@ -76,7 +76,7 @@
                                             <a href="{{ route('online-exam.question-download', $row->id) }}"
                                                 class="dropdown-item">
                                                 <span class="icon mr-8"><i class="fa-solid fa-download"></i></span>
-                                                {{ ___('online-examination.Download Questions') }}
+                                                {{ ___('common.Download Questions') }}
                                             </a>
                                         </li>
                                         <li>
@@ -84,7 +84,7 @@
                                                 data-bs-target="#modalCustomizeWidth"
                                                 onclick="viewQuestions({{ $row->id }})">
                                                 <span class="icon mr-8"><i class="fa-solid fa-eye"></i></span>
-                                                {{ ___('online-examination.View Questions') }}
+                                                {{ ___('common.View Questions') }}
                                             </a>
                                         </li>
                                         <li>
@@ -92,7 +92,7 @@
                                                 data-bs-target="#modalCustomizeWidth"
                                                 onclick="viewStudents({{ $row->id }})">
                                                 <span class="icon mr-8"><i class="fa-solid fa-eye"></i></span>
-                                                {{ ___('online-examination.View Students') }}
+                                                {{ ___('common.View Students') }}
                                             </a>
                                         </li>
 

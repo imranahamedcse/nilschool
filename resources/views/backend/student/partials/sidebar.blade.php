@@ -8,12 +8,12 @@
         <li>
             <a class="{{ set_menu(['student-panel/dashboard*']) }}" href="{{ route('student-panel-dashboard.index') }}">
                 <i class="prepend-icon fa-solid fa-desktop"></i>
-                <span class="link-name">{{ ___('menu.Dashboard') }}</span>
+                <span class="link-name">{{ ___('common.Dashboard') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/dashboard*']) }}">
                     <a href="{{ route('student-panel-dashboard.index') }}"
-                        class="link-name">{{ ___('menu.Dashboard') }}</a>
+                        class="link-name">{{ ___('common.Dashboard') }}</a>
                 </li>
             </ul>
         </li>
@@ -22,12 +22,12 @@
             <a class="{{ set_menu(['student-panel/subject-list*']) }}"
                 href="{{ route('student-panel-subject-list.index') }}">
                 <i class="prepend-icon fa-solid fa-book"></i>
-                <span class="link-name">{{ ___('menu.Subject list') }}</span>
+                <span class="link-name">{{ ___('common.Subject list') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/subject-list*']) }}">
                     <a href="{{ route('student-panel-subject-list.index') }}"
-                        class="link-name">{{ ___('menu.Subject list') }}</a>
+                        class="link-name">{{ ___('common.Subject list') }}</a>
                 </li>
             </ul>
         </li>
@@ -36,12 +36,12 @@
             <a class="{{ set_menu(['student-panel/class-routine*']) }}"
                 href="{{ route('student-panel-class-routine.index') }}">
                 <i class="prepend-icon fa-solid fa-table"></i>
-                <span class="link-name">{{ ___('menu.Class routine') }}</span>
+                <span class="link-name">{{ ___('common.Class routine') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/class-routine*']) }}">
                     <a href="{{ route('student-panel-class-routine.index') }}"
-                        class="link-name">{{ ___('menu.Class routine') }}</a>
+                        class="link-name">{{ ___('common.Class routine') }}</a>
                 </li>
             </ul>
         </li>
@@ -49,11 +49,11 @@
         <li>
             <a class="{{ set_menu(['student-panel/fees*']) }}" href="{{ route('student-panel-fees.index') }}">
                 <i class="prepend-icon fa-solid fa-money-bill"></i>
-                <span class="link-name">{{ ___('menu.Fees') }}</span>
+                <span class="link-name">{{ ___('common.Fees') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/fees*']) }}">
-                    <a href="{{ route('student-panel-fees.index') }}" class="link-name">{{ ___('menu.Fees') }}</a>
+                    <a href="{{ route('student-panel-fees.index') }}" class="link-name">{{ ___('common.Fees') }}</a>
                 </li>
             </ul>
         </li>
@@ -62,12 +62,12 @@
             <a class="{{ set_menu(['student-panel/exam-routine*']) }}"
                 href="{{ route('student-panel-exam-routine.index') }}">
                 <i class="prepend-icon fa-solid fa-graduation-cap"></i>
-                <span class="link-name">{{ ___('menu.Exam routine') }}</span>
+                <span class="link-name">{{ ___('common.Exam routine') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/exam-routine*']) }}">
                     <a href="{{ route('student-panel-exam-routine.index') }}"
-                        class="link-name">{{ ___('menu.Exam routine') }}</a>
+                        class="link-name">{{ ___('common.Exam routine') }}</a>
                 </li>
             </ul>
         </li>
@@ -76,12 +76,12 @@
             <a class="{{ set_menu(['student-panel/online-examination*']) }}"
                 href="{{ route('student-panel-online-examination.index') }}">
                 <i class="prepend-icon fa-solid fa-chalkboard-user"></i>
-                <span class="link-name">{{ ___('menu.Online examination') }}</span>
+                <span class="link-name">{{ ___('common.Online examination') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/online-examination*']) }}">
                     <a href="{{ route('student-panel-online-examination.index') }}"
-                        class="link-name">{{ ___('menu.Online examination') }}</a>
+                        class="link-name">{{ ___('common.Online examination') }}</a>
                 </li>
             </ul>
         </li>
@@ -90,12 +90,12 @@
             <a class="{{ set_menu(['student-panel/marksheet*']) }}"
                 href="{{ route('student-panel-marksheet.index') }}">
                 <i class="prepend-icon fa-solid fa-clipboard"></i>
-                <span class="link-name">{{ ___('menu.Marksheet') }}</span>
+                <span class="link-name">{{ ___('common.Marksheet') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/marksheet*']) }}">
                     <a href="{{ route('student-panel-marksheet.index') }}"
-                        class="link-name">{{ ___('menu.Marksheet') }}</a>
+                        class="link-name">{{ ___('common.Marksheet') }}</a>
                 </li>
             </ul>
         </li>
@@ -104,12 +104,12 @@
             <a class="{{ set_menu(['student-panel/attendance*']) }}"
                 href="{{ route('student-panel-attendance.index') }}">
                 <i class="prepend-icon fa-solid fa-file-circle-check"></i>
-                <span class="link-name">{{ ___('menu.Attendance') }}</span>
+                <span class="link-name">{{ ___('common.Attendance') }}</span>
             </a>
             <ul class="sub-menu">
                 <li class="{{ set_menu(['student-panel/attendance*']) }}">
                     <a href="{{ route('student-panel-attendance.index') }}"
-                        class="link-name">{{ ___('menu.Attendance') }}</a>
+                        class="link-name">{{ ___('common.Attendance') }}</a>
                 </li>
             </ul>
         </li>

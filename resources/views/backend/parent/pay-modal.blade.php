@@ -115,13 +115,13 @@
                 if (date('Y-m-d') > $feeAssignChildren->feesMaster?->due_date && $feeAssignChildren->fees_collect_count == 0) {
                     $fineAmount = $feeAssignChildren->feesMaster?->fine_amount;
                     $amount += $fineAmount;
-                }                      
+                }
             @endphp
-            {{ ___('fees.Fee Pay') }}
+            {{ ___('common.Fee Pay') }}
         </h5>
 
         <button type="button" class="m-0 btn-close d-flex justify-content-center align-items-center" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white" aria-hidden="true"></i></button>
-    </div>   
+    </div>
     <form action="{{ route('parent-panel-fees.pay-with-stripe') }}" method="POST" id="checkout-form">
         @csrf
 
@@ -130,17 +130,17 @@
         <div class="modal-body p-4">
             <div class="row mb-3">
                 <div class="col-12 mb-3">
-                    <label for="exampleDataList" class="form-label">{{ ___('fees.Fee Amount') }} ({{ Setting('currency_symbol') }}) <span class="fillable">*</span></label>
+                    <label for="exampleDataList" class="form-label">{{ ___('common.Fee Amount') }} ({{ Setting('currency_symbol') }}) <span class="fillable">*</span></label>
                     <input class="form-control ot-input bg-light" value="{{ $amount }}" readonly>
                     <input type="hidden" name="amount" value="{{ $amount - $fineAmount }}">
                     <input type="hidden" name="fine_amount" value="{{ $fineAmount }}">
                 </div>
                 <div class="col-12 mb-3">
-                    <label for="exampleDataList" class="form-label">{{ ___('fees.Date') }} <span class="fillable">*</span></label>
-                    <input class="form-control ot-input" name="date" list="datalistOptions" id="exampleDataList" type="date" placeholder="{{ ___('fees.date') }}" value="{{ date('Y-m-d') }}" required>
+                    <label for="exampleDataList" class="form-label">{{ ___('common.Date') }} <span class="fillable">*</span></label>
+                    <input class="form-control ot-input" name="date" list="datalistOptions" id="exampleDataList" type="date" placeholder="{{ ___('common.date') }}" value="{{ date('Y-m-d') }}" required>
                 </div>
                 <div class="col-12 mb-3">
-                    <label class="form-label">{{ ___('fees.Payment Method') }} <span class="fillable">*</span></label>
+                    <label class="form-label">{{ ___('common.Payment Method') }} <span class="fillable">*</span></label>
                     <div class="input-check-radio academic-section">
                         <div class="radio-inputs">
                             <label>
@@ -165,16 +165,16 @@
                     </div>
                 </div>
                 <div class="col-12 mb-3" id="stripeOption">
-                    <input type='hidden' name='stripeToken' id='stripe-token-id'>                              
+                    <input type='hidden' name='stripeToken' id='stripe-token-id'>
                     <br>
                     <div id="card-element" class="form-control" ></div>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary py-2 px-4" data-bs-dismiss="modal">{{ ___('ui_element.cancel') }}</button>
-            <button type="button" onclick="createToken()" class="btn ot-btn-primary" id='stripe-pay-btn'>{{ ___('ui_element.confirm') }}</button>
-            <a href="{{ route('parent-panel-fees.pay-with-paypal') }}?fees_assign_children_id={{ $feeAssignChildren->id }}" class="btn ot-btn-primary d-none" id='paypal-pay-btn'>{{ ___('ui_element.confirm') }}</a>
+            <button type="button" class="btn btn-outline-secondary py-2 px-4" data-bs-dismiss="modal">{{ ___('common.cancel') }}</button>
+            <button type="button" onclick="createToken()" class="btn ot-btn-primary" id='stripe-pay-btn'>{{ ___('common.confirm') }}</button>
+            <a href="{{ route('parent-panel-fees.pay-with-paypal') }}?fees_assign_children_id={{ $feeAssignChildren->id }}" class="btn ot-btn-primary d-none" id='paypal-pay-btn'>{{ ___('common.confirm') }}</a>
         </div>
     </form>
 </div>
@@ -210,16 +210,16 @@
     var elements = stripe.elements();
     var cardElement = elements.create('card');
     cardElement.mount('#card-element');
-  
+
     function createToken() {
         document.getElementById("stripe-pay-btn").disabled = true;
         stripe.createToken(cardElement).then(function(result) {
-   
+
             if(typeof result.error != 'undefined') {
                 document.getElementById("stripe-pay-btn").disabled = false;
                 alert(result.error.message);
             }
-  
+
             /* creating token success */
             if(typeof result.token != 'undefined') {
                 document.getElementById("stripe-token-id").value = result.token.id;

@@ -48,10 +48,10 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('online-examination.question_group') }}</th>
-                    <th class="purchase">{{ ___('online-examination.question_type') }}</th>
-                    <th class="purchase">{{ ___('online-examination.question') }}</th>
-                    <th class="purchase">{{ ___('online-examination.Mark') }}</th>
+                    <th class="purchase">{{ ___('common.question_group') }}</th>
+                    <th class="purchase">{{ ___('common.question_type') }}</th>
+                    <th class="purchase">{{ ___('common.question') }}</th>
+                    <th class="purchase">{{ ___('common.Mark') }}</th>
                     <th class="purchase">{{ ___('common.status') }}</th>
                     @if (hasPermission('question_bank_update') || hasPermission('question_bank_delete'))
                         <th class="action">{{ ___('common.action') }}</th>
