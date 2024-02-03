@@ -15,10 +15,10 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('create.name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    id="validationDefault01" placeholder="{{ ___('common.enter_name') }}"
+                                    id="validationDefault01" placeholder="{{ ___('create.enter_name') }}"
                                     value="{{ old('name') }}">
                                 @error('name')
                                     <div class="invalid-feedback">
@@ -27,11 +27,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('common.code') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('create.code') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('code') is-invalid @enderror" name="code"
                                     id="validationDefault02" type="number"
-                                    placeholder="{{ ___('common.enter_code') }}" value="{{ old('code') }}">
+                                    placeholder="{{ ___('create.enter_code') }}" value="{{ old('code') }}">
                                 @error('code')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -40,13 +40,13 @@
                             </div>
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault03" class="form-label">{{ ___('common.type') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('create.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('type') is-invalid @enderror" name="type"
                                     id="validationDefault03">
-                                    <option value="{{ App\Enums\SubjectType::THEORY }}">{{ ___('common.theory') }}
+                                    <option value="{{ App\Enums\SubjectType::THEORY }}">{{ ___('create.theory') }}
                                     </option>
-                                    <option value="{{ App\Enums\SubjectType::PRACTICAL }}">{{ ___('common.practical') }}
+                                    <option value="{{ App\Enums\SubjectType::PRACTICAL }}">{{ ___('create.practical') }}
                                     </option>
                                 </select>
 
@@ -59,12 +59,12 @@
                             </div>
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationDefault04">
-                                    <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
-                                    <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
+                                    <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('create.active') }}</option>
+                                    <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('create.inactive') }}
                                     </option>
                                 </select>
 
@@ -78,7 +78,7 @@
                             <div class="col-md-12">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.submit') }}</button>
+                                        </span>{{ ___('create.submit') }}</button>
                                 </div>
                             </div>
                         </div>

@@ -26,12 +26,12 @@
                             <!--average pass marks -->
                             <div class="col-12 col-md-12 mb-3 ">
                                 <label for="inputname"
-                                    class="form-label">{{ ___('common.Average Pass marks(Percentage)') }} <span
+                                    class="form-label">{{ ___('index.Average Pass marks(Percentage)') }} <span
                                         class="text-danger">*</span></label>
                                 <input type="number" name="values[]"
                                     class="form-control @error('average_pass_marks') is-invalid @enderror"
                                     value="{{ examSetting('average_pass_marks') }}"
-                                    placeholder="{{ ___('common.Enter Average Pass marks(Percentage)') }}" />
+                                    placeholder="{{ ___('index.Enter Average Pass marks(Percentage)') }}" />
                                 <input type="hidden" name="fields[]" value="average_pass_marks" />
                                 @error('average_pass_marks')
                                     <div class="invalid-feedback">
@@ -46,7 +46,7 @@
                         <div class="text-end">
                             @if (hasPermission('exam_setting_update'))
                                 <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.update') }}</button>
+                                    </span>{{ ___('index.update') }}</button>
                             @endif
                         </div>
                     </div>

@@ -98,16 +98,16 @@ body {
                         <p>{{ setting('address') }}</p>
                     </div>
                 </div>
-                <p class="title">{{___('common.Name')}}: <strong>{{ @$data['student']->first_name }} {{ @$data['student']->last_name }}</strong> {{___('common.Class(Section)')}}: <strong>{{ @$data['student']->session_class_student->class->name }}
-                    ({{ @$data['student']->session_class_student->section->name }})</strong>, {{___('common.Roll No')}} : <strong>{{@$data['student']->session_class_student->roll}}</strong></p>
+                <p class="title">{{___('index.Name')}}: <strong>{{ @$data['student']->first_name }} {{ @$data['student']->last_name }}</strong> {{___('index.Class(Section)')}}: <strong>{{ @$data['student']->session_class_student->class->name }}
+                    ({{ @$data['student']->session_class_student->section->name }})</strong>, {{___('index.Roll No')}} : <strong>{{@$data['student']->session_class_student->roll}}</strong></p>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table_th">{{___('common.Subject Code')}}</th>
-                                <th class="table_th">{{___('common.Subject Name')}}</th>
+                                <th class="table_th">{{___('index.Subject Code')}}</th>
+                                <th class="table_th">{{___('index.Subject Name')}}</th>
                                 @foreach (@$data['exams'] as $item)
-                                    <th class="table_th">{{$item->exam_type->name}} <small>{{___('common.(Mark-Grade)')}}</small></th>
+                                    <th class="table_th">{{$item->exam_type->name}} <small>{{___('index.(Mark-Grade)')}}</small></th>
                                 @endforeach
                             </tr>
                         </thead>
@@ -142,17 +142,17 @@ body {
                         </tbody>
                     </table>
                 </div>
-                <p class="title">{{___('common.Results')}}</p>
+                <p class="title">{{___('index.Results')}}</p>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table_th">{{___('common.Exam Name')}}</th>
-                                <th class="table_th">{{___('common.Result')}}</th>
-                                <th class="table_th">{{___('common.GPA')}}</th>
-                                <th class="table_th">{{___('common.Total Marks')}}</th>
-                                <th class="table_th">{{___('common.Avg. Marks')}}</th>
-                                <th class="table_th">{{___('common.Avg. Grade')}}</th>
+                                <th class="table_th">{{___('index.Exam Name')}}</th>
+                                <th class="table_th">{{___('index.Result')}}</th>
+                                <th class="table_th">{{___('index.GPA')}}</th>
+                                <th class="table_th">{{___('index.Total Marks')}}</th>
+                                <th class="table_th">{{___('index.Avg. Marks')}}</th>
+                                <th class="table_th">{{___('index.Avg. Grade')}}</th>
                             </tr>
                         </thead>
                         <tbody>

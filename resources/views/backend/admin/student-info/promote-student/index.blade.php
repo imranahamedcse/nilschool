@@ -17,17 +17,17 @@
                 <h4 class="m-0">{{ @$data['title'] }}</h4>
             </div>
 
-            <h5 class="text-info">{{ ___('common.From') }}</h5>
+            <h5 class="text-info">{{ ___('index.From') }}</h5>
 
             <form action="{{ route('promote-students.search') }}" enctype="multipart/form-data" method="post" id="visitForm">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('index.class') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror"
                             name="class">
-                            <option value="">{{ ___('common.select_class') }}</option>
+                            <option value="">{{ ___('index.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option {{ old('class', @$request->class) == $item->id ? 'selected' : '' }}
                                     value="{{ $item->class->id }}">{{ $item->class->name }}</option>
@@ -40,11 +40,11 @@
                         @enderror
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
+                        <label for="validationDefault02" class="form-label">{{ ___('index.section') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror"
                             name="section">
-                            <option value="">{{ ___('common.select_section') }}</option>
+                            <option value="">{{ ___('index.select_section') }}</option>
                             @foreach (@$data['sections'] as $item)
                                 <option {{ old('section', @$request->section) == $item->section->id ? 'selected' : '' }}
                                     value="{{ $item->section->id }}">{{ $item->section->name }}</option>
@@ -58,21 +58,21 @@
                     </div>
                 </div>
 
-                <h5 class="text-info">{{ ___('common.To') }}</h5>
+                <h5 class="text-info">{{ ___('index.To') }}</h5>
 
                 <div class="row mb-3">
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault03" class="form-label">{{ ___('common.Promote session') }} <span
+                        <label for="validationDefault03" class="form-label">{{ ___('index.Promote session') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault03"
                             class="session form-control @error('promote_session') is-invalid @enderror"
                             name="promote_session">
-                            <option value="">{{ ___('common.select_session') }}</option>
+                            <option value="">{{ ___('index.select_session') }}</option>
                             @foreach ($data['sessions'] as $item)
                                 <option
                                     {{ old('promote_session', @$request->promote_session) == $item->id ? 'selected' : '' }}
                                     value="{{ $item->id }}">{{ $item->name }}
-                                    {{ setting('session') == $item->id ? ___('common.Current') : '' }}</option>
+                                    {{ setting('session') == $item->id ? ___('index.Current') : '' }}</option>
                             @endforeach
                         </select>
                         @error('promote_session')
@@ -82,12 +82,12 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault04" class="form-label">{{ ___('common.Promote class') }}
+                        <label for="validationDefault04" class="form-label">{{ ___('index.Promote class') }}
                             <span class="text-danger">*</span></label>
                         <select id="validationDefault04"
                             class="promote_class form-control @error('promote_class') is-invalid @enderror"
                             name="promote_class">
-                            <option value="">{{ ___('common.select_class') }}</option>
+                            <option value="">{{ ___('index.select_class') }}</option>
                             @foreach (@$data['promoteClasses'] as $item)
                                 <option
                                     {{ old('promote_class', @$request->promote_class) == $item->class->id ? 'selected' : '' }}
@@ -101,12 +101,12 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault05" class="form-label">{{ ___('common.Promote section') }} <span
+                        <label for="validationDefault05" class="form-label">{{ ___('index.Promote section') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault05"
                             class="promote_section form-control @error('promote_section') is-invalid @enderror"
                             name="promote_section">
-                            <option value="">{{ ___('common.select_section') }}</option>
+                            <option value="">{{ ___('index.select_section') }}</option>
                             @foreach (@$data['promoteSections'] as $item)
                                 <option
                                     {{ old('promote_section', @$request->promote_section) == $item->section->id ? 'selected' : '' }}
@@ -130,7 +130,7 @@
                             <p></p>
                         @endif
                         <button class="btn btn-primary"><span><i class="fa-solid la-search"></i>
-                            </span>{{ ___('common.Search') }}</button>
+                            </span>{{ ___('index.Search') }}</button>
                     </div>
                 </div>
             </form>
@@ -158,12 +158,12 @@
                                         </div>
                                     </div>
                                 </th>
-                                <th class="purchase">{{ ___('common.Admission no') }}</th>
-                                <th class="purchase">{{ ___('common.Student Name') }}</th>
-                                <th class="purchase">{{ ___('common.Guardian Name') }}</th>
-                                <th class="purchase">{{ ___('common.Mobile Number') }}</th>
-                                <th class="purchase">{{ ___('common.Result') }}</th>
-                                <th class="purchase">{{ ___('common.Roll') }}</th>
+                                <th class="purchase">{{ ___('index.Admission no') }}</th>
+                                <th class="purchase">{{ ___('index.Student Name') }}</th>
+                                <th class="purchase">{{ ___('index.Guardian Name') }}</th>
+                                <th class="purchase">{{ ___('index.Mobile Number') }}</th>
+                                <th class="purchase">{{ ___('index.Result') }}</th>
+                                <th class="purchase">{{ ___('index.Roll') }}</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
@@ -191,7 +191,7 @@
                                                 name="result[{{ $key }}][]"
                                                 value="{{ $results[@$item->student->id] == 'Pass' ? 1 : 0 }}">
                                         @else
-                                            <span class="badge-basic-danger-text">{{ ___('common.Pending') }}</span>
+                                            <span class="badge-basic-danger-text">{{ ___('index.Pending') }}</span>
                                             <input class="form-control" type="hidden"
                                                 name="result[{{ $key }}][]" value="0">
                                         @endif
@@ -209,7 +209,7 @@
                         <div class="col-md-12 mt-3">
                             <div class="text-end">
                                 <button type="submit" class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.Promote') }}</button>
+                                    </span>{{ ___('index.Promote') }}</button>
                             </div>
                         </div>
                     @endif

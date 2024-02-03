@@ -28,7 +28,7 @@
             </div>
             {{ $data['post']->description }}
             @if ($data['post']->upload)
-                <a href="{{ @globalAsset($data['post']->upload->path) }}" download>{{ ___('common.download') }}</a>
+                <a href="{{ @globalAsset($data['post']->upload->path) }}" download>{{ ___('index.download') }}</a>
             @endif
         </div>
 

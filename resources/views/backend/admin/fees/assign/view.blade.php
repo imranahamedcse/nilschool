@@ -1,21 +1,21 @@
 <div class="modal-content" id="modalWidth">
     <div class="modal-header">
         <h5 class="modal-title">
-            {{ ___('common.Students List') }}
+            {{ ___('index.Students List') }}
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    
+
     <div class="modal-body">
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="purchase">{{ ___('common.admission_no') }}</th>
-                    <th class="purchase">{{ ___('common.Student Name') }}</th>
-                    <th class="purchase">{{ ___('common.class') }}({{ ___('common.section') }})</th>
-                    <th class="purchase">{{ ___('common.fees_type') }}</th>
-                    <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                    <th class="purchase">{{ ___('common.Mobile Number') }}</th>
+                    <th class="purchase">{{ ___('index.admission_no') }}</th>
+                    <th class="purchase">{{ ___('index.Student Name') }}</th>
+                    <th class="purchase">{{ ___('index.class') }}({{ ___('index.section') }})</th>
+                    <th class="purchase">{{ ___('index.fees_type') }}</th>
+                    <th class="purchase">{{ ___('index.guardian_name') }}</th>
+                    <th class="purchase">{{ ___('index.Mobile Number') }}</th>
                 </tr>
             </thead>
             <tbody class="tbody">

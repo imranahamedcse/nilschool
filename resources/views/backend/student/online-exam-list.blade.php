@@ -17,17 +17,17 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.subject') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.Type') }}</th>
-                    <th class="purchase">{{ ___('common.Total Mark') }}</th>
-                    <th class="purchase">{{ ___('common.Result') }}</th>
-                    <th class="purchase">{{ ___('common.Exam Start') }}</th>
-                    <th class="purchase">{{ ___('common.Exam End') }}</th>
-                    <th class="purchase">{{ ___('common.Duration') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
-                    <th class="action">{{ ___('common.action') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.subject') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.Type') }}</th>
+                    <th class="purchase">{{ ___('index.Total Mark') }}</th>
+                    <th class="purchase">{{ ___('index.Result') }}</th>
+                    <th class="purchase">{{ ___('index.Exam Start') }}</th>
+                    <th class="purchase">{{ ___('index.Exam End') }}</th>
+                    <th class="purchase">{{ ___('index.Duration') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
+                    <th class="action">{{ ___('index.action') }}</th>
                 </tr>
             </thead>
             <tbody class="tbody">
@@ -52,9 +52,9 @@
                         </td>
                         <td>
                             @if (in_array($data['student'], @$row->onlineExam->studentAnswer->pluck('student_id')->toArray()))
-                                <span class="badge-basic-success-text">{{ ___('common.Submitted') }}</span>
+                                <span class="badge-basic-success-text">{{ ___('index.Submitted') }}</span>
                             @else
-                                <span class="badge-basic-danger-text">{{ ___('common.Pending') }}</span>
+                                <span class="badge-basic-danger-text">{{ ___('index.Pending') }}</span>
                             @endif
                         </td>
                         <td>
@@ -66,16 +66,16 @@
                                     <a class="dropdown-item"
                                         href="{{ route('student-panel-online-examination.view', @$row->onlineExam->id) }}"><span
                                             class="icon mr-8"><i
-                                                class="fa-solid fa-eye"></i></span>{{ ___('common.view') }}</a>
+                                                class="fa-solid fa-eye"></i></span>{{ ___('index.view') }}</a>
                                 @else
-                                    {{ ___('common.Coming soon...') }}
+                                    {{ ___('index.Coming soon...') }}
                                 @endif
                             @endif
                             @if (optional(@$row->onlineExam->studentAnswer->where('student_id', $data['student'])->first())->result !== null)
                                 <a class="dropdown-item"
                                     href="{{ route('student-panel-online-examination.result-view', @$row->onlineExam->id) }}"><span
                                         class="icon mr-8"><i
-                                            class="fa-solid fa-eye"></i></span>{{ ___('common.view') }}</a>
+                                            class="fa-solid fa-eye"></i></span>{{ ___('index.view') }}</a>
                             @endif
                         </td>
                     </tr>
@@ -83,7 +83,7 @@
                     <tr>
                         <td colspan="100%" class="text-center gray-color">
                             <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary" width="100">
-                            <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
+                            <p class="mb-0 text-center">{{ ___('index.No data available') }}</p>
                             <p class="mb-0 text-center text-secondary font-size-90"></p>
                         </td>
                     </tr>

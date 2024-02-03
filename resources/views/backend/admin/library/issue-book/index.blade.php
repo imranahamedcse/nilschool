@@ -24,12 +24,12 @@
                     <div class="row">
                         <div class="col">
                             <input class="form-control" name="keyword"
-                                placeholder="{{ ___('common.Enter keyword') }}"
+                                placeholder="{{ ___('index.Enter keyword') }}"
                                 value="{{ @$data['request']->keyword }}">
                         </div>
                         <div class="col">
                             <button class="btn btn-primary" type="submit">
-                                {{ ___('common.Search') }}
+                                {{ ___('index.Search') }}
                             </button>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
             <div class="col text-end">
                 @if (hasPermission(@$data['headers']['permission']))
                     <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">
-                        <i class="fa-solid fa-plus"></i> {{ ___('common.add') }}
+                        <i class="fa-solid fa-plus"></i> {{ ___('index.add') }}
                     </a>
                 @endif
             </div>
@@ -50,15 +50,15 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.Book') }}</th>
-                    <th class="purchase">{{ ___('common.Member') }}</th>
-                    <th class="purchase">{{ ___('common.Phone') }}</th>
-                    <th class="purchase">{{ ___('common.Issue Date') }}</th>
-                    <th class="purchase">{{ ___('common.Return Date') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.Book') }}</th>
+                    <th class="purchase">{{ ___('index.Member') }}</th>
+                    <th class="purchase">{{ ___('index.Phone') }}</th>
+                    <th class="purchase">{{ ___('index.Issue Date') }}</th>
+                    <th class="purchase">{{ ___('index.Return Date') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('issue_book_update') || hasPermission('issue_book_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -80,13 +80,13 @@
                             <td>
                                 @if (hasPermission('issue_book_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}"
+                                        title="{{ ___('index.edit') }}"
                                         href="{{ route('issue-book.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('issue_book_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('library/issue-book/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

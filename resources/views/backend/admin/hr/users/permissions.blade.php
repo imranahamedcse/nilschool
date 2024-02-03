@@ -1,6 +1,6 @@
 @foreach ($data['permissions'] as $permission)
     <tr>
-        <td>{{ ___('common.'.$permission->attribute) }}</td>
+        <td>{{ ___('create.'.$permission->attribute) }}</td>
         <td>
             <div class="permission-list-td">
                 @foreach ($permission->keywords as $key => $keyword)
@@ -12,7 +12,7 @@
                                 name="permissions[]" value="{{ $keyword }}"
                                 id="{{ $keyword }}" {{in_array($keyword, $data['role_permissions']) ? 'checked':''}}>
                             <label class="custom-control-label"
-                                for="{{ $keyword }}">{{ ___('common.'.$key) }}</label>
+                                for="{{ $keyword }}">{{ ___('create.'.$key) }}</label>
                         @endif
                     </div>
                 </div>

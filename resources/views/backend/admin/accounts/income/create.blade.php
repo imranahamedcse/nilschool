@@ -19,11 +19,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('create.name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name') }}" id="validationDefault01"
-                                    placeholder="{{ ___('common.enter_name') }}">
+                                    placeholder="{{ ___('create.enter_name') }}">
                                 @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.income_head') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.income_head') }} <span
                                         class="text-danger">*</span></label>
 
                                 <select class="form-control @error('income_head') is-invalid @enderror" name="income_head"
@@ -50,11 +50,11 @@
                                 </div>
                             @enderror
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('common.date') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('create.date') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('date') is-invalid @enderror" name="date"
                                     type="date" value="{{ old('date') }}" id="validationDefault03"
-                                    placeholder="{{ ___('common.enter_date') }}">
+                                    placeholder="{{ ___('create.enter_date') }}">
                                 @error('date')
                                     <div id="validationServer06Feedback" class="invalid-feedback">
                                         {{ $message }}
@@ -62,11 +62,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('common.invoice_number') }}
+                                <label for="validationDefault04" class="form-label ">{{ ___('create.invoice_number') }}
                                 </label>
                                 <input class="form-control @error('invoice_number') is-invalid @enderror"
                                     name="invoice_number" value="{{ old('invoice_number') }}"
-                                    id="validationDefault04" placeholder="{{ ___('common.enter_invoice_number') }}">
+                                    id="validationDefault04" placeholder="{{ ___('create.enter_invoice_number') }}">
                                 @error('invoice_number')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -74,11 +74,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('common.amount') }}
+                                <label for="validationDefault05" class="form-label ">{{ ___('create.amount') }}
                                     ({{ Setting('currency_symbol') }}) <span class="text-danger">*</span></label>
                                 <input class="form-control @error('amount') is-invalid @enderror" name="amount"
                                     type="number" value="{{ old('amount') }}" id="validationDefault05"
-                                    placeholder="{{ ___('common.enter_amount') }}">
+                                    placeholder="{{ ___('create.enter_amount') }}">
                                 @error('amount')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -86,14 +86,14 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label for="validationDefault06" class="form-label ">{{ ___('common.document') }} <span
+                                <label for="validationDefault06" class="form-label ">{{ ___('create.document') }} <span
                                         class="text-danger"></span></label>
                                 <input id="validationDefault06" type="file" class="form-control" name="document">
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault07" class="form-label ">{{ ___('common.description') }}</label>
+                                <label for="validationDefault07" class="form-label ">{{ ___('create.description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                    id="validationDefault07" placeholder="{{ ___('common.enter_description') }}">{{ old('description') }}</textarea>
+                                    id="validationDefault07" placeholder="{{ ___('create.enter_description') }}">{{ old('description') }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -104,7 +104,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.submit') }}</button>
+                                        </span>{{ ___('create.submit') }}</button>
                                 </div>
                             </div>
                         </div>

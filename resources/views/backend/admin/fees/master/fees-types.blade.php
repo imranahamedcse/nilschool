@@ -13,7 +13,7 @@
 @endforeach
 @if ($total > 0)
 <tr>
-    <td><strong>{{ ___('common.total') }}</strong></td>
+    <td><strong>{{ ___('index.total') }}</strong></td>
     <td><strong>{{ $total }}</strong></td>
 </tr>
 @endif

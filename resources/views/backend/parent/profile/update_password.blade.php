@@ -14,9 +14,9 @@
                 <div class="col-3">
                     <ul class="list-group list-group-flush">
                         <a class="list-group-item list-group-item-action"
-                            href="{{ route('parent-panel.profile') }}">{{ ___('common.my_profile') }}</a>
+                            href="{{ route('parent-panel.profile') }}">{{ ___('profile.my_profile') }}</a>
                         <a class="list-group-item list-group-item-action active"
-                            href="{{ route('parent-panel.password-update') }}">{{ ___('common.Password update') }}</a>
+                            href="{{ route('parent-panel.password-update') }}">{{ ___('profile.Password update') }}</a>
                     </ul>
                 </div>
                 <!-- profile menu end -->
@@ -34,10 +34,10 @@
                         @method('PUT')
 
                         <div class="col-12 mb-3">
-                            <label for="inputname" class="form-label">{{ ___('common.current_password') }}
+                            <label for="inputname" class="form-label">{{ ___('profile.current_password') }}
                                 <span class="text-danger">*</span></label>
                             <input type="password" name="current_password"
-                                placeholder="{{ ___('common.current_password') }}"
+                                placeholder="{{ ___('profile.current_password') }}"
                                 class="form-control @error('current_password') is-invalid @enderror">
                             @error('current_password')
                                 <div class="invalid-feedback">
@@ -46,10 +46,10 @@
                             @enderror
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="inputname" class="form-label">{{ ___('common.confirm_password') }}
+                            <label for="inputname" class="form-label">{{ ___('profile.confirm_password') }}
                                 <span class="text-danger">*</span></label>
                             <input type="password" name="password_confirmation"
-                                placeholder="{{ ___('common.confirm_password') }}"
+                                placeholder="{{ ___('profile.confirm_password') }}"
                                 class="form-control @error('password_confirmation') is-invalid @enderror">
                             @error('password_confirmation')
                                 <div class="invalid-feedback">
@@ -58,9 +58,9 @@
                             @enderror
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="inputname" class="form-label">{{ ___('common.new_password') }}
+                            <label for="inputname" class="form-label">{{ ___('profile.new_password') }}
                                 <span class="text-danger">*</span></label>
-                            <input type="password" name="password" placeholder="{{ ___('common.new_password') }}"
+                            <input type="password" name="password" placeholder="{{ ___('profile.new_password') }}"
                                 class="form-control @error('password') is-invalid @enderror">
                             @error('password')
                                 <div class="invalid-feedback">
@@ -72,7 +72,7 @@
                         <div class="col-12 mb-3">
                             <div class="text-end">
                                 <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.update') }}</button>
+                                    </span>{{ ___('profile.update') }}</button>
                             </div>
                         </div>
                     </form>

@@ -18,14 +18,14 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.Total count') }}</th>
-                    <th class="purchase">{{ ___('common.image') }}</th>
-                    <th class="purchase">{{ ___('common.Serial') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.Total count') }}</th>
+                    <th class="purchase">{{ ___('index.image') }}</th>
+                    <th class="purchase">{{ ___('index.Serial') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('counter_update') || hasPermission('counter_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -48,12 +48,12 @@
                             <td>
                                 @if (hasPermission('counter_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}" href="{{ route('counter.edit', $row->id) }}"><i
+                                        title="{{ ___('index.edit') }}" href="{{ route('counter.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('counter_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('website-setup/counter/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

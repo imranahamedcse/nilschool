@@ -60,11 +60,11 @@
                                 <table style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse;">
                                     <tr>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('common.Subject Code') }}</th>
+                                            {{ ___('index.Subject Code') }}</th>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('common.Subject Name') }}</th>
+                                            {{ ___('index.Subject Name') }}</th>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: right;">
-                                            {{ ___('common.Grade') }}</th>
+                                            {{ ___('index.Grade') }}</th>
                                     </tr>
                                     @php
                                         $totalMark = 0;
@@ -138,7 +138,7 @@
 
             <div class="d-flex justify-content-center align-items-center">
                 <button class="btn btn-secondary" onclick="printDiv('print')">
-                    {{ ___('common.Print') }}
+                    {{ ___('index.Print') }}
                     <span><i class="fa-solid fa-print"></i></span>
                 </button>
             </div>

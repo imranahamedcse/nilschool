@@ -18,11 +18,11 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('classes_update') || hasPermission('classes_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -37,12 +37,12 @@
                         <td>
                             @if (hasPermission('classes_update'))
                                 <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.edit') }}" href="{{ route('classes.edit', $row->id) }}"><i
+                                    title="{{ ___('index.edit') }}" href="{{ route('classes.edit', $row->id) }}"><i
                                         class="fa-solid fa-pencil"></i></a>
                             @endif
                             @if (hasPermission('classes_delete') && $row->code != 'en')
                                 <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                    title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                     onclick="delete_row('academic/classes/delete', {{ $row->id }})"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             @endif

@@ -20,11 +20,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('create.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="class form-control @error('class') is-invalid @enderror"
                                     name="class" id="validationDefault01">
-                                    <option value="">{{ ___('common.select_class') }}</option>
+                                    <option value="">{{ ___('create.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
                                             {{ old('class', $data['post']->classes_id) == $item->class->id ? 'selected' : '' }}
@@ -41,12 +41,12 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.section') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="getSubjects"
                                     class="section form-control @error('section') is-invalid @enderror"
                                     name="section" id="validationDefault02">
-                                    <option value="">{{ ___('common.select_section') }}</option>
+                                    <option value="">{{ ___('create.select_section') }}</option>
                                     @foreach ($data['sections'] as $item)
                                         @if ($data['post']->section_id == $item->id)
                                             <option
@@ -64,12 +64,12 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('common.subject') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('create.subject') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault03"
                                     class="subject form-control @error('subject') is-invalid @enderror"
                                     name="subject">
-                                    <option value="">{{ ___('common.select_subject') }}</option>
+                                    <option value="">{{ ___('create.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $item)
                                         @if ($data['post']->subject_id == $item->id)
                                             <option
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
 
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
@@ -94,10 +94,10 @@
 
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['homework']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['homework']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -108,10 +108,10 @@
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('common.Document') }} </label>
+                                <label for="validationDefault05" class="form-label ">{{ ___('create.Document') }} </label>
                                 <input class="form-control @error('document') is-invalid @enderror" name="document"
 
-                                    id="validationDefault05" type="file" placeholder="{{ ___('common.enter_document') }}">
+                                    id="validationDefault05" type="file" placeholder="{{ ___('create.enter_document') }}">
                                 @error('document')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -120,9 +120,9 @@
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault06" class="form-label ">{{ ___('common.description') }}</label>
+                                <label for="validationDefault06" class="form-label ">{{ ___('create.description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                    id="validationDefault06" type="text" placeholder="{{ ___('common.enter_description') }}">{{ old('description', @$data['homework']->description) }}</textarea>
+                                    id="validationDefault06" type="text" placeholder="{{ ___('create.enter_description') }}">{{ old('description', @$data['homework']->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -133,7 +133,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.submit') }}</button>
+                                        </span>{{ ___('create.submit') }}</button>
                                 </div>
                             </div>
                         </div>

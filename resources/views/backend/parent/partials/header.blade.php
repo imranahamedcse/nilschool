@@ -20,7 +20,7 @@
                 <div class="input-group">
                     <div class="px-1">
                         <select class="form-control @error('student') is-invalid @enderror" name="student">
-                            <option value="">{{ ___('common.Select student') }}</option>
+                            <option value="">{{ ___('partial.Select student') }}</option>
                             @foreach ($data['students'] as $item)
                                 <option {{ old('student', Session::get('student_id')) == $item->id ? 'selected' : '' }}
                                     value="{{ $item->id }}">{{ $item->first_name }} {{ $item->last_name }}
@@ -34,7 +34,7 @@
                     </div>
                     <div class="px-1">
                         <button class="btn btn-primary" type="submit">
-                            {{ ___('common.Switch') }}
+                            {{ ___('partial.Switch') }}
                         </button>
                     </div>
                 </div>
@@ -83,13 +83,13 @@
             <ul class="dropdown-menu">
                 <li>
                     <a class="dropdown-item {{ set_menu(['parent-panel/profile'], 'active') }}" href="{{ route('parent-panel.profile') }}">
-                        <span>{{ ___('common.my_profile') }}</span>
+                        <span>{{ ___('partial.my_profile') }}</span>
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item {{ set_menu(['parent-panel/password/update'], 'active') }}"
                         href="{{ route('parent-panel.password-update') }}">
-                        <span>{{ ___('common.update_password') }}</span>
+                        <span>{{ ___('partial.update_password') }}</span>
                     </a>
                 </li>
                 <li>
@@ -97,7 +97,7 @@
                         @csrf
                         <button type="submit" class="dropdown-item">
                             <span>
-                                {{ ___('common.logout') }}</span>
+                                {{ ___('partial.logout') }}</span>
                         </button>
                     </form>
                 </li>

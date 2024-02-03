@@ -10,7 +10,7 @@
     <div class="card bg-white">
         <div class="card-body">
             <div class="border-bottom pb-3 mb-4">
-                <h4 class="m-0">{{ ___('common.Key') }}: {{ @$data['sections']->key }}</h4>
+                <h4 class="m-0">{{ ___('create.Key') }}: {{ @$data['sections']->key }}</h4>
             </div>
 
             <form action="{{ route('sections.update', @$data['sections']->id) }}" enctype="multipart/form-data" method="post"
@@ -23,10 +23,10 @@
 
                             @if (@$data['sections']->name)
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault01" class="form-label ">{{ ___('common.name') }}</label>
+                                    <label for="validationDefault01" class="form-label ">{{ ___('create.name') }}</label>
                                     <input class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name', @$data['sections']->name) }}" id="validationDefault01"
-                                        placeholder="{{ ___('common.enter_name') }}">
+                                        placeholder="{{ ___('create.enter_name') }}">
                                     @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -37,14 +37,14 @@
 
                             @if (@$data['sections']->upload_id)
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault02" class="form-label ">{{ ___('common.image') }}
+                                    <label for="validationDefault02" class="form-label ">{{ ___('create.image') }}
 
                                         @if (@$data['sections']->key == 'statement')
-                                            {{ ___('common.(580 x 465 px)') }}
+                                            {{ ___('create.(580 x 465 px)') }}
                                         @elseif(@$data['sections']->key == 'study_at')
-                                            {{ ___('common.(1920 x 615 px)') }}
+                                            {{ ___('create.(1920 x 615 px)') }}
                                         @elseif(@$data['sections']->key == 'explore')
-                                            {{ ___('common.(700 x 500 px)') }}
+                                            {{ ___('create.(700 x 500 px)') }}
                                         @endif
 
                                     </label>
@@ -54,9 +54,9 @@
 
                             @if (@$data['sections']->description)
                                 <div class="col-md-12 mb-3">
-                                    <label for="validationDefault03" class="form-label">{{ ___('common.Description') }}</label>
+                                    <label for="validationDefault03" class="form-label">{{ ___('create.Description') }}</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="validationDefault03"
-                                        placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['sections']->description) }}</textarea>
+                                        placeholder="{{ ___('create.Enter description') }}">{{ old('description', @$data['sections']->description) }}</textarea>
                                     @error('description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -72,7 +72,7 @@
                                     <div class="text-end">
                                         <button type="button" onclick="addSocialLink()"
                                             class="btn btn-sm btn-info"><span><i class="fa-solid fa-add"></i>
-                                            </span>{{ ___('common.add') }}</button>
+                                            </span>{{ ___('create.add') }}</button>
                                     </div>
                                 </div>
 
@@ -83,20 +83,20 @@
                                             @foreach (@$data['sections']->data as $key => $item)
                                                 <tr>
                                                     <td>
-                                                        <label class="form-label">{{ ___('common.name') }}</label>
+                                                        <label class="form-label">{{ ___('create.name') }}</label>
                                                         <input class="form-control mb-4" value="{{ $item['name'] }}"
-                                                            name="data[name][]"placeholder="{{ ___('common.Enter name') }}">
+                                                            name="data[name][]"placeholder="{{ ___('create.Enter name') }}">
                                                     </td>
                                                     <td>
-                                                        <label class="form-label">{{ ___('common.Icon') }}</label>
+                                                        <label class="form-label">{{ ___('create.Icon') }}</label>
                                                         <input class="form-control mb-4" value="{{ $item['icon'] }}"
-                                                            name="data[icon][]"placeholder="{{ ___('common.Enter icon') }}">
+                                                            name="data[icon][]"placeholder="{{ ___('create.Enter icon') }}">
                                                     </td>
                                                     <td>
-                                                        <label class="form-label">{{ ___('common.Link') }}</label>
+                                                        <label class="form-label">{{ ___('create.Link') }}</label>
                                                         <div class="d-flex align-items-center mb-4">
                                                             <input class="form-control mr-2" value="{{ $item['link'] }}"
-                                                                name="data[link][]"placeholder="{{ ___('common.Enter link') }}">
+                                                                name="data[link][]"placeholder="{{ ___('create.Enter link') }}">
                                                             <button class="btn btn-danger" onclick="removeRow(this)">
                                                                 <i class="fa-solid fa-xmark"></i>
                                                             </button>
@@ -111,32 +111,32 @@
 
                             @if (@$data['sections']->key == 'statement')
                                 {{-- -------------------------------- Statement --------------------------------- --}}
-                                <h5 class="mt-3 text-info">{{ ___('common.Details') }}</h5>
+                                <h5 class="mt-3 text-info">{{ ___('create.Details') }}</h5>
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-6 mb-18">
                                             <div class="mb-18">
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[0]['title'] }}" name="data[title][]"
-                                                    placeholder="{{ ___('common.Enter title') }}">
+                                                    placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
                                                 <textarea class="form-control mt-0 mb-5" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
+                                                    placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-18">
                                             <div class="mb-18">
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['title'] }}" name="data[title][]"
-                                                    placeholder="{{ ___('common.Enter title') }}">
+                                                    placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -145,63 +145,63 @@
 
                             @if (@$data['sections']->key == 'study_at')
                                 {{-- -------------------------------- study_at --------------------------------- --}}
-                                <h5 class="mt-3 text-info">{{ ___('common.Details') }}</h5>
+                                <h5 class="mt-3 text-info">{{ ___('create.Details') }}</h5>
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label class="form-label">{{ ___('common.Icon') }}
-                                                    {{ ___('common.(70 x 70 px)') }}</label>
+                                                <label class="form-label">{{ ___('create.Icon') }}
+                                                    {{ ___('create.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][0]"
                                                     accept="image/*">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[0]['title'] }}" name="data[title][]"
-                                                    placeholder="{{ ___('common.Enter title') }}">
+                                                    placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
                                                 <textarea class="form-control mt-0 mb-5" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
+                                                    placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label class="form-label">{{ ___('common.Icon') }}
-                                                    {{ ___('common.(70 x 70 px)') }}</label>
+                                                <label class="form-label">{{ ___('create.Icon') }}
+                                                    {{ ___('create.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][1]"
                                                     accept="image/*">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['title'] }}"
-                                                    name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
+                                                    name="data[title][]" placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label class="form-label">{{ ___('common.Icon') }}
-                                                    {{ ___('common.(70 x 70 px)') }}</label>
+                                                <label class="form-label">{{ ___('create.Icon') }}
+                                                    {{ ___('create.(70 x 70 px)') }}</label>
                                                 <input type="file" class="form-control" name="data[icon][2]"
                                                     accept="image/*">
 
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['title'] }}"
-                                                    name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
+                                                    name="data[title][]" placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -210,80 +210,80 @@
 
                             @if (@$data['sections']->key == 'explore')
                                 {{-- -------------------------------- explore --------------------------------- --}}
-                                <h5 class="mt-3 text-info">{{ ___('common.Details') }}</h5>
+                                <h5 class="mt-3 text-info">{{ ___('create.Details') }}</h5>
                                 <div class="col-md-12 mb-3">
                                     <div class="row">
                                         <div class="col-6">
                                             <div>
-                                                <label class="form-label">{{ ___('common.Tab') }}</label>
+                                                <label class="form-label">{{ ___('create.Tab') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[0]['tab'] }}" name="data[tab][]"
-                                                    placeholder="{{ ___('common.Enter tab') }}">
+                                                    placeholder="{{ ___('create.Enter tab') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[0]['title'] }}"
-                                                    name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
+                                                    name="data[title][]" placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
                                                 <textarea class="form-control mt-0 mb-5" name="data[description][]"
-                                                    placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
+                                                    placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[0]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div>
-                                                <label class="form-label">{{ ___('common.Tab') }}</label>
+                                                <label class="form-label">{{ ___('create.Tab') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['tab'] }}" name="data[tab][]"
-                                                    placeholder="{{ ___('common.Enter tab') }}">
+                                                    placeholder="{{ ___('create.Enter tab') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[1]['title'] }}"
-                                                    name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
+                                                    name="data[title][]" placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div>
-                                                <label class="form-label">{{ ___('common.Tab') }}</label>
-                                                <input class="form-control mb-2"
-                                                    value="{{ @$data['sections']->data[2]['tab'] }}" name="data[tab][]"
-                                                    placeholder="{{ ___('common.Enter tab') }}">
-                                            </div>
-                                            <div>
-                                                <label class="form-label">{{ ___('common.title') }}</label>
-                                                <input class="form-control mb-2"
-                                                    value="{{ @$data['sections']->data[2]['title'] }}"
-                                                    name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
-                                            </div>
-                                            <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[1]['description'] }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div>
-                                                <label class="form-label">{{ ___('common.Tab') }}</label>
+                                                <label class="form-label">{{ ___('create.Tab') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['tab'] }}" name="data[tab][]"
-                                                    placeholder="{{ ___('common.Enter tab') }}">
+                                                    placeholder="{{ ___('create.Enter tab') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.title') }}</label>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
                                                 <input class="form-control mb-2"
                                                     value="{{ @$data['sections']->data[2]['title'] }}"
-                                                    name="data[title][]" placeholder="{{ ___('common.Enter title') }}">
+                                                    name="data[title][]" placeholder="{{ ___('create.Enter title') }}">
                                             </div>
                                             <div>
-                                                <label class="form-label">{{ ___('common.Description') }}</label>
-                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('common.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div>
+                                                <label class="form-label">{{ ___('create.Tab') }}</label>
+                                                <input class="form-control mb-2"
+                                                    value="{{ @$data['sections']->data[2]['tab'] }}" name="data[tab][]"
+                                                    placeholder="{{ ___('create.Enter tab') }}">
+                                            </div>
+                                            <div>
+                                                <label class="form-label">{{ ___('create.title') }}</label>
+                                                <input class="form-control mb-2"
+                                                    value="{{ @$data['sections']->data[2]['title'] }}"
+                                                    name="data[title][]" placeholder="{{ ___('create.Enter title') }}">
+                                            </div>
+                                            <div>
+                                                <label class="form-label">{{ ___('create.Description') }}</label>
+                                                <textarea class="form-control mt-0" name="data[description][]" placeholder="{{ ___('create.Enter description') }}">{{ @$data['sections']->data[2]['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -292,12 +292,12 @@
 
                             @if (@$data['sections']->key == 'why_choose_us')
                                 {{-- -------------------------------- why_choose_us --------------------------------- --}}
-                                <h5 class="mt-3 text-info">{{ ___('common.Details') }}</h5>
+                                <h5 class="mt-3 text-info">{{ ___('create.Details') }}</h5>
                                 <div class="col-md-12">
                                     <div class="text-end">
                                         <button type="button" onclick="addChooseUs()"
                                             class="btn btn-sm btn-info"><span><i class="fa-solid fa-add"></i>
-                                            </span>{{ ___('common.Add') }}</button>
+                                            </span>{{ ___('create.Add') }}</button>
                                     </div>
                                 </div>
 
@@ -308,10 +308,10 @@
                                             @foreach (@$data['sections']->data as $key => $item)
                                                 <tr>
                                                     <td>
-                                                        <label class="form-label">{{ ___('common.name') }}</label>
+                                                        <label class="form-label">{{ ___('create.name') }}</label>
                                                         <div class="d-flex align-items-center mb-2">
                                                             <input class="form-control mr-2" value="{{ $item }}"
-                                                                name="data[]"placeholder="{{ ___('common.Enter name') }}">
+                                                                name="data[]"placeholder="{{ ___('create.Enter name') }}">
                                                             <button class="btn btn-danger" onclick="removeRow(this)">
                                                                 <i class="fa-solid fa-xmark"></i>
                                                             </button>
@@ -326,12 +326,12 @@
 
                             @if (@$data['sections']->key == 'academic_curriculum')
                                 {{-- -------------------------------- academic_curriculum --------------------------------- --}}
-                                <h5 class="mt-3 text-info">{{ ___('common.Details') }}</h5>
+                                <h5 class="mt-3 text-info">{{ ___('create.Details') }}</h5>
                                 <div class="col-md-12">
                                     <div class="text-end">
                                         <button type="button" onclick="addAcademicCurriculum()"
                                             class="btn btn-sm btn-info"><span><i class="fa-solid fa-add"></i>
-                                            </span>{{ ___('common.Add') }}</button>
+                                            </span>{{ ___('create.Add') }}</button>
                                     </div>
                                 </div>
 
@@ -342,10 +342,10 @@
                                             @foreach (@$data['sections']->data as $key => $item)
                                                 <tr>
                                                     <td>
-                                                        <label class="form-label">{{ ___('common.name') }}</label>
+                                                        <label class="form-label">{{ ___('create.name') }}</label>
                                                         <div class="d-flex align-items-center mb-2">
                                                             <input class="form-control mr-2" value="{{ $item }}"
-                                                                name="data[]"placeholder="{{ ___('common.Enter name') }}">
+                                                                name="data[]"placeholder="{{ ___('create.Enter name') }}">
                                                             <button class="btn btn-danger" onclick="removeRow(this)">
                                                                 <i class="fa-solid fa-xmark"></i>
                                                             </button>
@@ -361,7 +361,7 @@
                             <div class="col-md-12">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.update') }}</button>
+                                        </span>{{ ___('create.update') }}</button>
                                 </div>
                             </div>
 

@@ -18,14 +18,14 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.exam_title') }}</th>
-                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                    <th class="purchase">{{ ___('common.subjects') }}</th>
-                    <th class="purchase">{{ ___('common.total_mark') }}</th>
-                    <th class="purchase">{{ ___('common.mark_distribution') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.exam_title') }}</th>
+                    <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                    <th class="purchase">{{ ___('index.subjects') }}</th>
+                    <th class="purchase">{{ ___('index.total_mark') }}</th>
+                    <th class="purchase">{{ ___('index.mark_distribution') }}</th>
                     @if (hasPermission('exam_assign_update') || hasPermission('exam_assign_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -49,13 +49,13 @@
                             <td>
                                 @if (hasPermission('exam_assign_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}"
+                                        title="{{ ___('index.edit') }}"
                                         href="{{ route('exam-assign.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('exam_assign_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('exam/assign/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
@@ -74,7 +74,7 @@
 @push('script')
     @include('backend.admin.components.table.js')
     @include('backend.admin.components.table.delete-ajax')
-    
+
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-subject.js') }}"></script>
     <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>

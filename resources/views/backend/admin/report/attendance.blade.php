@@ -22,11 +22,11 @@
                 @if (@$data['request']->view == '0')
                     <div class="text-end mb-3">
                         <strong>
-                            <span class="text-success">{{ ___('common.Present') }} = {{ ___('common.P') }}</span>
-                            <span class="text-warning">{{ ___('common.Late') }} = {{ ___('common.L') }}</span>
-                            <span class="text-danger">{{ ___('common.Absent') }} = {{ ___('common.A') }}</span>
-                            <span class="text-primary">{{ ___('common.Half day') }} = {{ ___('common.F') }}</span>
-                            <span>{{ ___('common.Holiday') }} = {{ ___('common.H') }}</span>
+                            <span class="text-success">{{ ___('index.Present') }} = {{ ___('index.P') }}</span>
+                            <span class="text-warning">{{ ___('index.Late') }} = {{ ___('index.L') }}</span>
+                            <span class="text-danger">{{ ___('index.Absent') }} = {{ ___('index.A') }}</span>
+                            <span class="text-primary">{{ ___('index.Half day') }} = {{ ___('index.F') }}</span>
+                            <span>{{ ___('index.Holiday') }} = {{ ___('index.H') }}</span>
                         </strong>
                     </div>
                 @endif
@@ -36,16 +36,16 @@
                         <table id="datatable" class="table">
                             <thead>
                                 <tr>
-                                    <th class="purchase">{{ ___('common.name') }}</th>
-                                    <th class="purchase">{{ ___('common.roll_no') }}</th>
-                                    <th class="purchase">{{ ___('common.admission_no') }}</th>
+                                    <th class="purchase">{{ ___('index.name') }}</th>
+                                    <th class="purchase">{{ ___('index.roll_no') }}</th>
+                                    <th class="purchase">{{ ___('index.admission_no') }}</th>
                                     @foreach ($data['days'] as $day => $date)
                                         <th>{{ ++$day }}</th>
                                     @endforeach
-                                    <th class="purchase text-success">{{ ___('common.P') }}</th>
-                                    <th class="purchase text-warning">{{ ___('common.L') }}</th>
-                                    <th class="purchase text-danger">{{ ___('common.A') }}</th>
-                                    <th class="purchase text-primary">{{ ___('common.F') }}</th>
+                                    <th class="purchase text-success">{{ ___('index.P') }}</th>
+                                    <th class="purchase text-warning">{{ ___('index.L') }}</th>
+                                    <th class="purchase text-danger">{{ ___('index.A') }}</th>
+                                    <th class="purchase text-primary">{{ ___('index.F') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,27 +68,27 @@
                                                 @foreach ($data['attendances'] as $item2)
                                                     @if ($item->student_id == $item2->student_id && (int) substr($item2->date, -2) == $i)
                                                         @if (@$item2->attendance == App\Enums\AttendanceType::PRESENT)
-                                                            <span class="text-success">{{ ___('common.P') }}</span>
+                                                            <span class="text-success">{{ ___('index.P') }}</span>
                                                             @php
                                                                 ++$p;
                                                             @endphp
                                                         @elseif(@$item2->attendance == App\Enums\AttendanceType::LATE)
-                                                            <span class="text-warning">{{ ___('common.L') }}</span>
+                                                            <span class="text-warning">{{ ___('index.L') }}</span>
                                                             @php
                                                                 ++$l;
                                                             @endphp
                                                         @elseif(@$item2->attendance == App\Enums\AttendanceType::ABSENT)
-                                                            <span class="text-danger">{{ ___('common.A') }}</span>
+                                                            <span class="text-danger">{{ ___('index.A') }}</span>
                                                             @php
                                                                 ++$a;
                                                             @endphp
                                                         @elseif(@$item2->attendance == App\Enums\AttendanceType::HALFDAY)
-                                                            <span class="text-primary">{{ ___('common.F') }}</span>
+                                                            <span class="text-primary">{{ ___('index.F') }}</span>
                                                             @php
                                                                 ++$f;
                                                             @endphp
                                                         @else
-                                                            <span>{{ ___('common.H') }}</span>
+                                                            <span>{{ ___('index.H') }}</span>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -106,13 +106,13 @@
                         <table id="datatable" class="table">
                             <thead>
                                 <tr>
-                                    <th class="purchase">{{ ___('common.Student Name') }}</th>
-                                    <th class="purchase">{{ ___('common.roll_no') }}</th>
-                                    <th class="purchase">{{ ___('common.admission_no') }}</th>
-                                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                                    <th class="purchase">{{ ___('common.date') }}</th>
-                                    <th class="purchase">{{ ___('common.Attendance') }}</th>
-                                    <th class="purchase">{{ ___('common.Note') }}</th>
+                                    <th class="purchase">{{ ___('index.Student Name') }}</th>
+                                    <th class="purchase">{{ ___('index.roll_no') }}</th>
+                                    <th class="purchase">{{ ___('index.admission_no') }}</th>
+                                    <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                                    <th class="purchase">{{ ___('index.date') }}</th>
+                                    <th class="purchase">{{ ___('index.Attendance') }}</th>
+                                    <th class="purchase">{{ ___('index.Note') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -126,14 +126,14 @@
                                         <td>
                                             @if (@$item->attendance == App\Enums\AttendanceType::PRESENT)
                                                 <span
-                                                    class="badge-basic-success-text">{{ ___('common.Present') }}</span>
+                                                    class="badge-basic-success-text">{{ ___('index.Present') }}</span>
                                             @elseif(@$item->attendance == App\Enums\AttendanceType::LATE)
-                                                <span class="badge-basic-warning-text">{{ ___('common.Late') }}</span>
+                                                <span class="badge-basic-warning-text">{{ ___('index.Late') }}</span>
                                             @elseif(@$item->attendance == App\Enums\AttendanceType::ABSENT)
-                                                <span class="badge-basic-danger-text">{{ ___('common.Absent') }}</span>
+                                                <span class="badge-basic-danger-text">{{ ___('index.Absent') }}</span>
                                             @elseif(@$item->attendance == App\Enums\AttendanceType::HALFDAY)
                                                 <span
-                                                    class="badge-basic-primary-text">{{ ___('common.Half day') }}</span>
+                                                    class="badge-basic-primary-text">{{ ___('index.Half day') }}</span>
                                             @endif
                                         </td>
                                         <td>
@@ -145,9 +145,9 @@
                                         <td colspan="100%" class="text-center gray-color">
                                             <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary"
                                                 width="100">
-                                            <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
+                                            <p class="mb-0 text-center">{{ ___('index.No data available') }}</p>
                                             <p class="mb-0 text-center text-secondary font-size-90">
-                                                {{ ___('common.Please add new entity regarding this table') }}</p>
+                                                {{ ___('index.Please add new entity regarding this table') }}</p>
                                         </td>
                                     </tr>
                                 @endforelse

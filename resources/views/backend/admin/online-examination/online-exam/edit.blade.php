@@ -22,10 +22,10 @@
 
 
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
+                        <label for="validationDefault01" class="form-label ">{{ ___('create.name') }} <span
                                 class="text-danger">*</span></label>
                         <input class="form-control @error('name') is-invalid @enderror" name="name"
-                            id="validationDefault01" type="text" placeholder="{{ ___('common.enter_name') }}"
+                            id="validationDefault01" type="text" placeholder="{{ ___('create.enter_name') }}"
                             value="{{ old('name', @$data['online_exam']->name) }}">
                         @error('name')
                             <div class="invalid-feedback">
@@ -34,11 +34,11 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault02" class="form-label ">{{ ___('common.Start') }} <span
+                        <label for="validationDefault02" class="form-label ">{{ ___('create.Start') }} <span
                                 class="text-danger">*</span></label>
                         <input class="form-control @error('start') is-invalid @enderror" name="start"
                             type="datetime-local" id="validationDefault02" type="text"
-                            placeholder="{{ ___('common.Enter start') }}"
+                            placeholder="{{ ___('create.Enter start') }}"
                             value="{{ old('start', @$data['online_exam']->start) }}">
                         @error('start')
                             <div class="invalid-feedback">
@@ -47,10 +47,10 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault03" class="form-label ">{{ ___('common.End') }} <span
+                        <label for="validationDefault03" class="form-label ">{{ ___('create.End') }} <span
                                 class="text-danger">*</span></label>
                         <input class="form-control @error('end') is-invalid @enderror" name="end" type="datetime-local"
-                            id="validationDefault03" type="text" placeholder="{{ ___('common.Enter end') }}"
+                            id="validationDefault03" type="text" placeholder="{{ ___('create.Enter end') }}"
                             value="{{ old('end', @$data['online_exam']->end) }}">
                         @error('end')
                             <div class="invalid-feedback">
@@ -59,11 +59,11 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault04" class="form-label ">{{ ___('common.Published') }}
+                        <label for="validationDefault04" class="form-label ">{{ ___('create.Published') }}
                             <span class="text-danger">*</span></label>
                         <input class="form-control @error('published') is-invalid @enderror" name="published"
                             type="datetime-local" id="validationDefault04" type="text"
-                            placeholder="{{ ___('common.Enter published') }}"
+                            placeholder="{{ ___('create.Enter published') }}"
                             value="{{ old('published', @$data['online_exam']->published) }}">
                         @error('published')
                             <div class="invalid-feedback">
@@ -77,11 +77,11 @@
 
 
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault05" class="form-label">{{ ___('common.Question group') }}
+                        <label for="validationDefault05" class="form-label">{{ ___('create.Question group') }}
                             <span class="text-danger">*</span></label>
                         <select id="question_group validationDefault05"
                             class="form-control @error('question_group') is-invalid @enderror" name="question_group">
-                            <option value="">{{ ___('common.Select question group') }}</option>
+                            <option value="">{{ ___('create.Select question group') }}</option>
                             @foreach ($data['question_groups'] as $item)
                                 <option
                                     {{ old('question_group', @$data['online_exam']->question_group_id) == $item->id ? 'selected' : '' }}
@@ -95,11 +95,11 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault06" class="form-label">{{ ___('common.class') }} <span
+                        <label for="validationDefault06" class="form-label">{{ ___('create.class') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault06" class="class form-control @error('class') is-invalid @enderror"
                             name="class">
-                            <option value="">{{ ___('common.select_class') }}</option>
+                            <option value="">{{ ___('create.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option
                                     {{ old('class', @$data['online_exam']->classes_id) == $item->class->id ? 'selected' : '' }}
@@ -114,11 +114,11 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault07" class="form-label">{{ ___('common.section') }} <span
+                        <label for="validationDefault07" class="form-label">{{ ___('create.section') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault07" class="section form-control @error('section') is-invalid @enderror"
                             name="section">
-                            <option value="">{{ ___('common.select_section') }}</option>
+                            <option value="">{{ ___('create.select_section') }}</option>
                             @foreach ($data['sections'] as $item)
                                 <option
                                     {{ old('section', @$data['online_exam']->section_id) == $item->section->id ? 'selected' : '' }}
@@ -132,10 +132,10 @@
                         @enderror
                     </div>
                     <div class="col-md-2 mb-3">
-                        <label for="validationDefault08" class="form-label">{{ ___('common.Subject') }}</label>
+                        <label for="validationDefault08" class="form-label">{{ ___('create.Subject') }}</label>
                         <select id="validationDefault08" class="subject form-control @error('subject') is-invalid @enderror"
                             name="subject">
-                            <option value="">{{ ___('common.Select subject') }}</option>
+                            <option value="">{{ ___('create.Select subject') }}</option>
                             @foreach ($data['subjects'] as $item)
                                 <option
                                     {{ old('subject', @$data['online_exam']->subject_id) == $item->subject->id ? 'selected' : '' }}
@@ -155,11 +155,11 @@
 
 
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault09" class="form-label ">{{ ___('common.Mark') }} <span
+                        <label for="validationDefault09" class="form-label ">{{ ___('create.Mark') }} <span
                                 class="text-danger">*</span></label>
                         <input class="form-control @error('mark') is-invalid @enderror" name="mark"
                             id="validationDefault09" type="number"
-                            placeholder="{{ ___('common.Enter mark') }}"
+                            placeholder="{{ ___('create.Enter mark') }}"
                             value="{{ old('mark', @$data['online_exam']->total_mark) }}">
                         @error('mark')
                             <div class="invalid-feedback">
@@ -168,10 +168,10 @@
                         @enderror
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault10" class="form-label">{{ ___('common.Type') }}</label>
+                        <label for="validationDefault10" class="form-label">{{ ___('create.Type') }}</label>
                         <select id="type validationDefault10" class="form-control @error('type') is-invalid @enderror"
                             name="type">
-                            <option value="">{{ ___('common.Select Type') }}</option>
+                            <option value="">{{ ___('create.Select Type') }}</option>
                             @foreach ($data['types'] as $item)
                                 <option
                                     {{ old('type', @$data['online_exam']->exam_type_id) == $item->id ? 'selected' : '' }}
@@ -187,11 +187,11 @@
                     <div class="col-md-2 mb-3">
                         <div>
                             <label for="validationDefault11"
-                                class="form-label">{{ ___('common.student_category') }}</label>
+                                class="form-label">{{ ___('create.student_category') }}</label>
                             <select id="student_category validationDefault11"
                                 class="nice-select student_category @error('student_category') is-invalid @enderror"
                                 name="student_category">
-                                <option value="">{{ ___('common.select_student_category') }}</option>
+                                <option value="">{{ ___('create.select_student_category') }}</option>
                                 @foreach ($data['categories'] as $item)
                                     <option {{ old('student_category') == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}
@@ -206,11 +206,11 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <div>
-                            <label for="validationDefault12" class="form-label">{{ ___('common.gender') }}</label>
+                            <label for="validationDefault12" class="form-label">{{ ___('create.gender') }}</label>
                             <select id="gender validationDefault12"
                                 class="nice-select gender @error('gender') is-invalid @enderror"
                                 name="gender">
-                                <option value="">{{ ___('common.select_gender') }}</option>
+                                <option value="">{{ ___('create.select_gender') }}</option>
                                 @foreach ($data['genders'] as $item)
                                     <option {{ old('gender') == $item->id ? 'selected' : '' }}
                                         value="{{ $item->id }}">{{ $item->name }}
@@ -231,15 +231,15 @@
 
                     {{-- Second row --}}
                     <div class="col-md-4 mb-3">
-                        <h5>{{ ___('common.Question list') }}</h5>
+                        <h5>{{ ___('create.Question list') }}</h5>
                         <div class="table-responsive">
                             <table class="table table-bordered role-table" id="types_table">
                                 <thead class="thead">
                                     <tr>
-                                        <th class="purchase mr-4">{{ ___('common.All') }} <input
+                                        <th class="purchase mr-4">{{ ___('create.All') }} <input
                                                 class="form-check-input all" type="checkbox"></th>
-                                        <th class="purchase">{{ ___('common.Question') }}</th>
-                                        <th class="purchase">{{ ___('common.Type') }}</th>
+                                        <th class="purchase">{{ ___('create.Question') }}</th>
+                                        <th class="purchase">{{ ___('create.Type') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="tbody">
@@ -257,23 +257,23 @@
                             </table>
                         </div>
                         @if ($errors->has('questions_ids'))
-                            <span class="text-danger">{{ ___('common.At least select one.') }}</span>
+                            <span class="text-danger">{{ ___('create.At least select one.') }}</span>
                         @endif
                     </div>
                     <div class="col-md-8 mb-3">
-                        <h5>{{ ___('common.Students List') }} </h5>
+                        <h5>{{ ___('create.Students List') }} </h5>
                         <div class="table-responsive">
                             <table class="table table-bordered role-table" id="students_table">
                                 <thead class="thead">
                                     <tr>
-                                        <th class="purchase mr-4">{{ ___('common.All') }} <input class="form-check-input"
+                                        <th class="purchase mr-4">{{ ___('create.All') }} <input class="form-check-input"
                                                 type="checkbox" id="all_students"></th>
-                                        <th class="purchase">{{ ___('common.admission_no') }}</th>
-                                        <th class="purchase">{{ ___('common.Student Name') }}</th>
-                                        <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})
+                                        <th class="purchase">{{ ___('create.admission_no') }}</th>
+                                        <th class="purchase">{{ ___('create.Student Name') }}</th>
+                                        <th class="purchase">{{ ___('create.class') }} ({{ ___('create.section') }})
                                         </th>
-                                        <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                                        <th class="purchase">{{ ___('common.Mobile Number') }}</th>
+                                        <th class="purchase">{{ ___('create.guardian_name') }}</th>
+                                        <th class="purchase">{{ ___('create.Mobile Number') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="tbody">
@@ -295,14 +295,14 @@
                             </table>
                         </div>
                         @if ($errors->has('student_ids'))
-                            <span class="text-danger">{{ ___('common.At least select one.') }}</span>
+                            <span class="text-danger">{{ ___('create.At least select one.') }}</span>
                         @endif
                     </div>
                     {{-- Second row end --}}
                     <div class="col-md-12 mt-24">
                         <div class="text-end">
                             <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                </span>{{ ___('common.submit') }}
+                                </span>{{ ___('create.submit') }}
                             </button>
                         </div>
                     </div>

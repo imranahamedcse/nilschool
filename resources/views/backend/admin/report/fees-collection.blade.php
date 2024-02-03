@@ -18,13 +18,13 @@
             <table id="datatable" class="table">
                 <thead>
                     <tr>
-                        <th>{{ ___('common.#') }}</th>
-                        <th>{{ ___('common.name') }}</th>
-                        <th>{{ ___('common.admission_no') }}</th>
-                        <th>{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                        <th>{{ ___('common.Fees type') }}</th>
-                        <th>{{ ___('common.date') }}</th>
-                        <th>{{ ___('common.Amount') }} ({{ Setting('currency_symbol') }})</th>
+                        <th>{{ ___('index.#') }}</th>
+                        <th>{{ ___('index.name') }}</th>
+                        <th>{{ ___('index.admission_no') }}</th>
+                        <th>{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                        <th>{{ ___('index.Fees type') }}</th>
+                        <th>{{ ___('index.date') }}</th>
+                        <th>{{ ___('index.Amount') }} ({{ Setting('currency_symbol') }})</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +50,6 @@
 
 @push('script')
     @include('backend.admin.components.table.js')
-    
+
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
 @endpush

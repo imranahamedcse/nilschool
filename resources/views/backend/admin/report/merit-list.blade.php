@@ -13,20 +13,20 @@
 
     <div class="p-4 rounded-3 bg-white">
         @include('backend.admin.components.table.header')
-        
+
         @if ($data['resultData'])
             <table id="datatable" class="table">
                 <thead>
                     <tr>
-                        <th>{{ ___('common.#') }}</th>
-                        <th>{{ ___('common.Student Name') }}</th>
-                        <th>{{ ___('common.admission_no') }}</th>
-                        <th>{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                        <th>{{ ___('common.Position') }}</th>
-                        <th>{{ ___('common.Result') }}</th>
-                        <th>{{ ___('common.Point') }}</th>
-                        <th>{{ ___('common.Grade') }}</th>
-                        <th>{{ ___('common.Total Mark') }}</th>
+                        <th>{{ ___('index.#') }}</th>
+                        <th>{{ ___('index.Student Name') }}</th>
+                        <th>{{ ___('index.admission_no') }}</th>
+                        <th>{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                        <th>{{ ___('index.Position') }}</th>
+                        <th>{{ ___('index.Result') }}</th>
+                        <th>{{ ___('index.Point') }}</th>
+                        <th>{{ ___('index.Grade') }}</th>
+                        <th>{{ ___('index.Total Mark') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,7 +59,7 @@
 
 @push('script')
     @include('backend.admin.components.table.js')
-    
+
     <script src="{{ asset('backend/js/get-section.js') }}"></script>
     <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>
 @endpush

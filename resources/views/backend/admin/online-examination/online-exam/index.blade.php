@@ -18,22 +18,22 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
 
-                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                    <th class="purchase">{{ ___('common.subject') }}</th>
+                    <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                    <th class="purchase">{{ ___('index.subject') }}</th>
 
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.Type') }}</th>
-                    <th class="purchase">{{ ___('common.Total Mark') }}</th>
-                    <th class="purchase">{{ ___('common.Exam Start') }}</th>
-                    <th class="purchase">{{ ___('common.Exam End') }}</th>
-                    <th class="purchase">{{ ___('common.Duration') }}</th>
-                    <th class="purchase">{{ ___('common.Exam Published') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.Type') }}</th>
+                    <th class="purchase">{{ ___('index.Total Mark') }}</th>
+                    <th class="purchase">{{ ___('index.Exam Start') }}</th>
+                    <th class="purchase">{{ ___('index.Exam End') }}</th>
+                    <th class="purchase">{{ ___('index.Duration') }}</th>
+                    <th class="purchase">{{ ___('index.Exam Published') }}</th>
 
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('online_exam_update') || hasPermission('online_exam_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -76,7 +76,7 @@
                                             <a href="{{ route('online-exam.question-download', $row->id) }}"
                                                 class="dropdown-item">
                                                 <span class="icon mr-8"><i class="fa-solid fa-download"></i></span>
-                                                {{ ___('common.Download Questions') }}
+                                                {{ ___('index.Download Questions') }}
                                             </a>
                                         </li>
                                         <li>
@@ -84,7 +84,7 @@
                                                 data-bs-target="#modalCustomizeWidth"
                                                 onclick="viewQuestions({{ $row->id }})">
                                                 <span class="icon mr-8"><i class="fa-solid fa-eye"></i></span>
-                                                {{ ___('common.View Questions') }}
+                                                {{ ___('index.View Questions') }}
                                             </a>
                                         </li>
                                         <li>
@@ -92,7 +92,7 @@
                                                 data-bs-target="#modalCustomizeWidth"
                                                 onclick="viewStudents({{ $row->id }})">
                                                 <span class="icon mr-8"><i class="fa-solid fa-eye"></i></span>
-                                                {{ ___('common.View Students') }}
+                                                {{ ___('index.View Students') }}
                                             </a>
                                         </li>
 
@@ -101,7 +101,7 @@
                                                 <a class="dropdown-item"
                                                     href="{{ route('online-exam.edit', $row->id) }}"><span
                                                         class="icon mr-8"><i class="fa-solid fa-pen-to-square"></i></span>
-                                                    {{ ___('common.edit') }}</a>
+                                                    {{ ___('index.edit') }}</a>
                                             </li>
                                         @endif
                                         @if (hasPermission('online_exam_delete'))
@@ -109,7 +109,7 @@
                                                 <a class="dropdown-item" href="javascript:void(0);"
                                                     onclick="delete_row('online-exam/list/delete', {{ $row->id }})">
                                                     <span class="icon mr-8"><i class="fa-solid fa-trash-can"></i></span>
-                                                    <span>{{ ___('common.delete') }}</span>
+                                                    <span>{{ ___('index.delete') }}</span>
                                                 </a>
                                             </li>
                                         @endif

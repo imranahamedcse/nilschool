@@ -18,15 +18,15 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.expense_head') }}</th>
-                    <th class="purchase">{{ ___('common.date') }}</th>
-                    <th class="purchase">{{ ___('common.invoice_number') }}</th>
-                    <th class="purchase">{{ ___('common.amount') }} ({{ Setting('currency_symbol') }})</th>
-                    <th class="purchase">{{ ___('common.document') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.expense_head') }}</th>
+                    <th class="purchase">{{ ___('index.date') }}</th>
+                    <th class="purchase">{{ ___('index.invoice_number') }}</th>
+                    <th class="purchase">{{ ___('index.amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('index.document') }}</th>
                     @if (hasPermission('expense_update') || hasPermission('expense_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -42,19 +42,19 @@
                         <td>
                             @if (@$row->upload->path)
                                 <a href="{{ @globalAsset(@$row->upload->path) }}"
-                                    download>{{ ___('common.download') }}</a>
+                                    download>{{ ___('index.download') }}</a>
                             @endif
                         </td>
                         @if (hasPermission('expense_update') || hasPermission('expense_delete'))
                             <td>
                                 @if (hasPermission('expense_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}" href="{{ route('expense.edit', $row->id) }}"><i
+                                        title="{{ ___('index.edit') }}" href="{{ route('expense.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('expense_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('account/expense/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

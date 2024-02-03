@@ -22,11 +22,11 @@
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <div>
-                                    <label for="validationDefault01" class="form-label">{{ ___('common.fees_group') }} <span
+                                    <label for="validationDefault01" class="form-label">{{ ___('create.fees_group') }} <span
                                             class="text-danger">*</span></label>
                                     <select id="fees_group validationDefault01"
                                         class="form-control @error('fees_group') is-invalid @enderror" name="fees_group">
-                                        <option value="">{{ ___('common.select_fees_group') }}</option>
+                                        <option value="">{{ ___('create.select_fees_group') }}</option>
                                         @foreach ($data['fees_groups'] as $item)
                                             <option
                                                 {{ old('class', $data['fees_assign']->fees_group_id) == $item->group->id ? 'selected' : '' }}
@@ -41,11 +41,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-2 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.class') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="class form-control @error('class') is-invalid @enderror" name="class"
                                     id="validationDefault02">
-                                    <option value="">{{ ___('common.select_class') }}</option>
+                                    <option value="">{{ ___('create.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
                                             {{ old('class', $data['fees_assign']->classes_id) == $item->id ? 'selected' : '' }}
@@ -60,11 +60,11 @@
                             </div>
                             <div class="col-md-2 mb-3">
                                 <div>
-                                    <label for="validationDefault03" class="form-label">{{ ___('common.section') }}
+                                    <label for="validationDefault03" class="form-label">{{ ___('create.section') }}
                                         <span class="text-danger">*</span></label>
                                     <select id="validationDefault03"
                                         class="section form-control @error('section') is-invalid @enderror" name="section">
-                                        <option value="">{{ ___('common.select_section') }}</option>
+                                        <option value="">{{ ___('create.select_section') }}</option>
                                         @foreach ($data['sections'] as $item)
                                             <option
                                                 {{ old('section', $data['fees_assign']->section_id) == $item->section->id ? 'selected' : '' }}
@@ -80,10 +80,10 @@
                             </div>
                             <div class="col-md-2 mb-3">
                                 <div>
-                                    <label for="validationDefault04" class="form-label">{{ ___('common.gender') }}</label>
+                                    <label for="validationDefault04" class="form-label">{{ ___('create.gender') }}</label>
                                     <select id="validationDefault04"
                                         class="gender form-control @error('gender') is-invalid @enderror" name="gender">
-                                        <option value="">{{ ___('common.select_gender') }}</option>
+                                        <option value="">{{ ___('create.select_gender') }}</option>
                                         @foreach ($data['genders'] as $item)
                                             <option
                                                 {{ old('gender', $data['fees_assign']->gender_id) == $item->id ? 'selected' : '' }}
@@ -100,11 +100,11 @@
                             <div class="col-md-2 mb-3">
                                 <div>
                                     <label for="validationDefault05"
-                                        class="form-label">{{ ___('common.student_category') }}</label>
+                                        class="form-label">{{ ___('create.student_category') }}</label>
                                     <select id="validationDefault05"
                                         class="student_category form-control @error('student_category') is-invalid @enderror"
                                         name="student_category">
-                                        <option value="">{{ ___('common.select_student_category') }}</option>
+                                        <option value="">{{ ___('create.select_student_category') }}</option>
                                         @foreach ($data['categories'] as $item)
                                             <option
                                                 {{ old('student_category', $data['fees_assign']->category_id) == $item->id ? 'selected' : '' }}
@@ -122,17 +122,17 @@
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <h5 class="text-info">{{ ___('common.Fees Types') }}</h5>
+                                <h5 class="text-info">{{ ___('create.Fees Types') }}</h5>
                                 <div class="table-responsive">
                                     <table class="table table-bordered role-table" id="types_table">
                                         <thead class="thead">
                                             <tr>
-                                                <th class="purchase mr-4">{{ ___('common.All') }} <input
+                                                <th class="purchase mr-4">{{ ___('create.All') }} <input
                                                         class="form-check-input"
                                                         {{ count($data['fees_masters']) == count($data['assigned_fes_masters']) ? 'checked' : '' }}
                                                         type="checkbox" id="all_fees_masters"></th>
-                                                <th class="purchase">{{ ___('common.name') }}</th>
-                                                <th class="purchase">{{ ___('common.amount') }}
+                                                <th class="purchase">{{ ___('create.name') }}</th>
+                                                <th class="purchase">{{ ___('create.amount') }}
                                                     ({{ Setting('currency_symbol') }})</th>
                                             </tr>
                                         </thead>
@@ -157,7 +157,7 @@
                                             @if ($total > 0)
                                                 <tr>
                                                     <td><strong></strong></td>
-                                                    <td><strong>{{ ___('common.total') }}</strong></td>
+                                                    <td><strong>{{ ___('create.total') }}</strong></td>
                                                     <td><strong>{{ $total }}</strong></td>
                                                 </tr>
                                             @endif
@@ -166,22 +166,22 @@
                                 </div>
                             </div>
                             <div class="col-md-8 mb-3">
-                                <h5 class="text-info">{{ ___('common.Students List') }}</h5>
+                                <h5 class="text-info">{{ ___('create.Students List') }}</h5>
                                 <div class="table-responsive">
                                     <input type="hidden" id="page" value="edit">
                                     <table class="table table-bordered role-table" id="students_table">
                                         <thead class="thead">
                                             <tr>
-                                                <th class="purchase mr-4">{{ ___('common.All') }} <input
+                                                <th class="purchase mr-4">{{ ___('create.All') }} <input
                                                         class="form-check-input"
                                                         {{ count($data['students']) == count(array_unique($data['fees_assign']->feesAssignChilds->pluck('student_id')->toArray())) ? 'checked' : '' }}
                                                         type="checkbox" id="all_students"></th>
-                                                <th class="purchase">{{ ___('common.admission_no') }}</th>
-                                                <th class="purchase">{{ ___('common.Student Name') }}</th>
-                                                <th class="purchase">{{ ___('common.class') }}
-                                                    ({{ ___('common.section') }})</th>
-                                                <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                                                <th class="purchase">{{ ___('common.Mobile Number') }}</th>
+                                                <th class="purchase">{{ ___('create.admission_no') }}</th>
+                                                <th class="purchase">{{ ___('create.Student Name') }}</th>
+                                                <th class="purchase">{{ ___('create.class') }}
+                                                    ({{ ___('create.section') }})</th>
+                                                <th class="purchase">{{ ___('create.guardian_name') }}</th>
+                                                <th class="purchase">{{ ___('create.Mobile Number') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody class="tbody">
@@ -210,7 +210,7 @@
                         <div class="col-md-12 mt-24">
                             <div class="text-end">
                                 <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.submit') }}</button>
+                                    </span>{{ ___('create.submit') }}</button>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@
 </tr>
 @empty
 <tr>
-    <td colspan="3 text-center">{{ ___('common.No data available') }}</td>
+    <td colspan="3 text-center">{{ ___('index.No data available') }}</td>
 </tr>
 @endforelse
 

@@ -24,16 +24,16 @@
 
                     <div>
                         @if (!\Auth::check())
-                            <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ ___('common.Login') }} </a>
+                            <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ ___('frontend.Login') }} </a>
                         @else
                             @if (\Auth::user()->role_id == 6)
-                                <a class="btn btn-sm btn-primary" href="{{ route('student-panel-dashboard.index') }}">{{ ___('common.Dashboard') }}
+                                <a class="btn btn-sm btn-primary" href="{{ route('student-panel-dashboard.index') }}">{{ ___('frontend.Dashboard') }}
                                 </a>
                             @elseif(\Auth::user()->role_id == 7)
-                                <a class="btn btn-sm btn-primary" href="{{ route('parent-panel-dashboard.index') }}">{{ ___('common.Dashboard') }}
+                                <a class="btn btn-sm btn-primary" href="{{ route('parent-panel-dashboard.index') }}">{{ ___('frontend.Dashboard') }}
                                 </a>
                             @else
-                                <a class="btn btn-sm btn-primary" href="{{ route('dashboard') }}">{{ ___('common.Dashboard') }} </a>
+                                <a class="btn btn-sm btn-primary" href="{{ route('dashboard') }}">{{ ___('frontend.Dashboard') }} </a>
                             @endif
                         @endif
                     </div>
@@ -55,31 +55,31 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.home') }}">{{ ___('common.Home') }}</a>
+                            <a class="nav-link" href="{{ route('frontend.home') }}">{{ ___('frontend.Home') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{{ route('frontend.about') }}">{{ ___('common.About') }}</a>
+                                href="{{ route('frontend.about') }}">{{ ___('frontend.About') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('frontend.news') }}">{{ ___('common.News') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ route('frontend.events') }}">{{ ___('common.Events') }}</a>
+                            <a class="nav-link" href="{{ route('frontend.news') }}">{{ ___('frontend.News') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{{ route('frontend.result') }}">{{ ___('common.Result') }}</a>
+                                href="{{ route('frontend.events') }}">{{ ___('frontend.Events') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="{{ route('frontend.contact') }}">{{ ___('common.Contact Us') }}</a>
+                                href="{{ route('frontend.result') }}">{{ ___('frontend.Result') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="{{ route('frontend.contact') }}">{{ ___('frontend.Contact Us') }}</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
                         <a class="btn btn-sm btn-warning"
-                            href="{{ route('frontend.online-admission') }}">{{ ___('common.Online Admission') }}</a>
+                            href="{{ route('frontend.online-admission') }}">{{ ___('frontend.Online Admission') }}</a>
                     </span>
                 </div>
             </div>

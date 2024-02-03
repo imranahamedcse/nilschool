@@ -19,18 +19,18 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.admission_no') }}</th>
-                    <th class="purchase">{{ ___('common.roll_no') }}</th>
-                    <th class="purchase">{{ ___('common.Student Name') }}</th>
-                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                    <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                    <th class="purchase">{{ ___('common.Date Of Birth') }}</th>
-                    <th class="purchase">{{ ___('common.gender') }}</th>
-                    <th class="purchase">{{ ___('common.Mobile Number') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.admission_no') }}</th>
+                    <th class="purchase">{{ ___('index.roll_no') }}</th>
+                    <th class="purchase">{{ ___('index.Student Name') }}</th>
+                    <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                    <th class="purchase">{{ ___('index.guardian_name') }}</th>
+                    <th class="purchase">{{ ___('index.Date Of Birth') }}</th>
+                    <th class="purchase">{{ ___('index.gender') }}</th>
+                    <th class="purchase">{{ ___('index.Mobile Number') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('student_update') || hasPermission('student_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -64,21 +64,21 @@
                         <td>{{ @$row->student->mobile }}</td>
                         <td>
                             @if (@$row->student->status == App\Enums\Status::ACTIVE)
-                                <span class="badge-basic-success-text">{{ ___('common.active') }}</span>
+                                <span class="badge-basic-success-text">{{ ___('index.active') }}</span>
                             @else
-                                <span class="badge-basic-danger-text">{{ ___('common.inactive') }}</span>
+                                <span class="badge-basic-danger-text">{{ ___('index.inactive') }}</span>
                             @endif
                         </td>
                         @if (hasPermission('student_update') || hasPermission('student_delete'))
                         <td>
                             @if (hasPermission('student_update'))
                                 <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.edit') }}" href="{{ route('student.edit', $row->id) }}"><i
+                                    title="{{ ___('index.edit') }}" href="{{ route('student.edit', $row->id) }}"><i
                                         class="fa-solid fa-pencil"></i></a>
                             @endif
                             @if (hasPermission('student_delete') && $row->code != 'en')
                                 <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                    title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                     onclick="delete_row('students/list/delete', {{ $row->id }})"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             @endif

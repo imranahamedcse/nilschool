@@ -19,11 +19,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('create.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="class form-control @error('class') is-invalid @enderror" name="class"
                                     id="validationDefault01">
-                                    <option value="">{{ ___('common.select_class') }}</option>
+                                    <option value="">{{ ___('create.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
                                     @endforeach
@@ -37,11 +37,11 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <div id="show_sections">
-                                    <label for="validationDefault02" class="form-label">{{ ___('common.section') }}
+                                    <label for="validationDefault02" class="form-label">{{ ___('create.section') }}
                                         <span class="text-danger">*</span></label>
                                     <select class="section form-control @error('section') is-invalid @enderror"
                                         name="section" id="validationDefault02">
-                                        <option value="">{{ ___('common.select_section') }}</option>
+                                        <option value="">{{ ___('create.select_section') }}</option>
                                     </select>
                                     @error('section')
                                         <div class="invalid-feedback">
@@ -52,11 +52,11 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('common.type') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('create.type') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control exam_types @error('type') is-invalid @enderror" name="type"
                                     id="validationDefault03">
-                                    <option value="">{{ ___('common.select_type') }}</option>
+                                    <option value="">{{ ___('create.select_type') }}</option>
                                 </select>
 
                                 @error('type')
@@ -66,10 +66,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('common.date') }} <span
+                                <label for="validationDefault04" class="form-label ">{{ ___('create.date') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control date @error('date') is-invalid @enderror" name="date"
-                                    id="validationDefault04" type="date" placeholder="{{ ___('common.enter_date') }}"
+                                    id="validationDefault04" type="date" placeholder="{{ ___('create.enter_date') }}"
                                     value="{{ old('date') }}">
                                 @error('date')
                                     <div class="invalid-feedback">
@@ -81,11 +81,11 @@
                             <div class="col-md-12">
                                 <div class="d-flex align-items-center gap-4 flex-wrap">
                                     <h5 class="m-0 flex-fill text-info">
-                                        {{ ___('common.Add Subject, Time & Room') }}
+                                        {{ ___('create.Add Subject, Time & Room') }}
                                     </h5>
                                     <button type="button" class="btn btn-sm btn-primary" onclick="addExamRoutine()">
                                         <span><i class="fa-solid fa-plus"></i> </span>
-                                        {{ ___('common.add') }}</button>
+                                        {{ ___('create.add') }}</button>
                                     <input type="hidden" name="counter" id="counter" value="0">
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                     <table class="table school_borderLess_table table_border_hide2" id="exam-routines">
                                         <thead>
                                             <tr>
-                                                <th scope="col">{{ ___('common.subject') }} <span
+                                                <th scope="col">{{ ___('create.subject') }} <span
                                                         class="text-danger"></span>
                                                     @if ($errors->any())
                                                         @if ($errors->has('subjects.*'))
@@ -105,7 +105,7 @@
                                                     @endif
                                                 </th>
                                                 <th scope="col">
-                                                    {{ ___('common.time_schedules.*') }}
+                                                    {{ ___('create.time_schedules.*') }}
                                                     <span class="text-danger"></span>
                                                     @if ($errors->any())
                                                         @if ($errors->has('time_schedules.*'))
@@ -114,7 +114,7 @@
                                                     @endif
                                                 </th>
                                                 <th scope="col">
-                                                    {{ ___('common.class_room') }}
+                                                    {{ ___('create.class_room') }}
                                                     <span class="text-danger"></span>
                                                     @if ($errors->any())
                                                         @if ($errors->has('class_rooms.*'))
@@ -123,7 +123,7 @@
                                                     @endif
                                                 </th>
                                                 <th scope="col">
-                                                    {{ ___('common.action') }}
+                                                    {{ ___('create.action') }}
                                                 </th>
                                             </tr>
                                         </thead>
@@ -137,7 +137,7 @@
                         <div class="col-md-12 mt-24">
                             <div class="text-end">
                                 <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.submit') }}</button>
+                                    </span>{{ ___('create.submit') }}</button>
                             </div>
                         </div>
                     </div>

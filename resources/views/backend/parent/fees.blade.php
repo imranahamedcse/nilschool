@@ -17,15 +17,15 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="purchase">{{ ___('common.group') }}</th>
-                    <th class="purchase">{{ ___('common.type') }}</th>
-                    <th class="purchase">{{ ___('common.due_date') }}</th>
-                    <th class="purchase">{{ ___('common.amount') }} ({{ Setting('currency_symbol') }})</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
-                    <th class="purchase">{{ ___('common.fine_type') }}</th>
-                    <th class="purchase">{{ ___('common.percentage') }}</th>
-                    <th class="purchase">{{ ___('common.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
-                    <th class="purchase">{{ ___('common.Action') }}</th>
+                    <th class="purchase">{{ ___('index.group') }}</th>
+                    <th class="purchase">{{ ___('index.type') }}</th>
+                    <th class="purchase">{{ ___('index.due_date') }}</th>
+                    <th class="purchase">{{ ___('index.amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
+                    <th class="purchase">{{ ___('index.fine_type') }}</th>
+                    <th class="purchase">{{ ___('index.percentage') }}</th>
+                    <th class="purchase">{{ ___('index.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('index.Action') }}</th>
                 </tr>
             </thead>
             <tbody class="tbody">
@@ -46,18 +46,18 @@
                             </td>
                             <td>
                                 @if ($item->fees_collect_count)
-                                    <span class="badge-basic-success-text">{{ ___('common.Paid') }}</span>
+                                    <span class="badge-basic-success-text">{{ ___('index.Paid') }}</span>
                                 @else
-                                    <span class="badge-basic-danger-text">{{ ___('common.Unpaid') }}</span>
+                                    <span class="badge-basic-danger-text">{{ ___('index.Unpaid') }}</span>
                                 @endif
                             </td>
                             <td>
                                 @if (@$item->fine_type == 0)
-                                    <span class="badge-basic-info-text">{{ ___('common.none') }}</span>
+                                    <span class="badge-basic-info-text">{{ ___('index.none') }}</span>
                                 @elseif(@$item->fine_type == 1)
-                                    <span class="badge-basic-info-text">{{ ___('common.percentage') }}</span>
+                                    <span class="badge-basic-info-text">{{ ___('index.percentage') }}</span>
                                 @elseif(@$item->fine_type == 2)
-                                    <span class="badge-basic-info-text">{{ ___('common.fixed') }}</span>
+                                    <span class="badge-basic-info-text">{{ ___('index.fixed') }}</span>
                                 @endif
                             </td>
                             <td>{{ @$item->feesMaster->percentage }}</td>
@@ -73,7 +73,7 @@
                                     <a href="#" class="btn btn-sm ot-btn-primary px-3" data-bs-toggle="modal"
                                         data-bs-target="#modalCustomizeWidth"
                                         onclick="feePayByParentModal(`{{ $item->id }}`)">
-                                        <span class="">{{ ___('common.Pay') }}</span>
+                                        <span class="">{{ ___('index.Pay') }}</span>
                                     </a>
                                 @endif
                             </td>
@@ -83,9 +83,9 @@
                             <td colspan="100%" class="text-center gray-color">
                                 <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary"
                                     width="100">
-                                <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
+                                <p class="mb-0 text-center">{{ ___('index.No data available') }}</p>
                                 <p class="mb-0 text-center text-secondary font-size-90">
-                                    {{ ___('common.Please add new entity regarding this table') }}
+                                    {{ ___('index.Please add new entity regarding this table') }}
                                 </p>
                             </td>
                         </tr>

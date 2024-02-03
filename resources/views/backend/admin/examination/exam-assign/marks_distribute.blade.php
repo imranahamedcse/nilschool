@@ -2,12 +2,12 @@
 <tr>
     <td>
         <div class="school_primary_fileUplaoder">
-            <input type="text" name="marks_distribution[{{ $request->id }}][titles][]" class="redonly_input" placeholder="{{ ___("examination.title") }}" required>
+            <input type="text" name="marks_distribution[{{ $request->id }}][titles][]" class="redonly_input" placeholder="{{ ___("create.title") }}" required>
         </div>
     </td>
     <td>
         <div class="school_primary_fileUplaoder">
-            <input type="text" name="marks_distribution[{{ $request->id }}][marks][]" class="redonly_input" placeholder="{{ ___("examination.marks") }}" required>
+            <input type="text" name="marks_distribution[{{ $request->id }}][marks][]" class="redonly_input" placeholder="{{ ___("create.marks") }}" required>
         </div>
     </td>
     <td>

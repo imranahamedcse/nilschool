@@ -1,6 +1,6 @@
 @extends('frontend.partials.master')
 @section('title')
-    {{ ___('common.News') }}
+    {{ ___('frontend.News') }}
 @endsection
 
 @section('main')
@@ -11,10 +11,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xl-5">
                 <div class="breadcam_wrap text-center">
-                    <h3>{{ ___('common.News') }}</h3>
+                    <h3>{{ ___('frontend.News') }}</h3>
                     <div class="custom_breadcam">
-                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('common.home') }}</a>
-                        <a href="#" class="breadcrumb-item">{{ ___('common.News') }}</a>
+                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('frontend.home') }}</a>
+                        <a href="#" class="breadcrumb-item">{{ ___('frontend.News') }}</a>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         </h4>
                         <p>{!! Str::limit($item->description,150) !!}</p>
                         <div class="blog_page_bottom d-flex align-items-center justify-content-between">
-                            <a href="{{ route('frontend.news-detail',$item->id) }}">{{ ___('common.Read more') }} <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ route('frontend.news-detail',$item->id) }}">{{ ___('frontend.Read more') }} <i class="fas fa-arrow-right"></i></a>
                             <span class="blog_date"> <i class="far fa-calendar"></i>{{ dateFormat($item->date) }}</span>
                         </div>
                     </div>

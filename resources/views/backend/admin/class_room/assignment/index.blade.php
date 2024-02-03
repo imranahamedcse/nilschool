@@ -18,16 +18,16 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                    <th class="purchase">{{ ___('common.subject') }}</th>
-                    <th class="purchase">{{ ___('common.Mark') }}</th>
-                    <th class="purchase">{{ ___('common.Assigned date') }}</th>
-                    <th class="purchase">{{ ___('common.Submission date') }}</th>
-                    <th class="purchase">{{ ___('common.document') }}</th>
-                    <th class="purchase">{{ ___('common.Assigned By') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                    <th class="purchase">{{ ___('index.subject') }}</th>
+                    <th class="purchase">{{ ___('index.Mark') }}</th>
+                    <th class="purchase">{{ ___('index.Assigned date') }}</th>
+                    <th class="purchase">{{ ___('index.Submission date') }}</th>
+                    <th class="purchase">{{ ___('index.document') }}</th>
+                    <th class="purchase">{{ ___('index.Assigned By') }}</th>
                     @if (hasPermission('assignment_update') || hasPermission('assignment_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -43,7 +43,7 @@
                         <td>
                             @if (@$row->upload->path)
                                 <a href="{{ @globalAsset(@$row->upload->path) }}"
-                                    download>{{ ___('common.download') }}</a>
+                                    download>{{ ___('index.download') }}</a>
                             @endif
                         </td>
                         <td>{{ @$row->user->name }}</td>
@@ -51,12 +51,12 @@
                             <td>
                                 @if (hasPermission('fees_type_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}" href="{{ route('assignment.edit', $row->id) }}"><i
+                                        title="{{ ___('index.edit') }}" href="{{ route('assignment.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('fees_type_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('class-room/assignment/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

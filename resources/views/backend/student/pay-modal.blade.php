@@ -117,7 +117,7 @@
                     $amount += $fineAmount;
                 }
             @endphp
-            {{ ___('common.Fee Pay') }}
+            {{ ___('index.Fee Pay') }}
         </h5>
 
         <button type="button" class="m-0 btn-close d-flex justify-content-center align-items-center" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white" aria-hidden="true"></i></button>
@@ -130,17 +130,17 @@
         <div class="modal-body p-4">
             <div class="row mb-3">
                 <div class="col-12 mb-3">
-                    <label for="exampleDataList" class="form-label">{{ ___('common.Fee Amount') }} ({{ Setting('currency_symbol') }}) <span class="fillable">*</span></label>
+                    <label for="exampleDataList" class="form-label">{{ ___('index.Fee Amount') }} ({{ Setting('currency_symbol') }}) <span class="fillable">*</span></label>
                     <input class="form-control ot-input bg-light" value="{{ $amount }}" readonly>
                     <input type="hidden" name="amount" value="{{ $amount - $fineAmount }}">
                     <input type="hidden" name="fine_amount" value="{{ $fineAmount }}">
                 </div>
                 <div class="col-12 mb-3">
-                    <label for="exampleDataList" class="form-label">{{ ___('common.Date') }} <span class="fillable">*</span></label>
-                    <input class="form-control ot-input" name="date" list="datalistOptions" id="exampleDataList" type="date" placeholder="{{ ___('common.date') }}" value="{{ date('Y-m-d') }}" required>
+                    <label for="exampleDataList" class="form-label">{{ ___('index.Date') }} <span class="fillable">*</span></label>
+                    <input class="form-control ot-input" name="date" list="datalistOptions" id="exampleDataList" type="date" placeholder="{{ ___('index.date') }}" value="{{ date('Y-m-d') }}" required>
                 </div>
                 <div class="col-12 mb-3">
-                    <label class="form-label">{{ ___('common.Payment Method') }} <span class="fillable">*</span></label>
+                    <label class="form-label">{{ ___('index.Payment Method') }} <span class="fillable">*</span></label>
                     <div class="input-check-radio academic-section">
                         <div class="radio-inputs">
                             <label>
@@ -172,9 +172,9 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary py-2 px-4" data-bs-dismiss="modal">{{ ___('common.cancel') }}</button>
-            <button type="button" onclick="createToken()" class="btn ot-btn-primary" id='stripe-pay-btn'>{{ ___('common.confirm') }}</button>
-            <a href="{{ route('student-panel-fees.pay-with-paypal') }}?fees_assign_children_id={{ $feeAssignChildren->id }}" class="btn ot-btn-primary d-none" id='paypal-pay-btn'>{{ ___('common.confirm') }}</a>
+            <button type="button" class="btn btn-outline-secondary py-2 px-4" data-bs-dismiss="modal">{{ ___('index.cancel') }}</button>
+            <button type="button" onclick="createToken()" class="btn ot-btn-primary" id='stripe-pay-btn'>{{ ___('index.confirm') }}</button>
+            <a href="{{ route('student-panel-fees.pay-with-paypal') }}?fees_assign_children_id={{ $feeAssignChildren->id }}" class="btn ot-btn-primary d-none" id='paypal-pay-btn'>{{ ___('index.confirm') }}</a>
         </div>
     </form>
 </div>

@@ -18,17 +18,17 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.group') }}</th>
-                    <th class="purchase">{{ ___('common.type') }}</th>
-                    <th class="purchase">{{ ___('common.due_date') }}</th>
-                    <th class="purchase">{{ ___('common.amount') }} ({{ Setting('currency_symbol') }})</th>
-                    <th class="purchase">{{ ___('common.fine_type') }}</th>
-                    <th class="purchase">{{ ___('common.percentage') }}</th>
-                    <th class="purchase">{{ ___('common.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.group') }}</th>
+                    <th class="purchase">{{ ___('index.type') }}</th>
+                    <th class="purchase">{{ ___('index.due_date') }}</th>
+                    <th class="purchase">{{ ___('index.amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('index.fine_type') }}</th>
+                    <th class="purchase">{{ ___('index.percentage') }}</th>
+                    <th class="purchase">{{ ___('index.fine_amount') }} ({{ Setting('currency_symbol') }})</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('fees_master_update') || hasPermission('fees_master_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -42,11 +42,11 @@
                         <td>{{ $row->amount }}</td>
                         <td>
                             @if ($row->fine_type == 0)
-                                <span class="badge-basic-info-text">{{ ___('common.none') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('index.none') }}</span>
                             @elseif($row->fine_type == 1)
-                                <span class="badge-basic-info-text">{{ ___('common.percentage') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('index.percentage') }}</span>
                             @elseif($row->fine_type == 2)
-                                <span class="badge-basic-info-text">{{ ___('common.fixed') }}</span>
+                                <span class="badge-basic-info-text">{{ ___('index.fixed') }}</span>
                             @endif
                         </td>
                         <td>{{ $row->percentage }}</td>
@@ -58,13 +58,13 @@
                             <td>
                                 @if (hasPermission('fees_master_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}"
+                                        title="{{ ___('index.edit') }}"
                                         href="{{ route('fees-master.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('fees_master_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('fees/master/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

@@ -1,7 +1,7 @@
 @extends('backend.student.partials.master')
 
 @section('title')
-    {{ ___('common.Online Exam Result View') }}
+    {{ ___('index.Online Exam Result View') }}
 @endsection
 <style>
     body {
@@ -654,11 +654,11 @@
                                             </div>
                                         @endfor
                                         @if (in_array(@$item->question->id, $answers))
-                                            <strong class="text-danger">{{ ___('common.Answer') }}:</strong> {{ @$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer }}.
+                                            <strong class="text-danger">{{ ___('index.Answer') }}:</strong> {{ @$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer }}.
                                         @endif
 
                                         @if (!in_array(@$item->question->id, $answers) || @$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->evaluation_mark == 0)
-                                            <strong class="text-success">{{ ___('common.Correct Answer') }}:</strong> {{@$item->question->answer}}.
+                                            <strong class="text-success">{{ ___('index.Correct Answer') }}:</strong> {{@$item->question->answer}}.
                                         @endif
 
                                     @elseif (@$item->question->type == 2)
@@ -669,7 +669,7 @@
                                             </div>
                                         @endfor
                                         @if (in_array(@$item->question->id, $answers))
-                                            <strong class="text-danger">{{ ___('common.Answer') }}:</strong>
+                                            <strong class="text-danger">{{ ___('index.Answer') }}:</strong>
                                             @foreach (@$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer as $ans)
                                                 {{$ans}}.
                                             @endforeach
@@ -677,7 +677,7 @@
                                         @endif
 
                                         @if (!in_array(@$item->question->id, $answers) || @$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->evaluation_mark == 0)
-                                           <strong class="text-success">{{ ___('common.Correct Answer') }}:</strong>
+                                           <strong class="text-success">{{ ___('index.Correct Answer') }}:</strong>
                                             @foreach (@$item->question->answer ?? [] as $ans)
                                                 {{$ans}}.
                                             @endforeach
@@ -686,29 +686,29 @@
                                     @elseif(@$item->question->type == 3)
 
                                         <div class="form-check py-1">
-                                            {{ ___('common.1') }}. {{ ___('common.True') }}
+                                            {{ ___('index.1') }}. {{ ___('index.True') }}
                                         </div>
                                         <div class="form-check py-1">
-                                            {{ ___('common.2') }}. {{ ___('common.False') }}
+                                            {{ ___('index.2') }}. {{ ___('index.False') }}
                                         </div>
 
                                         @if (in_array(@$item->question->id, $answers))
-                                            <strong class="text-danger">{{ ___('common.Answer') }}:</strong>
+                                            <strong class="text-danger">{{ ___('index.Answer') }}:</strong>
                                             @if ((int)@$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer == 1)
-                                                {{ ___('common.1') }}
+                                                {{ ___('index.1') }}
                                             @else
-                                                {{ ___('common.2') }}
+                                                {{ ___('index.2') }}
                                             @endif
                                             <br>
                                         @endif
 
                                         @if (!in_array(@$item->question->id, $answers) || @$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->evaluation_mark == 0)
-                                            <strong class="text-success">{{ ___('common.Correct Answer') }}:</strong> {{@$item->question->answer}}.
+                                            <strong class="text-success">{{ ___('index.Correct Answer') }}:</strong> {{@$item->question->answer}}.
                                         @endif
                                     @else
 
                                         @if (in_array(@$item->question->id, $answers))
-                                            <strong class="text-danger">{{ ___('common.Answer') }}:</strong> {{ @$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer}}
+                                            <strong class="text-danger">{{ ___('index.Answer') }}:</strong> {{ @$data['answer']->allAnswers->where('question_bank_id', @$item->question->id)->first()->answer}}
                                         @endif
 
                                     @endif

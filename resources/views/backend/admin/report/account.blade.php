@@ -19,10 +19,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{ ___('common.date') }}</th>
-                        <th>{{ ___('common.name') }}</th>
-                        <th>{{ ___('common.Head') }}</th>
-                        <th>{{ ___('common.Amount') }} ({{ Setting('currency_symbol') }})</th>
+                        <th>{{ ___('index.date') }}</th>
+                        <th>{{ ___('index.name') }}</th>
+                        <th>{{ ___('index.Head') }}</th>
+                        <th>{{ ___('index.Amount') }} ({{ Setting('currency_symbol') }})</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +45,7 @@
                     @endforelse
                     <tr>
                         <td colspan="2"></td>
-                        <td colspan="2">{{ ___('common.total') }}:</td>
+                        <td colspan="2">{{ ___('index.total') }}:</td>
                         <td>{{ $data['sum'] }}</td>
                     </tr>
                 </tbody>

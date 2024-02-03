@@ -22,12 +22,12 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.Route') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('create.Route') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('route_id') is-invalid @enderror" name="route_id"
                                     id="validationDefault01">
 
-                                    <option selected>{{ ___('common.Select Route') }}</option>
+                                    <option selected>{{ ___('create.Select Route') }}</option>
                                     @foreach ($data['route'] as $item)
                                         <option {{ old('route', $data['transport_setup']->route_id) == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">
@@ -43,17 +43,17 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.Status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.Status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationDefault02">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['transport_setup']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['transport_setup']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <p>{{ ___('common.Select vehicle') }} <span class="text-danger">*</span></p>
+                                <p>{{ ___('create.Select vehicle') }} <span class="text-danger">*</span></p>
                                 @foreach ($data['vehicle'] as $key => $item)
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <p>{{ ___('common.Select Pickup point') }} <span class="text-danger">*</span></p>
+                                <p>{{ ___('create.Select Pickup point') }} <span class="text-danger">*</span></p>
                                 @foreach ($data['pickup_point'] as $key => $item)
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
@@ -90,9 +90,9 @@
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('common.Description') }}</label>
+                                <label for="validationDefault03" class="form-label ">{{ ___('create.Description') }}</label>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                    id="validationDefault03" placeholder="{{ ___('common.Enter description') }}">{{ old('description', @$data['transport_setup']->description) }}</textarea>
+                                    id="validationDefault03" placeholder="{{ ___('create.Enter description') }}">{{ old('description', @$data['transport_setup']->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -103,7 +103,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.Update') }}</button>
+                                        </span>{{ ___('create.Update') }}</button>
                                 </div>
                             </div>
 

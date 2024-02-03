@@ -99,23 +99,23 @@ body {
                     </div>
                 </div>
                 @if ($data['students'])
-                    <p class="title">{{___('common.Class (Section)')}} : <strong>{{$data['students'][0]->student->session_class_student->class->name}} ({{$data['students'][0]->student->session_class_student->section->name}})</p></strong>
+                    <p class="title">{{___('index.Class (Section)')}} : <strong>{{$data['students'][0]->student->session_class_student->class->name}} ({{$data['students'][0]->student->session_class_student->section->name}})</p></strong>
                 @endif
                 <div class="table-responsive">
                     @if ( @$data['request']->view == '0')
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="table_th">{{ ___('common.Name') }}</th>
-                                    <th class="table_th">{{ ___('common.Roll') }}</th>
-                                    <th class="table_th">{{ ___('common.Admission no') }}</th>
+                                    <th class="table_th">{{ ___('index.Name') }}</th>
+                                    <th class="table_th">{{ ___('index.Roll') }}</th>
+                                    <th class="table_th">{{ ___('index.Admission no') }}</th>
                                     @foreach ($data['days'] as $day => $date)
                                         <th class="table_th">{{ ++$day }}</th>
                                     @endforeach
-                                    <th class="table_th text-success">{{ ___('common.P') }}</th>
-                                    <th class="table_th text-warning">{{ ___('common.L') }}</th>
-                                    <th class="table_th text-danger">{{ ___('common.A') }}</th>
-                                    <th class="table_th text-primary">{{ ___('common.F') }}</th>
+                                    <th class="table_th text-success">{{ ___('index.P') }}</th>
+                                    <th class="table_th text-warning">{{ ___('index.L') }}</th>
+                                    <th class="table_th text-danger">{{ ___('index.A') }}</th>
+                                    <th class="table_th text-primary">{{ ___('index.F') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -135,27 +135,27 @@ body {
                                                 @foreach ($data['attendances'] as $item2)
                                                     @if ($item->student_id == $item2->student_id && (int)substr($item2->date, -2) == $i)
                                                         @if (@$item2->attendance == App\Enums\AttendanceType::PRESENT)
-                                                            <span class="text-success">{{ ___('common.P') }}</span>
+                                                            <span class="text-success">{{ ___('index.P') }}</span>
                                                             @php
                                                                 ++$p
                                                             @endphp
                                                         @elseif(@$item2->attendance == App\Enums\AttendanceType::LATE)
-                                                            <span class="text-warning">{{ ___('common.L') }}</span>
+                                                            <span class="text-warning">{{ ___('index.L') }}</span>
                                                             @php
                                                                 ++$l
                                                             @endphp
                                                         @elseif(@$item2->attendance == App\Enums\AttendanceType::ABSENT)
-                                                            <span class="text-danger">{{ ___('common.A') }}</span>
+                                                            <span class="text-danger">{{ ___('index.A') }}</span>
                                                             @php
                                                                 ++$a
                                                             @endphp
                                                         @elseif(@$item2->attendance == App\Enums\AttendanceType::HALFDAY)
-                                                            <span class="text-primary">{{ ___('common.F') }}</span>
+                                                            <span class="text-primary">{{ ___('index.F') }}</span>
                                                             @php
                                                                 ++$f
                                                             @endphp
                                                         @else
-                                                            <span>{{ ___('common.H') }}</span>
+                                                            <span>{{ ___('index.H') }}</span>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -173,12 +173,12 @@ body {
                         <table class="table">
                             <thead class="thead">
                                 <tr>
-                                    <th class="table_th">{{ ___('common.Student Name') }}</th>
-                                    <th class="table_th">{{ ___('common.Roll') }}</th>
-                                    <th class="table_th">{{ ___('common.Admission no') }}</th>
-                                    <th class="table_th">{{ ___('common.Date') }}</th>
-                                    <th class="table_th">{{ ___('common.Attendance') }}</th>
-                                    <th class="table_th">{{ ___('common.Note') }}</th>
+                                    <th class="table_th">{{ ___('index.Student Name') }}</th>
+                                    <th class="table_th">{{ ___('index.Roll') }}</th>
+                                    <th class="table_th">{{ ___('index.Admission no') }}</th>
+                                    <th class="table_th">{{ ___('index.Date') }}</th>
+                                    <th class="table_th">{{ ___('index.Attendance') }}</th>
+                                    <th class="table_th">{{ ___('index.Note') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -189,13 +189,13 @@ body {
                                     <td class="table_td">{{ @$item->student->admission_no }}</td>
                                     <td class="table_td">
                                         @if (@$item->attendance == App\Enums\AttendanceType::PRESENT)
-                                            <span class="badge-basic-success-text">{{ ___('common.Present') }}</span>
+                                            <span class="badge-basic-success-text">{{ ___('index.Present') }}</span>
                                         @elseif(@$item->attendance == App\Enums\AttendanceType::LATE)
-                                            <span class="badge-basic-warning-text">{{ ___('common.Late') }}</span>
+                                            <span class="badge-basic-warning-text">{{ ___('index.Late') }}</span>
                                         @elseif(@$item->attendance == App\Enums\AttendanceType::ABSENT)
-                                            <span class="badge-basic-danger-text">{{ ___('common.Absent') }}</span>
+                                            <span class="badge-basic-danger-text">{{ ___('index.Absent') }}</span>
                                         @elseif(@$item->attendance == App\Enums\AttendanceType::HALFDAY)
-                                            <span class="badge-basic-primary-text">{{ ___('common.Half day') }}</span>
+                                            <span class="badge-basic-primary-text">{{ ___('index.Half day') }}</span>
                                         @endif
                                     </td>
                                     <td class="table_td">{{ dateFormat(@$item->date) }}</td>

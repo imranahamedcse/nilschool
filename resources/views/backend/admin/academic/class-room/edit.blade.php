@@ -21,11 +21,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('common.room_no') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('create.room_no') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('room_no') is-invalid @enderror" name="room_no"
                                     value="{{ old('room_no', @$data['class_room']->room_no) }}"
-                                    id="validationDefault01" type="number" placeholder="{{ ___('common.enter_room_no') }}">
+                                    id="validationDefault01" type="number" placeholder="{{ ___('create.enter_room_no') }}">
                                 @error('room_no')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -33,11 +33,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('common.capacity') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('create.capacity') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('capacity') is-invalid @enderror" name="capacity"
                                     value="{{ old('capacity', @$data['class_room']->capacity) }}"
-                                    id="validationDefault02" type="number" placeholder="{{ ___('common.enter_capacity') }}">
+                                    id="validationDefault02" type="number" placeholder="{{ ___('create.enter_capacity') }}">
                                 @error('capacity')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="validationDefault03" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
 
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
@@ -54,10 +54,10 @@
 
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['class_room']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['class_room']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
                             </div>
@@ -70,7 +70,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.update') }}</button>
+                                        </span>{{ ___('create.update') }}</button>
                                 </div>
                             </div>
 

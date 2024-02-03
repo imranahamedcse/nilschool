@@ -18,11 +18,11 @@
                 <input type="hidden" name="form_type" id="form_type" value="create" />
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
+                        <label for="validationDefault01" class="form-label">{{ ___('create.class') }} <span
                                 class="text-danger">*</span></label>
                         <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror"
                             name="class">
-                            <option value="">{{ ___('common.select_class') }}</option>
+                            <option value="">{{ ___('create.select_class') }}</option>
                             @foreach ($data['classes'] as $item)
                                 <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
                             @endforeach
@@ -36,11 +36,11 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <div id="show_sections">
-                            <label for="validationDefault02" class="form-label">{{ ___('common.section') }} <span
+                            <label for="validationDefault02" class="form-label">{{ ___('create.section') }} <span
                                     class="text-danger">*</span></label>
                             <select class="form-control section @error('section') is-invalid @enderror" name="section"
                                 id="validationDefault02">
-                                <option value="">{{ ___('common.select_section') }}</option>
+                                <option value="">{{ ___('create.select_section') }}</option>
                             </select>
                             @error('section')
                                 <div class="invalid-feedback">
@@ -50,12 +50,12 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label for="validationDefault03" class="form-label">{{ ___('common.status') }} <span
+                        <label for="validationDefault03" class="form-label">{{ ___('create.status') }} <span
                                 class="text-danger">*</span></label>
                         <select class="form-control @error('status') is-invalid @enderror" name="status"
                             id="validationDefault03">
-                            <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
-                            <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
+                            <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('create.active') }}</option>
+                            <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('create.inactive') }}
                             </option>
                         </select>
 
@@ -68,11 +68,11 @@
                     <div class="col-md-12 mt-3">
                         <div class="d-flex align-items-center gap-4 flex-wrap">
                             <h5 class="m-0 flex-fill text-info">
-                                {{ ___('common.add') }} {{ ___('common.Subject & Teacher') }}
+                                {{ ___('create.add') }} {{ ___('create.Subject & Teacher') }}
                             </h5>
                             <button type="button" class="btn btn-sm btn-info" onclick="addSubjectTeacher()">
                                 <span><i class="fa-solid fa-plus"></i> </span>
-                                {{ ___('common.add') }}</button>
+                                {{ ___('create.add') }}</button>
                             <input type="hidden" name="counter" id="counter" value="1">
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                                 <table class="table school_borderLess_table table_border_hide2" id="subject-teacher">
                                     <thead>
                                         <tr>
-                                            <td scope="col">{{ ___('common.subject') }} <span
+                                            <td scope="col">{{ ___('create.subject') }} <span
                                                     class="text-danger"></span>
                                                 @if ($errors->any())
                                                     @if ($errors->has('subjects.*'))
@@ -91,7 +91,7 @@
                                                 @endif
                                             </td>
                                             <td scope="col">
-                                                {{ ___('common.teacher') }}
+                                                {{ ___('create.teacher') }}
                                                 <span class="text-danger"></span>
                                                 @if ($errors->any())
                                                     @if ($errors->has('teachers.*'))
@@ -116,7 +116,7 @@
                 <div class="col-md-12 mt-24">
                     <div class="text-end">
                         <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                            </span>{{ ___('common.submit') }}</button>
+                            </span>{{ ___('create.submit') }}</button>
                     </div>
                 </div>
             </form>

@@ -94,11 +94,11 @@ body {
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table_th">{{___('common.#')}}</th>
-                                <th class="table_th">{{___('common.Date')}}</th>
-                                <th class="table_th">{{___('common.Name')}}</th>
-                                <th class="table_th">{{___('common.Head')}}</th>
-                                <th class="table_th">{{___('common.Amount')}} ({{ Setting('currency_symbol') }})</th>
+                                <th class="table_th">{{___('index.#')}}</th>
+                                <th class="table_th">{{___('index.Date')}}</th>
+                                <th class="table_th">{{___('index.Name')}}</th>
+                                <th class="table_th">{{___('index.Head')}}</th>
+                                <th class="table_th">{{___('index.Amount')}} ({{ Setting('currency_symbol') }})</th>
                             </tr>
                         </thead>
                         <tbody>

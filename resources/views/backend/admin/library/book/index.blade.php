@@ -18,15 +18,15 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.category') }}</th>
-                    <th class="purchase">{{ ___('common.code') }}</th>
-                    <th class="purchase">{{ ___('common.author_name') }}</th>
-                    <th class="purchase">{{ ___('common.rack_no') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.category') }}</th>
+                    <th class="purchase">{{ ___('index.code') }}</th>
+                    <th class="purchase">{{ ___('index.author_name') }}</th>
+                    <th class="purchase">{{ ___('index.rack_no') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('book_update') || hasPermission('book_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -46,12 +46,12 @@
                             <td>
                                 @if (hasPermission('book_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}" href="{{ route('book.edit', $row->id) }}"><i
+                                        title="{{ ___('index.edit') }}" href="{{ route('book.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('book_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('library/book/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

@@ -21,11 +21,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('create.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('classes') is-invalid @enderror" name="classes"
                                     id="validationDefault01">
-                                    <option value="">{{ ___('common.select class') }}</option>
+                                    <option value="">{{ ___('create.select class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option value="{{ $item->id }}"
                                             {{ $item->id == $data['class_setup']->classes_id ? 'selected' : '' }}>
@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">{{ ___('common.section') }} <span
+                                <label class="form-label">{{ ___('create.section') }} <span
                                         class="text-danger">*</span></label>
                                 <div class="@error('sections') is-invalid @enderror">
                                     @foreach ($data['section'] as $item)
@@ -61,16 +61,16 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationDefault02">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['class_setup']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['class_setup']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
 
@@ -84,7 +84,7 @@
                         <div class="col-md-12 mt-24">
                             <div class="text-end">
                                 <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.submit') }}</button>
+                                    </span>{{ ___('create.submit') }}</button>
                             </div>
                         </div>
                     </div>

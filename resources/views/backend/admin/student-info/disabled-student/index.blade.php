@@ -21,17 +21,17 @@
             <table id="datatable" class="table">
                 <thead class="thead">
                     <tr>
-                        <th class="serial">{{ ___('common.sr_no') }}</th>
-                        <th class="purchase">{{ ___('common.admission_no') }}</th>
-                        <th class="purchase">{{ ___('common.Student Name') }}</th>
-                        <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                        <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                        <th class="purchase">{{ ___('common.Date Of Birth') }}</th>
-                        <th class="purchase">{{ ___('common.gender') }}</th>
-                        <th class="purchase">{{ ___('common.Mobile Number') }}</th>
-                        <th class="purchase">{{ ___('common.status') }}</th>
+                        <th class="serial">{{ ___('index.sr_no') }}</th>
+                        <th class="purchase">{{ ___('index.admission_no') }}</th>
+                        <th class="purchase">{{ ___('index.Student Name') }}</th>
+                        <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                        <th class="purchase">{{ ___('index.guardian_name') }}</th>
+                        <th class="purchase">{{ ___('index.Date Of Birth') }}</th>
+                        <th class="purchase">{{ ___('index.gender') }}</th>
+                        <th class="purchase">{{ ___('index.Mobile Number') }}</th>
+                        <th class="purchase">{{ ___('index.status') }}</th>
                         @if (hasPermission('disabled_students_update') || hasPermission('disabled_students_delete'))
-                            <th class="action">{{ ___('common.action') }}</th>
+                            <th class="action">{{ ___('index.action') }}</th>
                         @endif
                     </tr>
                 </thead>
@@ -66,9 +66,9 @@
                             <td>{{ @$item->student->mobile }}</td>
                             <td>
                                 @if (@$item->student->status == App\Enums\Status::ACTIVE)
-                                    <span class="btn btn-sm btn-success">{{ ___('common.active') }}</span>
+                                    <span class="btn btn-sm btn-success">{{ ___('index.active') }}</span>
                                 @else
-                                    <span class="btn btn-sm btn-danger">{{ ___('common.inactive') }}</span>
+                                    <span class="btn btn-sm btn-danger">{{ ___('index.inactive') }}</span>
                                 @endif
                             </td>
                             @if (hasPermission('disabled_students_update'))
@@ -85,7 +85,7 @@
                                                         href="{{ route('student.edit', @$item->student->id) }}"><span
                                                             class="icon mr-8"><i
                                                                 class="fa-solid fa-pen-to-square"></i></span>
-                                                        {{ ___('common.edit') }}</a>
+                                                        {{ ___('index.edit') }}</a>
                                                 </li>
                                             @endif
                                         </ul>
@@ -98,9 +98,9 @@
                             <td colspan="100%" class="text-center gray-color">
                                 <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary"
                                     width="100">
-                                <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
+                                <p class="mb-0 text-center">{{ ___('index.No data available') }}</p>
                                 <p class="mb-0 text-center text-secondary font-size-90">
-                                    {{ ___('common.Please add new entity regarding this table') }}</p>
+                                    {{ ___('index.Please add new entity regarding this table') }}</p>
                             </td>
                         </tr>
                     @endforelse

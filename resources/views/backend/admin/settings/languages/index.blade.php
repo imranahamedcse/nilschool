@@ -18,12 +18,12 @@
         <table id="datatable" class="table">
             <thead>
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.code') }}</th>
-                    <th class="purchase">{{ ___('common.icon') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.code') }}</th>
+                    <th class="purchase">{{ ___('index.icon') }}</th>
                     @if (hasPermission('language_update') || hasPermission('language_delete') || hasPermission('language_update_terms'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -36,15 +36,15 @@
                         <td><i class="{{ $row->icon_class }} "></i></td>
                         <td>
                             @if (hasPermission('language_update'))
-                                <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('common.edit') }}"
+                                <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('index.edit') }}"
                                     href="{{ route('languages.edit', $row->id) }}"><i class="fa-solid fa-pencil"></i></a>
                             @endif
                             @if (hasPermission('language_update_terms'))
-                                <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('common.edit_terms') }}"
+                                <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('index.edit_terms') }}"
                                     href="{{ route('languages.edit.terms', $row->id) }}"><i class="fa-solid fa-file-pen"></i></a>
                             @endif
                             @if (hasPermission('language_delete') && $row->code != 'en')
-                                <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('common.delete') }}" 
+                                <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ ___('index.delete') }}"
                                 href="javascript:void(0);" onclick="delete_row('settings/languages/delete', {{ $row->id }})"><i class="fa-solid fa-trash-can"></i></a>
                             @endif
                         </td>

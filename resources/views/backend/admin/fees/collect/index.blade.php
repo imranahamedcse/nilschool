@@ -13,21 +13,21 @@
 
     <div class="card">
         <div class="card-body">
-            
-            @include('backend.admin.components.table.header')            
+
+            @include('backend.admin.components.table.header')
 
             @isset($data['students'])
 
                 <table id="datatable" class="table">
                     <thead class="thead">
                         <tr>
-                            <th class="purchase">{{ ___('common.Student Name') }}</th>
-                            <th class="purchase">{{ ___('common.admission_no') }}</th>
-                            <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                            <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                            <th class="purchase">{{ ___('common.Mobile Number') }}</th>
+                            <th class="purchase">{{ ___('index.Student Name') }}</th>
+                            <th class="purchase">{{ ___('index.admission_no') }}</th>
+                            <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                            <th class="purchase">{{ ___('index.guardian_name') }}</th>
+                            <th class="purchase">{{ ___('index.Mobile Number') }}</th>
                             @if (hasPermission('fees_collect_create'))
-                                <th class="purchase">{{ ___('common.action') }}</th>
+                                <th class="purchase">{{ ___('index.action') }}</th>
                             @endif
                         </tr>
                     </thead>
@@ -42,7 +42,7 @@
                                 @if (hasPermission('fees_collect_create'))
                                     <td>
                                         <a href="{{ route('fees-collect.collect', $item) }}" target="_blank"
-                                            class="btn btn-sm btn-info">{{ ___('common.Details') }}
+                                            class="btn btn-sm btn-info">{{ ___('index.Details') }}
                                         </a>
                                     </td>
                                 @endif

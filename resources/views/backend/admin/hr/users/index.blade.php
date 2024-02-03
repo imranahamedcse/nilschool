@@ -18,17 +18,17 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no.') }}</th>
-                    <th class="purchase">{{ ___('common.staff_id') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.roles') }}</th>
-                    <th class="purchase">{{ ___('common.departments') }}</th>
-                    <th class="purchase">{{ ___('common.designation') }}</th>
-                    <th class="purchase">{{ ___('common.email') }}</th>
-                    <th class="purchase">{{ ___('common.phone') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no.') }}</th>
+                    <th class="purchase">{{ ___('index.staff_id') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.roles') }}</th>
+                    <th class="purchase">{{ ___('index.departments') }}</th>
+                    <th class="purchase">{{ ___('index.designation') }}</th>
+                    <th class="purchase">{{ ___('index.email') }}</th>
+                    <th class="purchase">{{ ___('index.phone') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('user_update') || hasPermission('user_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -65,12 +65,12 @@
                             <td>
                                 @if (hasPermission('user_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}" href="{{ route('users.edit', $row->id) }}"><i
+                                        title="{{ ___('index.edit') }}" href="{{ route('users.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('user_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('staff/users/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

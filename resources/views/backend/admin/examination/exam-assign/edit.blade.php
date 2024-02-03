@@ -22,12 +22,12 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.exam_type') }}
+                                <label for="validationDefault01" class="form-label">{{ ___('create.exam_type') }}
                                     <span class="text-danger">*</span></label>
                                 <select id="validationDefault01"
                                     class="form-control  @error('exam_types') is-invalid @enderror"
                                     name="exam_types">
-                                    <option value="">{{ ___('common.select_exam_type') }}</option>
+                                    <option value="">{{ ___('create.select_exam_type') }}</option>
                                     @foreach ($data['exam_types'] as $item)
                                         <option
                                             {{ old('exam_types', @$data['exam_assign']->exam_type_id) == $item->id ? 'selected' : '' }}
@@ -43,12 +43,12 @@
 
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault02" class="form-label">{{ ___('common.class') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.class') }} <span
                                         class="text-danger">*</span></label>
                                 <select onchange="changeExamAssignClass(this)"
                                     class="nice-select class @error('class') is-invalid @enderror"
                                     name="class" id="validationDefault02">
-                                    <option value="">{{ ___('common.select_class') }}</option>
+                                    <option value="">{{ ___('create.select_class') }}</option>
                                     @foreach ($data['classes'] as $item)
                                         <option
                                             {{ old('class', @$data['exam_assign']->classes_id) == $item->id ? 'selected' : '' }}
@@ -65,7 +65,7 @@
 
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">{{ ___('common.section') }} <span
+                                <label class="form-label">{{ ___('create.section') }} <span
                                         class="text-danger">*</span></label>
                                 <div class="input-check-radio academic-section exam-assign-section">
                                     @foreach ($data['sections'] as $item)
@@ -84,12 +84,12 @@
 
                             <div class="col-md-6 mb-3">
 
-                                <label for="validationDefault03" class="form-label">{{ ___('common.subjects') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('create.subjects') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="subjectMark validationDefault03"
                                     class="form-control subjects @error('subjects') is-invalid @enderror"
                                     name="subjects" id="validationServer04">
-                                    <option value="">{{ ___('common.select_subject') }}</option>
+                                    <option value="">{{ ___('create.select_subject') }}</option>
                                     @foreach ($data['subjects'] as $key => $item)
                                         <option
                                             {{ old('subjects', @$data['exam_assign']->subject_id) == $item->subject_id ? 'selected' : '' }}
@@ -111,9 +111,9 @@
                                     <table class="table school_borderLess_table " id="subject_marks_distribute">
                                         <thead>
                                             <tr>
-                                                <td scope="col">{{ ___('common.subject') }}<span
+                                                <td scope="col">{{ ___('create.subject') }}<span
                                                         class="text-danger"></span> </td>
-                                                <td scope="col"> {{ ___('common.mark_distribution') }} <span
+                                                <td scope="col"> {{ ___('create.mark_distribution') }} <span
                                                         class="text-danger"></span> </td>
                                             </tr>
                                         </thead>
@@ -130,7 +130,7 @@
                                                             class="btn btn-primary radius_30px small_add_btn"
                                                             onclick="marksDistribution({{ @$data['exam_assign']->subject->id }})">
                                                             <span><i class="fa-solid fa-plus"></i> </span>
-                                                            {{ ___('common.add') }}</button>
+                                                            {{ ___('create.add') }}</button>
                                                     </div>
                                                     <table class="table table_border_hide"
                                                         id="marks-distribution{{ @$data['exam_assign']->subject->id }}">
@@ -142,7 +142,7 @@
                                                                             name="marks_distribution[{{ @$data['exam_assign']->subject->id }}][titles][]"
                                                                             class="redonly_input"
                                                                             value="{{ $item->title }}"
-                                                                            placeholder="{{ ___('common.title') }}">
+                                                                            placeholder="{{ ___('create.title') }}">
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -151,7 +151,7 @@
                                                                             name="marks_distribution[{{ @$data['exam_assign']->subject->id }}][marks][]"
                                                                             class="redonly_input"
                                                                             value="{{ $item->mark }}"
-                                                                            placeholder="{{ ___('common.marks') }}">
+                                                                            placeholder="{{ ___('create.marks') }}">
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -174,7 +174,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.submit') }}</button>
+                                        </span>{{ ___('create.submit') }}</button>
                                 </div>
                             </div>
                         </div>

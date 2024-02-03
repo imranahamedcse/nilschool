@@ -21,11 +21,11 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('create.name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
                                     value="{{ old('name', @$data['contact_info']->name) }}"
-                                    id="validationDefault01" placeholder="{{ ___('common.enter_name') }}">
+                                    id="validationDefault01" placeholder="{{ ___('create.enter_name') }}">
                                 @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -34,11 +34,11 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('common.address') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('create.address') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('address') is-invalid @enderror" name="address"
                                     value="{{ old('address', @$data['contact_info']->address) }}"
-                                    id="validationDefault02" type="text" placeholder="{{ ___('common.Enter address') }}">
+                                    id="validationDefault02" type="text" placeholder="{{ ___('create.Enter address') }}">
                                 @error('address')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -47,22 +47,22 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('common.image') }}
-                                    {{ ___('common.(65 x 90 px)') }}</label>
+                                <label for="validationDefault03" class="form-label ">{{ ___('create.image') }}
+                                    {{ ___('create.(65 x 90 px)') }}</label>
                                 <input type="file" class="form-control" name="image" accept="image/*" id="validationDefault03">
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault04" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationDefault04">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['contact_info']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['contact_info']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -75,7 +75,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.update') }}</button>
+                                        </span>{{ ___('create.update') }}</button>
                                 </div>
                             </div>
 

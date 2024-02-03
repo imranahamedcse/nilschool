@@ -102,28 +102,28 @@ body {
                     </thead>
                     <tbody>
                         <tr>
-                            <th class="table_th">{{___('common.Student Name')}} :</th>
+                            <th class="table_th">{{___('index.Student Name')}} :</th>
                             <td class="table_td">{{ @$data['student']->first_name }} {{ @$data['student']->last_name }}</td>
-                            <th class="table_th">{{___('common.Guardian Phone')}} :</th>
+                            <th class="table_th">{{___('index.Guardian Phone')}} :</th>
                             <td class="table_td">{{ @$data['student']->parent->guardian_mobile }}</td>
                         </tr>
                         <tr>
-                            <th class="table_th">{{___('common.Guardian Name')}} :</th>
+                            <th class="table_th">{{___('index.Guardian Name')}} :</th>
                             <td class="table_td">{{ @$data['student']->parent->guardian_name }}</td>
-                            <th class="table_th">{{___('common.Guardian Email')}} :</th>
+                            <th class="table_th">{{___('index.Guardian Email')}} :</th>
                             <td class="table_td">{{ @$data['student']->parent->guardian_email }}</td>
                         </tr>
                         <tr>
-                            <th class="table_th">{{___('common.Class(Section)')}} :</th>
+                            <th class="table_th">{{___('index.Class(Section)')}} :</th>
                             <td class="table_td">{{ @$data['student']->session_class_student->class->name }}
                                 ({{ @$data['student']->session_class_student->section->name }}) </td>
-                            <th class="table_th">{{___('common.Result')}} :</th>
+                            <th class="table_th">{{___('index.Result')}} :</th>
                             <td class="table_td">{{ @$data['resultData']['result'] }}</td>
                         </tr>
                         <tr>
-                            <th class="table_th">{{___('common.DOB')}} :</th>
+                            <th class="table_th">{{___('index.DOB')}} :</th>
                             <td class="table_td">{{ dateFormat(@$data['student']->dob) }}</td>
-                            <th class="table_th">{{___('common.GPA')}} :</th>
+                            <th class="table_th">{{___('index.GPA')}} :</th>
                             <td class="table_td">
                                 @if($data['resultData']['result'] == "Passed")
                                 {{ @$data['resultData']['gpa'] }}
@@ -137,15 +137,15 @@ body {
 
 
                 <div class="markseet_title">
-                    <h5>{{___('common.Grade Sheet')}}</h5>
+                    <h5>{{___('index.Grade Sheet')}}</h5>
                 </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table_th">{{___('common.Subject Code')}}</th>
-                                <th class="table_th">{{___('common.Subject Name')}}</th>
-                                <th class="table_th">{{___('common.Grade')}}</th>
+                                <th class="table_th">{{___('index.Subject Code')}}</th>
+                                <th class="table_th">{{___('index.Subject Name')}}</th>
+                                <th class="table_th">{{___('index.Grade')}}</th>
                             </tr>
                         </thead>
                         <tbody>

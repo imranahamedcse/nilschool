@@ -4,7 +4,7 @@
      <div class="modal-content" id="modalWidth">
          <div class="modal-header modal-header-image">
              <h5 class="modal-title" id="modalLabel2">
-                 {{ ___('common.Student & Mark') }}
+                 {{ ___('index.Student & Mark') }}
              </h5>
              <button type="button" onclick="dismissModal()" class="m-0 btn-close d-flex justify-content-center align-items-center"
                  data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white"
@@ -15,9 +15,9 @@
                 <table class="table table-bg">
                     <thead class="thead">
                         <tr>
-                            <th>{{ ___('common.Student Name') }}</th>
-                            <th>{{ ___('common.Total mark') }}</th>
-                            <th>{{ ___('common.Mark distribution') }}</th>
+                            <th>{{ ___('index.Student Name') }}</th>
+                            <th>{{ ___('index.Total mark') }}</th>
+                            <th>{{ ___('index.Mark distribution') }}</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
@@ -56,7 +56,7 @@
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-outline-secondary py-2 px-4"
-                 data-bs-dismiss="modal">{{ ___('common.cancel') }}</button>
+                 data-bs-dismiss="modal">{{ ___('index.cancel') }}</button>
          </div>
      </div>
 

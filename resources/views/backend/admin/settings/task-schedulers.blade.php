@@ -15,18 +15,18 @@
 
             <div class="row mb-3">
                 <div class="col-md-12 mb-3">
-                    <Span><strong>{{ ___('common.Cron Common Command For all') }} </strong> :
-                        {{ ___('common.* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1') }}
+                    <Span><strong>{{ ___('create.Cron Common Command For all') }} </strong> :
+                        {{ ___('create.* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1') }}
                     </Span>
                 </div>
 
                 <div class="col-md-12">
-                    <Span><strong>{{ ___('common.Examination Result Generate Cron Command') }} </strong> :
-                        {{ ___('common.0 */6 * * * cd /path-to-your-project && php artisan exam:result-generate >> /dev/null 2>&1') }}
+                    <Span><strong>{{ ___('create.Examination Result Generate Cron Command') }} </strong> :
+                        {{ ___('create.0 */6 * * * cd /path-to-your-project && php artisan exam:result-generate >> /dev/null 2>&1') }}
                     </Span> <br>
-                    <Span><strong>{{ ___('common.Examination Result Generate Cron Manually') }} </strong> : <a
+                    <Span><strong>{{ ___('create.Examination Result Generate Cron Manually') }} </strong> : <a
                             class="btn btn-primary" href="{{ route('settings.result-generate') }}">
-                            {{ ___('common.Run') }}</a></Span>
+                            {{ ___('create.Run') }}</a></Span>
                 </div>
             </div>
 

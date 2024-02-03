@@ -22,12 +22,12 @@
                         <div class="row">
 
                             <div class="col-md-4 member">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.select_member') }}
+                                <label for="validationDefault01" class="form-label">{{ ___('create.select_member') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('member') is-invalid @enderror"
                                     name="member" id="validationDefault01">
-                                    <option value="">{{ ___('common.select_member') }}</option>
+                                    <option value="">{{ ___('create.select_member') }}</option>
                                     <option selected value="{{ @$data['member']->user_id }}">{{ $data['user'] }}</option>
                                 </select>
                                 @error('member')
@@ -38,12 +38,12 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.Member category') }}
+                                <label for="validationDefault02" class="form-label">{{ ___('create.Member category') }}
                                     <span class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('category') is-invalid @enderror"
                                     name="category" id="validationDefault02">
-                                    <option value="">{{ ___('common.Select category') }}</option>
+                                    <option value="">{{ ___('create.Select category') }}</option>
                                     @foreach ($data['categories'] as $item)
                                         <option value="{{ $item->id }}"
                                             {{ old('category', @$data['member']->category_id) == $item->id ? 'selected' : '' }}>
@@ -58,17 +58,17 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationDefault03">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['member']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['member']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -81,7 +81,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.update') }}</button>
+                                        </span>{{ ___('create.update') }}</button>
                                 </div>
                             </div>
 

@@ -99,13 +99,13 @@ body {
                     </div>
                 </div>
                 @if ($data['result'])
-                    <p class="title">{{___('common.Class (Section)')}} : <strong>{{$data['result'][0]->class->name}} ({{$data['result'][0]->section->name}})</p></strong>
+                    <p class="title">{{___('index.Class (Section)')}} : <strong>{{$data['result'][0]->class->name}} ({{$data['result'][0]->section->name}})</p></strong>
                 @endif
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table_th">{{___('common.Day/Time')}}</th>
+                                <th class="table_th">{{___('index.Day/Time')}}</th>
                                 @foreach ($data['time'] as $item)
                                     <th class="table_th">{{ $item->timeSchedule->start_time }} - {{ $item->timeSchedule->end_time }}</th>
                                 @endforeach
@@ -133,7 +133,7 @@ body {
                                                                     @endif
                                                                 @endforeach
                                                             </p> --}}
-                                                            <p>{{___('common.Room No')}}: {{ $item->classRoom->room_no }}</p>
+                                                            <p>{{___('index.Room No')}}: {{ $item->classRoom->room_no }}</p>
                                                         </div>
                                                     @endif
                                                 @endforeach

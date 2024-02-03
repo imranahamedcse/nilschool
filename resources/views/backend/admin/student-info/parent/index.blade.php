@@ -20,14 +20,14 @@
             <table id="datatable" class="table">
                 <thead class="thead">
                     <tr>
-                        <th class="serial">{{ ___('common.sr_no') }}</th>
-                        <th class="purchase">{{ ___('common.name') }}</th>
-                        <th class="purchase">{{ ___('common.phone') }}</th>
-                        <th class="purchase">{{ ___('common.email') }}</th>
-                        <th class="purchase">{{ ___('common.address') }}</th>
-                        <th class="purchase">{{ ___('common.status') }}</th>
+                        <th class="serial">{{ ___('index.sr_no') }}</th>
+                        <th class="purchase">{{ ___('index.name') }}</th>
+                        <th class="purchase">{{ ___('index.phone') }}</th>
+                        <th class="purchase">{{ ___('index.email') }}</th>
+                        <th class="purchase">{{ ___('index.address') }}</th>
+                        <th class="purchase">{{ ___('index.status') }}</th>
                         @if (hasPermission('parent_update') || hasPermission('parent_delete'))
-                            <th class="action">{{ ___('common.action') }}</th>
+                            <th class="action">{{ ___('index.action') }}</th>
                         @endif
                     </tr>
                 </thead>
@@ -41,29 +41,29 @@
                             <td>{{ @$row->student->parent->guardian_address }}</td>
                             <td>
                                 @if (@$row->student->parent->status == App\Enums\Status::ACTIVE)
-                                    <span class="btn btn-sm btn-success">{{ ___('common.active') }}</span>
+                                    <span class="btn btn-sm btn-success">{{ ___('index.active') }}</span>
                                 @else
-                                    <span class="btn btn-sm btn-danger">{{ ___('common.inactive') }}</span>
+                                    <span class="btn btn-sm btn-danger">{{ ___('index.inactive') }}</span>
                                 @endif
                             </td>
                             @if (hasPermission('parent_update') || hasPermission('parent_delete'))
                                 <td>
                                     @if (hasPermission('parent_update'))
                                         <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="{{ ___('common.edit') }}"
+                                            data-bs-placement="bottom" title="{{ ___('index.edit') }}"
                                             href="{{ route('parent.edit', @$row->student->parent_guardian_id) }}"><i
                                                 class="fa-solid fa-pencil"></i></a>
                                     @endif
                                     @if (hasPermission('parent_delete') && $row->code != 'en')
                                         <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="{{ ___('common.delete') }}"
+                                            data-bs-placement="bottom" title="{{ ___('index.delete') }}"
                                             href="javascript:void(0);"
                                             onclick="delete_row('students/parent/delete', {{ @$row->student->parent_guardian_id }})"><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     @endif
 
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" title="{{ ___('common.Add Student') }}"
+                                    data-bs-placement="bottom" title="{{ ___('index.Add Student') }}"
                                     href="{{ route('parent.add-student', @$row->student->parent_guardian_id) }}"><i
                                         class="fa-solid fa-plus"></i></a>
 

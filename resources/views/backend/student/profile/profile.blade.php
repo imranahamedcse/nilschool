@@ -14,9 +14,9 @@
                 <div class="col-3">
                     <ul class="list-group list-group-flush">
                         <a class="list-group-item list-group-item-action active"
-                            href="{{ route('student-panel.profile') }}">{{ ___('common.my_profile') }}</a>
+                            href="{{ route('student-panel.profile') }}">{{ ___('profile.my_profile') }}</a>
                         <a class="list-group-item list-group-item-action"
-                            href="{{ route('student-panel.password-update') }}">{{ ___('common.Password update') }}</a>
+                            href="{{ route('student-panel.password-update') }}">{{ ___('profile.Password update') }}</a>
                     </ul>
                 </div>
                 <!-- profile menu end -->
@@ -30,7 +30,7 @@
                         <div class="col text-end">
                             <a href="{{ route('student-panel.profile.edit') }}" class="btn btn-sm btn-info">
                                 <span class="icon"><i class="fa-solid fa-pen-to-square"></i></span>
-                                <span class="">{{ ___('common.edit') }}</span>
+                                <span class="">{{ ___('profile.edit') }}</span>
                             </a>
                         </div>
                     </div>
@@ -38,16 +38,16 @@
                     <img id="id-profile-image" class="img-fluid rounded-circle"
                         src="{{ @globalAsset(Auth::user()->upload->path, '100X100.webp') }}" alt="{{ Auth::user()->name }}">
 
-                    <h5 class="title">{{ ___('common.name') }}</h5>
+                    <h5 class="title">{{ ___('profile.name') }}</h5>
                     <p class="paragraph">{{ Auth::user()->name }}</p>
 
-                    <h5 class="title">{{ ___('common.e_mail_address') }}</h5>
+                    <h5 class="title">{{ ___('profile.e_mail_address') }}</h5>
                     <p class="paragraph">{{ Auth::user()->email }}</p>
 
-                    <h5 class="title">{{ ___('common.date_of_birth') }}</h5>
+                    <h5 class="title">{{ ___('profile.date_of_birth') }}</h5>
                     <p class="paragraph">{{ Auth::user()->date_of_birth }}</p>
 
-                    <h5 class="title">{{ ___('common.phone') }}</h5>
+                    <h5 class="title">{{ ___('profile.phone') }}</h5>
                     <p class="paragraph">{{ Auth::user()->phone }}</p>
 
                 </div>

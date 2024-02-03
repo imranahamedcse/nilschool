@@ -7,8 +7,8 @@
 @section('content')
     <!-- form heading  -->
     <div class="form-heading mb-40">
-        <h1 class="title mb-8">{{ ___('common.login') }}</h1>
-        <p class="subtitle mb-0">{{ ___('common.welcome_back_please_login_to_your_account') }}</p>
+        <h1 class="title mb-8">{{ ___('auth.login') }}</h1>
+        <p class="subtitle mb-0">{{ ___('auth.welcome_back_please_login_to_your_account') }}</p>
     </div>
     <!-- Start With form -->
 
@@ -17,10 +17,10 @@
         @csrf
         <!-- username input field  -->
         <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.Mobile or Email') }} <sup class="text-danger">*</sup></label><br />
+            <label for="username">{{ ___('auth.Mobile or Email') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
                 <input type="text" name="email" class="@error('email') is-invalid @enderror" id="username"
-                    placeholder="{{ ___('common.Enter mobile or email') }}" />
+                    placeholder="{{ ___('auth.Enter mobile or email') }}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
                 @error('email')
                     <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
@@ -30,7 +30,7 @@
         </div>
         <!-- password input field  -->
         <div class="input-field-group mb-20">
-            <label for="password">{{ ___('common.password') }} <sup class="text-danger">*</sup></label><br />
+            <label for="password">{{ ___('auth.password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
                 <input type="password" name="password" class="@error('password') is-invalid @enderror"
                     id="password" placeholder="******************" />
@@ -47,7 +47,7 @@
             <div class="input-field-group">
                 <div class="form-group {{ $errors->has('g-recaptcha-response') ? 'is-invalid' : '' }}">
                     <label
-                        class="control-label {{ $errors->has('g-recaptcha-response') ? 'is-invalid' : '' }}">{{ ___('common.captcha') }}
+                        class="control-label {{ $errors->has('g-recaptcha-response') ? 'is-invalid' : '' }}">{{ ___('auth.captcha') }}
                         <sup class="text-danger">*</sup></label>
                     {!! app('captcha')->display() !!}
                     @if ($errors->has('g-recaptcha-response'))
@@ -63,19 +63,19 @@
             <div class="remember-me input-check-radio">
                 <div class="form-check d-flex align-items-center">
                     <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" />
-                    <label for="rememberMe">{{ ___('common.remember_me') }}</label>
+                    <label for="rememberMe">{{ ___('auth.remember_me') }}</label>
                 </div>
             </div>
             <!-- Forget Password link  -->
             <div>
-                <a class="fogotPassword" href="{{ route('forgot-password') }}">{{ ___('common.forgot_password') }}</a>
+                <a class="fogotPassword" href="{{ route('forgot-password') }}">{{ ___('auth.forgot_password') }}</a>
             </div>
         </div>
         <!-- Remember Me and forget password section end -->
 
         <!-- submit button  -->
         <button type="submit" class="submit-btn pv-16 mt-32 mb-20" value="Sign In">
-            {{ ___('common.login') }}
+            {{ ___('auth.login') }}
         </button>
     </form>
 
@@ -90,7 +90,7 @@
                 <input name="password" type="hidden" value="123456">
                 <input name="g-recaptcha-response" type="hidden" value="123456">
                 <button type="submit" class="submit-button submit-button-only-border pv-14"
-                    value="Login">{{ ___('common.login_as_superadmin') }}</button>
+                    value="Login">{{ ___('auth.login_as_superadmin') }}</button>
             </form>
         </div>
         <div class="col-md-6">
@@ -101,7 +101,7 @@
                 <input name="password" type="hidden" value="123456">
                 <input name="g-recaptcha-response" type="hidden" value="123456">
                 <button type="submit" class="submit-button submit-button-only-border pv-14"
-                    value="Login">{{ ___('common.login_as_admin') }}</button>
+                    value="Login">{{ ___('auth.login_as_admin') }}</button>
             </form>
         </div>
         <div class="col-md-6">
@@ -112,7 +112,7 @@
                 <input name="password" type="hidden" value="123456">
                 <input name="g-recaptcha-response" type="hidden" value="123456">
                 <button type="submit" class="submit-button submit-button-only-border pv-14"
-                    value="Login">{{ ___('common.login_as_student') }}</button>
+                    value="Login">{{ ___('auth.login_as_student') }}</button>
             </form>
         </div>
         <div class="col-md-6">
@@ -123,7 +123,7 @@
                 <input name="password" type="hidden" value="123456">
                 <input name="g-recaptcha-response" type="hidden" value="123456">
                 <button type="submit" class="submit-button submit-button-only-border pv-14"
-                    value="Login">{{ ___('common.login_as_parent') }}</button>
+                    value="Login">{{ ___('auth.login_as_parent') }}</button>
             </form>
         </div>
         <div class="col-md-12">
@@ -134,7 +134,7 @@
                 <input name="password" type="hidden" value="123456">
                 <input name="g-recaptcha-response" type="hidden" value="123456">
                 <button type="submit" class="submit-button submit-button-only-border pv-14"
-                    value="Login">{{ ___('common.login_as_teacher') }}</button>
+                    value="Login">{{ ___('auth.login_as_teacher') }}</button>
             </form>
         </div>
     </div>

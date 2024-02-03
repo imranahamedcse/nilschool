@@ -75,7 +75,7 @@
 
             <div class="d-flex justify-content-center align-items-center">
                 <button class="btn btn-secondary" onclick="printDiv('print')">
-                    {{ ___('common.Print') }}
+                    {{ ___('index.Print') }}
                     <span><i class="fa-solid fa-print"></i></span>
                 </button>
             </div>

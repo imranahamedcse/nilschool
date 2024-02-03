@@ -18,12 +18,12 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.class') }}</th>
-                    <th class="purchase">{{ ___('common.sections') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.class') }}</th>
+                    <th class="purchase">{{ ___('index.sections') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('class_setup_update') || hasPermission('class_setup_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -43,12 +43,12 @@
                         <td>
                             @if (hasPermission('class_setup_update'))
                                 <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.edit') }}" href="{{ route('class-setup.edit', $row->id) }}"><i
+                                    title="{{ ___('index.edit') }}" href="{{ route('class-setup.edit', $row->id) }}"><i
                                         class="fa-solid fa-pencil"></i></a>
                             @endif
                             @if (hasPermission('class_setup_delete') && $row->code != 'en')
                                 <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                    title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                     onclick="delete_row('academic/class-setup/delete', {{ $row->id }})"><i
                                         class="fa-solid fa-trash-can"></i></a>
                             @endif

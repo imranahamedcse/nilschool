@@ -2,7 +2,7 @@
 
 <div class="modal-content">
     <div class="modal-header modal-header-image">
-        <h5 class="modal-title" id="basicModalLabel">{{ ___('common.Subject & Teacher') }}
+        <h5 class="modal-title" id="basicModalLabel">{{ ___('index.Subject & Teacher') }}
         </h5>
         <button type="button" class="m-0 btn-close d-flex justify-content-center align-items-center"
             data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white" aria-hidden="true"></i></button>
@@ -12,8 +12,8 @@
             <table class="table table-bg">
                 <thead class="thead">
                     <tr>
-                        <th class="serial">{{ ___('common.subject') }}</th>
-                        <th class="purchase">{{ ___('common.teacher') }}</th>
+                        <th class="serial">{{ ___('index.subject') }}</th>
+                        <th class="purchase">{{ ___('index.teacher') }}</th>
                     </tr>
                 </thead>
                 <tbody class="tbody">
@@ -33,7 +33,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary py-2 px-4"
-            data-bs-dismiss="modal">{{ ___('common.Close') }}</button>
+            data-bs-dismiss="modal">{{ ___('index.Close') }}</button>
     </div>
 </div>
 <!-- End Basic Modal -->

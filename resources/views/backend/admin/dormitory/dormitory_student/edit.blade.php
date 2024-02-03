@@ -22,10 +22,10 @@
                         <div class="row">
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.Class') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('create.Class') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault01" class="class form-control @error('class') is-invalid @enderror" name="class">
-                                    <option value="">{{ ___('common.select_class') }} </option>
+                                    <option value="">{{ ___('create.select_class') }} </option>
                                     @foreach ($data['classes'] as $item)
                                         <option {{ old('class', $data['dormitory_student']->class_id) == $item->id ? 'selected' : '' }}
                                             value="{{ $item->class->id }}">{{ $item->class->name }}</option>
@@ -39,10 +39,10 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.Section') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.Section') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault02" class="section form-control @error('section') is-invalid @enderror" name="section">
-                                    <option value="">{{ ___('common.select_section') }} </option>
+                                    <option value="">{{ ___('create.select_section') }} </option>
                                     @foreach ($data['sections'] as $item)
                                         <option
                                             {{ old('section', $data['dormitory_student']->section_id) == $item->section->id ? 'selected' : '' }}
@@ -57,10 +57,10 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault03" class="form-label">{{ ___('common.Student') }} <span
+                                <label for="validationDefault03" class="form-label">{{ ___('create.Student') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault03" class="student form-control @error('student') is-invalid @enderror" name="student">
-                                    <option value="">{{ ___('common.Select student') }} *</option>
+                                    <option value="">{{ ___('create.Select student') }} *</option>
                                     @foreach ($data['students'] as $item)
                                         <option
                                             {{ old('student', $data['dormitory_student']->student_id) == $item->student_id ? 'selected' : '' }}
@@ -76,11 +76,11 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault04" class="form-label">{{ ___('common.Dormitory') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('create.Dormitory') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault04" class="dormitory form-control @error('dormitory') is-invalid @enderror"
                                     name="dormitory">
-                                    <option value="">{{ ___('common.Select dormitory') }} </option>
+                                    <option value="">{{ ___('create.Select dormitory') }} </option>
                                     @foreach ($data['dormitories'] as $item)
                                         <option
                                             {{ old('dormitory', $data['dormitory_student']->dormitory_id) == $item->id ? 'selected' : '' }}
@@ -95,10 +95,10 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault05" class="form-label">{{ ___('common.Room No') }} <span
+                                <label for="validationDefault05" class="form-label">{{ ___('create.Room No') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault05" class="room form-control @error('room') is-invalid @enderror" name="room">
-                                    <option value="">{{ ___('common.Select room no') }} </option>
+                                    <option value="">{{ ___('create.Select room no') }} </option>
                                     @foreach ($data['rooms'] as $item)
                                         <option
                                             {{ old('room', $data['dormitory_student']->room_id) == $item->room->id ? 'selected' : '' }}
@@ -113,10 +113,10 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault06" class="form-label">{{ ___('common.Seat No') }} <span
+                                <label for="validationDefault06" class="form-label">{{ ___('create.Seat No') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="validationDefault06" class="seat form-control @error('seat') is-invalid @enderror" name="seat">
-                                    <option value="">{{ ___('common.Select seat no') }} *</option>
+                                    <option value="">{{ ___('create.Select seat no') }} *</option>
 
                                     @for ($i = 1; $i <= $data['seats']->type->total_seat; $i++)
                                         <option {{ old('seat', $data['dormitory_student']->seat_no) == $i ? 'selected' : '' }}
@@ -132,16 +132,16 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="validationDefault06" class="form-label">{{ ___('common.Status') }} <span
+                                <label for="validationDefault06" class="form-label">{{ ___('create.Status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationDefault06">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['dormitory_student']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['dormitory_student']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -154,7 +154,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.Update') }}</button>
+                                        </span>{{ ___('create.Update') }}</button>
                                 </div>
                             </div>
 

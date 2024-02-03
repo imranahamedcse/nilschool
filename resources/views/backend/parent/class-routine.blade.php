@@ -33,7 +33,7 @@
                                     style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse; text-align: center;">
                                     <tr>
                                         <th style="border: 1px solid #dee2e6; padding: 4px;">
-                                            {{ ___('common.Day/Time') }}</th>
+                                            {{ ___('index.Day/Time') }}</th>
                                         @foreach ($data['time'] as $item)
                                             <th style="border: 1px solid #dee2e6; padding: 4px;">
                                                 {{ $item->timeSchedule->start_time }} - {{ $item->timeSchedule->end_time }}
@@ -61,7 +61,7 @@
                                                                         @endif
                                                                     @endforeach --}}
                                                                     <small>
-                                                                        {{ ___('common.Room No') }}:
+                                                                        {{ ___('index.Room No') }}:
                                                                         {{ $item->classRoom->room_no }}
                                                                     </small>
                                                                 @endif
@@ -98,7 +98,7 @@
 
             <div class="d-flex justify-content-center align-items-center">
                 <button class="btn btn-secondary" onclick="printDiv('print')">
-                    {{ ___('common.Print') }}
+                    {{ ___('index.Print') }}
                     <span><i class="fa-solid fa-print"></i></span>
                 </button>
             </div>

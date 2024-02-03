@@ -98,18 +98,18 @@ body {
                     </div>
                 </div>
                 @if ($data['result'])
-                    <p class="title">{{___('common.Class (Section)')}} : <strong>{{$data['result'][0]->student->session_class_student->class->name}} ({{$data['result'][0]->student->session_class_student->section->name}})</p></strong>
+                    <p class="title">{{___('index.Class (Section)')}} : <strong>{{$data['result'][0]->student->session_class_student->class->name}} ({{$data['result'][0]->student->session_class_student->section->name}})</p></strong>
                 @endif
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table_th">{{___('common.#')}}</th>
-                                <th class="table_th">{{___('common.Name')}}</th>
-                                <th class="table_th">{{___('common.Admission No')}}</th>
-                                <th class="table_th">{{___('common.Fees type')}}</th>
-                                <th class="table_th">{{___('common.Date')}}</th>
-                                <th class="table_th">{{___('common.Amount')}} ({{ Setting('currency_symbol') }})</th>
+                                <th class="table_th">{{___('index.#')}}</th>
+                                <th class="table_th">{{___('index.Name')}}</th>
+                                <th class="table_th">{{___('index.Admission No')}}</th>
+                                <th class="table_th">{{___('index.Fees type')}}</th>
+                                <th class="table_th">{{___('index.Date')}}</th>
+                                <th class="table_th">{{___('index.Amount')}} ({{ Setting('currency_symbol') }})</th>
                             </tr>
                         </thead>
                         <tbody>

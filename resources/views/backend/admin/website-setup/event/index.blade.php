@@ -18,15 +18,15 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.title') }}</th>
-                    <th class="purchase">{{ ___('common.image') }}</th>
-                    <th class="purchase">{{ ___('common.date') }}</th>
-                    <th class="purchase">{{ ___('common.Start time') }}</th>
-                    <th class="purchase">{{ ___('common.End time') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.title') }}</th>
+                    <th class="purchase">{{ ___('index.image') }}</th>
+                    <th class="purchase">{{ ___('index.date') }}</th>
+                    <th class="purchase">{{ ___('index.Start time') }}</th>
+                    <th class="purchase">{{ ___('index.End time') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('event_update') || hasPermission('event_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -50,12 +50,12 @@
                             <td>
                                 @if (hasPermission('event_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}" href="{{ route('event.edit', $row->id) }}"><i
+                                        title="{{ ___('index.edit') }}" href="{{ route('event.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('event_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('website-setup/event/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

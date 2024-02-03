@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ ___('common.Online Exam Question') }}</title>
+    <title>{{ ___('index.Online Exam Question') }}</title>
     <style>
 body {
         font-family: 'Poppins', sans-serif;
@@ -104,15 +104,15 @@ body {
                 <div class="markseet_text">
                     {{ @$data->name }}<br>
                     @if (@$data->type)
-                        {{ ___('common.Type') }}: {{ @$data->type->name }}<br>
+                        {{ ___('index.Type') }}: {{ @$data->type->name }}<br>
                     @endif
-                    {{ ___('common.class') }}: {{ @$data->class->name }}, {{ ___('common.section') }}: {{ @$data->section->name }}<br>
+                    {{ ___('index.class') }}: {{ @$data->class->name }}, {{ ___('index.section') }}: {{ @$data->section->name }}<br>
                     @if (@$data->subject)
-                        {{ ___('common.Subject') }}: {{ @$data->subject->name }}, {{ ___('common.Code') }}: {{ @$data->subject->code }} <br>
+                        {{ ___('index.Subject') }}: {{ @$data->subject->name }}, {{ ___('index.Code') }}: {{ @$data->subject->code }} <br>
                     @endif
                     <div class="justify-content-between">
-                        <span>{{ ___('common.Mark') }}: {{@$data->total_mark}}</span>,
-                        <span>{{ ___('common.Time') }}:
+                        <span>{{ ___('index.Mark') }}: {{@$data->total_mark}}</span>,
+                        <span>{{ ___('index.Time') }}:
                         <small>
                             <?php
                                 $startDate = new DateTime(@$data->start);
@@ -124,7 +124,7 @@ body {
                     </div>
                 </div>
                 <div class="markseet_title">
-                    <h5>{{ ___('common.Online Exam Question') }}</h5>
+                    <h5>{{ ___('index.Online Exam Question') }}</h5>
                 </div>
                 <div class="table-responsive">
                     <table>
@@ -149,8 +149,8 @@ body {
 
                                     @elseif($item->question->type == 3)
 
-                                        {{ ___('common.1') }}. {{ ___('common.True') }} <br>
-                                        {{ ___('common.2') }}. {{ ___('common.False') }}
+                                        {{ ___('index.1') }}. {{ ___('index.True') }} <br>
+                                        {{ ___('index.2') }}. {{ ___('index.False') }}
 
                                     @endif
                                 </td>

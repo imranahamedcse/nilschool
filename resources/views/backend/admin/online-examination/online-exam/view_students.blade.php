@@ -4,7 +4,7 @@
      <div class="modal-content" id="modalWidth">
          <div class="modal-header modal-header-image">
              <h5 class="modal-title" id="modalLabel2">
-                 {{ ___('common.Student List') }}
+                 {{ ___('index.Student List') }}
              </h5>
              <button type="button" onclick="dismissModal()" class="m-0 btn-close d-flex justify-content-center align-items-center"
                  data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white"
@@ -15,13 +15,13 @@
                 <table class="table table-bg">
                     <thead class="thead">
                         <tr>
-                            <th class="serial">{{ ___('common.sr_no') }}</th>
-                            <th class="purchase">{{ ___('common.admission_no') }}</th>
-                            <th class="purchase">{{___('student_info.Student Name') }}</th>
-                            <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                            <th class="purchase">{{ ___('common.Mobile Number') }}</th>
-                            <th class="purchase">{{ ___('common.Answer') }}</th>
-                            <th class="purchase">{{ ___('common.Result') }}</th>
+                            <th class="serial">{{ ___('index.sr_no') }}</th>
+                            <th class="purchase">{{ ___('index.admission_no') }}</th>
+                            <th class="purchase">{{ ___('index.Student Name') }}</th>
+                            <th class="purchase">{{ ___('index.guardian_name') }}</th>
+                            <th class="purchase">{{ ___('index.Mobile Number') }}</th>
+                            <th class="purchase">{{ ___('index.Answer') }}</th>
+                            <th class="purchase">{{ ___('index.Result') }}</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
@@ -50,7 +50,7 @@
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-outline-secondary py-2 px-4"
-                 data-bs-dismiss="modal">{{ ___('common.cancel') }}</button>
+                 data-bs-dismiss="modal">{{ ___('index.cancel') }}</button>
          </div>
      </div>
 

@@ -20,10 +20,10 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('common.Name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('create.Name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                    id="validationDefault01" placeholder="{{ ___('common.Enter name') }}"
+                                    id="validationDefault01" placeholder="{{ ___('create.Enter name') }}"
                                     value="{{ old('name') }}">
                                 @error('name')
                                     <div class="invalid-feedback">
@@ -33,10 +33,10 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label ">{{ ___('common.Total seat') }} <span
+                                <label for="validationDefault02" class="form-label ">{{ ___('create.Total seat') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('total_seat') is-invalid @enderror" name="total_seat" type="number"
-                                    id="validationDefault02" placeholder="{{ ___('common.Enter total seat') }}"
+                                    id="validationDefault02" placeholder="{{ ___('create.Enter total seat') }}"
                                     value="{{ old('total_seat') }}">
                                 @error('total_seat')
                                     <div class="invalid-feedback">
@@ -46,10 +46,10 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('common.Seat Fee') }} <span
+                                <label for="validationDefault03" class="form-label ">{{ ___('create.Seat Fee') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('seat_fee') is-invalid @enderror" name="seat_fee" type="number"
-                                    id="validationDefault03" placeholder="{{ ___('common.Enter seat fee') }}"
+                                    id="validationDefault03" placeholder="{{ ___('create.Enter seat fee') }}"
                                     value="{{ old('seat_fee') }}">
                                 @error('seat_fee')
                                     <div class="invalid-feedback">
@@ -59,13 +59,13 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault04" class="form-label">{{ ___('common.Status') }} <span
+                                <label for="validationDefault04" class="form-label">{{ ___('create.Status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationDefault04">
-                                    <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.Active') }}</option>
-                                    <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.Inactive') }}
+                                    <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('create.Active') }}</option>
+                                    <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('create.Inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -78,7 +78,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.Submit') }}</button>
+                                        </span>{{ ___('create.Submit') }}</button>
                                 </div>
                             </div>
                         </div>

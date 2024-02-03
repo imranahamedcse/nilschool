@@ -7,8 +7,8 @@
 @section('content')
     <!-- form heading  -->
     <div class="form-heading mb-40">
-        <h1 class="title mb-8">{{ ___('common.reset_passowrd') }}</h1>
-        <p class="subtitle mb-0">{{ ___('common.welcome_back_please_reset_your_password') }}</p>
+        <h1 class="title mb-8">{{ ___('auth.reset_passowrd') }}</h1>
+        <p class="subtitle mb-0">{{ ___('auth.welcome_back_please_reset_your_password') }}</p>
     </div>
     <!-- Start With form -->
 
@@ -17,9 +17,9 @@
         <input type="hidden" name="token" value="{{ $data['token'] }}">
         <!-- username input field  -->
         <div class="input-field-group mb-20">
-            <label for="username">{{ ___('common.email') }} <sup class="text-danger">*</sup></label><br />
+            <label for="username">{{ ___('auth.email') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field">
-                <input type="email" name="email" class="@error('email') is-invalid @enderror" id="username" placeholder="{{ ___('common.enter_your_email') }}" value="{{$data['email']}}" />
+                <input type="email" name="email" class="@error('email') is-invalid @enderror" id="username" placeholder="{{ ___('auth.enter_your_email') }}" value="{{$data['email']}}" />
                 <img src="{{ asset('backend') }}/assets/images/icons/username-cus.svg" alt="">
                 @error('email')
                 <p class="input-error error-danger invalid-feedback">{{ $message }}</p>
@@ -29,7 +29,7 @@
         </div>
         <!-- password input field  -->
         <div class="input-field-group mb-20">
-            <label for="password">{{ ___('common.password') }} <sup class="text-danger">*</sup></label><br />
+            <label for="password">{{ ___('auth.password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
                 <input type="password" name="password" class="@error('password') is-invalid @enderror" id="password" placeholder="******************" />
                 <i class="lar la-eye"></i>
@@ -41,7 +41,7 @@
         </div>
         <!-- password input field  -->
         <div class="input-field-group">
-            <label for="password">{{ ___('common.confirm_password') }} <sup class="text-danger">*</sup></label><br />
+            <label for="password">{{ ___('auth.confirm_password') }} <sup class="text-danger">*</sup></label><br />
             <div class="custom-input-field password-input">
                 <input type="password" name="confirm_password" id="confirm_password" class="@error('confirm_password') is-invalid @enderror" placeholder="******************" />
                 <i class="lar la-eye"></i>
@@ -58,7 +58,7 @@
     </form>
     <!-- End form -->
     <p class="authenticate-now mb-0">
-        <a class="link-text" href="{{ route('login') }}"> {{ ___('common.back_to_login') }}</a>
+        <a class="link-text" href="{{ route('login') }}"> {{ ___('auth.back_to_login') }}</a>
     </p>
 
 @endsection

@@ -37,7 +37,7 @@
                                                 {{ @$data['student']->first_name }} {{ @$data['student']->last_name }} <br>
                                                 {{ @$data['student']->session_class_student->class->name }}
                                                 ({{ @$data['student']->session_class_student->section->name }}) <br>
-                                                {{ ___('common.Roll No') }} :
+                                                {{ ___('index.Roll No') }} :
                                                 {{ @$data['student']->session_class_student->roll }}
                                             </div>
                                         </td>
@@ -51,13 +51,13 @@
                                 <table style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse;">
                                     <tr>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('common.Subject Code') }}</th>
+                                            {{ ___('index.Subject Code') }}</th>
                                         <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                            {{ ___('common.Subject Name') }}</th>
+                                            {{ ___('index.Subject Name') }}</th>
                                         @foreach (@$data['exams'] as $item)
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: right;">
                                                 {{ $item->exam_type->name }}
-                                                <small>{{ ___('common.Mark') }}</small>
+                                                <small>{{ ___('index.Mark') }}</small>
                                             </th>
                                         @endforeach
                                     </tr>
@@ -100,17 +100,17 @@
                                     <thead>
                                         <tr>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('common.Exam Name') }}</th>
+                                                {{ ___('index.Exam Name') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('common.Total Marks') }}</th>
+                                                {{ ___('index.Total Marks') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('common.Avg Marks') }}</th>
+                                                {{ ___('index.Avg Marks') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('common.Avg Grade') }}</th>
+                                                {{ ___('index.Avg Grade') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('common.GPA') }}</th>
+                                                {{ ___('index.GPA') }}</th>
                                             <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
-                                                {{ ___('common.Result') }}</th>
+                                                {{ ___('index.Result') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -149,7 +149,7 @@
 
             <div class="d-flex justify-content-center align-items-center">
                 <button class="btn btn-secondary" onclick="printDiv('print')">
-                    {{ ___('common.Print') }}
+                    {{ ___('index.Print') }}
                     <span><i class="fa-solid fa-print"></i></span>
                 </button>
             </div>

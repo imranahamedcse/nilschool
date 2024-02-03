@@ -18,13 +18,13 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.code') }}</th>
-                    <th class="purchase">{{ ___('common.type') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.code') }}</th>
+                    <th class="purchase">{{ ___('index.type') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('subject_update') || hasPermission('subject_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -36,9 +36,9 @@
                         <td>{{ $row->code }}</td>
                         <td>
                             @if ($row->type == App\Enums\SubjectType::THEORY)
-                                {{ ___('common.theory') }}
+                                {{ ___('index.theory') }}
                             @elseif ($row->type == App\Enums\SubjectType::PRACTICAL)
-                                {{ ___('common.practical') }}
+                                {{ ___('index.practical') }}
                             @endif
                         </td>
                         <td>
@@ -49,12 +49,12 @@
                             <td>
                                 @if (hasPermission('subject_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}" href="{{ route('subject.edit', $row->id) }}"><i
+                                        title="{{ ___('index.edit') }}" href="{{ route('subject.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('subject_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('academic/subject/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

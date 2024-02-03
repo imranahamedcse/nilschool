@@ -4,7 +4,7 @@ aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header modal-header-image">
-                <h5 class="modal-title text-white" id="basicModalLabel">{{ ___('common.Subject & Teacher') }}
+                <h5 class="modal-title text-white" id="basicModalLabel">{{ ___('index.Subject & Teacher') }}
                 </h5>
                 <button type="button" class="m-0 btn-close d-flex justify-content-center align-items-center"
                     data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white"
@@ -15,8 +15,8 @@ aria-hidden="true">
                     <table class="table table-bg">
                         <thead class="thead">
                             <tr>
-                                <th class="serial">{{ ___('common.subject') }}</th>
-                                <th class="purchase">{{ ___('common.teacher') }}</th>
+                                <th class="serial">{{ ___('index.subject') }}</th>
+                                <th class="purchase">{{ ___('index.teacher') }}</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
@@ -40,7 +40,7 @@ aria-hidden="true">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary py-2 px-4"
-                    data-bs-dismiss="modal">{{ ___('common.close') }}</button>
+                    data-bs-dismiss="modal">{{ ___('index.close') }}</button>
             </div>
         </div>
     </div>

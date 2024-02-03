@@ -18,13 +18,13 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.type') }}</th>
-                    <th class="purchase">{{ ___('common.start_time') }}</th>
-                    <th class="purchase">{{ ___('common.end_time') }}</th>
-                    <th class="purchase">{{ ___('common.status') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.type') }}</th>
+                    <th class="purchase">{{ ___('index.start_time') }}</th>
+                    <th class="purchase">{{ ___('index.end_time') }}</th>
+                    <th class="purchase">{{ ___('index.status') }}</th>
                     @if (hasPermission('time_schedule_update') || hasPermission('time_schedule_delete'))
-                        <th class="action">{{ ___('common.action') }}</th>
+                        <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
@@ -34,9 +34,9 @@
                         <td class="serial">{{ ++$key }}</td>
                         <td>
                             @if ($row->type == 1)
-                                <span class="badge-basic-success-text">{{ ___('common.class') }}</span>
+                                <span class="badge-basic-success-text">{{ ___('index.class') }}</span>
                             @else
-                                <span class="badge-basic-primary-text">{{ ___('common.exam') }}</span>
+                                <span class="badge-basic-primary-text">{{ ___('index.exam') }}</span>
                             @endif
                         </td>
                         {{-- <td>{{ formatTimeAMPM($row->start_time) }}</td>
@@ -50,13 +50,13 @@
                             <td>
                                 @if (hasPermission('time_schedule_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.edit') }}"
+                                        title="{{ ___('index.edit') }}"
                                         href="{{ route('time-schedule.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
                                 @if (hasPermission('time_schedule_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="{{ ___('common.delete') }}" href="javascript:void(0);"
+                                        title="{{ ___('index.delete') }}" href="javascript:void(0);"
                                         onclick="delete_row('academic/time/schedule/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif

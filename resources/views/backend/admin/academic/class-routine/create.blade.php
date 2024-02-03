@@ -20,11 +20,11 @@
                       <div class="col-lg-12">
                           <div class="row">
                               <div class="col-md-3 mb-3">
-                                  <label for="validationDefault01" class="form-label">{{ ___('common.class') }} <span
+                                  <label for="validationDefault01" class="form-label">{{ ___('create.class') }} <span
                                           class="text-danger">*</span></label>
                                   <select class="class form-control @error('class') is-invalid @enderror"
                                       name="class" id="validationDefault01">
-                                      <option value="">{{ ___('common.select_class') }}</option>
+                                      <option value="">{{ ___('create.select_class') }}</option>
                                       @foreach ($data['classes'] as $item)
                                           <option value="{{ $item->class->id }}">{{ $item->class->name }}</option>
                                       @endforeach
@@ -38,11 +38,11 @@
                               </div>
                               <div class="col-md-3 mb-3">
                                   <div id="show_sections">
-                                      <label for="validationDefault02" class="form-label">{{ ___('common.section') }}
+                                      <label for="validationDefault02" class="form-label">{{ ___('create.section') }}
                                           <span class="text-danger">*</span></label>
                                       <select class="section form-control @error('section') is-invalid @enderror"
                                           name="section" id="validationDefault02">
-                                          <option value="">{{ ___('common.select_section') }}</option>
+                                          <option value="">{{ ___('create.select_section') }}</option>
                                       </select>
                                       @error('section')
                                           <div class="invalid-feedback">
@@ -52,10 +52,10 @@
                                   </div>
                               </div>
                               <div class="col-md-3 mb-3">
-                                  <label for="validationDefault03" class="form-label">{{ ___('common.shift') }} </label>
+                                  <label for="validationDefault03" class="form-label">{{ ___('create.shift') }} </label>
                                   <select class="shift form-control @error('shift') is-invalid @enderror" name="shift"
                                       id="validationDefault03">
-                                      <option value="">{{ ___('common.select_shift') }}</option>
+                                      <option value="">{{ ___('create.select_shift') }}</option>
                                       @foreach ($data['shifts'] as $item)
                                           <option value="{{ $item->id }}">{{ $item->name }}</option>
                                       @endforeach
@@ -68,11 +68,11 @@
                                   @enderror
                               </div>
                               <div class="col-md-3 mb-3">
-                                  <label for="validationDefault04" class="form-label">{{ ___('common.day') }} <span
+                                  <label for="validationDefault04" class="form-label">{{ ___('create.day') }} <span
                                           class="text-danger">*</span></label>
                                   <select class="day form-control @error('day') is-invalid @enderror" name="day"
                                       id="validationDefault04">
-                                      <option value="">{{ ___('common.select_day') }}</option>
+                                      <option value="">{{ ___('create.select_day') }}</option>
                                       @foreach (\Config::get('site.days') as $key => $day)
                                           <option {{ old('day') == $day ? 'selected' : '' }} value="{{ $key }}">
                                               {{ ___($day) }}</option>
@@ -92,11 +92,11 @@
                               <div class="col-md-12">
                                   <div class="d-flex align-items-center gap-4 flex-wrap">
                                       <h5 class="m-0 flex-fill text-info">
-                                          {{ ___('common.Add Subject, Teacher, Time & Room') }}
+                                          {{ ___('create.Add Subject, Teacher, Time & Room') }}
                                       </h5>
                                       <button type="button" class="btn btn-sm btn-info" onclick="addClassRoutine()">
                                           <span><i class="fa-solid fa-plus"></i> </span>
-                                          {{ ___('common.add') }}</button>
+                                          {{ ___('create.add') }}</button>
                                       <input type="hidden" name="counter" id="counter" value="0">
                                   </div>
                               </div>
@@ -109,7 +109,7 @@
                                       <table class="table school_borderLess_table table_border_hide2" id="class-routines">
                                           <thead>
                                               <tr>
-                                                  <td scope="col">{{ ___('common.subject') }} <span
+                                                  <td scope="col">{{ ___('create.subject') }} <span
                                                           class="text-danger"></span>
                                                       @if ($errors->any())
                                                           @if ($errors->has('subjects.*'))
@@ -118,7 +118,7 @@
                                                       @endif
                                                   </td>
                                                   <td scope="col">
-                                                      {{ ___('common.time_schedules.*') }}
+                                                      {{ ___('create.time_schedules.*') }}
                                                       <span class="text-danger"></span>
                                                       @if ($errors->any())
                                                           @if ($errors->has('time_schedules.*'))
@@ -127,7 +127,7 @@
                                                       @endif
                                                   </td>
                                                   <td scope="col">
-                                                      {{ ___('common.class_room') }}
+                                                      {{ ___('create.class_room') }}
                                                       <span class="text-danger"></span>
                                                       @if ($errors->any())
                                                           @if ($errors->has('class_rooms.*'))
@@ -136,7 +136,7 @@
                                                       @endif
                                                   </td>
                                                   <td scope="col">
-                                                      {{ ___('common.action') }}
+                                                      {{ ___('create.action') }}
                                                   </td>
                                               </tr>
                                           </thead>
@@ -150,7 +150,7 @@
                           <div class="col-md-12 mt-24">
                               <div class="text-end">
                                   <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                      </span>{{ ___('common.submit') }}</button>
+                                      </span>{{ ___('create.submit') }}</button>
                               </div>
                           </div>
                       </div>

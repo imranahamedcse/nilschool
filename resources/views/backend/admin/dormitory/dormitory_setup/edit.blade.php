@@ -22,12 +22,12 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('common.Dormitory') }} <span
+                                <label for="validationDefault01" class="form-label">{{ ___('create.Dormitory') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('dormitory_id') is-invalid @enderror" name="dormitory_id"
                                     id="validationDefault01">
 
-                                    <option selected>{{ ___('common.Select dormitory') }}</option>
+                                    <option selected>{{ ___('create.Select dormitory') }}</option>
                                     @foreach ($data['dormitories'] as $item)
                                         <option {{ old('dormitory', @$data['dormitory_setup']->dormitory_id) == $item->id ? 'selected' : '' }}
                                             value="{{ $item->id }}">
@@ -43,17 +43,17 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('common.Status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.Status') }} <span
                                         class="text-danger">*</span></label>
                                 <select
                                     class="form-control @error('status') is-invalid @enderror"
                                     name="status" id="validationDefault02">
                                     <option value="{{ App\Enums\Status::ACTIVE }}"
                                         {{ @$data['dormitory_setup']->status == App\Enums\Status::ACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.active') }}</option>
+                                        {{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}"
                                         {{ @$data['dormitory_setup']->status == App\Enums\Status::INACTIVE ? 'selected' : '' }}>
-                                        {{ ___('common.inactive') }}
+                                        {{ ___('create.inactive') }}
                                     </option>
                                 </select>
                                 @error('status')
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <p>{{ ___('common.Select room') }} <span class="text-danger">*</span></p>
+                                <p>{{ ___('create.Select room') }} <span class="text-danger">*</span></p>
                                 @foreach ($data['rooms'] as $key => $item)
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
@@ -79,7 +79,7 @@
                             <div class="col-md-12 mt-24">
                                 <div class="text-end">
                                     <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('common.Update') }}</button>
+                                        </span>{{ ___('create.Update') }}</button>
                                 </div>
                             </div>
 

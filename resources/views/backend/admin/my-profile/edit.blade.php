@@ -14,9 +14,9 @@
                 <div class="col-3">
                     <ul class="list-group list-group-flush">
                         <a class="list-group-item list-group-item-action active"
-                            href="{{ route('my.profile') }}">{{ ___('common.my_profile') }}</a>
+                            href="{{ route('my.profile') }}">{{ ___('profile.my_profile') }}</a>
                         <a class="list-group-item list-group-item-action"
-                            href="{{ route('passwordUpdate') }}">{{ ___('common.Password update') }}</a>
+                            href="{{ route('passwordUpdate') }}">{{ ___('profile.Password update') }}</a>
                     </ul>
                 </div>
                 <!-- profile menu end -->
@@ -42,17 +42,17 @@
                                     src="{{ @globalAsset(Auth::user()->upload->path, '100X100.webp') }}"
                                     alt="{{ Auth::user()->name }}">
                             </div>
-                            <label class="form-label" for="image">{{ ___('common.image_') }}
-                                {{ ___('common.(95 x 95 px)') }}</label>
+                            <label class="form-label" for="image">{{ ___('profile.image_') }}
+                                {{ ___('profile.(95 x 95 px)') }}</label>
                             <input type="file" class="form-control" name="image" accept="image/*">
                         </div>
 
                         <div class="col-12 mb-3">
-                            <label for="inputname" class="form-label">{{ ___('common.name') }} <span
+                            <label for="inputname" class="form-label">{{ ___('profile.name') }} <span
                                     class="text-danger">*</span></label>
                             <input name="name" type="text"
                                 class="form-control @error('name') is-invalid @enderror"
-                                value="{{ Auth::user()->name }}" placeholder="{{ ___('common.name.') }}" />
+                                value="{{ Auth::user()->name }}" placeholder="{{ ___('profile.name.') }}" />
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="col-12 mb-3">
-                            <label for="inputname" class="form-label">{{ ___('common.date_of_birth') }}</label>
+                            <label for="inputname" class="form-label">{{ ___('profile.date_of_birth') }}</label>
                             <div class="col-sm-12">
                                 <input name="date_of_birth" type="date"
                                     class="form-control @error('date_of_birth') is-invalid @enderror"
@@ -74,12 +74,12 @@
                             </div>
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="inputname" class="form-label">{{ ___('common.phone') }} <span
+                            <label for="inputname" class="form-label">{{ ___('profile.phone') }} <span
                                     class="text-danger">*</span></label>
                             <div class="col-sm-12">
                                 <input name="phone" type="text"
                                     class="form-control @error('phone') is-invalid @enderror"
-                                    placeholder="{{ ___('common.880_249_897632') }}"
+                                    placeholder="{{ ___('profile.880_249_897632') }}"
                                     value="{{ Auth::user()->phone }}" />
                                 @error('phone')
                                     <div class="invalid-feedback">
@@ -92,7 +92,7 @@
                         <div class="col-12 mb-3">
                             <div class="text-end">
                                 <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                    </span>{{ ___('common.update') }} </button>
+                                    </span>{{ ___('profile.update') }} </button>
                             </div>
                         </div>
 

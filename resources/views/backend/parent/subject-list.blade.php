@@ -18,11 +18,11 @@
         <table id="datatable" class="table">
             <thead class="thead">
                 <tr>
-                    <th class="serial">{{ ___('common.sr_no') }}</th>
-                    <th class="purchase">{{ ___('common.name') }}</th>
-                    <th class="purchase">{{ ___('common.code') }}</th>
-                    <th class="purchase">{{ ___('common.type') }}</th>
-                    <th class="purchase">{{ ___('common.teacher') }}</th>
+                    <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.name') }}</th>
+                    <th class="purchase">{{ ___('index.code') }}</th>
+                    <th class="purchase">{{ ___('index.type') }}</th>
+                    <th class="purchase">{{ ___('index.teacher') }}</th>
                 </tr>
             </thead>
             <tbody class="tbody">
@@ -34,9 +34,9 @@
                             <td>{{ $row->subject->code }}</td>
                             <td>
                                 @if ($row->subject->type == App\Enums\SubjectType::THEORY)
-                                    {{ ___('common.theory') }}
+                                    {{ ___('index.theory') }}
                                 @elseif ($row->subject->type == App\Enums\SubjectType::PRACTICAL)
-                                    {{ ___('common.practical') }}
+                                    {{ ___('index.practical') }}
                                 @endif
                             </td>
                             <td>
@@ -49,9 +49,9 @@
                             <td colspan="100%" class="text-center gray-color">
                                 <img src="{{ asset('images/no_data.svg') }}" alt="" class="mb-primary"
                                     width="100">
-                                <p class="mb-0 text-center">{{ ___('common.No data available') }}</p>
+                                <p class="mb-0 text-center">{{ ___('index.No data available') }}</p>
                                 <p class="mb-0 text-center text-secondary font-size-90">
-                                    {{ ___('common.Please add new entity regarding this table') }}
+                                    {{ ___('index.Please add new entity regarding this table') }}
                                 </p>
                             </td>
                         </tr>

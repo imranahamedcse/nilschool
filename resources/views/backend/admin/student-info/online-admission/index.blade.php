@@ -21,15 +21,15 @@
 
                     <thead class="thead">
                         <tr>
-                            <th class="serial">{{ ___('common.sr_no') }}</th>
-                            <th class="purchase">{{ ___('common.Student Name') }}</th>
-                            <th class="purchase">{{ ___('common.class') }} ({{ ___('common.section') }})</th>
-                            <th class="purchase">{{ ___('common.Date Of Birth') }}</th>
-                            <th class="purchase">{{ ___('common.mobile') }}</th>
-                            <th class="purchase">{{ ___('common.guardian_name') }}</th>
-                            <th class="purchase">{{ ___('common.guardian_mobile') }}</th>
+                            <th class="serial">{{ ___('index.sr_no') }}</th>
+                            <th class="purchase">{{ ___('index.Student Name') }}</th>
+                            <th class="purchase">{{ ___('index.class') }} ({{ ___('index.section') }})</th>
+                            <th class="purchase">{{ ___('index.Date Of Birth') }}</th>
+                            <th class="purchase">{{ ___('index.mobile') }}</th>
+                            <th class="purchase">{{ ___('index.guardian_name') }}</th>
+                            <th class="purchase">{{ ___('index.guardian_mobile') }}</th>
                             @if (hasPermission('student_update') || hasPermission('student_delete'))
-                                <th class="action">{{ ___('common.action') }}</th>
+                                <th class="action">{{ ___('index.action') }}</th>
                             @endif
                         </tr>
                     </thead>
@@ -47,13 +47,13 @@
                                     <td>
                                         @if (hasPermission('student_update'))
                                             <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="{{ ___('common.edit') }}"
+                                                data-bs-placement="bottom" title="{{ ___('index.edit') }}"
                                                 href="{{ route('online-admissions.edit', $row->id) }}"><i
                                                     class="fa-solid fa-pencil"></i></a>
                                         @endif
                                         @if (hasPermission('student_delete') && $row->code != 'en')
                                             <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="{{ ___('common.delete') }}"
+                                                data-bs-placement="bottom" title="{{ ___('index.delete') }}"
                                                 href="javascript:void(0);"
                                                 onclick="delete_row('online-admissions/delete', {{ $row->id }})"><i
                                                     class="fa-solid fa-trash-can"></i></a>

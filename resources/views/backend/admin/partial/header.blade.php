@@ -56,13 +56,13 @@
                 <li>
                     <a class="dropdown-item {{ set_menu(['my.profile'], 'active') }}"
                         href="{{ route('my.profile') }}">
-                        <span>{{ ___('common.my_profile') }}</span>
+                        <span>{{ ___('partial.my_profile') }}</span>
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item {{ set_menu(['passwordUpdate'], 'active') }}"
                         href="{{ route('passwordUpdate') }}">
-                        <span>{{ ___('common.update_password') }}</span>
+                        <span>{{ ___('partial.update_password') }}</span>
                     </a>
                 </li>
                 <li>
@@ -70,7 +70,7 @@
                         @csrf
                         <button type="submit" class="dropdown-item">
                             <span>
-                                {{ ___('common.logout') }}</span>
+                                {{ ___('partial.logout') }}</span>
                         </button>
                     </form>
                 </li>

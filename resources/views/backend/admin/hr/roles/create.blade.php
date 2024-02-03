@@ -19,11 +19,11 @@
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label for="validationDefault01" class="form-label ">{{ ___('common.name') }} <span
+                                <label for="validationDefault01" class="form-label ">{{ ___('create.name') }} <span
                                         class="text-danger">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" name="name"
                                     id="validationDefault01"
-                                    placeholder="{{ ___('common.enter_name') }}">
+                                    placeholder="{{ ___('create.enter_name') }}">
                                 @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -32,12 +32,12 @@
                             </div>
                             <div class="col-md-12">
 
-                                <label for="validationDefault02" class="form-label">{{ ___('common.status') }} <span
+                                <label for="validationDefault02" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status"
                                     id="validationDefault02">
-                                    <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('common.active') }}</option>
-                                    <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('common.inactive') }}
+                                    <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('create.active') }}</option>
+                                    <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('create.inactive') }}
                                     </option>
                                 </select>
 
@@ -58,13 +58,13 @@
                                 <!-- table start  -->
                                 <table class="table table-hover">
                                     <thead>
-                                        <th class="user_roles_border">{{ ___('common.module_module_links') }}</th>
-                                        <th class="user_roles_permission">{{ ___('common.Permissions') }}</th>
+                                        <th class="user_roles_border">{{ ___('create.module_module_links') }}</th>
+                                        <th class="user_roles_permission">{{ ___('create.Permissions') }}</th>
                                     </thead>
                                     <tbody>
                                         @foreach ($data['permissions'] as $permission)
                                             <tr>
-                                                <td>{{ ___('common.' . $permission->attribute) }}</td>
+                                                <td>{{ ___('create.' . $permission->attribute) }}</td>
                                                 <td>
                                                     <div class="permission-list-td">
                                                         @foreach ($permission->keywords as $key => $keyword)
@@ -76,7 +76,7 @@
                                                                             value="{{ $keyword }}"
                                                                             id="{{ $keyword }}" />
                                                                         <label class="form-check-label"
-                                                                            for="{{ $keyword }}">{{ ___('common.' . $key) }}</label>
+                                                                            for="{{ $keyword }}">{{ ___('create.' . $key) }}</label>
                                                                     @endif
                                                                 </div>
                                                             </div>
@@ -96,7 +96,7 @@
                     <div class="col-md-12 mt-24">
                         <div class="text-end">
                             <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                </span>{{ ___('common.submit') }}</button>
+                                </span>{{ ___('create.submit') }}</button>
                         </div>
                     </div>
                 </div>

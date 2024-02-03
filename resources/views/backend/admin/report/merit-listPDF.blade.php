@@ -105,14 +105,14 @@ body {
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table_th">{{___('common.#')}}</th>
-                                <th class="table_th">{{___('common.Student Name')}}</th>
-                                <th class="table_th">{{___('common.Admission Id')}}</th>
-                                <th class="table_th">{{___('common.Position')}}</th>
-                                <th class="table_th">{{___('common.Result')}}</th>
-                                <th class="table_th">{{___('common.Point')}}</th>
-                                <th class="table_th">{{___('common.Grade')}}</th>
-                                <th class="table_th">{{___('common.Total Mark')}}</th>
+                                <th class="table_th">{{___('index.#')}}</th>
+                                <th class="table_th">{{___('index.Student Name')}}</th>
+                                <th class="table_th">{{___('index.Admission Id')}}</th>
+                                <th class="table_th">{{___('index.Position')}}</th>
+                                <th class="table_th">{{___('index.Result')}}</th>
+                                <th class="table_th">{{___('index.Point')}}</th>
+                                <th class="table_th">{{___('index.Grade')}}</th>
+                                <th class="table_th">{{___('index.Total Mark')}}</th>
                             </tr>
                         </thead>
                         <tbody>

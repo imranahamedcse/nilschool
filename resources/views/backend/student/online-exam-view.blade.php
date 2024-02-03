@@ -1,7 +1,7 @@
 @extends('backend.student.partials.master')
 
 @section('title')
-    {{ ___('common.Online Exam View') }}
+    {{ ___('index.Online Exam View') }}
 @endsection
 <style>
     body {
@@ -681,11 +681,11 @@
 
                                             <div class="form-check py-1">
                                                 <input class="form-check-input" type="radio" name="answer[{{$item->question->id}}]" id="item{{$key.''.$item->question->id}}1" value="1">
-                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}1">{{ ___('common.1') }}. {{ ___('common.True') }}</label>
+                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}1">{{ ___('index.1') }}. {{ ___('index.True') }}</label>
                                             </div>
                                             <div class="form-check py-1">
                                                 <input class="form-check-input" type="radio" name="answer[{{$item->question->id}}]" id="item{{$key.''.$item->question->id}}0" value="0">
-                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}0">{{ ___('common.2') }}. {{ ___('common.False') }}</label>
+                                                <label class="form-check-label ps-2 pe-5" for="item{{$key.''.$item->question->id}}0">{{ ___('index.2') }}. {{ ___('index.False') }}</label>
                                             </div>
 
                                         @else
@@ -696,7 +696,7 @@
                                     <div class="col-md-12 mt-24">
                                         <div class="text-end">
                                             <button class="btn btn-lg ot-btn-primary"><span><i class="fa-solid fa-save"></i>
-                                                </span>{{ ___('common.submit') }}</button>
+                                                </span>{{ ___('index.submit') }}</button>
                                         </div>
                                     </div>
                                 </form>

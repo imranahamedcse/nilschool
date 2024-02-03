@@ -14,7 +14,7 @@
                     <p class="mt-3">{{ @$row->title }}</p>
                 </div>
                 <div class="col-md-6">
-                    <input type="number" name="marks[{{ $item->student_id }}][{{ @$row->title }}]" class="form-control min_width_200" placeholder="{{ ___('common.Enter mark out of') }} {{ @$row->mark }}" required>
+                    <input type="number" name="marks[{{ $item->student_id }}][{{ @$row->title }}]" class="form-control min_width_200" placeholder="{{ ___('index.Enter mark out of') }} {{ @$row->mark }}" required>
                 </div>
             </div>
         @endforeach

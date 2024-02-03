@@ -11,7 +11,7 @@
             <button type="button" class="btn btn-primary radius_30px small_add_btn"
             onclick="marksDistribution({{$item}})">
             <span><i class="fa-solid fa-plus"></i> </span>
-            {{ ___('common.add') }}</button>
+            {{ ___('index.add') }}</button>
         </div>
         <table class="table table_border_hide" id="marks-distribution{{$item}}">
             <tr>
