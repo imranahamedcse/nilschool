@@ -141,5 +141,7 @@
     "End time": "End time",
     "edit_terms": "Edit terms",
     "start_date": "Start date",
-    "end_date": "End date"
+    "end_date": "End date",
+    "shift": "Shift",
+    "day": "Day"
 }

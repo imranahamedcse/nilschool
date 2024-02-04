@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Interfaces\Settings\SettingInterface;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Schema;
-use App\Http\Requests\Setting\General\StoreRequest;
 use Illuminate\Support\Facades\Artisan;
 use PhpParser\Node\Stmt\TryCatch;
+use App\Http\Requests\Settings\General\StoreRequest;
 
 class SettingController extends Controller
 {

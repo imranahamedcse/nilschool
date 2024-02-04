@@ -11,7 +11,7 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Requests\ResetPasswordRequest;
-use App\Http\Requests\ForgotPasswordRequest;
+use App\Http\Requests\Settings\ForgotPasswordRequest;
 use App\Http\Interfaces\AuthenticationRepositoryInterface;
 
 class AuthenticationController extends Controller

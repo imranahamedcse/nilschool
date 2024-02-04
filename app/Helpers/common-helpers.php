@@ -128,26 +128,10 @@ function ___($key = null, $replace = [], $locale = null)
 if (!function_exists('globalAsset')) {
     function globalAsset($path, $default_image = null)
     {
-
-        if ($path == "") {
-            return url("backend/uploads/default-images/$default_image");
+        if (file_exists(@$path)) {
+            return url($path);
         } else {
-            try {
-
-                if (setting('file_system') == "s3" && Storage::disk('s3')->exists($path) && $path != "") {
-                    return Storage::disk('s3')->url($path);
-                } else if (setting('file_system') == "local" && file_exists(@$path)) {
-                    return url($path);
-                } else {
-                    if ($default_image == null) {
-                        return url('backend/uploads/default-images/user2.jpg');
-                    } else {
-                        return url("backend/uploads/default-images/$default_image");
-                    }
-                }
-            } catch (\Exception $c) {
-                return url("backend/uploads/default-images/$default_image");
-            }
+            return url("backend/uploads/default-images/$default_image");
         }
     }
 }
