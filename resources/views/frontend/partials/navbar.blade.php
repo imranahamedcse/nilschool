@@ -45,8 +45,8 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('frontend.home') }}">
-                    {{-- <img src="{{ @globalAsset(setting('dark_logo'), '154X38.webp') }}" alt="Logo"> --}}
-                    <img src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}" alt="Logo">
+                    {{-- <img src="{{ @globalAsset(setting('dark_logo'), '150X40.svg') }}" alt="Logo"> --}}
+                    <img src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

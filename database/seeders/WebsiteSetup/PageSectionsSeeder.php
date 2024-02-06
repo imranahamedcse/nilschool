@@ -18,9 +18,9 @@ class PageSectionsSeeder extends Seeder
     {
 
         $images = [
-            'frontend/img/accreditation/accreditation.webp',
-            'frontend/img/banner/cta_bg.webp',
-            'frontend/img/explore/1.webp',
+            'frontend/img/accreditation/accreditation.svg',
+            'frontend/img/banner/cta_bg.svg',
+            'frontend/img/explore/1.svg',
             'frontend/img/icon/1.svg',
             'frontend/img/icon/2.svg',
             'frontend/img/icon/3.svg',

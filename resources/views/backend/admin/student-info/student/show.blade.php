@@ -14,7 +14,7 @@
                     <div class="profile-menu-head">
                         <div class="d-flex align-items-center">
                             <div class="flex-shrink-0">
-                                <img class="img-fluid rounded-circle" src="{{ @globalAsset(@$data->user->upload->path, '40X40.webp') }}"
+                                <img class="img-fluid rounded-circle" src="{{ @globalAsset(@$data->user->upload->path, '40X40.svg') }}"
                                     alt="{{ @$data->name }}">
                             </div>
                             <div class="flex-grow-1">

@@ -47,7 +47,7 @@
                                 <a href="{{ route('student.show', @$row->student->id) }}">
                                     <div class="user-card">
                                         <div class="user-avatar">
-                                            <img src="{{ @globalAsset(@$row->student->user->upload->path, '40X40.webp') }}"
+                                            <img src="{{ @globalAsset(@$row->student->user->upload->path, '40X40.svg') }}"
                                                 alt="{{ @$row->student->name }}">
                                         </div>
                                         <div class="user-info">

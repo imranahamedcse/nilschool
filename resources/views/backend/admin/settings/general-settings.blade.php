@@ -53,7 +53,7 @@
 
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img class="img-thumbnail mb-10 full-logo setting-image"
-                                        src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}"
+                                        src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}"
                                         alt="{{ __('light logo') }}">
                                 </div>
 
@@ -67,7 +67,7 @@
 
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img class="img-thumbnail mb-10 full-logo setting-image"
-                                        src="{{ @globalAsset(setting('dark_logo'), '154X38.webp') }}"
+                                        src="{{ @globalAsset(setting('dark_logo'), '150X40.svg') }}"
                                         alt="{{ __('dark logo') }}">
                                 </div>
 
@@ -85,7 +85,7 @@
 
                                                 <div class="d-flex align-items-center gap-3 justify-content-center">
                                                     <img class="img-thumbnail mb-10 full-logo setting-image"
-                                                        src="{{ @globalAsset(setting('favicon'), '40X40.webp') }}"
+                                                        src="{{ @globalAsset(setting('favicon'), '40X40.svg') }}"
                                                         alt="{{ __('favicon') }}">
                                                 </div>
 

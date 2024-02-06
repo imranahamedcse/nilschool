@@ -17,19 +17,19 @@ class NewsSeeder extends Seeder
     public function run()
     {
         $images = [
-            'frontend/img/blog/01.webp',
-            'frontend/img/blog/02.webp',
-            'frontend/img/blog/03.webp',
-            'frontend/img/blog/04.webp',
-            'frontend/img/blog/05.webp',
-            'frontend/img/blog/06.webp',
-            'frontend/img/blog/07.webp',
-            'frontend/img/blog/08.webp',
-            'frontend/img/blog/09.webp',
-            'frontend/img/blog/10.webp',
-            'frontend/img/blog/11.webp',
-            'frontend/img/blog/12.webp',
-            'frontend/img/blog/13.webp',
+            'frontend/img/blog/01.svg',
+            'frontend/img/blog/02.svg',
+            'frontend/img/blog/03.svg',
+            'frontend/img/blog/04.svg',
+            'frontend/img/blog/05.svg',
+            'frontend/img/blog/06.svg',
+            'frontend/img/blog/07.svg',
+            'frontend/img/blog/08.svg',
+            'frontend/img/blog/09.svg',
+            'frontend/img/blog/10.svg',
+            'frontend/img/blog/11.svg',
+            'frontend/img/blog/12.svg',
+            'frontend/img/blog/13.svg',
         ];
         foreach ($images as $key => $value) {
 

@@ -19,7 +19,7 @@
             <div class="d-flex align-items-center mb-4">
                 <div class="flex-shrink-0">
                     <img class="rounded float-start rounded-circle" height="40" width="40"
-                        src="{{ @globalAsset($data['post']->user->upload->path, '40X40.webp') }}" alt="{{ $data['post']->user->name }}">
+                        src="{{ @globalAsset($data['post']->user->upload->path, '40X40.svg') }}" alt="{{ $data['post']->user->name }}">
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <strong>{{ $data['post']->user->name }}</strong> <br>
@@ -37,7 +37,7 @@
                 <div class="d-flex align-items-center mb-2">
                     <div class="flex-shrink-0">
                         <img class="rounded float-start rounded-circle" height="40" width="40"
-                            src="{{ @globalAsset(@$row->student->user->upload->path, '40X40.webp') }}"
+                            src="{{ @globalAsset(@$row->student->user->upload->path, '40X40.svg') }}"
                             alt="{{ @$row->student->name }}">
                     </div>
                     <div class="flex-grow-1 ms-3">

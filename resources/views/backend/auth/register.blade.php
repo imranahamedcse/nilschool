@@ -11,7 +11,7 @@
                 <div class="col-4">
                     <div>
                         <div class="d-flex justify-content-center">
-                            <img class="mb-3" height="50" src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}"
+                            <img class="mb-3" height="50" src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}"
                                 alt="Logo">
                         </div>
                         <div class="card mb-4">

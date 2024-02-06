@@ -93,7 +93,7 @@ body {
             <div class="report">
                 <div class="report_header">
                     <div class="report_header_logo">
-                        <img class="header_logo" src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}" alt="{{ __('light logo') }}">
+                        <img class="header_logo" src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}" alt="{{ __('light logo') }}">
                     </div>
                     <div class="report_header_content">
                         <h3>{{ setting('application_name') }}</h3>

@@ -27,14 +27,14 @@ class AboutSeeder extends Seeder
             'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
         ];
         $icons = [
-            'frontend/img/about-gallery/icon_1.webp',
-            'frontend/img/about-gallery/icon_2.webp',
-            'frontend/img/about-gallery/icon_3.webp',
+            'frontend/img/about-gallery/icon_1.svg',
+            'frontend/img/about-gallery/icon_2.svg',
+            'frontend/img/about-gallery/icon_3.svg',
         ];
         $images = [
-            'frontend/img/about-gallery/1.webp',
-            'frontend/img/about-gallery/2.webp',
-            'frontend/img/about-gallery/3.webp',
+            'frontend/img/about-gallery/1.svg',
+            'frontend/img/about-gallery/2.svg',
+            'frontend/img/about-gallery/3.svg',
         ];
         foreach ($names as $key => $item) {
             $upload       = new Upload();

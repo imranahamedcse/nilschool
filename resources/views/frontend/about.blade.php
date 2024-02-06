@@ -7,7 +7,7 @@
 
 
 <!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}">
+<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xl-5">
@@ -56,7 +56,7 @@
             <div class="col-xl-5 col-lg-5 col-md-6">
                 <div class="accreditation_wrapper mb_30">
                     <div class="thumb">
-                        <img src="{{ @globalAsset(@$sections['statement']->upload->path, '512X512.webp') }}" alt="Image" class="img-fluid">
+                        <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
 <!-- STATEMENT_AREA::END  -->
 
 <!-- SERVICES_AREA::START  -->
-<div class="services_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}">
+<div class="services_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-6">
@@ -81,7 +81,7 @@
             <div class="col-xl-4 col-md-4">
                 <div class="serevice_box mb_30">
                     <div class="icon">
-                        <img src="{{ @globalAsset(uploadPath($item['icon']), '90X60.webp' ) }}" alt="Icon">
+                        <img src="{{ @globalAsset(uploadPath($item['icon']), '90X60.svg' ) }}" alt="Icon">
                     </div>
                     <h3>{{ $item['title'] }}</h3>
                     <p>{{ $item['description'] }}</p>
@@ -103,11 +103,11 @@
                     @if ($key % 2 == 0)
                         <div class="single_about_gallery">
                             <div class="single_about_gallery_thumb">
-                                <img src="{{ @globalAsset(@$item->upload->path, '800X500.webp') }}" alt="Image" class="img-fluid">
+                                <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image" class="img-fluid">
                             </div>
                             <div class="single_about_content">
                                 <div class="iconImg">
-                                    <img src="{{ @globalAsset(@$item->icon_upload->path, '90X60.webp') }}" alt="Image" class="img-fluid">
+                                    <img src="{{ @globalAsset(@$item->icon_upload->path, '90X60.svg') }}" alt="Image" class="img-fluid">
                                 </div>
                                 <h4>{{ $item->name }}</h4>
                                 <p>{{ $item->description }}</p>
@@ -117,13 +117,13 @@
                         <div class="single_about_gallery">
                             <div class="single_about_content">
                                 <div class="iconImg">
-                                    <img src="{{ @globalAsset(@$item->icon_upload->path, '65X90.webp') }}" alt="Image" class="img-fluid">
+                                    <img src="{{ @globalAsset(@$item->icon_upload->path, '60X90.svg') }}" alt="Image" class="img-fluid">
                                 </div>
                                 <h4>{{ $item->name }}</h4>
                                 <p>{{ $item->description }}</p>
                             </div>
                             <div class="single_about_gallery_thumb">
-                                <img src="{{ @globalAsset(@$item->upload->path, '800X500.webp') }}" alt="Image" class="img-fluid">
+                                <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image" class="img-fluid">
                             </div>
                         </div>
                     @endif
@@ -155,7 +155,7 @@
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="single_instractor mb_30 position-relative">
                         <a href="#" class="thumb">
-                            <img src="{{ @globalAsset(@$item->upload->path, '340X340.webp') }}" alt="Image">
+                            <img src="{{ @globalAsset(@$item->upload->path, '340X340.svg') }}" alt="Image">
                         </a>
                         <div class="instractor_info text-center">
                             <div class="instractor_info_content">

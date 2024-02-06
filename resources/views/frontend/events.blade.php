@@ -6,7 +6,7 @@
 @section('main')
 
 <!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}">
+<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-8">

@@ -22,7 +22,7 @@ class StaffSeeder extends Seeder
         for ($i = 1; $i < 14; $i++) {
 
             $upload = new Upload();
-            $upload->path = 'frontend/img/instractors/' . $i . '.webp';
+            $upload->path = 'frontend/img/instractors/' . $i . '.svg';
             $upload->save();
 
             $user                     = new User();

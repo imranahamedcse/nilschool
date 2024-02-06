@@ -35,8 +35,8 @@
                 <div class="form-container d-flex justify-content-center align-items-start flex-column">
                     <div class="form-logo mb-40">
                         <a href="{{ url('/') }}">
-                            <img id="sidebar_full_logo" class="full-logo setting-image logo_dark" src="{{  @globalAsset(setting('dark_logo'), '154X38.webp')  }}" alt="" />
-                            <img id="sidebar_full_logo" class="full-logo setting-image logo_lite" src="{{ @globalAsset(setting('light_logo'), '154X38.webp')  }}" alt="" />
+                            <img id="sidebar_full_logo" class="full-logo setting-image logo_dark" src="{{  @globalAsset(setting('dark_logo'), '150X40.svg')  }}" alt="" />
+                            <img id="sidebar_full_logo" class="full-logo setting-image logo_lite" src="{{ @globalAsset(setting('light_logo'), '150X40.svg')  }}" alt="" />
                         </a>
                     </div>
                     @yield('content')

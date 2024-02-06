@@ -602,7 +602,7 @@
                         <!-- routine_wrapper_header part here -->
                         <div class="routine_wrapper_header">
                             <div class="routine_wrapper_header_logo">
-                                <img class="header_logo" src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}"
+                                <img class="header_logo" src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}"
                                     alt="{{ __('light logo') }}">
                             </div>
                             <div class="vertical_seperator"></div>

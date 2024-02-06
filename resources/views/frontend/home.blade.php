@@ -16,7 +16,7 @@
         <div class="carousel-inner">
             @foreach ($data['sliders'] as $key => $item)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{ @globalAsset(@$item->upload->path, '1920X700.webp') }}" class="d-block w-100"
+                    <img src="{{ @globalAsset(@$item->upload->path, '1920X700.svg') }}" class="d-block w-100"
                         alt="Image">
                     <div
                         class="carousel-caption d-none d-md-block d-flex justify-content-center align-items-center flex-column">
@@ -42,7 +42,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-6 ">
                         <div class="d-flex align-items-center">
                             <div>
-                                <img height="75" src="{{ @globalAsset(@$item->upload->path, '90X60.webp') }}"
+                                <img height="75" src="{{ @globalAsset(@$item->upload->path, '90X60.svg') }}"
                                     alt="Icon">
                             </div>
                             <div class="px-2">
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-xl-5 col-lg-5 col-md-6">
-                <img src="{{ @globalAsset(@$sections['statement']->upload->path, '512X512.webp') }}" alt="Image">
+                <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
 
 
     <!-- Study at start -->
-    <div class="py-5" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}">
+    <div class="py-5" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6">
@@ -98,7 +98,7 @@
                     <div class="col-xl-4 col-md-4">
                         <div class="bg-body-tertiary p-4">
                             <div class="mb-3">
-                                <img src="{{ @globalAsset(uploadPath($item['icon']), '90X60.webp') }}" alt="Icon">
+                                <img src="{{ @globalAsset(uploadPath($item['icon']), '90X60.svg') }}" alt="Icon">
                             </div>
                             <h3>{{ $item['title'] }}</h3>
                             <p>{{ $item['description'] }}</p>
@@ -116,7 +116,7 @@
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-xl-6 col-md-6">
-                <img class="w-100" src="{{ @globalAsset(@$sections['explore']->upload->path, '512X512.webp') }}"
+                <img class="w-100" src="{{ @globalAsset(@$sections['explore']->upload->path, '500X500.svg') }}"
                     alt="Image">
             </div>
             <div class="col-lg-6 col-md-6">
@@ -192,7 +192,7 @@
                             <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="event{{ $key }}"
                                 role="tabpanel" aria-labelledby="event{{ $key }}-tab">
                                 <div class="event_wrapper_img">
-                                    <img src="{{ @globalAsset(@$item->upload->path, '800X500.webp') }}" alt="Image"
+                                    <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image"
                                         class="img-fluid">
                                 </div>
                             </div>
@@ -244,7 +244,7 @@
                 <div class="row align-items-center mb-4">
                     <div class="col-12 col-md-6">
                         <a href="{{ route('frontend.news-detail', $item->id) }}" class="thumb">
-                            <img height="400" src="{{ @globalAsset(@$item->upload->path, '340X410.webp') }}"
+                            <img height="400" src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
                                 alt="Image" class="w-100">
                         </a>
                     </div>
@@ -281,7 +281,7 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <a href="{{ route('frontend.news-detail', $item->id) }}" class="thumb">
-                            <img height="400" src="{{ @globalAsset(@$item->upload->path, '340X410.webp') }}"
+                            <img height="400" src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
                                 alt="Image" class="w-100">
                         </a>
                     </div>
@@ -314,9 +314,9 @@
         <div class="row">
             @foreach ($data['gallery'] as $item)
                 <div class="col-lg-3 col-md-4 grid-item {{ $item->gallery_category_id }}">
-                    <a href="{{ @globalAsset(@$item->upload->path, '340X340.webp') }}"
+                    <a href="{{ @globalAsset(@$item->upload->path, '340X340.svg') }}"
                         class="thumb overflow-hidden popup-image d-block">
-                        <img src="{{ @globalAsset(@$item->upload->path, '340X340.webp') }}" class="mb-4"
+                        <img src="{{ @globalAsset(@$item->upload->path, '340X340.svg') }}" class="mb-4"
                             alt="Image">
                     </a>
                 </div>

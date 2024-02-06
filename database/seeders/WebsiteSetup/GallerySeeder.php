@@ -18,7 +18,7 @@ class GallerySeeder extends Seeder
     {
         for ($i = 1; $i < 25; $i++) {
             $upload = new Upload();
-            $upload->path = 'frontend/img/gallery/' . $i . '.webp';
+            $upload->path = 'frontend/img/gallery/' . $i . '.svg';
             $upload->save();
 
             $row = new Gallery();

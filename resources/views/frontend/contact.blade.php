@@ -7,7 +7,7 @@
 
 
 <!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}">
+<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xl-5">
@@ -41,7 +41,7 @@
                     @foreach ($data['contactInfo'] as $item)
                         <div class="find_content_widget d-flex flex-column align-items-center">
                             <div class="icon">
-                                <img src="{{ @globalAsset(@$item->upload->path,'65X90.webp') }}" alt="Icon">
+                                <img src="{{ @globalAsset(@$item->upload->path,'60X90.svg') }}" alt="Icon">
                             </div>
                             <h3>{{ @$item->name }}</h3>
                             <p>{{ @$item->address }}</p>
@@ -119,7 +119,7 @@
                 <div class="col-xl-3 col-lg-6 col-md-6">
                     <div class="contact_department_box text-center mb_30">
                         <div class="icon">
-                            <img src="{{ @globalAsset(@$item->upload->path, '340X340.webp') }}" alt="Image">
+                            <img src="{{ @globalAsset(@$item->upload->path, '340X340.svg') }}" alt="Image">
                         </div>
                         <h3>{{ @$item->name }}</h3>
                         <p>{{ @$item->phone }} <br>

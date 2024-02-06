@@ -36,7 +36,7 @@
                     </div>
 
                     <img id="id-profile-image" class="img-fluid rounded-circle"
-                        src="{{ @globalAsset(Auth::user()->upload->path, '100X100.webp') }}" alt="{{ Auth::user()->name }}">
+                        src="{{ @globalAsset(Auth::user()->upload->path, '100X100.svg') }}" alt="{{ Auth::user()->name }}">
 
                     <h5 class="title">{{ ___('profile.name') }}</h5>
                     <p class="paragraph">{{ Auth::user()->name }}</p>

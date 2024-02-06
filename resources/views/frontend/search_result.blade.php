@@ -5,7 +5,7 @@
 
 @section('main')
 <!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}">
+<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xl-5">
@@ -32,7 +32,7 @@
                     <!-- search_result_print_view_header  -->
                     <div class="search_result_print_view_header">
                         <div class="search_result_print_view_header_logo">
-                            <img height="75" src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}" alt="Logo">
+                            <img height="75" src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}" alt="Logo">
                         </div>
                         <div class="search_result_print_view_header_content">
                             <h3>{{ setting('application_name') }}</h3>

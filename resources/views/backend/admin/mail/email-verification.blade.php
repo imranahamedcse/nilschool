@@ -314,7 +314,7 @@
         <div class="template-footer">
             <div class="template-footer-image">
                 <!-- logo  -->
-                <img src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}" alt="Logo">
+                <img src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}" alt="Logo">
             </div>
 
             <p>{{ Setting('footer_text') }}</p>

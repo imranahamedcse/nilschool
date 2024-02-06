@@ -24,11 +24,11 @@ class CounterSeeder extends Seeder
             'Parents',
         ];
         $images = [
-            'frontend/img/counters/01.webp',
-            'frontend/img/counters/02.webp',
-            'frontend/img/counters/03.webp',
-            'frontend/img/counters/04.webp',
-            'frontend/img/counters/05.webp',
+            'frontend/img/counters/01.svg',
+            'frontend/img/counters/02.svg',
+            'frontend/img/counters/03.svg',
+            'frontend/img/counters/04.svg',
+            'frontend/img/counters/05.svg',
         ];
         foreach ($names as $key => $item) {
             $upload = new Upload();

@@ -6,7 +6,7 @@
 @section('main')
 
 <!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}">
+<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-xl-5">
@@ -33,7 +33,7 @@
             <div class="col-xl-4 col-lg-4 col-md-4 mb_24 grid-item cat4">
                 <div class="blog_page_widget">
                     <a href="{{ route('frontend.news-detail',$item->id) }}" class="event_thumb">
-                        <img src="{{ @globalAsset(@$item->upload->path, '600X480.webp') }}" alt="Image" class="img-fluid">
+                        <img src="{{ @globalAsset(@$item->upload->path, '600X480.svg') }}" alt="Image" class="img-fluid">
                     </a>
                     <div class="blog_page_meta">
                         <h4>

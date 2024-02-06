@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-xl-5 col-lg-4 col-md-6">
             <a href="#">
-                <img height="60" src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}" alt="Logo">
+                <img height="60" src="{{ @globalAsset(setting('light_logo'), '150X40.svg') }}" alt="Logo">
             </a>
             <p class="mt-3">{{ setting('school_about') }}</p>
         </div>

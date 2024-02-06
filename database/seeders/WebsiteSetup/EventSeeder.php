@@ -52,7 +52,7 @@ class EventSeeder extends Seeder
 
         foreach ($titels as $key => $value) {
             $upload       = new Upload();
-            $upload->path = 'frontend/img/event/' . $key . '.webp';
+            $upload->path = 'frontend/img/event/' . $key . '.svg';
             $upload->save();
 
             $row = new Event();

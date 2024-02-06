@@ -38,7 +38,7 @@
                         <td>{{ @$row->email }}</td>
                         <td>
                             <div class="user-avatar">
-                                <img src="{{ @globalAsset(@$row->upload->path, '40X40.webp') }}" alt="Photo">
+                                <img src="{{ @globalAsset(@$row->upload->path, '40X40.svg') }}" alt="Photo">
                             </div>
                         </td>
                         <td>

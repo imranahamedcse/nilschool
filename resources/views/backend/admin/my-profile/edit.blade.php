@@ -39,7 +39,7 @@
                         <div class="col-12 mb-3">
                             <div class="d-flex flex-column align-items-center justify-content-center">
                                 <img class="img-thumbnail-image-preview mb-3"
-                                    src="{{ @globalAsset(Auth::user()->upload->path, '100X100.webp') }}"
+                                    src="{{ @globalAsset(Auth::user()->upload->path, '100X100.svg') }}"
                                     alt="{{ Auth::user()->name }}">
                             </div>
                             <label class="form-label" for="image">{{ ___('profile.image_') }}

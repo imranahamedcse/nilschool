@@ -41,5 +41,7 @@
     "Passed": "Passed",
     "Failed": "Failed",
     "we_have_send_you_an_email_please_verify_your_email_address": "We have send you an email please verify your email address",
-    "we_have_sent_an_reset_password_link_to_your_email_address": "We have sent an reset password link to your email address"
+    "we_have_sent_an_reset_password_link_to_your_email_address": "We have sent an reset password link to your email address",
+    "Add": "Add",
+    "Students": "Students"
 }
