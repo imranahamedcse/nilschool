@@ -16,16 +16,24 @@
         <div class="carousel-inner">
             @foreach ($data['sliders'] as $key => $item)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{ @globalAsset(@$item->upload->path, '1920X700.svg') }}" class="d-block w-100"
+                    <img height="700" src="{{ @globalAsset(@$item->upload->path, '1920X700.svg') }}" class="d-block w-100"
                         alt="Image">
-                    <div
-                        class="carousel-caption d-none d-md-block d-flex justify-content-center align-items-center flex-column">
-                        <h3>{{ $item->name }}</span></h3>
-                        <p>{{ $item->description }}</p>
-                        <a href="{{ route('frontend.about') }}"
-                            class="theme_btn min_windth_200">{{ ___('frontend.Read more') }}</a>
-                        <a href="{{ route('frontend.contact') }}"
-                            class="theme_line_btn min_windth_200">{{ ___('frontend.Contact Us') }}</a>
+                    <div class="carousel-caption h-100 d-inline-block">
+                        <div class="row h-100">
+                            <div class="col"></div>
+                            <div class="col">
+                                <div class=" h-100 d-flex justify-content-center align-items-center">
+                                    <div class="text-start">
+                                        <p class="display-3 fw-bold mb-4"><strong>{{ $item->name }}</strong></p>
+                                        <p class="h3 opacity-75 mb-5">{{ $item->description }}</p>
+                                        <a href="{{ route('frontend.about') }}"
+                                            class="btn btn-lg btn-outline-light">{{ ___('frontend.Read more') }}</a>
+                                        <a href="{{ route('frontend.contact') }}"
+                                            class="btn btn-lg btn-outline-light mx-4">{{ ___('frontend.Contact Us') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -35,19 +43,21 @@
 
 
     <!-- Counter start -->
-    <div class="bg-info">
+    <div class="counter">
         <div class="container py-5">
             <div class="row">
                 @foreach ($data['counters'] as $item)
-                    <div class="col-xl-3 col-lg-3 col-md-6 ">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <img height="75" src="{{ @globalAsset(@$item->upload->path, '90X60.svg') }}"
-                                    alt="Icon">
-                            </div>
-                            <div class="px-2">
-                                <strong>{{ $item->total_count }}+</strong><br>
-                                <span>{{ $item->name }}</span>
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="card py-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img height="75" src="{{ @globalAsset(@$item->upload->path, '90X60.svg') }}"
+                                        alt="Icon">
+                                    <div class="border-start px-2 mx-2">
+                                        <h2 class="mb-0"><strong>{{ $item->total_count }}+</strong></h2>
+                                        <span>{{ $item->name }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -59,22 +69,25 @@
 
 
     <!-- Statement start -->
-    <div class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-xl-7 col-lg-6 col-md-6">
-                <div class="py-5">
-                    <h2 class="mb-4">{{ $sections['statement']->name }}</h2>
+    <div class="statement">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-lg-6 col-md-6">
+                    <div class="py-5">
+                        <h2 class="mb-4 fw-bold">{{ $sections['statement']->name }}</h2>
 
-                    @foreach ($sections['statement']->data as $item)
-                        <h4>{{ $loop->iteration }}. {{ $item['title'] }}</h4>
-                        <p>{{ $item['description'] }}</p>
-                    @endforeach
+                        @foreach ($sections['statement']->data as $item)
+                            <h4 class="fw-bold">{{ $loop->iteration }}. {{ $item['title'] }}</h4>
+                            <p class="opacity-75">{{ $item['description'] }}</p>
+                        @endforeach
 
-                    <a class="mt-3 btn btn-info" href="{{ route('frontend.about') }}">{{ ___('frontend.More...') }}</a>
+                        <a class="mt-3 btn btn-primary"
+                            href="{{ route('frontend.about') }}">{{ ___('frontend.Read more') }}</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-5 col-lg-5 col-md-6">
-                <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
+                </div>
             </div>
         </div>
     </div>
@@ -82,7 +95,7 @@
 
 
     <!-- Study at start -->
-    <div class="py-5" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
+    <div class="py-5 study_at" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6">
@@ -96,13 +109,16 @@
 
                 @foreach ($sections['study_at']->data as $item)
                     <div class="col-xl-4 col-md-4">
-                        <div class="bg-body-tertiary p-4">
-                            <div class="mb-3">
-                                <img src="{{ @globalAsset(uploadPath($item['icon']), '90X60.svg') }}" alt="Icon">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <img height="60" src="{{ @globalAsset(uploadPath($item['icon']), '90X60.svg') }}"
+                                    alt="Icon">
+                                <h3 class="mt-4">{{ $item['title'] }}</h3>
+                                <p>{{ $item['description'] }}</p>
                             </div>
-                            <h3>{{ $item['title'] }}</h3>
-                            <p>{{ $item['description'] }}</p>
                         </div>
+
                     </div>
                 @endforeach
 
@@ -153,76 +169,81 @@
 
 
     <!-- Teaching area start -->
-    <div class="container py-5">
-        <div class="text-center mb-5">
-            <h3>{{ $sections['why_choose_us']->name }}</h3>
-            <p>{{ $sections['why_choose_us']->description }}</p>
-        </div>
+    <div class="why_choose_us text-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h3 class="fw-bold">{{ $sections['why_choose_us']->name }}</h3>
+                <p class="opacity-75">{{ $sections['why_choose_us']->description }}</p>
+            </div>
 
-        <div class="row">
-            @foreach ($sections['why_choose_us']->data as $item)
-                <div class="col-12 col-md-6">
-                    <div class="bg-body-tertiary p-4 mb-4">
-                        <i class="far fa-check-circle"></i> {{ $item }}
+            <div class="row">
+                @foreach ($sections['why_choose_us']->data as $item)
+                    <div class="col-12 col-md-6">
+                        <div class="border border-light p-4 mb-4">
+                            <i class="far fa-check-circle"></i> {{ $item }}
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
     <!-- Teaching area end -->
 
 
     <!-- Event start -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-8">
-                <div class="text-center">
-                    <h2>{{ $sections['coming_up']->name }}</h2>
-                    <p>{{ $sections['coming_up']->description }}</p>
+    <div class="coming_up">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-8">
+                    <div class="text-center">
+                        <h2>{{ $sections['coming_up']->name }}</h2>
+                        <p>{{ $sections['coming_up']->description }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="row justify-content-center">
 
-                <div class="event_wrapper mb_30">
-                    <div class="tab-content event_wrapper_content" id="4myTabContent">
+                <div class="col-12">
 
-                        @foreach ($data['comingEvents'] as $key => $item)
-                            <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="event{{ $key }}"
-                                role="tabpanel" aria-labelledby="event{{ $key }}-tab">
-                                <div class="event_wrapper_img">
-                                    <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image"
-                                        class="img-fluid">
+                    <div class="event_wrapper mb_30">
+                        <div class="tab-content event_wrapper_content" id="4myTabContent">
+
+                            @foreach ($data['comingEvents'] as $key => $item)
+                                <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="event{{ $key }}"
+                                    role="tabpanel" aria-labelledby="event{{ $key }}-tab">
+                                    <div class="event_wrapper_img">
+                                        <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image"
+                                            class="img-fluid">
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
 
+                        </div>
+                        <ul class="nav event_tabs" id="4myTab" role="tablist">
+
+                            @foreach ($data['comingEvents'] as $key => $item)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="event{{ $key }}-tab"
+                                        data-toggle="tab" href="#event{{ $key }}" role="tab"
+                                        aria-controls="event{{ $key }}"
+                                        aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
+                                        <div class="icon">
+                                            <h3>{{ substr(dateFormat($item->date), 0, 3) }}</h3>
+                                            <h5>{{ substr(dateFormat($item->date), 2, 11) }}</h5>
+                                        </div>
+                                        <div class="event_content">
+                                            <span> <i class="far fa-clock"></i>{{ timeFormat($item->start_time) }} -
+                                                {{ timeFormat($item->end_time) }}</span>
+                                            <p>{{ $item->title }}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+
+                        </ul>
                     </div>
-                    <ul class="nav event_tabs" id="4myTab" role="tablist">
 
-                        @foreach ($data['comingEvents'] as $key => $item)
-                            <li class="nav-item">
-                                <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="event{{ $key }}-tab"
-                                    data-toggle="tab" href="#event{{ $key }}" role="tab"
-                                    aria-controls="event{{ $key }}"
-                                    aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
-                                    <div class="icon">
-                                        <h3>{{ substr(dateFormat($item->date), 0, 3) }}</h3>
-                                        <h5>{{ substr(dateFormat($item->date), 2, 11) }}</h5>
-                                    </div>
-                                    <div class="event_content">
-                                        <span> <i class="far fa-clock"></i>{{ timeFormat($item->start_time) }} -
-                                            {{ timeFormat($item->end_time) }}</span>
-                                        <p>{{ $item->title }}</p>
-                                    </div>
-                                </a>
-                            </li>
-                        @endforeach
-
-                    </ul>
                 </div>
-
             </div>
         </div>
     </div>
@@ -327,11 +348,10 @@
     <!-- Gallery area -->
 
 
-
+    {{--
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
 
     <div class="container">
         <div class="row">
@@ -398,6 +418,5 @@
                 <img src="http://fakeimg.pl/365x365/" class="img-responsive">
             </div>
         </div>
-    </div>
-    </section>
+    </div> --}}
 @endsection
