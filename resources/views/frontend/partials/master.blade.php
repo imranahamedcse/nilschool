@@ -59,6 +59,18 @@
         .blog {
             background-color: #F0F1F7;
         }
+        .teacher {
+            background-color: #F3F6F8;
+        }
+        .news {
+            background-color: #F0F1F7;
+        }
+        .events {
+            background-color: #F0F1F7;
+        }
+        .contact {
+            background-color: #F0F1F7;
+        }
     </style>
 @endpush
 

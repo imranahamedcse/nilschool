@@ -17,7 +17,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
             Route::get('/pdf-download/{id}/{type}/{class}/{section}', 'downloadPDF')->name('frontend.result.pdf-download');
 
             Route::get('/about',            'about')->name('frontend.about');
-            Route::get('/news',            'news')->name('frontend.news');
+            Route::get('/news',             'news')->name('frontend.news');
             Route::get('/news-detail/{id}', 'newsDetail')->name('frontend.news-detail');
             Route::get('/events',           'events')->name('frontend.events');
             Route::get('/event-detail/{id}','eventDetail')->name('frontend.events-detail');

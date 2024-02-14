@@ -1,179 +1,160 @@
 @extends('frontend.partials.master')
 @section('title')
-    {{ ___('frontend.About Us') }}
+    {{ $data['title'] }}
 @endsection
 
 @section('main')
-
-
-<!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
+    <!-- Breadcrumbs start  -->
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-xl-5">
-                <div class="breadcam_wrap text-center">
-                    <h3>{{ ___('frontend.about US') }}</h3>
-                    <div class="custom_breadcam">
-                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('frontend.home') }}</a>
-                        <a href="#" class="breadcrumb-item">{{ ___('frontend.About Us') }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <nav class="mt-3" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                @foreach (@$data['breadcrumbs'] as $item)
+                    @if ($item['route'] != '')
+                        <li class="breadcrumb-item"><a class="text-info"
+                                href="{{ route($item['route']) }}">{{ $item['title'] }}</a></li>
+                    @else
+                        <li class="breadcrumb-item active">{{ $item['title'] }}</li>
+                    @endif
+                @endforeach
+            </ol>
+        </nav>
     </div>
-</div>
-<!-- bradcam::end  -->
+    <!-- Breadcrumbs end  -->
 
-<!-- STATEMENT_AREA::START  -->
-<div class="statement_area section_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-7 col-lg-6 col-md-6">
-                <div class="statement_info mb_30">
-                    <h3>{{ $sections['statement']->name }}</h3>
-                    <ul class="statement_lists">
-                        {{-- @dd($sections['statement']->data) --}}
+    <!-- Statement start -->
+    <div class="statement">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-xl-7 col-lg-6 col-md-6">
+                    <div class="py-5">
+                        <h2 class="mb-4 fw-bold">{{ $sections['statement']->name }}</h2>
+
                         @foreach ($sections['statement']->data as $item)
-                        <li>
-                            <div class="statement_title d-flex align-items-center gap_20">
-                                <div class="icon">
-                                    <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="12.1931" y="0.806641" width="17.2437" height="17.2437" transform="rotate(45 12.1931 0.806641)" fill="#FF5170" />
-                                        <rect x="14.7651" y="3.37891" width="13.6062" height="13.6062" transform="rotate(45 14.7651 3.37891)" fill="#392C7D" />
-                                    </svg>
-                                </div>
-                                <h4>{{ $item['title'] }}</h4>
-                            </div>
-                            <p>{{ $item['description'] }}</p>
-                        </li>
+                            <h4 class="fw-bold">{{ $loop->iteration }}. {{ $item['title'] }}</h4>
+                            <p class="opacity-75">{{ $item['description'] }}</p>
                         @endforeach
 
-
-                    </ul>
-                    {{-- <a href="{{ route('frontend.about') }}" class="theme_btn">{{ ___('frontend.Learn More') }}</a> --}}
-                </div>
-            </div>
-            <div class="col-xl-5 col-lg-5 col-md-6">
-                <div class="accreditation_wrapper mb_30">
-                    <div class="thumb">
-                        <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image" class="img-fluid">
+                        <a class="mt-3 btn btn-primary"
+                            href="{{ route('frontend.about') }}">{{ ___('frontend.Read more') }}</a>
                     </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-6">
+                    <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- STATEMENT_AREA::END  -->
+    <!-- Statement end -->
 
-<!-- SERVICES_AREA::START  -->
-<div class="services_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-6">
-                <div class="section__title white_text text-center">
-                    <h3>{{ $sections['study_at']->name }}</h3>
-                    <p>{{ $sections['study_at']->description }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            @foreach ($sections['study_at']->data as $item)
-            <div class="col-xl-4 col-md-4">
-                <div class="serevice_box mb_30">
-                    <div class="icon">
-                        <img src="{{ @globalAsset(uploadPath($item['icon']), '90X60.svg' ) }}" alt="Icon">
+
+    <!-- Study at start -->
+    <div class="py-5 study_at" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="text-center mb-5">
+                        <h2>{{ $sections['study_at']->name }}</h2>
+                        <p>{{ $sections['study_at']->description }}</p>
                     </div>
-                    <h3>{{ $item['title'] }}</h3>
-                    <p>{{ $item['description'] }}</p>
                 </div>
             </div>
-            @endforeach
+            <div class="row">
 
+                @foreach ($sections['study_at']->data as $item)
+                    <div class="col-xl-4 col-md-4">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <img height="60" src="{{ @globalAsset(uploadPath($item['icon']), '90X60.svg') }}"
+                                    alt="Icon">
+                                <h3 class="mt-4">{{ $item['title'] }}</h3>
+                                <p>{{ $item['description'] }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                @endforeach
+
+            </div>
         </div>
     </div>
-</div>
-<!-- SERVICES_AREA::END  -->
-<!-- about_gallery_wrapper::start  -->
-<div class="about_gallery_wrapper section_padding">
-    <div class="container">
-        <div class="row mb_30">
-            <div class="col-12">
+    <!-- Study at start end -->
 
-                @foreach ($data['abouts'] as $key=>$item)
-                    @if ($key % 2 == 0)
-                        <div class="single_about_gallery">
-                            <div class="single_about_gallery_thumb">
-                                <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image" class="img-fluid">
-                            </div>
-                            <div class="single_about_content">
-                                <div class="iconImg">
-                                    <img src="{{ @globalAsset(@$item->icon_upload->path, '90X60.svg') }}" alt="Image" class="img-fluid">
+    <!-- About start  -->
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    @foreach ($data['abouts'] as $key => $item)
+                        @if ($key % 2 == 0)
+                            <div class="row align-items-center mb-4">
+                                <div class="col-12 col-md-6">
+                                    <img height="400" src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}"
+                                        alt="Image" class="w-100">
                                 </div>
-                                <h4>{{ $item->name }}</h4>
-                                <p>{{ $item->description }}</p>
+                                <div class="col-12 col-md-6">
+                                    <img height="60" src="{{ @globalAsset(@$item->icon_upload->path, '90X60.svg') }}"
+                                        alt="Image" class="mb-4"><br>
+                                    <strong>{{ $item->name }}</strong><br>
+                                    <span class="opacity-75">{{ $item->description }}</span>
+                                </div>
+                            </div>
+                        @else
+                            <div class="row align-items-center mb-4">
+                                <div class="col-12 col-md-6">
+                                    <img height="60" src="{{ @globalAsset(@$item->icon_upload->path, '90X60.svg') }}"
+                                        alt="Image" class="mb-4"><br>
+                                    <strong>{{ $item->name }}</strong><br>
+                                    <span class="opacity-75">{{ $item->description }}</span>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <img height="400" src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}"
+                                        alt="Image" class="w-100">
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About end  -->
+
+    <!-- Teacher start  -->
+    <div class="teacher py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <h3 class="text-capitalize">{{ $sections['our_teachers']->name }}</span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+
+                @foreach ($data['teachers'] as $item)
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <img height="100" class="my-4" src="{{ @globalAsset(@$item->upload->path, '100X100.svg') }}" alt="Image"><br>
+                                <p class="lh-1 py-2">
+                                    <strong>{{ @$item->first_name }} {{ @$item->last_name }}</strong><br>
+                                    <small class="opacity-75">
+                                        {{ @$item->email }}<br>
+                                        {{ @$item->designation->name }}
+                                    </small>
+                                </p>
                             </div>
                         </div>
-                    @else
-                        <div class="single_about_gallery">
-                            <div class="single_about_content">
-                                <div class="iconImg">
-                                    <img src="{{ @globalAsset(@$item->icon_upload->path, '60X90.svg') }}" alt="Image" class="img-fluid">
-                                </div>
-                                <h4>{{ $item->name }}</h4>
-                                <p>{{ $item->description }}</p>
-                            </div>
-                            <div class="single_about_gallery_thumb">
-                                <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image" class="img-fluid">
-                            </div>
-                        </div>
-                    @endif
+                    </div>
                 @endforeach
 
 
-
-
             </div>
         </div>
     </div>
-</div>
-<!-- about_gallery_wrapper::end  -->
-
-<!-- instractors_wrapper::start  -->
-<div class="instractors_wrapper gray_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section__title mb_76 text-center">
-                    <h3 class="text-capitalize">{{ $sections['our_teachers']->name }}</span></h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-
-            @foreach ($data['teachers'] as $item)
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="single_instractor mb_30 position-relative">
-                        <a href="#" class="thumb">
-                            <img src="{{ @globalAsset(@$item->upload->path, '340X340.svg') }}" alt="Image">
-                        </a>
-                        <div class="instractor_info text-center">
-                            <div class="instractor_info_content">
-                            <h4>{{ @$item->first_name }} {{ @$item->last_name }}</h4>
-                                <div class="instractor_social">
-                                    <p>{{ @$item->designation->name }}</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-
-
-        </div>
-    </div>
-</div>
-<!-- instractors_wrapper::end  -->
-
+    <!-- Teacher end  -->
 @endsection

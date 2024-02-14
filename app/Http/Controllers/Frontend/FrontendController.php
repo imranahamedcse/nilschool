@@ -47,7 +47,7 @@ class FrontendController extends Controller
         $data['gallery']          = $this->repo->gallery();
         $data['latestNews']       = $this->repo->latestNews();
         $data['comingEvents']     = $this->repo->comingEvents();
-        
+
         return view('frontend.home', compact('data'));
     }
 
@@ -67,8 +67,13 @@ class FrontendController extends Controller
     }
     public function result()
     {
-        $data = $this->repo->result();
-        $data['result'] = null;
+        $data                = $this->repo->result();
+        $data['result']      = null;
+        $data['title']       = ___('common.Events');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.result', compact('data'));
     }
 
@@ -102,14 +107,24 @@ class FrontendController extends Controller
 
     public function about()
     {
-        $data = $this->repo->abouts();
+        $data                = $this->repo->abouts();
+        $data['title']       = ___('common.About us');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.about', compact('data'));
     }
 
     // Blog
     public function news()
     {
-        $data['news'] = $this->repo->news();
+        $data['news']        = $this->repo->news();
+        $data['title']       = ___('common.News');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.news', compact('data'));
     }
     public function newsDetail($id)
@@ -122,8 +137,14 @@ class FrontendController extends Controller
     // Event
     public function events()
     {
-        $events = $this->repo->events();
-        return view('frontend.events', compact('events'));
+        $data['events']      = $this->repo->events();
+        $data['news']        = $this->repo->news();
+        $data['title']       = ___('common.Events');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
+        return view('frontend.events', compact('data'));
     }
     public function eventDetail($id)
     {
@@ -135,8 +156,13 @@ class FrontendController extends Controller
     // Contact
     public function contact()
     {
-        $data['contactInfo']    = $this->repo->contactInfo();
-        $data['depContact']     = $this->repo->depContact();
+        $data['contactInfo'] = $this->repo->contactInfo();
+        $data['depContact']  = $this->repo->depContact();
+        $data['title']       = ___('common.Contact');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.contact', compact('data'));
     }
 
