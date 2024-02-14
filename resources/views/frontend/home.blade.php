@@ -193,7 +193,7 @@
     <!-- Event start -->
     <div class="coming_up">
         <div class="container py-5">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center py-5">
                 <div class="col-lg-8 col-md-8">
                     <div class="text-center">
                         <h2>{{ $sections['coming_up']->name }}</h2>
@@ -202,48 +202,32 @@
                 </div>
             </div>
             <div class="row justify-content-center">
+                <ul class="list-group list-group-flush">
 
-                <div class="col-12">
-
-                    <div class="event_wrapper mb_30">
-                        <div class="tab-content event_wrapper_content" id="4myTabContent">
-
-                            @foreach ($data['comingEvents'] as $key => $item)
-                                <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="event{{ $key }}"
-                                    role="tabpanel" aria-labelledby="event{{ $key }}-tab">
-                                    <div class="event_wrapper_img">
-                                        <img src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}" alt="Image"
-                                            class="img-fluid">
+                    @foreach ($data['comingEvents'] as $key => $item)
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-start align-items-center">
+                                    <img height="75" src="{{ @globalAsset(@$item->upload->path, '90X60.svg') }}"
+                                        alt="Icon">
+                                    <div class="px-2 mx-2">
+                                        <p class="mb-1">
+                                            <strong class="opacity-75">{{ $item->title }}</strong><br>
+                                            <span class="opacity-50">{{ dateFormat($item->date) }}</span>
+                                        </p>
+                                        <small class="opacity-50">{{ timeFormat($item->start_time) }} -
+                                            {{ timeFormat($item->end_time) }}</small>
                                     </div>
                                 </div>
-                            @endforeach
+                                <a href="{{ route('frontend.events-detail', $item->id) }}" class="btn btn-primary">
+                                    <i class="fas fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    @endforeach
 
-                        </div>
-                        <ul class="nav event_tabs" id="4myTab" role="tablist">
+                </ul>
 
-                            @foreach ($data['comingEvents'] as $key => $item)
-                                <li class="nav-item">
-                                    <a class="nav-link {{ $key == 0 ? 'active' : '' }}" id="event{{ $key }}-tab"
-                                        data-toggle="tab" href="#event{{ $key }}" role="tab"
-                                        aria-controls="event{{ $key }}"
-                                        aria-selected="{{ $key == 0 ? 'true' : 'false' }}">
-                                        <div class="icon">
-                                            <h3>{{ substr(dateFormat($item->date), 0, 3) }}</h3>
-                                            <h5>{{ substr(dateFormat($item->date), 2, 11) }}</h5>
-                                        </div>
-                                        <div class="event_content">
-                                            <span> <i class="far fa-clock"></i>{{ timeFormat($item->start_time) }} -
-                                                {{ timeFormat($item->end_time) }}</span>
-                                            <p>{{ $item->title }}</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            @endforeach
-
-                        </ul>
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
@@ -251,172 +235,184 @@
 
 
     <!-- Blog start -->
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="text-center mb-5">
-                    <h2>{{ $sections['news']->name }}</h2>
-                    <p>{{ $sections['news']->description }}</p>
+    <div class="blog">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="text-center mb-5">
+                        <h2>{{ $sections['news']->name }}</h2>
+                        <p>{{ $sections['news']->description }}</p>
+                    </div>
                 </div>
             </div>
+            @foreach ($data['latestNews'] as $key => $item)
+                @if ($key == 0 || $key == 2)
+                    <div class="row align-items-center mb-4">
+                        <div class="col-12 col-md-6">
+                            <a href="{{ route('frontend.news-detail', $item->id) }}" class="thumb">
+                                <img height="400" src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
+                                    alt="Image" class="w-100">
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h2 class="mb-0">
+                                <a class="link-underline link-underline-opacity-0 text-dark"
+                                    href="{{ route('frontend.news-detail', $item->id) }}">{{ $item->title }}</a>
+                            </h2>
+                            <div class="py-4">
+                                <small><strong>{{ dateFormat($item->date) }}</strong></small><br>
+                                <span class="opacity-75">{!! Str::limit($item->description, 150) !!}</span>
+                            </div>
+                            <a class="btn btn-primary" href="{{ route('frontend.news-detail', $item->id) }}">
+                                {{ ___('frontend.Read more') }}
+                            </a>
+                        </div>
+                    </div>
+                @else
+                    <div class="row align-items-center mb-4">
+                        <div class="col-12 col-md-6">
+                            <h2 class="mb-0">
+                                <a class="link-underline link-underline-opacity-0 text-dark"
+                                    href="{{ route('frontend.news-detail', $item->id) }}">{{ $item->title }}</a>
+                            </h2>
+                            <div class="py-4">
+                                <small><strong>{{ dateFormat($item->date) }}</strong></small><br>
+                                <span class="opacity-75">{!! Str::limit($item->description, 150) !!}</span>
+                            </div>
+                            <a class="btn btn-primary" href="{{ route('frontend.news-detail', $item->id) }}">
+                                {{ ___('frontend.Read more') }}
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <a href="{{ route('frontend.news-detail', $item->id) }}" class="thumb">
+                                <img height="400" src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
+                                    alt="Image" class="w-100">
+                            </a>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
-        @foreach ($data['latestNews'] as $key => $item)
-            @if ($key == 0 || $key == 2)
-                <div class="row align-items-center mb-4">
-                    <div class="col-12 col-md-6">
-                        <a href="{{ route('frontend.news-detail', $item->id) }}" class="thumb">
-                            <img height="400" src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
-                                alt="Image" class="w-100">
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <h4>
-                            <a href="{{ route('frontend.news-detail', $item->id) }}">{{ $item->title }}</a>
-                        </h4>
-                        <p>{!! Str::limit($item->description, 150) !!}</p>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a class="d-inline-flex align-items-center"
-                                href="{{ route('frontend.news-detail', $item->id) }}">
-                                <span>{{ ___('frontend.Read more') }} </span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span>{{ dateFormat($item->date) }}</span>
-                        </div>
-                    </div>
-                </div>
-            @else
-                <div class="row align-items-center mb-4">
-                    <div class="col-12 col-md-6">
-                        <h4>
-                            <a href="{{ route('frontend.news-detail', $item->id) }}">{{ $item->title }}</a>
-                        </h4>
-                        <p>{!! Str::limit($item->description, 150) !!}</p>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a class="d-inline-flex align-items-center"
-                                href="{{ route('frontend.news-detail', $item->id) }}">
-                                <span>{{ ___('frontend.Read more') }} </span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span>{{ dateFormat($item->date) }}</span>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <a href="{{ route('frontend.news-detail', $item->id) }}" class="thumb">
-                            <img height="400" src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
-                                alt="Image" class="w-100">
-                        </a>
-                    </div>
-                </div>
-            @endif
-        @endforeach
     </div>
     <!-- Blog start -->
 
 
     <!-- Gallery area -->
-    <div class="container py-5">
+    <div class="gallery">
+        <div class="container py-5">
 
-        <div class="row justify-content-center">
-            <div class="col-lg-7 col-md-8">
-                <div class="text-center">
-                    <h2>{{ $sections['our_gallery']->name }}</h2>
-                    <p>{{ $sections['our_gallery']->description }}</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-8">
+                    <div class="text-center">
+                        <h2>{{ $sections['our_gallery']->name }}</h2>
+                        <p>{{ $sections['our_gallery']->description }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="portfolio-menu d-flex justify-content-center mb-4">
-            <button class="btn active" data-filter="*">All</button>
-            @foreach ($data['galleryCategory'] as $item)
-                <button class="btn" data-filter=".{{ $item->id }}">{{ $item->name }}</button>
-            @endforeach
-        </div>
-
-        <div class="row">
-            @foreach ($data['gallery'] as $item)
-                <div class="col-lg-3 col-md-4 grid-item {{ $item->gallery_category_id }}">
-                    <a href="{{ @globalAsset(@$item->upload->path, '340X340.svg') }}"
-                        class="thumb overflow-hidden popup-image d-block">
-                        <img src="{{ @globalAsset(@$item->upload->path, '340X340.svg') }}" class="mb-4"
-                            alt="Image">
-                    </a>
+            <div class="row">
+                <div class="mb-3" id="buttons"></div>
+                <div id="gallery">
+                    @foreach ($data['gallery'] as $item)
+                        <img src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
+                            data-tags="{{ $item->category->name }}" alt="lemon" />
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
+
         </div>
 
     </div>
     <!-- Gallery area -->
-
-
-    {{--
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <div class="container">
-        <div class="row">
-            <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 class="gallery-title">Gallery</h1>
-            </div>
-
-            <div align="center">
-                <button class="btn btn-default filter-button" data-filter="all">All</button>
-                <button class="btn btn-default filter-button" data-filter="hdpe">HDPE Pipes</button>
-                <button class="btn btn-default filter-button" data-filter="sprinkle">Sprinkle Pipes</button>
-                <button class="btn btn-default filter-button" data-filter="spray">Spray Nozzle</button>
-                <button class="btn btn-default filter-button" data-filter="irrigation">Irrigation Pipes</button>
-            </div>
-            <br />
-
-
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter spray">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter sprinkle">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-        </div>
-    </div> --}}
 @endsection
+
+@push('style')
+    <style>
+        #buttons {
+            text-align: center;
+        }
+
+        #buttons button {
+            color: #845ADF;
+            background: #F2EEFC;
+            border: 0;
+            padding: 4px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+
+        #buttons button:hover,
+        #buttons button.active {
+            color: white;
+            background: #845ADF;
+            cursor: pointer;
+        }
+
+
+
+
+        #gallery {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        #gallery img {
+            width: 24%;
+            margin-bottom: 4px;
+        }
+    </style>
+@endpush
+
+@push('script')
+    <script>
+        (function() {
+
+            var $imgs = $('#gallery img');
+            var $buttons = $('#buttons');
+            var tagged = {};
+
+            $imgs.each(function() {
+                var img = this;
+                var tags = $(this).data('tags');
+
+                if (tags) {
+                    tags.split(',').forEach(function(tagName) {
+                        if (tagged[tagName] == null) {
+                            tagged[tagName] = [];
+                        }
+                        tagged[tagName].push(img);
+                    });
+                }
+            });
+
+            $('<button/>', {
+                text: 'All',
+                class: 'active',
+                click: function() {
+                    $(this)
+                        .addClass('active')
+                        .siblings()
+                        .removeClass('active');
+                    $imgs.show();
+                }
+            }).appendTo($buttons);
+
+            $.each(tagged, function(tagName) {
+                $('<button/>', {
+                    text: tagName + ' (' + tagged[tagName].length + ')',
+                    click: function() {
+                        $(this)
+                            .addClass('active')
+                            .siblings()
+                            .removeClass('active');
+                        $imgs
+                            .hide()
+                            .filter(tagged[tagName])
+                            .show();
+                    }
+                }).appendTo($buttons);
+            });
+
+        }());
+    </script>
+@endpush

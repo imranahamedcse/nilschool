@@ -56,6 +56,9 @@
             background: transparent;
             color: #A4A4A5;
         }
+        .blog {
+            background-color: #F0F1F7;
+        }
     </style>
 @endpush
 
