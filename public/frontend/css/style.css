@@ -1,0 +1,175 @@
+body {
+    font-size: .875rem !important;
+    color: rgb(140 144 151) !important;
+    background-color: #F0F1F7;
+}
+
+.card {
+    color: rgb(140 144 151) !important;
+}
+
+
+.bg-primary {
+    background: #845ADF !important;
+}
+
+.btn-primary {
+    color: #845ADF !important;
+    background: #F2EEFC !important;
+    border: 0 !important;
+}
+
+.btn-primary:hover {
+    color: white !important;
+    background: #845ADF !important;
+    border: 0;
+}
+
+
+.page_info {
+    position: relative;
+    width: 100%;
+    height: 25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page_items {
+    margin-top: -65px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.page_info:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 25em;
+    background: #845adf9c;
+    border-radius: 8px;
+}
+
+.text {
+    text-align: center;
+    font-family: Arial;
+    color: white;
+    position: absolute;
+}
+
+.form-control {
+    background-color: #F3F6F8 !important;
+    border: 1px solid #F3F6F8 !important;
+}
+
+
+
+#buttons {
+    text-align: center;
+}
+
+#buttons button {
+    color: #845ADF;
+    background: #F2EEFC;
+    border: 0;
+    padding: 4px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+#buttons button:hover,
+#buttons button.active {
+    color: white;
+    background: #845ADF;
+    cursor: pointer;
+}
+
+
+
+
+#gallery {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#gallery img {
+    width: 24%;
+    margin-bottom: 4px;
+}
+
+
+
+
+.counter {
+    background-color: #F9FAFB;
+}
+
+.statement {
+    background-color: #F0F1F7;
+}
+
+.study_at {
+    background-color: #F9FAFB;
+}
+.explorer {
+    background-color: #fff;
+}
+
+.bg-primary-light {
+    background-color: #F2EEFC;
+}
+
+.why_choose_us {
+    background-color: #845ADF;
+}
+
+.comming_up {
+    background-color: #F9FAFB;
+}
+
+.footer {
+    background-color: #1F1F20;
+    color: #A4A4A5;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #A4A4A5;
+}
+
+.footer input {
+    background: transparent;
+    color: #A4A4A5;
+}
+
+.blog {
+    background-color: #F0F1F7;
+}
+
+.teacher {
+    background-color: #F3F6F8;
+}
+
+.news {
+    background-color: #F0F1F7;
+}
+
+.events {
+    background-color: #F0F1F7;
+}
+
+.contact {
+    background-color: #F0F1F7;
+}
+.gallery {
+    background-color: #fff;
+}

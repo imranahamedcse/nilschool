@@ -17,10 +17,10 @@ class ContactInfoSeeder extends Seeder
     public function run()
     {
         $images = [
-            'frontend/img/contact/contact_1.svg',
-            'frontend/img/contact/contact_2.svg',
-            'frontend/img/contact/contact_3.svg',
-            'frontend/img/contact/contact_4.svg',
+            'frontend/img/contact/01.jpg',
+            'frontend/img/contact/02.jpg',
+            'frontend/img/contact/03.jpg',
+            'frontend/img/contact/04.jpg',
         ];
 
         $uploads = [];

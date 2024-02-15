@@ -69,7 +69,7 @@ class FrontendController extends Controller
     {
         $data                = $this->repo->result();
         $data['result']      = null;
-        $data['title']       = ___('common.Events');
+        $data['title']       = ___('common.Result');
         $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "frontend.home"],
             ["title" => $data['title'], "route" => ""]
@@ -158,7 +158,7 @@ class FrontendController extends Controller
     {
         $data['contactInfo'] = $this->repo->contactInfo();
         $data['depContact']  = $this->repo->depContact();
-        $data['title']       = ___('common.Contact');
+        $data['title']       = ___('common.Contact Us');
         $data['breadcrumbs'] = [
             ["title" => ___("common.home"), "route" => "frontend.home"],
             ["title" => $data['title'], "route" => ""]

@@ -18,12 +18,12 @@ class PageSectionsSeeder extends Seeder
     {
 
         $images = [
-            'frontend/img/accreditation/accreditation.svg',
-            'frontend/img/banner/cta_bg.svg',
-            'frontend/img/explore/1.svg',
-            'frontend/img/icon/1.svg',
-            'frontend/img/icon/2.svg',
-            'frontend/img/icon/3.svg',
+            'frontend/img/sections/01.png',
+            'frontend/img/sections/02.jpg',
+            'frontend/img/sections/03.png',
+            'frontend/img/icon/01.png',
+            'frontend/img/icon/02.png',
+            'frontend/img/icon/03.png',
         ];
 
         $uploads = [];
@@ -181,8 +181,8 @@ class PageSectionsSeeder extends Seeder
             ],
             [
                 'key'         => 'contact_information',
-                'name'        => 'Find Our <br> Contact Information',
-                'description' => '',
+                'name'        => 'Contact Us!',
+                'description' => 'Have any questions! We would love to hear from you.',
                 'upload_id'   => null,
                 'data'        => [],
             ],
@@ -196,7 +196,7 @@ class PageSectionsSeeder extends Seeder
             [
                 'key'         => 'our_teachers',
                 'name'        => 'Our Featured Teachers',
-                'description' => '',
+                'description' => 'lorem ipsum dolor sit amet lore mauris in lobortis sed diam nonum.',
                 'upload_id'   => null,
                 'data'        => [],
             ],

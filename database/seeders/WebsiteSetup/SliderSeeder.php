@@ -27,9 +27,9 @@ class SliderSeeder extends Seeder
             'Wonderful environment where children undertakes laborious physical learn and grow. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sin 3.',
         ];
         $images = [
-            'frontend/img/sliders/03.svg',
-            'frontend/img/sliders/02.svg',
-            'frontend/img/sliders/01.svg',
+            'frontend/img/sliders/01.jpg',
+            'frontend/img/sliders/02.jpg',
+            'frontend/img/sliders/03.jpg',
         ];
         foreach ($names as $key => $item) {
             $upload = new Upload();

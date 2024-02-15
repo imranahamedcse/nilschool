@@ -19,16 +19,14 @@ class CounterSeeder extends Seeder
         $names = [
             'Curriculum',
             'Students',
-            'Expert Teachers',
+            'Teachers',
             'User',
-            'Parents',
         ];
         $images = [
-            'frontend/img/counters/01.svg',
-            'frontend/img/counters/02.svg',
-            'frontend/img/counters/03.svg',
-            'frontend/img/counters/04.svg',
-            'frontend/img/counters/05.svg',
+            'frontend/img/counter/01.png',
+            'frontend/img/counter/02.png',
+            'frontend/img/counter/03.png',
+            'frontend/img/counter/04.png',
         ];
         foreach ($names as $key => $item) {
             $upload = new Upload();

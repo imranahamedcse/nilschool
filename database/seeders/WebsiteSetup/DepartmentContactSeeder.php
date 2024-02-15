@@ -17,10 +17,10 @@ class DepartmentContactSeeder extends Seeder
     public function run()
     {
         $images = [
-            'frontend/img/contact/admission_1.svg',
-            'frontend/img/contact/admission_2.svg',
-            'frontend/img/contact/admission_3.svg',
-            'frontend/img/contact/admission_4.svg',
+            'frontend/img/contact/01.png',
+            'frontend/img/contact/02.png',
+            'frontend/img/contact/03.png',
+            'frontend/img/contact/04.png',
         ];
 
         $uploads = [];
