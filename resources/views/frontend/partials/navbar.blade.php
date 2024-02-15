@@ -8,16 +8,8 @@
                         <span>{{ setting('email') }}</span>
                     </div>
                     <div class="d-flex align-items-center">
-                        {{-- <select class="form-control language-change">
-                            @foreach (@$language['languages'] as $row)
-                                <option value="{{ $row->code }}"
-                                    {{ $row->code == \Session::get('locale') ? 'selected' : '' }}>
-                                    {{ $row->name }}
-                                </option>
-                            @endforeach
-                        </select> --}}
                         <div class="dropdown">
-                            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <i class="fa-solid fa-globe"></i> EN
                             </button>
@@ -30,22 +22,22 @@
 
                         <div class="d-none d-sm-flex mx-1">
                             @foreach ($sections['social_links']->data as $item)
-                                <a class="btn btn-sm btn-primary" target="_blank" href="{{ $item['link'] }}"><i class="{{ $item['icon'] }}"></i></a>
+                                <a class="btn btn-sm btn-light" target="_blank" href="{{ $item['link'] }}"><i class="{{ $item['icon'] }}"></i></a>
                             @endforeach
                         </div>
 
                         <div>
                             @if (!\Auth::check())
-                                <a class="btn btn-sm btn-primary" href="{{ route('login') }}">{{ ___('frontend.Login') }} </a>
+                                <a class="btn btn-sm btn-light" href="{{ route('login') }}">{{ ___('frontend.Login') }} </a>
                             @else
                                 @if (\Auth::user()->role_id == 6)
-                                    <a class="btn btn-sm btn-primary" href="{{ route('student-panel-dashboard.index') }}">{{ ___('frontend.Dashboard') }}
+                                    <a class="btn btn-sm btn-light" href="{{ route('student-panel-dashboard.index') }}">{{ ___('frontend.Dashboard') }}
                                     </a>
                                 @elseif(\Auth::user()->role_id == 7)
-                                    <a class="btn btn-sm btn-primary" href="{{ route('parent-panel-dashboard.index') }}">{{ ___('frontend.Dashboard') }}
+                                    <a class="btn btn-sm btn-light" href="{{ route('parent-panel-dashboard.index') }}">{{ ___('frontend.Dashboard') }}
                                     </a>
                                 @else
-                                    <a class="btn btn-sm btn-primary" href="{{ route('dashboard') }}">{{ ___('frontend.Dashboard') }} </a>
+                                    <a class="btn btn-sm btn-light" href="{{ route('dashboard') }}">{{ ___('frontend.Dashboard') }} </a>
                                 @endif
                             @endif
                         </div>
@@ -54,7 +46,7 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg color_navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('frontend.home') }}">
                     {{-- <img src="{{ @globalAsset(setting('dark_logo'), '150X40.svg') }}" alt="Logo"> --}}
@@ -65,7 +57,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav m-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('frontend.home') }}">{{ ___('frontend.Home') }}</a>
                         </li>
@@ -90,7 +82,7 @@
                         </li>
                     </ul>
                     <span class="navbar-text">
-                        <a class="btn btn-sm btn-outline-light"
+                        <a class="btn btn-sm btn-primary"
                             href="{{ route('frontend.online-admission') }}">{{ ___('frontend.Online Admission') }}</a>
                     </span>
                 </div>

@@ -7,7 +7,7 @@
             <ol class="breadcrumb">
                 @foreach (@$data['breadcrumbs'] as $item)
                     @if ($item['route'] != '')
-                        <li class="breadcrumb-item"><a class="text-primary"
+                        <li class="breadcrumb-item"><a class="link-underline link-underline-opacity-0 text-primary"
                                 href="{{ route($item['route']) }}">{{ $item['title'] }}</a></li>
                     @else
                         <li class="breadcrumb-item active">{{ $item['title'] }}</li>

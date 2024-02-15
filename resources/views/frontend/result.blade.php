@@ -39,7 +39,7 @@
                                     <div class="row">
 
                                         <div class="col-xl-6 mb-4">
-                                            <label class="form-label fw-semibold"
+                                            <label class="form-label text-dark fw-semibold"
                                                 for="#">{{ ___('frontend.Academic Year/Session') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-control" name="session">
@@ -55,7 +55,7 @@
                                         </div>
 
                                         <div class="col-xl-6 mb-4">
-                                            <label class="form-label fw-semibold" for="#">{{ ___('frontend.Select class') }} <span
+                                            <label class="form-label text-dark fw-semibold" for="#">{{ ___('frontend.Select class') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-control" name="class">
                                                 <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
@@ -66,7 +66,7 @@
                                         </div>
 
                                         <div class="col-xl-6 mb-4">
-                                            <label class="form-label fw-semibold" for="#">{{ ___('frontend.Select section') }} <span
+                                            <label class="form-label text-dark fw-semibold" for="#">{{ ___('frontend.Select section') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-control" name="section">
                                                 <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
@@ -77,7 +77,7 @@
                                         </div>
 
                                         <div class="col-xl-6 mb-4">
-                                            <label class="form-label fw-semibold" for="#">{{ ___('frontend.Select Exam') }} <span
+                                            <label class="form-label text-dark fw-semibold" for="#">{{ ___('frontend.Select Exam') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-control" name="exam">
                                                 <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
@@ -88,7 +88,7 @@
                                         </div>
 
                                         <div class="col-xl-12 mb-4">
-                                            <label for="exampleDataList" class="form-label fw-semibold">{{ ___('frontend.Admission no') }}
+                                            <label for="exampleDataList" class="form-label text-dark fw-semibold">{{ ___('frontend.Admission no') }}
                                                 <span class="text-danger">*</span></label>
                                             <input class="form-control" type="number" value="{{ old('admission_no') }}"
                                                 name="admission_no" id="exampleDataList"
