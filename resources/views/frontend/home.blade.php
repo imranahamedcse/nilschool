@@ -72,7 +72,7 @@
     <div class="statement">
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-xl-7 col-lg-6 col-md-6">
+                <div class="col-6">
                     <div class="py-5 text-end">
                         <h3 class="mb-4 text-dark fw-semibold">{{ $sections['statement']->name }}</h3>
 
@@ -85,7 +85,7 @@
                             href="{{ route('frontend.about') }}">{{ ___('frontend.Read more') }}</a>
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-6">
+                <div class="col-6">
                     <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
                 </div>
             </div>

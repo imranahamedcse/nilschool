@@ -4,75 +4,51 @@
 @endsection
 
 @section('main')
+    <!-- Breadcrumbs start  -->
+    @include('frontend.partials.breadcrumb')
+    <!-- Breadcrumbs end  -->
 
-<!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-xl-5">
-                <div class="breadcam_wrap text-center">
-                    <h3>{{ ___('frontend.News Details') }}</h3>
-                    <div class="custom_breadcam">
-                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('frontend.home') }}</a>
-                        <a href="#" class="breadcrumb-item">{{ ___('frontend.News Details') }}</a>
-                    </div>
-                </div>
+    <!-- Contact start  -->
+    <div class="container-fluid">
+        <div class="page_info">
+            <img class="image" src="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}" alt="">
+            <div class="text">
+                <h3 class="fw-semibold">{{ $sections['study_at']->name }}</h3>
+                <h6>{{ $sections['study_at']->description }}</h6>
             </div>
         </div>
-    </div>
-</div>
-<!-- bradcam::end  -->
 
-<!-- news_page_area::start  -->
-<div class="news_page_area section_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-8">
-                <div class="news_page_info mb_25">
-                    <div class="news_page_info_banner">
-                        <img src="{{ @globalAsset(@$data['news']->upload->path, '800X500.svg') }}" alt="Image" class="img-fluid">
-                    </div>
-                    <div class="event_posted_header d-flex align-items-center gap_10 flex-wrap">
-                        <div class="event_posted_header_left flex-fill d-flex align-items-center gap_20">
-                            <div class="content_info">
-                                <p>{{ dateFormat($data['news']->date) }}</p>
-                            </div>
+        <div class="page_items container">
+            <div class="row">
+                <div class="col-8">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <img width="100%" height="500"
+                                src="{{ @globalAsset($data['news']->upload->path, '40X40.svg') }}" alt="Image"
+                                class="mb-3">
+                            <h5 class="fw-semibold text-dark">{{ $data['news']->title }}</h5>
+                            <p>{!! $data['news']->description, 150 !!}</p>
                         </div>
                     </div>
-                    <h3 class="event_d_title mb_15">{{ $data['news']->title }}</h3>
-                    <p class="event_lists mb_40">
-                        {!! $data['news']->description !!}
-                    </p>
                 </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="news_page_right_sidebar mb_25">
-                    <h4 class="font_24 f_w_400 mb_15">{{ ___('frontend.Latest News') }}</h4>
-                    <div class="latest_news_list mb_50">
-
-                        @foreach ($data['allNews'] as $item)
-                            <!-- single_latest_single -->
-                            <div class="single_latest_news_list">
-                                <a href="{{ route('frontend.news-detail',$item->id) }}" class="icon_thumb">
-                                    <img src="{{ @globalAsset(@$item->upload->path, '90X60.svg') }}" alt="Image" class="img-fluid">
+                <div class="col-xl-4">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <h5 class="fw-semibold text-dark">{{ ___('frontend.Latest News') }}</h5>
+                            @foreach ($data['allNews'] as $item)
+                                <a href="{{ route('frontend.news-detail', $item->id) }}">
+                                    <img width="100%" height="200"
+                                        src="{{ @globalAsset(@$item->upload->path, '40X40.svg') }}" alt="Image">
                                 </a>
-                                <div class="content_text">
-                                    <h4>
-                                        <a href="{{ route('frontend.news-detail',$item->id) }}">{{ Str::limit($item->title,50) }}</a>
-                                    </h4>
-                                    <p>{{ dateFormat($item->date) }}</p>
-                                </div>
-                            </div>
-                            <!-- single_latest_single -->
-                        @endforeach
-
+                                <a class="h6 m-0 fw-semibold text-dark link-underline link-underline-opacity-0"
+                                    href="{{ route('frontend.news-detail', $item->id) }}">{{ Str::limit($item->title, 50) }}</a>
+                                <p>{{ dateFormat($item->date) }}</p>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- news_page_area::end  -->
-
-
+    <!-- news_page_area::end  -->
 @endsection

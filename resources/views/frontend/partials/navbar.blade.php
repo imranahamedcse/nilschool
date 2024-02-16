@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg color_navbar">
+        <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('frontend.home') }}">
                     {{-- <img src="{{ @globalAsset(setting('dark_logo'), '150X40.svg') }}" alt="Logo"> --}}

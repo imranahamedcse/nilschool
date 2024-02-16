@@ -4,74 +4,62 @@
 @endsection
 
 @section('main')
+    <!-- Breadcrumbs start  -->
+    @include('frontend.partials.breadcrumb')
+    <!-- Breadcrumbs end  -->
 
-<!-- bradcam::start  -->
-<div class="breadcrumb_area" data-background="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.svg') }}">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-8">
-                <div class="breadcam_wrap text-center">
-                    <h3>{{ ___('frontend.Event Details') }}</h3>
-                    <div class="custom_breadcam">
-                        <a href="{{url('/')}}" class="breadcrumb-item">{{ ___('frontend.home') }}</a>
-                        <a href="#" class="breadcrumb-item">{{ ___('frontend.Event Details') }}</a>
-                    </div>
-                </div>
+    <!-- Contact start  -->
+    <div class="container-fluid">
+        <div class="page_info">
+            <img class="image" src="{{ @globalAsset(@$sections['study_at']->upload->path, '1920X700.webp') }}" alt="">
+            <div class="text">
+                <h3 class="fw-semibold">{{ $sections['study_at']->name }}</h3>
+                <h6>{{ $sections['study_at']->description }}</h6>
             </div>
         </div>
-    </div>
-</div>
-<!-- bradcam::end  -->
 
-<!-- news_page_area::start  -->
-<div class="news_page_area section_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-8">
-                <div class="event_page_info_details mb_30">
-                    <span class="event_tag">{{ ___('frontend.Overview') }}</span>
-                    <h4 class="event_page_title">{{ $data['event']->title }}</h4>
-                    <p class="description_1 mb_24">{!! $data['event']->description,150 !!}</p>
+        <div class="page_items container">
+            <div class="row">
+                <div class="col-8">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <img width="100%" height="500"
+                                src="{{ @globalAsset($data['event']->upload->path, '40X40.svg') }}" alt="Image"
+                                class="mb-3">
+                            <h5 class="fw-semibold text-dark">{{ $data['event']->title }}</h5>
+                            <p>{!! $data['event']->description, 150 !!}</p>
 
-                    <div class="event_wrap_location_time mb_40">
-                        <h4>{{ ___('frontend.Event Details') }}</h4>
-                        <ul>
-                            <li>{{ ___('frontend.Start') }} : {{ dateFormat($data['event']->date) }} - {{ timeFormat($data['event']->start_time) }}</li>
-                            <li>{{ $data['event']->address }}</li>
-                            <li>{{ ___('frontend.End') }} : {{ dateFormat($data['event']->date) }} - {{ timeFormat($data['event']->end_time) }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="news_page_right_sidebar mb_25">
-                    <h4 class="font_24 f_w_400 mb_15">{{ ___('frontend.Upcoming Events') }}</h4>
-                    <div class="latest_news_list mb_50">
-
-
-                        @foreach ($data['allEvent'] as $item)
-                        <!-- single_latest_single -->
-                        <div class="single_latest_news_list">
-                            <a href="{{ route('frontend.events-detail',$item->id) }}" class="icon_thumb">
-                                <img src="{{ @globalAsset(@$item->upload->path, '40X40.svg') }}" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="content_text">
-                                <h4>
-                                    <a href="{{ route('frontend.events-detail',$item->id) }}">{{ Str::limit($item->title,50) }}</a>
-                                </h4>
-                                <p>{{ dateFormat($item->date) }}</p>
+                            <div>
+                                <h6 class="fw-semibold text-dark">{{ ___('frontend.Event Details') }}</h6>
+                                <ul>
+                                    <li>{{ ___('frontend.Start') }} : {{ dateFormat($data['event']->date) }} -
+                                        {{ timeFormat($data['event']->start_time) }}</li>
+                                    <li>{{ ___('frontend.End') }} : {{ dateFormat($data['event']->date) }} -
+                                        {{ timeFormat($data['event']->end_time) }}</li>
+                                    <li>{{ $data['event']->address }}</li>
+                                </ul>
                             </div>
                         </div>
-                        <!-- single_latest_single -->
-                        @endforeach
-
-
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <h5 class="fw-semibold text-dark">{{ ___('frontend.Upcoming Events') }}</h5>
+                            @foreach ($data['allEvent'] as $item)
+                                <a href="{{ route('frontend.events-detail', $item->id) }}">
+                                    <img width="100%" height="200"
+                                        src="{{ @globalAsset(@$item->upload->path, '40X40.svg') }}" alt="Image">
+                                </a>
+                                <a class="h6 m-0 fw-semibold text-dark link-underline link-underline-opacity-0"
+                                    href="{{ route('frontend.events-detail', $item->id) }}">{{ Str::limit($item->title, 50) }}</a>
+                                <p>{{ dateFormat($item->date) }}</p>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- news_page_area::end  -->
-
+    <!-- news_page_area::end  -->
 @endsection

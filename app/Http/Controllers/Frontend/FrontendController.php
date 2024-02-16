@@ -131,6 +131,11 @@ class FrontendController extends Controller
     {
         $data['allNews'] = $this->repo->news();
         $data['news']    = $this->repo->newsDetail($id);
+        $data['title']       = ___('common.News details');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.news-detail', compact('data'));
     }
 
@@ -150,6 +155,11 @@ class FrontendController extends Controller
     {
         $data['allEvent'] = $this->repo->events();
         $data['event']    = $this->repo->eventDetail($id);
+        $data['title']       = ___('common.Event details');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.event-detail', compact('data'));
     }
 
@@ -172,6 +182,11 @@ class FrontendController extends Controller
         $data = $this->repo->result();
         $data['religions']= $this->religionRepo->all();
         $data['genders']  = $this->genderRepo->all();
+        $data['title']       = ___('common.Online admission');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.online-admission', compact('data'));
     }
 
