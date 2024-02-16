@@ -24,11 +24,11 @@
 
 
                 @foreach ($data['news'] as $item)
-                    <div class="col-xl-4 col-lg-4 col-md-4 mb_24 grid-item cat4">
+                    <div class="col-12 col-lg-4">
                         <div class="card mb-4">
                             <a href="{{ route('frontend.news-detail', $item->id) }}">
-                                <img height="480" src="{{ @globalAsset(@$item->upload->path, '600X480.svg') }}"
-                                    alt="Image" class="img-fluid rounded-top">
+                                <img width="100%" src="{{ @globalAsset(@$item->upload->path, '600X480.svg') }}"
+                                    alt="Image" class="rounded-top">
                             </a>
                             <div class="card-body lh-sm">
                                 <h6 class="fw-semibold">

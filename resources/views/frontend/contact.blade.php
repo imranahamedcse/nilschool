@@ -20,8 +20,8 @@
         </div>
 
         <div class="page_items container">
-            <div class="row justify-content-between">
-                <div class="col-lg-6">
+            <div class="row justify-content-center">
+                <div class="col-11 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <h6 class="fw-semibold text-dark mb-2">{{ ___('frontend.Location!') }}</h6>
@@ -32,25 +32,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-11 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <h6 class="fw-semibold text-dark mb-4">{{ ___('frontend.Get in touch!') }}</h6>
                             <form class="form-area contact-form" id="myForm" method="post">
                                 <div class="row">
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label text-dark fw-semibold">{{ ___('frontend.Name') }}</label>
                                         <input name="name" placeholder="{{ ___('frontend.Enter Name') }}"
                                             onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'"
                                             class="name form-control" required="" type="text">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label text-dark fw-semibold">{{ ___('frontend.Phone no') }}</label>
                                         <input name="phone" placeholder="{{ ___('frontend.Phone no') }}"
                                             onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone no'"
                                             class="phone form-control" required="" type="text">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label text-dark fw-semibold">{{ ___('frontend.Email Address') }}</label>
                                         <input name="email" placeholder="{{ ___('frontend.Type e-mail address') }}"
                                             pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
@@ -58,7 +58,7 @@
                                             onblur="this.placeholder = 'Type e-mail address'" class="email form-control"
                                             required="" type="email">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label text-dark fw-semibold">{{ ___('frontend.Subject') }}</label>
                                         <input name="subject" placeholder="{{ ___('frontend.Subject') }}"
                                             onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'"

@@ -20,10 +20,10 @@
 
         <div class="page_items container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-12 col-lg-8">
                     <div class="card mb-5">
                         <div class="card-body">
-                            <img width="100%" height="500"
+                            <img width="100%"
                                 src="{{ @globalAsset($data['news']->upload->path, '40X40.svg') }}" alt="Image"
                                 class="mb-3">
                             <h5 class="fw-semibold text-dark">{{ $data['news']->title }}</h5>
@@ -31,13 +31,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4">
+                <div class="col-12 col-lg-4">
                     <div class="card mb-5">
                         <div class="card-body">
                             <h5 class="fw-semibold text-dark">{{ ___('frontend.Latest News') }}</h5>
                             @foreach ($data['allNews'] as $item)
                                 <a href="{{ route('frontend.news-detail', $item->id) }}">
-                                    <img width="100%" height="200"
+                                    <img width="100%"
                                         src="{{ @globalAsset(@$item->upload->path, '40X40.svg') }}" alt="Image">
                                 </a>
                                 <a class="h6 m-0 fw-semibold text-dark link-underline link-underline-opacity-0"

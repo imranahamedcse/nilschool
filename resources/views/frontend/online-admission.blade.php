@@ -20,42 +20,42 @@
 
         <div class="page_items container mb-5">
             <div class="row justify-content-center">
-                <div class="col-10">
+                <div class="col-11 col-lg-10">
                     <div class="card">
                         <div class="card-body">
                             <form class="form-area contact-form" id="admission" method="post">
                                 <div class="row">
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.First Name') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="first_name" placeholder="{{ ___('frontend.Enter first name') }}"
                                             class="form-control" required="" type="text">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Last Name') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="last_name" placeholder="{{ ___('frontend.Enter last name') }}"
                                             class="form-control" required="" type="text">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Phone no') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="phone" placeholder="{{ ___('frontend.Phone no') }}"
                                             class="form-control" required="" type="text">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Email Address') }}</label>
                                         <input name="email" placeholder="{{ ___('frontend.Type e-mail address') }}"
                                             pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                                             class="form-control" type="email">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Date of birth') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="dob" placeholder="{{ ___('frontend.Enter date of birth') }}"
                                             class="form-control" required="" type="date">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark"
                                             for="#">{{ ___('frontend.Academic Year/Session') }} <span
                                                 class="text-danger">*</span></label>
@@ -72,7 +72,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Class') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-control" name="class">
@@ -84,7 +84,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Section') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-control" name="section">
@@ -98,7 +98,7 @@
 
 
 
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Gender') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-control" name="gender">
@@ -113,7 +113,7 @@
                                             <small class="text-danger">{{ $errors->first('gender') }}</small>
                                         @endif
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Religion') }} <span
                                                 class="text-danger">*</span></label>
                                         <select class="form-control" name="religion">
@@ -131,13 +131,13 @@
 
 
 
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Guardian name') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="guardian_name" placeholder="{{ ___('frontend.Enter guardian name') }}"
                                             class="form-control" required="" type="text">
                                     </div>
-                                    <div class="col-6 mb-3">
+                                    <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Guardian phone') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="guardian_phone" placeholder="{{ ___('frontend.Enter guardian phone') }}"

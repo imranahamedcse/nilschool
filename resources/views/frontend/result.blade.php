@@ -22,7 +22,7 @@
         <div class="page_items container mb-5">
             <div class="row justify-content-center">
 
-                <div class="col-6">
+                <div class="col-11 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <form action="{{ route('frontend.result') }}" method="post" enctype="multipart/form-data"
@@ -38,7 +38,7 @@
 
                                     <div class="row">
 
-                                        <div class="col-xl-6 mb-4">
+                                        <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label text-dark fw-semibold"
                                                 for="#">{{ ___('frontend.Academic Year/Session') }} <span
                                                     class="text-danger">*</span></label>
@@ -54,7 +54,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-xl-6 mb-4">
+                                        <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label text-dark fw-semibold" for="#">{{ ___('frontend.Select class') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-control" name="class">
@@ -65,7 +65,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-xl-6 mb-4">
+                                        <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label text-dark fw-semibold" for="#">{{ ___('frontend.Select section') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-control" name="section">
@@ -76,7 +76,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-xl-6 mb-4">
+                                        <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label text-dark fw-semibold" for="#">{{ ___('frontend.Select Exam') }} <span
                                                     class="text-danger">*</span></label>
                                             <select class="form-control" name="exam">
@@ -87,7 +87,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-xl-12 mb-4">
+                                        <div class="col-12 mb-3">
                                             <label for="exampleDataList" class="form-label text-dark fw-semibold">{{ ___('frontend.Admission no') }}
                                                 <span class="text-danger">*</span></label>
                                             <input class="form-control" type="number" value="{{ old('admission_no') }}"
@@ -98,7 +98,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="d-grid mb-4">
+                                        <div class="d-grid mb-3">
                                             <button type="submit"
                                                 class="btn btn-primary">{{ ___('frontend.Search') }}</button>
                                         </div>
