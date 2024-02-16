@@ -22,8 +22,8 @@
             <div class="card mb-5">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-6">
-                            <div class="py-5 text-end">
+                        <div class="col-12 col-lg-6">
+                            <div class="py-5 text-center text-lg-end">
                                 <h3 class="text-dark fw-semibold">{{ $sections['statement']->name }}</h3>
 
                                 @foreach ($sections['statement']->data as $item)
@@ -35,8 +35,8 @@
                                     href="{{ route('frontend.about') }}">{{ ___('frontend.Read more') }}</a>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
+                        <div class="col-12 col-lg-6">
+                            <img width="100%" src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
             <div class="row">
 
                 @foreach ($sections['study_at']->data as $item)
-                    <div class="col-xl-4 col-md-4">
+                    <div class="col-12 col-lg-4 text-center text-lg-start">
 
                         <div class="card">
                             <div class="card-body">
@@ -88,11 +88,11 @@
                     @foreach ($data['abouts'] as $key => $item)
                         @if ($key % 2 == 0)
                             <div class="row align-items-center mb-4">
-                                <div class="col-12 col-md-6">
-                                    <img height="400" src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}"
-                                        alt="Image" class="w-100">
+                                <div class="col-12 col-lg-6">
+                                    <img width="100%" src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}"
+                                        alt="Image">
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-lg-6 text-center text-lg-start">
                                     <img height="60" src="{{ @globalAsset(@$item->icon_upload->path, '90X60.svg') }}"
                                         alt="Image" class="mb-4"><br>
                                     <h6 class="text-dark fw-semibold m-0">{{ $item->name }}</h6>
@@ -101,15 +101,15 @@
                             </div>
                         @else
                             <div class="row align-items-center mb-4">
-                                <div class="col-12 col-md-6 text-end">
+                                <div class="col-12 col-lg-6 text-center text-lg-end">
                                     <img height="60" src="{{ @globalAsset(@$item->icon_upload->path, '90X60.svg') }}"
                                         alt="Image" class="mb-4"><br>
                                     <h6 class="text-dark fw-semibold m-0">{{ $item->name }}</h6>
                                     <span class="opacity-75">{{ $item->description }}</span>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <img height="400" src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}"
-                                        alt="Image" class="w-100">
+                                <div class="col-12 col-lg-6">
+                                    <img width="100%" src="{{ @globalAsset(@$item->upload->path, '800X500.svg') }}"
+                                        alt="Image">
                                 </div>
                             </div>
                         @endif
@@ -136,7 +136,7 @@
 
 
                 @foreach ($data['teachers'] as $item)
-                    <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="col-12 col-lg-3 col-md-6">
                         <div class="card mb-4">
                             <div class="card-body text-center">
                                 <img height="100" class="my-4 rounded-circle" src="{{ @globalAsset(@$item->upload->path, '100X100.svg') }}" alt="Image"><br>

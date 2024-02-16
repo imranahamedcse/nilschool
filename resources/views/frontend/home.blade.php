@@ -16,20 +16,23 @@
         <div class="carousel-inner">
             @foreach ($data['sliders'] as $key => $item)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img height="700" src="{{ @globalAsset(@$item->upload->path, '1920X700.svg') }}" class="d-block w-100"
+                    <img src="{{ @globalAsset(@$item->upload->path, '1920X700.svg') }}" class="d-block w-100"
                         alt="Image">
                     <div class="carousel-caption h-100 d-inline-block">
                         <div class="row h-100">
                             <div class="col"></div>
                             <div class="col">
                                 <div class=" h-100 d-flex justify-content-center align-items-center">
-                                    <div class="text-start">
+                                    <div class="text-start d-none d-md-inline">
                                         <p class="display-3 fw-bold mb-4"><strong>{{ $item->name }}</strong></p>
                                         <p class="h5 mb-5">{{ $item->description }}</p>
                                         <a href="{{ route('frontend.about') }}"
                                             class="btn btn-lg btn-outline-light">{{ ___('frontend.Read more') }}</a>
                                         <a href="{{ route('frontend.contact') }}"
                                             class="btn btn-lg btn-outline-light mx-4">{{ ___('frontend.Contact Us') }}</a>
+                                    </div>
+                                    <div class="text-start d-md-none"> <!-- responsive -->
+                                        <strong>{{ $item->name }}</strong>
                                     </div>
                                 </div>
                             </div>
@@ -72,21 +75,21 @@
     <div class="statement">
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-6">
-                    <div class="py-5 text-end">
-                        <h3 class="mb-4 text-dark fw-semibold">{{ $sections['statement']->name }}</h3>
+                <div class="col-12 col-lg-6">
+                    <div class="py-5 text-center text-lg-end">
+                        <h3 class="text-dark fw-semibold">{{ $sections['statement']->name }}</h3>
 
                         @foreach ($sections['statement']->data as $item)
-                            <h6 class="text-dark fw-semibold mb-0">{{ $loop->iteration }}. {{ $item['title'] }}</h6>
+                            <h6 class="text-dark fw-semibold">{{ $loop->iteration }}. {{ $item['title'] }}</h6>
                             <p>{{ $item['description'] }}</p>
                         @endforeach
 
-                        <a class="mt-2 btn btn-primary"
+                        <a class="mt-3 btn btn-primary"
                             href="{{ route('frontend.about') }}">{{ ___('frontend.Read more') }}</a>
                     </div>
                 </div>
-                <div class="col-6">
-                    <img src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
+                <div class="col-12 col-lg-6">
+                    <img width="100%" src="{{ @globalAsset(@$sections['statement']->upload->path, '500X500.svg') }}" alt="Image">
                 </div>
             </div>
         </div>
@@ -97,13 +100,13 @@
     <div class="explorer">
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-xl-6 col-md-6">
+                <div class="col-12 col-lg-6">
                     <img class="w-100" src="{{ @globalAsset(@$sections['explore']->upload->path, '500X500.svg') }}"
                         alt="Image">
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-12 col-lg-6">
 
-                    <div class="mb-5">
+                    <div class="mb-5 text-center text-lg-start">
                         <h3 class="text-dark fw-semibold m-0">{{ $sections['explore']->name }}</h3>
                         <p>{{ $sections['explore']->description }}</p>
                     </div>
@@ -122,7 +125,6 @@
                         @foreach ($sections['explore']->data as $key => $item)
                             <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="nav-{{ $key }}"
                                 role="tabpanel" aria-labelledby="nav-{{ $key }}-tab" tabindex="0">
-                                {{-- <h4>{{ $item['title'] }}</h4> --}}
                                 <p>{{ $item['description'] }}</p>
                             </div>
                         @endforeach
