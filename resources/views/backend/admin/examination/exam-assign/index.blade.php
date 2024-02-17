@@ -33,7 +33,7 @@
                 @forelse ($data['exam_assigns'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
-                        <td>{{ @$row->exam_type->name }}</td>
+                        <td>{{ @$row->type->name }}</td>
                         <td>{{ @$row->class->name }} ({{ @$row->section->name }})</td>
                         <td>{{ @$row->subject->name }}</td>
                         <td>{{ @$row->total_mark }}</td>

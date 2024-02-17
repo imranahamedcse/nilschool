@@ -127,5 +127,11 @@
     "Tab": "Tab",
     "Enter tab": "Enter tab",
     "Gallery category": "Gallery category",
-    "(335 x 405 px)": "(335 x 405 px)"
+    "(335 x 405 px)": "(335 x 405 px)",
+    "exam_type": "Exam type",
+    "select_exam_type": "Select exam type",
+    "subjects": "Subjects",
+    "select_subject": "Select subject",
+    "subject": "Subject",
+    "mark_distribution": "Mark distribution"
 }

@@ -67,7 +67,7 @@ class PageSectionsSeeder extends Seeder
             ],
             [
                 'key'         => 'statement',
-                'name'        => 'Statement Of Onest Schooleded',
+                'name'        => 'Statement Of nilSchool',
                 'description' => '',
                 'upload_id'   => $uploads[0],
                 'data'        => [
@@ -83,7 +83,7 @@ class PageSectionsSeeder extends Seeder
             ],
             [
                 'key'         => 'study_at',
-                'name'        => 'Study at Onest Schooleded',
+                'name'        => 'Study at nilSchool',
                 'description' => 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. veniam consequat sunt nostrud amet',
                 'upload_id'   => $uploads[1],
                 'data'        => [
@@ -106,7 +106,7 @@ class PageSectionsSeeder extends Seeder
             ],
             [
                 'key'         => 'explore',
-                'name'        => 'Explore Onest Schoooled',
+                'name'        => 'Explore nilSchool',
                 'description' => '"We Educate Knowledge & Essential Skills" is a phrase that emphasizes the importance of both theoretical knowledge',
                 'upload_id'   => $uploads[2],
                 'data'        => [
@@ -147,7 +147,7 @@ class PageSectionsSeeder extends Seeder
             [
                 'key'         => 'academic_curriculum',
                 'name'        => '20+ Academic Curriculum',
-                'description' => 'Onsest Schooled is home to more than 20,000 students and 230,000 alumni with a variety of interests, ages and backgrounds, the University reflects the city’s dynamic mix of populations.',
+                'description' => 'nilSchool is home to more than 20,000 students and 230,000 alumni with a variety of interests, ages and backgrounds, the University reflects the city’s dynamic mix of populations.',
                 'upload_id'   => null,
                 'data'        => [
                     'Bangal Medium',

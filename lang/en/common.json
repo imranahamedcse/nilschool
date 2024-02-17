@@ -61,5 +61,12 @@
     "Result": "Result",
     "Online admission": "Online admission",
     "News details": "News details",
-    "Event details": "Event details"
+    "Event details": "Event details",
+    "exam_type": "Exam type",
+    "marks_grade": "Marks grade",
+    "exam_assign": "Exam assign",
+    "Select exam type": "Select exam type",
+    "Marks register": "Marks register",
+    "Add exam assign": "Add exam assign",
+    "Exam group": "Exam group"
 }

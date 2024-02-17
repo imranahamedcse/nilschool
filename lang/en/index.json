@@ -143,5 +143,6 @@
     "start_date": "Start date",
     "end_date": "End date",
     "shift": "Shift",
-    "day": "Day"
+    "day": "Day",
+    "active": "Active"
 }

@@ -69,5 +69,18 @@
     "Send message": "Send message",
     "Results": "Results",
     "What is your result? Check it out here": "What is your result? Check it out here",
-    "Search": "Search"
+    "Search": "Search",
+    "Student Name": "Student Name",
+    "Guardian Name": "Guardian Name",
+    "DOB": "DOB",
+    "Guardian Phone": "Guardian Phone",
+    "Class(Section)": "Class(Section)",
+    "Guardian Email": "Guardian Email",
+    "GPA": "GPA",
+    "Grade Sheet": "Grade Sheet",
+    "Subject Code": "Subject Code",
+    "Subject Name": "Subject Name",
+    "Grade": "Grade",
+    "PDF Download": "PDF Download",
+    "Search Again": "Search Again"
 }

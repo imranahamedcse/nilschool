@@ -24,7 +24,7 @@
                             <div class="col">
                                 <div class=" h-100 d-flex justify-content-center align-items-center">
                                     <div class="text-start d-none d-md-inline">
-                                        <p class="display-3 fw-bold mb-4"><strong>{{ $item->name }}</strong></p>
+                                        <p class="display-5 fw-bold mb-4"><strong>{{ $item->name }}</strong></p>
                                         <p class="h5 mb-5">{{ $item->description }}</p>
                                         <a href="{{ route('frontend.about') }}"
                                             class="btn btn-lg btn-outline-light">{{ ___('frontend.Read more') }}</a>

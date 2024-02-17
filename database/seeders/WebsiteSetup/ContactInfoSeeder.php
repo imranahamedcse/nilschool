@@ -34,28 +34,28 @@ class ContactInfoSeeder extends Seeder
 
         $info = [
             [
-                'image' => $uploads[0],
-                'name' => 'Our School',
-                'address' => '222, Tower Building, Country Hall, California 777, United States',
+                'image'   => $uploads[0],
+                'name'    => 'Maple Elementary School',
+                'address' => '123 Maple Street, Anytown, USA',
             ],
             [
-                'image' => $uploads[1],
-                'name' => 'Our School',
-                'address' => '222, Tower Building, Country Hall, California 777, United States',
+                'image'   => $uploads[1],
+                'name'    => 'Oak Middle School',
+                'address' => '456 Oak Avenue, Somewhereville, USA',
             ],
             [
-                'image' => $uploads[2],
-                'name' => 'Our School',
-                'address' => '222, Tower Building, Country Hall, California 777, United States',
+                'image'   => $uploads[2],
+                'name'    => 'Pine High School',
+                'address' => '789 Pine Boulevard, Cityburg, USA',
             ],
             [
-                'image' => $uploads[3],
-                'name' => 'Our School',
-                'address' => '222, Tower Building, Country Hall, California 777, United States',
+                'image'   => $uploads[3],
+                'name'    => 'Cedar Academy',
+                'address' => '101 Cedar Lane, Townsville, USA',
             ],
         ];
 
-        foreach ($info as $key => $value) {
+        foreach ($info as $value) {
             $row = new ContactInfo();
             $row->upload_id = $value['image'];
             $row->name = $value['name'];

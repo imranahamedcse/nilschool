@@ -105,7 +105,7 @@ class FrontendRepository implements FrontendInterface
         ->where('section_id',$request->section)
         ->select('exam_type_id')
         ->distinct()
-        ->with('exam_type')
+        ->with('type')
         ->get();
     }
     public function result()

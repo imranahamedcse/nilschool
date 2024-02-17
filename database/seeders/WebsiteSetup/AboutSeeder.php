@@ -22,9 +22,9 @@ class AboutSeeder extends Seeder
             'Achievement',
         ];
         $descriptions = [
-            'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
-            'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
-            'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Exercitation veniam consequat sunt nostrud amet. enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+            'The campus is a vibrant hub where students gather to learn, collaborate, and grow, with lectures, seminars, and events enriching the educational experience.',
+            'Graduation marks a significant milestone in one’s academic journey – a moment of triumph, reflection, and anticipation, celebrating years of hard work, dedication, and perseverance.',
+            'Achievement is the tangible result of setting goals, overcoming obstacles, and pushing boundaries, fueling motivation, instilling confidence, and inspiring others to aim higher.'
         ];
         $icons = [
             'frontend/img/about/icon_1.png',

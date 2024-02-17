@@ -53,9 +53,9 @@ class DepartmentContactSeeder extends Seeder
             ],
             [
                 'image' => $uploads[3],
-                'name' => 'media',
+                'name' => 'Register',
                 'phone' => '+883459783849',
-                'email' => 'media@mail.Com',
+                'email' => 'register@mail.Com',
             ],
         ];
 

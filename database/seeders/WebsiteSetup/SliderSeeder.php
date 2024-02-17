@@ -17,14 +17,14 @@ class SliderSeeder extends Seeder
     public function run()
     {
         $names = [
-            'Let’s Build Your Future With Onest Shooled 1',
-            'Let’s Build Your Future With Onest Shooled 2',
-            'Let’s Build Your Future With Onest Shooled 3',
+            'Ignite Your Passion: nilSchool Fest 2024',
+            'nilSchool Talent Showcase: Unleash Your Potential!',
+            'Explore, Learn, Grow: nilSchool Science Fair',
         ];
         $descriptions = [
-            'Wonderful environment where children undertakes laborious physical learn and grow. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sin 1.',
-            'Wonderful environment where children undertakes laborious physical learn and grow. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sin 2.',
-            'Wonderful environment where children undertakes laborious physical learn and grow. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sin 3.',
+            'Join us for a day of excitement and exploration at the nilSchool Fest 2024! Experience a diverse range of activities, from thrilling performances to engaging workshops. Unleash your creativity and ignite your passion for learning!',
+            'Calling all talented students! Showcase your skills and shine on stage at the nilSchool Talent Showcase. Whether you excel in music, dance, or drama, this is your chance to dazzle the audience and unleash your full potential!',
+            'Calling all young scientists! Dive into the fascinating world of science at the nilSchool Science Fair. Explore innovative projects, conduct experiments, and discover the wonders of STEM education. Join us for a day of discovery and fun!',
         ];
         $images = [
             'frontend/img/sliders/01.jpg',
