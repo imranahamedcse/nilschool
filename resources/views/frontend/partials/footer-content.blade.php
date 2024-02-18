@@ -20,12 +20,14 @@
                 <h5 class="text-light">{{ ___('frontend.subscribe to newsletter') }}</h5>
                 <p>{{ ___('frontend.Join us and get weekly inspiration') }}</p>
 
-                <div class="input-group mb-3">
-                    <input name="email" class="email form-control"
-                        placeholder="{{ ___('frontend.Type e-mail address') }}" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Type e-mail address…'" required="" type="email">
-                    <button type="submit" class="btn btn-outline-light">{{ ___('frontend.Subscribe') }}</button>
-                </div>
+                <form method="post" id="subscription">
+                    <div class="input-group mb-3">
+                        <input name="email" class="email form-control"
+                            placeholder="{{ ___('frontend.Type e-mail address') }}" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Type e-mail address…'" required="" type="email">
+                        <button type="submit" class="btn btn-outline-light">{{ ___('frontend.Subscribe') }}</button>
+                    </div>
+                </form>
 
                 @foreach ($sections['social_links']->data as $item)
                     <a class="btn" target="_blank" href="{{ $item['link'] }}"><i

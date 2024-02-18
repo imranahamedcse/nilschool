@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="fw-semibold text-dark mb-4">{{ ___('frontend.Get in touch!') }}</h6>
-                            <form class="form-area contact-form" id="myForm" method="post">
+                            <form id="contact" method="post">
                                 <div class="row">
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label text-dark fw-semibold">{{ ___('frontend.Name') }}</label>

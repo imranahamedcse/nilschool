@@ -133,5 +133,6 @@
     "subjects": "Subjects",
     "select_subject": "Select subject",
     "subject": "Subject",
-    "mark_distribution": "Mark distribution"
+    "mark_distribution": "Mark distribution",
+    "select_parent": "Select parent"
 }

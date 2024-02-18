@@ -20,4 +20,5 @@
 @push('mainscript')
     @stack('script')
     <script src="{{ asset('frontend') }}/js/script.js"></script>
+    <script src="{{ asset('backend/js/sweetalert2.js') }}"></script>
 @endpush

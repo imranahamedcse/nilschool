@@ -144,5 +144,8 @@
     "end_date": "End date",
     "shift": "Shift",
     "day": "Day",
-    "active": "Active"
+    "active": "Active",
+    "Subject Code": "Subject Code",
+    "Subject Name": "Subject Name",
+    "Grade": "Grade"
 }

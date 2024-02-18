@@ -86,6 +86,11 @@ class FrontendController extends Controller
             return view('frontend.result', compact('data'));
         }
         $data['request'] = $request;
+        $data['title']       = ___('common.Result');
+        $data['breadcrumbs'] = [
+            ["title" => ___("common.home"), "route" => "frontend.home"],
+            ["title" => $data['title'], "route" => ""]
+        ];
         return view('frontend.search_result', compact('data'));
     }
 

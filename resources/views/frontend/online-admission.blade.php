@@ -23,7 +23,7 @@
                 <div class="col-11 col-lg-10">
                     <div class="card">
                         <div class="card-body">
-                            <form class="form-area contact-form" id="admission" method="post">
+                            <form class="contact-form" id="online_admission" method="post">
                                 <div class="row">
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.First Name') }} <span
