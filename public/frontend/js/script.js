@@ -152,8 +152,8 @@ $(document).ready(function () {
         var phone = $(".phone").val();
         var email = $(".email").val();
         var session = $(".session").val();
-        var classes = $(".classes").val();
-        var sections = $(".sections").val();
+        var classes = $(".class").val();
+        var sections = $(".section").val();
         var dob = $(".dob").val();
         var gender = $(".gender").val();
         var religion = $(".religion").val();
@@ -197,11 +197,10 @@ $(document).ready(function () {
             guardian_phone: guardian_phone
         }
 
-
         $.ajax({
-            url: url + '/online-admission', // form action url
-            type: 'POST', // form submit method get/post
-            dataType: 'json', // request type html/json/xml
+            url: url + '/online-admission',
+            type: 'POST',
+            dataType: 'json',
             data: formData,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -213,25 +212,21 @@ $(document).ready(function () {
                     icon: data[2],
                     confirmButtonText: data[3]
                 })
-                form.trigger('reset'); // reset form
+                form.trigger('reset');
                 // session
                 $("div .session .current").html($("div .session .list li:first").html());
-                // classes
-                $("select.classes option").not(':first').remove();
-                $("div .classes .current").html($("div .classes .list li:first").html());
-                $("div .classes .list li").not(':first').remove();
-                // sections
-                $("select.sections option").not(':first').remove();
-                $("div .sections .current").html($("div .sections .list li:first").html());
-                $("div .sections .list li").not(':first').remove();
+                // class
+                $("select.class option").not(':first').remove();
+                $("div .class .current").html($("div .class .list li:first").html());
+                $("div .class .list li").not(':first').remove();
+                // section
+                $("select.section option").not(':first').remove();
+                $("div .section .current").html($("div .section .list li:first").html());
+                $("div .section .list li").not(':first').remove();
                 // gender
-                $("select.gender option").not(':first').remove();
                 $("div .gender .current").html($("div .gender .list li:first").html());
-                $("div .gender .list li").not(':first').remove();
                 // religion
-                $("select.religion option").not(':first').remove();
                 $("div .religion .current").html($("div .religion .list li:first").html());
-                $("div .religion .list li").not(':first').remove();
             },
             error: function (e) {
                 Swal.fire({

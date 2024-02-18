@@ -29,37 +29,37 @@
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.First Name') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="first_name" placeholder="{{ ___('frontend.Enter first name') }}"
-                                            class="form-control" required="" type="text">
+                                            class="form-control first_name" required="" type="text">
                                     </div>
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Last Name') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="last_name" placeholder="{{ ___('frontend.Enter last name') }}"
-                                            class="form-control" required="" type="text">
+                                            class="form-control last_name" required="" type="text">
                                     </div>
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Phone no') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="phone" placeholder="{{ ___('frontend.Phone no') }}"
-                                            class="form-control" required="" type="text">
+                                            class="form-control phone" required="" type="text">
                                     </div>
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Email Address') }}</label>
                                         <input name="email" placeholder="{{ ___('frontend.Type e-mail address') }}"
                                             pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-                                            class="form-control" type="email">
+                                            class="form-control email" type="email">
                                     </div>
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Date of birth') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="dob" placeholder="{{ ___('frontend.Enter date of birth') }}"
-                                            class="form-control" required="" type="date">
+                                            class="form-control dob" required="" type="date">
                                     </div>
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark"
                                             for="#">{{ ___('frontend.Academic Year/Session') }} <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control" name="session">
+                                        <select class="form-control session" name="session">
                                             <option value="" data-display="Select">
                                                 {{ ___('frontend.Select year/session') }}</option>
                                             @foreach ($data['sessions'] as $item)
@@ -75,7 +75,7 @@
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Class') }} <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control" name="class">
+                                        <select class="form-control class" name="class">
                                             <option value="" data-display="Select">{{ ___('frontend.Select class') }}
                                             </option>
                                         </select>
@@ -87,7 +87,7 @@
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Section') }} <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control" name="section">
+                                        <select class="form-control section" name="section">
                                             <option value="" data-display="Select">{{ ___('frontend.Select section') }}
                                             </option>
                                         </select>
@@ -101,7 +101,7 @@
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Gender') }} <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control" name="gender">
+                                        <select class="form-control gender" name="gender">
                                             <option value="" data-display="Select">{{ ___('frontend.Select gender') }}
                                             </option>
                                             @foreach ($data['genders'] as $item)
@@ -116,7 +116,7 @@
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark" for="#">{{ ___('frontend.Religion') }} <span
                                                 class="text-danger">*</span></label>
-                                        <select class="form-control" name="religion">
+                                        <select class="form-control religion" name="religion">
                                             <option value="" data-display="Select">
                                                 {{ ___('frontend.Select religion') }}</option>
                                             @foreach ($data['religions'] as $item)
@@ -135,13 +135,13 @@
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Guardian name') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="guardian_name" placeholder="{{ ___('frontend.Enter guardian name') }}"
-                                            class="form-control" required="" type="text">
+                                            class="form-control guardian_name" required="" type="text">
                                     </div>
                                     <div class="col-12 col-lg-6 mb-3">
                                         <label class="form-label fw-semibold text-dark">{{ ___('frontend.Guardian phone') }} <span
                                                 class="text-danger">*</span></label>
                                         <input name="guardian_phone" placeholder="{{ ___('frontend.Enter guardian phone') }}"
-                                            class="form-control" required="" type="text">
+                                            class="form-control guardian_phone" required="" type="text">
                                     </div>
                                     <div class="d-grid">
                                         <button type="submit" class="btn btn-primary">{{ ___('frontend.Submit') }}</button>
@@ -157,3 +157,7 @@
 
     <!-- ADMISSION::END  -->
 @endsection
+
+@push('script')
+    <script src="{{ asset('frontend') }}/js/admission.js"></script>
+@endpush

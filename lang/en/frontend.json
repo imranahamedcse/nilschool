@@ -88,5 +88,8 @@
     "OK": "OK",
     "Subscribed": "Subscribed",
     "Attention": "Attention",
-    "Already subscribed": "Already subscribed"
+    "Already subscribed": "Already subscribed",
+    "Error": "Error",
+    "Something went wrong!": "Something went wrong!",
+    "Submitted successfully": "Submitted successfully"
 }
