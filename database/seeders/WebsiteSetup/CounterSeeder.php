@@ -35,7 +35,7 @@ class CounterSeeder extends Seeder
 
             $row = new Counter();
             $row->name = $item;
-            $row->total_count = 45 * $key;
+            $row->total_count = 45 * ++$key;
             $row->upload_id = $upload->id;
             $row->serial = $key;
             $row->save();

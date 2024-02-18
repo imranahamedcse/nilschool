@@ -57,7 +57,9 @@
                                     <img height="75" src="{{ @globalAsset(@$item->upload->path, '90X60.svg') }}"
                                         alt="Icon">
                                     <div class="border-start px-2 mx-2">
-                                        <h3 class="text-dark fw-semibold mb-0"><strong>{{ $item->total_count }}+</strong></h3>
+                                        <input type="hidden" name="" class="countVal{{ $loop->iteration }}" value="{{ $item->total_count }}">
+                                        {{-- <h3 class="text-dark fw-semibold mb-0"><strong>{{ $item->total_count }}+</strong></h3> --}}
+                                        <h3 class="text-dark fw-semibold mb-0"><strong><span id="count{{ $loop->iteration }}"></span>+</strong></h3>
                                         <span>{{ $item->name }}</span>
                                     </div>
                                 </div>
@@ -219,7 +221,7 @@
                 <div class="mb-3" id="buttons"></div>
                 <div id="gallery">
                     @foreach ($data['gallery'] as $item)
-                        <img src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
+                        <img class="animate__animated animate__zoomIn" src="{{ @globalAsset(@$item->upload->path, '400X400.svg') }}"
                             data-tags="{{ $item->category->name }}" alt="lemon" />
                     @endforeach
                 </div>

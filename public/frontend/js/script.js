@@ -240,3 +240,33 @@ $(document).ready(function () {
     });
 });
 // Online admission end
+
+
+// Counter start
+document.addEventListener("DOMContentLoaded", () => {
+    function counter(id, start, end, duration) {
+        let obj = document.getElementById(id),
+            current = start,
+            range = end - start,
+            increment = end > start ? 1 : 0,
+            step = Math.abs(Math.floor(duration / range)),
+            timer = setInterval(() => {
+                current += increment;
+                obj.textContent = current;
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, step);
+    }
+
+    var count1 = $(".countVal1").val();
+    var count2 = $(".countVal2").val();
+    var count3 = $(".countVal3").val();
+    var count4 = $(".countVal4").val();
+
+    counter("count1", 0, count1, 3000);
+    counter("count2", 0, count2, 3000);
+    counter("count3", 0, count3, 3000);
+    counter("count4", 0, count4, 3000);
+});
+// Counter end
