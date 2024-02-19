@@ -1,8 +1,14 @@
 <div class="sidebar">
     <ul class="menu-group">
-        <div class="logo">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span class="logo-name">nilschool</span>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span class="logo-name">nilschool</span>
+            </div>
+            <button type="button" class="btn text-white me-2 d-md-none" onclick="toggleSidebar()">
+                <i class="fa-solid fa-close"></i>
+            </button>
         </div>
         <!-- Dashboard start -->
         <li>

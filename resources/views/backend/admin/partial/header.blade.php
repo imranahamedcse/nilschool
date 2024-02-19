@@ -15,13 +15,13 @@
     </div>
     <div class="col p-0 text-end">
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Full Screen">
-            <button id="fullScreen" type="button" class="btn">
+            <button id="fullScreen" type="button" class="btn d-none d-md-inline">
                 <i class="fa-solid fa-expand"></i>
             </button>
         </span>
 
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Dark/Light Theme">
-            <button id="theme" type="button" class="btn">
+            <button id="theme" type="button" class="btn d-none d-md-inline">
                 <i class="fa-solid fa-sun"></i>
             </button>
         </span>

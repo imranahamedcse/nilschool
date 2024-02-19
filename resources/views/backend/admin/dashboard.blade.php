@@ -6,10 +6,10 @@
 
 @section('content')
     <div class="row mt-4">
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <div class="row">
                 @foreach ($data['total'] as $item)
-                    <div class="col-6 mb-4">
+                    <div class="col-12 col-lg-6 mb-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">
                     <strong>All Users</strong>
                 </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <div class="card mb-4">
                 <div class="card-body">
                     <div id="sessionly_transaction"></div>
