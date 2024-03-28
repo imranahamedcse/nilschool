@@ -9,10 +9,10 @@ btn.addEventListener("click", () => {
     }
 });
 
-let arrows = document.querySelectorAll(".arrow");
+let arrows = document.querySelectorAll(".icon-link");
 for (var i = 0; i < arrows.length; i++) {
     arrows[i].addEventListener("click", (e) => {
-        let arrowParent = e.target.parentElement.parentElement;
+        let arrowParent = e.target.parentElement;
 
         arrowParent.classList.toggle("show");
     });

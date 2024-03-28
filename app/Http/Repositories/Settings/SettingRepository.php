@@ -93,6 +93,20 @@ class SettingRepository implements SettingInterface
             }
             //Address end
 
+            //Latest news start
+            if($request->has('latest_news')){
+                $setting            = $this->model::where('name', 'latest_news')->first();
+                if($setting){
+                    $setting->value = $request->latest_news;
+                }else{
+                    $setting        = new $this->model;
+                    $setting->name  = 'latest_news';
+                    $setting->value = $request->latest_news;
+                }
+                $setting->save();
+            }
+            //Latest news end
+
             //Phone start
             if($request->has('phone')){
                 $setting            = $this->model::where('name', 'phone')->first();

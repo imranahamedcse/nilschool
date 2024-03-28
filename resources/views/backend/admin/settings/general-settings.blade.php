@@ -169,6 +169,22 @@
                                         </div>
                                         <!--Address End -->
 
+                                        <!--Latest news Start -->
+                                        <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
+                                            <label for="inputname"
+                                                class="form-label">{{ ___('common.Latest news') }}</label>
+                                            <input type="text" name="latest_news"
+                                                class="form-control @error('latest_news') is-invalid @enderror"
+                                                value="{{ Setting('latest_news') }}"
+                                                placeholder="{{ ___('settings.Enter your latest news') }}">
+                                            @error('latest_news')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <!--Latest news End -->
+
                                         <!--Phone Start -->
                                         <div class="col-12 col-md-6 col-xl-6 col-lg-6 mb-3">
                                             <label for="inputname" class="form-label">{{ ___('create.phone') }} <span
@@ -205,8 +221,8 @@
                                         <div class="col-12 mb-3">
                                             <label for="inputname" class="form-label">{{ ___('create.School about') }}
                                                 <span class="text-danger">*</span></label>
-                                            <textarea name="school_about" class="m-0 form-control @error('school_about') is-invalid @enderror"
-                                                cols="30" rows="3">{{ Setting('school_about') }}"</textarea>
+                                            <textarea name="school_about" class="m-0 form-control @error('school_about') is-invalid @enderror" cols="30"
+                                                rows="3">{{ Setting('school_about') }}"</textarea>
                                             @error('school_about')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

@@ -27,6 +27,10 @@ class SettingSeeder extends Seeder
             'value' => '123 Main Street, Cityville, State, ZIP',
         ]);
         Setting::create([
+            'name' => 'latest_news',
+            'value' => 'Admissions open - 30% off!',
+        ]);
+        Setting::create([
             'name' => 'phone',
             'value' => '+1 (555) 123-4567',
         ]);

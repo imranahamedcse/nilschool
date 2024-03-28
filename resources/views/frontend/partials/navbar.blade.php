@@ -1,7 +1,15 @@
     <!-- HEADER::START -->
     <header>
         <div class="bg-primary text-light">
-            <div class="container py-2">
+            @if (Setting('latest_news') != '')
+                <div class="d-none d-lg-inline">
+                    <marquee class="bg-dark py-1" behavior="scroll" direction="left" onmouseover="this.stop();"
+                        onmouseout="this.start();">
+                        <a class="text-decoration-none text-warning" href="">{{ Setting('latest_news') }}</a>
+                    </marquee>
+                </div>
+            @endif
+            <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <span>{{ setting('phone') }}</span>

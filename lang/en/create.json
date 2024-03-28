@@ -134,5 +134,19 @@
     "select_subject": "Select subject",
     "subject": "Subject",
     "mark_distribution": "Mark distribution",
-    "select_parent": "Select parent"
+    "select_parent": "Select parent",
+    "type": "Type",
+    "exam": "Exam",
+    "start_time": "Start time",
+    "enter_start_time": "Enter start time",
+    "end_time": "End time",
+    "enter_end_time": "Enter end time",
+    "Mark": "Mark",
+    "Enter mark": "Enter mark",
+    "Assigned date": "Assigned date",
+    "Enter assigned date": "Enter assigned date",
+    "Submission date": "Submission date",
+    "Enter submission date": "Enter submission date",
+    "Document": "Document",
+    "enter_document": "Enter document"
 }

@@ -147,5 +147,9 @@
     "active": "Active",
     "Subject Code": "Subject Code",
     "Subject Name": "Subject Name",
-    "Grade": "Grade"
+    "Grade": "Grade",
+    "Admission no": "Admission no",
+    "Guardian Name": "Guardian Name",
+    "Roll": "Roll",
+    "Promote": "Promote"
 }
