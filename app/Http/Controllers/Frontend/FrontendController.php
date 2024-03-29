@@ -65,51 +65,7 @@ class FrontendController extends Controller
         $result = $this->repo->getExamType($request);
         return response()->json($result, 200);
     }
-    public function result()
-    {
-        $data                = $this->repo->result();
-        $data['result']      = null;
-        $data['title']       = ___('common.Result');
-        $data['breadcrumbs'] = [
-            ["title" => ___("common.home"), "route" => "frontend.home"],
-            ["title" => $data['title'], "route" => ""]
-        ];
-        return view('frontend.result', compact('data'));
-    }
-
-    public function searchResult(SearchResultRequest $request){
-        $data = $this->repo->searchResult($request);
-        if(!$data)
-        {
-            $data = $this->repo->result();
-            $data['result'] = "Result not found!";
-            return view('frontend.result', compact('data'));
-        }
-        $data['request'] = $request;
-        $data['title']       = ___('common.Result');
-        $data['breadcrumbs'] = [
-            ["title" => ___("common.home"), "route" => "frontend.home"],
-            ["title" => $data['title'], "route" => ""]
-        ];
-        return view('frontend.search_result', compact('data'));
-    }
-
-    public function downloadPDF($id, $type, $class, $section)
-    {
-        $request = new Request([
-            'student'   => $id,
-            'exam_type' => $type,
-            'class'     => $class,
-            'section'   => $section,
-        ]);
-
-        $data['student']      = $this->studentRepo->show($request->student);
-        $data['resultData']   = $this->marksheetRepo->search($request);
-
-        $pdf = PDF::loadView('backend.report.marksheetPDF', compact('data'));
-        return $pdf->download('marksheet'.'_'.date('d_m_Y').'_'.@$data['student']->first_name .'_'. @$data['student']->last_name .'.pdf');
-    }
-
+    
     public function about()
     {
         $data                = $this->repo->abouts();

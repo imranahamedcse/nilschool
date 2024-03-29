@@ -8,73 +8,147 @@
     <div class="border-bottom mb-3"></div>
     <div class="row mb-3">
         <div class="col-12 col-lg-8 offset-lg-2">
-            <div class="card mb-4" id="printableArea">
-                <div class="card-body text-center">
-                    <img class="mb-3" height="50" src="{{ @globalAsset(setting('light_logo'), '154X38.webp') }}"
-                        alt="Logo">
+            <div class="card d-flex justify-content-center align-items-center mb-4 py-3">
 
-                    <h5 class="fw-semibold m-0">{{ setting('application_name') }}</h5>
-                    <p class="mb-3 small">{{ setting('address') }}</p>
+                <div id="print" class="border" style="width: 8.27in; height: 11in; padding: 1in;">
+                    <table style="width: 100%;">
+                        <tr class="top">
+                            <td colspan="3">
+                                <div style="text-align: center;">
+                                    <span
+                                        style="font-size: 22px; font-weight: 600; color: #23B7E5;">{{ setting('application_name') }}</span><br>
+                                    <span style="font-size: 14px;">{{ setting('address') }}</span> <br><br>
+                                    <span
+                                        style="font-size: 22px; font-weight: 600; color: #23B7E5;">{{ @$data['headers']['title'] }}</span>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <h6 class="fw-semibold m-0">{{ @$data['classSection']->class->name }}
-                        ({{ @$data['classSection']->section->name }})</h6>
-                    <p>{{ ___('frontend.Name') }} : {{ @$data['classSection']->student->first_name }}
-                        {{ @$data['classSection']->student->last_name }}</p>
+                        <tr>
+                            <td colspan="3">
+                                <table style="width: 100%; margin-top: 75px;">
+                                    <tr>
+                                        <td>
+                                            <span style="font-size: 18px; font-weight: 600;">Student Info</span><br>
+                                            <div style="font-size: 14px;">
+                                                {{ @$data['classSection']->student->first_name }}
+                                                {{ @$data['classSection']->student->last_name }} <br>
+                                                {{ dateFormat(@$data['classSection']->student->dob) }} <br>
+                                                {{ @$data['classSection']->class->name }}
+                                                ({{ @$data['classSection']->section->name }})
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="text-align: right;">
+                                                <span style="font-size: 18px; font-weight: 600;">Guardian Info</span><br>
+                                                <div style="font-size: 14px;">
+                                                    {{ @$data['classSection']->student->parent->guardian_name }} <br>
+                                                    {{ @$data['classSection']->student->parent->guardian_mobile }} <br>
+                                                    {{ @$data['classSection']->student->parent->guardian_email }}
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
 
-                    <h6 class="fw-semibold text-dark">{{ ___('frontend.Grade Sheet') }}</h6>
-                    <table class="table text-start table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">{{ ___('frontend.Subject Code') }}</th>
-                                <th scope="col">{{ ___('frontend.Subject Name') }}</th>
-                                <th scope="col">{{ ___('frontend.Grade') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            @foreach (@$data['marks_registers'] as $item)
-                                <tr>
-                                    <th scope="row">
-                                        {{ $item->subject->code }}
-                                    </th>
-                                    <td>
-                                        {{ $item->subject->name }}
-                                    </td>
-                                    <td>
-                                        @php
-                                            $n = 0;
-                                        @endphp
-                                        @foreach ($item->marksRegisterChilds as $item)
-                                            @php
-                                                $n += $item->mark;
-                                            @endphp
-                                        @endforeach
-                                        {{ markGrade($n) }}
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <tr>
-                                <td colspan="2" class="text-end fw-semibold">{{ ___('frontend.Result') }} :</td>
-                                <td>{{ @$data['result'] }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="text-end fw-semibold">{{ ___('frontend.GPA') }} :</td>
-                                <td>
-                                    @if ($data['result'] == 'Passed')
-                                        {{ @$data['gpa'] }}
-                                    @else
-                                        {{ '0.00' }}
-                                    @endif
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tr>
+                            <td>
+                                <table style="width: 100%; margin-top: 25px; font-size: 14px; border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
+                                            {{ ___('index.Subject Code') }}</th>
+                                        <th style="border: 1px solid #dee2e6; padding: 4px; text-align: left;">
+                                            {{ ___('index.Subject Name') }}</th>
+                                        <th style="border: 1px solid #dee2e6; padding: 4px; text-align: right;">
+                                            {{ ___('index.Grade') }}</th>
+                                    </tr>
+
+
+
+                                    @php
+                                        $totalMark = 0;
+                                    @endphp
+                                    @forelse (@$data['marks_registers'] as $item)
+                                        <tr>
+                                            <td style="border: 1px solid #dee2e6; padding: 3px;">
+                                                {{ $item->subject->code }}
+                                            </td>
+                                            <td style="border: 1px solid #dee2e6; padding: 3px;">
+                                                {{ $item->subject->name }}
+                                            </td>
+                                            <td style="border: 1px solid #dee2e6; padding: 3px; text-align: right;">
+                                                @php
+                                                    $n = 0;
+                                                @endphp
+                                                @foreach ($item->marksRegisterChilds as $item)
+                                                    @php
+                                                        $n += $item->mark;
+                                                    @endphp
+                                                @endforeach
+                                                @php
+                                                    $totalMark += $n;
+                                                @endphp
+                                                {{ markGrade($n) }}
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        @include('backend.admin.components.table.empty')
+                                    @endforelse
+
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding: 3px; text-align: right;">Total mark - </td>
+                                        <td
+                                            style="border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; padding: 3px; text-align: right;">
+                                            {{ $totalMark }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding: 3px; text-align: right;">GPA - </td>
+                                        <td
+                                            style="border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6; padding: 3px; text-align: right;">
+                                            @if ($data['result'] == 'Passed')
+                                                {{ @$data['gpa'] }}
+                                            @else
+                                                {{ '0.00' }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <th style="padding: 3px; text-align: right;">Result - </th>
+                                        <th style="border: 1px solid #dee2e6; padding: 3px; text-align: right;">
+                                            {{ @$data['result'] }}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td style="border-bottom: 1px solid #dee2e6; padding: 3px; text-align: center;">
+                                            <div style="margin-top: 50px;">Signature</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
                     </table>
                 </div>
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <button class="btn btn-secondary" onclick="printDiv('print')">
+                        {{ ___('index.Print') }}
+                        <span><i class="fa-solid fa-print"></i></span>
+                    </button>
+                </div>
             </div>
+
+
+
+
+
+
             <div class="text-center">
-                <a class="btn btn-primary"
-                    href="{{ route('information.result.pdf-download', ['id' => @$data['classSection']->student->id, 'type' => $data['request']->exam, 'class' => @$data['classSection']->class->id, 'section' => @$data['classSection']->section->id]) }}">
-                    {{ ___('common.PDF Download') }}
-                </a>
                 <a class="btn btn-primary"
                     href="{{ route('information.result') }}">{{ ___('frontend.Search Again') }}</a>
             </div>

@@ -45,7 +45,7 @@
                     <div class="col-12 mb-3 col-md-6">
                         <label class="form-label" for="#">{{ ___('frontend.Select class') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="form-control classes" name="class">
+                        <select class="form-control class" name="class">
                             <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
                         </select>
                         @if ($errors->has('class'))
@@ -56,7 +56,7 @@
                     <div class="col-12 mb-3 col-md-6">
                         <label class="form-label" for="#">{{ ___('frontend.Select section') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="form-control sections" name="section">
+                        <select class="form-control section" name="section">
                             <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
                         </select>
                         @if ($errors->has('section'))
@@ -67,7 +67,7 @@
                     <div class="col-12 mb-3 col-md-6">
                         <label class="form-label" for="#">{{ ___('frontend.Select Exam') }} <span
                                 class="text-danger">*</span></label>
-                        <select class="form-control exam_types" name="exam">
+                        <select class="form-control exam_type" name="exam">
                             <option value="" data-display="Select">{{ ___('frontend.Select') }}</option>
                         </select>
                         @if ($errors->has('exam'))
@@ -95,3 +95,7 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="{{ asset('frontend') }}/js/result.js"></script>
+@endpush
