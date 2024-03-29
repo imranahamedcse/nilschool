@@ -25,8 +25,10 @@ use App\Models\WebsiteSetup\About;
 use App\Models\WebsiteSetup\Contact;
 use App\Models\WebsiteSetup\ContactInfo;
 use App\Models\WebsiteSetup\DepartmentContact;
+use App\Models\WebsiteSetup\NoticeBoard;
 use App\Models\WebsiteSetup\OnlineAdmission;
 use App\Models\WebsiteSetup\Subscribe;
+use Carbon\Carbon;
 
 class FrontendRepository implements FrontendInterface
 {
@@ -62,6 +64,19 @@ class FrontendRepository implements FrontendInterface
         return News::where('status', Status::ACTIVE)->where('id', $id)->first();
     }
 
+    // Notice
+    public function notices()
+    {
+        $currentDateTime = Carbon::now(); // Get the current datetime
+        return  NoticeBoard::where('status', Status::ACTIVE)->where('is_visible_web', 1)->where('publish_date', '<=', $currentDateTime)->orderBy('id', 'desc')->paginate(18);
+    }
+
+
+    public function noticeDetail($id)
+    {
+        return NoticeBoard::where('status', Status::ACTIVE)->where('id', $id)->first();
+    }
+
     // Events
     public function events()
     {
@@ -86,6 +101,10 @@ class FrontendRepository implements FrontendInterface
     public function gallery()
     {
         return Gallery::where('status', Status::ACTIVE)->orderBy('id', 'desc')->paginate(12);
+    }
+    public function galleryAll()
+    {
+        return Gallery::where('status', Status::ACTIVE)->orderBy('id', 'desc')->get();
     }
 
     // Result

@@ -64,6 +64,9 @@ use Database\Seeders\Transport\RouteSeeder;
 use Database\Seeders\Transport\VehicleSeeder;
 use Database\Seeders\Transport\VehicleStudentSeeder;
 use Database\Seeders\WebsiteSetup\AboutSeeder;
+use Database\Seeders\WebsiteSetup\AcademicCalendarSeeder;
+use Database\Seeders\WebsiteSetup\AcademicSeeder;
+use Database\Seeders\WebsiteSetup\AdmissionSeeder;
 use Database\Seeders\WebsiteSetup\CounterSeeder;
 use Database\Seeders\WebsiteSetup\EventSeeder;
 use Database\Seeders\WebsiteSetup\GalleryCategorySeeder;
@@ -72,6 +75,10 @@ use Database\Seeders\WebsiteSetup\NewsSeeder;
 use Database\Seeders\WebsiteSetup\SliderSeeder;
 use Database\Seeders\WebsiteSetup\ContactInfoSeeder;
 use Database\Seeders\WebsiteSetup\DepartmentContactSeeder;
+use Database\Seeders\WebsiteSetup\DownloadableFormSeeder;
+use Database\Seeders\WebsiteSetup\FAQSeeder;
+use Database\Seeders\WebsiteSetup\InformationSeeder;
+use Database\Seeders\WebsiteSetup\LessonPlanSeeder;
 use Database\Seeders\WebsiteSetup\PageSectionsSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -167,6 +174,14 @@ class DatabaseSeeder extends Seeder
             ContactInfoSeeder::class,
             DepartmentContactSeeder::class,
             AboutSeeder::class,
+
+            DownloadableFormSeeder::class,
+            LessonPlanSeeder::class,
+            InformationSeeder::class,
+            AdmissionSeeder::class,
+            AcademicSeeder::class,
+            AcademicCalendarSeeder::class,
+            FAQSeeder::class,
         ]);
     }
 }

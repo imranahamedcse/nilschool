@@ -273,3 +273,16 @@ if (!function_exists('include_route_files')) {
         return $days;
     }
 }
+// for frontend active menu start
+if (!function_exists('active_menu')) {
+    function active_menu(array $path, $active = 'active')
+    {
+        foreach ($path as $route) {
+            if (Route::currentRouteName() == $route) {
+                return $active;
+            }
+        }
+        return (request()->is($path)) ? $active : '';
+    }
+}
+// for frontend active menu end
