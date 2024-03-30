@@ -9,15 +9,35 @@ btn.addEventListener("click", () => {
     }
 });
 
-let arrows = document.querySelectorAll(".icon-link");
-for (var i = 0; i < arrows.length; i++) {
-    arrows[i].addEventListener("click", (e) => {
-        let arrowParent = e.target.parentElement;
+// let arrows = document.querySelectorAll(".icon-link");
+// for (var i = 0; i < arrows.length; i++) {
+//     arrows[i].addEventListener("click", (e) => {
+//         let arrowParent = e.target.parentElement;
 
-        arrowParent.classList.toggle("show");
+//         arrowParent.classList.toggle("show");
+//     });
+// }
+document.addEventListener('DOMContentLoaded', function() {
+    function removeAllShowClasses() {
+        var liElements = document.querySelectorAll('li.show');
+        liElements.forEach(function(li) {
+            li.classList.remove('show');
+        });
+    }
+
+    var iconLinks = document.querySelectorAll('.icon-link');
+    iconLinks.forEach(function(iconLink) {
+        iconLink.addEventListener('click', function(event) {
+            removeAllShowClasses();
+            toggleParentClass(event.currentTarget);
+        });
     });
-}
+});
 
+function toggleParentClass(element) {
+    var parentItem = element.closest('li');
+    parentItem.classList.toggle('show');
+}
 
 function toggleSidebar() {
     document.querySelector('.sidebar').classList.toggle('show');

@@ -25,7 +25,7 @@ class DisabledStudentController extends Controller
 
     public function index()
     {
-        $title             = ___('common.disabled_list');
+        $title             = ___('common.inactive_list');
         $data['headers']   = [
             "title"        => $title,
             "filter"       => ['disabled-students.search', 'class', 'section'],
@@ -45,7 +45,7 @@ class DisabledStudentController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $title             = ___('common.disabled_list');
+        $title             = ___('common.inactive_list');
         $data['headers']   = [
             "title"        => $title,
             "filter"       => ['disabled-students.search', 'class', 'section'],

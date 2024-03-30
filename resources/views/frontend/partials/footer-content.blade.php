@@ -13,8 +13,7 @@
                 <a href="{{ route('frontend.home') }}">{{ ___('frontend.Home') }}</a><br>
                 <a href="{{ route('frontend.about') }}">{{ ___('frontend.About') }}</a><br>
                 <a href="{{ route('frontend.news') }}">{{ ___('frontend.News') }}</a><br>
-                <a href="{{ route('frontend.events') }}">{{ ___('frontend.Events') }}</a><br>
-                <a href="{{ route('frontend.result') }}">{{ ___('frontend.Result') }}</a><br>
+                <a href="{{ route('frontend.events') }}">{{ ___('frontend.Events') }}</a>
             </div>
             <div class="col-12 col-lg-4 text-center text-lg-start">
                 <h5 class="text-light">{{ ___('frontend.subscribe to newsletter') }}</h5>

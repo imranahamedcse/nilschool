@@ -32,13 +32,18 @@
                 hasPermission('admission_read') ||
                 hasPermission('parent_read'))
             <li class="{{ set_menu(['students*']) }}">
-                <div class="icon-link">
-                    <a class="parent-item-content has-arrow">
+                <a class="icon-link">
+                    <div class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-graduation-cap"></i>
                         <span class="link-name">{{ ___('partial.Students') }}</span>
-                    </a>
+                    </div>
                     <i class="append-icon fa-solid fa-angle-down arrow"></i>
-                </div>
+                </a>
+                {{-- <a class="icon-link">
+                    <i class="prepend-icon fa-solid fa-graduation-cap"></i>
+                    {{ ___('partial.Students') }}
+                    <i class="append-icon fa-solid fa-angle-down arrow"></i>
+                </a> --}}
                 <ul class="sub-menu">
                     @if (hasPermission('student_category_read'))
                         <li class="{{ set_menu(['students/category*']) }}">
