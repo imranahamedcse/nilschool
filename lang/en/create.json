@@ -227,5 +227,6 @@
     "enter_date": "Enter date",
     "invoice_number": "Invoice number",
     "enter_invoice_number": "Enter invoice number",
-    "expense_head": "Expense head"
+    "expense_head": "Expense head",
+    "Select teacher": "Select teacher"
 }

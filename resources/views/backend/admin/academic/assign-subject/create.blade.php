@@ -79,7 +79,7 @@
                     <div class="col-12">
                         <div class="table-responsive">
                             <div>
-                                <table class="table school_borderLess_table table_border_hide2" id="subject-teacher">
+                                <table class="table" id="subject-teacher">
                                     <thead>
                                         <tr>
                                             <td scope="col">{{ ___('create.subject') }} <span
@@ -142,7 +142,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: url + '/assign-subject/add-subject-teacher',
+                url: url + '/academic/assign-subject/add-subject-teacher',
                 success: function(data) {
                     $("#subject-teacher tbody").append(data);
                     $("#counter").val(counter);

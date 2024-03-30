@@ -197,7 +197,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: url + '/assign-subject/add-subject-teacher',
+                url: url + '/academic/assign-subject/add-subject-teacher',
                 success: function(data) {
                     $("#subject-teacher tbody").append(data);
                     $("#counter").val(counter);

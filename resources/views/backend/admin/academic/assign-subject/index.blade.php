@@ -64,9 +64,40 @@
             </tbody>
         </table>
     </div>
+
+    <div id="view-modal">
+        <div class="modal fade" id="basicModal" tabindex="-1" aria-labelledby="basicModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                {{--  --}}
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('script')
+    <script>
+        function viewSubjectTeacher(id) {
+            var url = $('#url').val();
+            var formData = {
+                id: id,
+            }
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/academic/assign-subject/show',
+                success: function(data) {
+                    $("#basicModal .modal-dialog").html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
     @include('backend.admin.components.table.js')
     @include('backend.admin.components.table.delete-ajax')
 @endpush

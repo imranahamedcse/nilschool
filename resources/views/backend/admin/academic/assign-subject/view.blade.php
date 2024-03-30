@@ -1,15 +1,15 @@
 <!-- Start Basic Modal -->
 
 <div class="modal-content">
-    <div class="modal-header modal-header-image">
+    <div class="modal-header">
         <h5 class="modal-title" id="basicModalLabel">{{ ___('index.Subject & Teacher') }}
         </h5>
-        <button type="button" class="m-0 btn-close d-flex justify-content-center align-items-center"
+        <button type="button" class="m-0 btn-close"
             data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times text-white" aria-hidden="true"></i></button>
     </div>
-    <div class="modal-body p-5 table-content table-basic">
-        <div class="table-responsive table_height_450 niceScroll">
-            <table class="table table-bg">
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table">
                 <thead class="thead">
                     <tr>
                         <th class="serial">{{ ___('index.subject') }}</th>
@@ -30,10 +30,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary py-2 px-4"
-            data-bs-dismiss="modal">{{ ___('index.Close') }}</button>
     </div>
 </div>
 <!-- End Basic Modal -->
