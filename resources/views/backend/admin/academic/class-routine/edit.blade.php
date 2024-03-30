@@ -118,92 +118,90 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="table-responsive">
-                                        <table class="table school_borderLess_table" id="class-routines">
-                                            <thead>
-                                                <tr>
-                                                    <td scope="col">{{ ___('create.subject') }} <span
-                                                            class="text-danger"></span>
-                                                        @if ($errors->any())
-                                                            @if ($errors->has('subjects.*'))
-                                                                <span class="text-danger">{{ 'The fields are required' }}
-                                                            @endif
+                                    <table class="table" id="class-routines">
+                                        <thead>
+                                            <tr>
+                                                <td scope="col">{{ ___('create.subject') }} <span
+                                                        class="text-danger"></span>
+                                                    @if ($errors->any())
+                                                        @if ($errors->has('subjects.*'))
+                                                            <span class="text-danger">{{ 'The fields are required' }}
                                                         @endif
-                                                    </td>
-                                                    <td scope="col">
-                                                        {{ ___('create.time_schedules.*') }}
-                                                        <span class="text-danger"></span>
-                                                        @if ($errors->any())
-                                                            @if ($errors->has('time_schedules.*'))
-                                                                <span class="text-danger">{{ 'The fields are required' }}
-                                                            @endif
+                                                    @endif
+                                                </td>
+                                                <td scope="col">
+                                                    {{ ___('create.time_schedules.*') }}
+                                                    <span class="text-danger"></span>
+                                                    @if ($errors->any())
+                                                        @if ($errors->has('time_schedules.*'))
+                                                            <span class="text-danger">{{ 'The fields are required' }}
                                                         @endif
-                                                    </td>
-                                                    <td scope="col">
-                                                        {{ ___('create.class_room') }}
-                                                        <span class="text-danger"></span>
-                                                        @if ($errors->any())
-                                                            @if ($errors->has('class_rooms.*'))
-                                                                <span class="text-danger">{{ 'The fields are required' }}
-                                                            @endif
+                                                    @endif
+                                                </td>
+                                                <td scope="col">
+                                                    {{ ___('create.class_room') }}
+                                                    <span class="text-danger"></span>
+                                                    @if ($errors->any())
+                                                        @if ($errors->has('class_rooms.*'))
+                                                            <span class="text-danger">{{ 'The fields are required' }}
                                                         @endif
+                                                    @endif
+                                                </td>
+                                                <td scope="col">
+                                                    {{ ___('create.action') }}
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{-- Add hear --}}
+                                            @foreach ($data['class_routine']->classRoutineChildren as $counter => $child)
+                                                <tr id="document-file">
+                                                    <td>
+                                                        <select class="form-control" name="subjects[]"
+                                                            id="subject{{ $counter }}" required>
+                                                            <option value="">{{ ___('create.Select subject') }}
+                                                            </option>
+                                                            @foreach ($data['subjects'] as $item)
+                                                                <option value="{{ $item->subject->id }}"
+                                                                    {{ $child->subject_id == $item->subject->id ? 'selected' : '' }}>
+                                                                    {{ $item->subject->name }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </td>
-                                                    <td scope="col">
-                                                        {{ ___('create.action') }}
+                                                    <td>
+                                                        <select class="form-control" name="time_schedules[]"
+                                                            id="teacher{{ $counter }}" required>
+                                                            <option value="">
+                                                                {{ ___('create.Select time schedule') }}</option>
+                                                            @foreach ($data['time_schedules'] as $item)
+                                                                <option value="{{ $item->id }}"
+                                                                    {{ $child->time_schedule_id == $item->id ? 'selected' : '' }}>
+                                                                    {{ $item->start_time }} - {{ $item->end_time }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" name="class_rooms[]"
+                                                            id="class_room{{ $counter }}" required>
+                                                            <option value="">
+                                                                {{ ___('create.Select class room') }}</option>
+                                                            @foreach ($data['class_rooms'] as $item)
+                                                                <option value="{{ $item->id }}"
+                                                                    {{ $child->class_room_id == $item->id ? 'selected' : '' }}>
+                                                                    {{ $item->room_no }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger" onclick="removeRow(this)">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </button>
                                                     </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                {{-- Add hear --}}
-                                                @foreach ($data['class_routine']->classRoutineChildren as $counter => $child)
-                                                    <tr id="document-file">
-                                                        <td>
-                                                            <select class="form-control" name="subjects[]"
-                                                                id="subject{{ $counter }}" required>
-                                                                <option value="">{{ ___('create.Select subject') }}
-                                                                </option>
-                                                                @foreach ($data['subjects'] as $item)
-                                                                    <option value="{{ $item->subject->id }}"
-                                                                        {{ $child->subject_id == $item->subject->id ? 'selected' : '' }}>
-                                                                        {{ $item->subject->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control" name="time_schedules[]"
-                                                                id="teacher{{ $counter }}" required>
-                                                                <option value="">
-                                                                    {{ ___('create.Select time schedule') }}</option>
-                                                                @foreach ($data['time_schedules'] as $item)
-                                                                    <option value="{{ $item->id }}"
-                                                                        {{ $child->time_schedule_id == $item->id ? 'selected' : '' }}>
-                                                                        {{ $item->start_time }} - {{ $item->end_time }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control" name="class_rooms[]"
-                                                                id="class_room{{ $counter }}" required>
-                                                                <option value="">
-                                                                    {{ ___('create.Select class room') }}</option>
-                                                                @foreach ($data['class_rooms'] as $item)
-                                                                    <option value="{{ $item->id }}"
-                                                                        {{ $child->class_room_id == $item->id ? 'selected' : '' }}>
-                                                                        {{ $item->room_no }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <button class="btn btn-danger" onclick="removeRow(this)">
-                                                                <i class="fa-solid fa-xmark"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +268,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: url + '/class-routine/add-class-routine',
+                url: url + '/academic/class-routine/add-class-routine',
                 success: function(data) {
                     $("#class-routines tbody").append(data);
                     $("#counter").val(counter);

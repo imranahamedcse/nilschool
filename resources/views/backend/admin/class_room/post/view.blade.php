@@ -26,10 +26,12 @@
                     <small>{{ $data['post']->created_at->format('d M') }}</small>
                 </div>
             </div>
-            {{ $data['post']->description }}
             @if ($data['post']->upload)
-                <a href="{{ @globalAsset($data['post']->upload->path) }}" download>{{ ___('index.download') }}</a>
+                <a href="{{ @globalAsset($data['post']->upload->path) }}" download><i class="fa-solid fa-download"></i></a>
             @endif
+            <div>
+                {{ $data['post']->description }}
+            </div>
         </div>
 
         <div class="border p-3">

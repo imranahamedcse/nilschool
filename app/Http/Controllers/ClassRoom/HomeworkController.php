@@ -46,7 +46,7 @@ class HomeworkController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Class Room"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
 
@@ -67,7 +67,7 @@ class HomeworkController extends Controller
         ];
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
-            ["title" => ___("common.Examination"), "route" => ""],
+            ["title" => ___("common.Class Room"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
         $data['classes']            = $this->classRepo->assignedAll();

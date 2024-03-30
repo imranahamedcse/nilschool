@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Academic\Classes;
 use App\Models\Academic\Section;
 use App\Models\Academic\Subject;
+use App\Models\Upload;
 use App\Models\User;
 
 class Post extends Model
 {
     use HasFactory;
-    
+
+    public function upload()
+    {
+        return $this->belongsTo(Upload::class, 'upload_id', 'id');
+    }
     public function class()
     {
         return $this->belongsTo(Classes::class, 'classes_id', 'id');

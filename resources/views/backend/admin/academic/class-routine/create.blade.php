@@ -167,8 +167,8 @@
       <script>
           // Class routine start
           function addClassRoutine() {
-              var classId = $('#getSections').val();
-              var sectionId = $('.sections').val();
+              var classId = $('.class').val();
+              var sectionId = $('.section').val();
               var dayId = $('.day').val();
 
               if (!classId || !sectionId || !dayId) {
@@ -210,7 +210,7 @@
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   },
-                  url: url + '/class-routine/add-class-routine',
+                  url: url + '/academic/class-routine/add-class-routine',
                   success: function(data) {
                       $("#class-routines tbody").append(data);
                       $("#counter").val(counter);

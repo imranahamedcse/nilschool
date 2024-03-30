@@ -74,7 +74,6 @@ class FeesAssignController extends Controller
 
     public function show(Request $request)
     {
-
         $data['fees_assign']  = $this->repo->show($request->id);
         return view('backend.admin.fees.assign.view', compact('data'))->render();
     }

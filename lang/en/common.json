@@ -175,5 +175,9 @@
     "staff": "Staff",
     "department": "Department",
     "designation": "Designation",
-    "Edit subject assign": "Edit subject assign"
+    "Edit subject assign": "Edit subject assign",
+    "Edit class routine": "Edit class routine",
+    "Class Room": "Class Room",
+    "Edit fees master": "Edit fees master",
+    "Edit fees assign": "Edit fees assign"
 }

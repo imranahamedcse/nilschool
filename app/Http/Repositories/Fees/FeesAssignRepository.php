@@ -8,6 +8,8 @@ use App\Traits\ReturnFormatTrait;
 use Illuminate\Support\Facades\DB;
 use App\Models\Fees\FeesAssignChildren;
 use App\Http\Interfaces\Fees\FeesAssignInterface;
+use App\Models\Fees\FeesAssignStudents;
+use App\Models\Fees\FeesAssignStudentsChilds;
 use App\Models\StudentInfo\SessionClassStudent;
 
 class FeesAssignRepository implements FeesAssignInterface
@@ -51,14 +53,27 @@ class FeesAssignRepository implements FeesAssignInterface
             $row->gender_id     = $request->gender == "" ? null : $request->gender;
             $row->save();
 
-            foreach ($request->fees_master_ids as $fees_master) {
+            // foreach ($request->fees_master_ids as $fees_master) {
 
-                foreach ($request->student_ids as $item) {
-                    $feesChield                 = new FeesAssignChildren();
-                    $feesChield->fees_assign_id = $row->id;
-                    $feesChield->fees_master_id = $fees_master;
-                    $feesChield->student_id     = $item;
-                    $feesChield->save();
+            //     foreach ($request->student_ids as $item) {
+            //         $feesChield                 = new FeesAssignChildren();
+            //         $feesChield->fees_assign_id = $row->id;
+            //         $feesChield->fees_master_id = $fees_master;
+            //         $feesChield->student_id     = $item;
+            //         $feesChield->save();
+            //     }
+            // }
+            foreach ($request->student_ids as $item) {
+                $student                 = new FeesAssignStudents();
+                $student->fees_assign_id = $row->id;
+                $student->student_id     = $item;
+                $student->save();
+
+                foreach ($request->fees_master_ids as $fees_master) {
+                    $studentChild                         = new FeesAssignStudentsChilds();
+                    $studentChild->fees_assign_student_id = $student->id;
+                    $studentChild->fees_master_id         = $fees_master;
+                    $studentChild->save();
                 }
             }
 

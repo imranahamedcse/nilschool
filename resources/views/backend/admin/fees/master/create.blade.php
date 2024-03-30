@@ -21,10 +21,8 @@
                             <div class="col-md-6 mb-3">
                                 <label for="validationDefault01" class="form-label">{{ ___('create.fees_group') }} <span
                                         class="text-danger">*</span></label>
-                                <select
-                                    class="form-control @error('fees_group_id') is-invalid @enderror"
-                                    name="fees_group_id" id="validationDefault01"
-                                   >
+                                <select class="form-control @error('fees_group_id') is-invalid @enderror"
+                                    name="fees_group_id" id="validationDefault01">
                                     <option value="">{{ ___('create.select_fees_group') }}</option>
                                     @foreach ($data['fees_groups'] as $item)
                                         <option value="{{ $item->id }}"
@@ -42,8 +40,7 @@
                                 <label for="validationDefault02" class="form-label">{{ ___('create.fees_type') }} <span
                                         class="text-danger">*</span></label>
                                 <select id="getSubjects validationDefault02"
-                                    class="form-control @error('fees_type_id') is-invalid @enderror"
-                                    name="fees_type_id">
+                                    class="form-control @error('fees_type_id') is-invalid @enderror" name="fees_type_id">
                                     <option value="">{{ ___('create.select_section') }}</option>
                                     @foreach ($data['fees_types'] as $item)
                                         <option value="{{ $item->id }}"
@@ -72,9 +69,9 @@
                             <div class="col-md-6 mb-3">
                                 <label for="validationDefault04" class="form-label ">{{ ___('create.amount') }}
                                     ({{ Setting('currency_symbol') }}) <span class="text-danger">*</span></label>
-                                <input class="form-control amount @error('amount') is-invalid @enderror"
-                                    name="amount" id="validationDefault04" type="number"
-                                    placeholder="{{ ___('create.enter_amount') }}" value="{{ old('amount') }}">
+                                <input class="form-control amount @error('amount') is-invalid @enderror" name="amount"
+                                    id="validationDefault04" type="number" placeholder="{{ ___('create.enter_amount') }}"
+                                    value="{{ old('amount') }}">
                                 @error('amount')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -84,15 +81,16 @@
                             <div class="col-md-6 mb-3">
                                 <label for="validationDefault05" class="form-label">{{ ___('create.fine_type') }} <span
                                         class="text-danger">*</span></label>
-                                <select
-                                    class="fine_type form-control @error('fine_type') is-invalid @enderror"
+                                <select class="fine_type form-control @error('fine_type') is-invalid @enderror"
                                     name="fine_type" id="validationDefault05">
                                     <option {{ old('fine_type') == App\Enums\FineType::NONE ? 'selected' : '' }}
                                         value="{{ App\Enums\FineType::NONE }}">{{ ___('create.none') }}</option>
                                     <option {{ old('fine_type') == App\Enums\FineType::PERCENTAGE ? 'selected' : '' }}
-                                        value="{{ App\Enums\FineType::PERCENTAGE }}">{{ ___('create.percentage') }}</option>
+                                        value="{{ App\Enums\FineType::PERCENTAGE }}">{{ ___('create.percentage') }}
+                                    </option>
                                     <option {{ old('fine_type') == App\Enums\FineType::FIX_AMOUNT ? 'selected' : '' }}
-                                        value="{{ App\Enums\FineType::FIX_AMOUNT }}">{{ ___('create.fix_amount') }}</option>
+                                        value="{{ App\Enums\FineType::FIX_AMOUNT }}">{{ ___('create.fix_amount') }}
+                                    </option>
                                 </select>
                                 @error('fine_type')
                                     <div class="invalid-feedback">
@@ -103,9 +101,8 @@
                             <div class="col-md-6 mb-3">
                                 <label for="validationDefault06" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
-                                <select
-                                    class="form-control @error('status') is-invalid @enderror"
-                                    name="status" id="validationDefault06">
+                                <select class="form-control @error('status') is-invalid @enderror" name="status"
+                                    id="validationDefault06">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('create.inactive') }}
                                     </option>
@@ -119,10 +116,10 @@
                             <div class="col-md-6 mb-3 percentage">
                                 <label for="validationDefault07" class="form-label ">{{ ___('create.percentage') }} <span
                                         class="text-danger">*</span></label>
-                                <input
-                                    class="form-control percentage_input @error('percentage') is-invalid @enderror"
+                                <input class="form-control percentage_input @error('percentage') is-invalid @enderror"
                                     name="percentage" id="validationDefault07" type="number"
-                                    placeholder="{{ ___('create.enter_percentage') }}" value="{{ old('percentage') ?? 0 }}">
+                                    placeholder="{{ ___('create.enter_percentage') }}"
+                                    value="{{ old('percentage') ?? 0 }}">
                                 @error('percentage')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -132,8 +129,7 @@
                             <div class="col-md-6 mb-3 fine_amount">
                                 <label for="validationDefault08" class="form-label ">{{ ___('create.fine_amount') }}
                                     ({{ Setting('currency_symbol') }}) <span class="text-danger">*</span></label>
-                                <input
-                                    class="form-control fine_amount_input @error('fine_amount') is-invalid @enderror"
+                                <input class="form-control fine_amount_input @error('fine_amount') is-invalid @enderror"
                                     name="fine_amount" id="validationDefault08" type="number"
                                     placeholder="{{ ___('create.enter_fine_amount') }}"
                                     value="{{ old('fine_amount') ?? 0 }}">
@@ -156,3 +152,64 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        // Start Fees Master
+        var fine_type = $('.fine_type').val();
+        if (fine_type == 0) {
+            $('.percentage').hide();
+            $('.fine_amount').hide();
+        } else if (fine_type == 1) {
+            $('.percentage').show();
+            $('.fine_amount').show();
+        } else if (fine_type == 2) {
+            $('.percentage').hide();
+            $('.fine_amount').show();
+        }
+
+        $('.fine_type').on('change', function(e) {
+            var fine_type = $('.fine_type').val();
+            if (fine_type == 0) {
+                $('.percentage').hide();
+                $('.fine_amount').hide();
+                $('.percentage_input').val('0');
+                $('.fine_amount_input').val('0');
+                $('.fine_amount_input').prop('readonly', false);
+            } else if (fine_type == 1) {
+                $('.percentage').show();
+                $('.fine_amount').show();
+                $('.percentage_input').val('0');
+                $('.fine_amount_input').val('0');
+                $('.fine_amount_input').prop('readonly', true);
+            } else if (fine_type == 2) {
+                $('.percentage').hide();
+                $('.fine_amount').show();
+                $('.percentage_input').val('0');
+                $('.fine_amount_input').val('0');
+                $('.fine_amount_input').prop('readonly', false);
+            }
+        });
+
+        $(".percentage_input").on("keypress", function(e) {
+            var currentValue = String.fromCharCode(e.which);
+            var finalValue = $(this).val() + currentValue;
+            if (finalValue > 100) {
+                e.preventDefault();
+            }
+        });
+
+        $('.percentage_input').on('keyup', function(e) {
+            var amount = $('.amount').val();
+            var per = $('.percentage_input').val();
+            $('.fine_amount_input').val((amount * (per / 100)).toFixed(0));
+        });
+
+        $('.amount').on('keyup', function(e) {
+            var amount = $('.amount').val();
+            var per = $('.percentage_input').val();
+            $('.fine_amount_input').val((amount * (per / 100)).toFixed(0));
+        });
+        // End Fees Master
+    </script>
+@endpush

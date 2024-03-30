@@ -33,14 +33,8 @@ class FeesAssign extends Model
     {
         return $this->belongsTo(FeesGroup::class, 'fees_group_id', 'id');
     }
-
-    public function feesAssignChilds()
+    public function feesAssignStudents()
     {
-        return $this->hasMany(FeesAssignChildren::class, 'fees_assign_id', 'id');
-    }
-
-    public function feesGroupChilds()
-    {
-        return $this->hasMany(FeesMaster::class, 'fees_assign_id', 'id');
+        return $this->hasMany(FeesAssignStudents::class, 'fees_assign_id', 'id');
     }
 }

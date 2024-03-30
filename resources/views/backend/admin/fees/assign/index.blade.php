@@ -97,7 +97,6 @@
                 },
                 url: url + '/fees/assign/show',
                 success: function(data) {
-                    // $("#view-modal").append(data);
                     $("#modalCustomizeWidth .modal-dialog").html(data);
                 },
                 error: function(data) {

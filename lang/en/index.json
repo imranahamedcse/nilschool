@@ -171,5 +171,7 @@
     "All": "All",
     "Unpaid": "Unpaid",
     "Subject & Teacher": "Subject & Teacher",
-    "Close": "Close"
+    "Close": "Close",
+    "Attendance already collected! You can edit record": "Attendance already collected! You can edit record",
+    "download": "Download"
 }

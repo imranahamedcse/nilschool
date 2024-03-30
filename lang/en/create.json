@@ -228,5 +228,8 @@
     "invoice_number": "Invoice number",
     "enter_invoice_number": "Enter invoice number",
     "expense_head": "Expense head",
-    "Select teacher": "Select teacher"
+    "Select teacher": "Select teacher",
+    "Select time schedule": "Select time schedule",
+    "Select class room": "Select class room",
+    "total": "Total"
 }

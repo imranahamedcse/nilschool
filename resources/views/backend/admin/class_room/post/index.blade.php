@@ -37,7 +37,7 @@
                         <td>
                             @if (@$row->upload->path)
                                 <a href="{{ @globalAsset(@$row->upload->path) }}"
-                                    download>{{ ___('index.download') }}</a>
+                                    download><i class="fa-solid fa-download"></i></a>
                             @endif
                         </td>
                         <td>{{ @$row->user->name }}</td>
