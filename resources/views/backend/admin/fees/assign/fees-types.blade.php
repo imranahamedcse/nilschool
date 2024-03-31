@@ -4,7 +4,7 @@
 @endphp
 @foreach ($types as $item)
 <tr>
-    <td><input class="form-check-input fees_master" type="checkbox" name="fees_master_ids[]" value="{{$item->id}}"></td>
+    <td><input class="form-check-input fees_type" type="checkbox" name="fees_type_ids[]" value="{{$item->id}}"></td>
     <td>{{ $item->type->name }}</td>
     <td>{{ $item->amount }}</td>
 </tr>

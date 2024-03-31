@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('fees_assign_students_childs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('fees_assign_id')->constrained('fees_assigns')->cascadeOnDelete();
             $table->foreignId('fees_assign_student_id')->constrained('fees_assign_students')->cascadeOnDelete();
-            $table->foreignId('fees_master_id')->constrained('fees_masters')->cascadeOnDelete();
+            $table->foreignId('fees_type_id')->constrained('fees_types')->cascadeOnDelete();
             $table->timestamps();
         });
     }

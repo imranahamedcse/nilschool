@@ -37,4 +37,8 @@ class FeesAssign extends Model
     {
         return $this->hasMany(FeesAssignStudents::class, 'fees_assign_id', 'id');
     }
+    public function feesAssignFeesType()
+    {
+        return $this->hasMany(FeesAssignStudentsChilds::class, 'fees_assign_id', 'id');
+    }
 }

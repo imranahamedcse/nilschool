@@ -120,7 +120,7 @@ class FeesAssignController extends Controller
         $data['sections']     = $this->classSetupRepo->getSections($data['fees_assign']->classes_id);
         $data['fees_groups']  = $this->feesMasterRepo->allGroups();
 
-        $data['assigned_fes_masters']  =  array_unique($data['fees_assign']->feesAssignChilds->pluck('fees_master_id')->toArray());
+        $data['assigned_fes_masters']  =  array_unique($data['fees_assign']->feesAssignFeesType->pluck('fees_type_id')->toArray());
 
         $data['fees_masters']  = $this->feesMasterRepo->all()->where('fees_group_id', $data['fees_assign']->fees_group_id);
 

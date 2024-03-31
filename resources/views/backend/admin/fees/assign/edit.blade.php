@@ -145,7 +145,7 @@
                                                 <tr>
                                                     <td><input class="form-check-input fees_master"
                                                             {{ in_array($item->id, $data['assigned_fes_masters']) ? 'checked' : '' }}
-                                                            type="checkbox" name="fees_master_ids[]"
+                                                            type="checkbox" name="fees_type_ids[]"
                                                             value="{{ $item->id }}"></td>
                                                     <td>{{ $item->type->name }}</td>
                                                     <td>{{ $item->amount }}</td>
@@ -174,7 +174,7 @@
                                             <tr>
                                                 <th class="purchase mr-4">{{ ___('create.All') }} <input
                                                         class="form-check-input"
-                                                        {{ count($data['students']) == count(array_unique($data['fees_assign']->feesAssignChilds->pluck('student_id')->toArray())) ? 'checked' : '' }}
+                                                        {{ count($data['students']) == count(array_unique($data['fees_assign']->feesAssignStudents->pluck('student_id')->toArray())) ? 'checked' : '' }}
                                                         type="checkbox" id="all_students"></th>
                                                 <th class="purchase">{{ ___('create.admission_no') }}</th>
                                                 <th class="purchase">{{ ___('create.Student Name') }}</th>
@@ -189,7 +189,7 @@
                                                 <tr id="document-file">
                                                     <td>
                                                         <input class="form-check-input student" type="checkbox"
-                                                            {{ in_array($item->id, $data['fees_assign']->feesAssignChilds->pluck('student_id')->toArray()) ? 'checked' : '' }}
+                                                            {{ in_array($item->id, $data['fees_assign']->feesAssignStudents->pluck('student_id')->toArray()) ? 'checked' : '' }}
                                                             name="student_ids[]" value="{{ $item->id }}">
                                                     </td>
                                                     <td>{{ @$item->student->admission_no }}</td>
