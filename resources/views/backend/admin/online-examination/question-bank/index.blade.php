@@ -35,7 +35,7 @@
             </div>
 
             <div class="col text-end">
-                @if (hasPermission(@$data['headers']['permission']))
+                @if (hasPermission(@$data['headers']['create-permission']))
                     <a class="btn btn-sm btn-secondary" href="{{ route(@$data['headers']['create-route']) }}">
                         <i class="fa-solid fa-plus"></i> {{ ___('index.add') }}
                     </a>

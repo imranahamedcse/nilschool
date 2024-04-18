@@ -144,8 +144,6 @@
                 student_id: $("#student_id").val(),
             }
 
-            console.log(formData);
-
             $.ajax({
                 type: "GET",
                 dataType: 'html',
@@ -153,7 +151,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/fees-collect/fees-show',
+                url: '/fees/collect/fees-show',
                 success: function(data) {
                     // $("#view-modal").append(data);
                     $("#modalCustomizeWidth .modal-dialog").html(data);

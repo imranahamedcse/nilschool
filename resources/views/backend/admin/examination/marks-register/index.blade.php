@@ -65,6 +65,12 @@
         </table>
 
     </div>
+
+    <div id="view-modal">
+        <div class="modal fade" id="modalCustomizeWidth" tabindex="-1" aria-labelledby="modalWidth" aria-hidden="true">
+            <div class="modal-dialog modal-xl"></div>
+        </div>
+    </div>
 @endsection
 
 @push('script')
@@ -75,4 +81,29 @@
     <script src="{{ asset('backend/js/get-subject.js') }}"></script>
     <script src="{{ asset('backend/js/get-exam-type.js') }}"></script>
 
+    <script>
+        function viewStudentMark(id) {
+            var url = $('#url').val();
+
+            $.ajax({
+                type: "GET",
+                dataType: 'html',
+                cache: false,
+                contentType: false,
+                data: {
+                    id: id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url + '/exam/marks-register/show',
+                success: function(data) {
+                    $("#modalCustomizeWidth .modal-dialog").html(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
 @endpush

@@ -43,6 +43,7 @@ class QuestionBankRepository implements QuestionBankInterface
 
     public function store($request)
     {
+        dd($request->all());
         DB::beginTransaction();
         try {
             $row                    = new $this->model;
@@ -80,6 +81,7 @@ class QuestionBankRepository implements QuestionBankInterface
             DB::commit();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
         } catch (\Throwable $th) {
+            dd($th);
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
         }

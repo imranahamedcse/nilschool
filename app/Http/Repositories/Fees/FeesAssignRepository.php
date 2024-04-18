@@ -50,6 +50,17 @@ class FeesAssignRepository implements FeesAssignInterface
             $row->gender_id     = $request->gender == "" ? null : $request->gender;
             $row->save();
 
+            foreach ($request->fees_type_ids as $fees_master) {
+
+                foreach ($request->student_ids as $item) {
+                    $feesChield                 = new FeesAssignChildren();
+                    $feesChield->fees_assign_id = $row->id;
+                    $feesChield->fees_master_id = $fees_master;
+                    $feesChield->student_id     = $item;
+                    $feesChield->save();
+                }
+            }
+
             foreach ($request->student_ids as $item) {
                 $student                 = new FeesAssignStudents();
                 $student->fees_assign_id = $row->id;
@@ -96,6 +107,26 @@ class FeesAssignRepository implements FeesAssignInterface
             $row->gender_id     = $request->gender == "" ? null : $request->gender;
             $row->save();
 
+            $diff = array_diff($row->feesAssignChilds->pluck('student_id')->toArray(), $request->student_ids);
+            FeesAssignChildren::where('fees_assign_id', $row->id)->whereIn('student_id', $diff)->delete();
+
+            foreach ($request->fees_type_ids as $fees_master) {
+
+                foreach ($request->student_ids as $item) {
+
+                    $feesChield = FeesAssignChildren::where('fees_master_id', $fees_master)->where('student_id', $item)->first();
+                    if(!$feesChield) {
+                        $feesChield                 = new FeesAssignChildren();
+                    }
+
+                    $feesChield->fees_assign_id = $row->id;
+                    $feesChield->fees_master_id = $fees_master;
+                    $feesChield->student_id     = $item;
+                    $feesChield->save();
+
+                }
+            }
+
             FeesAssignStudents::where('fees_assign_id', $row->id)->delete();
 
             foreach ($request->student_ids as $item) {
@@ -116,7 +147,6 @@ class FeesAssignRepository implements FeesAssignInterface
             DB::commit();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
         } catch (\Throwable $th) {
-            dd($th);
             DB::rollBack();
             return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
         }

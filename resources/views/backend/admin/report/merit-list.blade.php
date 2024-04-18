@@ -47,7 +47,7 @@
                     @empty
                         <tr>
                             <td colspan="9" class="td-text-center">
-                                @include('backend.includes.no-data')
+                                @include('backend.admin.components.table.empty')
                             </td>
                         </tr>
                     @endforelse

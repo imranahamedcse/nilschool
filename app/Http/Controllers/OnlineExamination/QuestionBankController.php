@@ -32,7 +32,7 @@ class QuestionBankController extends Controller
     {
         $data['question_bank'] = $this->repo->all();
 
-        $title         = ___('online-examination.Question bank');
+        $title         = ___('index.question_bank');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'question_bank_create',
@@ -49,7 +49,7 @@ class QuestionBankController extends Controller
 
     public function search(Request $request)
     {
-        $title         = ___('online-examination.question_bank');
+        $title         = ___('index.question_bank');
         $data['headers']   = [
             "title"        => $title,
             "create-permission"   => 'question_bank_create',
@@ -68,7 +68,7 @@ class QuestionBankController extends Controller
 
     public function create()
     {
-        $data['title']          = ___('online-examination.Add question bank');
+        $data['title']          = ___('index.Add question bank');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Online Examination"), "route" => ""],
@@ -90,7 +90,7 @@ class QuestionBankController extends Controller
 
     public function edit($id)
     {
-        $data['title']         = ___('online-examination.Edit question bank');
+        $data['title']         = ___('index.Edit question bank');
         $data['breadcrumbs']  = [
             ["title" => ___("common.home"), "route" => "dashboard"],
             ["title" => ___("common.Online Examination"), "route" => ""],

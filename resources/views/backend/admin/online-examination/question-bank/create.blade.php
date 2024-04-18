@@ -25,7 +25,7 @@
                                 <label for="validationDefault01"
                                     class="form-label">{{ ___('create.question_type') }} <span
                                         class="text-danger">*</span></label>
-                                <select class="question_type @error('type') is-invalid @enderror" name="type"
+                                <select class="form-control question_type @error('type') is-invalid @enderror" name="type"
                                     id="validationDefault01">
                                     <option value="">{{ ___('create.select_type') }}</option>
                                     @foreach (\Config::get('site.question_types') as $key => $type)
@@ -45,7 +45,7 @@
                                 <label for="validationDefault02"
                                     class="form-label">{{ ___('create.question_group') }}
                                     <span class="text-danger">*</span></label>
-                                <select class="question_group @error('question_group') is-invalid @enderror"
+                                <select class="form-control question_group @error('question_group') is-invalid @enderror"
                                     name="question_group" id="validationDefault02">
                                     <option data-display="Select">{{ ___('create.select_question_group') }}
                                     </option>
@@ -67,7 +67,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="validationDefault03" class="form-label">{{ ___('create.status') }} <span
                                         class="text-danger">*</span></label>
-                                <select id="validationDefault03" class="@error('status') is-invalid @enderror"
+                                <select id="validationDefault03" class="form-control @error('status') is-invalid @enderror"
                                     name="status">
                                     <option value="{{ App\Enums\Status::ACTIVE }}">{{ ___('create.active') }}</option>
                                     <option value="{{ App\Enums\Status::INACTIVE }}">{{ ___('create.inactive') }}
@@ -370,7 +370,7 @@
     </script>
 
     <script>
-        $(document).on('keyup.question_group', function() {
+        $(document).on('click.question_group', function() {
             var $self = $(this);
             var $text = $self.find('.nice-select-search').val();
             var url = $('#url').val();
@@ -386,7 +386,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: url + '/question-bank/get-question-group',
+                url: url + '/online-exam/question-bank/get-question-group',
                 success: function(data) {
 
                     var section_options = '';

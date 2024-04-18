@@ -110,7 +110,7 @@
                         <div class="px-1">
                             <input value="{{ old('month', @$data['request']->month) }}" name="month"
                                 class="form-control @error('month') is-invalid @enderror" type="month"
-                                placeholder="Search month" min="2023-01" max="2023-12">
+                                placeholder="Search month" min="{{ date('Y') }}-01" max="{{ date('Y') }}-12">
                             @error('month')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -147,9 +147,12 @@
                                 name="exam_type">
                                 <option value="">{{ ___('common.Select exam type') }} </option>
                                 @foreach ($data['exam_types'] as $item)
+                                    {{-- <option
+                                        {{ old('exam_type', @$data['request']->exam_type) == @$item->type->id ? 'selected' : '' }}
+                                        value="{{ @$item->type->id }}">{{ @$item->type->name }}</option> --}}
                                     <option
-                                        {{ old('exam_type', @$data['request']->exam_type) == $item->type->id ? 'selected' : '' }}
-                                        value="{{ $item->type->id }}">{{ $item->type->name }}</option>
+                                        {{ old('exam_type', @$data['request']->exam_type) == @$item->id ? 'selected' : '' }}
+                                        value="{{ @$item->id }}">{{ @$item->name }}</option>
                                 @endforeach
                             </select>
                             @error('exam_type')

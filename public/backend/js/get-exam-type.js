@@ -25,13 +25,20 @@ function getExamType() {
             var exam_type_options = '';
             var exam_type_li = '';
 
-            $.each(JSON.parse(data), function (i, item) {
-                exam_type_options += "<option value=" + item.exam_type.id + ">" + item.exam_type
-                    .name + "</option>";
-                exam_type_li += "<li data-value=" + item.exam_type.id + " class='option'>" +
-                    item.exam_type.name + "</li>";
-            });
+            // $.each(JSON.parse(data), function (i, item) {
+            //     exam_type_options += "<option value=" + item.exam_type.id + ">" + item.exam_type
+            //         .name + "</option>";
+            //     exam_type_li += "<li data-value=" + item.exam_type.id + " class='option'>" +
+            //         item.exam_type.name + "</li>";
+            // });
 
+            $.each(JSON.parse(data), function (i, item) {
+                exam_type_options += "<option value=" + item.type.id + ">" + item.type
+                    .name + "</option>";
+                exam_type_li += "<li data-value=" + item.type.id + " class='option'>" +
+                    item.type.name + "</li>";
+            });
+            
             $("select.exam_type option").not(':first').remove();
             $("select.exam_type").append(exam_type_options);
 

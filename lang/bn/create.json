@@ -242,11 +242,5 @@
     "select_option": "Select option",
     "Answer": "Answer",
     "True": "True",
-    "False": "False",
-    "home": "Home",
-    "languages": "Languages",
-    "edit_terms": "Edit terms",
-    "module": "Module",
-    "term": "Term",
-    "translated_language": "Translated language"
+    "False": "False"
 }

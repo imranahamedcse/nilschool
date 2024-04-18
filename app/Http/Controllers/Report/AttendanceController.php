@@ -37,7 +37,7 @@ class AttendanceController extends Controller
         ];
         $data['headers']  = [
             "title"             => $data['title'],
-            "filter"            => ['attendance.report-search', 'view', 'class', 'section', 'month', 'date'],
+            "filter"            => ['report-attendance.report-search', 'view', 'class', 'section', 'month', 'date'],
             "create-permission" => '',
             "create-route"      => '',
         ];
