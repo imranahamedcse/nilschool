@@ -3,5 +3,7 @@
     "updated_successfully": "Updated successfully",
     "deleted": "Deleted",
     "OK": "OK",
-    "deleted_successfully": "Deleted successfully"
+    "deleted_successfully": "Deleted successfully",
+    "something_went_wrong_please_try_again": "Something went wrong please try again",
+    "user_created_successfully": "User created successfully"
 }

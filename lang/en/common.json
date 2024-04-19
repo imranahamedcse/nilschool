@@ -183,5 +183,11 @@
     "Edit category": "Edit category",
     "Examination Settings": "Examination Settings",
     "exam_routine": "Exam routine",
-    "marks_register": "Marks register"
+    "marks_register": "Marks register",
+    "inactive": "Inactive",
+    "edit_class": "Edit class",
+    "Edit section": "Edit section",
+    "create_staff": "Create staff",
+    "Staff": "Staff",
+    "Subscription": "Subscription"
 }

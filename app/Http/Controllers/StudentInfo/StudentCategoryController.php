@@ -30,7 +30,7 @@ class StudentCategoryController extends Controller
             ["title" => ___("common.Student Info"), "route" => ""],
             ["title" => $title, "route" => ""]
         ];
-        $data['student_categories'] = $this->repo->allActive();
+        $data['student_categories'] = $this->repo->all();
         return view('backend.admin.student-info.student-category.index', compact('data'));
     }
 

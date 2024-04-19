@@ -65,9 +65,9 @@
                             <td>{{ @$row->student->mobile }}</td>
                             <td>
                                 @if (@$row->student->status == App\Enums\Status::ACTIVE)
-                                    <span class="badge-basic-success-text">{{ ___('index.active') }}</span>
+                                    <span class="btn btn-sm btn-success">{{ ___('common.active') }}</span>
                                 @else
-                                    <span class="badge-basic-danger-text">{{ ___('index.inactive') }}</span>
+                                    <span class="btn btn-sm btn-danger">{{ ___('common.inactive') }}</span>
                                 @endif
                             </td>
                             @if (hasPermission('student_update') || hasPermission('student_delete'))
@@ -92,7 +92,7 @@
                 </tbody>
             </table>
         </div>
-        
+
     </div>
 @endsection
 
