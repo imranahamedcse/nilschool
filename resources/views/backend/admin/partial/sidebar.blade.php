@@ -402,8 +402,8 @@
         <!-- End Transactions -->
 
         <!-- Start Canteen -->
-        @if (hasPermission('account_head_read'))
-            <li class="{{ set_menu(['account*']) }}">
+        @if (hasPermission('product_category_read') || hasPermission('product_read') || hasPermission('order_read'))
+            <li class="{{ set_menu(['canteen*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-utensils"></i>
@@ -412,9 +412,19 @@
                     <i class="append-icon fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
-                    @if (hasPermission('account_head_read'))
-                        <li class="{{ set_menu(['account/head*']) }}">
-                            <a href="{{ route('account-head.index') }}">{{ ___('partial.Head') }}</a>
+                    @if (hasPermission('product_category_read'))
+                        <li class="{{ set_menu(['canteen/product-category*']) }}">
+                            <a href="{{ route('product-category.index') }}">{{ ___('partial.Product Categories') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('product_read'))
+                        <li class="{{ set_menu(['canteen/product', 'library/product/*']) }}">
+                            <a href="{{ route('product.index') }}">{{ ___('partial.Products') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('order_read'))
+                        <li class="{{ set_menu(['canteen/order*']) }}">
+                            <a href="{{ route('order.index') }}">{{ ___('partial.Orders') }}</a>
                         </li>
                     @endif
                 </ul>

@@ -105,6 +105,10 @@ class PermissionSeeder extends Seeder
             'pickup_point'      => ['read' => 'pickup_point_read', 'create' => 'pickup_point_create', 'update' => 'pickup_point_update', 'delete' => 'pickup_point_delete'],
             'transport_setup'   => ['read' => 'transport_setup_read', 'create' => 'transport_setup_create', 'update' => 'transport_setup_update', 'delete' => 'transport_setup_delete'],
             'transport_student' => ['read' => 'transport_student_read', 'create' => 'transport_student_create', 'update' => 'transport_student_update', 'delete' => 'transport_student_delete'],
+            // Canteen
+            'product_category'  => ['read' => 'product_category_read', 'create' => 'product_category_create', 'update' => 'product_category_update', 'delete' => 'product_category_delete'],
+            'product'           => ['read' => 'product_read', 'create' => 'product_create', 'update' => 'product_update', 'delete' => 'product_delete'],
+            'order'             => ['read' => 'order_read', 'create' => 'order_create', 'update' => 'order_update', 'delete' => 'order_delete'],
             // Website setup
             'sections'          => ['read' => 'page_sections_read', 'update' => 'page_sections_update'],
             'slider'            => ['read' => 'slider_read', 'create' => 'slider_create', 'update' => 'slider_update', 'delete' => 'slider_delete'],

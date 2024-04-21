@@ -443,6 +443,23 @@ class UserSeeder extends Seeder
                 'transport_student_delete',
                 // Transport end
 
+                // Canteen start
+                // product_category
+                'product_category_read',
+                'product_category_create',
+                'product_category_update',
+                'product_category_delete',
+                // product
+                'product_read',
+                'product_create',
+                'product_update',
+                'product_delete',
+                // order
+                'order_read',
+                'order_create',
+                'order_update',
+                'order_delete',
+                // Canteen end
 
                 // Dormitory start
                 // dormitory

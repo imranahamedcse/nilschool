@@ -93,5 +93,8 @@
     "my_profile": "My profile",
     "update_password": "Update password",
     "logout": "Logout",
-    "Subject list": "Subject list"
+    "Subject list": "Subject list",
+    "Products": "Products",
+    "Orders": "Orders",
+    "Product Categories": "Product Categories"
 }

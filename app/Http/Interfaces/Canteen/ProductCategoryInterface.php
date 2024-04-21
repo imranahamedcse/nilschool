@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Interfaces\Library;
+namespace App\Http\Interfaces\Canteen;
 
-interface BookCategoryInterface
+interface ProductCategoryInterface
 {
     public function all();
 

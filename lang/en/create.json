@@ -273,5 +273,15 @@
     "permanent_address": "Permanent address",
     "enter_permanent_address": "Enter permanent address",
     "basic_salary": "Basic salary",
-    "enter_basic_salary": "Enter basic salary"
+    "enter_basic_salary": "Enter basic salary",
+    "select_book": "Select book",
+    "issue_date": "Issue date",
+    "enter_issue_date": "Enter issue date",
+    "return_date": "Return date",
+    "enter_return_date": "Enter return date",
+    "enter_phone_no": "Enter phone no",
+    "product category": "Product category",
+    "sku": "Sku",
+    "enter_sku": "Enter sku",
+    "SKU": "SKU"
 }

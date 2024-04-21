@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Interfaces\Library;
+namespace App\Http\Interfaces\Canteen;
 
-interface BookCategoryInterface
+interface OrderInterface
 {
     public function all();
 
@@ -15,4 +15,8 @@ interface BookCategoryInterface
     public function update($request, $id);
 
     public function destroy($id);
+
+    public function getProducts($request);
+
+    public function searchResult($request);
 }

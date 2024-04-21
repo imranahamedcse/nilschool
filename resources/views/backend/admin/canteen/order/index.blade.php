@@ -19,7 +19,7 @@
             </div>
 
             <div class="col">
-                <form action="{{ route('issue-book.search') }}" method="post" id="marksheed" enctype="multipart/form-data">
+                <form action="{{ route('order.search') }}" method="post" id="marksheed" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col">
@@ -57,13 +57,13 @@
                     <th class="purchase">{{ ___('index.Issue Date') }}</th>
                     <th class="purchase">{{ ___('index.Return Date') }}</th>
                     <th class="purchase">{{ ___('index.status') }}</th>
-                    @if (hasPermission('issue_book_update') || hasPermission('issue_book_delete'))
+                    @if (hasPermission('order_update') || hasPermission('order_delete'))
                         <th class="action">{{ ___('index.action') }}</th>
                     @endif
                 </tr>
             </thead>
             <tbody class="tbody">
-                @forelse ($data['issue_book'] as $key => $row)
+                @forelse ($data['order'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
                         <td>{{ @$row->book->name }}</td>
@@ -74,20 +74,20 @@
                         <td>
                             @include('backend.admin.components.table.status')
                         </td>
-                        @if (hasPermission('issue_book_update') ||
-                                hasPermission('issue_book_delete') ||
+                        @if (hasPermission('order_update') ||
+                                hasPermission('order_delete') ||
                                 @$row->status == App\Enums\IssueBook::ISSUED)
                             <td>
-                                @if (hasPermission('issue_book_update'))
+                                @if (hasPermission('order_update'))
                                     <a class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('index.edit') }}"
-                                        href="{{ route('issue-book.edit', $row->id) }}"><i
+                                        href="{{ route('order.edit', $row->id) }}"><i
                                             class="fa-solid fa-pencil"></i></a>
                                 @endif
-                                @if (hasPermission('issue_book_delete') && $row->code != 'en')
+                                @if (hasPermission('order_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('index.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('library/issue-book/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('library/order/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

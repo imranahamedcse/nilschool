@@ -34,6 +34,9 @@ use App\Http\Interfaces\Academic\TimeScheduleInterface;
 use App\Http\Interfaces\Accounts\AccountHeadInterface;
 use App\Http\Interfaces\Accounts\ExpenseInterface;
 use App\Http\Interfaces\Accounts\IncomeInterface;
+use App\Http\Interfaces\Canteen\OrderInterface;
+use App\Http\Interfaces\Canteen\ProductCategoryInterface;
+use App\Http\Interfaces\Canteen\ProductInterface;
 use App\Http\Interfaces\ClassRoom\AssignmentInterface;
 use App\Http\Interfaces\ClassRoom\HomeworkInterface;
 use App\Http\Interfaces\ClassRoom\PostInterface;
@@ -112,6 +115,9 @@ use App\Http\Repositories\Academic\TimeScheduleRepository;
 use App\Http\Repositories\Accounts\AccountHeadRepository;
 use App\Http\Repositories\Accounts\ExpenseRepository;
 use App\Http\Repositories\Accounts\IncomeRepository;
+use App\Http\Repositories\Canteen\OrderRepository;
+use App\Http\Repositories\Canteen\ProductCategoryRepository;
+use App\Http\Repositories\Canteen\ProductRepository;
 use App\Http\Repositories\ClassRoom\AssignmentRepository;
 use App\Http\Repositories\ClassRoom\HomeworkRepository;
 use App\Http\Repositories\ClassRoom\PostRepository;
@@ -317,7 +323,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(MemberCategoryInterface::class, MemberCategoryRepository::class);
         $this->app->bind(MemberInterface::class,         MemberRepository::class);
 
-
+        // Library
+        $this->app->bind(ProductCategoryInterface::class,   ProductCategoryRepository::class);
+        $this->app->bind(ProductInterface::class,           ProductRepository::class);
+        $this->app->bind(OrderInterface::class,             OrderRepository::class);
     }
 
     /**
