@@ -4,6 +4,15 @@
     {{ @$data['title'] }}
 @endsection
 
+@push('style')
+    <style>
+        .quantity {
+            height: 29px;
+            width: 100px;
+        }
+    </style>
+@endpush
+
 @section('content')
     @include('backend.admin.components.breadcrumb')
 
@@ -17,98 +26,102 @@
                 method="post" id="order">
                 @csrf
                 @method('PUT')
+
                 <div class="row mb-3">
-                    <div class="col-lg-12">
+                    <div class="col-md-6 mb-3">
+                        <table class="table table-bordered mb-4" id="student-document">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Unit Price</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data['order']->orderItems as $item)
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>
+                                            <img height="30"
+                                                src="{{ @globalAsset(@$item->product->upload->path, '100X100.svg') }}"
+                                                alt="Photo">
+                                        </td>
+                                        <td>{{ $item->product->name }}</td>
+                                        <td class="unit_price">{{ $item->product->price }}</td>
+                                        <td class="subtotal">{{ $item->product->price * $item->quantity }}</td>
+                                        <td>
+                                            <input type="hidden" name="ids[]" value="{{ $item->product->id }}">
+                                            <input type="number" name="quantities[]" class="quantity form-control"
+                                                placeholder="Enter quantity" value="{{ $item->quantity }}">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-danger px-2"
+                                                onclick="removeRow(this)">
+                                                <i class="fa-solid fa-close"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td class="fw-bold" colspan="2">Total:</td>
+                                    <td class="fw-bold" id="total">0</td>
+                                    <td class="fw-bold" colspan="2" id="total_qun">0</td>
+                                </tr>
+                            </tfoot>
+                        </table>
                         <div class="row">
-
-                            <div class="col-md-6 book mb-3">
-                                <label for="validationDefault01" class="form-label">{{ ___('create.select_book') }}
-                                    <span class="text-danger">*</span></label>
-                                <select
-                                    class="form-control @error('book') is-invalid @enderror"
-                                    name="book" id="validationDefault01">
-                                    <option value="">{{ ___('create.select_book') }}</option>
-                                    <option selected value="{{ @$data['order']->book_id }}">{{ $data['book'] }}
+                            <div class="col-12 col-md-6 mb-3">
+                                <input class="form-control" name="note" type="text" value="{{ $data['order']->note }}"
+                                    placeholder="{{ ___('create.enter_note') }}">
+                            </div>
+                            <div class="col-12 col-md-3 mb-3">
+                                <select class="form-control" name="discount_type" id="validationDefault09">
+                                    <option value="fixed" {{ $data['order']->discount_type == 'fixed' ? 'selected' : '' }}>
+                                        {{ ___('create.fixed') }}</option>
+                                    <option value="percentage"
+                                        {{ $data['order']->discount_type == 'percentage' ? 'selected' : '' }}>
+                                        {{ ___('create.percentage') }}
                                     </option>
                                 </select>
-                                @error('book')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                            </div>
+
+                            <div class="col-12 col-md-3 mb-3">
+                                <input class="form-control" name="amount" type="number"
+                                    value="{{ $data['order']->amount }}" min="0"
+                                    placeholder="{{ ___('create.enter_amount') }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="row">
+                            @foreach ($data['items'] as $item)
+                                <div class="col-12 col-md-3 mb-4">
+                                    <div class="card border cursor-pointer" onclick="addNewDocument({{ $item->id }})">
+                                        <div class="card-body text-center">
+                                            <img height="55"
+                                                src="{{ @globalAsset(@$item->upload->path, '100X100.svg') }}"
+                                                alt="Photo"><br>
+                                            <small>{{ $item->name }}</small> <br>
+                                            <small class="fw-bold">{{ $item->price }}</small>
+                                        </div>
                                     </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 member mb-3">
-                                <label for="validationDefault02" class="form-label">{{ ___('create.select_member') }}
-                                    <span class="text-danger">*</span></label>
-                                <select
-                                    class="form-control @error('member') is-invalid @enderror"
-                                    name="member" id="validationDefault02">
-                                    <option value="">{{ ___('create.select_member') }}</option>
-                                    <option selected value="{{ @$data['order']->user_id }}">{{ $data['user'] }}
-                                    </option>
-                                </select>
-                                @error('member')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label for="validationDefault03" class="form-label ">{{ ___('create.issue_date') }} <span
-                                        class="text-danger">*</span></label>
-                                <input class="form-control @error('issue_date') is-invalid @enderror"
-                                    name="issue_date" type="date"
-                                    value="{{ old('issue_date', @$data['order']->issue_date) }}"
-                                    id="validationDefault03" placeholder="{{ ___('create.enter_issue_date') }}">
-                                @error('issue_date')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label for="validationDefault04" class="form-label ">{{ ___('create.return_date') }} <span
-                                        class="text-danger">*</span></label>
-                                <input class="form-control @error('return_date') is-invalid @enderror"
-                                    name="return_date" type="date"
-                                    value="{{ old('return_date', @$data['order']->return_date) }}"
-                                    id="validationDefault04"
-                                    placeholder="{{ ___('create.enter_return_date') }}">
-                                @error('return_date')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label for="validationDefault05" class="form-label ">{{ ___('create.phone') }} <span
-                                        class="text-danger">*</span></label>
-                                <input class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                    value="{{ old('phone', @$data['order']->phone) }}"
-                                    id="validationDefault05" placeholder="{{ ___('create.enter_phone_no') }}">
-                                @error('phone')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-12 mb-3">
-                                <label for="validationDefault06" class="form-label">{{ ___('create.description') }}</label>
-                                <textarea class="form-control" name="description" id="validationDefault06">{{ old('description', @$data['order']->description) }}</textarea>
-                            </div>
-
-                            <div class="col-md-12 mt-24">
-                                <div class="text-end">
-                                    <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
-                                        </span>{{ ___('create.update') }}</button>
                                 </div>
-                            </div>
+                            @endforeach
+                        </div>
+                    </div>
 
+                    <div class="col-md-12 mt-24">
+                        <div class="text-end">
+                            <button class="btn btn-primary"><span><i class="fa-solid fa-save"></i>
+                                </span>{{ ___('create.submit') }}</button>
                         </div>
                     </div>
                 </div>
@@ -116,3 +129,123 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        function getSum() {
+            var table = document.getElementById("student-document");
+            var sum = 0;
+            for (var i = 1; i < table.rows.length - 1; i++) {
+                sum += parseFloat(table.rows[i].cells[4].innerText);
+            }
+            document.getElementById("total").innerText = sum + '.00 tk';
+
+            getQuantitySum();
+        }
+
+        function getQuantitySum() {
+            var quantities = document.querySelectorAll('.quantity');
+            var total = 0;
+            quantities.forEach(function(quantity) {
+                total += parseFloat(quantity.value);
+            });
+
+            document.getElementById("total_qun").innerText = total + ' Pcs';
+        }
+    </script>
+    <script>
+        function calculateSubtotals() {
+
+            var rows = document.querySelectorAll('#student-document tr');
+            rows.forEach(function(row) {
+                var unitPriceElement = row.querySelector('.unit_price');
+                var quantityElement = row.querySelector('.quantity');
+                var subtotalElement = row.querySelector('.subtotal');
+
+                if (unitPriceElement && quantityElement && subtotalElement) {
+                    var unitPrice = parseFloat(unitPriceElement.textContent);
+                    var quantity = parseInt(quantityElement.value);
+                    if (quantity < 1) {
+                        quantity = 1;
+                        quantityElement.value = 1;
+                    }
+                    var subtotal = unitPrice * quantity;
+                    subtotalElement.textContent = subtotal.toFixed(2);
+                }
+            });
+
+            getSum()
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var table = document.getElementById('student-document');
+            table.addEventListener('keyup', handleEvent);
+            table.addEventListener('click', handleEvent);
+
+            function handleEvent(event) {
+                var target = event.target;
+                if (target.classList.contains('quantity')) {
+                    calculateSubtotals();
+                }
+            }
+        });
+    </script>
+    <script>
+        function addNewDocument(id) {
+
+            var idsInputs = document.getElementsByName('ids[]');
+            var idExists = false;
+
+            for (var i = 0; i < idsInputs.length; i++) {
+                if (idsInputs[i].value == id) {
+                    idExists = true;
+                    break;
+                }
+            }
+
+            if (!idExists) {
+                var url = $('#url').val();
+                var formData = {
+                    id: id,
+                }
+
+                $.ajax({
+                    type: "GET",
+                    dataType: 'html',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: url + '/canteen/order/add-new-item',
+                    success: function(data) {
+                        $("#student-document tbody").append(data);
+                        calculateSubtotals();
+                    },
+                    error: function(data) {}
+                });
+            } else {
+                for (var i = 0; i < idsInputs.length; i++) {
+                    if (idsInputs[i].value == id) {
+                        var quantityInput = idsInputs[i].closest('tr').querySelector('.quantity');
+                        if (quantityInput) {
+                            quantityInput.value = parseInt(quantityInput.value) + 1;
+                            calculateSubtotals();
+                        }
+                        return;
+                    }
+                }
+            }
+
+        }
+
+        function removeRow(element) {
+            element.closest('tr').remove();
+            calculateSubtotals();
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateSubtotals();
+        });
+    </script>
+@endpush

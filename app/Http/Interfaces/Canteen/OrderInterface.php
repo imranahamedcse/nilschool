@@ -15,8 +15,4 @@ interface OrderInterface
     public function update($request, $id);
 
     public function destroy($id);
-
-    public function getProducts($request);
-
-    public function searchResult($request);
 }

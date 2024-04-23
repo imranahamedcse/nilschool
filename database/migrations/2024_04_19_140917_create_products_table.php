@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('sku')->nullable();
             $table->foreignId('product_category_id')->constrained('product_categories')->cascadeOnDelete();
-            $table->string('price')->nullable();
+            $table->decimal('price', 16,2)->nullable();
             $table->integer('quantity')->nullable();
             $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
             $table->text('description')->nullable();

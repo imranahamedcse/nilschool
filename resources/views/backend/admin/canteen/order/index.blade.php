@@ -75,9 +75,9 @@
 
                         <td>
                             @if (@$row->discount_type == 'percentage' && @$row->amount != null)
-                                {{ @$row->total_price - (@$row->total_price * @$row->amount / 100) }}
+                                {{ number_format(@$row->total_price - (@$row->total_price * @$row->amount / 100), 2) }}
                             @else
-                                {{ @$row->total_price - @$row->amount }}
+                                {{ number_format(@$row->total_price - @$row->amount, 2) }}
                             @endif
                         </td>
 
@@ -96,7 +96,7 @@
                                 @if (hasPermission('order_delete') && $row->code != 'en')
                                     <a class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="{{ ___('index.delete') }}" href="javascript:void(0);"
-                                        onclick="delete_row('library/order/delete', {{ $row->id }})"><i
+                                        onclick="delete_row('canteen/order/delete', {{ $row->id }})"><i
                                             class="fa-solid fa-trash-can"></i></a>
                                 @endif
                             </td>

@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     public function rules(Request $r)
     {
         return [
-            'product'         => 'required',
+            'product'      => 'required',
             'member'       => 'required',
             'issue_date'   => 'required|date',
             'return_date'  => 'required|date|after_or_equal:issue_date',

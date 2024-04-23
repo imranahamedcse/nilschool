@@ -37,8 +37,8 @@ class OrderRepository implements OrderInterface
 
     public function store($request)
     {
-        // DB::beginTransaction();
-        // try {
+        DB::beginTransaction();
+        try {
 
             $products = Product::findMany($request->ids);
             $total_price = 0;
@@ -53,7 +53,7 @@ class OrderRepository implements OrderInterface
             $row->total_quantity      = $total_quantity;
             $row->total_price         = $total_price;
             $row->discount_type       = $request->discount_type;
-            $row->amount              = $request->amount;
+            $row->amount              = $request->amount != "" ? $request->amount:0;
             $row->note                = $request->note;
             $row->save();
 
@@ -68,12 +68,12 @@ class OrderRepository implements OrderInterface
                 $order->save();
             }
 
-            // DB::commit();
+            DB::commit();
             return $this->responseWithSuccess(___('alert.created_successfully'), []);
-        // } catch (\Throwable $th) {
-        //     DB::rollBack();
-        //     return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
-        // }
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return $this->responseWithError(___('alert.something_went_wrong_please_try_again'), []);
+        }
     }
 
     public function show($id)
@@ -85,14 +85,35 @@ class OrderRepository implements OrderInterface
     {
         DB::beginTransaction();
         try {
-            $row                   = $this->model->findOrfail($id);
-            $row->book_id          = $request->book;
-            $row->user_id          = $request->member;
-            $row->issue_date       = $request->issue_date;
-            $row->return_date      = $request->return_date;
-            $row->phone            = $request->phone;
-            $row->description      = $request->description;
+            $products = Product::findMany($request->ids);
+            $total_price = 0;
+            foreach ($products as $key => $product) {
+                $quantity = $request->quantities[$key] ?? 1;
+                $total_price += $product->price * $quantity;
+            }
+
+            $total_quantity = array_sum($request->quantities);
+
+            $row                      = $this->model->findOrfail($id);
+            $row->total_quantity      = $total_quantity;
+            $row->total_price         = $total_price;
+            $row->discount_type       = $request->discount_type;
+            $row->amount              = $request->amount != "" ? $request->amount:0;
+            $row->note                = $request->note;
             $row->save();
+
+            $row->invoice_no = $row->id;
+            $row->save();
+
+            OrderItems::where('order_id', $row->id)->delete();
+
+            foreach ($request->ids as $key => $id) {
+                $order = new OrderItems();
+                $order->order_id = $row->id;
+                $order->product_id = $id;
+                $order->quantity = $request->quantities[$key];
+                $order->save();
+            }
 
             DB::commit();
             return $this->responseWithSuccess(___('alert.updated_successfully'), []);
@@ -117,29 +138,4 @@ class OrderRepository implements OrderInterface
         }
     }
 
-    public function getProducts($request)
-    {
-        return Product::where('name', 'like', '%' . $request->text . '%')->pluck('name', 'id')->take(10)->toArray();
-    }
-
-    public function searchResult($request)
-    {
-        return  $this->model::query()
-            ->where(function ($query) use ($request) {
-                $query->where(function ($query) use ($request) {
-                    $query->whereHas('user', function ($query) use ($request) {
-                        $query->where('name', 'like', '%' . $request->keyword . '%');
-                    })->orWhereHas('product', function ($query) use ($request) {
-                        $query->where('name', 'like', '%' . $request->keyword . '%');
-                    });
-                })
-                    ->orWhere('phone', 'like', '%' . $request->keyword . '%');
-
-                if (strtotime($request->keyword)) {
-                    $query->orWhere('issue_date', Carbon::parse($request->keyword)->format('Y-m-d'))
-                        ->orWhere('return_date', Carbon::parse($request->keyword)->format('Y-m-d'));
-                }
-            })
-            ->get();
-    }
 }

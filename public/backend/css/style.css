@@ -71,3 +71,7 @@ label.form-check-label {
     padding-left: 3px;
 }
 /* Checkbox end */
+
+.cursor-pointer {
+    cursor: pointer;
+}

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('invoice_no')->nullable();
             $table->integer('total_quantity')->nullable();
-            $table->string('total_price')->nullable();
+            $table->decimal('total_price', 16,2)->nullable();
             $table->string('discount_type')->nullable();
-            $table->integer('amount')->nullable()->default(0);
+            $table->decimal('amount', 16,2)->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
         });

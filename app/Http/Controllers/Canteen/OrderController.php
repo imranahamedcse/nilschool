@@ -63,6 +63,10 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        if (empty($request->ids)) {
+            return back()->with('warning', 'Please select a product');
+        }
+
         $result = $this->Repo->store($request);
         if ($result['status']) {
             return redirect()->route('order.index')->with('success', $result['message']);
@@ -80,14 +84,17 @@ class OrderController extends Controller
             ["title" => $data['title'], "route" => ""]
         ];
 
+        $data['items'] = $this->productRepo->all();
         $data['order']  = $this->Repo->show($id);
-        $data['user']        = $this->Repo->getUser($data['order']->user_id);
-        $data['book']        = $this->Repo->getBook($data['order']->book_id);
         return view('backend.admin.canteen.order.edit', compact('data'));
     }
 
-    public function update(UpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        if (empty($request->ids)) {
+            return back()->with('warning', 'Please select a product');
+        }
+
         $result = $this->Repo->update($request, $id);
         if ($result['status']) {
             return redirect()->route('order.index')->with('success', $result['message']);

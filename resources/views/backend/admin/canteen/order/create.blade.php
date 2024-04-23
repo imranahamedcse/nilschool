@@ -52,7 +52,7 @@
                         </table>
                         <div class="row">
                             <div class="col-12 col-md-6 mb-3">
-                                <input class="form-control" name="note" type="text" value="{{ old('note') }}"
+                                <input class="form-control" name="note" type="text"
                                     placeholder="{{ ___('create.enter_note') }}">
                             </div>
                             <div class="col-12 col-md-3 mb-3">
@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="col-12 col-md-3 mb-3">
-                                <input class="form-control" name="amount" type="number" value="{{ old('amount') }}"
+                                <input class="form-control" name="amount" type="number" value="0" min="0"
                                     placeholder="{{ ___('create.enter_amount') }}">
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                         <div class="row">
                             @foreach ($data['items'] as $item)
                                 <div class="col-12 col-md-3 mb-4">
-                                    <div class="card border" onclick="addNewDocument({{ $item->id }})">
+                                    <div class="card border cursor-pointer" onclick="addNewDocument({{ $item->id }})">
                                         <div class="card-body text-center">
                                             <img height="55"
                                                 src="{{ @globalAsset(@$item->upload->path, '100X100.svg') }}"
