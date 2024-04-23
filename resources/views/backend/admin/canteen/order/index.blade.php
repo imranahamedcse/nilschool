@@ -51,12 +51,12 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('index.sr_no') }}</th>
-                    <th class="purchase">{{ ___('index.Book') }}</th>
-                    <th class="purchase">{{ ___('index.Member') }}</th>
-                    <th class="purchase">{{ ___('index.Phone') }}</th>
-                    <th class="purchase">{{ ___('index.Issue Date') }}</th>
-                    <th class="purchase">{{ ___('index.Return Date') }}</th>
-                    <th class="purchase">{{ ___('index.status') }}</th>
+                    <th class="purchase">{{ ___('index.invoice_no') }}</th>
+                    <th class="purchase">{{ ___('index.total_quantity') }}</th>
+                    <th class="purchase">{{ ___('index.total_price') }}</th>
+                    <th class="purchase">{{ ___('index.discount') }}</th>
+                    <th class="purchase">{{ ___('index.discount_price') }}</th>
+                    <th class="purchase">{{ ___('index.note') }}</th>
                     @if (hasPermission('order_update') || hasPermission('order_delete'))
                         <th class="action">{{ ___('index.action') }}</th>
                     @endif
@@ -66,14 +66,23 @@
                 @forelse ($data['order'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
-                        <td>{{ @$row->book->name }}</td>
-                        <td>{{ @$row->user->name }}</td>
-                        <td>{{ @$row->phone }}</td>
-                        <td>{{ dateFormat(@$row->issue_date) }}</td>
-                        <td>{{ dateFormat(@$row->return_date) }}</td>
+                        <td>{{ @$row->invoice_no }}</td>
+                        <td>{{ @$row->total_quantity }}</td>
+                        <td>{{ @$row->total_price }}</td>
                         <td>
-                            @include('backend.admin.components.table.status')
+                            {{ @$row->amount }} {{ @$row->discount_type == 'percentage' ? '%' : 'tk' }}
                         </td>
+
+                        <td>
+                            @if (@$row->discount_type == 'percentage' && @$row->amount != null)
+                                {{ @$row->total_price - (@$row->total_price * @$row->amount / 100) }}
+                            @else
+                                {{ @$row->total_price - @$row->amount }}
+                            @endif
+                        </td>
+
+                        <td>{{ @$row->note }}</td>
+
                         @if (hasPermission('order_update') ||
                                 hasPermission('order_delete') ||
                                 @$row->status == App\Enums\IssueBook::ISSUED)

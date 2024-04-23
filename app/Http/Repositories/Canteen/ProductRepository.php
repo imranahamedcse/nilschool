@@ -36,12 +36,13 @@ class ProductRepository implements ProductInterface
         try {
             $row                   = new $this->model;
             $row->name             = $request->name;
-            $row->product_categorie_id = $request->category;
+            $row->product_category_id = $request->category;
             $row->sku              = $request->sku;
             $row->price            = $request->price;
             $row->quantity         = $request->quantity;
             $row->status           = $request->status;
             $row->description      = $request->description;
+            $row->upload_id        = $this->UploadImageCreate($request->image, 'backend/uploads/products');
             $row->save();
 
             DB::commit();
@@ -63,12 +64,13 @@ class ProductRepository implements ProductInterface
         try {
             $row                   = $this->model->findOrfail($id);
             $row->name             = $request->name;
-            $row->product_categorie_id = $request->category;
+            $row->product_category_id = $request->category;
             $row->sku              = $request->sku;
             $row->price            = $request->price;
             $row->quantity         = $request->quantity;
             $row->status           = $request->status;
             $row->description      = $request->description;
+            $row->upload_id        = $this->UploadImageUpdate($request->image, 'backend/uploads/products', $row->upload_id);
             $row->save();
 
             DB::commit();
@@ -84,6 +86,7 @@ class ProductRepository implements ProductInterface
         DB::beginTransaction();
         try {
             $row = $this->model->find($id);
+            $this->UploadImageDelete($row->upload_id);
             $row->delete();
 
             DB::commit();

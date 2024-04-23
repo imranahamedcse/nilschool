@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('sku')->nullable();
-            $table->foreignId('product_categorie_id')->constrained('product_categories')->cascadeOnDelete();
+            $table->foreignId('product_category_id')->constrained('product_categories')->cascadeOnDelete();
             $table->string('price')->nullable();
             $table->integer('quantity')->nullable();
             $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('upload_id')->nullable();
+            $table->foreign('upload_id')->references('id')->on('uploads')->onDelete('set null');
             $table->timestamps();
         });
     }

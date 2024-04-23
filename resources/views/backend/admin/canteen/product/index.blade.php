@@ -19,6 +19,7 @@
             <thead class="thead">
                 <tr>
                     <th class="serial">{{ ___('index.sr_no') }}</th>
+                    <th class="purchase">{{ ___('index.image') }}</th>
                     <th class="purchase">{{ ___('index.name') }}</th>
                     <th class="purchase">{{ ___('index.category') }}</th>
                     <th class="purchase">{{ ___('index.SKU') }}</th>
@@ -32,6 +33,11 @@
                 @forelse ($data['product'] as $key => $row)
                     <tr id="row_{{ $row->id }}">
                         <td class="serial">{{ ++$key }}</td>
+                        <td>
+                            <div class="user-avatar">
+                                <img height="30" src="{{ @globalAsset(@$row->upload->path, '100X100.svg') }}" alt="Photo">
+                            </div>
+                        </td>
                         <td>{{ @$row->name }}</td>
                         <td>{{ @$row->category->name }}</td>
                         <td>{{ @$row->sku }}</td>

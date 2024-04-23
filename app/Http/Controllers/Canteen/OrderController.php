@@ -63,7 +63,6 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         $result = $this->Repo->store($request);
         if ($result['status']) {
             return redirect()->route('order.index')->with('success', $result['message']);

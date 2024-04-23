@@ -211,5 +211,12 @@
     "Half day": "Half day",
     "F": "F",
     "H": "H",
-    "SKU": "SKU"
+    "SKU": "SKU",
+    "invoice_no": "Invoice no",
+    "total_quantity": "Total quantity",
+    "total_price": "Total price",
+    "discount_type": "Discount type",
+    "note": "Note",
+    "discount": "Discount",
+    "discount_price": "Discount price"
 }

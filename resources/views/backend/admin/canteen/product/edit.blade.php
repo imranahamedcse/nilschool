@@ -109,6 +109,15 @@
                                     </div>
                                 @enderror
                             </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="validationDefault16" class="form-label ">{{ ___('create.image') }}
+                                    {{ ___('create.(100 x 100 px)') }}<span class="text-danger"></span></label>
+
+                                <input id="validationDefault16" class="form-control" type="file" name="image"
+                                    placeholder="{{ ___('create.image') }}">
+                            </div>
+
                             <div class="col-md-12 mb-3">
                                 <label for="validationDefault10" class="form-label">{{ ___('create.description') }}</label>
                                 <textarea class="form-control" name="description" id="validationDefault10">{{ old('description', @$data['product']->description) }}</textarea>

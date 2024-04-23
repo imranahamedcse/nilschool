@@ -283,5 +283,10 @@
     "product category": "Product category",
     "sku": "Sku",
     "enter_sku": "Enter sku",
-    "SKU": "SKU"
+    "SKU": "SKU",
+    "enter_note": "Enter note",
+    "enter_discount": "Enter discount",
+    "fixed_discount": "Fixed discount",
+    "percentage_discount": "Percentage discount",
+    "fixed": "Fixed"
 }

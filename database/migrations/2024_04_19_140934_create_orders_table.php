@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_no')->nullable();
-            $table->string('total_price')->nullable();
             $table->integer('total_quantity')->nullable();
-            $table->tinyInteger('status')->default(App\Enums\Status::ACTIVE);
-            $table->text('description')->nullable();
+            $table->string('total_price')->nullable();
+            $table->string('discount_type')->nullable();
+            $table->integer('amount')->nullable()->default(0);
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
