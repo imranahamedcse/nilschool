@@ -1,36 +1,26 @@
 <?php
 
-use App\Http\Controllers\HR\DepartmentController;
-use App\Http\Controllers\HR\DesignationController;
-use App\Http\Controllers\HR\RoleController;
-use App\Http\Controllers\HR\UserController;
+use App\Http\Controllers\HumanResource\DepartmentController;
+use App\Http\Controllers\HumanResource\DesignationController;
+use App\Http\Controllers\HumanResource\StaffController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['XssSanitizer']], function () {
     Route::group(['middleware' => 'lang'], function () {
-        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix'=>'staff'], function () {
-            
-            Route::controller(RoleController::class)->prefix('roles')->group(function () {
-                Route::get('/',                 'index')->name('roles.index')->middleware('PermissionCheck:role_read');
-                Route::get('/create',           'create')->name('roles.create')->middleware('PermissionCheck:role_create');
-                Route::post('/store',           'store')->name('roles.store')->middleware('PermissionCheck:role_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('roles.edit')->middleware('PermissionCheck:role_update');
-                Route::put('/update/{id}',      'update')->name('roles.update')->middleware('PermissionCheck:role_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('roles.delete')->middleware('PermissionCheck:role_delete', 'DemoCheck');
-            });
+        Route::group(['middleware' => ['auth.routes', 'AdminPanel'], 'prefix'=>'human-resource'], function () {
 
-            Route::controller(UserController::class)->prefix('users')->group(function () {
-                Route::get('/',                 'index')->name('users.index')->middleware('PermissionCheck:user_read');
-                Route::get('/show/{id}',        'show')->name('users.show')->middleware('PermissionCheck:user_read');
-                Route::get('/create',           'create')->name('users.create')->middleware('PermissionCheck:user_create');
-                Route::post('/store',           'store')->name('users.store')->middleware('PermissionCheck:user_create', 'DemoCheck');
-                Route::get('/edit/{id}',        'edit')->name('users.edit')->middleware('PermissionCheck:user_update');
-                Route::put('/update/{id}',      'update')->name('users.update')->middleware('PermissionCheck:user_update', 'DemoCheck');
-                Route::delete('/delete/{id}',   'delete')->name('users.delete')->middleware('PermissionCheck:user_delete', 'DemoCheck');
+            Route::controller(StaffController::class)->prefix('staff')->group(function () {
+                Route::get('/',                 'index')->name('staff.index')->middleware('PermissionCheck:user_read');
+                Route::get('/show/{id}',        'show')->name('staff.show')->middleware('PermissionCheck:user_read');
+                Route::get('/create',           'create')->name('staff.create')->middleware('PermissionCheck:user_create');
+                Route::post('/store',           'store')->name('staff.store')->middleware('PermissionCheck:user_create', 'DemoCheck');
+                Route::get('/edit/{id}',        'edit')->name('staff.edit')->middleware('PermissionCheck:user_update');
+                Route::put('/update/{id}',      'update')->name('staff.update')->middleware('PermissionCheck:user_update', 'DemoCheck');
+                Route::delete('/delete/{id}',   'delete')->name('staff.delete')->middleware('PermissionCheck:user_delete', 'DemoCheck');
 
                 Route::get('/change-role',      'changeRole')->name('change.role');
-                Route::post('/status',          'status')->name('users.status');
-                Route::delete('/{id}',          'deletes')->name('users.deletes');
+                Route::post('/status',          'status')->name('staff.status');
+                Route::delete('/{id}',          'deletes')->name('staff.deletes');
             });
 
             Route::controller(DepartmentController::class)->prefix('department')->group(function () {
@@ -41,7 +31,7 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
                 Route::put('/update/{id}',      'update')->name('department.update')->middleware('PermissionCheck:department_update', 'DemoCheck');
                 Route::delete('/delete/{id}',   'delete')->name('department.delete')->middleware('PermissionCheck:department_delete', 'DemoCheck');
             });
-            
+
             Route::controller(DesignationController::class)->prefix('designation')->group(function () {
                 Route::get('/',                 'index')->name('designation.index')->middleware('PermissionCheck:designation_read');
                 Route::get('/create',           'create')->name('designation.create')->middleware('PermissionCheck:designation_create');

@@ -5,5 +5,8 @@
     "OK": "OK",
     "deleted_successfully": "Deleted successfully",
     "something_went_wrong_please_try_again": "Something went wrong please try again",
-    "user_created_successfully": "User created successfully"
+    "user_created_successfully": "User created successfully",
+    "user_updated_successfully": "User updated successfully",
+    "role_created_successfully": "Role created successfully",
+    "role_updated_successfully": "Role updated successfully"
 }

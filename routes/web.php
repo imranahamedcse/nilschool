@@ -1,14 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\Backend\MyProfileController;
 use App\Http\Controllers\Backend\AuthenticationController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\PDFController;
-use App\Http\Controllers\Settings\LanguageController;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Config;
+use App\Http\Controllers\UserManagement\RoleController;
+use App\Http\Controllers\UserManagement\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +86,25 @@ Route::group(['middleware' => ['XssSanitizer']], function () {
 
                     Route::get('/password/update',      'passwordUpdate')->name('passwordUpdate');
                     Route::put('/password/update/store', 'passwordUpdateStore')->name('passwordUpdateStore')->middleware('DemoCheck');
+                });
+
+                Route::controller(RoleController::class)->prefix('roles')->group(function () {
+                    Route::get('/',                 'index')->name('roles.index')->middleware('PermissionCheck:role_read');
+                    Route::get('/create',           'create')->name('roles.create')->middleware('PermissionCheck:role_create');
+                    Route::post('/store',           'store')->name('roles.store')->middleware('PermissionCheck:role_create', 'DemoCheck');
+                    Route::get('/edit/{id}',        'edit')->name('roles.edit')->middleware('PermissionCheck:role_update');
+                    Route::put('/update/{id}',      'update')->name('roles.update')->middleware('PermissionCheck:role_update', 'DemoCheck');
+                    Route::delete('/delete/{id}',   'delete')->name('roles.delete')->middleware('PermissionCheck:role_delete', 'DemoCheck');
+                });
+
+                Route::controller(UserController::class)->prefix('users')->group(function () {
+                    Route::get('/',                 'index')->name('users.index')->middleware('PermissionCheck:user_read');
+                    Route::get('/show/{id}',        'show')->name('users.show')->middleware('PermissionCheck:user_read');
+                    Route::get('/create',           'create')->name('users.create')->middleware('PermissionCheck:user_create');
+                    Route::post('/store',           'store')->name('users.store')->middleware('PermissionCheck:user_create', 'DemoCheck');
+                    Route::get('/edit/{id}',        'edit')->name('users.edit')->middleware('PermissionCheck:user_update');
+                    Route::put('/update/{id}',      'update')->name('users.update')->middleware('PermissionCheck:user_update', 'DemoCheck');
+                    Route::delete('/delete/{id}',   'delete')->name('users.delete')->middleware('PermissionCheck:user_delete', 'DemoCheck');
                 });
 
             });

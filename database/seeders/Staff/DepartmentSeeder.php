@@ -2,8 +2,7 @@
 
 namespace Database\Seeders\Staff;
 
-use App\Models\Staff\Department;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\HumanResource\Department;
 use Illuminate\Database\Seeder;
 
 class DepartmentSeeder extends Seeder

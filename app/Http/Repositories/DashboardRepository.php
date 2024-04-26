@@ -9,7 +9,7 @@ use App\Models\Accounts\Expense;
 use App\Models\Accounts\Income;
 use App\Models\Attendance\Attendance;
 use App\Models\Fees\FeesCollect;
-use App\Models\Staff\Staff;
+use App\Models\HumanResource\Staff;
 use App\Models\Event;
 use App\Models\User;
 

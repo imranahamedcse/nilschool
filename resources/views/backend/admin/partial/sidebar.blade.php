@@ -590,44 +590,73 @@
         @endif
         <!-- Report end -->
 
-        <!-- User start -->
-        @if (hasPermission('role_read') ||
-                hasPermission('user_read') ||
-                hasPermission('department_read') ||
-                hasPermission('designation_read'))
-            <li class="{{ set_menu(['staff*']) }}">
+        <!-- User management start -->
+        @if (hasPermission('role_read') || hasPermission('user_read'))
+            <li class="{{ set_menu(['roles*', 'users*']) }}">
                 <div class="icon-link">
                     <a class="parent-item-content has-arrow">
                         <i class="prepend-icon fa-solid fa-users"></i>
-                        <span class="link-name">{{ ___('partial.Staff') }}</span>
+                        <span class="link-name">{{ ___('partial.User Management') }}</span>
                     </a>
                     <i class="append-icon fa-solid fa-angle-down arrow"></i>
                 </div>
                 <ul class="sub-menu">
                     @if (hasPermission('role_read'))
-                        <li class="{{ set_menu(['staff/roles*']) }}">
+                        <li class="{{ set_menu(['roles*']) }}">
                             <a href="{{ route('roles.index') }}">{{ ___('partial.Roles') }}</a>
                         </li>
                     @endif
                     @if (hasPermission('user_read'))
-                        <li class="{{ set_menu(['staff/users*']) }}">
-                            <a href="{{ route('users.index') }}">{{ ___('partial.List') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('department_read'))
-                        <li class="{{ set_menu(['staff/department*']) }}">
-                            <a href="{{ route('department.index') }}">{{ ___('partial.Department') }}</a>
-                        </li>
-                    @endif
-                    @if (hasPermission('designation_read'))
-                        <li class="{{ set_menu(['staff/designation*']) }}">
-                            <a href="{{ route('designation.index') }}">{{ ___('partial.Designation') }}</a>
+                        <li class="{{ set_menu(['users*']) }}">
+                            <a href="{{ route('users.index') }}">{{ ___('partial.Users') }}</a>
                         </li>
                     @endif
                 </ul>
             </li>
         @endif
-        <!-- User end -->
+        <!-- User management end -->
+
+        <!-- Human Resource start -->
+        @if (hasPermission('department_read') ||
+                hasPermission('designation_read'))
+            <li class="{{ set_menu(['human-resource*']) }}">
+                <div class="icon-link">
+                    <a class="parent-item-content has-arrow">
+                        <i class="prepend-icon fa-solid fa-users"></i>
+                        <span class="link-name">{{ ___('partial.Human Resource') }}</span>
+                    </a>
+                    <i class="append-icon fa-solid fa-angle-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    @if (hasPermission('department_read'))
+                        <li class="{{ set_menu(['human-resource/department*']) }}">
+                            <a href="{{ route('department.index') }}">{{ ___('partial.Department') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('designation_read'))
+                        <li class="{{ set_menu(['human-resource/designation*']) }}">
+                            <a href="{{ route('designation.index') }}">{{ ___('partial.Designation') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('user_read'))
+                        <li class="{{ set_menu(['human-resource/staff*']) }}">
+                            <a href="{{ route('staff.index') }}">{{ ___('partial.Staff List') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('user_read'))
+                        <li class="{{ set_menu(['staff/users*']) }}">
+                            <a href="{{ route('users.index') }}">{{ ___('partial.Staff Attendance') }}</a>
+                        </li>
+                    @endif
+                    @if (hasPermission('user_read'))
+                        <li class="{{ set_menu(['staff/users*']) }}">
+                            <a href="{{ route('users.index') }}">{{ ___('partial.Payroll') }}</a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+        @endif
+        <!-- Human Resource end -->
 
         <!-- Website setup start -->
         @if (hasPermission('page_sections_read') ||

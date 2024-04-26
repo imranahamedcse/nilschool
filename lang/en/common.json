@@ -200,5 +200,12 @@
     "Edit product": "Edit product",
     "Order": "Order",
     "Add Order": "Add Order",
-    "Edit Order": "Edit Order"
+    "Edit Order": "Edit Order",
+    "update_staff": "Update staff",
+    "Roles": "Roles",
+    "create_role": "Create role",
+    "user": "User",
+    "User Manage": "User Manage",
+    "create_user": "Create user",
+    "update_user": "Update user"
 }
