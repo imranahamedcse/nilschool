@@ -3,7 +3,6 @@
 namespace Database\Seeders\Examination;
 
 use App\Models\Examination\MarksGrade;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class MarkGradeSeeder extends Seeder

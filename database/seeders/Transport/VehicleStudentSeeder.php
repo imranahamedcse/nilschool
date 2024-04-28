@@ -2,7 +2,6 @@
 
 namespace Database\Seeders\Transport;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class VehicleStudentSeeder extends Seeder

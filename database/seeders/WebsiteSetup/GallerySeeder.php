@@ -4,7 +4,6 @@ namespace Database\Seeders\WebsiteSetup;
 
 use App\Models\Gallery;
 use App\Models\Upload;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GallerySeeder extends Seeder

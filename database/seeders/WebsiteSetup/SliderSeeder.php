@@ -4,7 +4,6 @@ namespace Database\Seeders\WebsiteSetup;
 
 use App\Models\Slider;
 use App\Models\Upload;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SliderSeeder extends Seeder

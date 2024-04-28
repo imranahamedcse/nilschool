@@ -3,7 +3,6 @@
 namespace Database\Seeders\Academic;
 
 use App\Models\Academic\TimeSchedule;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TimeScheduleSeeder extends Seeder

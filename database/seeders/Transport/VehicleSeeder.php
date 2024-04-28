@@ -3,7 +3,6 @@
 namespace Database\Seeders\Transport;
 
 use App\Models\Transport\Vehicle;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class VehicleSeeder extends Seeder

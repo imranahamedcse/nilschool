@@ -4,8 +4,6 @@ namespace Database\Seeders\Examination;
 
 use Illuminate\Database\Seeder;
 use App\Models\Examination\ExaminationSettings;
-use App\Models\Examination\MarksGrade;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ExaminationSettingsSeeder extends Seeder
 {

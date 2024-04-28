@@ -5,7 +5,6 @@ namespace Database\Seeders\Transport;
 use App\Models\Transport\TransportSetup;
 use App\Models\Transport\TransportSetupPickupPoint;
 use App\Models\Transport\TransportSetupVehicle;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TransportSetupSeeder extends Seeder

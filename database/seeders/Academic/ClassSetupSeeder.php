@@ -4,7 +4,6 @@ namespace Database\Seeders\Academic;
 
 use App\Models\Academic\Classes;
 use App\Models\Academic\ClassSetup;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ClassSetupSeeder extends Seeder

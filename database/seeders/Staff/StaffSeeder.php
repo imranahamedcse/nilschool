@@ -2,10 +2,9 @@
 
 namespace Database\Seeders\Staff;
 
-use App\Models\Staff\Staff;
+use App\Models\HumanResource\Staff;
 use App\Models\Upload;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 

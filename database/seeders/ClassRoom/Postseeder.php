@@ -3,7 +3,6 @@
 namespace Database\Seeders\ClassRoom;
 
 use App\Models\ClassRoom\Post;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class Postseeder extends Seeder

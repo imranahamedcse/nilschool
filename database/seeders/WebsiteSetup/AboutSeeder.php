@@ -4,7 +4,6 @@ namespace Database\Seeders\WebsiteSetup;
 
 use App\Models\Upload;
 use App\Models\WebsiteSetup\About;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AboutSeeder extends Seeder

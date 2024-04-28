@@ -3,7 +3,6 @@
 namespace Database\Seeders\Settings;
 
 use App\Models\Session;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SessionSeeder extends Seeder

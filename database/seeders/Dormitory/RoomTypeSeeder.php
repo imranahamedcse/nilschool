@@ -3,7 +3,6 @@
 namespace Database\Seeders\Dormitory;
 
 use App\Models\Dormitory\RoomType;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class RoomTypeSeeder extends Seeder

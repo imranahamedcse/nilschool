@@ -5,7 +5,6 @@ namespace Database\Seeders\Fees;
 use App\Models\Fees\FeesType;
 use App\Models\Fees\FeesMaster;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class FeesMasterSeeder extends Seeder
 {

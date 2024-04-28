@@ -2,7 +2,7 @@
 
 namespace App\Models\Academic;
 
-use App\Models\Staff\Staff;
+use App\Models\HumanResource\Staff;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

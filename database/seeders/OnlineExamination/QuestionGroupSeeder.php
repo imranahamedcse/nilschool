@@ -3,7 +3,6 @@
 namespace Database\Seeders\OnlineExamination;
 
 use App\Models\OnlineExamination\QuestionGroup;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class QuestionGroupSeeder extends Seeder

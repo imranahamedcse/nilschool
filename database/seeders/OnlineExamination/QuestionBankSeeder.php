@@ -4,7 +4,6 @@ namespace Database\Seeders\OnlineExamination;
 
 use App\Models\OnlineExamination\QuestionBank;
 use App\Models\OnlineExamination\QuestionBankChildren;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class QuestionBankSeeder extends Seeder

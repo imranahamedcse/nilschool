@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\FlagIcon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 

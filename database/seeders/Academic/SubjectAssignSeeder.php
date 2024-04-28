@@ -2,14 +2,12 @@
 
 namespace Database\Seeders\Academic;
 
-use App\Models\User;
-use App\Models\Staff\Staff;
 use Illuminate\Database\Seeder;
 use App\Models\Academic\Classes;
 use App\Models\Academic\Subject;
 use App\Models\Academic\SubjectAssign;
 use App\Models\Academic\SubjectAssignChildren;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\HumanResource\Staff;
 
 class SubjectAssignSeeder extends Seeder
 {

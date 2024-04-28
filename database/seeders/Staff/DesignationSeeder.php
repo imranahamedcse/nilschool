@@ -4,7 +4,6 @@ namespace Database\Seeders\Staff;
 
 use App\Models\HumanResource\Designation;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DesignationSeeder extends Seeder
 {

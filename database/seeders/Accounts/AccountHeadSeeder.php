@@ -3,7 +3,6 @@
 namespace Database\Seeders\Accounts;
 
 use App\Models\Accounts\AccountHead;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AccountHeadSeeder extends Seeder

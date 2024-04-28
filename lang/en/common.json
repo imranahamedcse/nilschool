@@ -207,5 +207,7 @@
     "user": "User",
     "User Manage": "User Manage",
     "create_user": "Create user",
-    "update_user": "Update user"
+    "update_user": "Update user",
+    "Department": "Department",
+    "Designation": "Designation"
 }

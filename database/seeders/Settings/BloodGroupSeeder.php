@@ -3,7 +3,6 @@
 namespace Database\Seeders\Settings;
 
 use App\Models\BloodGroup;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BloodGroupSeeder extends Seeder

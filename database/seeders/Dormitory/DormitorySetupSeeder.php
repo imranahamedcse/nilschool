@@ -4,7 +4,6 @@ namespace Database\Seeders\Dormitory;
 
 use App\Models\Dormitory\DormitorySetup;
 use App\Models\Dormitory\DormitorySetupChild;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DormitorySetupSeeder extends Seeder

@@ -4,8 +4,6 @@ namespace Database\Seeders\Settings;
 
 use App\Models\Language;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class LanguageSeeder extends Seeder
 {

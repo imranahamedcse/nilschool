@@ -7,9 +7,7 @@ use App\Models\Academic\Classes;
 use App\Models\Examination\ExamType;
 use App\Models\Academic\SubjectAssign;
 use App\Models\Examination\ExamAssign;
-use App\Models\Examination\MarksGrade;
 use App\Models\Examination\ExamAssignChildren;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ExamAssignSeeder extends Seeder
 {

@@ -5,7 +5,6 @@ namespace Database\Seeders\OnlineExamination;
 use App\Models\OnlineExamination\OnlineExam;
 use App\Models\OnlineExamination\OnlineExamChildrenQuestions;
 use App\Models\OnlineExamination\OnlineExamChildrenStudents;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class OnlineExamSeeder extends Seeder

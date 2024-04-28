@@ -3,7 +3,6 @@
 namespace Database\Seeders\WebsiteSetup;
 
 use App\Models\GalleryCategory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GalleryCategorySeeder extends Seeder

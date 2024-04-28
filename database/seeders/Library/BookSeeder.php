@@ -2,7 +2,6 @@
 
 namespace Database\Seeders\Library;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder

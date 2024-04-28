@@ -6,13 +6,9 @@ use Illuminate\Database\Seeder;
 use App\Models\Academic\Classes;
 use App\Models\Examination\ExamType;
 use App\Models\Academic\SubjectAssign;
-use App\Models\Examination\ExamAssign;
-use App\Models\Examination\MarksGrade;
 use App\Models\Examination\MarksRegister;
-use App\Models\Examination\ExamAssignChildren;
 use App\Models\StudentInfo\SessionClassStudent;
 use App\Models\Examination\MarksRegisterChildren;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class MarkRegisterSeeder extends Seeder
 {

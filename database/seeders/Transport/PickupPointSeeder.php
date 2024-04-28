@@ -3,7 +3,6 @@
 namespace Database\Seeders\Transport;
 
 use App\Models\Transport\PickupPoint;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PickupPointSeeder extends Seeder

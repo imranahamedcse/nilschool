@@ -3,7 +3,6 @@
 namespace Database\Seeders\Library;
 
 use App\Models\Library\BookCategory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BookCategorySeeder extends Seeder

@@ -3,7 +3,6 @@
 namespace Database\Seeders\Accounts;
 
 use App\Models\Accounts\Expense;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ExpenseSeeder extends Seeder

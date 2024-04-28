@@ -3,7 +3,6 @@
 namespace Database\Seeders\Examination;
 
 use App\Models\Examination\ExamType;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ExamTypeSeeder extends Seeder

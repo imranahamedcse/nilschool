@@ -3,7 +3,6 @@
 namespace Database\Seeders\Academic;
 
 use App\Models\Academic\Section;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SectionSeeder extends Seeder
