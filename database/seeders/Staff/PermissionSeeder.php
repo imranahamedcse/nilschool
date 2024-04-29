@@ -61,6 +61,8 @@ class PermissionSeeder extends Seeder
             'users'             => ['read' => 'user_read', 'create' => 'user_create', 'update' => 'user_update', 'delete' => 'user_delete'],
             'department'        => ['read' => 'department_read', 'create' => 'department_create', 'update' => 'department_update', 'delete' => 'department_delete'],
             'designation'       => ['read' => 'designation_read', 'create' => 'designation_create', 'update' => 'designation_update', 'delete' => 'designation_delete'],
+            'staff_attendance'  => ['read' => 'staff_attendance_read', 'create' => 'staff_attendance_create', 'update' => 'staff_attendance_update', 'delete' => 'staff_attendance_delete'],
+            'payroll'           => ['read' => 'payroll_read', 'create' => 'payroll_create', 'update' => 'payroll_update', 'delete' => 'payroll_delete'],
             // Library
             'book_category'     => ['read' => 'book_category_read', 'create' => 'book_category_create', 'update' => 'book_category_update', 'delete' => 'book_category_delete'],
             'book'              => ['read' => 'book_read', 'create' => 'book_create', 'update' => 'book_update', 'delete' => 'book_delete'],

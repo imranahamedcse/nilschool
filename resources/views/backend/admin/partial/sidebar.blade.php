@@ -643,14 +643,14 @@
                             <a href="{{ route('staff.index') }}">{{ ___('partial.Staff List') }}</a>
                         </li>
                     @endif
-                    @if (hasPermission('user_read'))
-                        <li class="{{ set_menu(['staff/users*']) }}">
-                            <a href="{{ route('users.index') }}">{{ ___('partial.Staff Attendance') }}</a>
+                    @if (hasPermission('staff_attendance_read'))
+                        <li class="{{ set_menu(['human-resource/staff-attendance*']) }}">
+                            <a href="{{ route('staff-attendance.index') }}">{{ ___('partial.Staff Attendance') }}</a>
                         </li>
                     @endif
-                    @if (hasPermission('user_read'))
-                        <li class="{{ set_menu(['staff/users*']) }}">
-                            <a href="{{ route('users.index') }}">{{ ___('partial.Payroll') }}</a>
+                    @if (hasPermission('payroll_read'))
+                        <li class="{{ set_menu(['human-resource/payroll*']) }}">
+                            <a href="{{ route('payroll.index') }}">{{ ___('partial.Payroll') }}</a>
                         </li>
                     @endif
                 </ul>

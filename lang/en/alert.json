@@ -8,5 +8,6 @@
     "user_created_successfully": "User created successfully",
     "user_updated_successfully": "User updated successfully",
     "role_created_successfully": "Role created successfully",
-    "role_updated_successfully": "Role updated successfully"
+    "role_updated_successfully": "Role updated successfully",
+    "submitted_successfully": "Submitted successfully"
 }

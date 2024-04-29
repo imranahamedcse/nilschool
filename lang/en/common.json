@@ -209,5 +209,8 @@
     "create_user": "Create user",
     "update_user": "Update user",
     "Department": "Department",
-    "Designation": "Designation"
+    "Designation": "Designation",
+    "Staff Attendance": "Staff Attendance",
+    "Human Resource": "Human Resource",
+    "select department": "Select department"
 }

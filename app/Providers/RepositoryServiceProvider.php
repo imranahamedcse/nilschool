@@ -81,6 +81,7 @@ use App\Http\Interfaces\Settings\SettingInterface;
 use App\Http\Interfaces\WebsiteSetup\SliderInterface;
 use App\Http\Interfaces\HumanResource\DepartmentInterface;
 use App\Http\Interfaces\HumanResource\DesignationInterface;
+use App\Http\Interfaces\HumanResource\StaffAttendanceInterface;
 use App\Http\Interfaces\HumanResource\StaffInterface;
 use App\Http\Interfaces\UserManagement\RoleInterface;
 use App\Http\Interfaces\StudentInfo\DisabledStudentInterface;
@@ -168,6 +169,7 @@ use App\Http\Repositories\WebsiteSetup\SliderRepository;
 use App\Http\Repositories\HumanResource\DepartmentRepository;
 use App\Http\Repositories\HumanResource\DesignationRepository;
 use App\Http\Repositories\FlagIconRepository;
+use App\Http\Repositories\HumanResource\StaffAttendanceRepository;
 use App\Http\Repositories\HumanResource\StaffRepository;
 use App\Http\Repositories\StudentInfo\DisabledStudentRepository;
 use App\Http\Repositories\StudentInfo\OnlineAdmissionRepository;
@@ -255,10 +257,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(FeesMasterInterface::class,               FeesMasterRepository::class);
         $this->app->bind(FeesAssignInterface::class,               FeesAssignRepository::class);
         $this->app->bind(FeesCollectInterface::class,              FeesCollectRepository::class);
+
         // HumanResource
         $this->app->bind(DepartmentInterface::class,               DepartmentRepository::class);
         $this->app->bind(DesignationInterface::class,              DesignationRepository::class);
         $this->app->bind(StaffInterface::class,                    StaffRepository::class);
+        $this->app->bind(StaffAttendanceInterface::class,          StaffAttendanceRepository::class);
 
         // Examination
         $this->app->bind(ExamAssignInterface::class,               ExamAssignRepository::class);

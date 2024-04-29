@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('staff_attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('session_id')->nullable()->constrained('sessions')->cascadeOnDelete();
-            $table->foreignId('role_id')->nullable()->constrained('roles')->cascadeOnDelete();
+            $table->foreignId('department_id')->nullable()->constrained('departments')->cascadeOnDelete();
             $table->foreignId('staff_id')->nullable()->constrained('staff')->cascadeOnDelete();
             $table->date('date')->nullable();
             $table->tinyInteger('attendance')->default(3)->nullable()->comment('1=present, 2=late, 3=absent, 4=half_day');

@@ -214,6 +214,24 @@
                         </div>
                     @endif
 
+                    @if (in_array('department', @$data['headers']['filter']))
+                        <div class="px-1">
+                            <select class="form-control department @error('department') is-invalid @enderror"
+                                name="department">
+                                <option value="">{{ ___('common.select department') }}</option>
+                                @foreach ($data['departments'] as $item)
+                                    <option {{ old('department', @$data['request']->department) == $item->id ? 'selected' : '' }}
+                                        value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('department')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    @endif
+
                     @if (in_array('keyword', @$data['headers']['filter']))
                         <input class="form-control" name="keyword"
                             placeholder="{{ ___('common.Enter keyword') }}"

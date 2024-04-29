@@ -263,6 +263,16 @@ class UserSeeder extends Seeder
                 'designation_create',
                 'designation_update',
                 'designation_delete',
+                // staff_attendance
+                'staff_attendance_read',
+                'staff_attendance_create',
+                'staff_attendance_update',
+                'staff_attendance_delete',
+                // payroll
+                'payroll_read',
+                'payroll_create',
+                'payroll_update',
+                'payroll_delete',
                 // End Staff
 
                 // website setup
